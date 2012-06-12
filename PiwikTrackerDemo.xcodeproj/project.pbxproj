@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		CD7DDE9015877D6D00DA91E4 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CD7DDE9315877D6D00DA91E4 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				CD7DDE9515877D7500DA91E4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		CD29382115766C3E00DE309E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29382015766C3E00DE309E /* UIKit.framework */; };
+		CD29382315766C3E00DE309E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29382215766C3E00DE309E /* Foundation.framework */; };
+		CD29382515766C3E00DE309E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29382415766C3E00DE309E /* CoreGraphics.framework */; };
+		CD29382B15766C3E00DE309E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD29382915766C3E00DE309E /* InfoPlist.strings */; };
+		CD29382D15766C3E00DE309E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29382C15766C3E00DE309E /* main.m */; };
+		CD29383115766C3E00DE309E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29383015766C3E00DE309E /* AppDelegate.m */; };
+		CD29383415766C3E00DE309E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29383315766C3E00DE309E /* ViewController.m */; };
+		CD29383715766C3E00DE309E /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383515766C3E00DE309E /* ViewController_iPhone.xib */; };
+		CD29383A15766C3E00DE309E /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383815766C3E00DE309E /* ViewController_iPad.xib */; };
+		CD29386215766CFB00DE309E /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385515766CFB00DE309E /* PiwikTracker.m */; };
+		CD29386315766CFB00DE309E /* PTCounterDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */; };
+		CD29386415766CFB00DE309E /* PTRetryDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */; };
+		CD29386515766CFB00DE309E /* PTTimerDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */; };
+		CD29386615766CFB00DE309E /* PiwikTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD29385C15766CFB00DE309E /* PiwikTracker.xcdatamodeld */; };
+		CD29386715766CFB00DE309E /* PTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385F15766CFB00DE309E /* PTEvent.m */; };
+		CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29386115766CFB00DE309E /* PTUserAgentReader.m */; };
+		CD29386F15766DBA00DE309E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29386E15766DBA00DE309E /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD29381C15766C3E00DE309E /* PiwikTrackerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiwikTrackerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD29382015766C3E00DE309E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CD29382215766C3E00DE309E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CD29382415766C3E00DE309E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CD29382815766C3E00DE309E /* PiwikTrackerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiwikTrackerDemo-Info.plist"; sourceTree = "<group>"; };
+		CD29382A15766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD29382C15766C3E00DE309E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD29382E15766C3E00DE309E /* PiwikTrackerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PiwikTrackerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		CD29382F15766C3E00DE309E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD29383015766C3E00DE309E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD29383215766C3E00DE309E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CD29383315766C3E00DE309E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CD29383615766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		CD29383915766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		CD29385515766CFB00DE309E /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTracker.m; sourceTree = "<group>"; };
+		CD29385615766CFB00DE309E /* PTRetryDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRetryDispatchDelegate.h; sourceTree = "<group>"; };
+		CD29385715766CFB00DE309E /* PTTimerDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTimerDispatchDelegate.h; sourceTree = "<group>"; };
+		CD29385815766CFB00DE309E /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
+		CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCounterDispatchDelegate.m; sourceTree = "<group>"; };
+		CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRetryDispatchDelegate.m; sourceTree = "<group>"; };
+		CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTimerDispatchDelegate.m; sourceTree = "<group>"; };
+		CD29385D15766CFB00DE309E /* PiwikTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PiwikTracker.xcdatamodel; sourceTree = "<group>"; };
+		CD29385E15766CFB00DE309E /* PTEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEvent.h; sourceTree = "<group>"; };
+		CD29385F15766CFB00DE309E /* PTEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEvent.m; sourceTree = "<group>"; };
+		CD29386015766CFB00DE309E /* PTUserAgentReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserAgentReader.h; sourceTree = "<group>"; };
+		CD29386115766CFB00DE309E /* PTUserAgentReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserAgentReader.m; sourceTree = "<group>"; };
+		CD29386915766D6E00DE309E /* PTCounterDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCounterDispatchDelegate.h; sourceTree = "<group>"; };
+		CD29386E15766DBA00DE309E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD29381915766C3E00DE309E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD29386F15766DBA00DE309E /* CoreData.framework in Frameworks */,
+				CD29382115766C3E00DE309E /* UIKit.framework in Frameworks */,
+				CD29382315766C3E00DE309E /* Foundation.framework in Frameworks */,
+				CD29382515766C3E00DE309E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD29381115766C3D00DE309E = {
+			isa = PBXGroup;
+			children = (
+				CD29384015766C7400DE309E /* PiwikTracker */,
+				CD29382615766C3E00DE309E /* PiwikTrackerDemo */,
+				CD29381F15766C3E00DE309E /* Frameworks */,
+				CD29381D15766C3E00DE309E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD29381D15766C3E00DE309E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD29381C15766C3E00DE309E /* PiwikTrackerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD29381F15766C3E00DE309E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD29386E15766DBA00DE309E /* CoreData.framework */,
+				CD29382015766C3E00DE309E /* UIKit.framework */,
+				CD29382215766C3E00DE309E /* Foundation.framework */,
+				CD29382415766C3E00DE309E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD29382615766C3E00DE309E /* PiwikTrackerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				CD29382F15766C3E00DE309E /* AppDelegate.h */,
+				CD29383015766C3E00DE309E /* AppDelegate.m */,
+				CD29383215766C3E00DE309E /* ViewController.h */,
+				CD29383315766C3E00DE309E /* ViewController.m */,
+				CD29383515766C3E00DE309E /* ViewController_iPhone.xib */,
+				CD29383815766C3E00DE309E /* ViewController_iPad.xib */,
+				CD29382715766C3E00DE309E /* Supporting Files */,
+			);
+			path = PiwikTrackerDemo;
+			sourceTree = "<group>";
+		};
+		CD29382715766C3E00DE309E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD29382815766C3E00DE309E /* PiwikTrackerDemo-Info.plist */,
+				CD29382915766C3E00DE309E /* InfoPlist.strings */,
+				CD29382C15766C3E00DE309E /* main.m */,
+				CD29382E15766C3E00DE309E /* PiwikTrackerDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD29384015766C7400DE309E /* PiwikTracker */ = {
+			isa = PBXGroup;
+			children = (
+				CD29385815766CFB00DE309E /* PiwikTracker.h */,
+				CD29385515766CFB00DE309E /* PiwikTracker.m */,
+				CD29385715766CFB00DE309E /* PTTimerDispatchDelegate.h */,
+				CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */,
+				CD29385615766CFB00DE309E /* PTRetryDispatchDelegate.h */,
+				CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */,
+				CD29386915766D6E00DE309E /* PTCounterDispatchDelegate.h */,
+				CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */,
+				CD29386015766CFB00DE309E /* PTUserAgentReader.h */,
+				CD29386115766CFB00DE309E /* PTUserAgentReader.m */,
+				CD29385E15766CFB00DE309E /* PTEvent.h */,
+				CD29385F15766CFB00DE309E /* PTEvent.m */,
+				CD29385C15766CFB00DE309E /* PiwikTracker.xcdatamodeld */,
+			);
+			path = PiwikTracker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD29381B15766C3E00DE309E /* PiwikTrackerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD29383D15766C3E00DE309E /* Build configuration list for PBXNativeTarget "PiwikTrackerDemo" */;
+			buildPhases = (
+				CD29381815766C3E00DE309E /* Sources */,
+				CD29381915766C3E00DE309E /* Frameworks */,
+				CD29381A15766C3E00DE309E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PiwikTrackerDemo;
+			productName = PiwikTrackerDemo;
+			productReference = CD29381C15766C3E00DE309E /* PiwikTrackerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD29381315766C3D00DE309E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = CD29381615766C3D00DE309E /* Build configuration list for PBXProject "PiwikTrackerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CD29381115766C3D00DE309E;
+			productRefGroup = CD29381D15766C3E00DE309E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD29381B15766C3E00DE309E /* PiwikTrackerDemo */,
+				CD7DDE9015877D6D00DA91E4 /* Documentation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD29381A15766C3E00DE309E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD29382B15766C3E00DE309E /* InfoPlist.strings in Resources */,
+				CD29383715766C3E00DE309E /* ViewController_iPhone.xib in Resources */,
+				CD29383A15766C3E00DE309E /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD7DDE9515877D7500DA91E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc --project-name PiwikTracker --project-company \"Wadpam\" --company-id com.wadpam --output $SOURCE_ROOT/Doc --no-repeat-first-par --explicit-crossref --no-install-docset --keep-intermediate-files $SOURCE_ROOT/PiwikTracker/.";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD29381815766C3E00DE309E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD29382D15766C3E00DE309E /* main.m in Sources */,
+				CD29383115766C3E00DE309E /* AppDelegate.m in Sources */,
+				CD29383415766C3E00DE309E /* ViewController.m in Sources */,
+				CD29386215766CFB00DE309E /* PiwikTracker.m in Sources */,
+				CD29386315766CFB00DE309E /* PTCounterDispatchDelegate.m in Sources */,
+				CD29386415766CFB00DE309E /* PTRetryDispatchDelegate.m in Sources */,
+				CD29386515766CFB00DE309E /* PTTimerDispatchDelegate.m in Sources */,
+				CD29386615766CFB00DE309E /* PiwikTracker.xcdatamodeld in Sources */,
+				CD29386715766CFB00DE309E /* PTEvent.m in Sources */,
+				CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD29382915766C3E00DE309E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD29382A15766C3E00DE309E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CD29383515766C3E00DE309E /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD29383615766C3E00DE309E /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		CD29383815766C3E00DE309E /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD29383915766C3E00DE309E /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD29383B15766C3E00DE309E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD29383C15766C3E00DE309E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD29383E15766C3E00DE309E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiwikTrackerDemo/PiwikTrackerDemo-Prefix.pch";
+				INFOPLIST_FILE = "PiwikTrackerDemo/PiwikTrackerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CD29383F15766C3E00DE309E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiwikTrackerDemo/PiwikTrackerDemo-Prefix.pch";
+				INFOPLIST_FILE = "PiwikTrackerDemo/PiwikTrackerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CD7DDE9115877D6D00DA91E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CD7DDE9215877D6D00DA91E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD29381615766C3D00DE309E /* Build configuration list for PBXProject "PiwikTrackerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD29383B15766C3E00DE309E /* Debug */,
+				CD29383C15766C3E00DE309E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD29383D15766C3E00DE309E /* Build configuration list for PBXNativeTarget "PiwikTrackerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD29383E15766C3E00DE309E /* Debug */,
+				CD29383F15766C3E00DE309E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD7DDE9315877D6D00DA91E4 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD7DDE9115877D6D00DA91E4 /* Debug */,
+				CD7DDE9215877D6D00DA91E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD29385C15766CFB00DE309E /* PiwikTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD29385D15766CFB00DE309E /* PiwikTracker.xcdatamodel */,
+			);
+			currentVersion = CD29385D15766CFB00DE309E /* PiwikTracker.xcdatamodel */;
+			path = PiwikTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CD29381315766C3D00DE309E /* Project object */;
+}
