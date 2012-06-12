@@ -13,17 +13,20 @@
 
 
 /**
- A PiwikTracker framework in Objective-C.
+ A PiwikTracker framework in Objective-C for sending events to a Piwik server.
  
- Howto
+ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, http://piwik.org/.
+ 
+ ###How does it work
+ 
  1. Request the shared tracker 
  2. Start the tracking
- 3. Log pageviews (pageviews are stored in a locally persisted queue)
- 4. Dispatch all pageviews in the queue to the Piwik server
+ 3. Track events (events are stored in a locally persisted queue)
+ 4. Dispatch all events in the queue to the Piwik server
  5. An optional delegate is informed about the progress
  
- If the request to the Piwik server fails the delegate is informed an appropriate action can be taken.
- Three different delegate implentations are provided implementing different strategies. They can be used as it or futher customised.
+ If the request to the Piwik server fails the delegate is informed an appropriate action can be taken.   
+ Three different delegate implentations are provided implementing different strategies. They can be used as is or be further customised.
  
  */
 @interface PiwikTracker : NSObject {
