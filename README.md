@@ -15,7 +15,7 @@ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytic
 If the request to the Piwik server fails the delegate is informed an appropriate action can be taken. Three different delegate implentations are provided implementing different strategies. They can be used as is or be further customised.
  
 ##Interface
-The interface for performing the decoding is simple to use:
+The interface for sending events is simple to use:
 
 	// Get a shared tracker
 	+ (PiwikTracker*)sharedTracker;
