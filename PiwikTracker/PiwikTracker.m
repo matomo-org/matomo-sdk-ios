@@ -8,7 +8,6 @@
 
 
 /*
- -Decide how to handle the ready made dispatch strategies
  -Better userId generation, unique
 
  -Support running on OSX
@@ -17,7 +16,6 @@
  -Support campaign
  -Support outlink and download link
  -Set IP and timestamp
-
  */
 
 
@@ -349,7 +347,7 @@
     // Use the sampling rate to decide if the event should be handled or not
     if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
       DLOG(@"Event will not be logged due to out sample");
-      [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_NOTIFICATION object:self];
+      //[[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_NOTIFICATION object:self];
       block(nil);
       return;
     }

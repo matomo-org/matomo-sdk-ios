@@ -12,7 +12,7 @@ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytic
 4. Dispatch all events in the queue to the Piwik server
 5. Stop the tracker when the app stops
  
-Events and goald are stored in a locally persisted queue until they are dispatched to the Piwik server.
+Events and goals are stored in a locally persisted queue until they are dispatched to the Piwik server.
 
 All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
  
