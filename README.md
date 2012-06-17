@@ -2,7 +2,7 @@
 
 A PiwikTracker framework in Objective-C for sending events to a Piwik server.
  
-Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, http://piwik.org/.
+Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
  
 ###How does it work
  

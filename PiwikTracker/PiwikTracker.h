@@ -14,7 +14,7 @@
 /**
  A PiwikTracker framework in Objective-C for sending events to a Piwik server.
  
- Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, http://piwik.org/.
+ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
  
  ###How does it work
  
@@ -49,6 +49,10 @@
 @interface PiwikTracker : NSObject
 
 
+/** @name Start tracking */
+
+
+
 /**
  Get the shared tracker.
  @return Shared Piwik tracker singletone object.
@@ -79,6 +83,9 @@
  */
 - (BOOL)stopTracker;
 
+
+/** @name Track events */
+
 /**
  Track a single pageview.
  
@@ -88,6 +95,7 @@
  */
 - (void)trackPageview:(NSString*)pageName completionBlock:(void(^)(NSError* error))block;
 
+
 /**
  Track a goal conversion
  
@@ -96,6 +104,7 @@
  @param block A block that will be executed when the request completes or fails
  */
 - (void)trackGoal:(NSInteger)goal completionBlock:(void(^)(NSError*))block;
+
 
 /**
  Track a goal conversion with a specific revenue
@@ -107,6 +116,8 @@
  */
 - (void)trackGoal:(NSInteger)goal withRevenue:(double)revenue completionBlock:(void(^)(NSError* error))block;
 
+
+/** @name Dispatch events */
 
 /**
  Dispatch all tracked events currently stored in the queue to the Piwik server. 
@@ -122,6 +133,8 @@
  */
 - (void)emptyQueueWithCompletionBlock:(void(^)(NSError* error))block;
 
+
+/** @name Properties */
 
 /**
  Returns if the tracker is currently tracking or not.
