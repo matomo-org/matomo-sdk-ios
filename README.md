@@ -6,32 +6,32 @@ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytic
  
 ###How does it work
  
- 1. Request the shared tracker 
- 2. Start the tracking
- 3. Track events and goals
- 4. Dispatch all events in the queue to the Piwik server
- 5. Stop the tracker when the app stops
+1. Request the shared tracker 
+2. Start the tracking
+3. Track events and goals
+4. Dispatch all events in the queue to the Piwik server
+5. Stop the tracker when the app stops
  
- Events and goald are stored in a locally persisted queue until they are dispatched to the Piwik server.
+Events and goald are stored in a locally persisted queue until they are dispatched to the Piwik server.
 
- All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
+All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
  
- ###Notifications
+###Notifications
+
+Notification will be used to inform about the progress. 
  
- Notification will be used to inform about the progress. 
+- `PTEventQueuedSuccessNotification` - The event was successfully queued
+- `PTEventQueuedFailedNotification` - The event failed to be queued
+- `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
+- `PTDispatchFailedNotification` - Dispatched failed
  
- - `PTEventQueuedSuccessNotification` - The event was successfully queued
- - `PTEventQueuedFailedNotification` - The event failed to be queued
- - `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
- - `PTDispatchFailedNotification` - Dispatched failed
+###Dispatch strategies
  
- ###Dispatch strategies
+Three ready-made dispatch strategies class are provided and can be useded as is or be further customized.
  
- Three ready-made dispatch strategies class are provided and can be useded as is or be further customized.
- 
- - `PTTimerDispatchStrategy` - Automatically initiate a dispatch after a certain time interval
- - `PTRetryDispatchStrategy` - Automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
- - `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events when a certain trigger value 
+- `PTTimerDispatchStrategy` - Automatically initiate a dispatch after a certain time interval
+- `PTRetryDispatchStrategy` - Automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
+- `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events then a certain trigger value 
 
 ##Interface
 The interface for sending events is simple to use:

@@ -43,7 +43,7 @@
  
  - `PTTimerDispatchStrategy` - Automatically initiate a dispatch after a certain time interval
  - `PTRetryDispatchStrategy` - Automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
- - `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events when a certain trigger value
+ - `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events then a certain trigger value
  
  */
 @interface PiwikTracker : NSObject

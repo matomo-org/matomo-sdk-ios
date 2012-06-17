@@ -10,7 +10,7 @@
 #import "PiwikTracker.h"
 
 /**
- This class implement a strategy that automatically initiate a dispatch when there are more cached events when a certain trigger value.
+ This class implement a strategy that automatically initiate a dispatch when there are more cached events then a certain trigger value.
  */
 @interface PTCounterDispatchStrategy : NSObject
 
