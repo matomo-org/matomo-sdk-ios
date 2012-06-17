@@ -7,24 +7,17 @@
 //
 
 
-/**
- Prio 1
+/*
+ -Decide how to handle the ready made dispatch strategies
+ -Better userId generation, unique
+
  -Support running on OSX
- */
-
-
-/**
- Prio 2
- -Support additional dispatch schemas - automatic, automatic batch
- */
-
-
-/**
- Prio 3
+ 
  -Support custom variables
  -Support campaign
  -Support outlink and download link
  -Set IP and timestamp
+
  */
 
 
@@ -93,6 +86,14 @@
 #define MAX_LENGTH_CUSTOM_NAME 20
 #define MAX_LENGTH_CUSTOM_VALUE 100
 
+// Notification names
+#define QUEUED_NOTIFICATION @"PTEventQueuedSuccessNotification"
+#define QUEUED_FAILED_NOTIFICATION @"PTEventQueuedFailedNotification"
+#define DISPATCH_NOTIFICATION @"PTDispatchSuccessNotification"
+#define DISPATCH_FAILED_NOTIFICATION @"PTDispatchFailedNotification"
+
+#define NUMER_OF_EVENTS @"NumberOfCachedEvents"
+
 
 #pragma mark - Private interface
 
@@ -106,7 +107,7 @@
 //  kPageScope = 3U      // Not supported yet
 //} CustomVariableScope;
 
-- (BOOL)cacheEvent:(NSMutableDictionary*)params withError:(NSError**)error;
+- (void)cacheEvent:(NSMutableDictionary*)params completionBlock:(void(^)(NSError* error))block;
 - (BOOL)addVisitorScopeCustomVariableWithName:(NSString*)name value:(NSString*)value withError:(NSError**)error;
 - (BOOL)addPageScopeCustomVariableWithName:(NSString*)name value:(NSString*)value withError:(NSError**)error;
 - (BOOL)addCustomVariableWithName:(NSString*)name value:(NSString*)value 
@@ -144,12 +145,12 @@
 
 // Public properties
 @synthesize isTracking = isTracking_;
-@synthesize delegate = delegate_;
 @synthesize visitorID = visitorID_;
 @synthesize userAgent = userAgent_;
 @synthesize sampleRate = sampleRate_;
 @synthesize dryRun = dryRun_;
 @synthesize acceptLanguage = acceptLangauge_;
+@synthesize maximumNumberOfCachedEvents = maximumNumberOfCachedEvents_;
 
 // Private properties
 @synthesize piwikURL = piwikURL_;
@@ -173,6 +174,7 @@
     //Initialise instance variables
     self.queue = dispatch_queue_create("com.levin.mattias", NULL);
     self.visitorCustomVariables = [NSMutableArray array];
+    self.maximumNumberOfCachedEvents = MAX_CACHED_EVENTS;
   }
   
   return self;
@@ -182,7 +184,6 @@
 // Free memory
 -(void) dealloc {
   // Public properties
-  self.delegate = nil;
   self.visitorID = nil;
   self.userAgent = nil;
   self.acceptLanguage = nil;
@@ -216,17 +217,14 @@
 
 
 // Start tracking
-- (BOOL)startTrackerWithPiwikURL:(NSString*)piwikURL 
-                          siteID:(NSString*)siteID 
-             authenticationToken:(NSString*)authenticationToken
-                        delegate:(id<PiwikTrackerDelegate>)delegate
+- (BOOL)startTrackerWithPiwikURL:(NSString*)piwikURL siteID:(NSString*)siteID 
+             authenticationToken:(NSString*)authenticationToken 
                        withError:(NSError**)error {
   DLOG(@"Start tracking");
   
   // Create the base url for the the tracker REST API
   NSURL *url = [NSURL URLWithString:piwikURL];
   if (!url) {
-    ALOG(@"URL is invalid format %@", piwikURL);
     *error = [self parsingErrorWithDescription:@"URL is invalid format %@", piwikURL];
     return NO;
   }
@@ -241,9 +239,6 @@
   
   // Authenticaion token
   self.authenticationToken = authenticationToken;
-  
-  // Deletgate
-  self.delegate = delegate;
   
   // Turn tracking status on
   self.tracking = YES;
@@ -274,7 +269,7 @@
 
 
 // Turn off the tracker
-- (void)stopTracker {
+- (BOOL)stopTracker {
   DLOG(@"Stop tacking");
   
   // Turn tracking status off
@@ -283,13 +278,15 @@
   // Save the timestamp the tracking is stopped
   // This timestamp will be reported as last visited to the Piwik server
   self.lastVisitTimestamp = [[NSDate date] timeIntervalSince1970];
+  
+  return YES;
 }
 
 
 #pragma mark - Track actions
 
 // Track a page view
-- (BOOL)trackPageview:(NSString*)pageName withError:(NSError**)error {
+- (void)trackPageview:(NSString*)pageName completionBlock:(void(^)(NSError* error))block {
   DLOG(@"Track page view for %@", pageName);
   
   // Create an event record
@@ -304,18 +301,18 @@
   [params setValue:[NSString stringWithFormat:@"http://%@/%@", appDisplayName, pageName] forKey:URL_];
   
   // Add common parameters and cache the event
-  return [self cacheEvent:params withError:error];
+  [self cacheEvent:params completionBlock:block];
 }
 
 
 // Track a goal conversion
-- (BOOL)trackGoal:(NSInteger)goal withError:(NSError**)error {
-  return [self trackGoal:goal withRevenue:-1 withError:error];
+- (void)trackGoal:(NSInteger)goal completionBlock:(void(^)(NSError* error))block {
+  [self trackGoal:goal withRevenue:-1 completionBlock:block];
 }
 
 
 // Track a goal conversion with a specific revenue
-- (BOOL)trackGoal:(NSInteger)goal withRevenue:(double)revenue withError:(NSError**)error {
+- (void)trackGoal:(NSInteger)goal withRevenue:(double)revenue completionBlock:(void(^)(NSError* error))block {
   
   // Create a event record
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -332,90 +329,93 @@
   [params setValue:[NSString stringWithFormat:@"http://%@/goal", appDisplayName] forKey:URL_];
   
   // Add common parameters and cache the event
-  return [self cacheEvent:params withError:error];
+  [self cacheEvent:params completionBlock:block];
 }
 
 
 // Add common page parameters and cache the event
-- (BOOL)cacheEvent:(NSMutableDictionary*)params withError:(NSError**)error {
-  
-  if (!self.tracking) {
-    // Tracking is currently turned off
-    ALOG(@"Tracking is currently truned off");
-    *error = [self parsingErrorWithDescription:@"Tracking is currently turned off"];
-    return NO;                
-  }
+- (void)cacheEvent:(NSMutableDictionary*)params completionBlock:(void(^)(NSError* error))block {
     
-  // Use the sampling rate to decide if the event should be handled or not
-  if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
-    DLOG(@"Event will not be logged due to out sample");
-    return YES;
-  }
-  
-  // Add local time
-  NSCalendar *calendar = [NSCalendar currentCalendar];        
-  unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
-  NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
-  
-  [params setValue:[NSString stringWithFormat:@"%d", [dateComponents hour]] forKey:HOURS];
-  [params setValue:[NSString stringWithFormat:@"%d", [dateComponents minute]] forKey:MINUTES];
-  [params setValue:[NSString stringWithFormat:@"%d", [dateComponents second]] forKey:SECONDS];
-  
-  // Set first and last visit timestamp
-  [params setValue:[NSString stringWithFormat:@"%.0f", self.lastVisitTimestamp] forKey:LAST_VISIT_TIMESTAMP];
-  [params setValue:[NSString stringWithFormat:@"%d", self.totalNumberOfVisits] forKey:TOTAL_NUMNER_OF_VISIT];
-  
   // Use a serial queue to store events
   dispatch_async(self.queue, ^ {
+    
+    if (!self.tracking) {
+      // Tracking is currently turned off
+      [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_FAILED_NOTIFICATION object:self];
+      block([self parsingErrorWithDescription:@"Tracking is currently turned off"]);
+      return;
+    }
+    
+    // Use the sampling rate to decide if the event should be handled or not
+    if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
+      DLOG(@"Event will not be logged due to out sample");
+      [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_NOTIFICATION object:self];
+      block(nil);
+      return;
+    }
+    
+    // Add local time
+    NSCalendar *calendar = [NSCalendar currentCalendar];        
+    unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
+    
+    [params setValue:[NSString stringWithFormat:@"%d", [dateComponents hour]] forKey:HOURS];
+    [params setValue:[NSString stringWithFormat:@"%d", [dateComponents minute]] forKey:MINUTES];
+    [params setValue:[NSString stringWithFormat:@"%d", [dateComponents second]] forKey:SECONDS];
+    
+    // Set first and last visit timestamp
+    [params setValue:[NSString stringWithFormat:@"%.0f", self.lastVisitTimestamp] forKey:LAST_VISIT_TIMESTAMP];
+    [params setValue:[NSString stringWithFormat:@"%d", self.totalNumberOfVisits] forKey:TOTAL_NUMNER_OF_VISIT];
+    
+    
     // Store errors
     NSError *error =  nil;
     
     // Check if we reached the limit of the number cached events
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:@"PTEvent" inManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"PTEvent" 
+                                        inManagedObjectContext:self.managedObjectContext]];
     NSUInteger numberOfEvents = [self.managedObjectContext countForFetchRequest:fetchRequest error:&error];
     [fetchRequest release];
-
+    
     if (numberOfEvents ==  NSNotFound) {
       // Check that the featch count was ok
-      ALOG(@"Counting the number of cached events failed: %@", [error description]);
       error = [self parsingErrorWithDescription:@"Counting the number of cached events failed: %@", [error description]];    
-    } else if (numberOfEvents >= MAX_CACHED_EVENTS) { 
+    } else if (numberOfEvents >= self.maximumNumberOfCachedEvents) { 
       // Make sure we do no cache more events the allowed
-      ALOG(@"Maximum number of allowed cached events reached: %d", MAX_CACHED_EVENTS);
-      error = [self parsingErrorWithDescription:@"Maximium number of allowed cached events reached: %d", MAX_CACHED_EVENTS];
+      error = [self parsingErrorWithDescription:@"Maximium number of allowed cached events reached: %d", self.maximumNumberOfCachedEvents];
     }
-
+    
     if (error != nil) {      
-      // Inform the delegate that the event was not cached
-      if ([self.delegate respondsToSelector:@selector(trackerCacheEventDidFail:withError:)])
-        [self.delegate performSelector:@selector(trackerCacheEventDidFail:withError:) 
-                            withObject:nil 
-                            withObject:error]; 
+      // Not possible to count the number of cached events
+      [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_FAILED_NOTIFICATION object:self];
+      block(error);
+      return;
     } else {
       // Store the event in core data
       PTEvent *entity = (PTEvent*)[NSEntityDescription insertNewObjectForEntityForName:@"PTEvent"
                                                                 inManagedObjectContext:self.managedObjectContext];
       entity.eventData = [self toStringFromDict:params];
-      [self saveContext:&error];
-      
-      // Inform the delegate that the event was cached
-      if ([self.delegate respondsToSelector:@selector(trackerCacheEventDidComplete:numberOfCachedEvents:)])
-        [self.delegate performSelector:@selector(trackerCacheEventDidComplete:numberOfCachedEvents:) 
-                            withObject:entity 
-                            withObject:[NSNumber numberWithInteger:numberOfEvents + 1]];
+      if (![self saveContext:&error]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_FAILED_NOTIFICATION object:self];
+        block(error);
+      } else {
+        // The event was stored
+        [[NSNotificationCenter defaultCenter] postNotificationName:QUEUED_NOTIFICATION 
+                                                            object:self 
+                                                          userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:numberOfEvents] 
+                                                                                               forKey:NUMER_OF_EVENTS]];
+        block(nil);
       }
+    }
   });
-  
-  // Everything went ok
-  return YES;
 }
 
 
 #pragma mark - Dispatch events
 
 // Dispatch all cached events to the piwik server
-- (BOOL)dispatch {
+- (void)dispatchWithCompletionBlock:(void (^)(NSError* error))block {
   DLOG(@"Dispatch cached events");
   
   // Create a tasks that sends the first cached event to the Piwik server
@@ -442,18 +442,16 @@
 
     // Check that the featch was ok
     if (fetchResults == nil) {
-      ALOG(@"Featching cached events failed: %@", [error description]);
-      error = [self parsingErrorWithDescription:@"Featching cached events failed: %@", [error description]];
-      if ([self.delegate respondsToSelector:@selector(trackerDispatchDidFail:withError:)])
-        [self.delegate performSelector:@selector(trackerDispatchDidFail:withError::) 
-                            withObject:self
-                            withObject:error];  
+      [[NSNotificationCenter defaultCenter] postNotificationName:DISPATCH_FAILED_NOTIFICATION object:self];
+      block([self parsingErrorWithDescription:@"Featching cached events failed: %@", [error description]]);
       return;
     }
     
     // Protect against empty cache, nothing to send
     if ([fetchResults count] == 0) {
       DLOG(@"Event cache is empty");
+      [[NSNotificationCenter defaultCenter] postNotificationName:DISPATCH_NOTIFICATION object:self];
+      block(nil);
       return;
     } 
            
@@ -502,36 +500,34 @@
       // Check the http repsonse code
       if (error != nil || [(NSHTTPURLResponse*)response statusCode] != 200) {
         // Piwik server did not return 200
-        ALOG(@"Request to Piwik server failed with http repose code: %d and error: %@", [(NSHTTPURLResponse*)response statusCode], [error description]);
-        error = [self parsingErrorWithDescription:@"Request to Piwik server failed with http repose code: %d and error: %@", 
-                 [(NSHTTPURLResponse*)response statusCode], [error description]];
-        if ([self.delegate respondsToSelector:@selector(trackerDispatchDidFail:withError:)])
-          [self.delegate performSelector:@selector(trackerDispatchDidFail:withError::) 
-                              withObject:self
-                              withObject:error];  
+        [[NSNotificationCenter defaultCenter] postNotificationName:DISPATCH_FAILED_NOTIFICATION object:self];
+        block([self parsingErrorWithDescription:@"Request to Piwik server failed with http repose code: %d and error: %@", 
+                 [(NSHTTPURLResponse*)response statusCode], [error description]]);
         return;
       }
     }
     
     // Event has been successfully received by Piwik server, remove it from the cache
     [self.managedObjectContext deleteObject:event];
-    [self saveContext:&error];
-    
-    // Send any remaining cached events
-    if ([fetchResults count] > 1)
-      [self dispatch];
-    else
-      // No more events in the cache, report success to the delegate
-      if ([self.delegate respondsToSelector:@selector(trackerDispatchDidComplete:)])
-        [self.delegate performSelector:@selector(trackerDispatchDidComplete:) withObject:self];
-  });
-    
-  return YES;
+    if (![self saveContext:&error]) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:DISPATCH_FAILED_NOTIFICATION object:self];
+      block(error);
+    } else {
+      // Send any remaining cached events
+      if ([fetchResults count] > 1)
+        [self dispatchWithCompletionBlock:block];
+      else {
+        // No more events in the cache, report success
+        [[NSNotificationCenter defaultCenter] postNotificationName:DISPATCH_NOTIFICATION object:self];
+        block(nil);
+      }
+    }
+  });    
 }                                   
 
 
 // Method for deleting all cached events
-- (void)emptyQueue {    
+- (void)emptyQueueWithCompletionBlock:(void (^)(NSError* error))block {    
   DLOG(@"Delete all cached events");
   
   // Delete all events
@@ -550,15 +546,17 @@
     
     if (events != nil && error == nil) {            
       DLOG(@"Number of cached events to delete: %d", [events count]);
-      
       for (PTEvent *event in events) {
         [self.managedObjectContext deleteObject:event];
       }
       
-      [self saveContext:&error];
+      if (![self saveContext:&error])
+        block(error);
+      else      
+        block(nil);
       
     } else {
-      ALOG(@"Failed to delete cached events: %@", [error description]);
+      block([self parsingErrorWithDescription:@"Failed to delete cached events %@", [error description]]);
     }
   });
   
@@ -857,7 +855,7 @@
   NSString *formatString = [[[NSString alloc] initWithFormat:format arguments:varArgsList] autorelease];
   va_end(varArgsList);
   
-  ALOG(@"Parsing error with message: %@", formatString);
+  ALOG(@"Error with message: %@", formatString);
   
   // Create the error and store the state
   NSDictionary *errorInfo = [NSDictionary dictionaryWithObjectsAndKeys: 
@@ -874,7 +872,7 @@
   
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
   if (managedObjectContext == nil) {
-    ALOG(@"Not possible to save context. Context is nil");
+    *error = [self parsingErrorWithDescription:@"Not possile to save to core data, management object context is nil"];
     return NO;
   }
   

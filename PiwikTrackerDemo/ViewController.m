@@ -62,7 +62,6 @@
   [self.tracker startTrackerWithPiwikURL:PIWIK_URL 
                                   siteID:SITE_ID_TEST 
                      authenticationToken:nil 
-                                delegate:self 
                                withError:&error];
   self.tracker.dryRun = YES;
 }
@@ -80,8 +79,11 @@
   NSLog(@"Generate Event 1");
   
   // Generate a pageview event
-  NSError *error = nil;
-  [self.tracker trackPageview:@"Event1" withError:&error];
+  [self.tracker trackPageview:@"Event1" completionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Track page failed with error message %@", [error description]);
+    }
+  }];
 }
 
 
@@ -89,8 +91,11 @@
   NSLog(@"Generate Event 2");
   
   // Generate a another pageview event
-  NSError *error = nil;
-  [self.tracker trackPageview:@"Event2" withError:&error];
+  [self.tracker trackPageview:@"Event2" completionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Track page failed with error message %@", [error description]);
+    }
+  }];
 }
 
 
@@ -98,8 +103,11 @@
   NSLog(@"Generate Event 3");
   
   // Generate a another pageview event
-  NSError *error = nil;
-  [self.tracker trackPageview:@"Event3" withError:&error];
+  [self.tracker trackPageview:@"Event3" completionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Track page failed with error message %@", [error description]);
+    }
+  }];
 }
 
 
@@ -108,8 +116,11 @@
   
   // Generate 10 pageview event
   for (int i = 0; i < 10; i++) {
-    NSError *error = nil;
-    [self.tracker trackPageview:@"Event3" withError:&error];
+    [self.tracker trackPageview:@"Event3" completionBlock:^(NSError *error) {
+      if (error != nil) {
+        NSLog(@"Track page failed with error message %@", [error description]);
+      }
+    }];
   }
 }
 
@@ -118,8 +129,11 @@
   NSLog(@"Generate goal");
   
   // Generate goal
-  NSError *error = nil;
-  [self.tracker trackGoal:1 withRevenue:10.0 withError:&error];
+  [self.tracker trackGoal:1 withRevenue:10.0 completionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Track goal failed with error message %@", [error description]);
+    }
+  }];
 }
 
 
@@ -127,14 +141,22 @@
   NSLog(@"Delete all queued Events");
   
   // Delete all events in the queue
-  [self.tracker emptyQueue];
+  [self.tracker emptyQueueWithCompletionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Delete cached events failed with error message %@", [error description]);
+    }
+  }];
 }
 
 - (IBAction)dispatchEvents:(id)sender {
   NSLog(@"Dispatch all queued Events");
   
   // Dispatch all events in the queue
-  [self.tracker dispatch];
+  [self.tracker dispatchWithCompletionBlock:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Dispatch cached events failed with error message %@", [error description]);
+    }
+  }];
 }
 
 @end

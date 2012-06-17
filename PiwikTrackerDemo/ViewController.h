@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PiwikTracker.h"
 
-@interface ViewController : UIViewController <PiwikTrackerDelegate>
+@interface ViewController : UIViewController
 
 - (IBAction)startTracker:(id)sender;
 - (IBAction)stopTracker:(id)sender;

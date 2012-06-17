@@ -6,14 +6,33 @@ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytic
  
 ###How does it work
  
-1. Request the shared tracker 
-2. Start the tracking
-3. Track events (events are stored in a locally persisted queue)
-4. Dispatch all events in the queue to the Piwik server
-5. An optional delegate is informed about the progress
+ 1. Request the shared tracker 
+ 2. Start the tracking
+ 3. Track events and goals
+ 4. Dispatch all events in the queue to the Piwik server
+ 5. Stop the tracker when the app stops
  
-If the request to the Piwik server fails the delegate is informed an appropriate action can be taken. Three different delegate implentations are provided implementing different strategies. They can be used as is or be further customised.
+ Events and goald are stored in a locally persisted queue until they are dispatched to the Piwik server.
+
+ All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
  
+ ###Notifications
+ 
+ Notification will be used to inform about the progress. 
+ 
+ - `PTEventQueuedSuccessNotification` - The event was successfully queued
+ - `PTEventQueuedFailedNotification` - The event failed to be queued
+ - `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
+ - `PTDispatchFailedNotification` - Dispatched failed
+ 
+ ###Dispatch strategies
+ 
+ Three ready-made dispatch strategies class are provided and can be useded as is or be further customized.
+ 
+ - `PTTimerDispatchStrategy` - Automatically initiate a dispatch after a certain time interval
+ - `PTRetryDispatchStrategy` - Automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
+ - `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events when a certain trigger value 
+
 ##Interface
 The interface for sending events is simple to use:
 
@@ -24,17 +43,16 @@ The interface for sending events is simple to use:
 	- (BOOL)startTrackerWithPiwikURL:(NSString*)piwikURL 
                           	  siteID:(NSString*)siteID 
                  authenticationToken:(NSString*)authenticationToken
-                            delegate:(id<PiwikTrackerDelegate>)delegate
                            withError:(NSError**)error;
                            
     //  Cache an event
-    - (BOOL)trackPageview:(NSString*)pageName withError:(NSError**)error;
+	- (void)trackPageview:(NSString*)pageName completionBlock:(void(^)(NSError* error))block;
     
     // Dispatch all cached events to the Piwik server
-    - (BOOL)dispatch;
+	- (void)dispatchWithCompletionBlock:(void(^)(NSError* error))block;
 
 	// Stop the tracker
-	- (void)stopTracker;
+	- (BOOL)stopTracker;
 
 Please read the interface documentation for additional methods and details.
 

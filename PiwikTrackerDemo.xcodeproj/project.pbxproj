@@ -31,9 +31,9 @@
 		CD29383715766C3E00DE309E /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383515766C3E00DE309E /* ViewController_iPhone.xib */; };
 		CD29383A15766C3E00DE309E /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383815766C3E00DE309E /* ViewController_iPad.xib */; };
 		CD29386215766CFB00DE309E /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385515766CFB00DE309E /* PiwikTracker.m */; };
-		CD29386315766CFB00DE309E /* PTCounterDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */; };
-		CD29386415766CFB00DE309E /* PTRetryDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */; };
-		CD29386515766CFB00DE309E /* PTTimerDispatchDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */; };
+		CD29386315766CFB00DE309E /* PTCounterDispatchStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385915766CFB00DE309E /* PTCounterDispatchStrategy.m */; };
+		CD29386415766CFB00DE309E /* PTRetryDispatchStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385A15766CFB00DE309E /* PTRetryDispatchStrategy.m */; };
+		CD29386515766CFB00DE309E /* PTTimerDispatchStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385B15766CFB00DE309E /* PTTimerDispatchStrategy.m */; };
 		CD29386615766CFB00DE309E /* PiwikTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD29385C15766CFB00DE309E /* PiwikTracker.xcdatamodeld */; };
 		CD29386715766CFB00DE309E /* PTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385F15766CFB00DE309E /* PTEvent.m */; };
 		CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29386115766CFB00DE309E /* PTUserAgentReader.m */; };
@@ -56,18 +56,18 @@
 		CD29383615766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		CD29383915766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		CD29385515766CFB00DE309E /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTracker.m; sourceTree = "<group>"; };
-		CD29385615766CFB00DE309E /* PTRetryDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRetryDispatchDelegate.h; sourceTree = "<group>"; };
-		CD29385715766CFB00DE309E /* PTTimerDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTimerDispatchDelegate.h; sourceTree = "<group>"; };
+		CD29385615766CFB00DE309E /* PTRetryDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTRetryDispatchStrategy.h; sourceTree = "<group>"; };
+		CD29385715766CFB00DE309E /* PTTimerDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTTimerDispatchStrategy.h; sourceTree = "<group>"; };
 		CD29385815766CFB00DE309E /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
-		CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCounterDispatchDelegate.m; sourceTree = "<group>"; };
-		CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRetryDispatchDelegate.m; sourceTree = "<group>"; };
-		CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTimerDispatchDelegate.m; sourceTree = "<group>"; };
+		CD29385915766CFB00DE309E /* PTCounterDispatchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCounterDispatchStrategy.m; sourceTree = "<group>"; };
+		CD29385A15766CFB00DE309E /* PTRetryDispatchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRetryDispatchStrategy.m; sourceTree = "<group>"; };
+		CD29385B15766CFB00DE309E /* PTTimerDispatchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTimerDispatchStrategy.m; sourceTree = "<group>"; };
 		CD29385D15766CFB00DE309E /* PiwikTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PiwikTracker.xcdatamodel; sourceTree = "<group>"; };
 		CD29385E15766CFB00DE309E /* PTEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEvent.h; sourceTree = "<group>"; };
 		CD29385F15766CFB00DE309E /* PTEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEvent.m; sourceTree = "<group>"; };
 		CD29386015766CFB00DE309E /* PTUserAgentReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserAgentReader.h; sourceTree = "<group>"; };
 		CD29386115766CFB00DE309E /* PTUserAgentReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserAgentReader.m; sourceTree = "<group>"; };
-		CD29386915766D6E00DE309E /* PTCounterDispatchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCounterDispatchDelegate.h; sourceTree = "<group>"; };
+		CD29386915766D6E00DE309E /* PTCounterDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTCounterDispatchStrategy.h; sourceTree = "<group>"; };
 		CD29386E15766DBA00DE309E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -145,12 +145,12 @@
 			children = (
 				CD29385815766CFB00DE309E /* PiwikTracker.h */,
 				CD29385515766CFB00DE309E /* PiwikTracker.m */,
-				CD29385715766CFB00DE309E /* PTTimerDispatchDelegate.h */,
-				CD29385B15766CFB00DE309E /* PTTimerDispatchDelegate.m */,
-				CD29385615766CFB00DE309E /* PTRetryDispatchDelegate.h */,
-				CD29385A15766CFB00DE309E /* PTRetryDispatchDelegate.m */,
-				CD29386915766D6E00DE309E /* PTCounterDispatchDelegate.h */,
-				CD29385915766CFB00DE309E /* PTCounterDispatchDelegate.m */,
+				CD29385715766CFB00DE309E /* PTTimerDispatchStrategy.h */,
+				CD29385B15766CFB00DE309E /* PTTimerDispatchStrategy.m */,
+				CD29385615766CFB00DE309E /* PTRetryDispatchStrategy.h */,
+				CD29385A15766CFB00DE309E /* PTRetryDispatchStrategy.m */,
+				CD29386915766D6E00DE309E /* PTCounterDispatchStrategy.h */,
+				CD29385915766CFB00DE309E /* PTCounterDispatchStrategy.m */,
 				CD29386015766CFB00DE309E /* PTUserAgentReader.h */,
 				CD29386115766CFB00DE309E /* PTUserAgentReader.m */,
 				CD29385E15766CFB00DE309E /* PTEvent.h */,
@@ -244,9 +244,9 @@
 				CD29383115766C3E00DE309E /* AppDelegate.m in Sources */,
 				CD29383415766C3E00DE309E /* ViewController.m in Sources */,
 				CD29386215766CFB00DE309E /* PiwikTracker.m in Sources */,
-				CD29386315766CFB00DE309E /* PTCounterDispatchDelegate.m in Sources */,
-				CD29386415766CFB00DE309E /* PTRetryDispatchDelegate.m in Sources */,
-				CD29386515766CFB00DE309E /* PTTimerDispatchDelegate.m in Sources */,
+				CD29386315766CFB00DE309E /* PTCounterDispatchStrategy.m in Sources */,
+				CD29386415766CFB00DE309E /* PTRetryDispatchStrategy.m in Sources */,
+				CD29386515766CFB00DE309E /* PTTimerDispatchStrategy.m in Sources */,
 				CD29386615766CFB00DE309E /* PiwikTracker.xcdatamodeld in Sources */,
 				CD29386715766CFB00DE309E /* PTEvent.m in Sources */,
 				CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */,
@@ -392,6 +392,7 @@
 				CD7DDE9215877D6D00DA91E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
