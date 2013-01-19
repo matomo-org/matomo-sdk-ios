@@ -33,21 +33,22 @@
 
 // Get the user agent profile string
 - (void)userAgentStringWithCallbackBlock:(void (^)(NSString*))block {
-  
-  self.callbackBlock = block;
-  
-  self.webWiew = [[[UIWebView alloc] init] autorelease];
-  self.webWiew.delegate = self;
-  
-  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];  
-  [self.webWiew loadRequest:request];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self.callbackBlock = block;
+    
+    self.webWiew = [[[UIWebView alloc] init] autorelease];
+    self.webWiew.delegate = self;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+    [self.webWiew loadRequest:request];
+  });
 }
 
 
 // Webview delegate, called just before starting to load the request
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
   //NSLog(@"All headers: %@", [request allHTTPHeaderFields]);
-  //NSLog(@"UA: %@", [request valueForHTTPHeaderField:@"User-Agent"]);
+  NSLog(@"UA: %@", [request valueForHTTPHeaderField:@"User-Agent"]);
 
   self.callbackBlock([request valueForHTTPHeaderField:@"User-Agent"]);
   

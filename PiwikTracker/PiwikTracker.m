@@ -686,8 +686,8 @@
       self.userAgent = userAgent;
     }];
     
-    // Use a fall back UA while we wait for the real value
-    return [NSString stringWithString:USER_AGENT];  
+    // Use a fallback UA while we wait for the real value
+    return USER_AGENT;
   }
   
   return userAgent_;
