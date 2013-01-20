@@ -9,18 +9,12 @@
 
 
 @interface PTTimerDispatchStrategy ()
-@property (retain, nonatomic) NSTimer *timer;
-@property (copy, nonatomic) void (^errorBlock) (NSError*);
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, copy) void (^errorBlock) (NSError*);
 @end
 
 
 @implementation PTTimerDispatchStrategy
-
-
-@synthesize timeInteraval = timeInterval_;
-@synthesize startDispatchTimer = startDispatchTimer_;
-@synthesize timer = timer_;
-@synthesize errorBlock = errorBlock_;
 
 
 // Initialize
@@ -38,21 +32,9 @@
 
 // Create a new PTTimerDispatchStrategy
 + (PTTimerDispatchStrategy*)strategyWithErrorBlock:(void(^)(NSError* error))errorBlock {
-  return [[[PTTimerDispatchStrategy alloc] initWithErrorBlock:errorBlock] autorelease];
+  return [[PTTimerDispatchStrategy alloc] initWithErrorBlock:errorBlock];
 }
 
-
-// Free memory
-- (void) dealloc {  
-  self.errorBlock = nil;
-   // Get rid of the timer
-  if (self.timer) {
-    [self.timer invalidate];
-    self.timer = nil;
-  }
-  
-  [super dealloc];
-}
 
 
 // Called when the dispatch timer fires
@@ -79,9 +61,9 @@
 
 // Setter for starting or stopping the dispatch timer
 - (void)startDispatchTimer:(BOOL)startTimer {
-  startDispatchTimer_ = startTimer;
+  _startDispatchTimer = startTimer;
   
-  if (startDispatchTimer_) {
+  if (_startDispatchTimer) {
     // Reset the timer interval
     [self.timer invalidate];
     // Start the timer

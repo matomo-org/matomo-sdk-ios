@@ -38,6 +38,7 @@
 		CD29386715766CFB00DE309E /* PTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29385F15766CFB00DE309E /* PTEvent.m */; };
 		CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29386115766CFB00DE309E /* PTUserAgentReader.m */; };
 		CD29386F15766DBA00DE309E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29386E15766DBA00DE309E /* CoreData.framework */; };
+		CD49CBA616AAF93F00636E0D /* PTTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD49CBA516AAF93F00636E0D /* PTTrackedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +57,8 @@
 		CD29383615766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		CD29383915766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		CD29385515766CFB00DE309E /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTracker.m; sourceTree = "<group>"; };
-		CD29385615766CFB00DE309E /* PTRetryDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTRetryDispatchStrategy.h; sourceTree = "<group>"; };
-		CD29385715766CFB00DE309E /* PTTimerDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTTimerDispatchStrategy.h; sourceTree = "<group>"; };
+		CD29385615766CFB00DE309E /* PTRetryDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRetryDispatchStrategy.h; sourceTree = "<group>"; };
+		CD29385715766CFB00DE309E /* PTTimerDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTimerDispatchStrategy.h; sourceTree = "<group>"; };
 		CD29385815766CFB00DE309E /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		CD29385915766CFB00DE309E /* PTCounterDispatchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCounterDispatchStrategy.m; sourceTree = "<group>"; };
 		CD29385A15766CFB00DE309E /* PTRetryDispatchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRetryDispatchStrategy.m; sourceTree = "<group>"; };
@@ -67,8 +68,10 @@
 		CD29385F15766CFB00DE309E /* PTEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEvent.m; sourceTree = "<group>"; };
 		CD29386015766CFB00DE309E /* PTUserAgentReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserAgentReader.h; sourceTree = "<group>"; };
 		CD29386115766CFB00DE309E /* PTUserAgentReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserAgentReader.m; sourceTree = "<group>"; };
-		CD29386915766D6E00DE309E /* PTCounterDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTCounterDispatchStrategy.h; sourceTree = "<group>"; };
+		CD29386915766D6E00DE309E /* PTCounterDispatchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCounterDispatchStrategy.h; sourceTree = "<group>"; };
 		CD29386E15766DBA00DE309E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD49CBA416AAF93F00636E0D /* PTTrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTrackedViewController.h; sourceTree = "<group>"; };
+		CD49CBA516AAF93F00636E0D /* PTTrackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTrackedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				CD29386115766CFB00DE309E /* PTUserAgentReader.m */,
 				CD29385E15766CFB00DE309E /* PTEvent.h */,
 				CD29385F15766CFB00DE309E /* PTEvent.m */,
+				CD49CBA416AAF93F00636E0D /* PTTrackedViewController.h */,
+				CD49CBA516AAF93F00636E0D /* PTTrackedViewController.m */,
 				CD29385C15766CFB00DE309E /* PiwikTracker.xcdatamodeld */,
 			);
 			path = PiwikTracker;
@@ -250,6 +255,7 @@
 				CD29386615766CFB00DE309E /* PiwikTracker.xcdatamodeld in Sources */,
 				CD29386715766CFB00DE309E /* PTEvent.m in Sources */,
 				CD29386815766CFB00DE309E /* PTUserAgentReader.m in Sources */,
+				CD49CBA616AAF93F00636E0D /* PTTrackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +337,7 @@
 		CD29383E15766C3E00DE309E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTrackerDemo/PiwikTrackerDemo-Prefix.pch";
 				INFOPLIST_FILE = "PiwikTrackerDemo/PiwikTrackerDemo-Info.plist";
@@ -342,6 +349,7 @@
 		CD29383F15766C3E00DE309E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTrackerDemo/PiwikTrackerDemo-Prefix.pch";
 				INFOPLIST_FILE = "PiwikTrackerDemo/PiwikTrackerDemo-Info.plist";

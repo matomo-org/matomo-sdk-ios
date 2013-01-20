@@ -10,8 +10,8 @@
 
 // Private stuff
 @interface PTUserAgentReader ()
-@property (retain, nonatomic) UIWebView *webWiew;
-@property (copy, nonatomic) void (^callbackBlock)(NSString*);
+@property (nonatomic, strong) UIWebView *webWiew;
+@property (nonatomic, copy) void (^callbackBlock)(NSString*);
 @end
 
 
@@ -19,24 +19,12 @@
 @implementation PTUserAgentReader
 
 
-@synthesize webWiew = webView_;
-@synthesize callbackBlock = callbackBlock_;
-
-
-// Free memory
-- (void) dealloc {
-  self.webWiew = nil;
-  self.callbackBlock = nil;
-  [super dealloc];
-}
-
-
 // Get the user agent profile string
 - (void)userAgentStringWithCallbackBlock:(void (^)(NSString*))block {
   dispatch_async(dispatch_get_main_queue(), ^{
     self.callbackBlock = block;
     
-    self.webWiew = [[[UIWebView alloc] init] autorelease];
+    self.webWiew = [[UIWebView alloc] init];
     self.webWiew.delegate = self;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];

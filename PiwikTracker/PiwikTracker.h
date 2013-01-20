@@ -146,14 +146,14 @@
  
  The visitor id is generated the first time the app is started and reused in all subsequent events. If the application is uninstalled and installed again a new id is generated. Normally there is no reason to change this value unless the application have a better way of providing a unqiue user id.
  */
-@property (retain, nonatomic) NSString *visitorID ;
+@property (nonatomic, strong) NSString *visitorID;
 
 /**
  The user-agent profile sent to the Piwik server. 
  
  The user agent is read from the platform dynamically. Normally there is no reason to change this value.
  */
-@property (retain, nonatomic) NSString *userAgent;
+@property (nonatomic, strong) NSString *userAgent;
 
 /**
  The sample rate controlls the probability that the event will be sampled and sent to the Piwik server. The value must an integer between 0 and 100.
@@ -172,12 +172,20 @@
  
  This value is set default to the device current locale language code. Normally there is no reason to change this value unless the application have a better way to detect the language.
  */
-@property (retain, nonatomic) NSString* acceptLanguage;
+@property (nonatomic, strong) NSString *acceptLanguage;
 
 /**
  The maximum number of cached events before the SDK will stop queing events. Default value is 100.
  */
 @property (nonatomic) NSInteger maximumNumberOfCachedEvents;
+
+
+/**
+ A user can opt out from generating tracking data. If set to YES no data will be sent to the Piwik server.
+ The value will persist through app restarts until it is manually changed.
+ */
+@property (nonatomic) BOOL optOut;
+ 
 
 
 @end

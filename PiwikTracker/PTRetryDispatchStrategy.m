@@ -11,20 +11,13 @@
 
 // Private stuff
 @interface PTRetryDispatchStrategy ()
-@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) NSInteger currentNumberOfRetries;
-@property (copy, nonatomic) void (^errorBlock) (NSError*);
+@property (nonatomic, copy) void (^errorBlock) (NSError*);
 @end
 
 
 @implementation PTRetryDispatchStrategy
-
-
-@synthesize maxNumberOfRetries = maxNumberOfRetries_;
-@synthesize retryTimeInterval = retryTimeInterval_;
-@synthesize timer = timer_;
-@synthesize currentNumberOfRetries = currentNumberOfRetries_;
-@synthesize errorBlock = errorBlock_;
 
 
 // Initialize
@@ -38,9 +31,9 @@
     self.errorBlock = errorBlock;
     
     // Listen to failed dispatch notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(trackerDispachFailed:) 
-                                                 name:@"PTDispatchFailedNotification" 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(trackerDispachFailed:)
+                                                 name:@"PTDispatchFailedNotification"
                                                object:nil];
   }
   
@@ -50,20 +43,7 @@
 
 // Create a new PTRetryDispatchStrategy
 + (PTRetryDispatchStrategy*)strategyWithErrorBlock:(void(^)(NSError* error))errorBlock {
-  return [[[PTRetryDispatchStrategy alloc] initWithErrorBlock:errorBlock] autorelease];
-}
-
-
-// Free memory
-- (void) dealloc { 
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-  self.errorBlock = nil;
-  // Get rid of the timer
-  if (self.timer) {
-    [self.timer invalidate];
-    self.timer = nil;
-  }
-  [super dealloc];
+  return [[PTRetryDispatchStrategy alloc] initWithErrorBlock:errorBlock];
 }
 
 
@@ -88,9 +68,9 @@
         [self.timer invalidate];
         // Start the timer
         self.timer = [NSTimer scheduledTimerWithTimeInterval:self.retryTimeInterval
-                                                      target:self 
-                                                    selector:@selector(retryTimerFired:) 
-                                                    userInfo:nil 
+                                                      target:self
+                                                    selector:@selector(retryTimerFired:)
+                                                    userInfo:nil
                                                      repeats:NO];
       }
     }
@@ -105,10 +85,10 @@
     [self.timer invalidate];
     // Start the timer
     self.timer = [NSTimer scheduledTimerWithTimeInterval:self.retryTimeInterval
-                                                  target:self 
-                                                selector:@selector(retryTimerFired:) 
-                                                userInfo:nil 
-                                                 repeats:NO];    
+                                                  target:self
+                                                selector:@selector(retryTimerFired:)
+                                                userInfo:nil
+                                                 repeats:NO];
   }
 }
 

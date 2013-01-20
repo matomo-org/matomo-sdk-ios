@@ -12,7 +12,7 @@
 
 @interface PTEvent : NSManagedObject
 
-@property (nonatomic, retain) NSString * eventData;
-@property (nonatomic, retain) NSNumber * timestamp;
+@property (nonatomic, strong) NSString * eventData;
+@property (nonatomic, strong) NSNumber * timestamp;
 
 @end

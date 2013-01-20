@@ -14,21 +14,11 @@
 
 
 @interface ViewController ()
-@property (nonatomic, retain) PiwikTracker *tracker;
+@property (nonatomic, strong) PiwikTracker *tracker;
 @end
 
 
 @implementation ViewController
-
-
-@synthesize tracker = tracker_;
-
-
-- (void)dealloc {
-  self.tracker = nil;
-  
-  [super dealloc];
-}
 
 
 - (void)viewDidLoad {
