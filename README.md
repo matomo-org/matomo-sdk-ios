@@ -1,6 +1,6 @@
 #PiwikTracker
 
-A PiwikTracker framework in Objective-C for sending events to a Piwik server.
+A PiwikTracker framework in Objective-C for sending analytic events to a Piwik server.
  
 Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
  
@@ -10,9 +10,9 @@ Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytic
 2. Start the tracking
 3. Track events and goals
 4. Dispatch all events in the queue to the Piwik server
-5. Stop the tracker when the app stops
+5. Stop the tracker when the app terminates
  
-Events and goals are stored in a locally persisted queue until they are dispatched to the Piwik server.
+Events and goals are stored in a locally persisted queue until they are dispatched to the Piwik server. Events in the queue will survive application restarts.
 
 All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
  
@@ -23,7 +23,7 @@ Notification will be used to inform about the progress.
 - `PTEventQueuedSuccessNotification` - The event was successfully queued
 - `PTEventQueuedFailedNotification` - The event failed to be queued
 - `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
-- `PTDispatchFailedNotification` - Dispatched failed
+- `PTDispatchFailedNotification` - Dispatch failed
  
 ###Dispatch strategies
  
@@ -55,6 +55,13 @@ The interface for sending events is simple to use:
 	- (BOOL)stopTracker;
 
 Please read the interface documentation for additional methods and details.
+
+##Requirements
+
+The latest PiwikTracker version uses ARC.   
+Versions 1.0.1 and older use manual reference counting.
+
+Piwik tracker has a dependecy to CoreData for caching events.
 
 
 
