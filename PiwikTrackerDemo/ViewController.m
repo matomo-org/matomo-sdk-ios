@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PTTimerDispatchStrategy.h"
 
 
 #define PIWIK_URL @"http://piwik.golgek.com/piwik/"
@@ -15,6 +16,7 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) PiwikTracker *tracker;
+@property (nonatomic, strong) PTTimerDispatchStrategy *timerStrategy;
 @end
 
 
@@ -54,6 +56,13 @@
                      authenticationToken:nil 
                                withError:&error];
   self.tracker.dryRun = YES;
+  
+  // Start the timer dispatch strategy
+  self.timerStrategy = [PTTimerDispatchStrategy strategyWithErrorBlock:^(NSError *error) {
+    NSLog(@"The timer strategy failed to initated dispatch of analytic events");
+  }];
+  self.timerStrategy.timeInteraval = 20; // Set the time intervall to 20s, default value is 3 minutes
+  [self.timerStrategy startDispatchTimer];
 }
 
 
@@ -62,6 +71,9 @@
   
   // Stop the Tracker from accepting new events
   [self.tracker stopTracker];
+  
+  // Stop the time strategy
+  [self.timerStrategy stopDispatchTimer];
 }
 
 

@@ -63,5 +63,10 @@ Versions 1.0.1 and older use manual reference counting.
 
 Piwik tracker has a dependecy to CoreData for caching events.
 
+##License
+
+PiwikTracker is available under the MIT license. See the LICENSE.md file for more info.
+
+
 
 

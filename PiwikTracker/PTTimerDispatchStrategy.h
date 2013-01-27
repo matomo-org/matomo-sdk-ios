@@ -21,13 +21,24 @@
 + (PTTimerDispatchStrategy*)strategyWithErrorBlock:(void(^)(NSError* error))errorBlock;
 
 /**
+ Start the dispatch timer.
+ */
+- (void)startDispatchTimer;
+
+/**
+ Stop the dispatch timer.
+ */
+- (void)stopDispatchTimer;
+
+/**
  The time interval between the dispatches.
+ Default value is 3 minutes of not set.
  */
 @property (nonatomic) NSTimeInterval timeInteraval; 
 
 /**
- Start and stop the timer.
+ Is the timer running?
  */
-@property (nonatomic) BOOL startDispatchTimer;
+@property (nonatomic) BOOL isRunning;
 
 @end
