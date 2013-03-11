@@ -4,7 +4,7 @@ A PiwikTracker framework in Objective-C for sending analytic events to a Piwik s
  
 Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
  
-###How does it work
+##How does it work
  
 1. Request the shared tracker 
 2. Start the tracking
@@ -16,7 +16,7 @@ Events and goals are stored in a locally persisted queue until they are dispatch
 
 All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
  
-###Notifications
+##Notifications
 
 Notification will be used to inform about the progress. 
  
@@ -25,12 +25,12 @@ Notification will be used to inform about the progress.
 - `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
 - `PTDispatchFailedNotification` - Dispatch failed
  
-###Dispatch strategies
+##Dispatch strategies
  
 Three ready-made dispatch strategies class are provided and can be useded as is or be further customized.
  
-- `PTTimerDispatchStrategy` - Automatically initiate a dispatch after a certain time interval
-- `PTRetryDispatchStrategy` - Automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
+- `PTTimerDispatchStrategy` - automatically initiate a dispatch after a certain time interval
+- `PTRetryDispatchStrategy` - automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
 - `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events then a certain trigger value 
 
 ##Interface
