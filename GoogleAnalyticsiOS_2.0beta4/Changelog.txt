@@ -1,0 +1,68 @@
+Google Analytics SDK for iOS Changelog
+
+--------------------------------------------
+Version: 2.0beta4 Update (Jan 2013)
+--------------------------------------------
+* Change default appVersion to the value in CFBundleShortVersionString
+    instead of CFBundleVersionKey.
+* Use HTTPS as the default protocol instead of HTTP.
+* Track methods changed to Send (e.g. trackView now called sendView).
+* Some minor bug fixes.
+
+--------------------------------------------
+Version: 2.0beta3 iOS6 Update (Sep 2012)
+--------------------------------------------
+* Add armv7s architecture to libGoogleAnalytics.a.
+* Remove armv6 architecture from libGoogleAnalytics.a.
+
+--------------------------------------------
+Version: 2.0beta3 (Aug 2012)
+--------------------------------------------
+* Third beta release.
+* Added social tracking method to GAITracker:
+    trackSocial:withAction:withTarget:
+* Timing method signature changed to:
+    trackTiming:withValue:withName:withLabel:
+* Manual construction and dispatch methods added to GAITracker:
+    set:value:
+    get:
+    send:params:
+* Custom dimension setter methods added to GAITracker:
+    setCustom:dimension:
+    setCustom:metric:
+* Architecture of data store refactored to prevent reported CoreData issues.
+
+--------------------------------------------
+Version: 2.0beta2 (Jun 2012)
+--------------------------------------------
+* Second beta release.
+* Updated to latest wire format.
+* sampleRate changed to double-precision float.
+* Excessive tracking is throttled.
+* Undispatched tracking information is deleted when opt-out is enabled.
+* Undispatched tracking information older than 30 days will be deleted.
+* Enhancements to hit dispatcher.
+* Rather than periodically retry, the dispatcher will use the Reachability API
+  when connectivity is lost to get notified when connectivity is reestablished.
+* Updated example app.
+* Other bugfixes and enhancements.
+
+--------------------------------------------
+Version: 2.0beta1 (May 2012)
+--------------------------------------------
+* Initial internal beta release.
+* Added uncaught exception handling facility.
+* Removed 'dispatchEnabled' property from GAI.
+* Added 'defaultTracker' property to GAI.
+* Added 'close' method to GAITracker.
+* Added timing tracking method to GAITracker.
+* Added trackView method to GAITracker which takes no argument.
+* Transaction item field names updated.
+* Updated to latest wire format.
+* Event value is interpreted as a 64-bit integer.
+* ARMV6 code generation switched from THUMB to ARM.
+
+--------------------------------------------
+Version: 2.0alpha1 (April 2012)
+--------------------------------------------
+* Initial internal alpha release.
