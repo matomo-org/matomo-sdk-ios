@@ -7,19 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PiwikTracker.h"
 
 @interface ViewController : UIViewController
 
 - (IBAction)startTracker:(id)sender;
-- (IBAction)stopTracker:(id)sender;
 
 - (IBAction)generateEvent1:(id)sender;
 - (IBAction)generateEvent2:(id)sender;
-- (IBAction)generateEvent3:(id)sender;
-- (IBAction)generate10Event3:(id)sender;
-- (IBAction)generateGoal:(id)sender;
-
+- (IBAction)generate10Event2:(id)sender;
+- (IBAction)generateEventWithCategoryAndName:(id)sender;
 
 - (IBAction)deleteEvents:(id)sender;
 - (IBAction)dispatchEvents:(id)sender;

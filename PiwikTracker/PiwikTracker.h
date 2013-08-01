@@ -9,21 +9,36 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 
+
 @interface PiwikTracker : AFHTTPClient
 
-@property (readonly) NSString *authenticationToken;
-@property (readonly) NSString *siteId;
+@property (nonatomic, readonly) NSString *siteId;
+@property (nonatomic, readonly) NSString *authenticationToken;
 
-@property (readonly) NSString *cliendId;
+@property (nonatomic, readonly) NSString *cliendId;
+@property (nonatomic, strong) NSString *appName;
+@property (nonatomic, strong) NSString *appVersion;
+
+@property(nonatomic) BOOL debug;
+@property(nonatomic) BOOL optOut;
 @property (nonatomic) double sampleRate;
 
-@property (nonatomic) NSString *appName;
-@property (nonatomic) NSString *appVersion;
+@property (nonatomic) BOOL sessionStart;
+@property (nonatomic) BOOL sessionTimeout;
+
+@property(nonatomic) NSTimeInterval dispatchInterval;
 
 
-+ (instancetype)trackerWithSiteId:(NSString*)siteId authenticationToken:(NSString*)authenticationToken baseURL:(NSString*)baseURL;
++ (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteId:(NSString*)siteId authenticationToken:(NSString*)authenticationToken;
++ (instancetype)sharedInstance;
 
 - (BOOL)sendView:(NSString*)screen;
-- (BOOL)sendEventWithCategory:(NSString*)category withAction:(NSString*)action withLabel:(NSString*)label;
+- (BOOL)sendViews:(NSString*)screen, ...;
+
+- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label;
+
+- (BOOL)dispatch;
+
+- (void)deleteQueuedEvents;
 
 @end
