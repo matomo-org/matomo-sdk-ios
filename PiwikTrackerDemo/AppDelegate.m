@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
 #import "ViewController.h"
+#import "PiwikTracker.h"
+
+
+#define PIWIK_URL @"http://localhost/~mattias/piwik/"
+#define SITE_ID_TEST @"1"
+#define AUTH_TOKEN @"5d8e854ebf1cc7959bb3b6d111cc5dd6"
+
 
 @implementation AppDelegate
 
@@ -18,16 +24,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+  
+  // Configure the Piwik tracker
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:SITE_ID_TEST authenticationToken:AUTH_TOKEN];
+  // self.tracker.debug = YES;
+  
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  // Override point for customization after application launch.
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-      self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
   } else {
-      self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
   }
   self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    return YES;
+  [self.window makeKeyAndVisible];
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -38,7 +49,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-  // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+  // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
   // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

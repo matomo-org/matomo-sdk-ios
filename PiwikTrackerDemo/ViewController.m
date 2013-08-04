@@ -10,12 +10,8 @@
 #import "PiwikTracker.h"
 
 
-#define PIWIK_URL @"http://piwik.golgek.com/piwik/"
-#define SITE_ID_TEST @"6"
-
 
 @interface ViewController ()
-@property (nonatomic, strong) PiwikTracker *tracker;
 @end
 
 
@@ -42,19 +38,11 @@
 }
 
 
-- (IBAction)startTracker:(id)sender {
-  NSLog(@"Start the Tracker");
-  
-  // Get the shared tracker
-  self.tracker = [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteId:SITE_ID_TEST authenticationToken:nil];  
-}
-
-
 - (IBAction)generateEvent1:(id)sender {
   NSLog(@"Generate Event 1");
   
   // Generate a pageview event
-  [self.tracker sendView:@"Screen1"];
+  [[PiwikTracker sharedInstance] sendView:@"Screen1"]];
    
 }
 
@@ -63,30 +51,29 @@
   NSLog(@"Generate Event 2");
   
   // Generate a another pageview event
-  [self.tracker sendView:@"Screen2"];
+  [[PiwikTracker sharedInstance] sendView:@"Screen2"];
 
-}
-
-
-- (IBAction)generate10Event2:(id)sender {
-  NSLog(@"Generate 10 x Event 2");
-  
-  // Generate 10 pageview event
-  for (int i = 0; i < 10; i++) {
-    [self.tracker sendView:@"Screen2"];
-  }
 }
 
 
 - (IBAction)generateEventWithCategoryAndName:(id)sender {
-  NSLog(@"Generate Event - not implemented");
+  NSLog(@"Generate Event");
+  
+  [[PiwikTracker sharedInstance] sendEventWithCategory:@"category" action:@"action" label:@"label"];
+}
+
+
+- (IBAction)trackGoal:(id)sender {
+  NSLog(@"Track goal");
+  
+  [[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:200];
 }
 
 
 - (IBAction)deleteEvents:(id)sender {
   NSLog(@"Delete all queued Events");
   
-  [self.tracker deleteQueuedEvents];
+  [[PiwikTracker sharedInstance] deleteQueuedEvents];
 }
 
 
@@ -94,7 +81,7 @@
   NSLog(@"Dispatch all queued Events");
   
   // Dispatch all events in the queue
-  [self.tracker dispatch];
+  [[PiwikTracker sharedInstance] dispatch];
 }
 
 
