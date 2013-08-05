@@ -42,7 +42,7 @@
   NSLog(@"Generate Event 1");
   
   // Generate a pageview event
-  [[PiwikTracker sharedInstance] sendView:@"Screen1"]];
+  [[PiwikTracker sharedInstance] sendView:@"Screen1"];
    
 }
 

@@ -32,7 +32,12 @@
 		CD29383715766C3E00DE309E /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383515766C3E00DE309E /* ViewController_iPhone.xib */; };
 		CD29383A15766C3E00DE309E /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29383815766C3E00DE309E /* ViewController_iPad.xib */; };
 		CD29386F15766DBA00DE309E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29386E15766DBA00DE309E /* CoreData.framework */; };
-		CD50A26717AEEE700030C821 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD50A26617AEEE700030C821 /* Default-568h@2x.png */; };
+		CD50A26917AEF7600030C821 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD50A26817AEF7600030C821 /* Default-568h@2x.png */; };
+		CD50A26F17AF917A0030C821 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD50A26E17AF917A0030C821 /* libPods.a */; };
+		CD50A27317AF9CA20030C821 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD50A27217AF9CA20030C821 /* SystemConfiguration.framework */; };
+		CD50A27517AF9CAE0030C821 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD50A27417AF9CAE0030C821 /* MobileCoreServices.framework */; };
+		CD50A27617AF9CFB0030C821 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD50A27217AF9CA20030C821 /* SystemConfiguration.framework */; };
+		CD50A27717AF9D060030C821 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD50A27417AF9CAE0030C821 /* MobileCoreServices.framework */; };
 		CD9BE6AE16EEBB7E005C5CBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29382215766C3E00DE309E /* Foundation.framework */; };
 		CD9BE6BD16EEBB7E005C5CBE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9BE6BC16EEBB7E005C5CBE /* SenTestingKit.framework */; };
 		CD9BE6BE16EEBB7E005C5CBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD29382015766C3E00DE309E /* UIKit.framework */; };
@@ -91,8 +96,11 @@
 		CD29383915766C3E00DE309E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		CD29386E15766DBA00DE309E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CD50A26417AEE83E0030C821 /* PiwikTracker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PiwikTracker-Prefix.pch"; sourceTree = "<group>"; };
-		CD50A26517AEEB3D0030C821 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		CD50A26617AEEE700030C821 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		CD50A26817AEF7600030C821 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CD50A26A17AEF8110030C821 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CD50A26E17AF917A0030C821 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		CD50A27217AF9CA20030C821 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CD50A27417AF9CAE0030C821 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CD9BE6AD16EEBB7E005C5CBE /* libPiwikTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPiwikTracker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9BE6BB16EEBB7E005C5CBE /* PiwikTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiwikTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9BE6BC16EEBB7E005C5CBE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -116,6 +124,9 @@
 				CD29382115766C3E00DE309E /* UIKit.framework in Frameworks */,
 				CD29382315766C3E00DE309E /* Foundation.framework in Frameworks */,
 				CD29382515766C3E00DE309E /* CoreGraphics.framework in Frameworks */,
+				CD50A27317AF9CA20030C821 /* SystemConfiguration.framework in Frameworks */,
+				CD50A27517AF9CAE0030C821 /* MobileCoreServices.framework in Frameworks */,
+				CD50A26F17AF917A0030C821 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9BE6AE16EEBB7E005C5CBE /* Foundation.framework in Frameworks */,
+				CD50A27617AF9CFB0030C821 /* SystemConfiguration.framework in Frameworks */,
+				CD50A27717AF9D060030C821 /* MobileCoreServices.framework in Frameworks */,
 				8611AEE3070C436980FA105A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,12 +158,13 @@
 		CD29381115766C3D00DE309E = {
 			isa = PBXGroup;
 			children = (
+				CD50A26E17AF917A0030C821 /* libPods.a */,
 				CD9BE6AF16EEBB7E005C5CBE /* PiwikTracker */,
 				CD29382615766C3E00DE309E /* PiwikTrackerDemo */,
 				CD9BE6C316EEBB7E005C5CBE /* PiwikTrackerTests */,
 				CD29381F15766C3E00DE309E /* Frameworks */,
 				CD29381D15766C3E00DE309E /* Products */,
-				CD50A26517AEEB3D0030C821 /* Podfile */,
+				CD50A26A17AEF8110030C821 /* Podfile */,
 				5511AE6E74C34922935DC2E6 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -173,6 +187,8 @@
 				CD29382215766C3E00DE309E /* Foundation.framework */,
 				CD29382415766C3E00DE309E /* CoreGraphics.framework */,
 				CD9BE6BC16EEBB7E005C5CBE /* SenTestingKit.framework */,
+				CD50A27417AF9CAE0030C821 /* MobileCoreServices.framework */,
+				CD50A27217AF9CA20030C821 /* SystemConfiguration.framework */,
 				CB7131535C144ED696BFE476 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -195,7 +211,7 @@
 		CD29382715766C3E00DE309E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD50A26617AEEE700030C821 /* Default-568h@2x.png */,
+				CD50A26817AEF7600030C821 /* Default-568h@2x.png */,
 				CD29382815766C3E00DE309E /* PiwikTrackerDemo-Info.plist */,
 				CD29382915766C3E00DE309E /* InfoPlist.strings */,
 				CD29382C15766C3E00DE309E /* main.m */,
@@ -246,6 +262,7 @@
 				CD29381815766C3E00DE309E /* Sources */,
 				CD29381915766C3E00DE309E /* Frameworks */,
 				CD29381A15766C3E00DE309E /* Resources */,
+				CD50A27117AF91B00030C821 /* Copy Pod Resources */,
 			);
 			buildRules = (
 			);
@@ -330,7 +347,7 @@
 				CD29382B15766C3E00DE309E /* InfoPlist.strings in Resources */,
 				CD29383715766C3E00DE309E /* ViewController_iPhone.xib in Resources */,
 				CD29383A15766C3E00DE309E /* ViewController_iPad.xib in Resources */,
-				CD50A26717AEEE700030C821 /* Default-568h@2x.png in Resources */,
+				CD50A26917AEF7600030C821 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +389,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		CD50A27117AF91B00030C821 /* Copy Pod Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pod Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
 		CD7DDE9515877D7500DA91E4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -536,6 +567,7 @@
 		};
 		CD29383E15766C3E00DE309E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5511AE6E74C34922935DC2E6 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -548,6 +580,7 @@
 		};
 		CD29383F15766C3E00DE309E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5511AE6E74C34922935DC2E6 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -621,6 +654,7 @@
 		};
 		CD9BE6D016EEBB7E005C5CBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5511AE6E74C34922935DC2E6 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -647,6 +681,7 @@
 		};
 		CD9BE6D116EEBB7E005C5CBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5511AE6E74C34922935DC2E6 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

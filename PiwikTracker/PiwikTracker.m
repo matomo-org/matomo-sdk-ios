@@ -11,7 +11,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "EventEntity.h"
-#import "AFHTTPRequestOperation.h"
 
 
 #ifdef DEBUG
