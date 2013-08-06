@@ -2,12 +2,12 @@
 //  AppDelegate.m
 //  PiwikTrackerDemo
 //
-//  Created by Mattias Levin on 5/30/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Mattias Levin on 8/5/13.
+//  Copyright (c) 2013 Mattias Levin. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "PiwikDemoViewController.h"
 #import "PiwikTracker.h"
 
 
@@ -18,24 +18,16 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
   // Configure the Piwik tracker
   [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:SITE_ID_TEST authenticationToken:AUTH_TOKEN];
   // self.tracker.debug = YES;
-  
+    
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
-  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-  } else {
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
-  }
+  self.viewController = [[PiwikDemoViewController alloc] initWithNibName:@"PiwikDemoViewController" bundle:nil];
   self.window.rootViewController = self.viewController;
   [self.window makeKeyAndVisible];
   return YES;

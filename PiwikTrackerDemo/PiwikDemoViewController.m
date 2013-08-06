@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PiwikDemoViewController.h"
 #import "PiwikTracker.h"
 
 
 
-@interface ViewController ()
+@interface PiwikDemoViewController ()
 @end
 
 
-@implementation ViewController
+@implementation PiwikDemoViewController
 
 
 - (void)viewDidLoad {

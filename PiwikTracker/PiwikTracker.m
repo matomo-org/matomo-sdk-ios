@@ -240,8 +240,12 @@ static PiwikTracker *_sharedInstance;
     
     [self stopDispatchTimer];
     
-    self.dispatchTimer = [NSTimer scheduledTimerWithTimeInterval:self.dispatchInterval target:self selector:@selector(dispatch:) userInfo:nil repeats:NO];
-    DLog(@"Dispatch timer started with interval %f", self.dispatchInterval);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      // Run on main tread run loop
+      self.dispatchTimer = [NSTimer scheduledTimerWithTimeInterval:self.dispatchInterval target:self selector:@selector(dispatch:) userInfo:nil repeats:NO];
+      DLog(@"Dispatch timer started with interval %f", self.dispatchInterval);
+    });
+    
   }
   
 }

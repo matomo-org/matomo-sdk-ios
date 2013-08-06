@@ -2,8 +2,8 @@
 //  main.m
 //  PiwikTrackerDemo
 //
-//  Created by Mattias Levin on 5/30/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Mattias Levin on 8/5/13.
+//  Copyright (c) 2013 Mattias Levin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
