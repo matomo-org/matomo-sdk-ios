@@ -15,6 +15,7 @@
 - (IBAction)generateEvent2:(id)sender;
 - (IBAction)generateEventWithCategoryAndName:(id)sender;
 - (IBAction)trackGoal:(id)sender;
+- (IBAction)newSession:(id)sender;
 
 - (IBAction)deleteEvents:(id)sender;
 - (IBAction)dispatchEvents:(id)sender;

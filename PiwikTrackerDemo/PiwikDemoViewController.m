@@ -69,6 +69,12 @@
   [[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:200];
 }
 
+- (IBAction)newSession:(id)sender {
+  
+  [PiwikTracker sharedInstance].sessionStart = YES;
+  
+}
+
 
 - (IBAction)deleteEvents:(id)sender {
   NSLog(@"Delete all queued Events");
