@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name         = "PiwikTracker"
-  s.version      = "1.0.1"
+  s.version      = "2.0.0"
   s.summary      = "A Piwik tracker written in Objective-C"
   # s.description  = <<-DESC
   #                   An optional longer description of PiwikTracker
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   # Specify the license type. CocoaPods detects automatically the license file if it is named
   # 'LICENCE*.*' or 'LICENSE*.*', however if the name is different, specify it.
-  s.license      = 'MIT (example)'
+  s.license      = 'MIT'
   # s.license      = { :type => 'MIT (example)', :file => 'FILE_LICENSE' }
 
   # Specify the authors of the library, with email addresses. You can often find
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
   # added to the Pods project. If the pattern is a directory then the
   # path will automatically have '*.{h,m,mm,c,cpp}' appended.
   #
-  s.source_files = 'PiwikTracker/*.{h,m}'
+  s.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
   #s.exclude_files = 'Classes/Exclude'
 
   # A list of file patterns which select the header files that should be
