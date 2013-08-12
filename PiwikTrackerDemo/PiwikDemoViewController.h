@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PiwikTrackedViewController.h"
 
-@interface PiwikDemoViewController : UIViewController
+@interface PiwikDemoViewController : PiwikTrackedViewController
 
 
 - (IBAction)generateEvent1:(id)sender;

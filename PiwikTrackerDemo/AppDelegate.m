@@ -25,7 +25,6 @@
   [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:SITE_ID_TEST authenticationToken:AUTH_TOKEN];
 //  [PiwikTracker sharedInstance].debug = YES;
   [PiwikTracker sharedInstance].dispatchInterval = -1;
-  [PiwikTracker sharedInstance].includeLocationInformation = YES;
   
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.

@@ -38,6 +38,9 @@
 		CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD1EA96B17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD2F7DB017B9561C00E240FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
+		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
+		CD2F7DB417B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
+		CD2F7DB517B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
 		F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +100,8 @@
 		CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEventEntity.h; sourceTree = "<group>"; };
 		CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEventEntity.m; sourceTree = "<group>"; };
 		CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTrackedViewController.h; sourceTree = "<group>"; };
+		CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +185,8 @@
 				CD10FAEB17B037B50012BE50 /* PiwikTracker.m */,
 				CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */,
 				CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */,
+				CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */,
+				CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */,
 				CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */,
 				CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */,
 			);
@@ -427,6 +434,7 @@
 				CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */,
 				CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */,
 				CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */,
+				CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +446,7 @@
 				CD10FAF117B037B50012BE50 /* PiwikTracker.m in Sources */,
 				CD10FAF317B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */,
 				CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */,
+				CD2F7DB417B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +460,7 @@
 				CD1EA94A17B0DB7600F63E14 /* AppDelegate.m in Sources */,
 				CD1EA95C17B0DC1800F63E14 /* PiwikDemoViewController.m in Sources */,
 				CD1EA96B17B0E5B400F63E14 /* PTEventEntity.m in Sources */,
+				CD2F7DB517B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
