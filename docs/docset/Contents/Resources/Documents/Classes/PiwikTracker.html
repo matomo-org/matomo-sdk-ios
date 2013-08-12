@@ -1,0 +1,1588 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PiwikTracker Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PiwikTracker </a></h1>
+				<a id="developerHome" href="../index.html">Wadpam</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PiwikTracker Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/appName">&nbsp;&nbsp;&nbsp;&nbsp;appName</option>
+	
+	<option value="//api/name/appVersion">&nbsp;&nbsp;&nbsp;&nbsp;appVersion</option>
+	
+	<option value="//api/name/authenticationToken">&nbsp;&nbsp;&nbsp;&nbsp;authenticationToken</option>
+	
+	<option value="//api/name/clientID">&nbsp;&nbsp;&nbsp;&nbsp;clientID</option>
+	
+	<option value="//api/name/debug">&nbsp;&nbsp;&nbsp;&nbsp;debug</option>
+	
+	<option value="//api/name/dispatchInterval">&nbsp;&nbsp;&nbsp;&nbsp;dispatchInterval</option>
+	
+	<option value="//api/name/eventsPerRequest">&nbsp;&nbsp;&nbsp;&nbsp;eventsPerRequest</option>
+	
+	<option value="//api/name/includeLocationInformation">&nbsp;&nbsp;&nbsp;&nbsp;includeLocationInformation</option>
+	
+	<option value="//api/name/maxNumberOfQueuedEvents">&nbsp;&nbsp;&nbsp;&nbsp;maxNumberOfQueuedEvents</option>
+	
+	<option value="//api/name/optOut">&nbsp;&nbsp;&nbsp;&nbsp;optOut</option>
+	
+	<option value="//api/name/sampleRate">&nbsp;&nbsp;&nbsp;&nbsp;sampleRate</option>
+	
+	<option value="//api/name/sessionStart">&nbsp;&nbsp;&nbsp;&nbsp;sessionStart</option>
+	
+	<option value="//api/name/sessionTimeout">&nbsp;&nbsp;&nbsp;&nbsp;sessionTimeout</option>
+	
+	<option value="//api/name/siteID">&nbsp;&nbsp;&nbsp;&nbsp;siteID</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstance</option>
+	
+	<option value="//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstanceWithBaseURL:siteID:authenticationToken:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/deleteQueuedEvents">&nbsp;&nbsp;&nbsp;&nbsp;- deleteQueuedEvents</option>
+	
+	<option value="//api/name/dispatch">&nbsp;&nbsp;&nbsp;&nbsp;- dispatch</option>
+	
+	<option value="//api/name/sendEventWithCategory:action:label:">&nbsp;&nbsp;&nbsp;&nbsp;- sendEventWithCategory:action:label:</option>
+	
+	<option value="//api/name/sendGoalWithID:revenue:">&nbsp;&nbsp;&nbsp;&nbsp;- sendGoalWithID:revenue:</option>
+	
+	<option value="//api/name/sendView:">&nbsp;&nbsp;&nbsp;&nbsp;- sendView:</option>
+	
+	<option value="//api/name/sendViews:">&nbsp;&nbsp;&nbsp;&nbsp;- sendViews:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating a Piwik tracker">Creating a Piwik tracker</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Tracker configuration">Tracker configuration</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Session control">Session control</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Track screen views, events and goals">Track screen views, events and goals</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Dispatch pending events">Dispatch pending events</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Custom visit variables">Custom visit variables</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appName">appName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appVersion">appVersion</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticationToken">authenticationToken</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientID">clientID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug">debug</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatchInterval">dispatchInterval</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/eventsPerRequest">eventsPerRequest</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/includeLocationInformation">includeLocationInformation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/maxNumberOfQueuedEvents">maxNumberOfQueuedEvents</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/optOut">optOut</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sampleRate">sampleRate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionStart">sessionStart</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionTimeout">sessionTimeout</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/siteID">siteID</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstance">sharedInstance</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">sharedInstanceWithBaseURL:siteID:authenticationToken:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteQueuedEvents">deleteQueuedEvents</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatch">dispatch</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendEventWithCategory:action:label:">sendEventWithCategory:action:label:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendGoalWithID:revenue:">sendGoalWithID:revenue:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendView:">sendView:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendViews:">sendViews:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PiwikTracker Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PiwikTracker Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">AFHTTPClient</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PiwikTracker.h<br />PiwikTracker.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The PiwikTracker is an Objective-C framework for sending analytics to a Piwik server.</p>
+
+<p>Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, <a href="http://piwik.org">http://piwik.org</a>.<br/>
+This framework implements the Piwik tracking REST API <a href="http://piwik.org/docs/tracking-api/reference/">http://piwik.org/docs/tracking-api/reference.</a></p>
+
+<h3>How does it work</h3>
+
+<ol>
+<li>Create and configure the tracker</li>
+<li>Track screen views, events and goals</li>
+<li>Let the dispatch timer dispatch pending events to the Piwik server or start the dispatch manually</li>
+</ol>
+
+
+<p>All events are persisted locally in Core Data until they are dispatched and successfully received by the Piwik server.</p>
+
+<p>All methods are asynchronous and will return immediately.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Creating a Piwik tracker" name="task_Creating a Piwik tracker"></a>
+						<h3 class="subsubtitle task-title">Creating a Piwik tracker</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">+&nbsp;sharedInstanceWithBaseURL:siteID:authenticationToken:</a></code>
+		<span class="tooltip"><p>Create and configure a shared Piwik tracker.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+		<span class="tooltip"><p>Return the shared Piwik tracker.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/siteID">&nbsp;&nbsp;siteID</a></code>
+		<span class="tooltip"><p>Piwik site id generated by the Piwik server.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticationToken">&nbsp;&nbsp;authenticationToken</a></code>
+		<span class="tooltip"><p>Piwik authentication token generated by the Piwik server.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clientID">&nbsp;&nbsp;clientID</a></code>
+		<span class="tooltip"><p>Unique client id, used to identify unique visitors.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Tracker configuration" name="task_Tracker configuration"></a>
+						<h3 class="subsubtitle task-title">Tracker configuration</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/debug">&nbsp;&nbsp;debug</a></code>
+		<span class="tooltip"><p>Run the tracker in debug mode.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/optOut">&nbsp;&nbsp;optOut</a></code>
+		<span class="tooltip"><p>Opt out of tracking.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sampleRate">&nbsp;&nbsp;sampleRate</a></code>
+		<span class="tooltip"><p>The probability of an event actually being sampled and sent to the Piwik server. Value 1-100, default 100.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/includeLocationInformation">&nbsp;&nbsp;includeLocationInformation</a></code>
+		<span class="tooltip"><p>Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve plotting of visitors location. Default NO. This value must be set before the tracker is used the first time.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Session control" name="task_Session control"></a>
+						<h3 class="subsubtitle task-title">Session control</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sessionStart">&nbsp;&nbsp;sessionStart</a></code>
+		<span class="tooltip"><p>Set this value to YES to force a new session start when the next event is sent to the Piwik server.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sessionTimeout">&nbsp;&nbsp;sessionTimeout</a></code>
+		<span class="tooltip"><p>A new session will be generated if the application spent longer time in the background then the session timeout value. Default value 120 seconds.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Track screen views, events and goals" name="task_Track screen views, events and goals"></a>
+						<h3 class="subsubtitle task-title">Track screen views, events and goals</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendView:">&ndash;&nbsp;sendView:</a></code>
+		<span class="tooltip"><p>Track a single screen view.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendViews:">&ndash;&nbsp;sendViews:</a></code>
+		<span class="tooltip"><p>Track a single screen view.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendEventWithCategory:action:label:">&ndash;&nbsp;sendEventWithCategory:action:label:</a></code>
+		<span class="tooltip"><p>Track an event (as oppose to a screen view).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendGoalWithID:revenue:">&ndash;&nbsp;sendGoalWithID:revenue:</a></code>
+		<span class="tooltip"><p>Track a goal conversion.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Dispatch pending events" name="task_Dispatch pending events"></a>
+						<h3 class="subsubtitle task-title">Dispatch pending events</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dispatchInterval">&nbsp;&nbsp;dispatchInterval</a></code>
+		<span class="tooltip"><p>The tracker will automatically dispatcher all pending events on timer. Default value 120 seconds.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/maxNumberOfQueuedEvents">&nbsp;&nbsp;maxNumberOfQueuedEvents</a></code>
+		<span class="tooltip"><p>Specifies the maximum number of events queued in core date. Default 500.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/eventsPerRequest">&nbsp;&nbsp;eventsPerRequest</a></code>
+		<span class="tooltip"><p>Specifies how many events should be sent to the Piwik server in each request. Default 20 event per request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dispatch">&ndash;&nbsp;dispatch</a></code>
+		<span class="tooltip"><p>Manually start a dispatch of all pending events.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteQueuedEvents">&ndash;&nbsp;deleteQueuedEvents</a></code>
+		<span class="tooltip"><p>Delete all pending events.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Custom visit variables" name="task_Custom visit variables"></a>
+						<h3 class="subsubtitle task-title">Custom visit variables</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appName">&nbsp;&nbsp;appName</a></code>
+		<span class="tooltip"><p>The application name.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appVersion">&nbsp;&nbsp;appVersion</a></code>
+		<span class="tooltip"><p>The application version.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/appName" title="appName"></a>
+	<h3 class="subsubtitle method-title">appName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The application name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *appName</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The application name will be sent as a custom variable (index 2). By default the application name stored in CFBundleDisplayName will be used.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/appVersion" title="appVersion"></a>
+	<h3 class="subsubtitle method-title">appVersion</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The application version.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *appVersion</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The application version will be send as a custom variable (index 3). By default the application version stored in CFBundleVersion will be used.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticationToken" title="authenticationToken"></a>
+	<h3 class="subsubtitle method-title">authenticationToken</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Piwik authentication token generated by the Piwik server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *authenticationToken</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/clientID" title="clientID"></a>
+	<h3 class="subsubtitle method-title">clientID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Unique client id, used to identify unique visitors.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *clientID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application uninstalled and installed again, a new value will be generated. Requires the authentication token to be set.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/debug" title="debug"></a>
+	<h3 class="subsubtitle method-title">debug</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Run the tracker in debug mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL debug</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Instead of sending events to the Piwik server, events will be printed to the console. Can be useful during development.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dispatchInterval" title="dispatchInterval"></a>
+	<h3 class="subsubtitle method-title">dispatchInterval</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The tracker will automatically dispatcher all pending events on timer. Default value 120 seconds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSTimeInterval dispatchInterval</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If a negative value is sent the dispatch timer will never run and manual dispatch must be used @see dispatch. If 0 is set the event is dispatched as as quick as possible after it has been queued.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/eventsPerRequest" title="eventsPerRequest"></a>
+	<h3 class="subsubtitle method-title">eventsPerRequest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Specifies how many events should be sent to the Piwik server in each request. Default 20 event per request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL eventsPerRequest</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The Piwik server support sending one event at the timer (as a HTTP GET operation with the event parameters as the query string) or in bulk mode (as a HTTP POST operation with the events JSON encoded). Requires the authentication token to be set to send more the one event at the time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/includeLocationInformation" title="includeLocationInformation"></a>
+	<h3 class="subsubtitle method-title">includeLocationInformation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve plotting of visitors location. Default NO. This value must be set before the tracker is used the first time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL includeLocationInformation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Think about users privacy. Provide information why their location is tracked and give them an option to opt out.</p>
+
+<p>Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.<br/>
+Users can decided to not allow the app to access location information.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/maxNumberOfQueuedEvents" title="maxNumberOfQueuedEvents"></a>
+	<h3 class="subsubtitle method-title">maxNumberOfQueuedEvents</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Specifies the maximum number of events queued in core date. Default 500.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger maxNumberOfQueuedEvents</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If the number of queued events exceed this value events will no longer be queued.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/optOut" title="optOut"></a>
+	<h3 class="subsubtitle method-title">optOut</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Opt out of tracking.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL optOut</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>No events will be sent to the Piwik server. This feature can be used to allow the user to opt out of tracking due to privacy. The value will be retained across app restart and upgrades.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sampleRate" title="sampleRate"></a>
+	<h3 class="subsubtitle method-title">sampleRate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The probability of an event actually being sampled and sent to the Piwik server. Value 1-100, default 100.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) double sampleRate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Use the sample rate to only send a sample of all events generated by the app, this can be useful for applications that generate a lot of events.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sessionStart" title="sessionStart"></a>
+	<h3 class="subsubtitle method-title">sessionStart</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set this value to YES to force a new session start when the next event is sent to the Piwik server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL sessionStart</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>By default a new session is started each time the application in launched.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sessionTimeout" title="sessionTimeout"></a>
+	<h3 class="subsubtitle method-title">sessionTimeout</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A new session will be generated if the application spent longer time in the background then the session timeout value. Default value 120 seconds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL sessionTimeout</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The Piwik server will also generate a new session if the event is recorded 30 minutes after the previous received event. Requires the authentication token to be set.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/siteID" title="siteID"></a>
+	<h3 class="subsubtitle method-title">siteID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Piwik site id generated by the Piwik server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *siteID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="subsubtitle method-title">sharedInstance</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return the shared Piwik tracker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstance</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The existing PiwikTracker object</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The Piwik tracker must have been created and configured for this method to return the tracker.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">+ sharedInstanceWithBaseURL:siteID:authenticationToken:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:" title="sharedInstanceWithBaseURL:siteID:authenticationToken:"></a>
+	<h3 class="subsubtitle method-title">sharedInstanceWithBaseURL:siteID:authenticationToken:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and configure a shared Piwik tracker.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstanceWithBaseURL:(NSURL *)<em>baseURL</em> siteID:(NSString *)<em>siteID</em> authenticationToken:(NSString *)<em>authenticationToken</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>baseURL</em></dt>
+			<dd><p>The base URL of the Piwik server. The URL should not include the tracking endpoint path component (/piwik.php)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>siteID</em></dt>
+			<dd><p>The unique side id generated by the the Piwik server when the tracked website/application is created</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authenticationToken</em></dt>
+			<dd><p>The unique authentication token generated by the the Piwik server when the tracked website/application is created</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created PiwikTracker object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteQueuedEvents" title="deleteQueuedEvents"></a>
+	<h3 class="subsubtitle method-title">deleteQueuedEvents</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delete all pending events.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)deleteQueuedEvents</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dispatch" title="dispatch"></a>
+	<h3 class="subsubtitle method-title">dispatch</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Manually start a dispatch of all pending events.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)dispatch</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the dispatch process was started.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendEventWithCategory:action:label:" title="sendEventWithCategory:action:label:"></a>
+	<h3 class="subsubtitle method-title">sendEventWithCategory:action:label:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track an event (as oppose to a screen view).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendEventWithCategory:(NSString *)<em>category</em> action:(NSString *)<em>action</em> label:(NSString *)<em>label</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>category</em></dt>
+			<dd><p>The category of the event</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>action</em></dt>
+			<dd><p>The action name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>label</em></dt>
+			<dd><p>The label name</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Events are tracked as hierarchical screen names, category/action/label.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendGoalWithID:revenue:" title="sendGoalWithID:revenue:"></a>
+	<h3 class="subsubtitle method-title">sendGoalWithID:revenue:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a goal conversion.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendGoalWithID:(NSString *)<em>goalID</em> revenue:(NSUInteger)<em>revenue</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>goalID</em></dt>
+			<dd><p>The unique goal ID as configured in the Piwik server.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>revenue</em></dt>
+			<dd><p>The monetary value of the conversion.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendView:" title="sendView:"></a>
+	<h3 class="subsubtitle method-title">sendView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a single screen view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendView:(NSString *)<em>screen</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>screen</em></dt>
+			<dd><p>The name of the screen to track.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendViews:" title="sendViews:"></a>
+	<h3 class="subsubtitle method-title">sendViews:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a single screen view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendViews:(NSString *)<em>screen</em>, <em>...</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>screen</em></dt>
+			<dd><p>A list of names of the screen to track.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A list of names of the screen to track.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Piwik support hierarchical screen names, e.g. /settings/register. Us this to group and categorise events.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Wadpam. All rights reserved. (Last updated: 2013-08-12)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
