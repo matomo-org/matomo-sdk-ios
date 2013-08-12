@@ -76,7 +76,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
 @property (nonatomic) NSUInteger totalNumberOfVisits;
 
 @property (nonatomic, readonly) NSTimeInterval firstVisitTimestamp;
-@property (nonatomic, readonly) NSTimeInterval previousVisitTimestamp;
+@property (nonatomic) NSTimeInterval previousVisitTimestamp;
 @property (nonatomic) NSTimeInterval currentVisitTimestamp;
 @property (nonatomic, strong) NSDate *appDidEnterBackgroundDate;
 
@@ -130,6 +130,7 @@ NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
 @synthesize totalNumberOfVisits = _totalNumberOfVisits;
 @synthesize firstVisitTimestamp = _firstVisitTimestamp;
+@synthesize previousVisitTimestamp = _previousVisitTimestamp;
 @synthesize currentVisitTimestamp = _currentVisitTimestamp;
 @synthesize clientID = _clientID;
 
@@ -677,46 +678,6 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-// Last visit timestamp
-- (void)setCurrentVisitTimestamp:(NSTimeInterval)currentVisitTimestamp {
-  
-  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  
-  // Make the old current visit the previous visit
-  [userDefaults setDouble:_currentVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
-  
-  // Update current visit
-  _currentVisitTimestamp = currentVisitTimestamp;
-  [userDefaults setDouble:_currentVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
-  
-  [userDefaults synchronize];
-}
-
-inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
-  return [NSString stringWithFormat:@"%@_%@", siteID, key];
-}
-
-
-- (NSTimeInterval)currentVisitTimestamp {
-  
-  if (_currentVisitTimestamp == 0) {
-    
-    // Get the value from user defaults
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _currentVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
-    
-    if (_currentVisitTimestamp == 0) {
-      // If still no value, create one
-      _currentVisitTimestamp = [[NSDate date] timeIntervalSince1970];
-      [userDefaults setDouble:_currentVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
-      [userDefaults synchronize];
-    }
-  }
-  
-  return _currentVisitTimestamp;
-}
-
-
 // Client id
 - (NSString*)clientID {
   
@@ -743,6 +704,73 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
+inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
+  return [NSString stringWithFormat:@"%@_%@", siteID, key];
+}
+
+
+- (void)setCurrentVisitTimestamp:(NSTimeInterval)currentVisitTimestamp {
+    
+  self.previousVisitTimestamp = _currentVisitTimestamp;
+   
+  _currentVisitTimestamp = currentVisitTimestamp;
+  
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  [userDefaults setDouble:_currentVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+  [userDefaults synchronize];
+}
+
+
+- (NSTimeInterval)currentVisitTimestamp {
+  
+  if (_currentVisitTimestamp == 0) {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    _currentVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+    
+    if (_currentVisitTimestamp == 0) {
+      // If still no value, create one
+      _currentVisitTimestamp = [[NSDate date] timeIntervalSince1970];
+      [userDefaults setDouble:_currentVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+      [userDefaults synchronize];
+    }
+  }
+  
+  return _currentVisitTimestamp;
+}
+
+
+- (void)setPreviousVisitTimestamp:(NSTimeInterval)previousVisitTimestamp {
+  
+  _previousVisitTimestamp = previousVisitTimestamp;
+
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  [userDefaults setDouble:previousVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+  [userDefaults synchronize]; 
+}
+
+
+- (NSTimeInterval)previousVisitTimestamp {
+  
+  if (_previousVisitTimestamp == 0) {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    _previousVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+    
+    if (_currentVisitTimestamp == 0) {
+      // If still no value, create one
+      _previousVisitTimestamp = [[NSDate date] timeIntervalSince1970];
+      [userDefaults setDouble:_previousVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+      [userDefaults synchronize];
+    }
+
+  }
+  
+  return _previousVisitTimestamp;
+}
+
+
+
 // First visit timestamp
 - (NSTimeInterval)firstVisitTimestamp {
   
@@ -766,6 +794,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 // Number of visits
 - (void)setTotalNumberOfVisits:(NSUInteger)numberOfVisits {
+  
   _totalNumberOfVisits = numberOfVisits;
   
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -1035,8 +1064,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   return _persistentStoreCoordinator;
 }
 
-
-#pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
 - (NSURL*)applicationDocumentsDirectory {
