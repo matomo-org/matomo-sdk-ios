@@ -1,67 +1,55 @@
 #PiwikTracker
 
-A PiwikTracker framework in Objective-C for sending analytic events to a Piwik server.
+The PiwikTracker is an Objective-C framework for sending analytics to a Piwik server.
  
 Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
+This framework implements the Piwik tracking REST API [http://piwik.org/docs/tracking-api/reference.](http://piwik.org/docs/tracking-api/reference/)
  
-##How does it work
+###How does it work
  
-1. Request the shared tracker 
-2. Start the tracking
-3. Track events and goals
-4. Dispatch all events in the queue to the Piwik server
-5. Stop the tracker when the app terminates
- 
-Events and goals are stored in a locally persisted queue until they are dispatched to the Piwik server. Events in the queue will survive application restarts.
+1. Create and configure the tracker
+2. Track screen views, events and goals
+3. Let the dispatch timer dispatch pending events to the Piwik server or start the dispatch manually
 
-All methods are asynchroneously and will return immediately. A completion block will be run with the outcome of the operation.
- 
-##Notifications
+All events are persisted locally in Core Data until they are dispatched and successfully received by the Piwik server.   
+All methods are asynchronous and will return immediately.
 
-Notification will be used to inform about the progress. 
+The PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNetworking) and  AFHTTPClient. Developers can use and benefit from all the AFNetworking features and optionally subclass the PiwikTracker to further customise the behaviour.
  
-- `PTEventQueuedSuccessNotification` - The event was successfully queued
-- `PTEventQueuedFailedNotification` - The event failed to be queued
-- `PTDispatchSuccessNotification` - All queued events was dispatched to the piwik server
-- `PTDispatchFailedNotification` - Dispatch failed
- 
-##Dispatch strategies
- 
-Three ready-made dispatch strategies class are provided and can be useded as is or be further customized.
- 
-- `PTTimerDispatchStrategy` - automatically initiate a dispatch after a certain time interval
-- `PTRetryDispatchStrategy` - automatically perform repeated dispatch retries (until a specified limit) if a dispatch fails
-- `PTCounterDispatchStrategy` - automatically initiate a dispatch when there are more cached events then a certain trigger value 
-
 ##Interface
 The interface for sending events is simple to use:
 
-	// Get a shared tracker
-	+ (PiwikTracker*)sharedTracker;
-
-	// Start the tracker
-	- (BOOL)startTrackerWithPiwikURL:(NSString*)piwikURL 
-                          	  siteID:(NSString*)siteID 
-                 authenticationToken:(NSString*)authenticationToken
-                           withError:(NSError**)error;
-                           
-    //  Cache an event
-	- (void)trackPageview:(NSString*)pageName completionBlock:(void(^)(NSError* error))block;
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	  // Create and configure the tracker in your app delegate
+	  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:SITE_ID_TEST authenticationToken:AUTH_TOKEN];
+	}
+	
+	…
+	
+	- (void)viewDidAppear:(BOOL)animated {
+	  // Tracker screen views in your controllers
+  	  [[PiwikTracker sharedInstance] sendView:self.title];
+	  
+	  // Track goals
+	  [[PiwikTracker sharedInstance] sendGoal:@"1" revenue:200];
+	  
+	  // Track events
+	  [[PiwikTracker sharedInstance] sendEventWithCategory:@"Picture" action:@"view" label:@"my_cat.png"];
+    }
     
-    // Dispatch all cached events to the Piwik server
-	- (void)dispatchWithCompletionBlock:(void(^)(NSError* error))block;
-
-	// Stop the tracker
-	- (BOOL)stopTracker;
+    …
+	
+	// Let the dispatch timer send you events automatically or start the dispatch manually
+	[[PiwikTracker sharedInstance] dispatch];
+	
 
 Please read the interface documentation for additional methods and details.
 
 ##Requirements
 
 The latest PiwikTracker version uses ARC.   
-Versions 1.0.1 and older use manual reference counting.
 
-Piwik tracker has a dependecy to CoreData for caching events.
+Piwik tracker has a dependency to Core Data, Core Location and UIKit.
 
 ##License
 
