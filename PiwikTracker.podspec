@@ -82,7 +82,7 @@ Pod::Spec.new do |s|
   # against for this Pod to work.
   #
   # s.framework  = 'SomeFramework'
-  s.frameworks = 'Foundation', 'UIKit', 'CoreData'
+  s.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation'
 
   # Specify a list of libraries that the application needs to link
   # against for this Pod to work.

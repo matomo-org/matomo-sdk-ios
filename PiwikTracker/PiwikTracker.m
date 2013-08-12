@@ -10,6 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 #import "PTEventEntity.h"
 
 
@@ -52,6 +53,8 @@ static NSString * const PiwikParameterGoalID = @"idgoal";
 static NSString * const PiwikParameterRevenue = @"revenue";
 static NSString * const PiwikParameterSessionStart = @"new_visit";
 static NSString * const PiwikParameterLanguage = @"lang";
+static NSString * const PiwikParameterLatitude = @"lat";
+static NSString * const PiwikParameterLongitude = @"long";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
@@ -72,7 +75,7 @@ static NSUInteger const PiwikDefaultNumberOfEventsPerRequest = 20;
 static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
 
 
-@interface PiwikTracker ()
+@interface PiwikTracker () <CLLocationManagerDelegate>
 
 @property (nonatomic) NSUInteger totalNumberOfVisits;
 
@@ -87,6 +90,8 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
 
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (nonatomic, readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly, strong) NSManagedObjectModel *managedObjectModel;
@@ -107,6 +112,8 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
 - (void)sendEvent;
 - (void)sendEventDidFinishHasMorePending:(BOOL)hasMore;
 - (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error;
+
+- (void)startLocationManager;
 
 - (BOOL)storeEventWithParameters:(NSDictionary*)parameters completionBlock:(void (^)(void))completionBlock;
 - (void)eventsFromStore:(NSUInteger)numberOfEvents completionBlock:(void (^)(NSArray *entityIDs, NSArray *events, BOOL hasMore))completionBlock;
@@ -200,6 +207,8 @@ static PiwikTracker *_sharedInstance;
       _eventsPerRequest = 1;
     }
     
+    _includeLocationInformation = NO;
+    
     // Set default user defatult values
     NSDictionary *defaultValues = @{PiwikUserDefaultOptOutKey : @NO};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
@@ -280,12 +289,22 @@ static PiwikTracker *_sharedInstance;
     self.sessionStart = YES;
   }
   
+  // Start the location manager again if it exist
+  if (self.locationManager) {
+    [self.locationManager startMonitoringSignificantLocationChanges];
+  }
+  
   [self startDispatchTimer];  
 }
 
 
 - (void)appDidEnterBackground:(NSNotification*)notification {
   self.appDidEnterBackgroundDate = [NSDate date];
+  
+  // Stop the location manager if it exists
+  if (self.locationManager) {
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+  }
   
   [self stopDispatchTimer];
 }
@@ -406,12 +425,10 @@ static PiwikTracker *_sharedInstance;
     [self.visitorCustomVariables insertObject:customVariable(@"App version", self.appVersion) atIndex:2];
     [staticParameters setObject:[PiwikTracker encodeCustomVariables:self.visitorCustomVariables] forKey:PiwikParameterVisitScopeCustomVariables];
     
-//    // Setting language will decide the country the visit belong to
-//    // Right now use the Accept-Language header
-//    NSArray *preferredLanguages = [NSLocale preferredLanguages];
-//    if (preferredLanguages.count > 0) {
-//      [staticParameters setObject:[preferredLanguages objectAtIndex:0] forKey:PiwikParameterLanguage];
-//    }
+    // Location information
+    if (self.includeLocationInformation && !self.locationManager) {
+      [self startLocationManager];      
+    }
     
     self.staticParameters = staticParameters;
   }
@@ -429,6 +446,15 @@ static PiwikTracker *_sharedInstance;
   int randomNumber = arc4random_uniform(50000);
   [joinedParameters setObject:PiwikParameterRandomNumber forKey:[NSString stringWithFormat:@"%d", randomNumber]];
   
+  // Location
+  if (self.includeLocationInformation && self.locationManager) {
+    CLLocation *location = self.locationManager.location;
+    if (location) {
+      [joinedParameters setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:PiwikParameterLatitude];
+      [joinedParameters setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:PiwikParameterLongitude];
+    }
+  }
+  
   // Add local time
   NSCalendar *calendar = [NSCalendar currentCalendar];
   unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
@@ -438,6 +464,20 @@ static PiwikTracker *_sharedInstance;
   [joinedParameters setObject:[NSString stringWithFormat:@"%d", [dateComponents second]] forKey:PiwikParameterSeconds];
     
   return joinedParameters;
+}
+
+
+- (void)startLocationManager {
+  
+  if (!self.locationManager && [CLLocationManager locationServicesEnabled] &&
+      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusRestricted &&
+      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
+    self.locationManager = [[CLLocationManager alloc] init];
+  }
+  
+  self.locationManager.delegate = self;
+  
+  [self.locationManager startMonitoringSignificantLocationChanges];  
 }
 
 
@@ -870,6 +910,18 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   CFRelease(UUID); // Need to release the UUID, the UUIDString ownership is transfered
   
   return UUIDString;
+}
+
+
+#pragma mark - core location delegate methods
+
+- (void)locationManager:(CLLocationManager*)manager didUpdateLocations:(NSArray*)locations {
+  // Do nothing
+}
+
+
+- (void)locationManager:(CLLocationManager*)manager monitoringDidFailForRegion:(CLRegion*)region withError:(NSError*)error {
+  // Do nothing
 }
 
 

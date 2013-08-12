@@ -37,6 +37,7 @@
 		CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD1EA96B17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
+		CD2F7DB017B9561C00E240FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
 		F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		CD1EA96517B0DF0C00F63E14 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PiwikDemoViewController.xib; sourceTree = "<group>"; };
 		CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEventEntity.h; sourceTree = "<group>"; };
 		CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEventEntity.m; sourceTree = "<group>"; };
+		CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				CD1EA93B17B0DB7500F63E14 /* UIKit.framework in Frameworks */,
 				CD1EA96317B0DE2A00F63E14 /* CoreData.framework in Frameworks */,
 				CD1EA93E17B0DB7600F63E14 /* CoreGraphics.framework in Frameworks */,
+				CD2F7DB017B9561C00E240FC /* CoreLocation.framework in Frameworks */,
 				6EDBBFB93C9940569C7A2E89 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +167,7 @@
 				CD1EA93417B0DA4400F63E14 /* UIKit.framework */,
 				CD1EA93217B0DA3E00F63E14 /* CoreData.framework */,
 				CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */,
+				CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */,
 				AE482B583F69438BB4B90860 /* libPods.a */,
 			);
 			name = Frameworks;
