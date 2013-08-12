@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		CDC335FE17B97B110098386C /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CDC3360117B97B110098386C /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				CDC3360217B97B190098386C /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		6EDBBFB93C9940569C7A2E89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -321,6 +335,7 @@
 			projectRoot = "";
 			targets = (
 				CD10FABB17B0378D0012BE50 /* PiwikTracker */,
+				CDC335FE17B97B110098386C /* Documentation */,
 				CD10FACC17B0378D0012BE50 /* PiwikTrackerTests */,
 				CD1EA93917B0DB7500F63E14 /* PiwikTrackerDemo */,
 			);
@@ -408,6 +423,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		CDC3360217B97B190098386C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc --project-name PiwikTracker --project-company \"Wadpam\" --company-id com.wadpam --output $SOURCE_ROOT/Doc --no-repeat-first-par --explicit-crossref --no-install-docset --keep-intermediate-files $SOURCE_ROOT/PiwikTracker/.";
 		};
 		E146493A96A64D7B96A9FC63 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -638,6 +666,20 @@
 			};
 			name = Release;
 		};
+		CDC335FF17B97B110098386C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CDC3360017B97B110098386C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -676,6 +718,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CDC3360117B97B110098386C /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDC335FF17B97B110098386C /* Debug */,
+				CDC3360017B97B110098386C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
