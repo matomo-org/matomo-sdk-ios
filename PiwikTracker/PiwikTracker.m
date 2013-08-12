@@ -51,6 +51,7 @@ static NSString * const PiwikParameterTotalNumberOfVisits = @"_idvc";
 static NSString * const PiwikParameterGoalID = @"idgoal";
 static NSString * const PiwikParameterRevenue = @"revenue";
 static NSString * const PiwikParameterSessionStart = @"new_visit";
+static NSString * const PiwikParameterLanguage = @"lang";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
@@ -273,9 +274,9 @@ static PiwikTracker *_sharedInstance;
 
 
 - (void)appDidBecomeActive:(NSNotification*)notification {
-  
-  if (!self.appDidEnterBackgroundDate || [self.appDidEnterBackgroundDate timeIntervalSinceNow] >= self.sessionTimeout || self.appDidEnterBackgroundDate == 0) {
-    // First application launch
+
+  // Create new session?
+  if (!self.appDidEnterBackgroundDate || labs([self.appDidEnterBackgroundDate timeIntervalSinceNow]) >= self.sessionTimeout || self.appDidEnterBackgroundDate == 0) {
     self.sessionStart = YES;
   }
   
@@ -404,6 +405,13 @@ static PiwikTracker *_sharedInstance;
     [self.visitorCustomVariables insertObject:customVariable(@"OS version", device.systemVersion) atIndex:1];
     [self.visitorCustomVariables insertObject:customVariable(@"App version", self.appVersion) atIndex:2];
     [staticParameters setObject:[PiwikTracker encodeCustomVariables:self.visitorCustomVariables] forKey:PiwikParameterVisitScopeCustomVariables];
+    
+//    // Setting language will decide the country the visit belong to
+//    // Right now use the Accept-Language header
+//    NSArray *preferredLanguages = [NSLocale preferredLanguages];
+//    if (preferredLanguages.count > 0) {
+//      [staticParameters setObject:[preferredLanguages objectAtIndex:0] forKey:PiwikParameterLanguage];
+//    }
     
     self.staticParameters = staticParameters;
   }
@@ -542,7 +550,9 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       } else {
         
         NSURLRequest *request = [self requestForEvents:events];
-
+        DLog(@"Request headers %@", request);
+        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
+        
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
           
           DLog(@"Successfully sent stats to Piwik server");
@@ -757,7 +767,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     _previousVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
     
-    if (_currentVisitTimestamp == 0) {
+    if (_previousVisitTimestamp == 0) {
       // If still no value, create one
       _previousVisitTimestamp = [[NSDate date] timeIntervalSince1970];
       [userDefaults setDouble:_previousVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
@@ -768,7 +778,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   
   return _previousVisitTimestamp;
 }
-
 
 
 // First visit timestamp
