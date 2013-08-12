@@ -43,7 +43,7 @@ The interface for sending events is simple to use:
 	[[PiwikTracker sharedInstance] dispatch];
 	
 
-Please read the interface documentation for additional methods and details.
+Please read the [interface documentation](http://mattiaslevin.github.io/PiwikTracker/docs/html/index.html) for additional methods and details.
 
 ##Requirements
 
