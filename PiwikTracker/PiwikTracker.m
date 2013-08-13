@@ -590,8 +590,8 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       } else {
         
         NSURLRequest *request = [self requestForEvents:events];
-        DLog(@"Request headers %@", request);
-        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
+        //DLog(@"Request headers %@", request);
+        //DLog(@"Request headers %@", [request allHTTPHeaderFields]);
         
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
           
