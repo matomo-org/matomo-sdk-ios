@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/mattiaslevin/PiwikTracker"
   s.license      = :type => 'MIT'
   s.author       = { "Mattias Levin" => "mattias.levin@gmail.com" }
-  s.source       = { :git => "https://github.com/mattiaslevin/PiwikTracker.git", :tag => "v2.0.0" }
+  s.source       = { :git => "https://github.com/mattiaslevin/PiwikTracker.git", :tag => "v#{spec.version}" }
   s.platform     = :ios, '6.0'
   s.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
   s.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
