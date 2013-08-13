@@ -54,13 +54,13 @@ Please read the [interface documentation](http://mattiaslevin.github.io/PiwikTra
 
 The latest PiwikTracker version uses ARC and support iOS6 and up.
 
-Piwik tracker has a dependency to Core Data, Core Location, UIKit and AFNetworking.
+Piwik tracker has a dependency to Core Data, Core Location, Core Graphics, UIKit and AFNetworking.
 
 ##Installation
 
 If your project is using CocoaPods simply add PiwikTracker as a dependency in your pod file.
 
-    pod PiwikTracker (Note! Not available in CocoaPods repo yet)
+    pod PiwikTracker
     
 Otherwise clone the repo to your local comp. Copy all files from the PiwikTracker folder to your Xcode project and make sure you add them to your build target. Add the frameworks and dependencies listed under Requirements to your project.
 
