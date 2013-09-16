@@ -55,6 +55,9 @@ static NSString * const PiwikParameterSessionStart = @"new_visit";
 static NSString * const PiwikParameterLanguage = @"lang";
 static NSString * const PiwikParameterLatitude = @"lat";
 static NSString * const PiwikParameterLongitude = @"long";
+static NSString * const PiwikParameterSearchKeyword = @"search";
+static NSString * const PiwikParameterSearchCategory = @"search_cat";
+static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
@@ -73,6 +76,14 @@ static NSUInteger const PiwikDefaultSampleRate = 100;
 static NSUInteger const PiwikDefaultNumberOfEventsPerRequest = 20;
 
 static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
+
+// Page view prefix values
+static NSString * const PiwikPrefixView = @"window";
+static NSString * const PiwikPrefixEvent = @"event";
+static NSString * const PiwikPrefixException = @"exception";
+static NSString * const PiwikPrefixExceptionFatal = @"fatal";
+static NSString * const PiwikPrefixExceptionCaught = @"caught";
+static NSString * const PiwikPrefixSocial = @"social";
 
 
 @interface PiwikTracker () <CLLocationManagerDelegate>
@@ -188,6 +199,8 @@ static PiwikTracker *_sharedInstance;
     
     _authenticationToken = authenticationToken;
     _siteID = siteID;
+    
+    _shouldUsePrefix = YES;
     
     _sessionTimeout = PiwikDefaultSessionTimeout;
     
@@ -319,18 +332,7 @@ static PiwikTracker *_sharedInstance;
 
 // Send screen views
 - (BOOL)sendView:(NSString*)screen {
-  
-  NSMutableDictionary *params = [NSMutableDictionary dictionary];
-  
-  [params setObject:screen forKey:PiwikParameterActionName];
-  
-  // Setting the url is mandatory but not fully applicable in an application context
-  // Set url by combining the app name and the screen name
-  [params setObject:[NSString stringWithFormat:@"http://%@/%@", self.appName, screen] forKey:PiwikParameterURL];
-  
-  DLog(@"Send view %@", screen);
-  
-  return [self queueEvent:[self addCommonParameters:params]];
+  return [self sendViews:screen];
 }
 
 
@@ -339,25 +341,106 @@ static PiwikTracker *_sharedInstance;
 - (BOOL)sendViews:(NSString*)screen, ... {
   
   // Collect var args
-  NSMutableArray *screens = [NSMutableArray array];
+  NSMutableArray *components = [NSMutableArray array];
   va_list args;
   va_start(args, screen);
   for (NSString *arg = screen; arg != nil; arg = va_arg(args, NSString*))
   {
-    [screens addObject:arg];
+    [components addObject:arg];
   }
   va_end(args);
   
-  return [self sendView:[screens componentsJoinedByString:@"/"]];
-}
-
+  if (self.shouldUsePrefix) {
+    // Add prefix 
+    [components insertObject:PiwikPrefixView atIndex:0];
+  }
+  
+  return [self send:components];
+ }
 
 
 // Track the event as hierarchical screen view
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label {
-    
+
   // Combine category, action and lable into a screen name
-  return [self sendView:[NSString stringWithFormat:@"%@/%@/%@", category, action, label]];
+  NSMutableArray *components = [NSMutableArray array];
+
+  if (self.shouldUsePrefix) {
+    [components addObject:PiwikPrefixEvent];
+  }
+  
+  if (category) {
+    [components addObject:category];
+  }
+  
+  if (action) {
+    [components addObject:action];
+  }
+  
+  if (label) {
+    [components addObject:label];
+  }
+  
+  return [self send:components];
+}
+
+
+// Track exceptions and errors
+- (BOOL)sendExceptionWithDescription:(NSString*)description isFatal:(BOOL)isFatal {
+  
+  NSMutableArray *components = [NSMutableArray array];
+  
+  if (self.shouldUsePrefix) {
+    [components addObject:PiwikPrefixException];
+  }
+  
+  if (isFatal) {
+    [components addObject:PiwikPrefixExceptionFatal];
+  } else {
+    [components addObject:PiwikPrefixExceptionCaught];
+  }
+  
+  [components addObject:description];
+  
+  return [self send:components];
+}
+
+
+// Track social interaction
+- (BOOL)sendSocialInteractionForNetwork:(NSString*)network action:(NSString*)action target:(NSString*)target {
+  
+  NSMutableArray *components = [NSMutableArray array];
+
+  if (self.shouldUsePrefix) {
+    [components addObject:PiwikPrefixSocial];
+  }
+  
+  [components addObject:network];
+  [components addObject:action];
+  
+  if (target) {
+    [components addObject:target];
+  }
+  
+  return [self send:components];
+}
+
+
+// Generic send method
+- (BOOL)send:(NSArray*)components {
+  
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+  NSString *actionName = [components componentsJoinedByString:@"/"];
+  [params setObject:actionName forKey:PiwikParameterActionName];
+  
+  // Setting the url is mandatory but not fully applicable in an application context
+  // Set url by using the action name
+  [params setObject:[NSString stringWithFormat:@"http://%@", actionName] forKey:PiwikParameterURL];
+  
+  DLog(@"Send page view %@", actionName);
+  
+  return [self queueEvent:[self addCommonParameters:params]];
 }
 
 
@@ -376,6 +459,28 @@ static PiwikTracker *_sharedInstance;
 }
 
 
+// Track app search
+- (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits {
+  
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+  [params setObject:keyword forKey:PiwikParameterSearchKeyword];
+
+  if (category) {
+    [params setObject:category forKey:PiwikParameterSearchCategory];
+  }
+  
+  if (numberOfHits && [numberOfHits integerValue] >= 0) {
+    [params setObject:numberOfHits forKey:PiwikParameterSearchNumberOfHits];
+  }
+  
+  // Setting the url is mandatory but not fully applicable in an application context
+  [params setObject:[NSString stringWithFormat:@"http://%@", self.appName] forKey:PiwikParameterURL];
+  
+  return [self queueEvent:[self addCommonParameters:params]];  
+}
+
+   
 // Add common Piwik query parameters
 - (NSDictionary*)addCommonParameters:(NSDictionary*)parameters {
   

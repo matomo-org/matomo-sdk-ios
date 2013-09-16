@@ -78,6 +78,19 @@
  */
 
 /**
+ Views, events, exceptions and social tracking will be prefixed based on type. 
+ 
+ This will allow for logical separation and easy reading of statistics in the Piwik web site.
+ Screen views will prefixed with "window".
+ Envents will be prefixed with "event".
+ Exceptions will be prefixed with "exception".
+ Social interaction will be prefied with "social".
+ 
+ Default value is YES which would be the preferred option for most develpers. Set to NO to avoid prefixing or implemeing a custom prefixing schema.
+ */
+@property (nonatomic) BOOL shouldUsePrefix;
+
+/**
  Run the tracker in debug mode.
  
  Instead of sending events to the Piwik server, events will be printed to the console. Can be useful during development.
@@ -135,6 +148,8 @@
 /**
  Track a single screen view.
  
+ Screen views are prefixed with "window" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ 
  @param screen The name of the screen to track.
  @return YES if the event was queued for dispatching.
  */
@@ -143,7 +158,8 @@
 /**
  Track a single screen view.
  
- Piwik support hierarchical screen names, e.g. /settings/register. Us this to group and categorise events.
+ Piwik support hierarchical screen names, e.g. window/settings/register. Use this to create a hierarchical and logical groupiing of screen views.
+ Screen views are prefixed with "window" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
  
  @param screen A list of names of the screen to track.
  @param ... A list of names of the screen to track.
@@ -155,12 +171,37 @@
  Track an event (as oppose to a screen view).
  
  Events are tracked as hierarchical screen names, category/action/label.
+ Events are prefixed with "event" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ 
  @param category The category of the event
  @param action The action name
- @param label The label name
+ @param label The label name, optional
  @return YES if the event was queued for dispatching.
  */
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label;
+
+/**
+ Track a caught exception or error.
+ 
+ Exception are prefixed with "exception" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ 
+ @param description A description of the exception
+ @param isFatal YES if the exception will lead to a fatal application crash
+ @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendExceptionWithDescription:(NSString*)description isFatal:(BOOL)isFatal;
+
+/**
+ Track a users interaction with social networks.
+ 
+ Exception are prefixed with "social" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ 
+ @param network The social network with which the user is interacting with
+ @param action The action taken by the user, e.g. like, tweet
+ @param taget The taget of the action, e.g. a comment, picture or video
+ @return YES if the event was queued for dispatching. 
+ */
+- (BOOL)sendSocialInteractionForNetwork:(NSString*)network action:(NSString*)action target:(NSString*)taget;
 
 /**
  Track a goal conversion.
@@ -171,6 +212,17 @@
  */
 - (BOOL)sendGoalWithID:(NSString*)goalID revenue:(NSUInteger)revenue;
 
+/**
+ Track a search performed in the application. The search could be local or towards a server.
+ 
+ Searches will be presented as Site Search requests by the Piwik server.
+ 
+ @param keyword The search keywork entered by the user.
+ @param category An optional search categoty.
+ @param numberOfhits The number of results found returned by the search. Optional.
+ @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits;
 
 /**
  @name Dispatch pending events
