@@ -2,7 +2,7 @@
 
 _Version 2.0 is a complete rewrite of the PiwikTracker, now based on AFNetworking and supporting CocoaPods. The interface is not backwards compatible, however it should be a relative small task to migrate existing apps._
 
-The PiwikTracker is an Objective-C framework for sending analytics to a Piwik server.
+The PiwikTracker is an Objective-C framework (iOS and OSX) for sending analytics to a Piwik server.
  
 Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
 This framework implements the Piwik tracking REST API [http://piwik.org/docs/tracking-api/reference.](http://piwik.org/docs/tracking-api/reference/)
@@ -52,7 +52,7 @@ Please read the [interface documentation](http://mattiaslevin.github.io/PiwikTra
 
 ##Requirements
 
-The latest PiwikTracker version uses ARC and support iOS6 and up.
+The latest PiwikTracker version uses ARC and support iOS6+ and OSX 10.7+.
 
 Piwik tracker has a dependency to Core Data, Core Location, Core Graphics, UIKit and AFNetworking.
 
