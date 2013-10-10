@@ -12,12 +12,12 @@
 #import <UIKit/UIKit.h>
 #else
 #import <Cocoa/Cocoa.h>
-#include <sys/sysctl.h>
 #endif
+#include <sys/types.h>
+#include <sys/sysctl.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 #import "PTEventEntity.h"
-
 
 #ifndef DLog
 #   ifdef DEBUG
@@ -28,7 +28,6 @@
 #endif
 
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-
 
 // User default keys
 // The key withh include the site id in order to support multiple trackers per applicationz
@@ -433,9 +432,14 @@ static PiwikTracker *_sharedInstance;
     // Set custom variables - platform, OS version and application version
       self.visitorCustomVariables = [NSMutableArray array];
 #if TARGET_OS_IPHONE
-    UIDevice *device = [UIDevice currentDevice];
-    [self.visitorCustomVariables insertObject:customVariable(@"Platform", device.model) atIndex:0];
-    [self.visitorCustomVariables insertObject:customVariable(@"OS version", device.systemVersion) atIndex:1];
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *model = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    free(machine);
+    [self.visitorCustomVariables insertObject:customVariable(@"Platform", model) atIndex:0];
+    [self.visitorCustomVariables insertObject:customVariable(@"OS version", [UIDevice currentDevice].systemVersion) atIndex:1];
 #else
     NSString *model;
     size_t length = 0;
