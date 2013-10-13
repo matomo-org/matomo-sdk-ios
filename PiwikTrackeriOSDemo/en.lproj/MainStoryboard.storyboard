@@ -483,12 +483,9 @@ Log keywords used and the number of results found.   Searches are shown in a
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" text="New screen view tracked as &quot;screen/menu/screen view/screen view 2&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-Ld-SCX">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="New screen view tracked as &quot;screen/menu/screen view/screen view 2&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-Ld-SCX">
                                 <rect key="frame" x="20" y="209" width="280" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="gfp-5M-Kir"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

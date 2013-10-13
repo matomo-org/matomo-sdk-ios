@@ -148,7 +148,7 @@ static NSString * const PiwikPrefixSocial = @"social";
 @end
 
 
-// Function declaration
+// Functions
 NSString* customVariable(NSString* name, NSString* value);
 NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
@@ -275,7 +275,7 @@ static PiwikTracker *_sharedInstance;
   
   NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
 
-  // Reduce request time out
+  // Reduce request timeout
   request.timeoutInterval = PiwikHTTPRequestTimeout;
   
   return request;
@@ -459,11 +459,11 @@ static PiwikTracker *_sharedInstance;
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
   NSString *actionName = [components componentsJoinedByString:@"/"];
-  [params setObject:actionName forKey:PiwikParameterActionName];
+  params[PiwikParameterActionName] = actionName;
   
   // Setting the url is mandatory but not fully applicable in an application context
   // Set url by using the action name
-  [params setObject:[NSString stringWithFormat:@"http://%@/%@", self.appName, actionName] forKey:PiwikParameterURL];
+  params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@/%@", self.appName, actionName];
   
   DLog(@"Send page view %@", actionName);
   
@@ -476,11 +476,11 @@ static PiwikTracker *_sharedInstance;
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
-  [params setObject:goalID forKey:PiwikParameterGoalID];
-  [params setObject:[NSNumber numberWithInteger:revenue] forKey:PiwikParameterRevenue];
+  params[PiwikParameterGoalID] = goalID;
+  params[PiwikParameterRevenue] = [NSNumber numberWithInteger:revenue];
   
   // Setting the url is mandatory but not fully applicable in an application context
-  [params setObject:[NSString stringWithFormat:@"http://%@", self.appName] forKey:PiwikParameterURL];
+  params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@", self.appName];
 
   return [self queueEvent:[self addCommonParameters:params]];
 }
@@ -491,18 +491,18 @@ static PiwikTracker *_sharedInstance;
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-  [params setObject:keyword forKey:PiwikParameterSearchKeyword];
+  params[PiwikParameterSearchKeyword] = keyword;
 
   if (category) {
-    [params setObject:category forKey:PiwikParameterSearchCategory];
+    params[PiwikParameterSearchCategory] = category;
   }
   
   if (numberOfHits && [numberOfHits integerValue] >= 0) {
-    [params setObject:numberOfHits forKey:PiwikParameterSearchNumberOfHits];
+    params[PiwikParameterSearchNumberOfHits]  = numberOfHits;
   }
   
   // Setting the url is mandatory but not fully applicable in an application context
-  [params setObject:[NSString stringWithFormat:@"http://%@", self.appName] forKey:PiwikParameterURL];
+  params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@", self.appName];
   
   return [self queueEvent:[self addCommonParameters:params]];  
 }
@@ -524,14 +524,14 @@ static PiwikTracker *_sharedInstance;
   if (!self.staticParameters) {
     NSMutableDictionary *staticParameters = [NSMutableDictionary dictionary];
     
-    [staticParameters setObject:self.siteID forKey:PiwikParameterSiteID];
+    staticParameters[PiwikParameterSiteID] = self.siteID;
     
-    [staticParameters setObject:PiwikDefaultRecordValue forKey:PiwikParameterRecord];
+    staticParameters[PiwikParameterRecord]  = PiwikDefaultRecordValue;
     
-    [staticParameters setObject:PiwikDefaultAPIVersionValue forKey:PiwikParameterAPIVersion];
+    staticParameters[PiwikParameterAPIVersion] = PiwikDefaultAPIVersionValue;
     
     if (self.authenticationToken) {
-      [staticParameters setObject:self.authenticationToken forKey:PiwikParameterAuthenticationToken];
+      staticParameters[PiwikParameterAuthenticationToken] = self.authenticationToken;
     }
     
     // Set resolution
@@ -543,23 +543,22 @@ static PiwikTracker *_sharedInstance;
       CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
 #endif
     CGSize screenSize = CGSizeMake(CGRectGetWidth(screenBounds) * screenScale, CGRectGetHeight(screenBounds) * screenScale);
-    [staticParameters setObject:[NSString stringWithFormat:@"%.0fx%.0f", screenSize.width, screenSize.height]
-                     forKey:PiwikParameterScreenReseloution];
+    staticParameters[PiwikParameterScreenReseloution] = [NSString stringWithFormat:@"%.0fx%.0f", screenSize.width, screenSize.height];
     
-    [staticParameters setObject:self.clientID forKey:PiwikParameterVisitorID];
+    staticParameters[PiwikParameterVisitorID] = self.clientID;
     
-    [staticParameters setObject:[NSString stringWithFormat:@"%ld", (unsigned long)self.totalNumberOfVisits] forKey:PiwikParameterTotalNumberOfVisits];
+    staticParameters[PiwikParameterTotalNumberOfVisits] = [NSString stringWithFormat:@"%ld", (unsigned long)self.totalNumberOfVisits];
     
     // Timestamps
-    [staticParameters setObject:[NSString stringWithFormat:@"%.0f", self.firstVisitTimestamp] forKey:PiwikParameterFirstVisitTimestamp];
-    [staticParameters setObject:[NSString stringWithFormat:@"%.0f", self.previousVisitTimestamp] forKey:PiwikParameterPreviousVisitTimestamp];
+    staticParameters[PiwikParameterFirstVisitTimestamp] = [NSString stringWithFormat:@"%.0f", self.firstVisitTimestamp];
+    staticParameters[PiwikParameterPreviousVisitTimestamp] = [NSString stringWithFormat:@"%.0f", self.previousVisitTimestamp];
     
     // Set custom variables - platform, OS version and application version
       self.visitorCustomVariables = [NSMutableArray array];
 #if TARGET_OS_IPHONE
     UIDevice *device = [UIDevice currentDevice];
-    [self.visitorCustomVariables insertObject:customVariable(@"Platform", device.model) atIndex:0];
-    [self.visitorCustomVariables insertObject:customVariable(@"OS version", device.systemVersion) atIndex:1];
+    self.visitorCustomVariables[0] = customVariable(@"Platform", device.model);
+    self.visitorCustomVariables[1] = customVariable(@"OS version", device.systemVersion);
 #else
     NSString *model;
     size_t length = 0;
@@ -572,11 +571,11 @@ static PiwikTracker *_sharedInstance;
     } else {
         model = @"Unknown";
     }
-    [self.visitorCustomVariables insertObject:customVariable(@"Platform", model) atIndex:0];
-    [self.visitorCustomVariables insertObject:customVariable(@"OS version", [[NSProcessInfo processInfo] operatingSystemVersionString]) atIndex:1];
+    self.visitorCustomVariables[0] = customVariable(@"Platform", model);
+    self.visitorCustomVariables[1] = customVariable(@"OS version", [[NSProcessInfo processInfo] operatingSystemVersionString]);
 #endif
-    [self.visitorCustomVariables insertObject:customVariable(@"App version", self.appVersion) atIndex:2];
-    [staticParameters setObject:[PiwikTracker encodeCustomVariables:self.visitorCustomVariables] forKey:PiwikParameterVisitScopeCustomVariables];
+    self.visitorCustomVariables[2] = customVariable(@"App version", self.appVersion);
+    staticParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker encodeCustomVariables:self.visitorCustomVariables];
     
     // Location information
     if (self.includeLocationInformation && !self.locationManager) {
@@ -591,7 +590,7 @@ static PiwikTracker *_sharedInstance;
   [joinedParameters addEntriesFromDictionary:self.staticParameters];
   
   if (self.sessionStart) {
-    [joinedParameters setObject:@"1" forKey:PiwikParameterSessionStart];    
+    joinedParameters[PiwikParameterSessionStart] = @"1";
     self.sessionStart = NO;
   }
   
@@ -603,8 +602,8 @@ static PiwikTracker *_sharedInstance;
   if (self.includeLocationInformation && self.locationManager) {
     CLLocation *location = self.locationManager.location;
     if (location) {
-      [joinedParameters setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:PiwikParameterLatitude];
-      [joinedParameters setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:PiwikParameterLongitude];
+      joinedParameters[PiwikParameterLatitude] = [NSNumber numberWithDouble:location.coordinate.latitude];
+      joinedParameters[PiwikParameterLongitude] = [NSNumber numberWithDouble:location.coordinate.longitude];
     }
   }
   
@@ -612,9 +611,9 @@ static PiwikTracker *_sharedInstance;
   NSCalendar *calendar = [NSCalendar currentCalendar];
   unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
   NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents hour]] forKey:PiwikParameterHours];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents minute]] forKey:PiwikParameterMinutes];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents second]] forKey:PiwikParameterSeconds];
+  joinedParameters[PiwikParameterHours] = [NSString stringWithFormat:@"%ld", (long)[dateComponents hour]];
+  joinedParameters[PiwikParameterMinutes] = [NSString stringWithFormat:@"%ld", (long)[dateComponents minute]];
+  joinedParameters[PiwikParameterSeconds] = [NSString stringWithFormat:@"%ld", (long)[dateComponents second]];
     
   return joinedParameters;
 }
@@ -800,7 +799,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
     self.parameterEncoding = AFJSONParameterEncoding;
     
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
-    [JSONParams setObject:self.authenticationToken forKey:@"token_auth"];
+    JSONParams[@"token_auth"] = self.authenticationToken;
     
     NSMutableArray *queryStrings = [NSMutableArray arrayWithCapacity:events.count];
     for (NSDictionary *params in events) {
@@ -808,7 +807,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       [queryStrings addObject:queryString];
     }
         
-    [JSONParams setObject:queryStrings forKey:@"requests"];
+    JSONParams[@"requests"] = queryStrings;
     
     request = [self requestWithMethod:@"POST" path:@"piwik.php" parameters:JSONParams];
     
@@ -1025,7 +1024,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 - (NSString*)appName {
   if (nil == _appName) {
     // Use the CFBundleName as default
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
   }
   
   return _appName;
@@ -1036,7 +1035,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 - (NSString*)appVersion {
   if (nil == _appVersion) {
     // Use the CFBundleName as default
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   }
   
   return _appVersion;
