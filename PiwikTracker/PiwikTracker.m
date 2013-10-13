@@ -8,15 +8,17 @@
 
 #import "PiwikTracker.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
+#import "PTEventEntity.h"
+#import "PTLocationManagerWrapper.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #else
 #import <Cocoa/Cocoa.h>
 #include <sys/sysctl.h>
 #endif
-#import <CoreData/CoreData.h>
-#import <CoreLocation/CoreLocation.h>
-#import "PTEventEntity.h"
+
 
 
 #ifndef DLog
@@ -95,7 +97,7 @@ static NSString * const PiwikPrefixExceptionCaught = @"caught";
 static NSString * const PiwikPrefixSocial = @"social";
 
 
-@interface PiwikTracker () <CLLocationManagerDelegate>
+@interface PiwikTracker ()
 
 @property (nonatomic) NSUInteger totalNumberOfVisits;
 
@@ -111,7 +113,7 @@ static NSString * const PiwikPrefixSocial = @"social";
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) PTLocationManagerWrapper *locationManager;
 
 @property (nonatomic, readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly, strong) NSManagedObjectModel *managedObjectModel;
@@ -132,8 +134,6 @@ static NSString * const PiwikPrefixSocial = @"social";
 - (void)sendEvent;
 - (void)sendEventDidFinishHasMorePending:(BOOL)hasMore;
 - (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error;
-
-- (void)startLocationManager;
 
 - (BOOL)storeEventWithParameters:(NSDictionary*)parameters completionBlock:(void (^)(void))completionBlock;
 - (void)eventsFromStore:(NSUInteger)numberOfEvents completionBlock:(void (^)(NSArray *entityIDs, NSArray *events, BOOL hasMore))completionBlock;
@@ -226,6 +226,8 @@ static PiwikTracker *_sharedInstance;
     } else {
       _eventsPerRequest = 1;
     }
+    
+    _locationManager = [[PTLocationManagerWrapper alloc] init];
     
     _includeLocationInformation = NO;
     
@@ -325,10 +327,7 @@ static PiwikTracker *_sharedInstance;
     self.sessionStart = YES;
   }
   
-  // Start the location manager again if it exist
-  if (self.locationManager) {
-    [self.locationManager startMonitoringSignificantLocationChanges];
-  }
+  [self.locationManager startMonitoringLocationChanges];
   
   [self startDispatchTimer];  
 }
@@ -337,10 +336,7 @@ static PiwikTracker *_sharedInstance;
 - (void)appDidEnterBackground:(NSNotification*)notification {
   self.appDidEnterBackgroundDate = [NSDate date];
   
-  // Stop the location manager if it exists
-  if (self.locationManager) {
-    [self.locationManager stopMonitoringSignificantLocationChanges];
-  }
+  [self.locationManager stopMonitoringLocationChanges];
   
   [self stopDispatchTimer];
 }
@@ -577,11 +573,6 @@ static PiwikTracker *_sharedInstance;
     self.visitorCustomVariables[2] = customVariable(@"App version", self.appVersion);
     staticParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker encodeCustomVariables:self.visitorCustomVariables];
     
-    // Location information
-    if (self.includeLocationInformation && !self.locationManager) {
-      [self startLocationManager];      
-    }
-    
     self.staticParameters = staticParameters;
   }
   
@@ -600,10 +591,10 @@ static PiwikTracker *_sharedInstance;
   
   // Location
   if (self.includeLocationInformation && self.locationManager) {
-    CLLocation *location = self.locationManager.location;
+    id<PTLocation> location = self.locationManager.location;
     if (location) {
-      joinedParameters[PiwikParameterLatitude] = [NSNumber numberWithDouble:location.coordinate.latitude];
-      joinedParameters[PiwikParameterLongitude] = [NSNumber numberWithDouble:location.coordinate.longitude];
+      joinedParameters[PiwikParameterLatitude] = [NSNumber numberWithDouble:location.latitude];
+      joinedParameters[PiwikParameterLongitude] = [NSNumber numberWithDouble:location.longitude];
     }
   }
   
@@ -616,20 +607,6 @@ static PiwikTracker *_sharedInstance;
   joinedParameters[PiwikParameterSeconds] = [NSString stringWithFormat:@"%ld", (long)[dateComponents second]];
     
   return joinedParameters;
-}
-
-
-- (void)startLocationManager {
-  
-  if (!self.locationManager && [CLLocationManager locationServicesEnabled] &&
-      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusRestricted &&
-      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
-    self.locationManager = [[CLLocationManager alloc] init];
-  }
-  
-  self.locationManager.delegate = self;
-  
-  [self.locationManager startMonitoringSignificantLocationChanges];  
 }
 
 
@@ -1066,18 +1043,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   CFRelease(UUID); // Need to release the UUID, the UUIDString ownership is transfered
   
   return UUIDString;
-}
-
-
-#pragma mark - core location delegate methods
-
-- (void)locationManager:(CLLocationManager*)manager didUpdateLocations:(NSArray*)locations {
-  // Do nothing right now
-}
-
-
-- (void)locationManager:(CLLocationManager*)manager monitoringDidFailForRegion:(CLRegion*)region withError:(NSError*)error {
-  // Do nothing
 }
 
 
