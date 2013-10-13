@@ -8,16 +8,23 @@
 
 #import "PiwikTracker.h"
 #import <CommonCrypto/CommonDigest.h>
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
+#include <sys/sysctl.h>
+#endif
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 #import "PTEventEntity.h"
 
 
-#ifdef DEBUG
-#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#else
-#   define DLog(...)
+#ifndef DLog
+#   ifdef DEBUG
+#       define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#   else
+#       define DLog(...)
+#   endif
 #endif
 
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
@@ -526,25 +533,46 @@ static PiwikTracker *_sharedInstance;
     }
     
     // Set resolution
+#if TARGET_OS_IPHONE
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGFloat screenScale = [[UIScreen mainScreen] scale];
+#else
+      CGRect screenBounds = [[NSScreen mainScreen] frame];
+      CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
+#endif
     CGSize screenSize = CGSizeMake(CGRectGetWidth(screenBounds) * screenScale, CGRectGetHeight(screenBounds) * screenScale);
     [staticParameters setObject:[NSString stringWithFormat:@"%.0fx%.0f", screenSize.width, screenSize.height]
                      forKey:PiwikParameterScreenReseloution];
     
     [staticParameters setObject:self.clientID forKey:PiwikParameterVisitorID];
     
-    [staticParameters setObject:[NSString stringWithFormat:@"%d", self.totalNumberOfVisits] forKey:PiwikParameterTotalNumberOfVisits];
+    [staticParameters setObject:[NSString stringWithFormat:@"%ld", (unsigned long)self.totalNumberOfVisits] forKey:PiwikParameterTotalNumberOfVisits];
     
     // Timestamps
     [staticParameters setObject:[NSString stringWithFormat:@"%.0f", self.firstVisitTimestamp] forKey:PiwikParameterFirstVisitTimestamp];
     [staticParameters setObject:[NSString stringWithFormat:@"%.0f", self.previousVisitTimestamp] forKey:PiwikParameterPreviousVisitTimestamp];
     
     // Set custom variables - platform, OS version and application version
+      self.visitorCustomVariables = [NSMutableArray array];
+#if TARGET_OS_IPHONE
     UIDevice *device = [UIDevice currentDevice];
-    self.visitorCustomVariables = [NSMutableArray array];
     [self.visitorCustomVariables insertObject:customVariable(@"Platform", device.model) atIndex:0];
     [self.visitorCustomVariables insertObject:customVariable(@"OS version", device.systemVersion) atIndex:1];
+#else
+    NSString *model;
+    size_t length = 0;
+    sysctlbyname("hw.model", NULL, &length, NULL, 0);
+    if (length) {
+        char *m = malloc(length * sizeof(char));
+        sysctlbyname("hw.model", m, &length, NULL, 0);
+        model = [NSString stringWithUTF8String:m];
+        free(m);
+    } else {
+        model = @"Unknown";
+    }
+    [self.visitorCustomVariables insertObject:customVariable(@"Platform", model) atIndex:0];
+    [self.visitorCustomVariables insertObject:customVariable(@"OS version", [[NSProcessInfo processInfo] operatingSystemVersionString]) atIndex:1];
+#endif
     [self.visitorCustomVariables insertObject:customVariable(@"App version", self.appVersion) atIndex:2];
     [staticParameters setObject:[PiwikTracker encodeCustomVariables:self.visitorCustomVariables] forKey:PiwikParameterVisitScopeCustomVariables];
     
@@ -582,9 +610,9 @@ static PiwikTracker *_sharedInstance;
   NSCalendar *calendar = [NSCalendar currentCalendar];
   unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
   NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%d", [dateComponents hour]] forKey:PiwikParameterHours];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%d", [dateComponents minute]] forKey:PiwikParameterMinutes];
-  [joinedParameters setObject:[NSString stringWithFormat:@"%d", [dateComponents second]] forKey:PiwikParameterSeconds];
+  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents hour]] forKey:PiwikParameterHours];
+  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents minute]] forKey:PiwikParameterMinutes];
+  [joinedParameters setObject:[NSString stringWithFormat:@"%ld", (long)[dateComponents second]] forKey:PiwikParameterSeconds];
     
   return joinedParameters;
 }
@@ -615,7 +643,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
   
   NSMutableArray *encodedVariables = [NSMutableArray array];
   [variables enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    [encodedVariables addObject:[NSString stringWithFormat:@"\"%d\":%@", idx + 1, obj]];
+    [encodedVariables addObject:[NSString stringWithFormat:@"\"%ld\":%@", (long)idx + 1, obj]];
   }];
   
   return [NSString stringWithFormat:@"{%@}", [encodedVariables componentsJoinedByString:@","]];
@@ -1019,7 +1047,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 + (NSString*)md5:(NSString*)input {
   const char* str = [input UTF8String];
   unsigned char result[CC_MD5_DIGEST_LENGTH];
-  CC_MD5(str, strlen(str), result);
+  CC_MD5(str, (CC_LONG)strlen(str), result);
   
   NSMutableString *hexString = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
   for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
