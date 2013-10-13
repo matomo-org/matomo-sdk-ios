@@ -245,6 +245,7 @@ static PiwikTracker *_sharedInstance;
     
     [self startDispatchTimer];
     
+#if TARGET_OS_IPHONE
     dispatch_async(dispatch_get_main_queue(), ^{
       
       // Notifications
@@ -259,6 +260,7 @@ static PiwikTracker *_sharedInstance;
                                                    name:UIApplicationDidEnterBackgroundNotification
                                                  object:nil];
     });
+#endif
     
     return self;
   }
@@ -595,7 +597,7 @@ static PiwikTracker *_sharedInstance;
   
   // Add random number
   int randomNumber = arc4random_uniform(50000);
-  joinedParameters[PiwikParameterRandomNumber] = [NSString stringWithFormat:@"%d", randomNumber];
+  joinedParameters[PiwikParameterRandomNumber] = [NSString stringWithFormat:@"%ld", (long)randomNumber];
   
   // Location
   if (self.includeLocationInformation && self.locationManager) {
