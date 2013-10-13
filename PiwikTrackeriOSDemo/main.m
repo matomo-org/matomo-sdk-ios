@@ -1,8 +1,8 @@
 //
 //  main.m
-//  PiwikTrackerDemo
+//  PiwikTrackeriOSDemo
 //
-//  Created by Mattias Levin on 8/5/13.
+//  Created by Mattias Levin on 9/16/13.
 //  Copyright (c) 2013 Mattias Levin. All rights reserved.
 //
 

@@ -75,10 +75,12 @@ static NSUInteger const PiwikDefaultMaxNumberOfStoredEvents = 500;
 static NSUInteger const PiwikDefaultSampleRate = 100;
 static NSUInteger const PiwikDefaultNumberOfEventsPerRequest = 20;
 
-static NSUInteger const PiwikHTTPRequestTimeout = 5.0;
+static NSUInteger const PiwikHTTPRequestTimeout = 5;
+
+static NSUInteger const PiwikExceptionDescriptionMaximumLength = 50;
 
 // Page view prefix values
-static NSString * const PiwikPrefixView = @"window";
+static NSString * const PiwikPrefixView = @"screen";
 static NSString * const PiwikPrefixEvent = @"event";
 static NSString * const PiwikPrefixException = @"exception";
 static NSString * const PiwikPrefixExceptionFatal = @"fatal";
@@ -146,7 +148,6 @@ NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
 @implementation PiwikTracker
 
-
 @synthesize totalNumberOfVisits = _totalNumberOfVisits;
 @synthesize firstVisitTimestamp = _firstVisitTimestamp;
 @synthesize previousVisitTimestamp = _previousVisitTimestamp;
@@ -193,14 +194,13 @@ static PiwikTracker *_sharedInstance;
   }
     
   if (self = [super initWithBaseURL:baseURL]) {
-    ALog(@"Create new tracker with baseURL %@ and siteID %@", baseURL, siteID);
     
     // Initialize instance variables
     
     _authenticationToken = authenticationToken;
     _siteID = siteID;
     
-    _shouldUsePrefix = YES;
+    _isPrefixingEnabled = YES;
     
     _sessionTimeout = PiwikDefaultSessionTimeout;
     
@@ -226,19 +226,33 @@ static PiwikTracker *_sharedInstance;
     NSDictionary *defaultValues = @{PiwikUserDefaultOptOutKey : @NO};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 
-    // Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
+    ALog(@"Piwik Tracker created with baseURL %@ and siteID %@", baseURL, siteID);
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appDidEnterBackground:)
-                                                 name:UIApplicationDidEnterBackgroundNotification
-                                               object:nil];
+    if (self.optOut) {
+      ALog(@"Piwik Tracker user optout from tracking");
+    }
+    
+    if (_debug) {
+      ALog(@"Piwik Tracker in debug mode, nothing will be sent to the server");
+    }
     
     [self startDispatchTimer];
-        
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      
+      // Notifications
+      // Run on main thread to avoid trigger notification when creating the tracker (will create two sessions)
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(appDidBecomeActive:)
+                                                   name:UIApplicationDidBecomeActiveNotification
+                                                 object:nil];
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(appDidEnterBackground:)
+                                                   name:UIApplicationDidEnterBackgroundNotification
+                                                 object:nil];
+    });
+    
     return self;
   }
   else {
@@ -332,25 +346,24 @@ static PiwikTracker *_sharedInstance;
 
 // Send screen views
 - (BOOL)sendView:(NSString*)screen {
-  return [self sendViews:screen];
+  return [self sendViews:screen, nil];
 }
 
 
 // Send screen views
-// Piwik support screen names with / and will then group the screen views hierarchically
+// Piwik support screen names with / and will group views hierarchically
 - (BOOL)sendViews:(NSString*)screen, ... {
   
   // Collect var args
   NSMutableArray *components = [NSMutableArray array];
   va_list args;
   va_start(args, screen);
-  for (NSString *arg = screen; arg != nil; arg = va_arg(args, NSString*))
-  {
+  for (NSString *arg = screen; arg != nil; arg = va_arg(args, NSString*)) {
     [components addObject:arg];
   }
   va_end(args);
   
-  if (self.shouldUsePrefix) {
+  if (self.isPrefixingEnabled) {
     // Add prefix 
     [components insertObject:PiwikPrefixView atIndex:0];
   }
@@ -365,7 +378,7 @@ static PiwikTracker *_sharedInstance;
   // Combine category, action and lable into a screen name
   NSMutableArray *components = [NSMutableArray array];
 
-  if (self.shouldUsePrefix) {
+  if (self.isPrefixingEnabled) {
     [components addObject:PiwikPrefixEvent];
   }
   
@@ -388,9 +401,14 @@ static PiwikTracker *_sharedInstance;
 // Track exceptions and errors
 - (BOOL)sendExceptionWithDescription:(NSString*)description isFatal:(BOOL)isFatal {
   
+  // Maximum 50 character
+  if (description.length > PiwikExceptionDescriptionMaximumLength) {
+    description = [description substringToIndex:PiwikExceptionDescriptionMaximumLength];
+  }
+  
   NSMutableArray *components = [NSMutableArray array];
   
-  if (self.shouldUsePrefix) {
+  if (self.isPrefixingEnabled) {
     [components addObject:PiwikPrefixException];
   }
   
@@ -407,11 +425,11 @@ static PiwikTracker *_sharedInstance;
 
 
 // Track social interaction
-- (BOOL)sendSocialInteractionForNetwork:(NSString*)network action:(NSString*)action target:(NSString*)target {
-  
+- (BOOL)sendSocialInteraction:(NSString*)action target:(NSString*)target forNetwork:(NSString*)network {
+
   NSMutableArray *components = [NSMutableArray array];
 
-  if (self.shouldUsePrefix) {
+  if (self.isPrefixingEnabled) {
     [components addObject:PiwikPrefixSocial];
   }
   
@@ -436,7 +454,7 @@ static PiwikTracker *_sharedInstance;
   
   // Setting the url is mandatory but not fully applicable in an application context
   // Set url by using the action name
-  [params setObject:[NSString stringWithFormat:@"http://%@", actionName] forKey:PiwikParameterURL];
+  [params setObject:[NSString stringWithFormat:@"http://%@/%@", self.appName, actionName] forKey:PiwikParameterURL];
   
   DLog(@"Send page view %@", actionName);
   
@@ -549,7 +567,7 @@ static PiwikTracker *_sharedInstance;
   
   // Add random number
   int randomNumber = arc4random_uniform(50000);
-  [joinedParameters setObject:PiwikParameterRandomNumber forKey:[NSString stringWithFormat:@"%d", randomNumber]];
+  joinedParameters[PiwikParameterRandomNumber] = [NSString stringWithFormat:@"%d", randomNumber];
   
   // Location
   if (self.includeLocationInformation && self.locationManager) {
@@ -695,8 +713,12 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       } else {
         
         NSURLRequest *request = [self requestForEvents:events];
-        //DLog(@"Request headers %@", request);
-        //DLog(@"Request headers %@", [request allHTTPHeaderFields]);
+//        DLog(@"Request headers %@", request);
+//        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
+//        
+//        NSLocale *locale = [NSLocale currentLocale];
+//        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
+//        DLog(@"Country %@", [locale objectForKey:NSLocaleCountryCode]);
         
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
           
@@ -842,14 +864,14 @@ inline NSString* customVariable(NSString* name, NSString* value) {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     _clientID = [userDefaults stringForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
     
-    if (nil == _clientID) {
+    if (!_clientID) {
       // Still nil, create
       
       // Get an UUID
       NSString *UUID = [PiwikTracker UUIDString];
       // md5 and max 16 chars
-      _clientID = [[PiwikTracker md5:UUID] substringToIndex:15];
-      
+      _clientID = [[PiwikTracker md5:UUID] substringToIndex:16];
+           
       [userDefaults setValue:_clientID forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
       [userDefaults synchronize];
     }
@@ -1021,7 +1043,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 #pragma mark - core location delegate methods
 
 - (void)locationManager:(CLLocationManager*)manager didUpdateLocations:(NSArray*)locations {
-  // Do nothing
+  // Do nothing right now
 }
 
 

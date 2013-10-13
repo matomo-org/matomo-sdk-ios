@@ -81,14 +81,14 @@
  Views, events, exceptions and social tracking will be prefixed based on type. 
  
  This will allow for logical separation and easy reading of statistics in the Piwik web site.
- Screen views will prefixed with "window".
+ Screen views will prefixed with "screen".
  Envents will be prefixed with "event".
  Exceptions will be prefixed with "exception".
- Social interaction will be prefied with "social".
+ Social interaction will be prefixed with "social".
  
  Default value is YES which would be the preferred option for most develpers. Set to NO to avoid prefixing or implemeing a custom prefixing schema.
  */
-@property (nonatomic) BOOL shouldUsePrefix;
+@property (nonatomic) BOOL isPrefixingEnabled;
 
 /**
  Run the tracker in debug mode.
@@ -148,7 +148,7 @@
 /**
  Track a single screen view.
  
- Screen views are prefixed with "window" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ Screen views are prefixed with "screen" by default unless prefixing scheme is turned off, @see isPrefixingEnabled.
  
  @param screen The name of the screen to track.
  @return YES if the event was queued for dispatching.
@@ -158,11 +158,11 @@
 /**
  Track a single screen view.
  
- Piwik support hierarchical screen names, e.g. window/settings/register. Use this to create a hierarchical and logical groupiing of screen views.
- Screen views are prefixed with "window" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ Piwik support hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views.
+ Screen views are prefixed with "screen" by default unless prefixing scheme is turned off, @see isPrefixingEnabled.
  
  @param screen A list of names of the screen to track.
- @param ... A list of names of the screen to track.
+ @param ... A nil terminated list of names of the screen to track.
  @return YES if the event was queued for dispatching.
  */
 - (BOOL)sendViews:(NSString*)screen, ...;
@@ -171,7 +171,7 @@
  Track an event (as oppose to a screen view).
  
  Events are tracked as hierarchical screen names, category/action/label.
- Events are prefixed with "event" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ Events are prefixed with "event" by default unless prefixing scheme is turned off, @see isPrefixingEnabled.
  
  @param category The category of the event
  @param action The action name
@@ -183,9 +183,9 @@
 /**
  Track a caught exception or error.
  
- Exception are prefixed with "exception" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ Exception are prefixed with "exception" by default unless prefixing scheme is turned off, @see isPrefixingEnabled.
  
- @param description A description of the exception
+ @param description A description of the exception. Maximum 50 characters
  @param isFatal YES if the exception will lead to a fatal application crash
  @return YES if the event was queued for dispatching.
  */
@@ -194,14 +194,14 @@
 /**
  Track a users interaction with social networks.
  
- Exception are prefixed with "social" by default unless prefixing scheme is turned off, @see shouldUsePrefix.
+ Exception are prefixed with "social" by default unless prefixing scheme is turned off, @see isPrefixingEnabled.
  
- @param network The social network with which the user is interacting with
  @param action The action taken by the user, e.g. like, tweet
- @param taget The taget of the action, e.g. a comment, picture or video
+ @param taget The taget of the action, e.g. a comment, picture or video (often an unqiue id or name)
+ @param network The social network the user is interacting with
  @return YES if the event was queued for dispatching. 
  */
-- (BOOL)sendSocialInteractionForNetwork:(NSString*)network action:(NSString*)action target:(NSString*)taget;
+- (BOOL)sendSocialInteraction:(NSString*)action target:(NSString*)target forNetwork:(NSString*)network;
 
 /**
  Track a goal conversion.
@@ -229,7 +229,7 @@
  */
 
 /**
- The tracker will automatically dispatcher all pending events on timer. Default value 120 seconds.
+ The tracker will automatically dispatch all pending events on a timer. Default value 120 seconds.
  
  If a negative value is sent the dispatch timer will never run and manual dispatch must be used @see dispatch. If 0 is set the event is dispatched as as quick as possible after it has been queued.
  
@@ -246,7 +246,7 @@
 /**
  Specifies how many events should be sent to the Piwik server in each request. Default 20 event per request.
  
- The Piwik server support sending one event at the timer (as a HTTP GET operation with the event parameters as the query string) or in bulk mode (as a HTTP POST operation with the events JSON encoded). Requires the authentication token to be set to send more the one event at the time.
+ The Piwik server support sending one event at the time or in bulk mode. Requires the authentication token to be set to send more the one event at the time.
  */
 @property (nonatomic) BOOL eventsPerRequest;
 
