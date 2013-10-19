@@ -1,4 +1,3 @@
-      q
 inhibit_all_warnings!
 
 
