@@ -14,7 +14,7 @@
  
  The PiwikTracker is an Objective-C framework (iOS and OSX) for sending analytics to a Piwik server.
  
- Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
+ Piwik server is a downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
  This framework implements the Piwik tracking REST API [http://piwik.org/docs/tracking-api/reference.](http://piwik.org/docs/tracking-api/reference/)
  
  ###How does it work

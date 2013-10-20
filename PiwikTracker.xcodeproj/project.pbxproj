@@ -18,6 +18,18 @@
 			name = Documentation;
 			productName = Documentation;
 		};
+		CDE4CAE61813DDFE007E0EF7 /* Upload API */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CDE4CAE81813DDFE007E0EF7 /* Build configuration list for PBXAggregateTarget "Upload API" */;
+			buildPhases = (
+				CDE4CAE71813DDFE007E0EF7 /* ShellScript */,
+			);
+			dependencies = (
+				CDE4CAEC1813DE3A007E0EF7 /* PBXTargetDependency */,
+			);
+			name = "Upload API";
+			productName = Documentation;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -88,6 +100,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CD10FABB17B0378D0012BE50;
 			remoteInfo = PiwikTracker;
+		};
+		CDE4CAEB1813DE3A007E0EF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDC335FE17B97B110098386C;
+			remoteInfo = Documentation;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -486,6 +505,7 @@
 				CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEAB4180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CDC335FE17B97B110098386C /* Documentation */,
+				CDE4CAE61813DDFE007E0EF7 /* Upload API */,
 				CD10FACC17B0378D0012BE50 /* PiwikTrackerTests */,
 			);
 		};
@@ -612,6 +632,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/appledoc --project-name PiwikTracker --project-company \"Wadpam\" --company-id com.wadpam --output $SOURCE_ROOT/Doc --no-repeat-first-par --explicit-crossref --no-install-docset --keep-intermediate-files $SOURCE_ROOT/PiwikTracker/.";
 		};
+		CDE4CAE71813DDFE007E0EF7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Remove tmp directory\"\ncd /tmp\nrm -rf PiwikTracker\n\necho \"Clone documentation branch\"\ngit clone -b gh-pages https://github.com/mattiaslevin/PiwikTracker.git\n\necho \"Copy new documentation into place\"\ncd PiwikTracker\nrm -rf docs\ncp -rv $SOURCE_ROOT/Doc docs\n\necho \"Commit and push changes\"\ngit commit -am \"Update API documentation\"\ngit push origin gh-pages";
+		};
 		E38D02F5C6D344E9A61D95D8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -713,6 +746,11 @@
 			isa = PBXTargetDependency;
 			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
 			targetProxy = CD10FAD317B0378D0012BE50 /* PBXContainerItemProxy */;
+		};
+		CDE4CAEC1813DE3A007E0EF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDC335FE17B97B110098386C /* Documentation */;
+			targetProxy = CDE4CAEB1813DE3A007E0EF7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -918,6 +956,20 @@
 			};
 			name = Release;
 		};
+		CDE4CAE91813DDFE007E0EF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Documentation copy";
+			};
+			name = Debug;
+		};
+		CDE4CAEA1813DDFE007E0EF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Documentation copy";
+			};
+			name = Release;
+		};
 		CDEAEAE3180B36F900EB91C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */;
@@ -1024,6 +1076,15 @@
 			buildConfigurations = (
 				CDC335FF17B97B110098386C /* Debug */,
 				CDC3360017B97B110098386C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE4CAE81813DDFE007E0EF7 /* Build configuration list for PBXAggregateTarget "Upload API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE4CAE91813DDFE007E0EF7 /* Debug */,
+				CDE4CAEA1813DDFE007E0EF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
