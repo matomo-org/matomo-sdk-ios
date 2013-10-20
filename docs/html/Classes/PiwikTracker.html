@@ -56,6 +56,8 @@
 	
 	<option value="//api/name/includeLocationInformation">&nbsp;&nbsp;&nbsp;&nbsp;includeLocationInformation</option>
 	
+	<option value="//api/name/isPrefixingEnabled">&nbsp;&nbsp;&nbsp;&nbsp;isPrefixingEnabled</option>
+	
 	<option value="//api/name/maxNumberOfQueuedEvents">&nbsp;&nbsp;&nbsp;&nbsp;maxNumberOfQueuedEvents</option>
 	
 	<option value="//api/name/optOut">&nbsp;&nbsp;&nbsp;&nbsp;optOut</option>
@@ -88,7 +90,13 @@
 	
 	<option value="//api/name/sendEventWithCategory:action:label:">&nbsp;&nbsp;&nbsp;&nbsp;- sendEventWithCategory:action:label:</option>
 	
+	<option value="//api/name/sendExceptionWithDescription:isFatal:">&nbsp;&nbsp;&nbsp;&nbsp;- sendExceptionWithDescription:isFatal:</option>
+	
 	<option value="//api/name/sendGoalWithID:revenue:">&nbsp;&nbsp;&nbsp;&nbsp;- sendGoalWithID:revenue:</option>
+	
+	<option value="//api/name/sendSearchWithKeyword:category:numberOfHits:">&nbsp;&nbsp;&nbsp;&nbsp;- sendSearchWithKeyword:category:numberOfHits:</option>
+	
+	<option value="//api/name/sendSocialInteraction:target:forNetwork:">&nbsp;&nbsp;&nbsp;&nbsp;- sendSocialInteraction:target:forNetwork:</option>
 	
 	<option value="//api/name/sendView:">&nbsp;&nbsp;&nbsp;&nbsp;- sendView:</option>
 	
@@ -116,7 +124,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Session control">Session control</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Track screen views, events and goals">Track screen views, events and goals</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Track screen views, events, goals and more">Track screen views, events, goals and more</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Dispatch pending events">Dispatch pending events</a></span></li>
 	
@@ -145,6 +153,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/eventsPerRequest">eventsPerRequest</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/includeLocationInformation">includeLocationInformation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isPrefixingEnabled">isPrefixingEnabled</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/maxNumberOfQueuedEvents">maxNumberOfQueuedEvents</a></span></li>
 	
@@ -180,7 +190,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendEventWithCategory:action:label:">sendEventWithCategory:action:label:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendExceptionWithDescription:isFatal:">sendExceptionWithDescription:isFatal:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendGoalWithID:revenue:">sendGoalWithID:revenue:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendSearchWithKeyword:category:numberOfHits:">sendSearchWithKeyword:category:numberOfHits:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendSocialInteraction:target:forNetwork:">sendSocialInteraction:target:forNetwork:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendView:">sendView:</a></span></li>
 	
@@ -223,7 +239,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The PiwikTracker is an Objective-C framework for sending analytics to a Piwik server.</p>
+						<p>The PiwikTracker is an Objective-C framework (iOS and OSX) for sending analytics to a Piwik server.</p>
 
 <p>Piwik server is downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, <a href="http://piwik.org">http://piwik.org</a>.<br/>
 This framework implements the Piwik tracking REST API <a href="http://piwik.org/docs/tracking-api/reference/">http://piwik.org/docs/tracking-api/reference.</a></p>
@@ -232,7 +248,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 
 <ol>
 <li>Create and configure the tracker</li>
-<li>Track screen views, events and goals</li>
+<li>Track screen views, events, errors, social interaction, search and goals</li>
 <li>Let the dispatch timer dispatch pending events to the Piwik server or start the dispatch manually</li>
 </ol>
 
@@ -300,6 +316,13 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/isPrefixingEnabled">&nbsp;&nbsp;isPrefixingEnabled</a></code>
+		<span class="tooltip"><p>Views, events, exceptions and social tracking will be prefixed based on type.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/debug">&nbsp;&nbsp;debug</a></code>
 		<span class="tooltip"><p>Run the tracker in debug mode.</p></span>
 	</span>
@@ -352,8 +375,8 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 						</ul>
 						
 						
-						<a title="Track screen views, events and goals" name="task_Track screen views, events and goals"></a>
-						<h3 class="subsubtitle task-title">Track screen views, events and goals</h3>
+						<a title="Track screen views, events, goals and more" name="task_Track screen views, events, goals and more"></a>
+						<h3 class="subsubtitle task-title">Track screen views, events, goals and more</h3>
 
 						<ul class="task-list">
 							<li>
@@ -366,7 +389,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sendViews:">&ndash;&nbsp;sendViews:</a></code>
-		<span class="tooltip"><p>Track a single screen view.</p></span>
+		<span class="tooltip"><p>Track a single hierarchical screen view.</p></span>
 	</span>
 	
 	
@@ -379,8 +402,29 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/sendExceptionWithDescription:isFatal:">&ndash;&nbsp;sendExceptionWithDescription:isFatal:</a></code>
+		<span class="tooltip"><p>Track a caught exception or error.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendSocialInteraction:target:forNetwork:">&ndash;&nbsp;sendSocialInteraction:target:forNetwork:</a></code>
+		<span class="tooltip"><p>Track a users interaction with social networks.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/sendGoalWithID:revenue:">&ndash;&nbsp;sendGoalWithID:revenue:</a></code>
 		<span class="tooltip"><p>Track a goal conversion.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendSearchWithKeyword:category:numberOfHits:">&ndash;&nbsp;sendSearchWithKeyword:category:numberOfHits:</a></code>
+		<span class="tooltip"><p>Track a search performed in the application. The search could be local or towards a server.</p></span>
 	</span>
 	
 	
@@ -395,7 +439,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/dispatchInterval">&nbsp;&nbsp;dispatchInterval</a></code>
-		<span class="tooltip"><p>The tracker will automatically dispatcher all pending events on timer. Default value 120 seconds.</p></span>
+		<span class="tooltip"><p>The tracker will automatically dispatch all pending events on a timer. Default value 120 seconds.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -527,7 +571,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The application version will be send as a custom variable (index 3). By default the application version stored in CFBundleVersion will be used.</p>
+		<p>The application version will be sent as a custom variable (index 3). By default the application version stored in CFBundleVersion will be used.</p>
 	</div>
 	
 	
@@ -604,7 +648,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application uninstalled and installed again, a new value will be generated. Requires the authentication token to be set.</p>
+		<p>This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application is uninstalled and installed again, a new value will be generated. Requires the authentication token to be set.</p>
 	</div>
 	
 	
@@ -669,7 +713,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The tracker will automatically dispatcher all pending events on timer. Default value 120 seconds.</p>
+		<p>The tracker will automatically dispatch all pending events on a timer. Default value 120 seconds.</p>
 	</div>		
 	
     
@@ -686,12 +730,21 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If a negative value is sent the dispatch timer will never run and manual dispatch must be used @see dispatch. If 0 is set the event is dispatched as as quick as possible after it has been queued.</p>
+		<p>If a negative value is set the dispatch timer will never run and manual dispatch must be used. If 0 is set the event is dispatched as as quick as possible after it has been queued.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/dispatch">- dispatch</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -727,7 +780,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The Piwik server support sending one event at the timer (as a HTTP GET operation with the event parameters as the query string) or in bulk mode (as a HTTP POST operation with the events JSON encoded). Requires the authentication token to be set to send more the one event at the time.</p>
+		<p>The Piwik server support sending one event at the time or in bulk mode. Requires the authentication token to be set to send more the one event at the time.</p>
 	</div>
 	
 	
@@ -768,10 +821,57 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Think about users privacy. Provide information why their location is tracked and give them an option to opt out.</p>
+		<p>Think about users privacy. Provide information why their location is tracked and give the user an option to opt out.</p>
 
 <p>Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.<br/>
-Users can decided to not allow the app to access location information.</p>
+Please note that users can decided to not allow the app to access location information.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isPrefixingEnabled" title="isPrefixingEnabled"></a>
+	<h3 class="subsubtitle method-title">isPrefixingEnabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Views, events, exceptions and social tracking will be prefixed based on type.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL isPrefixingEnabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This will allow for logical separation and grouping of statistics in the Piwik web interface.<br/>
+Screen views will prefixed with &ldquo;screen&rdquo;.<br/>
+Events will be prefixed with &ldquo;event&rdquo;.<br/>
+Exceptions will be prefixed with &ldquo;exception&rdquo;.<br/>
+Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
+
+<p>Default value is YES which would be the preferred option for most developers. Set to NO to avoid prefixing or implement a custom prefixing schema.</p>
 	</div>
 	
 	
@@ -894,7 +994,7 @@ Users can decided to not allow the app to access location information.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Use the sample rate to only send a sample of all events generated by the app, this can be useful for applications that generate a lot of events.</p>
+		<p>Use the sample rate to only send a sample of all events generated by the app. This can be useful for applications that generate a lot of events.</p>
 	</div>
 	
 	
@@ -976,7 +1076,7 @@ Users can decided to not allow the app to access location information.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The Piwik server will also generate a new session if the event is recorded 30 minutes after the previous received event. Requires the authentication token to be set.</p>
+		<p>The Piwik server will also create a new session if the event is recorded 30 minutes after the previous received event. Requires the authentication token to be set.</p>
 	</div>
 	
 	
@@ -1118,12 +1218,12 @@ Users can decided to not allow the app to access location information.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>siteID</em></dt>
-			<dd><p>The unique side id generated by the the Piwik server when the tracked website/application is created</p></dd>
+			<dd><p>The unique site id generated by the the Piwik server when the tracked application is created</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>authenticationToken</em></dt>
-			<dd><p>The unique authentication token generated by the the Piwik server when the tracked website/application is created</p></dd>
+			<dd><p>The unique authentication token generated by the the Piwik server when the tracked application is created</p></dd>
 		</dl>
 		
 	</div>
@@ -1132,7 +1232,7 @@ Users can decided to not allow the app to access location information.</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly created PiwikTracker object</p>
+		<p>The newly created PiwikTracker</p>
 	</div>
 	
 	
@@ -1269,7 +1369,7 @@ Users can decided to not allow the app to access location information.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>label</em></dt>
-			<dd><p>The label name</p></dd>
+			<dd><p>The label name, optional</p></dd>
 		</dl>
 		
 	</div>
@@ -1288,11 +1388,92 @@ Users can decided to not allow the app to access location information.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Events are tracked as hierarchical screen names, category/action/label.</p>
+
+<p>Events are prefixed with &ldquo;event&rdquo; by default unless prefixing scheme is turned off.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendExceptionWithDescription:isFatal:" title="sendExceptionWithDescription:isFatal:"></a>
+	<h3 class="subsubtitle method-title">sendExceptionWithDescription:isFatal:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a caught exception or error.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendExceptionWithDescription:(NSString *)<em>description</em> isFatal:(BOOL)<em>isFatal</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>description</em></dt>
+			<dd><p>A description of the exception. Maximum 50 characters</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>isFatal</em></dt>
+			<dd><p>YES if the exception will lead to a fatal application crash</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Exception are prefixed with &ldquo;exception&rdquo; by default unless prefixing scheme is turned off.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -1361,6 +1542,147 @@ Users can decided to not allow the app to access location information.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/sendSearchWithKeyword:category:numberOfHits:" title="sendSearchWithKeyword:category:numberOfHits:"></a>
+	<h3 class="subsubtitle method-title">sendSearchWithKeyword:category:numberOfHits:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a search performed in the application. The search could be local or towards a server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendSearchWithKeyword:(NSString *)<em>keyword</em> category:(NSString *)<em>category</em> numberOfHits:(NSNumber *)<em>numberOfHits</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>keyword</em></dt>
+			<dd><p>The search keyword entered by the user.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>category</em></dt>
+			<dd><p>An optional search category.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>numberOfHits</em></dt>
+			<dd><p>The number of results found (optional).</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Searches will be presented as Site Search requests in the Piwik web interface.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendSocialInteraction:target:forNetwork:" title="sendSocialInteraction:target:forNetwork:"></a>
+	<h3 class="subsubtitle method-title">sendSocialInteraction:target:forNetwork:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track a users interaction with social networks.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendSocialInteraction:(NSString *)<em>action</em> target:(NSString *)<em>target</em> forNetwork:(NSString *)<em>network</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>action</em></dt>
+			<dd><p>The action taken by the user, e.g. like, tweet</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>The target of the action, e.g. a comment, picture or video (often an unique id or name)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>network</em></dt>
+			<dd><p>The social network the user is interacting with, e.g. Facebook</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Exception are prefixed with &ldquo;social&rdquo; by default unless prefixing scheme is turned off.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sendView:" title="sendView:"></a>
 	<h3 class="subsubtitle method-title">sendView:</h3>
 	
@@ -1397,9 +1719,23 @@ Users can decided to not allow the app to access location information.</p>
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Screen views are prefixed with &ldquo;screen&rdquo; by default unless prefixing scheme is turned off.</p>
+	</div>
 	
 	
 	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -1418,7 +1754,7 @@ Users can decided to not allow the app to access location information.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Track a single screen view.</p>
+		<p>Track a single hierarchical screen view.</p>
 	</div>		
 	
     
@@ -1437,7 +1773,7 @@ Users can decided to not allow the app to access location information.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>...</em></dt>
-			<dd><p>A list of names of the screen to track.</p></dd>
+			<dd><p>A nil terminated list of names of the screen to track.</p></dd>
 		</dl>
 		
 	</div>
@@ -1455,12 +1791,23 @@ Users can decided to not allow the app to access location information.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Piwik support hierarchical screen names, e.g. /settings/register. Us this to group and categorise events.</p>
+		<p>Piwik support hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.</p>
+
+<p>Screen views are prefixed with &ldquo;screen&rdquo; by default unless prefixing scheme is turned off.</p>
 	</div>
 	
 	
 	
 	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -1485,7 +1832,7 @@ Users can decided to not allow the app to access location information.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Wadpam. All rights reserved. (Last updated: 2013-08-12)</span><br />
+						<p><span class="copyright">&copy; 2013 Wadpam. All rights reserved. (Last updated: 2013-10-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						
