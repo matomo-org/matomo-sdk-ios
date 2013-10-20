@@ -26,7 +26,11 @@ The tracker support the new Piwik bulk tacking interface and can send several ev
 The PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNetworking) and AFHTTPClient. Developers can use and benefit from all AFNetworking features and optionally subclass the PiwikTracker to further customise the behaviour, e.g. configure authentication method and credentials, tune request timeouts etc.
 
 ###Prefixing
-By default all events will be prefixed depending on the type of event. This will allow Piwik to group and present events of the same type together in the web interface. This would be the preferred behaviour for most developers but it can be turned off if it interferes with an existing structure or if a custom prefixing scheme is needed.
+By default all events will be prefixed depending on the type of event. This will allow Piwik to group and present events of the same type together in the web interface. 
+
+![Example screenshoot](http://mattiaslevin.github.io/PiwikTracker/piwik_prefixing.png)
+
+This would be the preferred behaviour for most developers but it can be turned off if it interferes with an existing structure or if a custom prefixing scheme is needed.
 
     // Turn automatic prefixing off
     [PiwikTracker sharedInstance].isPrefixingEnabled = NO;
