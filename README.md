@@ -28,7 +28,7 @@ The PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNe
 ###Prefixing
 By default all events will be prefixed depending on the type of event. This will allow Piwik to group and present events of the same type together in the web interface. 
 
-![Example screenshoot](http://mattiaslevin.github.io/PiwikTracker/piwik_prefixing.png)
+![Example screenshoot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png)
 
 This would be the preferred behaviour for most developers but it can be turned off if it interferes with an existing structure or if a custom prefixing scheme is needed.
 
@@ -36,13 +36,15 @@ This would be the preferred behaviour for most developers but it can be turned o
     [PiwikTracker sharedInstance].isPrefixingEnabled = NO;
 
 ###Sessions
-A new session is automatically started when the app is launched. If the app spend more then 120 seconds in the background a new session will be created when the app enters the foreground.
+A new session is automatically started when the app is launched. If the app spend more then 120 seconds in the background a new session will be created when the app enters the foreground. You can change the session timeout value by setting the sessionTimeout property.
 
 You can manually force a new session start when the next event is sent by setting the sessionStart property.
 
+    // Change the session timeout value to 5 minutes
+    [PiwikTracker sharedInstance].sessionTimeout = 60 * 5;
+    
     // Start a new session when the next event is sent
     [PiwikTracker sharedInstance].sessionStart = YES;
-    
 
 ###Dispatching events
 The tracker will automatically dispatch any pending events every 120 seconds. You can change the interval of the dispatch timer. Setting the interval to 0 with dispatch events as soon as they are queued. If a negative value is used the dispatch timer will never run and a manual dispatch must be used.
@@ -87,7 +89,7 @@ The tracker is very simple simple to use.
 	// Track goals and conversion rate
 	[[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:100];
 	  	
-Please read the [API documentation](http://mattiaslevin.github.io/PiwikTracker/docs/html/index.html) for additional methods and details.
+Please read the [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
 
 ##Requirements
 
