@@ -138,7 +138,7 @@
  
  The Piwik server will also create a new session if the event is recorded 30 minutes after the previous received event. Requires the authentication token to be set.
  */
-@property (nonatomic) BOOL sessionTimeout;
+@property (nonatomic) NSTimeInterval sessionTimeout;
 
 
 /**

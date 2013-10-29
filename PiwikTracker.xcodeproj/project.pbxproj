@@ -290,14 +290,14 @@
 		CD10FAC117B0378D0012BE50 /* PiwikTracker */ = {
 			isa = PBXGroup;
 			children = (
-				CDEAEAAC180B36CC00EB91C2 /* PTLocationManagerWrapper.h */,
-				CDEAEAAD180B36CC00EB91C2 /* PTLocationManagerWrapper.m */,
 				CD10FAEA17B037B50012BE50 /* PiwikTracker.h */,
 				CD10FAEB17B037B50012BE50 /* PiwikTracker.m */,
-				CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */,
-				CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */,
 				CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */,
 				CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */,
+				CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */,
+				CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */,
+				CDEAEAAC180B36CC00EB91C2 /* PTLocationManagerWrapper.h */,
+				CDEAEAAD180B36CC00EB91C2 /* PTLocationManagerWrapper.m */,
 				CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */,
 				CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */,
 			);
