@@ -351,7 +351,7 @@
 			<Abstract type="html">A new session will be generated if the application spent longer time in the background then the session timeout value. Default value 120 seconds.</Abstract>
 			<DeclaredIn>PiwikTracker.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic) BOOL sessionTimeout</Declaration>
+			<Declaration>@property (nonatomic) NSTimeInterval sessionTimeout</Declaration>
 			
 			
 			<Anchor>//api/name/sessionTimeout</Anchor>
@@ -362,7 +362,7 @@
 			<Abstract type="html">A new session will be generated if the application spent longer time in the background then the session timeout value. Default value 120 seconds.</Abstract>
 			<DeclaredIn>PiwikTracker.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic) BOOL sessionTimeout</Declaration>
+			<Declaration>@property (nonatomic) NSTimeInterval sessionTimeout</Declaration>
 			
 			
 			<Anchor>//api/name/sessionTimeout</Anchor>
@@ -373,7 +373,7 @@
 			<Abstract type="html">A new session will be generated if the application spent longer time in the background then the session timeout value. Default value 120 seconds.</Abstract>
 			<DeclaredIn>PiwikTracker.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic) BOOL sessionTimeout</Declaration>
+			<Declaration>@property (nonatomic) NSTimeInterval sessionTimeout</Declaration>
 			
 			
 			<Anchor>//api/name/sessionTimeout</Anchor>
