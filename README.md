@@ -28,7 +28,7 @@ The PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNe
 ###Prefixing
 By default all events will be prefixed depending on the type of event. This will allow Piwik to group and present events of the same type together in the web interface. 
 
-![Example screenshoot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png)
+![Example screen shoot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png)
 
 This would be the preferred behaviour for most developers but it can be turned off if it interferes with an existing structure or if a custom prefixing scheme is needed.
 
@@ -95,7 +95,9 @@ Please read the [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/ht
 
 The latest PiwikTracker version uses ARC and support iOS6+ and OSX 10.7+.
 
-Piwik tracker has a dependency to Core Data, Core Location, Core Graphics, UIKit and AFNetworking.
+The iOS tracker has dependencies to Core Data, Core Location, Core Graphics, UIKit and AFNetworking.
+
+The OSX tracker has dependencies to Core Data, Core Graphics, Cocoa and AFNetworking.
 
 ##Installation
 
@@ -103,20 +105,41 @@ If your project is using CocoaPods simply add PiwikTracker as a dependency in yo
 
     pod PiwikTracker
     
-Otherwise clone the repo to your local comp. Copy all files from the PiwikTracker folder to your Xcode project and make sure you add them to your build target. Add the frameworks and dependencies listed under Requirements to your project.
+Otherwise clone the repo to your local computer. Copy all files from the PiwikTracker folder to your Xcode project and make sure you add them to your build target. Add the frameworks and dependencies listed under Requirements to your project.
 
-    PTEventEntity.h
-    PTEventEntity.m
-    PiwikTrackedViewController.h
-    PiwikTrackedViewController.m
+    
     PiwikTracker.h
     PiwikTracker.m
+    PiwikTrackedViewController.h (should not be added for OSX)
+    PiwikTrackedViewController.m (should not be added for OSX)
+    PTLocationManagerWrapper.h
+    PTLocationManagerWrapper.m
+    PTEventEntity.h
+    PTEventEntity.m
     piwiktracker.xcdatamodeld
+    PiwikTracker-Prefix.pch
 
-If you like to run the demo included in the PiwikTracker repo, clone the project and run the pod file.
+##Demo project
+
+The workspace contains an iPhone demo app that use and demonstrate all the available features in the SDK.
+
+![Example demo screen shoot](http://piwik.github.io/piwik-sdk-ios/demo_project.png)
+
+If you like to run the demo project, start by cloning the repo and run the pod file.
     
     pod install
+    
+Open the `AppDelegate.m` file and change the Piwik server URL and site credentials.
+    
+    static NSString * const PiwikServerURL = @"http://localhost/~mattias/piwik/";
+    static NSString * const PiwikSiteID = @"2";
+    static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
+    
+If you do not have access to a Piwik server your can run the tracker in debug model events will be printed to the console instead of sent to the Piwik server.
 
+    // Configure the tracker
+    [PiwikTracker sharedInstance].debug = YES; // Uncomment to print events to the console
+    
 ##License
 
 PiwikTracker is available under the MIT license. See the LICENSE.md file for more info.
