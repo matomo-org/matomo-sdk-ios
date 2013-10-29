@@ -643,7 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Remove tmp directory\"\ncd /tmp\nrm -rf PiwikTracker\n\necho \"Clone documentation branch\"\ngit clone -b gh-pages https://github.com/mattiaslevin/PiwikTracker.git\n\necho \"Copy new documentation into place\"\ncd PiwikTracker\nrm -rf docs\ncp -rv $SOURCE_ROOT/Doc docs\n\necho \"Commit and push changes\"\ngit commit -am \"Update API documentation\"\ngit push origin gh-pages";
+			shellScript = "echo \"Remove tmp directory\"\ncd /tmp\nrm -rf PiwikTracker\n\necho \"Clone documentation branch\"\ngit clone -b gh-pages https://github.com/piwik/piwik-sdk-ios.git\n\necho \"Copy new documentation into place\"\ncd piwik-sdk-ios\nrm -rf docs\ncp -rv $SOURCE_ROOT/Doc docs\n\necho \"Commit and push changes\"\ngit commit -am \"Update API documentation\"\ngit push origin gh-pages";
 		};
 		E38D02F5C6D344E9A61D95D8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
