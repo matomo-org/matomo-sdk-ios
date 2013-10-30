@@ -117,16 +117,16 @@ If your project is not using CocoaPods:
 * add the frameworks and dependencies listed under Requirements to your project.
 
 
-	PiwikTracker.h
-	PiwikTracker.m
-	PiwikTrackedViewController.h (should not be added for OSX)
-	PiwikTrackedViewController.m (should not be added for OSX)
-	PTLocationManagerWrapper.h
-	PTLocationManagerWrapper.m
-	PTEventEntity.h
-	PTEventEntity.m
-	piwiktracker.xcdatamodeld
-	PiwikTracker-Prefix.pch`
+		PiwikTracker.h
+		PiwikTracker.m
+		PiwikTrackedViewController.h (should not be added for OSX)
+		PiwikTrackedViewController.m (should not be added for OSX)
+		PTLocationManagerWrapper.h
+		PTLocationManagerWrapper.m
+		PTEventEntity.h
+		PTEventEntity.m
+		piwiktracker.xcdatamodeld
+		PiwikTracker-Prefix.pch`
 
 
 ## Demo project
