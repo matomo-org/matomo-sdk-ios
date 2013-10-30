@@ -44,6 +44,7 @@ You can manually force a new session start when the next event is sent by settin
     
     // Start a new session when the next event is sent
     [PiwikTracker sharedInstance].sessionStart = YES;
+    
 
 ### Dispatching events
 The tracker will by default dispatch any pending events every 120 seconds. You may change the default:
@@ -51,12 +52,12 @@ The tracker will by default dispatch any pending events every 120 seconds. You m
 * Set the interval to 0 with dispatch events as soon as they are queued. 
 * If a negative value is used the dispatch timer will never run, a manual dispatch must be used.
 
-
-    // Switch to manual dispatch
-    [PiwikTracker sharedInstance].dispatchInterval = -1;
-    
-    // Manual dispatch
-    [PiwikTracker sharedInstance] dispatch];
+	
+	    // Switch to manual dispatch
+	    [PiwikTracker sharedInstance].dispatchInterval = -1;
+	    
+	    // Manual dispatch
+	    [PiwikTracker sharedInstance] dispatch];
  
 ## API
 PiwikTracker is very simple to use.
@@ -116,16 +117,16 @@ If your project is not using CocoaPods:
 * add the frameworks and dependencies listed under Requirements to your project.
 
 
-	    PiwikTracker.h
-	    PiwikTracker.m
-	    PiwikTrackedViewController.h (should not be added for OSX)
-	    PiwikTrackedViewController.m (should not be added for OSX)
-	    PTLocationManagerWrapper.h
-	    PTLocationManagerWrapper.m
-	    PTEventEntity.h
-	    PTEventEntity.m
-	    piwiktracker.xcdatamodeld
-	    PiwikTracker-Prefix.pch`
+	PiwikTracker.h
+	PiwikTracker.m
+	PiwikTrackedViewController.h (should not be added for OSX)
+	PiwikTrackedViewController.m (should not be added for OSX)
+	PTLocationManagerWrapper.h
+	PTLocationManagerWrapper.m
+	PTEventEntity.h
+	PTEventEntity.m
+	piwiktracker.xcdatamodeld
+	PiwikTracker-Prefix.pch`
 
 
 ## Demo project
@@ -140,14 +141,14 @@ If you like to run the demo project, start by cloning the repo and run the pod f
     
 Open the `AppDelegate.m` file and change the Piwik server URL and site credentials.
     
-	    static NSString * const PiwikServerURL = @"http://localhost/path/to/piwik/";
-	    static NSString * const PiwikSiteID = @"2";
-	    static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
+	static NSString * const PiwikServerURL = @"http://localhost/path/to/piwik/";
+	static NSString * const PiwikSiteID = @"2";
+	static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
     
 If you do not have access to a Piwik server your can run the tracker in debug mode. Events will be printed to the console instead of sent to the Piwik server.
-
-    // Print events to the console
-    [PiwikTracker sharedInstance].debug = YES; 
+	
+	// Print events to the console
+	[PiwikTracker sharedInstance].debug = YES; 
     
 
 ## Changelog
