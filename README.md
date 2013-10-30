@@ -12,89 +12,6 @@ The PiwikTracker is an Objective-C framework (for iOS and OSX) designed to send 
 4. Add code in your app to track screen views, events, exceptions, goals and more
 5. Let the dispatch timer dispatch pending events to the Piwik server, or dispatch events manually.
 
-### Notes
-* All methods are asynchronous and will return immediately.
-* All events are persisted locally in Core Data until they are dispatched and successfully received by the Piwik server.
-* PiwikTracker supports the new Piwik bulk tacking interface and can send several events in the same Piwik request, reducing the number of requests and saving battery.
-* PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNetworking) and AFHTTPClient. Developers can use and benefit from all AFNetworking features. Optionally you can subclass the PiwikTracker to further customise the behaviour, e.g. configure authentication method and credentials, tune request timeouts, etc.
-
-### Prefixing
-By default all events will be prefixed with the name of the event type. This will allow Piwik to group and present events of the same type together in the web interface. 
-
-![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png)
-
-You may choose to disable Prefixing:
-
-
-    // Turn automatic prefixing off
-    [PiwikTracker sharedInstance].isPrefixingEnabled = NO;
-
-### Sessions
-A new user session (new visit) is automatically when the app is launched. 
-
-If the app spends more then 120 seconds in the background, a new session will be created when the app enters the foreground. 
-
-You can change the session timeout value by setting the sessionTimeout property.
-
-You can manually force a new session start when the next event is sent by setting the sessionStart property.
-
-
-    // Change the session timeout value to 5 minutes
-    [PiwikTracker sharedInstance].sessionTimeout = 60 * 5;
-    
-    // Start a new session when the next event is sent
-    [PiwikTracker sharedInstance].sessionStart = YES;
-    
-
-### Dispatching events
-The tracker will by default dispatch any pending events every 120 seconds. You may change the default:
-
-* Set the interval to 0 with dispatch events as soon as they are queued. 
-* If a negative value is used the dispatch timer will never run, a manual dispatch must be used.
-
-	
-	    // Switch to manual dispatch
-	    [PiwikTracker sharedInstance].dispatchInterval = -1;
-	    
-	    // Manual dispatch
-	    [PiwikTracker sharedInstance] dispatch];
- 
-## API
-PiwikTracker is very simple to use.
-
-
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {	
-	    // Create and configure the tracker in your app delegate.
-	    // The website ID is available in Settings > Websites
-	    // The token_auth is available in Settings > Users
-	    [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:WEBSITE_ID_HERE authenticationToken:TOKEN_AUTH_HERE];	    
-	}
-		
-	
-	- (void)viewDidAppear:(BOOL)animated {
-	    // Track screen views in your controllers.
-	    // Recommended: track the full hierarchy of the screen, e.g. screen/view1/view2/currentView"
-  	    [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title];
-	}
-	  
-
-	// Track custom events when users interacts with the app.
-	[[PiwikTracker sharedInstance] sendEventWithCategory:@"Picture" action:@"view" label:@"my_cat.png"];
-	
-	// Measure exceptions and errors after the app gone live.
-	[[PiwikTracker sharedInstance] sendExceptionWithDescription:@"Ops, got and error" isFatal:NO];
-
-	// Track when users interact with various social networks.
-	[[PiwikTracker sharedInstance] sendSocialInteraction:@"Like" target:@"cat.png" forNetwork:@"Facebook"];
-	
-	// Measure the most popular keywords used for different search operations in the app.
-	[[PiwikTracker sharedInstance] sendSearchWithKeyword:@"Galaxy" category:@"Books" numberOfHits:17];
-
-	// Track goals and conversion rate.
-	[[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:100];
-	  	
-Please read the [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
-
 ## Requirements
 
 The latest PiwikTracker version uses ARC and support iOS6+ and OSX 10.7+.
@@ -151,6 +68,87 @@ If you do not have access to a Piwik server your can run the tracker in debug mo
 	[PiwikTracker sharedInstance].debug = YES; 
     
 
+## API
+[PiwikTracker API](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is simple to use:
+
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {	
+	    // Create and configure the tracker in your app delegate.
+	    // The website ID is available in Settings > Websites
+	    // The token_auth is available in Settings > Users
+	    [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:WEBSITE_ID_HERE authenticationToken:TOKEN_AUTH_HERE];	    
+	}
+		
+	
+	- (void)viewDidAppear:(BOOL)animated {
+	    // Track screen views in your controllers.
+	    // Recommended: track the full hierarchy of the screen, e.g. screen/view1/view2/currentView"
+  	    [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title];
+	}
+	  
+
+	// Track custom events when users interacts with the app.
+	[[PiwikTracker sharedInstance] sendEventWithCategory:@"Picture" action:@"view" label:@"my_cat.png"];
+	
+	// Measure exceptions and errors after the app gone live.
+	[[PiwikTracker sharedInstance] sendExceptionWithDescription:@"Ops, got and error" isFatal:NO];
+
+	// Track when users interact with various social networks.
+	[[PiwikTracker sharedInstance] sendSocialInteraction:@"Like" target:@"cat.png" forNetwork:@"Facebook"];
+	
+	// Measure the most popular keywords used for different search operations in the app.
+	[[PiwikTracker sharedInstance] sendSearchWithKeyword:@"Galaxy" category:@"Books" numberOfHits:17];
+
+	// Track goals and conversion rate.
+	[[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:100];
+	  	
+Check out the [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
+## More info
+* All methods are asynchronous and will return immediately.
+* All events are persisted locally in Core Data until they are dispatched and successfully received by the Piwik server.
+* PiwikTracker supports the new Piwik bulk tacking interface and can send several events in the same Piwik request, reducing the number of requests and saving battery.
+* PiwikTracker is based on [AFNetworking](https://github.com/AFNetworking/AFNetworking) and AFHTTPClient. Developers can use and benefit from all AFNetworking features. Optionally you can subclass the PiwikTracker to further customise the behaviour, e.g. configure authentication method and credentials, tune request timeouts, etc.
+
+### Prefixing
+By default all events will be prefixed with the name of the event type. This will allow Piwik to group and present events of the same type together in the web interface. 
+
+![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png)
+
+You may choose to disable Prefixing:
+
+
+    // Turn automatic prefixing off
+    [PiwikTracker sharedInstance].isPrefixingEnabled = NO;
+
+### Sessions
+A new user session (new visit) is automatically when the app is launched. 
+
+If the app spends more then 120 seconds in the background, a new session will be created when the app enters the foreground. 
+
+You can change the session timeout value by setting the sessionTimeout property.
+
+You can manually force a new session start when the next event is sent by setting the sessionStart property.
+
+
+    // Change the session timeout value to 5 minutes
+    [PiwikTracker sharedInstance].sessionTimeout = 60 * 5;
+    
+    // Start a new session when the next event is sent
+    [PiwikTracker sharedInstance].sessionStart = YES;
+    
+
+### Dispatching events
+The tracker will by default dispatch any pending events every 120 seconds. You may change the default:
+
+* Set the interval to 0 with dispatch events as soon as they are queued. 
+* If a negative value is used the dispatch timer will never run, a manual dispatch must be used.
+
+	
+	    // Switch to manual dispatch
+	    [PiwikTracker sharedInstance].dispatchInterval = -1;
+	    
+	    // Manual dispatch
+	    [PiwikTracker sharedInstance] dispatch];
+ 
 ## Changelog
 
 * Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure._
