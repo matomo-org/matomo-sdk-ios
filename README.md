@@ -1,9 +1,5 @@
 #PiwikTracker 2.5
 
-_Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure._
-
-_Version 2.0 is a complete rewrite of the PiwikTracker, now based on AFNetworking and supporting CocoaPods. The interface is not backwards compatible, however it should be a relative small task to migrate existing apps._
-
 The PiwikTracker is an Objective-C framework (iOS and OSX) for sending analytics to a Piwik server.
  
 Piwik server is a downloadable, Free/Libre (GPLv3 licensed) real time web analytics software, [http://piwik.org](http://piwik.org).
@@ -140,10 +136,14 @@ If you do not have access to a Piwik server your can run the tracker in debug mo
     // Configure the tracker
     [PiwikTracker sharedInstance].debug = YES; // Uncomment to print events to the console
     
+
+
+## Changelog
+
+_Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure._
+
+_Version 2.0 is a complete rewrite of the PiwikTracker, now based on AFNetworking and supporting CocoaPods. The interface is not backwards compatible, however it should be a relative small task to migrate existing apps._
+
 ##License
 
 PiwikTracker is available under the MIT license. See the LICENSE.md file for more info.
-
-
-
-
