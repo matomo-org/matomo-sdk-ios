@@ -48,21 +48,22 @@ If your project is not using CocoaPods:
 
 ## Demo project
 
-The workspace contains an iPhone demo app that use and demonstrate all the available features in the SDK.
+The workspace contains an iPhone demo app that uses and demonstrates the features available in the SDK.
 
 ![Example demo screen shoot](http://piwik.github.io/piwik-sdk-ios/demo_project.png)
 
-If you like to run the demo project, start by cloning the repo and run the pod file.
+If you like to run the demo project, start by cloning the repo and run:
     
     	pod install
     
-Open the `AppDelegate.m` file and change the Piwik server URL and site credentials.
+Open the `AppDelegate.m` file and change the Piwik server URL and site credentials:
     
 	static NSString * const PiwikServerURL = @"http://localhost/path/to/piwik/";
 	static NSString * const PiwikSiteID = @"2";
 	static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
     
-If you do not have access to a Piwik server your can run the tracker in debug mode. Events will be printed to the console instead of sent to the Piwik server.
+If you do not have access to a Piwik server your may run the tracker in debug mode. 
+Events will be printed to the console instead of sent to the Piwik server:
 	
 	// Print events to the console
 	[PiwikTracker sharedInstance].debug = YES; 
