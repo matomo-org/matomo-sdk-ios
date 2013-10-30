@@ -1,4 +1,4 @@
-#PiwikTracker 2.5
+# PiwikTracker iOS SDK
 
 The PiwikTracker is an Objective-C framework (for iOS and OSX) designed to send app usage data to a Piwik analytics server.
  
