@@ -139,13 +139,9 @@ You may choose to disable Prefixing:
 
 ###Sessions
 
-A new user session (new visit) is automatically when the app is launched. 
+A new user session (new visit) is automatically created when the app is launched.  If the app spends more then 120 seconds in the background, a new session will be created when the app enters the foreground. 
 
-If the app spends more then 120 seconds in the background, a new session will be created when the app enters the foreground. 
-
-You can change the session timeout value by setting the sessionTimeout property.
-
-You can manually force a new session start when the next event is sent by setting the sessionStart property.
+You can change the session timeout value by setting the sessionTimeout property. You can manually force a new session start when the next event is sent by setting the sessionStart property.
 
 ```objective-c
 // Change the session timeout value to 5 minutes
@@ -157,10 +153,9 @@ You can manually force a new session start when the next event is sent by settin
 
 ###Dispatching events
 
-The tracker will by default dispatch any pending events every 120 seconds. You may change the default:
+The tracker will by default dispatch any pending events every 120 seconds.
 
-* Set the interval to 0 with dispatch events as soon as they are queued 
-* If a negative value is used the dispatch timer will never run, a manual dispatch must be used
+Set the interval to 0 to dispatch events as soon as they are queued. If a negative value is used the dispatch timer will never run, a manual dispatch must be used.
 
 ```objective-c	
 // Switch to manual dispatch
