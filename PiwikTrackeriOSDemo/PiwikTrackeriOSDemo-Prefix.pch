@@ -14,3 +14,6 @@
   #import <SystemConfiguration/SystemConfiguration.h>
   #import <MobileCoreServices/MobileCoreServices.h>
 #endif
+
+//#define PIWIK1_X_BULK_ENCODING
+

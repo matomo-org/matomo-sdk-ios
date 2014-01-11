@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = CDC3360117B97B110098386C /* Build configuration list for PBXAggregateTarget "Documentation" */;
 			buildPhases = (
-				CDC3360217B97B190098386C /* ShellScript */,
+				CDC3360217B97B190098386C /* Build appledoc */,
 			);
 			dependencies = (
 			);
@@ -22,7 +22,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = CDE4CAE81813DDFE007E0EF7 /* Build configuration list for PBXAggregateTarget "Upload API" */;
 			buildPhases = (
-				CDE4CAE71813DDFE007E0EF7 /* ShellScript */,
+				CDE4CAE71813DDFE007E0EF7 /* Upload appledoc to Github */,
 			);
 			dependencies = (
 				CDE4CAEC1813DE3A007E0EF7 /* PBXTargetDependency */,
@@ -619,26 +619,28 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		CDC3360217B97B190098386C /* ShellScript */ = {
+		CDC3360217B97B190098386C /* Build appledoc */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Build appledoc";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc --project-name PiwikTracker --project-company \"Wadpam\" --company-id com.wadpam --output $SOURCE_ROOT/Doc --no-repeat-first-par --explicit-crossref --no-install-docset --keep-intermediate-files $SOURCE_ROOT/PiwikTracker/.";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name PiwikTracker \\\n--project-company Wadpam \\\n--company-id com.wadpam \\\n--output \"$SOURCE_ROOT/Doc\" \\\n--no-repeat-first-par \\\n--explicit-crossref \\\n--no-install-docset \\\n--keep-intermediate-files \\\n\"$SOURCE_ROOT/PiwikTracker/.\"";
 		};
-		CDE4CAE71813DDFE007E0EF7 /* ShellScript */ = {
+		CDE4CAE71813DDFE007E0EF7 /* Upload appledoc to Github */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Upload appledoc to Github";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

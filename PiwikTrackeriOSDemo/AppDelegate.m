@@ -12,7 +12,7 @@
 
 
 static NSString * const PiwikServerURL = @"http://localhost/~mattias/piwik/";
-static NSString * const PiwikSiteID = @"2";
+static NSString * const PiwikSiteID = @"1";
 static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
 
 
@@ -27,8 +27,8 @@ static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111c
   [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID authenticationToken:PiwikAuthenticationToken];
   
   // Configure the tracker
-  //[PiwikTracker sharedInstance].debug = YES; // Uncomment to print event to the console instead of sending it to the Piwik server
-  [PiwikTracker sharedInstance].dispatchInterval = 0;
+//  [PiwikTracker sharedInstance].debug = YES; // Uncomment to print event to the console instead of sending it to the Piwik server
+//  [PiwikTracker sharedInstance].dispatchInterval = 0;
   
   return YES;
 }

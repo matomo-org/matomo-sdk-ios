@@ -708,9 +708,11 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       } else {
         
         NSURLRequest *request = [self requestForEvents:events];
-//        DLog(@"Request headers %@", request);
+        
+//        DLog(@"Request %@", request);
 //        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
-//        
+//        DLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
+
 //        NSLocale *locale = [NSLocale currentLocale];
 //        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
 //        DLog(@"Country %@", [locale objectForKey:NSLocaleCountryCode]);
@@ -761,19 +763,39 @@ inline NSString* customVariable(NSString* name, NSString* value) {
   } else {
     
     // Send events as JSON
-    // Authentication token is mandatory
     self.parameterEncoding = AFJSONParameterEncoding;
     
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
+    
+    // Authentication token is mandatory
     JSONParams[@"token_auth"] = self.authenticationToken;
     
     NSMutableArray *queryStrings = [NSMutableArray arrayWithCapacity:events.count];
     for (NSDictionary *params in events) {
+      
+#ifdef PIWIK1_X_BULK_ENCODING
+      
+      // Piwik 1.x require the paramers to the url encoded in the request body
       NSString *queryString = [NSString stringWithFormat:@"?%@", AFQueryStringFromParametersWithEncoding(params, NSUTF8StringEncoding)];
+      
+#else
+      
+      // As of Piwik 2.0 the query string should not be url encoded in the request body
+      // Unfortenatly the AFNetworking methods for create parameter pairs are not external
+      NSMutableArray *parameterPair = [NSMutableArray arrayWithCapacity:params.count];
+      [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [parameterPair addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
+      }];
+      
+      NSString *queryString = [NSString stringWithFormat:@"?%@", [parameterPair componentsJoinedByString:@"&"]];
+      
+#endif
+  
       [queryStrings addObject:queryString];
     }
         
     JSONParams[@"requests"] = queryStrings;
+//    DLog(@"Bulk request:\n%@", JSONParams);
     
     request = [self requestWithMethod:@"POST" path:@"piwik.php" parameters:JSONParams];
     
