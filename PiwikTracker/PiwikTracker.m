@@ -1130,7 +1130,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"PTEventEntity"];
     
     // Oldest first
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     fetchRequest.sortDescriptors = @[sortDescriptor];
 
     fetchRequest.fetchLimit = numberOfEvents + 1;
@@ -1150,7 +1150,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
           
           PTEventEntity *eventEntity = (PTEventEntity*)obj;
           NSDictionary *parameters = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:eventEntity.requestParameters];
-          
+
           [events addObject:parameters];
           [entityIDs addObject:eventEntity.objectID];
           
