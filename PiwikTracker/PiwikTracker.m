@@ -672,7 +672,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 
 - (void)sendEvent {
 
-  NSUInteger numberOfEventsToSend = self.authenticationToken != nil && self.eventsPerRequest > 0 ? self.eventsPerRequest : 1;
+  NSUInteger numberOfEventsToSend = self.authenticationToken && self.eventsPerRequest > 0 ? self.eventsPerRequest : 1;
   
   [self eventsFromStore:numberOfEventsToSend completionBlock:^(NSArray *entityIDs, NSArray *events, BOOL hasMore) {
     

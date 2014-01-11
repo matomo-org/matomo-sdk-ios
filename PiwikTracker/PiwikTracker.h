@@ -252,11 +252,11 @@
 @property (nonatomic) NSUInteger maxNumberOfQueuedEvents;
 
 /**
- Specifies how many events should be sent to the Piwik server in each request. Default 20 event per request.
+ Specifies how many events should be sent to the Piwik server in each request. Default 20 events per request.
  
- The Piwik server support sending one event at the time or in bulk mode. Requires the authentication token to be set to send more the one event at the time.
+ The Piwik server support sending one event at the time or in bulk mode. Using bulk mode requires the authentication token to be set.
  */
-@property (nonatomic) BOOL eventsPerRequest;
+@property (nonatomic) NSUInteger eventsPerRequest;
 
 /**
  Manually start a dispatch of all pending events.
