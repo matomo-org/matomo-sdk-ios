@@ -6,6 +6,7 @@
 			<TokenIdentifier>//apple_ref/occ/cl/PiwikTrackedViewController</TokenIdentifier>
 			<Abstract type="html">Controllers that inherit from this view controller with send a screen view event to Piwik each time the controller did show.</Abstract>
 			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
+            
 			
 			<NodeRef refid="1"/>
 		</Token>
@@ -14,35 +15,39 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PiwikTrackedViewController/setTrackedViewName:</TokenIdentifier>
 			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>			
+			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
 			
 			
 			<Anchor>//api/name/trackedViewName</Anchor>
+            <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PiwikTrackedViewController/trackedViewName</TokenIdentifier>
 			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>			
+			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
 			
 			
 			<Anchor>//api/name/trackedViewName</Anchor>
+            <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/PiwikTrackedViewController/trackedViewName</TokenIdentifier>
 			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>			
+			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
 			
 			
 			<Anchor>//api/name/trackedViewName</Anchor>
+            <NodeRef refid="1"/>
 		</Token>
 		
+        
 	</File>
 </Tokens>

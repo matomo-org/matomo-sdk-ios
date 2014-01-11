@@ -18,22 +18,82 @@
 				</Node>
 				
 				
-				
+                
+                
 			</Subnodes>
         </Node>
     </TOC>
 	<Library>
 		
-		<Node id="1">
-			<Name>PiwikTrackedViewController</Name>
-			<Path>Classes/PiwikTrackedViewController.html</Path>
-		</Node>
-		<Node id="2">
-			<Name>PiwikTracker</Name>
-			<Path>Classes/PiwikTracker.html</Path>
-		</Node>
+		<Node id="1" type="file" documentType="reference">
+            <Name>PiwikTrackedViewController</Name>
+            <Path>Classes/PiwikTrackedViewController.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikTrackedViewController.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikTrackedViewController.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTrackedViewController.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="2" type="file" documentType="reference">
+            <Name>PiwikTracker</Name>
+            <Path>Classes/PiwikTracker.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikTracker.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikTracker.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTracker.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTracker.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTracker.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
 		
 		
-		
+        
+        
 	</Library>
 </DocSetNodes>
