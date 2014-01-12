@@ -4,7 +4,10 @@ The PiwikTracker is an Objective-C framework (for iOS and OSX) designed to send 
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
 
-*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable to old format by following the [instructions below](#bulk dispatching).*
+
+*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable the old format by following the [instructions below](#bulk-dispatching).*
+
+*A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) has recently been added to the Wiki section.*
 
 ##Getting started
 
@@ -82,19 +85,21 @@ If you do not have access to a Piwik server your may run the tracker in debug mo
 
 ##API
 
-The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very easy to use:
+The Piwik SDK is very easy to configure and user:
 
 ```objective-c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {	
-  // Create and configure the tracker in your app delegate
-  // The website ID is available in Settings > Websites
-  // The token_auth is available in Settings > Users
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:WEBSITE_ID_HERE authenticationToken:TOKEN_AUTH_HERE];	    
+
+// Create and configure the tracker in your app delegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
+  // The website ID is available in Piwik web interface "Settings > Websites"
+  // The token_auth is available in Piwik web interface "API" tab
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID: PiwikSiteID authenticationToken: PiwikAuthenticationToken];
+  // Any additional configuration goes here
 }
 		
-	
+
+// Track screen views in your view controllers
 - (void)viewDidAppear:(BOOL)animated {
-  // Track screen views in your view controllers
   // Recommendation: track the full hierarchy of the screen, e.g. screen/view1/view2/currentView
   [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title];
 }
@@ -117,6 +122,8 @@ The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very
 ```
 	  	
 Check out the full [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
+
+A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) can be found in the Wiki section.
 
 ##More info
 
@@ -169,7 +176,7 @@ Set the interval to 0 to dispatch events as soon as they are queued. If a negati
 
 PiwikTracker supports the Piwik bulk tacking interface and can send several events in the same Piwik request, reducing the number of requests, increase speed and saving battery. The default value is set to 20 events per request.
 
-The bulk request encoding changed in Piwik 2.0 and the tracker support the new encoding format out of the box. If your app is still connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro `PIWIK1_X_BULK_ENCODING` in your apps .pch file:
+The bulk request encoding changed in Piwik 2.0 and the tracker support the new encoding format by default. If your app is still connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro `PIWIK1_X_BULK_ENCODING` in your apps .pch file:
 
 ```objective-c	
 // Enable legacy Piwik 1.X bulk request encoding
@@ -178,7 +185,7 @@ The bulk request encoding changed in Piwik 2.0 and the tracker support the new e
 
 ##Changelog
 
-* Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk dispatching).
+* Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk-dispatching).
 * Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure.
 * Version 2.0 is a complete rewrite of the PiwikTracker, now based on AFNetworking and supporting CocoaPods. The interface is not backwards compatible, however it should be a small task migrating existing apps.
 
