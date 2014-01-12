@@ -85,17 +85,18 @@ If you do not have access to a Piwik server your may run the tracker in debug mo
 The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very easy to use:
 
 ```objective-c
+
+// Create and configure the tracker in your app delegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
-  // Create and configure the tracker in your app delegate
   // The website ID is available in Piwik web interface "Settings > Websites"
   // The token_auth is available in Piwik web interface "API" tab
   [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID: PiwikSiteID authenticationToken: PiwikAuthenticationToken];
   // Any additional configuration goes here
 }
 		
-	
+
+// Track screen views in your view controllers
 - (void)viewDidAppear:(BOOL)animated {
-  // Track screen views in your view controllers
   // Recommendation: track the full hierarchy of the screen, e.g. screen/view1/view2/currentView
   [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title];
 }
