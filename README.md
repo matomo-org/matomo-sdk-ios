@@ -4,7 +4,7 @@ The PiwikTracker is an Objective-C framework (for iOS and OSX) designed to send 
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
 
-*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable to old format by following the [instructions below](#bulk dispatching).*
+*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable to old format by following the [instructions below](#bulk-dispatching).*
 
 ##Getting started
 
@@ -169,7 +169,7 @@ Set the interval to 0 to dispatch events as soon as they are queued. If a negati
 
 PiwikTracker supports the Piwik bulk tacking interface and can send several events in the same Piwik request, reducing the number of requests, increase speed and saving battery. The default value is set to 20 events per request.
 
-The bulk request encoding changed in Piwik 2.0 and the tracker support the new encoding format out of the box. If your app is still connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro `PIWIK1_X_BULK_ENCODING` in your apps .pch file:
+The bulk request encoding changed in Piwik 2.0 and the tracker support the new encoding format by default. If your app is still connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro `PIWIK1_X_BULK_ENCODING` in your apps .pch file:
 
 ```objective-c	
 // Enable legacy Piwik 1.X bulk request encoding
@@ -178,7 +178,7 @@ The bulk request encoding changed in Piwik 2.0 and the tracker support the new e
 
 ##Changelog
 
-* Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk dispatching).
+* Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk-dispatching).
 * Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure.
 * Version 2.0 is a complete rewrite of the PiwikTracker, now based on AFNetworking and supporting CocoaPods. The interface is not backwards compatible, however it should be a small task migrating existing apps.
 
