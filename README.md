@@ -85,11 +85,12 @@ If you do not have access to a Piwik server your may run the tracker in debug mo
 The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very easy to use:
 
 ```objective-c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {	
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
   // Create and configure the tracker in your app delegate
-  // The website ID is available in Settings > Websites
-  // The token_auth is available in Settings > Users
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PIWIK_URL] siteID:WEBSITE_ID_HERE authenticationToken:TOKEN_AUTH_HERE];	    
+  // The website ID is available in Piwik web interface "Settings > Websites"
+  // The token_auth is available in Piwik web interface "API" tab
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID: PiwikSiteID authenticationToken: PiwikAuthenticationToken];
+  // Any additional configuration goes here
 }
 		
 	
