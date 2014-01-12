@@ -4,7 +4,10 @@ The PiwikTracker is an Objective-C framework (for iOS and OSX) designed to send 
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
 
-*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable to old format by following the [instructions below](#bulk-dispatching).*
+
+*Stating v2.5.2 the tracker support the new Piwik 2.0 bulk request format by default. Users still connecting to a Piwik 1.X server can enable the old format by following the [instructions below](#bulk-dispatching).*
+
+*A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) has recently been added to the Wiki section.*
 
 ##Getting started
 
@@ -82,7 +85,7 @@ If you do not have access to a Piwik server your may run the tracker in debug mo
 
 ##API
 
-The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very easy to use:
+The Piwik SDK is very easy to configure and user:
 
 ```objective-c
 
@@ -119,6 +122,8 @@ The [tracker](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) is very
 ```
 	  	
 Check out the full [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
+
+A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) can be found in the Wiki section.
 
 ##More info
 
