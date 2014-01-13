@@ -147,7 +147,6 @@ static NSString * const PiwikPrefixSocial = @"social";
 @end
 
 
-// Functions
 NSString* customVariable(NSString* name, NSString* value);
 NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
@@ -167,7 +166,12 @@ NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
 static PiwikTracker *_sharedInstance;
 
-// Get shared instance
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 + (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -190,7 +194,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Init new tracker
 - (id)initWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
   
   // Make sure the base url is correct
@@ -248,18 +251,10 @@ static PiwikTracker *_sharedInstance;
     
 #if TARGET_OS_IPHONE
     dispatch_async(dispatch_get_main_queue(), ^{
-      
       // Notifications
       // Run on main thread to avoid trigger notification when creating the tracker (will create two sessions)
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(appDidBecomeActive:)
-                                                   name:UIApplicationDidBecomeActiveNotification
-                                                 object:nil];
-      
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(appDidEnterBackground:)
-                                                   name:UIApplicationDidEnterBackgroundNotification
-                                                 object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     });
 #endif
     
@@ -283,7 +278,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Start dispatch timer
 - (void)startDispatchTimer {
   
   // Run on main tread run loop
@@ -306,7 +300,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Stop dispatch timer
 - (void)stopDispatchTimer {
   
   if (self.dispatchTimer) {
@@ -326,7 +319,9 @@ static PiwikTracker *_sharedInstance;
     self.sessionStart = YES;
   }
   
-  [self.locationManager startMonitoringLocationChanges];
+  if (self.includeLocationInformation) {
+    [self.locationManager startMonitoringLocationChanges];
+  }
   
   [self startDispatchTimer];  
 }
@@ -335,26 +330,21 @@ static PiwikTracker *_sharedInstance;
 - (void)appDidEnterBackground:(NSNotification*)notification {
   self.appDidEnterBackgroundDate = [NSDate date];
   
-  [self.locationManager stopMonitoringLocationChanges];
+  if (self.includeLocationInformation) {
+    [self.locationManager stopMonitoringLocationChanges];
+  }
   
   [self stopDispatchTimer];
 }
 
 
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
 #pragma mark Views and Events
 
-// Send screen views
 - (BOOL)sendView:(NSString*)screen {
   return [self sendViews:screen, nil];
 }
 
 
-// Send screen views
 // Piwik support screen names with / and will group views hierarchically
 - (BOOL)sendViews:(NSString*)screen, ... {
   
@@ -376,7 +366,6 @@ static PiwikTracker *_sharedInstance;
  }
 
 
-// Track the event as hierarchical screen view
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label {
 
   // Combine category, action and lable into a screen name
@@ -402,7 +391,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Track exceptions and errors
 - (BOOL)sendExceptionWithDescription:(NSString*)description isFatal:(BOOL)isFatal {
   
   // Maximum 50 character
@@ -428,7 +416,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Track social interaction
 - (BOOL)sendSocialInteraction:(NSString*)action target:(NSString*)target forNetwork:(NSString*)network {
 
   NSMutableArray *components = [NSMutableArray array];
@@ -448,7 +435,6 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Generic send method
 - (BOOL)send:(NSArray*)components {
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -462,11 +448,10 @@ static PiwikTracker *_sharedInstance;
   
   DLog(@"Send page view %@", actionName);
   
-  return [self queueEvent:[self addCommonParameters:params]];
+  return [self queueEvent:params];
 }
 
 
-// Track goal conversion
 - (BOOL)sendGoalWithID:(NSString*)goalID revenue:(NSUInteger)revenue {
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -477,11 +462,10 @@ static PiwikTracker *_sharedInstance;
   // Setting the url is mandatory but not fully applicable in an application context
   params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@", self.appName];
 
-  return [self queueEvent:[self addCommonParameters:params]];
+  return [self queueEvent:params];
 }
 
 
-// Track app search
 - (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits {
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -499,11 +483,45 @@ static PiwikTracker *_sharedInstance;
   // Setting the url is mandatory but not fully applicable in an application context
   params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@", self.appName];
   
-  return [self queueEvent:[self addCommonParameters:params]];  
+  return [self queueEvent:params];
+}
+
+
+- (BOOL)queueEvent:(NSDictionary*)parameters {
+  
+  // OptOut check
+  if (self.optOut) {
+    // User opted out from tracking, to nothing
+    // Still return YES, since returning NO is considered an error
+    return YES;
+  }
+  
+  // Use the sampling rate to decide if the event should be queued or not
+  if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
+    // Outsampled, do not queue
+    return YES;
+  }
+  
+  // Add common paramters
+  parameters = [self addCommonParameters:parameters];
+  
+  DLog(@"Store event with parameters %@", parameters);
+  
+  [self storeEventWithParameters:parameters completionBlock:^{
+    
+    if (self.dispatchInterval == 0) {
+      // Trigger dispatch
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self dispatch];
+      });
+    }
+    
+  }];
+  
+  return YES;
 }
 
    
-// Add common Piwik query parameters
 - (NSDictionary*)addCommonParameters:(NSDictionary*)parameters {
   
   if (self.sessionStart) {
@@ -534,8 +552,8 @@ static PiwikTracker *_sharedInstance;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGFloat screenScale = [[UIScreen mainScreen] scale];
 #else
-      CGRect screenBounds = [[NSScreen mainScreen] frame];
-      CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
+    CGRect screenBounds = [[NSScreen mainScreen] frame];
+    CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
 #endif
     CGSize screenSize = CGSizeMake(CGRectGetWidth(screenBounds) * screenScale, CGRectGetHeight(screenBounds) * screenScale);
     staticParameters[PiwikParameterScreenReseloution] = [NSString stringWithFormat:@"%.0fx%.0f", screenSize.width, screenSize.height];
@@ -579,11 +597,12 @@ static PiwikTracker *_sharedInstance;
   joinedParameters[PiwikParameterRandomNumber] = [NSString stringWithFormat:@"%ld", (long)randomNumber];
   
   // Location
-  if (self.includeLocationInformation && self.locationManager) {
-    id<PTLocation> location = self.locationManager.location;
+  if (self.includeLocationInformation) {
+    // The first request for location will ask the user for permission
+    CLLocation *location = self.locationManager.location;
     if (location) {
-      joinedParameters[PiwikParameterLatitude] = [NSNumber numberWithDouble:location.latitude];
-      joinedParameters[PiwikParameterLongitude] = [NSNumber numberWithDouble:location.longitude];
+      joinedParameters[PiwikParameterLatitude] = @(location.coordinate.latitude);
+      joinedParameters[PiwikParameterLongitude] = @(location.coordinate.longitude);
     }
   }
   
@@ -599,13 +618,11 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// Encode a custom variable
 inline NSString* customVariable(NSString* name, NSString* value) {
   return [NSString stringWithFormat:@"[\"%@\",\"%@\"]", name, value];
 }
    
 
-// Encode list of custom variables
 + (NSString*)encodeCustomVariables:(NSArray*)variables {
   
   NSMutableArray *encodedVariables = [NSMutableArray array];
@@ -617,46 +634,11 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-// Queue event
-- (BOOL)queueEvent:(NSDictionary*)parameters {
-  
-  // OptOut check
-  if (self.optOut == YES) {
-    // User opted out from tracking, to nothing
-    // Still return YES, since returning NO is considered an error
-    return YES;
-  }
-  
-  // Use the sampling rate to decide if the event should be queued or not
-  if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
-    // Outsampled, do not queue
-    return YES;
-  }
-
-  DLog(@"Store event with parameters %@", parameters);
-
-  [self storeEventWithParameters:parameters completionBlock:^{
-    
-    if (self.dispatchInterval == 0) {
-      // Trigger dispatch
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [self dispatch];
-      });
-    }
-    
-  }];
-  
-  return YES;
-}
-
-
-// Dispatch notification
 - (void)dispatch:(NSNotification*)notification {
   [self dispatch];
 }
 
 
-// Dispatch stored events
 - (BOOL)dispatch {
   
   if (self.isDispatchRunning) {
@@ -784,7 +766,6 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-// Dispatch did dinish
 - (void)sendEventDidFinishHasMorePending:(BOOL)hasMore {
  
   if (hasMore) {
@@ -817,7 +798,6 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-// Delete all queued events
 - (void)deleteQueuedEvents {
   [self deleteAllStoredEvents];
 }
@@ -825,20 +805,31 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 
 #pragma mark - Properties
 
-// Set opt out
+
+- (void)setIncludeLocationInformation:(BOOL)includeLocationInformation {
+  _includeLocationInformation = includeLocationInformation;
+  
+  if (_includeLocationInformation) {
+    [self.locationManager startMonitoringLocationChanges];
+  } else {
+    [self.locationManager stopMonitoringLocationChanges];
+  }
+  
+}
+
+
 - (void)setOptOut:(BOOL)optOut {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   [userDefaults setBool:optOut forKey:PiwikUserDefaultOptOutKey];
   [userDefaults synchronize];
 }
 
-// Get opt out
+
 - (BOOL)optOut {
   return [[NSUserDefaults standardUserDefaults] boolForKey:PiwikUserDefaultOptOutKey];
 }
 
 
-// Dispatch interval
 - (void)setDispatchInterval:(NSTimeInterval)interval {
   
   if (interval == 0) {
@@ -850,7 +841,6 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-// Client id
 - (NSString*)clientID {
   
   if (nil == _clientID) {
@@ -942,7 +932,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// First visit timestamp
 - (NSTimeInterval)firstVisitTimestamp {
   
   if (_firstVisitTimestamp == 0) {
@@ -963,7 +952,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// Number of visits
 - (void)setTotalNumberOfVisits:(NSUInteger)numberOfVisits {
   
   _totalNumberOfVisits = numberOfVisits;
@@ -986,7 +974,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 
 
-// App name
 - (NSString*)appName {
   if (nil == _appName) {
     // Use the CFBundleName as default
@@ -997,7 +984,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// App version
 - (NSString*)appVersion {
   if (nil == _appVersion) {
     // Use the CFBundleName as default
@@ -1010,7 +996,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 #pragma mark Help methods
 
-// Create md5
 + (NSString*)md5:(NSString*)input {
   const char* str = [input UTF8String];
   unsigned char result[CC_MD5_DIGEST_LENGTH];
@@ -1025,7 +1010,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// Create UUID
 + (NSString*)UUIDString {
   CFUUIDRef UUID = CFUUIDCreate(kCFAllocatorDefault);
   NSString *UUIDString = (__bridge_transfer NSString*)CFUUIDCreateString(kCFAllocatorDefault, UUID);
@@ -1212,8 +1196,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 #pragma mark - Core Data stack
 
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext*)managedObjectContext {
   
   if (_managedObjectContext) {
@@ -1230,8 +1212,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel*)managedObjectModel {
   
   if (_managedObjectModel) {
@@ -1245,8 +1225,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator*)persistentStoreCoordinator {
   
   if (_persistentStoreCoordinator) {
@@ -1292,7 +1270,6 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 }
 
 
-// Returns the URL to the application's Documents directory.
 - (NSURL*)applicationDocumentsDirectory {
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }

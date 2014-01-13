@@ -112,12 +112,13 @@
 @property (nonatomic) double sampleRate;
 
 /**
- Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve plotting of visitors location. Default NO. This value must be set before the tracker is used the first time.
+ Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve showing visitors location. Default NO. This value must be set before the tracker is used the first time.
  
- Think about users privacy. Provide information why their location is tracked and give the user an option to opt out.
+ The user will be asked for permission to use current location when the first event is sent. The user can also disable the location service from the Settings location.
+ 
+ Think about users privacy. Provide information why their location is tracked and give the user the option to opt out.
  
  Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.
- Please note that users can decided to not allow the app to access location information.
  */
 @property (nonatomic) BOOL includeLocationInformation;
 

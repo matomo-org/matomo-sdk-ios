@@ -7,21 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@protocol PTLocation;
 
 @interface PTLocationManagerWrapper : NSObject
 
 - (void)startMonitoringLocationChanges;
 - (void)stopMonitoringLocationChanges;
-- (id<PTLocation>)location;
+- (CLLocation*)location;
 
 @end
 
-
-@protocol PTLocation <NSObject>
-
-@property (nonatomic, readonly) double latitude;
-@property (nonatomic, readonly) double longitude;
-
-@end
