@@ -11,9 +11,13 @@
 #import "MenuViewController.h"
 
 
-static NSString * const PiwikServerURL = @"http://localhost/~mattias/piwik/";
-static NSString * const PiwikSiteID = @"2";
-static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
+static NSString * const PiwikTestServerURL = @"http://localhost/~mattias/piwik/";
+static NSString * const PiwikTestSiteID = @"1";
+static NSString * const PiwikTestAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111cc5dd6";
+
+static NSString * const PiwikProductionServerURL = @"http://someserver.com/piwik/";
+static NSString * const PiwikProductionSiteID = @"23";
+static NSString * const PiwikProductionAuthenticationToken = @"1a3e854ebf1cc7f59bb3b6d123cc7aa5";
 
 
 @implementation AppDelegate
@@ -24,12 +28,16 @@ static NSString * const PiwikAuthenticationToken = @"5d8e854ebf1cc7959bb3b6d111c
   [[NSUserDefaults standardUserDefaults] registerDefaults:@{PiwikAskedForPermissonKey : @(NO)}];
     
   // Initialize the Piwik Tracker
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID authenticationToken:PiwikAuthenticationToken];
+  // Use different Piwik server urls and tracking site data depending on if building for test or production.
+#ifdef DEBUG
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikTestServerURL] siteID:PiwikTestSiteID authenticationToken:PiwikTestAuthenticationToken];
+#else
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikProductionServerURL] siteID:PiwikProductionSiteID authenticationToken:PiwikProductionAuthenticationToken];
+#endif
   
   // Configure the tracker
-  [PiwikTracker sharedInstance].debug = YES; // Uncomment to print event to the console instead of sending it to the Piwik server
-  [PiwikTracker sharedInstance].dispatchInterval = 0;
-  [PiwikTracker sharedInstance].includeLocationInformation = YES;
+//  [PiwikTracker sharedInstance].debug = YES; // Uncomment to print event to the console instead of sending it to the Piwik server
+//  [PiwikTracker sharedInstance].dispatchInterval = 0;
   
   // Do not track anything until the user give consent
   if (![[NSUserDefaults standardUserDefaults] boolForKey:PiwikAskedForPermissonKey]) {
