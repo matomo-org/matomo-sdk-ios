@@ -49,13 +49,13 @@
   self.isMonitorLocationChanges = YES;
 
 #if TARGET_OS_IPHONE
-  // Use significant change location service for iOS
   
+  // Use significant change location service for iOS
   [self.locationManager startMonitoringSignificantLocationChanges];
   
 #else
-  // User standard service for OSX
   
+  // User standard service for OSX
   self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
   self.locationManager.distanceFilter = 500; // meters
   [self.locationManager startUpdatingLocation];
@@ -69,13 +69,13 @@
   self.isMonitorLocationChanges = NO;
 
 #if TARGET_OS_IPHONE
-  // Use significant change location service for iOS
   
+  // Use significant change location service for iOS
   [self.locationManager stopMonitoringSignificantLocationChanges];
   
 #else
-  // User standard service for OSX
   
+  // User standard service for OSX  
   [self.locationManager stopUpdatingLocation];
   
 #endif

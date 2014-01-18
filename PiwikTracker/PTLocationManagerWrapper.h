@@ -12,9 +12,10 @@
 
 @interface PTLocationManagerWrapper : NSObject
 
+@property (readonly) CLLocation* location;
+
 - (void)startMonitoringLocationChanges;
 - (void)stopMonitoringLocationChanges;
-- (CLLocation*)location;
 
 @end
 
