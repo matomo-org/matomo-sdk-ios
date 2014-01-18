@@ -93,7 +93,7 @@ The Piwik SDK is very easy to configure and user:
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
   // The website ID is available in Piwik web interface "Settings > Websites"
   // The token_auth is available in Piwik web interface "API" tab
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID: PiwikSiteID authenticationToken: PiwikAuthenticationToken];
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID authenticationToken:PiwikAuthenticationToken];
   // Any additional configuration goes here
 }
 		
@@ -101,7 +101,7 @@ The Piwik SDK is very easy to configure and user:
 // Track screen views in your view controllers
 - (void)viewDidAppear:(BOOL)animated {
   // Recommendation: track the full hierarchy of the screen, e.g. screen/view1/view2/currentView
-  [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title];
+  [[PiwikTracker sharedInstance] sendViews:@"view1", @"view2", self.title, nil];
 }
 	  
 
