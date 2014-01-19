@@ -10,6 +10,9 @@
 #import "AFNetworking.h"
 
 
+@class PiwikTransaction;
+
+
 /**
  
  The PiwikTracker is an Objective-C framework (iOS and OSX) for sending analytics to a Piwik server.
@@ -242,6 +245,23 @@
  @return YES if the event was queued for dispatching.
  */
 - (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits;
+
+
+/**
+ Track an ecommerce transaction.
+ 
+ A transaction is a composite object containing transaction information as well as an optional list of items included in the transaction.
+ 
+ Use the transaction builder to create the transaction object.
+ 
+ @param transaction The transaction
+ @return YES if the event was queued for dispatching.
+ @see PiwikTransactionBuilder
+ @see PiwikTransaction
+ @see PiwikTransactionItem
+ */
+- (BOOL)sendTransaction:(PiwikTransaction*)transaction;
+
 
 /**
  @name Dispatch pending events

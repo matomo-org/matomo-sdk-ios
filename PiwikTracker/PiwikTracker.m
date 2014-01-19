@@ -487,6 +487,15 @@ static PiwikTracker *_sharedInstance;
 }
 
 
+- (BOOL)sendTransaction:(PiwikTransaction*)transaction {
+  
+  // TODO
+  
+  return YES;
+}
+
+
+
 - (BOOL)queueEvent:(NSDictionary*)parameters {
   
   // OptOut check
