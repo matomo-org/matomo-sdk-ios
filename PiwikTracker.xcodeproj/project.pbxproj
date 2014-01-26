@@ -101,6 +101,7 @@
 		CDEAEAE9180B375700EB91C2 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
 		CDEAEAEA180B375700EB91C2 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CDEAEAEB180B375700EB91C2 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
+		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
 		DF55F803AF3445258BFDB202 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */; };
 		E5599F12A77C459BAE40411C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 		F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
@@ -213,6 +214,8 @@
 		CDEAEACC180B36F900EB91C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CDEAEACE180B36F900EB91C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CDEAEAD5180B36F900EB91C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
+		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
 		FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,6 +378,8 @@
 				CD9AC5481801CA6500EE8F43 /* GoalsViewController.m */,
 				CD03D99517E8FDFC00D7723F /* OptOutViewController.h */,
 				CD03D99617E8FDFC00D7723F /* OptOutViewController.m */,
+				CDEDC027189518B00054CF73 /* EcommerceViewController.h */,
+				CDEDC028189518B00054CF73 /* EcommerceViewController.m */,
 				CD93EC9017E76E290062BE20 /* Supporting Files */,
 			);
 			path = PiwikTrackeriOSDemo;
@@ -750,6 +755,7 @@
 				CDC55E27180179AE0019A03E /* piwiktracker.xcdatamodeld in Sources */,
 				CD9AC5491801CA6500EE8F43 /* GoalsViewController.m in Sources */,
 				CD93EC9617E76E290062BE20 /* main.m in Sources */,
+				CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */,
 				CD93EC9A17E76E290062BE20 /* AppDelegate.m in Sources */,
 				CD9AC5461801C6BB00EE8F43 /* SearchViewController.m in Sources */,
 				CD152F59188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
