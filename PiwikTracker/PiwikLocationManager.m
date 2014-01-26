@@ -1,15 +1,15 @@
 //
-//  PTLocationManagerWrapper.m
+//  PiwikLocationManager.m
 //  PiwikTracker
 //
 //  Created by Mattias Levin on 10/13/13.
 //  Copyright (c) 2013 Mattias Levin. All rights reserved.
 //
 
-#import "PTLocationManagerWrapper.h"
+#import "PiwikLocationManager.h"
 
 
-@interface PTLocationManagerWrapper () <CLLocationManagerDelegate>
+@interface PiwikLocationManager () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic) BOOL startMonitoringOnNextLocationRequest;
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation PTLocationManagerWrapper
+@implementation PiwikLocationManager
 
 
 - (id)init {

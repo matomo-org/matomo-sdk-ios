@@ -60,5 +60,10 @@
                        price:(NSUInteger)price
                     quantity:(NSUInteger)quantity;
 
+/**
+ Return YES if all mandatory properties has been set.
+ */
+- (BOOL)isValid;
+
 
 @end

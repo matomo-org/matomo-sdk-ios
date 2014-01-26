@@ -66,6 +66,11 @@
                                  discount:(NSUInteger)discount
                                     items:(NSArray*)items;
 
+/**
+ Return YES if all mandatory properties has been set.
+ */
+- (BOOL)isValid;
+
 
 @end
 

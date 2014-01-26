@@ -36,4 +36,9 @@
 }
 
 
+- (BOOL)isValid {
+  return self.name.length > 0;
+}
+
+
 @end

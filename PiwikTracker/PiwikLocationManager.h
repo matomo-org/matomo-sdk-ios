@@ -1,5 +1,5 @@
 //
-//  PTLocationManagerWrapper.h
+//  PiwikLocationManager.h
 //  PiwikTracker
 //
 //  Created by Mattias Levin on 10/13/13.
@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface PTLocationManagerWrapper : NSObject
+@interface PiwikLocationManager : NSObject
 
 @property (readonly) CLLocation* location;
 

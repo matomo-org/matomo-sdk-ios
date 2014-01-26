@@ -7,6 +7,8 @@
 //
 
 #import "PiwikTransaction.h"
+#import "PiwikTransactionItem.h"
+
 
 @implementation PiwikTransaction
 
@@ -41,6 +43,24 @@
   }
   return self;
   
+}
+
+- (BOOL)isValid {
+  
+  BOOL isTransactionValid = self.identifier.length > 0;
+  
+  __block BOOL isAllItemsValid = YES;
+  [self.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    
+    PiwikTransactionItem *item = (PiwikTransactionItem*)obj;
+    if (!item.isValid) {
+      isAllItemsValid = NO;
+      *stop = YES;
+    }
+    
+  }];
+  
+  return isTransactionValid && isAllItemsValid;
 }
 
 @end

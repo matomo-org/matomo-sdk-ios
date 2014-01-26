@@ -10,8 +10,10 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
+#import "PiwikTransaction.h"
+#import "PiwikTransactionItem.h"
 #import "PTEventEntity.h"
-#import "PTLocationManagerWrapper.h"
+#import "PiwikLocationManager.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #if TARGET_OS_IPHONE
@@ -30,6 +32,9 @@
 #endif
 
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+
+#pragma mark - Constants
 
 // User default keys
 // The key withh include the site id in order to support multiple trackers per applicationz
@@ -66,6 +71,16 @@ static NSString * const PiwikParameterLongitude = @"long";
 static NSString * const PiwikParameterSearchKeyword = @"search";
 static NSString * const PiwikParameterSearchCategory = @"search_cat";
 static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
+// Ecommerce
+static NSString * const PiwikParameterTransactionIdentifier = @"ec_id";
+static NSString * const PiwikParameterTransactionTotal = @"ec_st";
+static NSString * const PiwikParameterTransactionTax = @"ec_tx";
+static NSString * const PiwikParameterTransactionShipping = @"ec_sh";
+static NSString * const PiwikParameterTransactionDiscount = @"ec_dt";
+static NSString * const PiwikParameterTransactionItems = @"ec_items";
+// Campaign
+static NSString * const PiwikParameterCampaignName = @"_rcn";
+static NSString * const PiwikParameterCampaignKeyword = @"_rck";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
@@ -95,6 +110,40 @@ static NSString * const PiwikPrefixExceptionFatal = @"fatal";
 static NSString * const PiwikPrefixExceptionCaught = @"caught";
 static NSString * const PiwikPrefixSocial = @"social";
 
+// Incoming campaign URL parameters
+static NSString * const PiwikURLCampaignName = @"pk_campign";
+static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
+
+
+#pragma mark - Custom variable
+
+@interface CustomVariable : NSObject
+
+@property (nonatomic) NSUInteger index;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *value;
+
+- (id)initWithIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value;
+
+@end
+
+
+@implementation CustomVariable
+
+- (id)initWithIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value {
+  self = [super init];
+  if (self) {
+    _index = index;
+    _name = name;
+    _value = value;
+  }
+  return self;
+}
+
+@end
+
+
+#pragma mark - Pwik tracker
 
 @interface PiwikTracker ()
 
@@ -106,49 +155,23 @@ static NSString * const PiwikPrefixSocial = @"social";
 @property (nonatomic, strong) NSDate *appDidEnterBackgroundDate;
 
 @property (nonatomic, strong) NSMutableArray *visitorCustomVariables;
-
 @property (nonatomic, strong) NSDictionary *staticParameters;
+@property (nonatomic, strong) NSDictionary *campaignParameters;
 
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
 
-@property (nonatomic, strong) PTLocationManagerWrapper *locationManager;
+@property (nonatomic, strong) PiwikLocationManager *locationManager;
 
 @property (nonatomic, readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, readonly, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-
-- (id)initWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken;
-
-- (void)startDispatchTimer;
-- (void)stopDispatchTimer;
-
-- (void)appDidBecomeActive:(NSNotification*)notification;
-- (void)appDidEnterBackground:(NSNotification*)notification;
-
-- (NSDictionary*)addCommonParameters:(NSDictionary*)parameters;
-- (BOOL)queueEvent:(NSDictionary*)parameters;
-- (void)dispatch:(NSNotification*)notification;
-- (void)sendEvent;
-- (void)sendEventDidFinishHasMorePending:(BOOL)hasMore;
-- (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error;
-
-- (BOOL)storeEventWithParameters:(NSDictionary*)parameters completionBlock:(void (^)(void))completionBlock;
-- (void)eventsFromStore:(NSUInteger)numberOfEvents completionBlock:(void (^)(NSArray *entityIDs, NSArray *events, BOOL hasMore))completionBlock;
-- (void)deleteEventsWithIDs:(NSArray*)entityIDs;
-
-- (NSURL*)applicationDocumentsDirectory;
-
-+ (NSString*)encodeCustomVariables:(NSArray*)variables;
-+ (NSString*)md5:(NSString*)input;
-+ (NSString*)UUIDString;
-
 @end
 
 
-NSString* customVariable(NSString* name, NSString* value);
-NSString* userDefaultKeyWithSiteID(NSString* siteID, NSString *key);
+//NSString* customVariable(NSString* name, NSString* value);
+NSString* UserDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
 
 @implementation PiwikTracker
@@ -229,7 +252,7 @@ static PiwikTracker *_sharedInstance;
       _eventsPerRequest = 1;
     }
     
-    _locationManager = [[PTLocationManagerWrapper alloc] init];
+    _locationManager = [[PiwikLocationManager alloc] init];
     
     _includeLocationInformation = NO;
     
@@ -489,11 +512,74 @@ static PiwikTracker *_sharedInstance;
 
 - (BOOL)sendTransaction:(PiwikTransaction*)transaction {
   
-  // TODO
+  if (!transaction.isValid) {
+    ALog(@"Failed to send transaction, missing mandatory parameters");
+    return NO;
+  }
   
-  return YES;
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+  params[PiwikParameterTransactionIdentifier] = transaction.identifier;
+  params[PiwikParameterTransactionTotal] = @(transaction.total);
+  params[PiwikParameterTransactionTax] = @(transaction.tax);
+  params[PiwikParameterTransactionShipping] = @(transaction.shipping);
+  params[PiwikParameterTransactionDiscount] = @(transaction.discount);
+  
+  // Items should be an JSON encoded string
+  params[PiwikParameterTransactionItems] = [self JSONencodeTransactionItems:transaction.items];
+  
+  return [self queueEvent:params];
 }
 
+
+- (NSString*)JSONencodeTransactionItems:(NSArray*)items {
+  
+  NSMutableArray *JSONObject = [NSMutableArray arrayWithCapacity:items.count];
+  [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    PiwikTransactionItem *item = (PiwikTransactionItem*)obj;
+    NSDictionary *itemDictionary = [item dictionaryWithValuesForKeys:@[@"sku", @"name", @"category", @"price", @"quantity"]];
+    [JSONObject addObject:itemDictionary];
+  }];
+  
+  NSError *error;
+  NSData *JSONData = [NSJSONSerialization dataWithJSONObject:JSONObject options:0 error:&error];
+  
+  return [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
+  
+}
+
+
+- (BOOL)sendCampaign:(NSString*)campaignURLString {
+  
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+  BOOL isCampaignURL = NO;
+  
+  NSArray *components = [campaignURLString componentsSeparatedByString:@"?"];
+  if (components.count == 2) {
+    
+    NSArray *nameValueStrings = [components[1] componentsSeparatedByString:@"&"];
+    for (NSString *nameValueString in nameValueStrings) {
+      NSArray *parts = [nameValueString componentsSeparatedByString:@"="];
+      if (parts.count == 2) {
+        if ([parts[0] isEqualToString:PiwikURLCampaignKeyword]) {
+          isCampaignURL = YES;
+          parameters[PiwikParameterCampaignName] = [parts[1] copy];
+        } else if ([parts[0] isEqualToString:PiwikURLCampaignKeyword]) {
+          parameters[PiwikParameterCampaignKeyword] = [parts[1] copy];
+        }
+      }
+    }
+    
+  }
+  
+  if (isCampaignURL) {
+    self.campaignParameters = [NSDictionary dictionaryWithDictionary:parameters];
+    return YES;
+  } else {
+    return NO;
+    
+  }
+}
 
 
 - (BOOL)queueEvent:(NSDictionary*)parameters {
@@ -509,6 +595,12 @@ static PiwikTracker *_sharedInstance;
   if (self.sampleRate != 100 && self.sampleRate < (arc4random_uniform(101))) {
     // Outsampled, do not queue
     return YES;
+  }
+  
+  // Add campaign parameters if they are set
+  if (self.campaignParameters.count > 0) {
+    parameters = [self addCampaignParameters:parameters];
+    self.campaignParameters = nil;
   }
   
   // Add common paramters
@@ -528,6 +620,15 @@ static PiwikTracker *_sharedInstance;
   }];
   
   return YES;
+}
+
+
+- (NSDictionary*)addCampaignParameters:(NSDictionary*)parameters {
+  
+  NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+  [joinedParameters addEntriesFromDictionary:self.campaignParameters];
+  
+  return parameters;
 }
 
    
@@ -578,16 +679,17 @@ static PiwikTracker *_sharedInstance;
     // Set custom variables - platform, OS version and application version
     self.visitorCustomVariables = [NSMutableArray array];
     
-    self.visitorCustomVariables[0] = customVariable(@"Platform", [self platformName]);
+    self.visitorCustomVariables[0] = [[CustomVariable alloc] initWithIndex:1 name:@"Platform" value:self.platformName];
     
 #if TARGET_OS_IPHONE
-    self.visitorCustomVariables[1] = customVariable(@"OS version", [UIDevice currentDevice].systemVersion);
+    self.visitorCustomVariables[1] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[UIDevice currentDevice].systemVersion];
 #else
-    self.visitorCustomVariables[1] = customVariable(@"OS version", [[NSProcessInfo processInfo] operatingSystemVersionString]);
+    self.visitorCustomVariables[1] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[[NSProcessInfo processInfo].operatingSystemVersionString]];
 #endif
     
-    self.visitorCustomVariables[2] = customVariable(@"App version", self.appVersion);
-    staticParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker encodeCustomVariables:self.visitorCustomVariables];
+    self.visitorCustomVariables[2] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
+    
+    staticParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONencodeCustomVariables:self.visitorCustomVariables];
     
     self.staticParameters = staticParameters;
   }
@@ -627,19 +729,20 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-inline NSString* customVariable(NSString* name, NSString* value) {
-  return [NSString stringWithFormat:@"[\"%@\",\"%@\"]", name, value];
-}
-   
-
-+ (NSString*)encodeCustomVariables:(NSArray*)variables {
++ (NSString*)JSONencodeCustomVariables:(NSArray*)variables {
   
-  NSMutableArray *encodedVariables = [NSMutableArray array];
+  // Travers all custom variables and create a JSON object that be be serialized
+  NSMutableDictionary *JSONObject = [NSMutableDictionary dictionaryWithCapacity:variables.count];
   [variables enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    [encodedVariables addObject:[NSString stringWithFormat:@"\"%ld\":%@", (long)idx + 1, obj]];
+    CustomVariable *customVariable = (CustomVariable*)obj;
+    JSONObject[[NSString stringWithFormat:@"%d", customVariable.index]] = [NSArray arrayWithObjects:customVariable.name, customVariable.value, nil];
   }];
   
-  return [NSString stringWithFormat:@"{%@}", [encodedVariables componentsJoinedByString:@","]];
+  NSError *error;
+  NSData *JSONData = [NSJSONSerialization dataWithJSONObject:JSONObject options:0 error:&error];
+  
+  return [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
+  
 }
 
 
@@ -700,9 +803,9 @@ inline NSString* customVariable(NSString* name, NSString* value) {
         
         NSURLRequest *request = [self requestForEvents:events];
         
-//        DLog(@"Request %@", request);
-//        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
-//        DLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
+        DLog(@"Request %@", request);
+        DLog(@"Request headers %@", [request allHTTPHeaderFields]);
+        DLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
 
 //        NSLocale *locale = [NSLocale currentLocale];
 //        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
@@ -878,7 +981,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
     
     // Get from user defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _clientID = [userDefaults stringForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
+    _clientID = [userDefaults stringForKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
     
     if (!_clientID) {
       // Still nil, create
@@ -888,7 +991,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
       // md5 and max 16 chars
       _clientID = [[PiwikTracker md5:UUID] substringToIndex:16];
            
-      [userDefaults setValue:_clientID forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
+      [userDefaults setValue:_clientID forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
       [userDefaults synchronize];
     }
   }
@@ -897,7 +1000,7 @@ inline NSString* customVariable(NSString* name, NSString* value) {
 }
 
 
-inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
+inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   return [NSString stringWithFormat:@"%@_%@", siteID, key];
 }
 
@@ -909,7 +1012,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   _currentVisitTimestamp = currentVisitTimestamp;
   
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  [userDefaults setDouble:_currentVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+  [userDefaults setDouble:_currentVisitTimestamp forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
   [userDefaults synchronize];
 }
 
@@ -919,12 +1022,12 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   if (_currentVisitTimestamp == 0) {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _currentVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+    _currentVisitTimestamp = [userDefaults doubleForKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
     
     if (_currentVisitTimestamp == 0) {
       // If still no value, create one
       _currentVisitTimestamp = [[NSDate date] timeIntervalSince1970];
-      [userDefaults setDouble:_currentVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
+      [userDefaults setDouble:_currentVisitTimestamp  forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultCurrentVisitTimestampKey)];
       [userDefaults synchronize];
     }
   }
@@ -938,7 +1041,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   _previousVisitTimestamp = previousVisitTimestamp;
 
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  [userDefaults setDouble:previousVisitTimestamp forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+  [userDefaults setDouble:previousVisitTimestamp forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
   [userDefaults synchronize]; 
 }
 
@@ -948,12 +1051,12 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   if (_previousVisitTimestamp == 0) {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _previousVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+    _previousVisitTimestamp = [userDefaults doubleForKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
     
     if (_previousVisitTimestamp == 0) {
       // If still no value, create one
       _previousVisitTimestamp = [[NSDate date] timeIntervalSince1970];
-      [userDefaults setDouble:_previousVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
+      [userDefaults setDouble:_previousVisitTimestamp  forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
       [userDefaults synchronize];
     }
 
@@ -969,12 +1072,12 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     
     // Get the value from user defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _firstVisitTimestamp = [userDefaults doubleForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultFirstVistsTimestampKey)];
+    _firstVisitTimestamp = [userDefaults doubleForKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultFirstVistsTimestampKey)];
     
     if (_firstVisitTimestamp == 0) {
       // If still no value, create one
       _firstVisitTimestamp = [[NSDate date] timeIntervalSince1970];
-      [userDefaults setDouble:_firstVisitTimestamp  forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultFirstVistsTimestampKey)];
+      [userDefaults setDouble:_firstVisitTimestamp  forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultFirstVistsTimestampKey)];
       [userDefaults synchronize];
     }
   }
@@ -988,7 +1091,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   _totalNumberOfVisits = numberOfVisits;
   
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  [userDefaults setInteger:numberOfVisits forKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultTotalNumberOfVisitsKey)];
+  [userDefaults setInteger:numberOfVisits forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultTotalNumberOfVisitsKey)];
   [userDefaults synchronize];
 }
 
@@ -997,7 +1100,7 @@ inline NSString* userDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   if (_totalNumberOfVisits <= 0) {
     // Read value from user defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _totalNumberOfVisits = [userDefaults integerForKey:userDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultTotalNumberOfVisitsKey)];
+    _totalNumberOfVisits = [userDefaults integerForKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultTotalNumberOfVisitsKey)];
   }
   
   return _totalNumberOfVisits;

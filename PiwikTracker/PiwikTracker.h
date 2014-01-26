@@ -250,17 +250,36 @@
 /**
  Track an ecommerce transaction.
  
- A transaction is a composite object containing transaction information as well as an optional list of items included in the transaction.
+ A transaction contains transaction information as well as an optional list of items included in the transaction.
  
  Use the transaction builder to create the transaction object.
  
- @param transaction The transaction
+ @param transaction The transaction.
  @return YES if the event was queued for dispatching.
  @see PiwikTransactionBuilder
  @see PiwikTransaction
  @see PiwikTransactionItem
  */
 - (BOOL)sendTransaction:(PiwikTransaction*)transaction;
+
+
+/**
+ Track that the app was launched from a Piwik campaign URL.
+ The campaign information will be sent to the server with the next Piwik event.
+ 
+ A Piwik campaign URL contains one or two special parameter for tracking campaigns.
+ * pk_campaign - The name of the campaign
+ * pk_keyword - A specifc call to action within a campaign
+ Example URL http://example.org/landing.html?pk_campaign=Email-Nov2011&pk_kwd=LearnMore
+ 
+ Use the [Piwk URL builder tool](http://piwik.org/docs/tracking-campaigns-url-builder/) to safely generate Piwik compaign URLs.
+ 
+ If no Piwik campign parameters are detected in the URL will be ignored and no tracking performed.
+ 
+ @param campaignURLString A custom app URL containing campign parameters.
+ @return YES if URL was detected to contain Piwik campaign parameter.
+ */
+- (BOOL)sendCampaign:(NSString*)campaignURLString;
 
 
 /**
