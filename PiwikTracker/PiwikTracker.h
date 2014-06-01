@@ -77,7 +77,7 @@
 /**
  Unique client id, used to identify unique visitors.
  
- This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application is uninstalled and installed again, a new value will be generated. 
+ This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application is uninstalled and installed again, a new client id will be generated. 
  
  Requires the authentication token to be set.
  */
@@ -124,6 +124,8 @@
 
 /**
  Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve showing visitors location. Default NO. This value must be set before the tracker is used the first time.
+ 
+ Please note that the position will only be used when showing the location in a users profile. It will not affect the visitor map.
  
  The user will be asked for permission to use current location when the first event is sent. The user can also disable the location service from the Settings location.
  

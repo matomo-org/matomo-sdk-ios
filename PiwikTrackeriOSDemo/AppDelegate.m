@@ -38,10 +38,10 @@ static NSString * const PiwikProductionAuthenticationToken = @"1a3e854ebf1cc7f59
   /* Configure the tracker */
   
 //  [PiwikTracker sharedInstance].debug = YES;
-//  [PiwikTracker sharedInstance].dispatchInterval = 0;
+  [PiwikTracker sharedInstance].dispatchInterval = 30;
 //  [PiwikTracker sharedInstance].sampleRate = 50;
 //  [PiwikTracker sharedInstance].eventsPerRequest = 2;
-//  [PiwikTracker sharedInstance].includeLocationInformation = YES;
+  [PiwikTracker sharedInstance].includeLocationInformation = YES;
   
   // Do not track anything until the user give consent
   if (![[NSUserDefaults standardUserDefaults] boolForKey:PiwikAskedForPermissonKey]) {

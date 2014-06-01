@@ -12,7 +12,7 @@
 
 @interface PiwikLocationManager : NSObject
 
-@property (readonly) CLLocation* location;
+@property (nonatomic, readonly) CLLocation *location;
 
 - (void)startMonitoringLocationChanges;
 - (void)stopMonitoringLocationChanges;

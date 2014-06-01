@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
+@class PiwikTransactionBuilder;
+
+
+typedef void (^TransactionBuilderBlock)(PiwikTransactionBuilder *builder);
+
+
 /**
  A transaction is a composite object containing transaction information as well as an optional list of items included in the transaction.
  */
@@ -41,35 +47,27 @@
 
 /**
  A list of items included in the transaction.
- @PiwikTransactionItem
+ @see PiwikTransactionItem
  */
 @property (readonly) NSArray *items;
 
 
 /**
- Create a single transaction.
- 
- User the Piwik transaction builder to create transactions and included items.
- 
- @param identifier A unique identifier
- @param total The sub total of the order (excluding shipping cost)
- @param tax The total tax
- @param shipping The total shipping cost
- @para discount The total offered discount
+ Create a transaction using a transaction builder.
+ @param block a transaction builder block
+ @return a new transaction
  @see PiwikTransactionBuilder
- @see PiwikTransactionItem
  */
-+ (instancetype)transactionWithIdentifier:(NSString*)identifier
-                                    total:(NSUInteger)total
-                                      tax:(NSUInteger)tax
-                                 shipping:(NSUInteger)shipping
-                                 discount:(NSUInteger)discount
-                                    items:(NSArray*)items;
++ (instancetype)transactionWithBuilder:(TransactionBuilderBlock)block;
+
 
 /**
- Return YES if all mandatory properties has been set.
+ Create a transaction from the builder.
+ Use the builder method to create a new instance.
+ @return a new transaction
+ @see transactionWithBuilder:
  */
-- (BOOL)isValid;
+- (id)initWithBuilder:(PiwikTransactionBuilder*)builder;
 
 
 @end

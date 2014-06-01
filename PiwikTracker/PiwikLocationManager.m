@@ -36,11 +36,13 @@
 - (void)startMonitoringLocationChanges {
   
   // If the app already have permission to track user location start monitoring. Otherwise wait untill the first location is requested
+  // Do this to avoid asking for permission directly when the app starts
+  // This will allow the app to to ask for permission at a controlled point in the application flow
   if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized &&
       [CLLocationManager locationServicesEnabled]) {
-    self.startMonitoringOnNextLocationRequest = YES;
-  } else {
     [self _startMonitoringLocationChanges];
+  } else {
+    self.startMonitoringOnNextLocationRequest = YES;
   }
   
 }

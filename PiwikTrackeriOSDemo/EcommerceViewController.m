@@ -7,6 +7,7 @@
 //
 
 #import "EcommerceViewController.h"
+#import "PiwikTransaction.h"
 #import "PiwikTransactionBuilder.h"
 #import "PiwikTracker.h"
 
@@ -47,21 +48,28 @@ static NSUInteger const ItemPrice = 1;
 
 - (IBAction)purchaseAction:(id)sender {
   
-  PiwikTransactionBuilder *builder = [PiwikTransactionBuilder builderWithTransactionIdentifier:@"T123"
-                                                                                         total:[self.totalCostLabel.text integerValue]
-                                                                                           tax:[self.taxLabel.text integerValue]
-                                                                                      shipping:[self.shippingCostLabel.text integerValue]
-                                                                                      discount:0];
-  [builder addItemWithName:@"Cookies" sku:@"SKU123" category:@"Food" price:1 quantity:[self.numberOfItemsTextField.text integerValue]];
+  PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(PiwikTransactionBuilder *builder) {
+
+    builder.identifier = @"T123";
+    builder.total = [self.totalCostLabel.text integerValue];
+    builder.tax = [self.taxLabel.text integerValue];
+    builder.shipping = [self.shippingCostLabel.text integerValue];
+    builder.discount = 0;
+    
+    [builder addItemWithName:@"Cookies"
+                         sku:@"SKU123"
+                    category:@"Food"
+                       price:1
+                    quantity:[self.numberOfItemsTextField.text integerValue]];
+  }];
   
-  [[PiwikTracker sharedInstance] sendTransaction:[builder build]];
-  
+  [[PiwikTracker sharedInstance] sendTransaction:transaction];
 }
 
 
 - (void)calculateCost {
   
-  int numberOfItems = [self.numberOfItemsTextField.text integerValue];
+  int numberOfItems = (int)[self.numberOfItemsTextField.text integerValue];
   
   int totalCost = numberOfItems * ItemPrice;
   

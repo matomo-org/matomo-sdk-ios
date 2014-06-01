@@ -7,60 +7,35 @@
 //
 
 #import "PiwikTransaction.h"
-#import "PiwikTransactionItem.h"
+#import "PiwikTransactionBuilder.h"
 
 
 @implementation PiwikTransaction
 
 
-+ (instancetype)transactionWithIdentifier:(NSString*)identifier
-                                    total:(NSUInteger)total
-                                      tax:(NSUInteger)tax
-                                 shipping:(NSUInteger)shipping
-                                 discount:(NSUInteger)discount
-                                    items:(NSArray*)items {
-
-  return [[PiwikTransaction alloc] initWithIdentifier:identifier total:total tax:tax shipping:shipping discount:discount items:items];
++ (instancetype)transactionWithBuilder:(TransactionBuilderBlock)block {
+  NSParameterAssert(block);
   
+  PiwikTransactionBuilder *builder = [[PiwikTransactionBuilder alloc] init];
+  block(builder);
+  
+  return [builder build];
 }
 
 
-- (id)initWithIdentifier:(NSString*)identifier
-                   total:(NSUInteger)total
-                     tax:(NSUInteger)tax
-                shipping:(NSUInteger)shipping
-                discount:(NSUInteger)discount
-                   items:(NSArray*)items {
+- (id)initWithBuilder:(PiwikTransactionBuilder*)builder {
   
   self = [super init];
   if (self) {
-    _identifier = identifier;
-    _total = total;
-    _tax = tax;
-    _shipping = shipping;
-    _discount = discount;
-    _items = items;
+    _identifier = builder.identifier;
+    _total = builder.total;
+    _tax = builder.tax;
+    _shipping = builder.shipping;
+    _discount = builder.discount;
+    _items = builder.items;
   }
   return self;
-  
 }
 
-- (BOOL)isValid {
-  
-  BOOL isTransactionValid = self.identifier.length > 0;
-  
-  __block BOOL isAllItemsValid = YES;
-  [self.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    
-    PiwikTransactionItem *item = (PiwikTransactionItem*)obj;
-    if (!item.isValid) {
-      isAllItemsValid = NO;
-      *stop = YES;
-    }
-    
-  }];
-  
-  return isTransactionValid && isAllItemsValid;
-}
 
 @end

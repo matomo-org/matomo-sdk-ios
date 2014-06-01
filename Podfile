@@ -1,7 +1,10 @@
 inhibit_all_warnings!
 
 
-platform :ios, '6.0'
+platform :ios, '7.0'
+
+xcodeproj 'PiwikTracker'
+
 link_with ['PiwikTracker', 'PiwikTrackeriOSDemo']
   
 podspec :name => 'PiwikTracker'
@@ -16,9 +19,3 @@ target :osx, :exclusive => true do
   podspec :name => 'PiwikTracker'
 
 end
-
-
-
-
-
-
