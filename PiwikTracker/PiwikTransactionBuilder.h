@@ -25,24 +25,29 @@
 @property (nonatomic, strong) NSString *identifier;
 
 /**
+ The grand total for the ecommerce order
+ */
+@property (nonatomic, strong) NSNumber *grandTotal;
+
+/**
  The sub total of the transaction (excluding shipping cost).
  */
-@property (nonatomic) NSUInteger total;
+@property (nonatomic, strong) NSNumber *subTotal;
 
 /**
  The total tax.
  */
-@property (nonatomic) NSUInteger tax;
+@property (nonatomic, strong) NSNumber *tax;
 
 /**
  The total shipping cost
  */
-@property (nonatomic) NSUInteger shipping;
+@property (nonatomic, strong) NSNumber *shippingCost;
 
 /**
  The total offered discount.
  */
-@property (nonatomic) NSUInteger discount;
+@property (nonatomic, strong) NSNumber *discount;
 
 /**
  A list of items included in the transaction.
@@ -53,28 +58,26 @@
 
 /**
  Add a transaction item.
- 
- @param name The name of the item
+
  @param sku The unique SKU of the item
+ @param name The name of the item
  @param category The category of the added item
  @param price The price
  @param quantity The quantity of the product in the transaction
  */
-- (void)addItemWithName:(NSString*)name
-                    sku:(NSString*)sku
-               category:(NSString*)category
-                  price:(NSUInteger)price
-               quantity:(NSUInteger)quantity;
+- (void)addItemWithSku:(NSString*)sku
+                  name:(NSString*)name
+              category:(NSString*)category
+                 price:(float)price
+              quantity:(NSUInteger)quantity;
 
 /**
  Add a transaction item to the transaction.
  
- @param name The name of the item
- @param price The price
- @param quantity The quantity of the product in the transaction
+ @param sku The unique SKU of the item
  @see addItemWithName:sku:category:price:quantity:
  */
-- (void)addItemWithName:(NSString*)name price:(NSUInteger)price quantity:(NSUInteger)quantity;
+- (void)addItemWithSku:(NSString*)sku;
 
 
 /**

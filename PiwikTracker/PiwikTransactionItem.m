@@ -11,21 +11,26 @@
 @implementation PiwikTransactionItem
 
 
-+ (instancetype)itemWithName:(NSString*)name
-                         sku:(NSString*)sku
-                    category:(NSString*)category
-                       price:(NSUInteger)price
-                    quantity:(NSUInteger)quantity {
++ (instancetype)itemWithSku:(NSString*)sku
+                       name:(NSString*)name
+                   category:(NSString*)category
+                      price:(float)price
+                   quantity:(NSUInteger)quantity {
   
-  return [[PiwikTransactionItem alloc] initWithName:name sku:sku category:category price:price quantity:quantity];
-  
+  return [[PiwikTransactionItem alloc] initWithSku:sku name:name category:category price:@(price) quantity:@(quantity)];
 }
 
 
-- (id)initWithName:(NSString*)name sku:(NSString*)sku category:(NSString*)category price:(NSUInteger)price quantity:(NSUInteger)quantity {
++ (instancetype)itemWithSKU:(NSString*)sku {
+  return [[PiwikTransactionItem alloc] initWithSku:sku name:nil category:nil price:nil quantity:nil];
+}
+
+
+- (id)initWithSku:(NSString*)sku name:(NSString*)name category:(NSString*)category price:(NSNumber*)price quantity:(NSNumber*)quantity {
   
   self = [super init];
   if (self) {
+    _sku = sku;
     _name = name;
     _category = category;
     _price = price;
@@ -37,7 +42,7 @@
 
 
 - (BOOL)isValid {
-  return self.name.length > 0;
+  return self.sku.length > 0;
 }
 
 

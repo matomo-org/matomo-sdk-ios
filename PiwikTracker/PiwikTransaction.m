@@ -28,9 +28,10 @@
   self = [super init];
   if (self) {
     _identifier = builder.identifier;
-    _total = builder.total;
+    _grandTotal = builder.grandTotal;
+    _subTotal = builder.subTotal;
     _tax = builder.tax;
-    _shipping = builder.shipping;
+    _shippingCost = builder.shippingCost;
     _discount = builder.discount;
     _items = builder.items;
   }

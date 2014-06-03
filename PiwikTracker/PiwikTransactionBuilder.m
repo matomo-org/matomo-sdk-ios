@@ -14,18 +14,33 @@
 @implementation PiwikTransactionBuilder
 
 
-- (void)addItemWithName:(NSString*)name price:(NSUInteger)price quantity:(NSUInteger)quantity {
-  [self addItemWithName:name sku:nil category:nil price:price quantity:quantity];
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    _items = [[NSMutableArray alloc] init];
+  }
+  return self;
 }
 
 
-- (void)addItemWithName:(NSString*)name
-                    sku:(NSString*)sku
-               category:(NSString*)category
-                  price:(NSUInteger)price
-               quantity:(NSUInteger)quantity {
+- (void)addItemWithSku:(NSString*)sku {
+  PiwikTransactionItem *item = [PiwikTransactionItem itemWithSKU:sku];
+  [self addTransactionItem:item];
+}
+
+
+- (void)addItemWithSku:(NSString*)sku
+                  name:(NSString*)name
+              category:(NSString*)category
+                 price:(float)price
+              quantity:(NSUInteger)quantity {
   
-  PiwikTransactionItem *item = [PiwikTransactionItem itemWithName:name sku:sku category:category price:price quantity:quantity];
+  PiwikTransactionItem *item = [PiwikTransactionItem itemWithSku:sku name:name category:category price:price quantity:quantity];
+  [self addTransactionItem:item];
+}
+
+
+- (void)addTransactionItem:(PiwikTransactionItem*)item {
   [self.items addObject:item];
 }
 
@@ -33,7 +48,7 @@
 - (PiwikTransaction*)build {
   
   // Verify that mandatory parameters have been set
-  __block BOOL isTransactionValid = self.identifier.length > 0;
+  __block BOOL isTransactionValid = self.identifier.length > 0 && self.grandTotal;
   
   [self.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     PiwikTransactionItem *item = (PiwikTransactionItem*)obj;

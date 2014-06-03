@@ -234,7 +234,7 @@
  @param revenue The monetary value of the conversion.
  @return YES if the event was queued for dispatching.
  */
-- (BOOL)sendGoalWithID:(NSString*)goalID revenue:(NSUInteger)revenue;
+- (BOOL)sendGoalWithID:(NSUInteger)goalID revenue:(NSUInteger)revenue;
 
 /**
  Track a search performed in the application. The search could be local or towards a server.

@@ -21,35 +21,40 @@ typedef void (^TransactionBuilderBlock)(PiwikTransactionBuilder *builder);
 @interface PiwikTransaction : NSObject
 
 /**
- A unique transaction identifier.
+ A unique transaction identifier. Mandatory.
  */
-@property (readonly) NSString *identifier;
+@property (nonatomic, readonly) NSString *identifier;
 
 /**
- The sub total of the transaction (excluding shipping cost).
+ The grand total for the ecommerce order. Mandatory.
  */
-@property (readonly) NSUInteger total;
+@property (nonatomic, readonly) NSNumber *grandTotal;
 
 /**
- The total tax.
+ The sub total of the transaction (excluding shipping cost). Optional.
  */
-@property (readonly) NSUInteger tax;
+@property (nonatomic, readonly) NSNumber *subTotal;
 
 /**
- The total shipping cost
+ The total tax. Optional.
  */
-@property (readonly) NSUInteger shipping;
+@property (nonatomic, readonly) NSNumber *tax;
 
 /**
- The total offered discount.
+ The total shipping cost. Optional.
  */
-@property (readonly) NSUInteger discount;
+@property (nonatomic, readonly) NSNumber *shippingCost;
 
 /**
- A list of items included in the transaction.
+ The total offered discount. Optional.
+ */
+@property (nonatomic, readonly) NSNumber *discount;
+
+/**
+ A list of items included in the transaction. Optional.
  @see PiwikTransactionItem
  */
-@property (readonly) NSArray *items;
+@property (nonatomic, readonly) NSArray *items;
 
 
 /**

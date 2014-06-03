@@ -15,50 +15,57 @@
  */
 @interface PiwikTransactionItem : NSObject
 
+/**
+ The unique SKU of the item. Mandatory.
+ */
+@property (nonatomic, readonly) NSString *sku;
 
 /**
- The name of the item.
+ The name of the item. Optional.
  */
-@property (readonly) NSString *name;
+@property (nonatomic, readonly) NSString *name;
 
 /**
- The unique SKU of the item,
+ Item category. Optional.
  */
-@property (readonly) NSString *sku;
+@property (nonatomic, readonly) NSString *category;
 
 /**
- Item category.
+ Item price. Optional.
  */
-@property (readonly) NSString *category;
+@property (nonatomic, readonly) NSNumber *price;
 
 /**
- Item price.
+ Item quantity. Optional.
  */
-@property (readonly) NSUInteger price;
-
-/**
- Item quantity.
- */
-@property (readonly) NSUInteger quantity;
+@property (nonatomic, readonly) NSNumber *quantity;
 
 
 /**
  Create an item to be added to a transaction.
  
- @param name The name of the item
  @param sku The unique SKU of the item
+ @param name The name of the item
  @param category The category of the added item
  @param price The price
  @param quantity The quantity of the product in the transaction
  @return A transaction item
- @See PiwikTransactionBuilder
+ @see PiwikTransactionBuilder
  @see PiwikTransaction
  */
-+ (instancetype)itemWithName:(NSString*)name
-                         sku:(NSString*)sku
-                    category:(NSString*)category
-                       price:(NSUInteger)price
-                    quantity:(NSUInteger)quantity;
++ (instancetype)itemWithSku:(NSString*)sku
+                       name:(NSString*)name
+                   category:(NSString*)category
+                      price:(float)price
+                   quantity:(NSUInteger)quantity;
+
+
+/**
+ Create an item to be added to a transaction with a minimum set of mandatory parameters.
+ @param sku The unique SKU of the item
+ @return A transaction item
+ */
++ (instancetype)itemWithSKU:(NSString*)sku;
 
 /**
  Return YES if all mandatory properties has been set.

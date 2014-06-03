@@ -62,7 +62,7 @@ static NSString * const PiwikParameterSearchCategory = @"search_cat";
 static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
 // Ecommerce
 static NSString * const PiwikParameterTransactionIdentifier = @"ec_id";
-static NSString * const PiwikParameterTransactionTotal = @"ec_st";
+static NSString * const PiwikParameterTransactionSubTotal = @"ec_st";
 static NSString * const PiwikParameterTransactionTax = @"ec_tx";
 static NSString * const PiwikParameterTransactionShipping = @"ec_sh";
 static NSString * const PiwikParameterTransactionDiscount = @"ec_dt";
@@ -478,12 +478,12 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-- (BOOL)sendGoalWithID:(NSString*)goalID revenue:(NSUInteger)revenue {
+- (BOOL)sendGoalWithID:(NSUInteger)goalID revenue:(NSUInteger)revenue {
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
-  params[PiwikParameterGoalID] = goalID;
-  params[PiwikParameterRevenue] = [NSNumber numberWithInteger:revenue];
+  params[PiwikParameterGoalID] = @(goalID);
+  params[PiwikParameterRevenue] = @(revenue);
   
   // Setting the url is mandatory but not fully applicable in an application context
   params[PiwikParameterURL] = [NSString stringWithFormat:@"http://%@", self.appName];
@@ -518,13 +518,25 @@ static PiwikTracker *_sharedInstance;
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
   params[PiwikParameterTransactionIdentifier] = transaction.identifier;
-  params[PiwikParameterTransactionTotal] = @(transaction.total);
-  params[PiwikParameterTransactionTax] = @(transaction.tax);
-  params[PiwikParameterTransactionShipping] = @(transaction.shipping);
-  params[PiwikParameterTransactionDiscount] = @(transaction.discount);
-  
-  // Items should be an JSON encoded string
-  params[PiwikParameterTransactionItems] = [self JSONEncodeTransactionItems:transaction.items];
+  // Must idgoal=0 or revenue parameter will be ignored
+  params[PiwikParameterGoalID] = @(0);
+  params[PiwikParameterRevenue] = transaction.grandTotal;
+  if (transaction.subTotal) {
+    params[PiwikParameterTransactionSubTotal] = transaction.subTotal;
+  }
+  if (transaction.tax) {
+    params[PiwikParameterTransactionTax] = transaction.tax;
+  }
+  if (transaction.shippingCost) {
+    params[PiwikParameterTransactionShipping] = transaction.shippingCost;
+  }
+  if (transaction.discount) {
+    params[PiwikParameterTransactionDiscount] = transaction.discount;
+  }
+  if (transaction.items.count > 0) {
+    // Items should be a JSON encoded string
+    params[PiwikParameterTransactionItems] = [self JSONEncodeTransactionItems:transaction.items];
+  }
   
   return [self queueEvent:params];
 }
@@ -534,8 +546,25 @@ static PiwikTracker *_sharedInstance;
   
   NSMutableArray *JSONObject = [NSMutableArray arrayWithCapacity:items.count];
   for (PiwikTransactionItem *item in items) {
-    NSDictionary *itemDictionary = [item dictionaryWithValuesForKeys:@[@"sku", @"name", @"category", @"price", @"quantity"]];
-    [JSONObject addObject:itemDictionary];
+    // The order of the properties are important
+    NSMutableArray *itemArray = [[NSMutableArray alloc] init];
+    if (item.sku) {
+      [itemArray addObject:item.sku];
+    }
+    if (item.name) {
+      [itemArray addObject:item.name];
+    }
+    if (item.category) {
+      [itemArray addObject:item.category];
+    }
+    if (item.price) {
+      [itemArray addObject:item.price];
+    }
+    if (item.quantity) {
+      [itemArray addObject:item.quantity];
+    }
+
+    [JSONObject addObject:itemArray];
   }
   
   NSError *error;

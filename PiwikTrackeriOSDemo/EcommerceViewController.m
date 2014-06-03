@@ -50,17 +50,22 @@ static NSUInteger const ItemPrice = 1;
   
   PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(PiwikTransactionBuilder *builder) {
 
-    builder.identifier = @"T123";
-    builder.total = [self.totalCostLabel.text integerValue];
-    builder.tax = [self.taxLabel.text integerValue];
-    builder.shipping = [self.shippingCostLabel.text integerValue];
-    builder.discount = 0;
+    builder.identifier = [NSString stringWithFormat:@"Trans-%d", arc4random_uniform(1000)];
+    builder.grandTotal = @([self.totalCostLabel.text floatValue]);
+    builder.tax = @([self.taxLabel.text floatValue]);
+    builder.shippingCost = @([self.shippingCostLabel.text floatValue]);
+    builder.discount = nil;
+    builder.subTotal = @([builder.grandTotal floatValue] - [builder.shippingCost floatValue]);
     
-    [builder addItemWithName:@"Cookies"
-                         sku:@"SKU123"
+    //[builder addItemWithSku:@"SKU123"];
+    
+
+    [builder addItemWithSku:@"SKU123"
+                       name:@"Cookies"
                     category:@"Food"
-                       price:1
+                       price:1.0
                     quantity:[self.numberOfItemsTextField.text integerValue]];
+
   }];
   
   [[PiwikTracker sharedInstance] sendTransaction:transaction];

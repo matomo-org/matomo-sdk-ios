@@ -20,7 +20,7 @@
 - (IBAction)sendGoalAction:(id)sender {
   
   // Track a conversion
-  [[PiwikTracker sharedInstance] sendGoalWithID:@"donation" revenue:5];
+  [[PiwikTracker sharedInstance] sendGoalWithID:1 revenue:5];
   
 }
 
