@@ -17,7 +17,7 @@
 @interface PiwikTrackedViewController : UIViewController
 
 /**
- The screen view name that will be used in the even sent to Piwik.
+ The screen view name that will be used in the event sent to Piwik.
  
  If not set the controllers title will be used.
  */

@@ -188,19 +188,27 @@
 - (BOOL)sendViews:(NSString*)screen, ...;
 
 /**
- Track an event (as oppose to a screen view).
- 
- Events are tracked as hierarchical screen names, category/action/label.
- 
- Events are prefixed with "event" by default unless prefixing scheme is turned off.
- 
- @param category The category of the event
- @param action The action name
- @param label The label name, optional
- @return YES if the event was queued for dispatching.
- @see isPrefixingEnabled
+ Legacy event tracking.
+ @warning This method is deprecated.
+ @see sendEventWithCategory:action:name:value:
  */
-- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label;
+- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label __deprecated_msg("Use sendEventWithCategory:action:name:value: instead.");
+
+
+/**
+ Track an event (as oppose a screen view).
+ 
+ @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. If your app is connecting to an older Piwik server (<2.3) you can enable the legacy event encoding by defining the macro `PIWIK_LEGACY_EVENT_ENCODING` in your .pch file (`#define PIWIK_LEGACY_EVENT_ENCODING`).
+ 
+ The legacy event encoding will track events as hierarchical screen names, category/action/label. Events are prefixed with "event" by default unless prefixing scheme is turned off.
+
+ @param category The category of the event
+ @param action The name of the action, e.g Play, Pause, Download
+ @param name Event name, e.g. song name, file name. Optional.
+ @param value A numeric value, float or integer. Optional.
+ @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action name:(NSString*)name value:(NSNumber*)value;
 
 /**
  Track a caught exception or error.
@@ -271,14 +279,14 @@
  
  A Piwik campaign URL contains one or two special parameter for tracking campaigns.
  * pk_campaign - The name of the campaign
- * pk_keyword - A specifc call to action within a campaign
+ * pk_keyword - A specific call to action within a campaign
  Example URL http://example.org/landing.html?pk_campaign=Email-Nov2011&pk_kwd=LearnMore
  
- Use the [Piwk URL builder tool](http://piwik.org/docs/tracking-campaigns-url-builder/) to safely generate Piwik compaign URLs.
+ Use the [Piwik URL builder tool](http://piwik.org/docs/tracking-campaigns-url-builder/) to safely generate Piwik campaign URLs.
  
- If no Piwik campign parameters are detected in the URL will be ignored and no tracking performed.
+ If no Piwik campaign parameters are detected in the URL will be ignored and no tracking performed.
  
- @param campaignURLString A custom app URL containing campign parameters.
+ @param campaignURLString A custom app URL containing campaign parameters.
  @return YES if URL was detected to contain Piwik campaign parameter.
  */
 - (BOOL)sendCampaign:(NSString*)campaignURLString;

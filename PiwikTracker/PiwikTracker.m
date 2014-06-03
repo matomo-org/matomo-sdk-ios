@@ -70,6 +70,11 @@ static NSString * const PiwikParameterTransactionItems = @"ec_items";
 // Campaign
 static NSString * const PiwikParameterCampaignName = @"_rcn";
 static NSString * const PiwikParameterCampaignKeyword = @"_rck";
+// Events
+static NSString * const PiwikParameterEventCategory = @"e_c";
+static NSString * const PiwikParameterEventAction = @"e_a";
+static NSString * const PiwikParameterEventName = @"e_n";
+static NSString * const PiwikParameterEventValue = @"e_v";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
@@ -393,27 +398,50 @@ static PiwikTracker *_sharedInstance;
 
 
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label {
+  return [self sendEventWithCategory:category action:action name:label value:nil];
+}
 
-  // Combine category, action and lable into a screen name
+
+- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action name:(NSString*)name value:(NSNumber*)value {
+  
+#ifdef PIWIK_LEGACY_EVENT_ENCODING
+  
+  // Legacy event encoding (<2.3)
+  // Track the event as a screen view by combining category, action and event into a screen name
   NSMutableArray *components = [NSMutableArray array];
-
+  
   if (self.isPrefixingEnabled) {
     [components addObject:PiwikPrefixEvent];
   }
-  
   if (category) {
     [components addObject:category];
   }
-  
   if (action) {
     [components addObject:action];
   }
-  
   if (label) {
-    [components addObject:label];
+    [components addObject:name];
   }
   
   return [self send:components];
+  
+#else
+  
+  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  
+  params[PiwikParameterEventCategory] = category;
+  params[PiwikParameterEventAction] = action;
+  if (name) {
+    params[PiwikParameterEventName] = name;
+  }
+  if (value) {
+    params[PiwikParameterEventValue] = value;
+  }
+  
+  return [self queueEvent:params];
+  
+#endif
+  
 }
 
 

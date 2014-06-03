@@ -21,7 +21,7 @@
   
   [super viewDidAppear:animated];
   
-  // Track view did appear
+  // Track as screen view
   NSString *name;
   if (self.trackedViewName) {
     name = self.trackedViewName;
