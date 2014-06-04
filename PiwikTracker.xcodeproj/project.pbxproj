@@ -67,6 +67,7 @@
 		CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
 		CD2F7DB417B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
+		CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5C9814193E65CF00A8A801 /* CampaignViewController.m */; };
 		CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5F3BED18678C9000D04E03 /* CoreLocation.framework */; };
 		CD8EB28A193B914E000E3F1F /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
@@ -173,6 +174,8 @@
 		CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTrackedViewController.h; sourceTree = "<group>"; };
 		CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackedViewController.m; sourceTree = "<group>"; };
+		CD5C9813193E65CF00A8A801 /* CampaignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaignViewController.h; sourceTree = "<group>"; };
+		CD5C9814193E65CF00A8A801 /* CampaignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignViewController.m; sourceTree = "<group>"; };
 		CD5F3BED18678C9000D04E03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CD8EB288193B914E000E3F1F /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
 		CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				CDEDC028189518B00054CF73 /* EcommerceViewController.m */,
 				CD8EB288193B914E000E3F1F /* ConfigurationViewController.h */,
 				CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */,
+				CD5C9813193E65CF00A8A801 /* CampaignViewController.h */,
+				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
 				CD93EC9017E76E290062BE20 /* Supporting Files */,
 			);
 			path = PiwikTrackeriOSDemo;
@@ -758,6 +763,7 @@
 				CDC55E24180179AE0019A03E /* PTEventEntity.m in Sources */,
 				CD152F5E188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */,
 				CDC55E26180179AE0019A03E /* PiwikTrackedViewController.m in Sources */,
+				CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */,
 				CDC55E27180179AE0019A03E /* piwiktracker.xcdatamodeld in Sources */,
 				CD9AC5491801CA6500EE8F43 /* GoalsViewController.m in Sources */,
 				CD93EC9617E76E290062BE20 /* main.m in Sources */,

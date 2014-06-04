@@ -68,6 +68,7 @@ static NSString * const PiwikParameterTransactionShipping = @"ec_sh";
 static NSString * const PiwikParameterTransactionDiscount = @"ec_dt";
 static NSString * const PiwikParameterTransactionItems = @"ec_items";
 // Campaign
+static NSString * const PiwikParameterReferrer = @"urlref";
 static NSString * const PiwikParameterCampaignName = @"_rcn";
 static NSString * const PiwikParameterCampaignKeyword = @"_rck";
 // Events
@@ -105,7 +106,7 @@ static NSString * const PiwikPrefixExceptionCaught = @"caught";
 static NSString * const PiwikPrefixSocial = @"social";
 
 // Incoming campaign URL parameters
-static NSString * const PiwikURLCampaignName = @"pk_campign";
+static NSString * const PiwikURLCampaignName = @"pk_campaign";
 static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 
 
@@ -615,7 +616,7 @@ static PiwikTracker *_sharedInstance;
     for (NSString *nameValueString in nameValueStrings) {
       NSArray *parts = [nameValueString componentsSeparatedByString:@"="];
       if (parts.count == 2) {
-        if ([parts[0] isEqualToString:PiwikURLCampaignKeyword]) {
+        if ([parts[0] isEqualToString:PiwikURLCampaignName]) {
           isCampaignURL = YES;
           parameters[PiwikParameterCampaignName] = [parts[1] copy];
         } else if ([parts[0] isEqualToString:PiwikURLCampaignKeyword]) {
@@ -627,6 +628,7 @@ static PiwikTracker *_sharedInstance;
   }
   
   if (isCampaignURL) {
+    parameters[PiwikParameterReferrer] = campaignURLString;
     self.campaignParameters = [NSDictionary dictionaryWithDictionary:parameters];
     return YES;
   } else {

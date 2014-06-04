@@ -11,5 +11,6 @@
 @interface ConfigurationViewController : UIViewController
 
 - (IBAction)newSessionAction:(id)sender;
+- (IBAction)dispatchEventsAction:(id)sender;
 
 @end

@@ -19,4 +19,10 @@
 }
 
 
+- (IBAction)dispatchEventsAction:(id)sender {
+  // Dispatch queued events
+  [[PiwikTracker sharedInstance] dispatch];
+}
+
+
 @end
