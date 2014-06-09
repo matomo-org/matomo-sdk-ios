@@ -81,10 +81,12 @@ static NSString * const PiwikParameterEventValue = @"e_v";
 static NSString * const PiwikDefaultRecordValue = @"1";
 static NSString * const PiwikDefaultAPIVersionValue = @"1";
 
+/*
 // Custom variables
 static NSUInteger const PiwikCustomVariablesMaxNumber = 5;
 static NSUInteger const PiwikCustomVariablesMaxNameLength = 20;
 static NSUInteger const PiwikCustomVariablesMaxValueLengt = 100;
+ */
 
 // Default values
 static NSUInteger const PiwikDefaultSessionTimeout = 120;
