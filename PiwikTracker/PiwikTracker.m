@@ -1234,7 +1234,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     if (index <= PiwikCustomVariablesNumberOfReserved || index > 5)
         return NO;
     
-    CustomVariable *theCustomVar = [CustomVariable alloc] initWithIndex:index name:name value:value;
+    CustomVariable *theCustomVar = [[CustomVariable alloc] initWithIndex:index name:name value:value];
     
     if (!self.visitorExtraCustomVariables)
         self.visitorExtraCustomVariables = [NSMutableArray array];
