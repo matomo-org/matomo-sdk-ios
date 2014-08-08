@@ -88,6 +88,9 @@ static NSUInteger const PiwikCustomVariablesMaxNameLength = 20;
 static NSUInteger const PiwikCustomVariablesMaxValueLengt = 100;
  */
 
+// Custom variables (including Extra ones)
+static NSUInteger const PiwikCustomVariablesNumberOfReserved = 3;
+
 // Default values
 static NSUInteger const PiwikDefaultSessionTimeout = 120;
 static NSUInteger const PiwikDefaultDispatchTimer = 120;
@@ -152,7 +155,8 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic, strong) NSDate *appDidEnterBackgroundDate;
 
 @property (nonatomic, strong) NSMutableArray *visitorCustomVariables;
-@property (nonatomic, strong) NSDictionary *sessionParameters;
+@property (nonatomic, strong) NSMutableArray *visitorExtraCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *sessionParameters;
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
 
@@ -749,11 +753,22 @@ static PiwikTracker *_sharedInstance;
     
     self.visitorCustomVariables[2] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
     
-    sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitorCustomVariables];
+    //sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitorCustomVariables];
     
     self.sessionParameters = sessionParameters;
   }
   
+  // Add Extra Visitor Custom Variables per queueEvent (for every event, screen etc) and NOT on new session only!
+  NSMutableArray *joinedCustomVariables = [[NSMutableArray alloc] initWithArray:self.visitorCustomVariables];
+  for (id aCustomVariable in self.visitorExtraCustomVariables) {
+    if ([aCustomVariable isKindOfClass:[CustomVariable class]]) {
+      CustomVariable *theCustomVar = (CustomVariable *)aCustomVariable;
+      [joinedCustomVariables addObject:theCustomVar];
+    }
+  }
+  
+  self.sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:joinedCustomVariables];
+    
   // Join event parameters with session parameters
   NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
   [joinedParameters addEntriesFromDictionary:self.sessionParameters];
@@ -1213,6 +1228,72 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   return _appVersion;
 }
 
+#pragma mark - Extra Custom Variables
+- (BOOL)setExtraCustomVariableAtIndex:(NSUInteger)index name:(NSString *)name value:(NSString *)value {
+    // First, check permitted indexes, should not be an index of reserved custom variables and not bigger than total 5.
+    if (index <= PiwikCustomVariablesNumberOfReserved || index > 5)
+        return NO;
+    
+    CustomVariable *theCustomVar = [[CustomVariable alloc] initWithIndex:index name:name value:value];
+    
+    if (!self.visitorExtraCustomVariables)
+        self.visitorExtraCustomVariables = [NSMutableArray array];
+    
+    // Internal index for visitorExtraCustomVariables, for ex. index 4 correspondes to internalIndex 0 if reserved custom variables are 3.
+    NSUInteger internalIndex = index - PiwikCustomVariablesNumberOfReserved - 1;
+    
+    // Check if internalIndex is out of current array's bound, fill empty indexes with NSNull objects
+    if (internalIndex > self.visitorExtraCustomVariables.count) {
+        NSUInteger numOfEmptyIndxs = internalIndex - self.visitorExtraCustomVariables.count;
+        for (NSUInteger i=0; i<numOfEmptyIndxs; i++) {
+            self.visitorExtraCustomVariables[i] = [[NSNull alloc] init];
+        }
+    }
+    
+    [self.visitorExtraCustomVariables setObject:theCustomVar atIndexedSubscript:internalIndex];
+    
+    return YES;
+}
+
+- (CustomVariable *)getExtraCustomVariableAtIndex:(NSUInteger)index {
+    // First, check permitted indexes, should not be an index of reserved custom variables and not bigger than total 5.
+    if (index <= PiwikCustomVariablesNumberOfReserved || index > 5)
+        return nil;
+    
+    // Internal index for visitorExtraCustomVariables, for ex. index 4 correspondes to internalIndex 0 if reserved custom variables are 3.
+    NSUInteger internalIndex = index - PiwikCustomVariablesNumberOfReserved - 1;
+
+    // There are not set custom variables at all or no at requested index
+    if (!self.visitorExtraCustomVariables || self.visitorExtraCustomVariables.count <= internalIndex)
+        return nil;
+    
+    // Check if object at requested index is CustomVariable or NSNull object
+    if ([self.visitorExtraCustomVariables[internalIndex] isKindOfClass:[NSNull class]])
+        return nil;
+    else
+        return [self.visitorExtraCustomVariables objectAtIndex:internalIndex];
+}
+
+- (CustomVariable *)removeExtraCustomVariableAtIndex:(NSUInteger)index {
+    // First, check permitted indexes, should not be an index of reserved custom variables and not bigger than total 5.
+    if (index <= PiwikCustomVariablesNumberOfReserved || index > 5)
+        return nil;
+    
+    // Internal index for visitorExtraCustomVariables, for ex. index 4 correspondes to internalIndex 0 if reserved custom variables are 3.
+    NSUInteger internalIndex = index - PiwikCustomVariablesNumberOfReserved - 1;
+    
+    CustomVariable *removedCustomVariable;
+    
+    // Check if object at requested index is CustomVariable or NSNull object
+    if ([self.visitorExtraCustomVariables[internalIndex] isKindOfClass:[NSNull class]])
+        return nil;
+    else {
+        removedCustomVariable = [[self.visitorExtraCustomVariables objectAtIndex:internalIndex] copy];
+        self.visitorExtraCustomVariables[internalIndex] = [[NSNull alloc] init];
+    }
+    
+    return removedCustomVariable;
+}
 
 #pragma mark - Help methods
 

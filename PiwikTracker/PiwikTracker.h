@@ -11,7 +11,7 @@
 
 
 @class PiwikTransaction;
-
+@class CustomVariable;
 
 /**
  
@@ -353,5 +353,37 @@
  The application version will be sent as a custom variable (index 3). By default the application version stored in CFBundleVersion will be used.
  */
 @property (nonatomic, strong) NSString *appVersion;
+
+/**
+ Set the extra custom visit variable at specific index.
+ 
+ Extra custom variables are permitted to be set as 4th or 5th custom variables.
+ 
+ @param index The index of the custom variable. Currently, only 4th and 5th indexes are permitted, the first three ones are reserved by iOS PiwikTracker.
+ @param name The name of the custom variable.
+ @param value The value of the custom variable as string.
+ @return YES if the extra custom variable is set, NO if the extra custom variable is not permitted to be set at that specific index.
+ */
+- (BOOL)setExtraCustomVariableAtIndex:(NSUInteger)index name:(NSString *)name value:(NSString *)value;
+
+/**
+ Get the extra custom visit variable at specific index.
+ 
+ Extra custom variables are permitted to be set as 4th or 5th custom variables.
+ 
+ @param index The index of the custom variable. Currently, only 4th and 5th indexes are permitted, the first three ones are reserved by iOS PiwikTracker.
+ @return The extra custom variable as CustomVariable object which is set at the specific index, nil if no custom variable has been set or index is not permitted (points to reserved custom variable).
+ */
+- (CustomVariable *)getExtraCustomVariableAtIndex:(NSUInteger)index;
+
+/**
+ Remove the extra custom visit variable at specific index.
+ 
+ Extra custom variables are permitted to be set as 4th or 5th custom variables.
+ 
+ @param index The index of the custom variable. Currently, only 4th and 5th indexes are permitted, the first three ones are reserved by iOS PiwikTracker.
+ @return The extra custom variable as CustomVariable object which is removed from the specific index, nil if no custom variable has been set or index is not permitted (points to reserved custom variable).
+ */
+- (CustomVariable *)removeExtraCustomVariableAtIndex:(NSUInteger)index;
 
 @end
