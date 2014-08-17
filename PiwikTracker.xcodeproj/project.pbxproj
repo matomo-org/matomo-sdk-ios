@@ -42,31 +42,23 @@
 		CD10FADB17B0378D0012BE50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD10FAD917B0378D0012BE50 /* InfoPlist.strings */; };
 		CD10FADE17B0378E0012BE50 /* PiwikTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FADD17B0378E0012BE50 /* PiwikTrackerTests.m */; };
 		CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
-		CD10FAF117B037B50012BE50 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
 		CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
-		CD10FAF317B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CD152F4E188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
 		CD152F4F188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
 		CD152F50188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
-		CD152F51188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
 		CD152F53188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
 		CD152F54188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
 		CD152F55188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
-		CD152F56188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
 		CD152F58188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
 		CD152F59188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
 		CD152F5A188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
-		CD152F5B188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
 		CD152F5D188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
 		CD152F5E188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
 		CD152F5F188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
-		CD152F60188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
 		CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CD1EA93517B0DA4400F63E14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
-		CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
-		CD2F7DB417B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
 		CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5C9814193E65CF00A8A801 /* CampaignViewController.m */; };
 		CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5F3BED18678C9000D04E03 /* CoreLocation.framework */; };
 		CD8EB28A193B914E000E3F1F /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */; };
@@ -753,15 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD152F60188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */,
 				CD10FADE17B0378E0012BE50 /* PiwikTrackerTests.m in Sources */,
-				CD10FAF117B037B50012BE50 /* PiwikTracker.m in Sources */,
-				CD152F51188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */,
-				CD10FAF317B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */,
-				CD1EA96A17B0E5B400F63E14 /* PTEventEntity.m in Sources */,
-				CD152F5B188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
-				CD2F7DB417B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
-				CD152F56188C54720090BFD3 /* PiwikTransaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
