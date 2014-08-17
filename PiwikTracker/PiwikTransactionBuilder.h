@@ -75,7 +75,7 @@
  Add a transaction item to the transaction.
  
  @param sku The unique SKU of the item
- @see addItemWithName:sku:category:price:quantity:
+ @see addItemWithSku:name:category:price:quantity:
  */
 - (void)addItemWithSku:(NSString*)sku;
 

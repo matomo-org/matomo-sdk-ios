@@ -47,6 +47,7 @@ static NSString * const PiwikParameterActionName = @"action_name";
 static NSString * const PiwikParameterURL = @"url";
 static NSString * const PiwikParameterVisitorID = @"_id";
 static NSString * const PiwikParameterVisitScopeCustomVariables = @"_cvar";
+static NSString * const PiwikParameterScreenScopeCustomVariables = @"cvar";
 static NSString * const PiwikParameterRandomNumber = @"r";
 static NSString * const PiwikParameterFirstVisitTimestamp = @"_idts";
 static NSString * const PiwikParameterPreviousVisitTimestamp = @"_viewts";
@@ -151,7 +152,8 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic) NSTimeInterval currentVisitTimestamp;
 @property (nonatomic, strong) NSDate *appDidEnterBackgroundDate;
 
-@property (nonatomic, strong) NSMutableArray *visitorCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *screenCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *visitCustomVariables;
 @property (nonatomic, strong) NSDictionary *sessionParameters;
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
@@ -238,6 +240,8 @@ static PiwikTracker *_sharedInstance;
     
     // By default a new session will be started when the tracker is created
     _sessionStart = YES;
+    
+    _includeDefaultCustomVariable = YES;
     
     _dispatchInterval = PiwikDefaultDispatchTimer;
     _maxNumberOfQueuedEvents = PiwikDefaultMaxNumberOfStoredEvents;
@@ -640,6 +644,45 @@ static PiwikTracker *_sharedInstance;
 }
 
 
+- (BOOL)setCustomVariableForIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value scope:(CustomVariableScope)scope {
+  
+  NSParameterAssert(index > 0);
+  NSParameterAssert(name);
+  NSParameterAssert(value);
+  
+  if (index < 1) {
+    NSLog(@"Custom variable index must be > 0");
+    return NO;
+  } else if (scope == VisitCustomVariableScope && self.includeDefaultCustomVariable && index <= 3) {
+    NSLog(@"Custom variable index conflicting with default indexes used by the SDK. Change index or turn off default default variables");
+    return NO;
+  }
+  
+  CustomVariable *customVariable = [[CustomVariable alloc] initWithIndex:index name:name value:value];
+  
+  if (scope == VisitCustomVariableScope) {
+    
+    if (!self.visitCustomVariables) {
+      self.visitCustomVariables = [NSMutableDictionary dictionary];
+    }
+    self.visitCustomVariables[@(index)] = customVariable;
+    
+    // Force generation of session parameters
+    self.sessionParameters = nil;
+    
+  } else if (scope == ScreenCustomVariableScope) {
+    
+    if (!self.screenCustomVariables) {
+      self.screenCustomVariables = [NSMutableDictionary dictionary];
+    }
+    self.screenCustomVariables[@(index)] = customVariable;
+    
+  }
+  
+  return YES;
+}
+
+
 - (BOOL)queueEvent:(NSDictionary*)parameters {
   
   // OptOut check
@@ -655,13 +698,8 @@ static PiwikTracker *_sharedInstance;
     return YES;
   }
   
-  // Add common per request parameters
   parameters = [self addPerRequestParameters:parameters];
-  
-  // Add session parameters
   parameters = [self addSessionParameters:parameters];
-  
-  // Add common parameters
   parameters = [self addStaticParameters:parameters];
   
   NSLog(@"Store event with parameters %@", parameters);
@@ -686,13 +724,19 @@ static PiwikTracker *_sharedInstance;
   
   NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
   
+  // Custom parameters
+  if (self.screenCustomVariables) {
+    joinedParameters[PiwikParameterScreenScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.screenCustomVariables];
+    self.screenCustomVariables = nil;
+  }
+  
   // Add campaign parameters if they are set
   if (self.campaignParameters.count > 0) {
     [joinedParameters addEntriesFromDictionary:self.campaignParameters];
     self.campaignParameters = nil;
   }
   
-  // Add random number
+  // Add random number (cache buster)
   int randomNumber = arc4random_uniform(50000);
   joinedParameters[PiwikParameterRandomNumber] = [NSString stringWithFormat:@"%ld", (long)randomNumber];
   
@@ -725,8 +769,9 @@ static PiwikTracker *_sharedInstance;
     self.totalNumberOfVisits = self.totalNumberOfVisits + 1;
     self.currentVisitTimestamp = [[NSDate date] timeIntervalSince1970];
     
-    // Reset session params to force a rebuild
+    // Reset session params and visit custom variables to force a rebuild
     self.sessionParameters = nil;
+    self.visitCustomVariables = nil;
   }
   
   if (!self.sessionParameters) {
@@ -736,20 +781,9 @@ static PiwikTracker *_sharedInstance;
     
     sessionParameters[PiwikParameterPreviousVisitTimestamp] = [NSString stringWithFormat:@"%.0f", self.previousVisitTimestamp];
     
-    // Set custom variables - platform, OS version and application version
-    self.visitorCustomVariables = [NSMutableArray array];
-    
-    self.visitorCustomVariables[0] = [[CustomVariable alloc] initWithIndex:1 name:@"Platform" value:self.platformName];
-    
-#if TARGET_OS_IPHONE
-    self.visitorCustomVariables[1] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[UIDevice currentDevice].systemVersion];
-#else
-    self.visitorCustomVariables[1] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[[NSProcessInfo processInfo].operatingSystemVersionString]];
-#endif
-    
-    self.visitorCustomVariables[2] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
-    
-    sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitorCustomVariables];
+    if (self.visitCustomVariables) {
+      sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitCustomVariables];
+    }
     
     self.sessionParameters = sessionParameters;
   }
@@ -764,6 +798,31 @@ static PiwikTracker *_sharedInstance;
   }
   
   return joinedParameters;
+}
+
+
+- (NSMutableDictionary*)visitCustomVariables {
+  
+  if (self.includeDefaultCustomVariable) {
+    
+    if (!_visitCustomVariables) {
+      _visitCustomVariables = [NSMutableDictionary dictionary];
+    }
+    
+    // Set custom variables - platform, OS version and application version
+    
+    _visitCustomVariables[@(0)] = [[CustomVariable alloc] initWithIndex:1 name:@"Platform" value:self.platformName];
+    
+#if TARGET_OS_IPHONE
+    _visitCustomVariables[@(1)] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[UIDevice currentDevice].systemVersion];
+#else
+    _visitCustomVariables[@(1)] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[[NSProcessInfo processInfo].operatingSystemVersionString]];
+#endif
+    
+    _visitCustomVariables[@(2)] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
+  }
+
+  return _visitCustomVariables;
 }
 
    
@@ -809,14 +868,13 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-+ (NSString*)JSONEncodeCustomVariables:(NSArray*)variables {
++ (NSString*)JSONEncodeCustomVariables:(NSDictionary*)variables {
   
   // Travers all custom variables and create a JSON object that be be serialized
   NSMutableDictionary *JSONObject = [NSMutableDictionary dictionaryWithCapacity:variables.count];
-  [variables enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    CustomVariable *customVariable = (CustomVariable*)obj;
-    JSONObject[[NSString stringWithFormat:@"%ld", (long)customVariable.index]] = [NSArray arrayWithObjects:customVariable.name, customVariable.value, nil];
-  }];
+  for (CustomVariable *customVariable in [variables objectEnumerator]) {
+        JSONObject[[NSString stringWithFormat:@"%ld", (long)customVariable.index]] = [NSArray arrayWithObjects:customVariable.name, customVariable.value, nil];
+  }
   
   NSError *error;
   NSData *JSONData = [NSJSONSerialization dataWithJSONObject:JSONObject options:0 error:&error];

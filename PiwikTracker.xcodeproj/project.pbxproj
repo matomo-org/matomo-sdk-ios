@@ -70,6 +70,7 @@
 		CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5C9814193E65CF00A8A801 /* CampaignViewController.m */; };
 		CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5F3BED18678C9000D04E03 /* CoreLocation.framework */; };
 		CD8EB28A193B914E000E3F1F /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */; };
+		CD91BDD419A1382900A4B80D /* CustomVariablesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91BDD319A1382900A4B80D /* CustomVariablesViewController.m */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
 		CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */; };
@@ -179,6 +180,8 @@
 		CD5F3BED18678C9000D04E03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CD8EB288193B914E000E3F1F /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
 		CD8EB289193B914E000E3F1F /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
+		CD91BDD219A1382900A4B80D /* CustomVariablesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVariablesViewController.h; sourceTree = "<group>"; };
+		CD91BDD319A1382900A4B80D /* CustomVariablesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomVariablesViewController.m; sourceTree = "<group>"; };
 		CD93EC8B17E76E290062BE20 /* PiwikTrackeriOSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiwikTrackeriOSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD93EC9117E76E290062BE20 /* PiwikTrackeriOSDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiwikTrackeriOSDemo-Info.plist"; sourceTree = "<group>"; };
 		CD93EC9317E76E290062BE20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */,
 				CD93ECAF17E77B700062BE20 /* EventsViewController.h */,
 				CD93ECB017E77B700062BE20 /* EventsViewController.m */,
+				CD91BDD219A1382900A4B80D /* CustomVariablesViewController.h */,
+				CD91BDD319A1382900A4B80D /* CustomVariablesViewController.m */,
 				CD93ECB217E77BA70062BE20 /* ExceptionViewController.h */,
 				CD93ECB317E77BA70062BE20 /* ExceptionViewController.m */,
 				CD93ECB517E77BEB0062BE20 /* SocialViewController.h */,
@@ -482,7 +487,7 @@
 			name = PiwikTrackerTests;
 			productName = PiwikTrackerTests;
 			productReference = CD10FACD17B0378D0012BE50 /* PiwikTrackerTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */ = {
 			isa = PBXNativeTarget;
@@ -528,9 +533,14 @@
 		CD10FAB417B0378D0012BE50 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastTestingUpgradeCheck = 0510;
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Mattias Levin";
+				TargetAttributes = {
+					CD10FACC17B0378D0012BE50 = {
+						TestTargetID = CD10FABB17B0378D0012BE50;
+					};
+				};
 			};
 			buildConfigurationList = CD10FAB717B0378D0012BE50 /* Build configuration list for PBXProject "PiwikTracker" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -770,6 +780,7 @@
 				CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */,
 				CD93EC9A17E76E290062BE20 /* AppDelegate.m in Sources */,
 				CD9AC5461801C6BB00EE8F43 /* SearchViewController.m in Sources */,
+				CD91BDD419A1382900A4B80D /* CustomVariablesViewController.m in Sources */,
 				CD152F59188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
 				CD93ECA617E76E290062BE20 /* MenuViewController.m in Sources */,
 				CD93ECAE17E7798F0062BE20 /* ScreenViewController.m in Sources */,

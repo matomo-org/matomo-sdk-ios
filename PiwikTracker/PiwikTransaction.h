@@ -69,6 +69,7 @@ typedef void (^TransactionBuilderBlock)(PiwikTransactionBuilder *builder);
 /**
  Create a transaction from the builder.
  Use the builder method to create a new instance.
+ @param builder the transaction will be created from this builder
  @return a new transaction
  @see transactionWithBuilder:
  */

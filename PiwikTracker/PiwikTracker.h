@@ -34,6 +34,12 @@
 @interface PiwikTracker : AFHTTPClient
 
 
+typedef NS_ENUM(NSUInteger, CustomVariableScope) {
+  VisitCustomVariableScope,
+  ScreenCustomVariableScope
+};
+
+
 /**
  @name Creating a Piwik tracker
  */
@@ -138,6 +144,15 @@
 
 
 /**
+ If set to YES the SDK will use custom variable index 1-3 to provide default information about the app and users device (App version, OS version and HW) for each visit.
+ Set to NO to free up additional custom variable indexes for your own reporting purpose.
+ 
+ Default values it YES.
+ */
+@property (nonatomic) BOOL includeDefaultCustomVariable;
+
+
+/**
  @name Session control
  */
 
@@ -189,7 +204,10 @@
 
 /**
  Legacy event tracking.
- @warning This method is deprecated.
+ @warning This method is deprecated
+ @param category The category of the event.
+ @param action The name of the action, e.g Play, Pause, Download.
+ @param label The label name, optional.
  @see sendEventWithCategory:action:name:value:
  */
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label __deprecated_msg("Use sendEventWithCategory:action:name:value: instead.");
@@ -290,6 +308,29 @@
  @return YES if URL was detected to contain Piwik campaign parameter.
  */
 - (BOOL)sendCampaign:(NSString*)campaignURLString;
+
+
+/**
+ @name Custom variables
+ */
+
+/**
+ Assign a custom variable.
+ 
+ A custom variable is a name-value pair that you can assign to your visits or individual screen views. The Piwik server will visualise how many visits, conversions, etc. occurred for each custom variable.
+ You can track by default up to 5 custom variables per visit and/or up to 5 custom variables per page view. It is possible to configure the Piwik server to accept additional number of custom variables.
+ 
+ Keep the name and value short to ensure that the URL lenght doesn’t go over the URL limit for the web server or http client.
+ 
+ Please note that the iOS SDK by default will use index 1-3 to report information about your app and users device at each visit (leaving index 4-5 available to the app developer). You can turn this off if you prefer to use index 1-3 for your own reporting purpose.
+ 
+ @param index Custom variable index. You should only use unique index numbers unless you want to overwrite your data.
+ @param name Custom variable name.
+ @param value Custom variable value.
+ @param scope Using visit scope will associate the custom variable with the current session. Create a new session before and after setting a visit custom variable to limit the actions associated with the custom variable. Screen scope will limit the custom variable to a single screen view.
+ @see includeDefaultCustomVariable
+ */
+- (BOOL)setCustomVariableForIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value scope:(CustomVariableScope)scope;
 
 
 /**
