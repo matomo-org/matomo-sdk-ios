@@ -479,7 +479,7 @@
 			name = PiwikTrackerTests;
 			productName = PiwikTrackerTests;
 			productReference = CD10FACD17B0378D0012BE50 /* PiwikTrackerTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productType = "com.apple.product-type.bundle";
 		};
 		CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */ = {
 			isa = PBXNativeTarget;
