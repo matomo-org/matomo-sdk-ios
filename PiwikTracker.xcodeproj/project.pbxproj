@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7E5AEF9C098747E68A152670 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -99,6 +100,7 @@
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
 		DF55F803AF3445258BFDB202 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */; };
 		E5599F12A77C459BAE40411C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
+		EB08852D78644D829B5C9A09 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */; };
 		F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,7 @@
 		AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE482B583F69438BB4B90860 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7384B0CBB04937B750C45D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = "<group>"; };
 		CD03D99217E8F8CB00D7723F /* Screen2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen2ViewController.h; sourceTree = "<group>"; };
 		CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen2ViewController.m; sourceTree = "<group>"; };
 		CD03D99517E8FDFC00D7723F /* OptOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptOutViewController.h; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 				CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */,
 				CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */,
 				F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */,
+				7E5AEF9C098747E68A152670 /* libPods-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +256,7 @@
 				CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */,
 				CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */,
 				E5599F12A77C459BAE40411C /* libPods.a in Frameworks */,
+				EB08852D78644D829B5C9A09 /* libPods-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +284,7 @@
 				CD10FABD17B0378D0012BE50 /* Products */,
 				BE7384B0CBB04937B750C45D /* Pods.xcconfig */,
 				FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */,
+				C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -604,7 +610,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6558CDB940EB41088E6EAC52 /* Copy Pods Resources */ = {
@@ -619,7 +625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		973253502162437BA566F8A6 /* Check Pods Manifest.lock */ = {
@@ -919,12 +925,12 @@
 		};
 		CD10FAE217B0378E0012BE50 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7384B0CBB04937B750C45D /* Pods.xcconfig */;
+			baseConfigurationReference = C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/PiwikTracker.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTracker/PiwikTracker-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -932,12 +938,12 @@
 		};
 		CD10FAE317B0378E0012BE50 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7384B0CBB04937B750C45D /* Pods.xcconfig */;
+			baseConfigurationReference = C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/PiwikTracker.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTracker/PiwikTracker-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -975,7 +981,7 @@
 		};
 		CD93ECAA17E76E290062BE20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7384B0CBB04937B750C45D /* Pods.xcconfig */;
+			baseConfigurationReference = C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -989,14 +995,14 @@
 		};
 		CD93ECAB17E76E290062BE20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7384B0CBB04937B750C45D /* Pods.xcconfig */;
+			baseConfigurationReference = C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTrackeriOSDemo/PiwikTrackeriOSDemo-Prefix.pch";
 				INFOPLIST_FILE = "PiwikTrackeriOSDemo/PiwikTrackeriOSDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_CFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -816,7 +816,7 @@ static PiwikTracker *_sharedInstance;
 #if TARGET_OS_IPHONE
     _visitCustomVariables[@(1)] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[UIDevice currentDevice].systemVersion];
 #else
-    _visitCustomVariables[@(1)] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[[NSProcessInfo processInfo].operatingSystemVersionString]];
+    _visitCustomVariables[@(1)] = [[CustomVariable alloc] initWithIndex:2 name:@"OS version" value:[NSProcessInfo processInfo].operatingSystemVersionString];
 #endif
     
     _visitCustomVariables[@(2)] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
