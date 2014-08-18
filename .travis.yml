@@ -1,4 +1,6 @@
 language: objective-c
-xcode_workspace: PiwikTracker.xcworkspace
-xcode_scheme: PiwikTracker
-xcode_sdk: iphonesimulator7.0
+before_install:
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+    - cd $TRAVIS_BUILD_DIR
+script: rake test
