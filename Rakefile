@@ -14,13 +14,13 @@ namespace :test do
   
   desc "Build the PiwikTracker iOS demo"
   task :ios_demo => :prepare do
-    run_build(‘PiwikTrackeriOSDemo', 'iphonesimulator')
+    run_build('PiwikTrackeriOSDemo', 'iphonesimulator')
     build_failed('iOS') unless $?.success?
   end
 
   desc "Build the PiwikTracker OSX demo"
   task :osx_demo => :prepare do
-    run_build(‘PiwikTrackerOSXDemo', 'macosx')
+    run_build('PiwikTrackerOSXDemo', 'macosx')
     build_failed('OSX') unless $?.success?
   end
   
