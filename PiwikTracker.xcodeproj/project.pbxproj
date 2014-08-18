@@ -99,9 +99,7 @@
 		CDEAEAEB180B375700EB91C2 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
 		DF55F803AF3445258BFDB202 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */; };
-		E5599F12A77C459BAE40411C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 		EB08852D78644D829B5C9A09 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */; };
-		F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE482B583F69438BB4B90860 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,8 +134,6 @@
 /* Begin PBXFileReference section */
 		746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE482B583F69438BB4B90860 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE7384B0CBB04937B750C45D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = "<group>"; };
 		CD03D99217E8F8CB00D7723F /* Screen2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen2ViewController.h; sourceTree = "<group>"; };
 		CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen2ViewController.m; sourceTree = "<group>"; };
@@ -231,7 +227,6 @@
 				CD1EA93517B0DA4400F63E14 /* UIKit.framework in Frameworks */,
 				CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */,
 				CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */,
-				F8662A186DC54FC696A178D9 /* libPods.a in Frameworks */,
 				7E5AEF9C098747E68A152670 /* libPods-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +250,6 @@
 				CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */,
 				CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */,
 				CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */,
-				E5599F12A77C459BAE40411C /* libPods.a in Frameworks */,
 				EB08852D78644D829B5C9A09 /* libPods-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +276,6 @@
 				CDEAEABC180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CD10FABE17B0378D0012BE50 /* Frameworks */,
 				CD10FABD17B0378D0012BE50 /* Products */,
-				BE7384B0CBB04937B750C45D /* Pods.xcconfig */,
 				FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */,
 				C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */,
 			);
@@ -312,7 +305,6 @@
 				CDEAEAD5180B36F900EB91C2 /* XCTest.framework */,
 				CDEAEAB8180B36F800EB91C2 /* Other Frameworks */,
 				AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */,
-				AE482B583F69438BB4B90860 /* libPods.a */,
 				746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */,
 				CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */,
 			);
