@@ -1,15 +1,15 @@
-Pod::Spec.new do |s|
-  s.name         = "PiwikTracker"
-  s.version      = "2.5.2"
-  s.summary      = "A Piwik tracker written in Objective-C for iOS and OSX apps."
-  s.homepage     = "https://github.com/piwik/piwik-sdk-ios/"
-  s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
-  s.author       = { "Mattias Levin" => "mattias.levin@gmail.com" }
-  s.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{s.version}" }
-  s.ios.deployment_target = '7.0'
-  s.osx.deployment_target = '10.8'
-  s.requires_arc = true
-  s.default_subspecs = 'Core'
+Pod::Spec.new do |spec|
+  spec.name         = "PiwikTracker"
+  spec.version      = "2.5.2"
+  spec.summary      = "A Piwik tracker written in Objective-C for iOS and OSX apps."
+  spec.homepage     = "https://github.com/piwik/piwik-sdk-ios/"
+  spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
+  spec.author       = { "Mattias Levin" => "mattias.levin@gmail.com" }
+  spec.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{s.version}" }
+  spec.ios.deployment_target = '7.0'
+  spec.osx.deployment_target = '10.8'
+  spec.requires_arc = true
+  spec.default_subspecs = 'Core'
   
   spec.subspec 'Core' do |core|
   	core.ios.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
