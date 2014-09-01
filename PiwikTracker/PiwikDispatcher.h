@@ -7,6 +7,8 @@
 //
 @protocol PiwikDispatcher
 
+// TODO Split on two methods, single send and batch send
+
 - (void)dispathWithMethod:(NSString*)method
                      path:(NSString*)path
                parameters:(NSDictionary*)parameters

@@ -54,10 +54,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
       
   }
   
-  // Create session and start request
+  // Create session and task
   NSURLSession *session = [NSURLSession sharedSession];
   
-  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+  NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     if (!error) {
       successBlock();
     } else {
@@ -65,7 +65,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
     }
   }];
   
-  [session resume];
+  [task resume];
   
 }
 
