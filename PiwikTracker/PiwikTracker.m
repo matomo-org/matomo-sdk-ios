@@ -10,10 +10,16 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
+
 #import "PiwikTransaction.h"
 #import "PiwikTransactionItem.h"
 #import "PTEventEntity.h"
 #import "PiwikLocationManager.h"
+
+#import "PiwikDispatcher.h"
+#import "PiwikAFNetworkingDispatcher.h"
+#import "PiwikDebugDispatcher.h"
+
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #if TARGET_OS_IPHONE
@@ -96,8 +102,6 @@ static NSUInteger const PiwikDefaultMaxNumberOfStoredEvents = 500;
 static NSUInteger const PiwikDefaultSampleRate = 100;
 static NSUInteger const PiwikDefaultNumberOfEventsPerRequest = 20;
 
-static NSUInteger const PiwikHTTPRequestTimeout = 5;
-
 static NSUInteger const PiwikExceptionDescriptionMaximumLength = 50;
 
 // Page view prefix values
@@ -158,6 +162,8 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
 
+@property (nonatomic, strong) id<PiwikDispatcher> dispatcher;
+@property (nonatomic, readonly) id<PiwikDispatcher> defaultDispatcher;
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
 
@@ -225,12 +231,13 @@ static PiwikTracker *_sharedInstance;
     baseURL = [baseURL URLByDeletingLastPathComponent];
   }
     
-  if (self = [super initWithBaseURL:baseURL]) {
+  if (self = [super init]) {
     
     // Initialize instance variables
-    
-    _authenticationToken = authenticationToken;
+
+    _baseURL = baseURL;
     _siteID = siteID;
+    _authenticationToken = authenticationToken;
     
     _isPrefixingEnabled = YES;
     
@@ -243,6 +250,7 @@ static PiwikTracker *_sharedInstance;
     
     _includeDefaultCustomVariable = YES;
     
+    _dispatcher = self.defaultDispatcher;
     _dispatchInterval = PiwikDefaultDispatchTimer;
     _maxNumberOfQueuedEvents = PiwikDefaultMaxNumberOfStoredEvents;
     _isDispatchRunning = NO;
@@ -290,18 +298,6 @@ static PiwikTracker *_sharedInstance;
   else {
     return nil;
   }
-}
-
-
-// Overwritten from AFHTTPClient
-- (NSMutableURLRequest*)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters {
-  
-  NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
-
-  // Reduce request timeout
-  request.timeoutInterval = PiwikHTTPRequestTimeout;
-  
-  return request;
 }
 
 
@@ -913,65 +909,29 @@ static PiwikTracker *_sharedInstance;
       [self sendEventDidFinishHasMorePending:NO];
       
     } else {
-
-      if (self.debug) {
-        // Debug mode
-              
-        // Print the result to the console, format the URL for easy reading
-        NSURLRequest *request = [self requestForEvents:events];
-        NSMutableString *absoluteRequestURL = [NSMutableString stringWithString:[[request URL] absoluteString]];
-                
-        [absoluteRequestURL replaceOccurrencesOfString:@"?"
-                                            withString:@"\n  "
-                                               options:NSLiteralSearch
-                                                 range:NSMakeRange(0, [absoluteRequestURL length])];
-        [absoluteRequestURL replaceOccurrencesOfString:@"&"
-                                            withString:@"\n  "
-                                               options:NSLiteralSearch
-                                                 range:NSMakeRange(0, [absoluteRequestURL length])];
-
-        NSLog(@"Debug Piwik request:\n%@", absoluteRequestURL);
-        
-        [self deleteEventsWithIDs:entityIDs];
-        
-        [self sendEventDidFinishHasMorePending:hasMore];
-    
-      } else {
-        
-        NSURLRequest *request = [self requestForEvents:events];
-        
-        NSLog(@"Request %@", request);
-        NSLog(@"Request headers %@", [request allHTTPHeaderFields]);
-        NSLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
-
-//        NSLocale *locale = [NSLocale currentLocale];
-//        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
-//        DLog(@"Country %@", [locale objectForKey:NSLocaleCountryCode]);
-        
-        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSLog(@"Successfully sent stats to Piwik server");
-            
-            [self deleteEventsWithIDs:entityIDs];
-            
+      
+      NSString *requestURL = [[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:self.baseURL] absoluteString];
+      NSDictionary *requestParameters = [self requestParametersForEvents:events];
+      
+      [self.dispatcher dispathWithMethod:events.count == 1 ? @"GET" : @"POST"
+                                    path:requestURL
+                              parameters:requestParameters
+        success: ^{
+          
+          [self deleteEventsWithIDs:entityIDs];
+          [self sendEventDidFinishHasMorePending:hasMore];
+                                   
+        } faliure: ^(BOOL shouldContinue) {
+          
+          NSLog(@"Failed to send stats to Piwik server");
+          
+          if (shouldContinue) {
             [self sendEventDidFinishHasMorePending:hasMore];
-            
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
-            
-            if ([self shouldAbortdispatchForNetworkError:error]) {
-              [self sendEventDidFinishHasMorePending:NO];
-            } else {
-              [self sendEventDidFinishHasMorePending:hasMore];
-            }
-            
+          } else {
+            [self sendEventDidFinishHasMorePending:NO];
+          }
+          
         }];
-        
-        [self enqueueHTTPRequestOperation:operation];
-        
-      }
       
     }
     
@@ -980,22 +940,16 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-- (NSMutableURLRequest*)requestForEvents:(NSArray*)events {
-  
-  NSMutableURLRequest *request = nil;
+- (NSDictionary*)requestParametersForEvents:(NSArray*)events {
   
   if (events.count == 1) {
     
-    // Send event as query string
-    self.parameterEncoding = AFFormURLParameterEncoding;
-    
-    request = [self requestWithMethod:@"GET" path:@"piwik.php" parameters:[events objectAtIndex:0]];
+    // Send events as query parameters
+    return [events objectAtIndex:0];
     
   } else {
     
-    // Send events as JSON
-    self.parameterEncoding = AFJSONParameterEncoding;
-    
+    // Send events as JSON encoded post body    
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
     
     // Authentication token is mandatory
@@ -1012,7 +966,7 @@ static PiwikTracker *_sharedInstance;
       
 #ifdef PIWIK1_X_BULK_ENCODING
       
-      // Piwik 1.x require the paramers to the url encoded in the request body
+      // Piwik 1.x require the paramers to be url encoded in the request body
       NSString *queryString = [NSString stringWithFormat:@"?%@", AFQueryStringFromParametersWithEncoding(params, NSUTF8StringEncoding)];
       
 #else
@@ -1035,11 +989,9 @@ static PiwikTracker *_sharedInstance;
     JSONParams[@"requests"] = queryStrings;
 //    DLog(@"Bulk request:\n%@", JSONParams);
     
-    request = [self requestWithMethod:@"POST" path:@"piwik.php" parameters:JSONParams];
+    return JSONParams;
     
   }
-  
-  return request;
   
 }
 
@@ -1049,30 +1001,10 @@ static PiwikTracker *_sharedInstance;
   if (hasMore) {
     [self sendEvent];
   } else {
-    
     self.isDispatchRunning = NO;
-    
     [self startDispatchTimer];
-    
   }
 
-}
-
-
-// Should the dispatch be aborted and pending events rescheduled
-// Subclasses can overwrite too change behaviour
-- (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error {
-  
-  if (error.code == NSURLErrorBadURL ||
-      error.code == NSURLErrorUnsupportedURL ||
-      error.code == NSURLErrorCannotFindHost ||
-      error.code == NSURLErrorCannotConnectToHost ||
-      error.code == NSURLErrorDNSLookupFailed) {
-    return YES;
-  } else {
-    return NO;
-  }
-  
 }
 
 
@@ -1084,6 +1016,23 @@ static PiwikTracker *_sharedInstance;
 #pragma mark - Properties
 
 
+- (id<PiwikDispatcher>)defaultDispatcher {
+  
+  // Instantiate dispatchers in priority order
+  
+  // TODO Add more
+  
+  if (NSClassFromString(@"PiwikAFNetworkingDispather")) {
+    return [[NSClassFromString(@"PiwikAFNetworkingDispather") alloc] init];
+  } else if (NSClassFromString(@"PiwikNSURLSessionDispather")) {
+    return [[NSClassFromString(@"PiwikNSURLSessionDispather") alloc] init];
+  } else {
+    return [[PiwikDebugDispatcher alloc] init];
+  }
+  
+}
+
+
 - (void)setIncludeLocationInformation:(BOOL)includeLocationInformation {
   _includeLocationInformation = includeLocationInformation;
   
@@ -1093,6 +1042,12 @@ static PiwikTracker *_sharedInstance;
     [self.locationManager stopMonitoringLocationChanges];
   }
   
+}
+
+
+- (void)setDebug:(BOOL)debug {
+  self.dispatcher = debug ? [[PiwikDebugDispatcher alloc] init] : self.defaultDispatcher;
+  _debug = debug;
 }
 
 
