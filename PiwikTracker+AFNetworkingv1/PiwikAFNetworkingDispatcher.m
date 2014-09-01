@@ -32,7 +32,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   NSLog(@"Dispatch event with AFNetworking");
   
   if (!self.httpClient) {
-    self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:path]];
+    self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[path stringByDeletingLastPathComponent]]];
   }
   
   self.httpClient.parameterEncoding = [method isEqualToString:@"GET"] ? AFFormURLParameterEncoding : AFJSONParameterEncoding;

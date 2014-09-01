@@ -6,12 +6,22 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author       = { "Mattias Levin" => "mattias.levin@gmail.com" }
   s.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{s.version}" }
-  s.ios.deployment_target = '6.0'
+  s.ios.deployment_target = '7.0'
   s.osx.deployment_target = '10.8'
-  s.ios.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
-  s.osx.exclude_files = 'PiwikTracker/PiwikTrackedViewController.{h,m}'
-  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
-  s.osx.frameworks = 'Foundation', 'Cocoa', 'CoreData', 'CoreGraphics'
   s.requires_arc = true
-  s.dependency 'AFNetworking', '1.3.2'
+  s.default_subspecs = 'Core'
+  
+  spec.subspec 'Core' do |core|
+  	core.ios.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
+ 	core.osx.exclude_files = 'PiwikTracker/PiwikTrackedViewController.{h,m}'
+  	core.ios.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
+  	core.osx.frameworks = 'Foundation', 'Cocoa', 'CoreData', 'CoreGraphics'
+  end
+  
+  spec.subspec 'AFNetworkingv1' do |afnetworkingv1|
+      afnetworkingv1.source_files   = 'PiwikTracker+AFNetworkingv1/*.{h,m,}'
+	  afnetworkingv1.dependency 'AFNetworking', '1.3.2'
+      afnetworkingv1.dependency 'PiwikTracker/Core'
+  end
+  
 end

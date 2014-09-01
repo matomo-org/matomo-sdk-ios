@@ -17,8 +17,7 @@
 #import "PiwikLocationManager.h"
 
 #import "PiwikDispatcher.h"
-#import "PiwikAFNetworkingDispatcher.h"
-#import "PiwikDebugDispatcher.h"
+#import "PiwikNSURLSessionDispatcher.h"
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
@@ -162,7 +161,6 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
 
-@property (nonatomic, strong) id<PiwikDispatcher> dispatcher;
 @property (nonatomic, readonly) id<PiwikDispatcher> defaultDispatcher;
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
@@ -1024,10 +1022,8 @@ static PiwikTracker *_sharedInstance;
   
   if (NSClassFromString(@"PiwikAFNetworkingDispather")) {
     return [[NSClassFromString(@"PiwikAFNetworkingDispather") alloc] init];
-  } else if (NSClassFromString(@"PiwikNSURLSessionDispather")) {
-    return [[NSClassFromString(@"PiwikNSURLSessionDispather") alloc] init];
   } else {
-    return [[PiwikDebugDispatcher alloc] init];
+    return [[PiwikNSURLSessionDispatcher alloc] init];
   }
   
 }
@@ -1046,7 +1042,18 @@ static PiwikTracker *_sharedInstance;
 
 
 - (void)setDebug:(BOOL)debug {
-  self.dispatcher = debug ? [[PiwikDebugDispatcher alloc] init] : self.defaultDispatcher;
+
+  // TODO Refactor
+  
+  static id<PiwikDispatcher> oldDispatcher;
+  
+  if (debug && !_debug) {
+    oldDispatcher = self.dispatcher;
+    self.dispatcher = [[PiwikDebugDispatcher alloc] init];
+  } else {
+    self.dispatcher = oldDispatcher;
+  }
+  
   _debug = debug;
 }
 

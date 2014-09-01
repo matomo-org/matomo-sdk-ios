@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "AFNetworking.h"
-
+#import "PiwikDebugDispatcher.h"
 
 @class PiwikTransaction;
 
@@ -65,6 +64,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 + (instancetype)sharedInstance;
 
 
+/**
+ The base URL of the Piwik server.
+ */
 @property (nonatomic, readonly) NSURL *baseURL;
 
 /**
@@ -339,6 +341,17 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 /**
  @name Dispatch pending events
  */
+
+/**
+ The dispatcher that will actual network request to the Piwik server.
+ A default dispatcher will be selected based on the dependencies available in the code
+ 1) AFNetworking v2
+ 2) AFNetworking v1 (due to backwards compatibility, will be removed)
+ 3) NSURLSession (fallback, will always work)
+
+ Developers can set their own dispatchers in order to implement specific security schemas, http client frameworks or network and server configurations.
+ */
+@property (nonatomic, strong) id<PiwikDispatcher> dispatcher;
 
 /**
  The tracker will automatically dispatch all pending events on a timer. Default value 120 seconds.
