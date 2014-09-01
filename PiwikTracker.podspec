@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/piwik/piwik-sdk-ios/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   spec.author       = { "Mattias Levin" => "mattias.levin@gmail.com" }
-  spec.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{s.version}" }
+  spec.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{spec.version}" }
   spec.ios.deployment_target = '7.0'
   spec.osx.deployment_target = '10.8'
   spec.requires_arc = true
