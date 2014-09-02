@@ -1017,11 +1017,10 @@ static PiwikTracker *_sharedInstance;
 - (id<PiwikDispatcher>)defaultDispatcher {
   
   // Instantiate dispatchers in priority order
-  
-  // TODO Add more
-  
-  if (NSClassFromString(@"PiwikAFNetworkingDispather")) {
-    return [[NSClassFromString(@"PiwikAFNetworkingDispather") alloc] init];
+  if (NSClassFromString(@"PiwikAFNetworking2Dispather")) {
+    return [[NSClassFromString(@"PiwikAFNetworking2Dispather") alloc] init];
+  } else if (NSClassFromString(@"PiwikAFNetworking1Dispather")) {
+    return [[NSClassFromString(@"PiwikAFNetworking1Dispather") alloc] init];
   } else {
     return [[PiwikNSURLSessionDispatcher alloc] init];
   }

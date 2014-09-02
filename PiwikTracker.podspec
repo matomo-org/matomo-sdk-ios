@@ -24,4 +24,10 @@ Pod::Spec.new do |spec|
 	  afnetworking1.dependency 'AFNetworking', '1.3.2'
   end
   
+  spec.subspec 'AFNetworking2' do |afnetworking2|
+      afnetworking2.source_files   = 'PiwikTracker+AFNetworking2/*.{h,m,}'
+      afnetworking2.dependency 'PiwikTracker/Core'
+	  afnetworking2.dependency "AFNetworking", '~> 2.0'
+  end
+  
 end

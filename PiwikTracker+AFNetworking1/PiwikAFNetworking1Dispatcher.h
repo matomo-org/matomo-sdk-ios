@@ -10,6 +10,6 @@
 #import "PiwikDispatcher.h"
 #import "AFHTTPClient.h"
 
-@interface PiwikAFNetworkingDispatcher : NSObject <PiwikDispatcher>
+@interface PiwikAFNetworking1Dispatcher : NSObject <PiwikDispatcher>
 
 @end

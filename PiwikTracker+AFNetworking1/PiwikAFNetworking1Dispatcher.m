@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Mattias Levin. All rights reserved.
 //
 
-#import "PiwikAFNetworkingDispatcher.h"
+#import "PiwikAFNetworking1Dispatcher.h"
 #import "AFHTTPClient.h"
 
 static NSUInteger const PiwikHTTPRequestTimeout = 5;
 
 
-@interface PiwikAFNetworkingDispatcher ()
+@interface PiwikAFNetworking1Dispatcher ()
 
 @property (nonatomic, strong) AFHTTPClient *httpClient;
 
@@ -20,7 +20,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
 
 
 
-@implementation PiwikAFNetworkingDispatcher
+@implementation PiwikAFNetworking1Dispatcher
 
 
 - (void)dispathWithMethod:(NSString*)method
