@@ -33,7 +33,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7E5AEF9C098747E68A152670 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -45,25 +44,15 @@
 		CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
 		CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CD152F4E188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
-		CD152F4F188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
-		CD152F50188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
 		CD152F53188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
-		CD152F54188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
-		CD152F55188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
 		CD152F58188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
-		CD152F59188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
-		CD152F5A188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
 		CD152F5D188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
-		CD152F5E188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
-		CD152F5F188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
 		CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CD1EA93517B0DA4400F63E14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD1EEB2219B4A208009BAA7A /* PiwikDebugDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB1F19B4A208009BAA7A /* PiwikDebugDispatcher.m */; };
 		CD1EEB2319B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */; };
 		CD1EEB2619B4A222009BAA7A /* PiwikAFNetworkingDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2519B4A222009BAA7A /* PiwikAFNetworkingDispatcher.m */; };
-		CD1EEB2719B4A83D009BAA7A /* PiwikDebugDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB1F19B4A208009BAA7A /* PiwikDebugDispatcher.m */; };
-		CD1EEB2819B4A83D009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */; };
 		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
 		CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5C9814193E65CF00A8A801 /* CampaignViewController.m */; };
 		CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5F3BED18678C9000D04E03 /* CoreLocation.framework */; };
@@ -86,10 +75,6 @@
 		CD93ECB717E77BEB0062BE20 /* SocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD93ECB617E77BEB0062BE20 /* SocialViewController.m */; };
 		CD9AC5461801C6BB00EE8F43 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9AC5451801C6BB00EE8F43 /* SearchViewController.m */; };
 		CD9AC5491801CA6500EE8F43 /* GoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9AC5481801CA6500EE8F43 /* GoalsViewController.m */; };
-		CDC55E22180179AE0019A03E /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
-		CDC55E24180179AE0019A03E /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
-		CDC55E26180179AE0019A03E /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
-		CDC55E27180179AE0019A03E /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
 		CDEAEAB7180B36F800EB91C2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */; };
@@ -99,9 +84,6 @@
 		CDEAEACA180B36F900EB91C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEAEAC9180B36F900EB91C2 /* AppDelegate.m */; };
 		CDEAEACD180B36F900EB91C2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACB180B36F900EB91C2 /* MainMenu.xib */; };
 		CDEAEACF180B36F900EB91C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACE180B36F900EB91C2 /* Images.xcassets */; };
-		CDEAEAE9180B375700EB91C2 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
-		CDEAEAEA180B375700EB91C2 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
-		CDEAEAEB180B375700EB91C2 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
 		DF55F803AF3445258BFDB202 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */; };
 		EB08852D78644D829B5C9A09 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */; };
@@ -249,7 +231,6 @@
 				CD1EA93517B0DA4400F63E14 /* UIKit.framework in Frameworks */,
 				CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */,
 				CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */,
-				7E5AEF9C098747E68A152670 /* libPods-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,29 +808,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD1EEB2719B4A83D009BAA7A /* PiwikDebugDispatcher.m in Sources */,
-				CD1EEB2819B4A83D009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */,
-				CDC55E22180179AE0019A03E /* PiwikTracker.m in Sources */,
-				CDC55E24180179AE0019A03E /* PTEventEntity.m in Sources */,
-				CD152F5E188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */,
-				CDC55E26180179AE0019A03E /* PiwikTrackedViewController.m in Sources */,
 				CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */,
-				CDC55E27180179AE0019A03E /* piwiktracker.xcdatamodeld in Sources */,
 				CD9AC5491801CA6500EE8F43 /* GoalsViewController.m in Sources */,
 				CD93EC9617E76E290062BE20 /* main.m in Sources */,
 				CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */,
 				CD93EC9A17E76E290062BE20 /* AppDelegate.m in Sources */,
 				CD9AC5461801C6BB00EE8F43 /* SearchViewController.m in Sources */,
 				CD91BDD419A1382900A4B80D /* CustomVariablesViewController.m in Sources */,
-				CD152F59188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
 				CD93ECA617E76E290062BE20 /* MenuViewController.m in Sources */,
 				CD93ECAE17E7798F0062BE20 /* ScreenViewController.m in Sources */,
 				CD93ECB117E77B700062BE20 /* EventsViewController.m in Sources */,
-				CD152F54188C54720090BFD3 /* PiwikTransaction.m in Sources */,
 				CD93ECB417E77BA70062BE20 /* ExceptionViewController.m in Sources */,
 				CD93ECB717E77BEB0062BE20 /* SocialViewController.m in Sources */,
 				CD8EB28A193B914E000E3F1F /* ConfigurationViewController.m in Sources */,
-				CD152F4F188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */,
 				CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */,
 				CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */,
 			);
@@ -859,15 +830,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD152F5F188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */,
-				CDEAEAE9180B375700EB91C2 /* PiwikTracker.m in Sources */,
-				CDEAEAEA180B375700EB91C2 /* PTEventEntity.m in Sources */,
-				CD152F50188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */,
-				CDEAEAEB180B375700EB91C2 /* piwiktracker.xcdatamodeld in Sources */,
 				CDEAEACA180B36F900EB91C2 /* AppDelegate.m in Sources */,
-				CD152F5A188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
 				CDEAEAC3180B36F900EB91C2 /* main.m in Sources */,
-				CD152F55188C54720090BFD3 /* PiwikTransaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,6 +1218,7 @@
 				CD1EEB1919B4A164009BAA7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "PiwikTrackeriOSDemo" */ = {
 			isa = XCConfigurationList;
