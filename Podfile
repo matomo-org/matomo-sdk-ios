@@ -11,10 +11,10 @@ target :ios do
 end
 
 
-target :iosafnetworkingv1 do
+target :iosafnetworking1 do
   platform :ios, '7.0'
-  link_with ['PiwikTracker+AFNetworkingv1']
-  pod 'PiwikTracker/AFNetworkingv1', :path => './'
+  link_with ['PiwikTracker+AFNetworking1']
+  pod 'PiwikTracker/AFNetworking1', :path => './'
 end
 
 

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD1EEB0619B4A163009BAA7A"
-               BuildableName = "libPiwikTracker+AFNetworkingv1.a"
-               BlueprintName = "PiwikTracker+AFNetworkingv1"
+               BlueprintIdentifier = "CD1EEB9A19B5E600009BAA7A"
+               BuildableName = "libPiwikTracker+AFNetworking1.a"
+               BlueprintName = "PiwikTracker+AFNetworking1"
                ReferencedContainer = "container:PiwikTracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD1EEBA419B5E600009BAA7A"
+               BuildableName = "PiwikTracker+AFNetworking1Tests.xctest"
+               BlueprintName = "PiwikTracker+AFNetworking1Tests"
+               ReferencedContainer = "container:PiwikTracker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CD1EEB9A19B5E600009BAA7A"
+            BuildableName = "libPiwikTracker+AFNetworking1.a"
+            BlueprintName = "PiwikTracker+AFNetworking1"
+            ReferencedContainer = "container:PiwikTracker.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -42,9 +61,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD1EEB0619B4A163009BAA7A"
-            BuildableName = "libPiwikTracker+AFNetworkingv1.a"
-            BlueprintName = "PiwikTracker+AFNetworkingv1"
+            BlueprintIdentifier = "CD1EEB9A19B5E600009BAA7A"
+            BuildableName = "libPiwikTracker+AFNetworking1.a"
+            BlueprintName = "PiwikTracker+AFNetworking1"
             ReferencedContainer = "container:PiwikTracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,9 +79,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD1EEB0619B4A163009BAA7A"
-            BuildableName = "libPiwikTracker+AFNetworkingv1.a"
-            BlueprintName = "PiwikTracker+AFNetworkingv1"
+            BlueprintIdentifier = "CD1EEB9A19B5E600009BAA7A"
+            BuildableName = "libPiwikTracker+AFNetworking1.a"
+            BlueprintName = "PiwikTracker+AFNetworking1"
             ReferencedContainer = "container:PiwikTracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
