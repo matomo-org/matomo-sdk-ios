@@ -2,29 +2,35 @@
 //  PiwikTrackerTests.m
 //  PiwikTrackerTests
 //
-//  Created by Mattias Levin on 8/5/13.
-//  Copyright (c) 2013 Mattias Levin. All rights reserved.
+//  Created by Mattias Levin on 03/09/14.
+//  Copyright (c) 2014 Mattias Levin. All rights reserved.
 //
 
-#import "PiwikTrackerTests.h"
+#import <UIKit/UIKit.h>
+#import <XCTest/XCTest.h>
+
+@interface PiwikTrackerTests : XCTestCase
+
+@end
 
 @implementation PiwikTrackerTests
 
+
 - (void)setUp {
   [super setUp];
-  
-  // Set-up code here.
+  // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 
 - (void)tearDown {
-  // Tear-down code here.
-  
+  // Put teardown code here. This method is called after the invocation of each test method in the class.
   [super tearDown];
 }
 
+
 - (void)testDummy {
-  STAssertTrue(YES, @"Dummy test case that will always pass");
+  XCTAssert(YES, @"Passed dummy test");
 }
+
 
 @end

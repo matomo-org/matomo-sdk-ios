@@ -32,8 +32,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD10FACC17B0378D0012BE50"
-               BuildableName = "PiwikTrackerTests.octest"
+               BlueprintIdentifier = "CD1EEBDC19B713F4009BAA7A"
+               BuildableName = "PiwikTrackerTests.xctest"
                BlueprintName = "PiwikTrackerTests"
                ReferencedContainer = "container:PiwikTracker.xcodeproj">
             </BuildableReference>

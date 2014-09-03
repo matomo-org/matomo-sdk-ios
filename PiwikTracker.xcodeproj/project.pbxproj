@@ -37,11 +37,6 @@
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
-		CD10FACF17B0378D0012BE50 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FACE17B0378D0012BE50 /* SenTestingKit.framework */; };
-		CD10FAD217B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
-		CD10FAD517B0378D0012BE50 /* libPiwikTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */; };
-		CD10FADB17B0378D0012BE50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD10FAD917B0378D0012BE50 /* InfoPlist.strings */; };
-		CD10FADE17B0378E0012BE50 /* PiwikTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FADD17B0378E0012BE50 /* PiwikTrackerTests.m */; };
 		CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
 		CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CD152F4E188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
@@ -55,6 +50,8 @@
 		CD1EEB2319B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */; };
 		CD1EEBB419B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBB319B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m */; };
 		CD1EEBD219B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */; };
+		CD1EEBE219B713F4009BAA7A /* PiwikTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */; };
+		CD1EEBE319B713F4009BAA7A /* libPiwikTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */; };
 		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
 		CD5C9815193E65CF00A8A801 /* CampaignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5C9814193E65CF00A8A801 /* CampaignViewController.m */; };
 		CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5F3BED18678C9000D04E03 /* CoreLocation.framework */; };
@@ -93,7 +90,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CD10FAD317B0378D0012BE50 /* PBXContainerItemProxy */ = {
+		CD1EEBE419B713F4009BAA7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD10FABB17B0378D0012BE50;
+			remoteInfo = PiwikTracker;
+		};
+		CD1EEBE919B713F5009BAA7A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
 			proxyType = 1;
@@ -151,12 +155,7 @@
 		CD03D99617E8FDFC00D7723F /* OptOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptOutViewController.m; sourceTree = "<group>"; };
 		CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPiwikTracker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD10FABF17B0378D0012BE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CD10FACD17B0378D0012BE50 /* PiwikTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiwikTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD10FACE17B0378D0012BE50 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		CD10FAD817B0378D0012BE50 /* PiwikTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiwikTrackerTests-Info.plist"; sourceTree = "<group>"; };
-		CD10FADA17B0378D0012BE50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CD10FADC17B0378D0012BE50 /* PiwikTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikTrackerTests.h; sourceTree = "<group>"; };
-		CD10FADD17B0378E0012BE50 /* PiwikTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackerTests.m; sourceTree = "<group>"; };
 		CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PiwikTracker-Prefix.pch"; sourceTree = "<group>"; };
 		CD10FAEA17B037B50012BE50 /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		CD10FAEB17B037B50012BE50 /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PiwikTracker.m; sourceTree = "<group>"; };
@@ -183,6 +182,9 @@
 		CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPiwikTracker+AFNetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1EEBD019B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikAFNetworking2Dispatcher.h; sourceTree = "<group>"; };
 		CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikAFNetworking2Dispatcher.m; sourceTree = "<group>"; };
+		CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiwikTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD1EEBE019B713F4009BAA7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackerTests.m; sourceTree = "<group>"; };
 		CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTrackedViewController.h; sourceTree = "<group>"; };
 		CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackedViewController.m; sourceTree = "<group>"; };
@@ -253,16 +255,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD10FAC917B0378D0012BE50 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD10FACF17B0378D0012BE50 /* SenTestingKit.framework in Frameworks */,
-				CD10FAD217B0378D0012BE50 /* Foundation.framework in Frameworks */,
-				CD10FAD517B0378D0012BE50 /* libPiwikTracker.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD1EEB9819B5E600009BAA7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +268,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A0F9EA92804151898F03DE /* libPods-iosafnetworking2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD1EEBDA19B713F4009BAA7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1EEBE319B713F4009BAA7A /* libPiwikTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,9 +311,9 @@
 				CD10FAC117B0378D0012BE50 /* PiwikTracker */,
 				CD1EEB9C19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */,
 				CD1EEBBA19B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */,
-				CD10FAD617B0378D0012BE50 /* PiwikTrackerTests */,
 				CD93EC8F17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEABC180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
+				CD1EEBDE19B713F4009BAA7A /* PiwikTrackerTests */,
 				CD10FABE17B0378D0012BE50 /* Frameworks */,
 				CD10FABD17B0378D0012BE50 /* Products */,
 				FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */,
@@ -327,11 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */,
-				CD10FACD17B0378D0012BE50 /* PiwikTrackerTests.octest */,
 				CD93EC8B17E76E290062BE20 /* PiwikTrackeriOSDemo.app */,
 				CDEAEAB5180B36F800EB91C2 /* PiwikTrackerOSXDemo.app */,
 				CD1EEB9B19B5E600009BAA7A /* libPiwikTracker+AFNetworking1.a */,
 				CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */,
+				CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,25 +385,6 @@
 			path = PiwikTracker;
 			sourceTree = "<group>";
 		};
-		CD10FAD617B0378D0012BE50 /* PiwikTrackerTests */ = {
-			isa = PBXGroup;
-			children = (
-				CD10FADC17B0378D0012BE50 /* PiwikTrackerTests.h */,
-				CD10FADD17B0378E0012BE50 /* PiwikTrackerTests.m */,
-				CD10FAD717B0378D0012BE50 /* Supporting Files */,
-			);
-			path = PiwikTrackerTests;
-			sourceTree = "<group>";
-		};
-		CD10FAD717B0378D0012BE50 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CD10FAD817B0378D0012BE50 /* PiwikTrackerTests-Info.plist */,
-				CD10FAD917B0378D0012BE50 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		CD1EEB9C19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +401,23 @@
 				CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */,
 			);
 			path = "PiwikTracker+AFNetworking2";
+			sourceTree = "<group>";
+		};
+		CD1EEBDE19B713F4009BAA7A /* PiwikTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */,
+				CD1EEBDF19B713F4009BAA7A /* Supporting Files */,
+			);
+			path = PiwikTrackerTests;
+			sourceTree = "<group>";
+		};
+		CD1EEBDF19B713F4009BAA7A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD1EEBE019B713F4009BAA7A /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CD93EC8F17E76E290062BE20 /* PiwikTrackeriOSDemo */ = {
@@ -529,25 +527,6 @@
 			productReference = CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		CD10FACC17B0378D0012BE50 /* PiwikTrackerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD10FAE417B0378E0012BE50 /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */;
-			buildPhases = (
-				CD10FAC817B0378D0012BE50 /* Sources */,
-				CD10FAC917B0378D0012BE50 /* Frameworks */,
-				CD10FACA17B0378D0012BE50 /* Resources */,
-				CD10FACB17B0378D0012BE50 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CD10FAD417B0378D0012BE50 /* PBXTargetDependency */,
-			);
-			name = PiwikTrackerTests;
-			productName = PiwikTrackerTests;
-			productReference = CD10FACD17B0378D0012BE50 /* PiwikTrackerTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
-		};
 		CD1EEB9A19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD1EEBB019B5E601009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking1" */;
@@ -585,6 +564,25 @@
 			productName = "PiwikTracker+AFNetworking2";
 			productReference = CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		CD1EEBDC19B713F4009BAA7A /* PiwikTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD1EEBE619B713F4009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */;
+			buildPhases = (
+				CD1EEBD919B713F4009BAA7A /* Sources */,
+				CD1EEBDA19B713F4009BAA7A /* Frameworks */,
+				CD1EEBDB19B713F4009BAA7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD1EEBE519B713F4009BAA7A /* PBXTargetDependency */,
+				CD1EEBEA19B713F5009BAA7A /* PBXTargetDependency */,
+			);
+			name = PiwikTrackerTests;
+			productName = PiwikTrackerTests;
+			productReference = CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */ = {
 			isa = PBXNativeTarget;
@@ -634,14 +632,15 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Mattias Levin";
 				TargetAttributes = {
-					CD10FACC17B0378D0012BE50 = {
-						TestTargetID = CD10FABB17B0378D0012BE50;
-					};
 					CD1EEB9A19B5E600009BAA7A = {
 						CreatedOnToolsVersion = 6.0;
 					};
 					CD1EEBB819B5E85A009BAA7A = {
 						CreatedOnToolsVersion = 6.0;
+					};
+					CD1EEBDC19B713F4009BAA7A = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = CD10FABB17B0378D0012BE50;
 					};
 				};
 			};
@@ -661,21 +660,20 @@
 				CD10FABB17B0378D0012BE50 /* PiwikTracker */,
 				CD1EEB9A19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */,
 				CD1EEBB819B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */,
-				CD10FACC17B0378D0012BE50 /* PiwikTrackerTests */,
 				CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEAB4180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CDC335FE17B97B110098386C /* Documentation */,
 				CDE4CAE61813DDFE007E0EF7 /* Upload API */,
+				CD1EEBDC19B713F4009BAA7A /* PiwikTrackerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD10FACA17B0378D0012BE50 /* Resources */ = {
+		CD1EEBDB19B713F4009BAA7A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD10FADB17B0378D0012BE50 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,19 +793,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CD10FACB17B0378D0012BE50 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		CDC3360217B97B190098386C /* Build appledoc */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -916,14 +901,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD10FAC817B0378D0012BE50 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD10FADE17B0378E0012BE50 /* PiwikTrackerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD1EEB9719B5E600009BAA7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -937,6 +914,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1EEBD219B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD1EEBD919B713F4009BAA7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1EEBE219B713F4009BAA7A /* PiwikTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,10 +959,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CD10FAD417B0378D0012BE50 /* PBXTargetDependency */ = {
+		CD1EEBE519B713F4009BAA7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
-			targetProxy = CD10FAD317B0378D0012BE50 /* PBXContainerItemProxy */;
+			targetProxy = CD1EEBE419B713F4009BAA7A /* PBXContainerItemProxy */;
+		};
+		CD1EEBEA19B713F5009BAA7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
+			targetProxy = CD1EEBE919B713F5009BAA7A /* PBXContainerItemProxy */;
 		};
 		CDE4CAEC1813DE3A007E0EF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -987,14 +977,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CD10FAD917B0378D0012BE50 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD10FADA17B0378D0012BE50 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		CD93EC9217E76E290062BE20 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1119,36 +1101,6 @@
 			};
 			name = Release;
 		};
-		CD10FAE517B0378E0012BE50 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PiwikTracker/PiwikTracker-Prefix.pch";
-				INFOPLIST_FILE = "PiwikTrackerTests/PiwikTrackerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		CD10FAE617B0378E0012BE50 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PiwikTracker/PiwikTracker-Prefix.pch";
-				INFOPLIST_FILE = "PiwikTrackerTests/PiwikTrackerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		CD1EEBAC19B5E601009BAA7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5415710084048F5B86B6226 /* Pods-iosafnetworking1.xcconfig */;
@@ -1248,6 +1200,63 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CD1EEBE719B713F4009BAA7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = PiwikTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CD1EEBE819B713F4009BAA7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = PiwikTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1391,15 +1400,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD10FAE417B0378E0012BE50 /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD10FAE517B0378E0012BE50 /* Debug */,
-				CD10FAE617B0378E0012BE50 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CD1EEBB019B5E601009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1417,6 +1417,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CD1EEBE619B713F4009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD1EEBE719B713F4009BAA7A /* Debug */,
+				CD1EEBE819B713F4009BAA7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "PiwikTrackeriOSDemo" */ = {
 			isa = XCConfigurationList;
