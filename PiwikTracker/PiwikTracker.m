@@ -910,26 +910,29 @@ static PiwikTracker *_sharedInstance;
       
       NSString *requestURL = [[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:self.baseURL] absoluteString];
       NSDictionary *requestParameters = [self requestParametersForEvents:events];
+  
+      __weak typeof(self)weakSelf = self;
+      void (^successBlock)(void) = ^ () {
+        [weakSelf deleteEventsWithIDs:entityIDs];
+        [weakSelf sendEventDidFinishHasMorePending:hasMore];
+      };
       
-      [self.dispatcher dispatchWithMethod:events.count == 1 ? @"GET" : @"POST"
-                                     path:requestURL
-                               parameters:requestParameters
-        success: ^{
-          
-          [self deleteEventsWithIDs:entityIDs];
-          [self sendEventDidFinishHasMorePending:hasMore];
-                                   
-        } faliure: ^(BOOL shouldContinue) {
-          
-          NSLog(@"Failed to send stats to Piwik server");
-          
-          if (shouldContinue) {
-            [self sendEventDidFinishHasMorePending:hasMore];
-          } else {
-            [self sendEventDidFinishHasMorePending:NO];
-          }
-          
-        }];
+      void (^failureBlock)(BOOL shouldContinue) = ^ (BOOL shouldContinue) {
+        NSLog(@"Failed to send stats to Piwik server");
+        
+        if (shouldContinue) {
+          [weakSelf sendEventDidFinishHasMorePending:hasMore];
+        } else {
+          [weakSelf sendEventDidFinishHasMorePending:NO];
+        }
+        
+      };
+      
+      if (events.count == 1) {
+        [self.dispatcher sendSingleEventToPath:requestURL parameters:requestParameters success:successBlock failure:failureBlock];
+      } else {
+        [self.dispatcher sendBatchEventsToPath:requestURL parameters:requestParameters success:successBlock failure:failureBlock];
+      }
       
     }
     
@@ -1042,14 +1045,13 @@ static PiwikTracker *_sharedInstance;
 
 - (void)setDebug:(BOOL)debug {
 
-  // TODO Refactor
-  
+  // TODO Refactor, dont like this solution  
   static id<PiwikDispatcher> oldDispatcher;
   
   if (debug && !_debug) {
     oldDispatcher = self.dispatcher;
     self.dispatcher = [[PiwikDebugDispatcher alloc] init];
-  } else {
+  } else if (!debug) {
     self.dispatcher = oldDispatcher;
   }
   

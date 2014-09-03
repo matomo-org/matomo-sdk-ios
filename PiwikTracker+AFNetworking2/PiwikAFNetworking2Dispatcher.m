@@ -20,55 +20,59 @@
 @implementation PiwikAFNetworking2Dispatcher
 
 
-- (void)dispatchWithMethod:(NSString*)method
-                      path:(NSString*)path
+- (void)sendSingleEventToPath:(NSString*)path
                 parameters:(NSDictionary*)parameters
                    success:(void (^)())successBlock
-                   faliure:(void (^)(BOOL shouldContinue))faliureBlock {
+                   failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   if (!self.sessionManager) {
     self.sessionManager = [AFHTTPSessionManager manager];
   }
   
-  if ([method isEqualToString:@"GET"]) {
+  self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+  
+  [self.sessionManager GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
-    self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    NSLog(@"Successfully sent stats to Piwik server");
+    successBlock();
     
-    [self.sessionManager GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-      
-      NSLog(@"Successfully sent stats to Piwik server");
-      successBlock();
-      
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-      
-      NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
-      faliureBlock([self shouldAbortdispatchForNetworkError:error]);
-      
-    }];
+  } failure:^(NSURLSessionDataTask *task, NSError *error) {
     
-  } else if ([method isEqualToString:@"POST"]) {
+    NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
+    failureBlock([self shouldAbortdispatchForNetworkError:error]);
     
-    self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
-    
-    [self.sessionManager POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-      
-      NSLog(@"Successfully sent stats to Piwik server");
-      successBlock();
-      
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-      
-      NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
-      faliureBlock([self shouldAbortdispatchForNetworkError:error]);
-      
-    }];
-    
+  }];
+  
+}
+
+
+- (void)sendBatchEventsToPath:(NSString*)path
+                   parameters:(NSDictionary*)parameters
+                      success:(void (^)())successBlock
+                      failure:(void (^)(BOOL shouldContinue))failureBlock {
+  
+  if (!self.sessionManager) {
+    self.sessionManager = [AFHTTPSessionManager manager];
   }
+  
+  self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
+  
+  [self.sessionManager POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    NSLog(@"Successfully sent stats to Piwik server");
+    successBlock();
+    
+  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
+    NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
+    failureBlock([self shouldAbortdispatchForNetworkError:error]);
+    
+  }];
   
 }
 
 
 // Should the dispatch be aborted and pending events rescheduled
-// Subclasses can overwrite too change behaviour
 - (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error {
   
   if (error.code == NSURLErrorBadURL ||
