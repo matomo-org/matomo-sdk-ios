@@ -23,11 +23,11 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
 @implementation PiwikAFNetworking1Dispatcher
 
 
-- (void)dispathWithMethod:(NSString*)method
-                     path:(NSString*)path
-               parameters:(NSDictionary*)parameters
-                  success:(void (^)())successBlock
-                  faliure:(void (^)(BOOL shouldContinue))faliureBlock {
+- (void)dispatchWithMethod:(NSString*)method
+                      path:(NSString*)path
+                parameters:(NSDictionary*)parameters
+                   success:(void (^)())successBlock
+                   faliure:(void (^)(BOOL shouldContinue))faliureBlock {
   
   NSLog(@"Dispatch event with AFNetworking");
   
@@ -50,15 +50,13 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   
   AFHTTPRequestOperation *operation = [self.httpClient HTTPRequestOperationWithRequest:request
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                                      
-      NSLog(@"Successfully sent stats to Piwik server");
       
+      NSLog(@"Successfully sent stats to Piwik server");
       successBlock();
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
       
       NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
-      
       faliureBlock([self shouldAbortdispatchForNetworkError:error]);
       
     }];

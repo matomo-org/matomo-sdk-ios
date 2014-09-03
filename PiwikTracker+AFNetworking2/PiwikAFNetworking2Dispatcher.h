@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "PiwikDispatcher.h"
-#import "AFHTTPSessionManager.h"
 
 @interface PiwikAFNetworking2Dispatcher : NSObject  <PiwikDispatcher>
 

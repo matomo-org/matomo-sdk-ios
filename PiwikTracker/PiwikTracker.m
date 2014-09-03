@@ -911,9 +911,9 @@ static PiwikTracker *_sharedInstance;
       NSString *requestURL = [[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:self.baseURL] absoluteString];
       NSDictionary *requestParameters = [self requestParametersForEvents:events];
       
-      [self.dispatcher dispathWithMethod:events.count == 1 ? @"GET" : @"POST"
-                                    path:requestURL
-                              parameters:requestParameters
+      [self.dispatcher dispatchWithMethod:events.count == 1 ? @"GET" : @"POST"
+                                     path:requestURL
+                               parameters:requestParameters
         success: ^{
           
           [self deleteEventsWithIDs:entityIDs];

@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		57A0F9EA92804151898F03DE /* libPods-iosafnetworking2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E6AF4143BA4008A46076BD /* libPods-iosafnetworking2.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -140,6 +141,7 @@
 
 /* Begin PBXFileReference section */
 		746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99D4288B9B9B490A98764008 /* Pods-iosafnetworking2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking2.xcconfig"; path = "Pods/Pods-iosafnetworking2.xcconfig"; sourceTree = "<group>"; };
 		A9573D751CC14BA28052D5CA /* libPods-iosafnetworking1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC394CE26BAF4D0A8FEAF702 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = "<group>"; };
@@ -157,7 +159,7 @@
 		CD10FADD17B0378E0012BE50 /* PiwikTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackerTests.m; sourceTree = "<group>"; };
 		CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PiwikTracker-Prefix.pch"; sourceTree = "<group>"; };
 		CD10FAEA17B037B50012BE50 /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
-		CD10FAEB17B037B50012BE50 /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PiwikTracker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CD10FAEB17B037B50012BE50 /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PiwikTracker.m; sourceTree = "<group>"; };
 		CD10FAED17B037B50012BE50 /* piwiktracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piwiktracker.xcdatamodel; sourceTree = "<group>"; };
 		CD152F3B188BE59F0090BFD3 /* PiwikTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTransaction.h; sourceTree = "<group>"; };
 		CD152F41188C4B010090BFD3 /* PiwikTransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTransactionItem.h; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		CDEAEAD5180B36F900EB91C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
 		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
+		D2E6AF4143BA4008A46076BD /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5415710084048F5B86B6226 /* Pods-iosafnetworking1.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking1.xcconfig"; path = "Pods/Pods-iosafnetworking1.xcconfig"; sourceTree = "<group>"; };
 		FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A0F9EA92804151898F03DE /* libPods-iosafnetworking2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +319,7 @@
 				FC4B7A0321394B46B65B82F4 /* Pods-osx.xcconfig */,
 				C43DC5B4F6C74253884D98AE /* Pods-ios.xcconfig */,
 				D5415710084048F5B86B6226 /* Pods-iosafnetworking1.xcconfig */,
+				99D4288B9B9B490A98764008 /* Pods-iosafnetworking2.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -347,6 +352,7 @@
 				746E9BEDE2CF4A42B24672A7 /* libPods-osx.a */,
 				CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */,
 				A9573D751CC14BA28052D5CA /* libPods-iosafnetworking1.a */,
+				D2E6AF4143BA4008A46076BD /* libPods-iosafnetworking2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -565,9 +571,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD1EEBCA19B5E85A009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking2" */;
 			buildPhases = (
+				E20512ED1BA5409D9C85E0FC /* Check Pods Manifest.lock */,
 				CD1EEBB519B5E85A009BAA7A /* Sources */,
 				CD1EEBB619B5E85A009BAA7A /* Frameworks */,
 				CD1EEBB719B5E85A009BAA7A /* CopyFiles */,
+				345E2004BEE446A7BE5F17EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -712,6 +720,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		345E2004BEE446A7BE5F17EE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-iosafnetworking2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6558CDB940EB41088E6EAC52 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -812,6 +835,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Remove tmp directory\"\ncd /tmp\nrm -rf PiwikTracker\n\necho \"Clone documentation branch\"\ngit clone -b gh-pages https://github.com/piwik/piwik-sdk-ios.git\n\necho \"Copy new documentation into place\"\ncd piwik-sdk-ios\nrm -rf docs\ncp -rv \"$SOURCE_ROOT\"/Doc docs\n\necho \"Commit changes\"\ngit commit -am \"Update API documentation\"\n\necho \"Push changes\"\ngit push origin gh-pages";
+		};
+		E20512ED1BA5409D9C85E0FC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		E38D02F5C6D344E9A61D95D8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1132,7 +1170,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1156,7 +1194,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1164,6 +1202,7 @@
 		};
 		CD1EEBCB19B5E85A009BAA7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99D4288B9B9B490A98764008 /* Pods-iosafnetworking2.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1182,7 +1221,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1190,6 +1229,7 @@
 		};
 		CD1EEBCC19B5E85A009BAA7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99D4288B9B9B490A98764008 /* Pods-iosafnetworking2.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1205,7 +1245,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1376,6 +1416,7 @@
 				CD1EEBCC19B5E85A009BAA7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "PiwikTrackeriOSDemo" */ = {
 			isa = XCConfigurationList;

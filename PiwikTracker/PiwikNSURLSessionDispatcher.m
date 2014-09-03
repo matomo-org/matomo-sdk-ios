@@ -15,11 +15,11 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
 @implementation PiwikNSURLSessionDispatcher
 
 
-- (void)dispathWithMethod:(NSString*)method
-                     path:(NSString*)path
-               parameters:(NSDictionary*)parameters
-                  success:(void (^)())successBlock
-                  faliure:(void (^)(BOOL shouldContinue))faliureBlock {
+- (void)dispatchWithMethod:(NSString*)method
+                      path:(NSString*)path
+                parameters:(NSDictionary*)parameters
+                   success:(void (^)())successBlock
+                   faliure:(void (^)(BOOL shouldContinue))faliureBlock {
   
   NSLog(@"Dispatch event with NSURLSession dispatcher");
   
