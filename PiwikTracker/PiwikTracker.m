@@ -199,6 +199,11 @@ static PiwikTracker *_sharedInstance;
 }
 
 
++ (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID {
+  return [self sharedInstanceWithBaseURL:baseURL siteID:siteID authenticationToken:nil];
+}
+
+
 + (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -221,6 +226,7 @@ static PiwikTracker *_sharedInstance;
 }
 
 
+// NOTE! The authenticationToken parameter will be removed sometime on the future.
 - (id)initWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
   
   // Make sure the base url is correct
@@ -253,6 +259,8 @@ static PiwikTracker *_sharedInstance;
     _maxNumberOfQueuedEvents = PiwikDefaultMaxNumberOfStoredEvents;
     _isDispatchRunning = NO;
     
+    // Piwik server does not require authentication token after release 2.2.1 to send bulk requests
+    // TODO Change to bulk requests by default in the future.
     // Bulk tracking require authentication token
     if (_authenticationToken) {
       _eventsPerRequest = PiwikDefaultNumberOfEventsPerRequest;
@@ -953,7 +961,7 @@ static PiwikTracker *_sharedInstance;
     // Send events as JSON encoded post body    
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
     
-    // Authentication token is mandatory
+    // Authentication token is no longer needed in bulk requests starting Piwik 2.2.1
     JSONParams[@"token_auth"] = self.authenticationToken;
     
     // Piwik server will process each record in the batch request in reverse order, not sure if this is a bug
