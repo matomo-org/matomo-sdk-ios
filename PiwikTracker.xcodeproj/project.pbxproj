@@ -104,6 +104,20 @@
 			remoteGlobalIDString = CD10FABB17B0378D0012BE50;
 			remoteInfo = PiwikTracker;
 		};
+		CD1EEBEB19B713F5009BAA7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD10FABB17B0378D0012BE50;
+			remoteInfo = PiwikTracker;
+		};
+		CD1EEBED19B74519009BAA7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD10FABB17B0378D0012BE50;
+			remoteInfo = PiwikTracker;
+		};
 		CDE4CAEB1813DE3A007E0EF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD10FAB417B0378D0012BE50 /* Project object */;
@@ -578,6 +592,8 @@
 			dependencies = (
 				CD1EEBE519B713F4009BAA7A /* PBXTargetDependency */,
 				CD1EEBEA19B713F5009BAA7A /* PBXTargetDependency */,
+				CD1EEBEC19B713F5009BAA7A /* PBXTargetDependency */,
+				CD1EEBEE19B74519009BAA7A /* PBXTargetDependency */,
 			);
 			name = PiwikTrackerTests;
 			productName = PiwikTrackerTests;
@@ -968,6 +984,16 @@
 			isa = PBXTargetDependency;
 			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
 			targetProxy = CD1EEBE919B713F5009BAA7A /* PBXContainerItemProxy */;
+		};
+		CD1EEBEC19B713F5009BAA7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
+			targetProxy = CD1EEBEB19B713F5009BAA7A /* PBXContainerItemProxy */;
+		};
+		CD1EEBEE19B74519009BAA7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD10FABB17B0378D0012BE50 /* PiwikTracker */;
+			targetProxy = CD1EEBED19B74519009BAA7A /* PBXContainerItemProxy */;
 		};
 		CDE4CAEC1813DE3A007E0EF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -27,7 +27,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
     [parameterPair addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
   }];
   
-  NSString *requestURL = [NSString stringWithFormat:@"?%@", [[parameterPair componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+  NSString *requestURL = [NSString stringWithFormat:@"%@?%@", path, [[parameterPair componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestURL]
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData

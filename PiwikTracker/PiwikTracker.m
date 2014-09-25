@@ -1224,9 +1224,12 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 
 - (NSString*)appName {
-  if (nil == _appName) {
-    // Use the CFBundleName as default
-    return [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+  if (!_appName) {
+    // Use the CFBundleDispayName and CFBundleName as default
+    _appName = [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+    if (!_appName) {
+      _appName = [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
+    }
   }
   
   return _appName;
@@ -1234,9 +1237,9 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 
 - (NSString*)appVersion {
-  if (nil == _appVersion) {
-    // Use the CFBundleName as default
-    return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+  if (!_appVersion) {
+    // Use the CFBundleVersion as default
+    _appVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   }
   
   return _appVersion;
