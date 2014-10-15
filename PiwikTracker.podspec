@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{s.version}" }
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
-  s.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
+  s.source_files = 'PiwikTracker/*.{h,m}'
   s.osx.exclude_files = 'PiwikTracker/PiwikTrackedViewController.{h,m}'
   s.resources = 'PiwikTracker/piwiktracker.xcdatamodeld'
   s.ios.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
