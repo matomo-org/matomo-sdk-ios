@@ -22,13 +22,14 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   
   NSLog(@"Dispatch single event with NSURLSession dispatcher");
     
-  NSMutableArray *parameterPair = [NSMutableArray arrayWithCapacity:parameters.count];
+  NSMutableArray *parameterPairs = [NSMutableArray arrayWithCapacity:parameters.count];
   [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-    [parameterPair addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
+    [parameterPairs addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
   }];
+  // URL encoded query string
+  NSString *queryString = [[parameterPairs componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
-  NSString *requestURL = [NSString stringWithFormat:@"%@?%@", path, [[parameterPair componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-  
+  NSString *requestURL = [NSString stringWithFormat:@"%@?%@", path, queryString];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestURL]
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                           timeoutInterval:PiwikHTTPRequestTimeout];
