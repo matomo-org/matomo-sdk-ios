@@ -12,8 +12,9 @@ Pod::Spec.new do |spec|
   spec.default_subspecs = 'Core'
   
   spec.subspec 'Core' do |core|
-  	core.ios.source_files = 'PiwikTracker/*.{h,m,xcdatamodeld}'
+  	core.source_files = 'PiwikTracker/*.{h,m}'
  	core.osx.exclude_files = 'PiwikTracker/PiwikTrackedViewController.{h,m}'
+	core.resources = 'PiwikTracker/piwiktracker.xcdatamodeld'
   	core.ios.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
   	core.osx.frameworks = 'Foundation', 'Cocoa', 'CoreData', 'CoreGraphics'
   end
