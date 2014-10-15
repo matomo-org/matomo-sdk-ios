@@ -9,16 +9,31 @@
 #import "PiwikNSURLSessionDispatcher.h"
 
 
+@interface PiwikNSURLSessionDispatcher ()
+
+@property (nonatomic, strong) NSURL *piwikURL;
+
+@end
+
+
 static NSUInteger const PiwikHTTPRequestTimeout = 5;
 
 
 @implementation PiwikNSURLSessionDispatcher
 
 
-- (void)sendSingleEventToPath:(NSString*)path
-                   parameters:(NSDictionary*)parameters
-                      success:(void (^)())successBlock
-                      failure:(void (^)(BOOL shouldContinue))failureBlock {
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL {
+  self = [super init];
+  if (self) {
+    _piwikURL = piwikURL;
+  }
+  return self;
+}
+
+
+- (void)sendSingleEventWithParameters:(NSDictionary*)parameters
+                              success:(void (^)())successBlock
+                              failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   NSLog(@"Dispatch single event with NSURLSession dispatcher");
     
@@ -26,13 +41,17 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     [parameterPairs addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
   }];
+  
   // URL encoded query string
   NSString *queryString = [[parameterPairs componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
-  NSString *requestURL = [NSString stringWithFormat:@"%@?%@", path, queryString];
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:requestURL]
-                                                              cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                          timeoutInterval:PiwikHTTPRequestTimeout];
+  NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:self.piwikURL resolvingAgainstBaseURL:NO];
+  URLComponents.query = queryString;
+                                     
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                  initWithURL:URLComponents.URL
+                                  cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                  timeoutInterval:PiwikHTTPRequestTimeout];
   request.HTTPMethod = @"GET";
   
   [self sendRequest:request success:successBlock failure:failureBlock];
@@ -40,14 +59,13 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
 }
 
 
-- (void)sendBatchEventsToPath:(NSString*)path
-                   parameters:(NSDictionary*)parameters
-                      success:(void (^)())successBlock
-                      failure:(void (^)(BOOL shouldContinue))failureBlock {
+- (void)sendBulkEventWithParameters:(NSDictionary*)parameters
+                            success:(void (^)())successBlock
+                            failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   NSLog(@"Dispatch batch events with NSURLSession dispatcher");
   
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:path]
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.piwikURL
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                           timeoutInterval:PiwikHTTPRequestTimeout];
   request.HTTPMethod = @"POST";

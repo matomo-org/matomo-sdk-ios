@@ -30,14 +30,18 @@ static NSString * const PiwikProductionAuthenticationToken = @"1a3e854ebf1cc7f59
   // Initialize the Piwik Tracker
   // Use different Piwik server urls and tracking site data depending on if building for test or production.
 #ifdef DEBUG
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikTestServerURL] siteID:PiwikTestSiteID authenticationToken:PiwikTestAuthenticationToken];
+  [PiwikTracker sharedInstanceWithSiteID:PiwikTestSiteID
+                                 baseURL:[NSURL URLWithString:PiwikTestServerURL]
+                     authenticationToken:PiwikTestAuthenticationToken];
 #else
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikProductionServerURL] siteID:PiwikProductionSiteID authenticationToken:PiwikProductionAuthenticationToken];
+  [PiwikTracker sharedInstanceWithSiteID:PiwikTestSiteID
+                                 BaseURL:[NSURL URLWithString:PiwikProductionServerURL]
+                     authenticationToken:PiwikProductionAuthenticationToken];
 #endif
   
   /* Configure the tracker */
   
-//  [PiwikTracker sharedInstance].debug = YES;
+  [PiwikTracker sharedInstance].debug = YES;
   [PiwikTracker sharedInstance].dispatchInterval = 30;
 //  [PiwikTracker sharedInstance].sampleRate = 50;
 //  [PiwikTracker sharedInstance].eventsPerRequest = 2;

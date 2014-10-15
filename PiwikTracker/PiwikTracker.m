@@ -161,7 +161,7 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
 
-@property (nonatomic, readonly) id<PiwikDispatcher> defaultDispatcher;
+@property (nonatomic, strong) id<PiwikDispatcher> dispatcher;
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
 
@@ -199,18 +199,52 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-+ (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID {
-  return [self sharedInstanceWithBaseURL:baseURL siteID:siteID authenticationToken:nil];
++ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID baseURL:(NSURL*)baseURL  {
+  return [self sharedInstanceWithSiteID:(NSString*)siteID baseURL:baseURL authenticationToken:nil];
 }
 
 
-+ (instancetype)sharedInstanceWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
++ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID
+                                 baseURL:(NSURL*)baseURL
+                     authenticationToken:(NSString*)authenticationToken {
+  
+  // Make sure the base url is correct
+  NSString *lastPathComponent = [baseURL lastPathComponent];
+  if ([lastPathComponent isEqualToString:@"piwik.php"] && [lastPathComponent isEqualToString:@"piwik-proxy.php"]) {
+    baseURL = [baseURL URLByDeletingLastPathComponent];
+  }
+  
+  return [self sharedInstanceWithSiteID:siteID authenticationToken:authenticationToken dispatcher:[self defaultDispatcherWithPiwikURL:baseURL]];
+}
+
+
++ (id<PiwikDispatcher>)defaultDispatcherWithPiwikURL:(NSURL*)piwikURL {
+  
+  NSURL *endpoint = [[NSURL alloc] initWithString:@"piwik.php" relativeToURL:piwikURL];
+  
+  // Instantiate dispatchers in priority order
+  if (NSClassFromString(@"PiwikAFNetworking2Dispather")) {
+    return [[NSClassFromString(@"PiwikAFNetworking2Dispather") alloc] initWithPiwikURL:endpoint];
+  } else if (NSClassFromString(@"PiwikAFNetworking1Dispather")) {
+    return [[NSClassFromString(@"PiwikAFNetworking1Dispather") alloc] initWithPiwikURL:endpoint];
+  } else {
+    return [[PiwikNSURLSessionDispatcher alloc] initWithPiwikURL:endpoint];
+  }
+  
+}
+
+
++ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID
+                     authenticationToken:(NSString*)authenticationToken
+                              dispatcher:(id<PiwikDispatcher>)dispatcher {
+  
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _sharedInstance = [[PiwikTracker alloc] initWithBaseURL:baseURL siteID:siteID authenticationToken:authenticationToken];
+    _sharedInstance = [[PiwikTracker alloc] initWithSiteID:siteID authenticationToken:authenticationToken dispatcher:dispatcher];
   });
   
   return _sharedInstance;
+  
 }
 
 
@@ -226,22 +260,15 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-// NOTE! The authenticationToken parameter will be removed sometime on the future.
-- (id)initWithBaseURL:(NSURL*)baseURL siteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken {
+// TODO The authenticationToken parameter will be removed sometime on the future.
+- (id)initWithSiteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken dispatcher:(id<PiwikDispatcher>)dispatcher {
   
-  // Make sure the base url is correct
-  NSString *lastPathComponent = [baseURL lastPathComponent];
-  if ([lastPathComponent isEqualToString:@"piwik.php"] && [lastPathComponent isEqualToString:@"piwik-proxy.php"]) {
-    baseURL = [baseURL URLByDeletingLastPathComponent];
-  }
-    
   if (self = [super init]) {
     
     // Initialize instance variables
-
-    _baseURL = baseURL;
     _siteID = siteID;
     _authenticationToken = authenticationToken;
+    _dispatcher = dispatcher;
     
     _isPrefixingEnabled = YES;
     
@@ -254,7 +281,6 @@ static PiwikTracker *_sharedInstance;
     
     _includeDefaultCustomVariable = YES;
     
-    _dispatcher = self.defaultDispatcher;
     _dispatchInterval = PiwikDefaultDispatchTimer;
     _maxNumberOfQueuedEvents = PiwikDefaultMaxNumberOfStoredEvents;
     _isDispatchRunning = NO;
@@ -268,14 +294,14 @@ static PiwikTracker *_sharedInstance;
       _eventsPerRequest = 1;
     }
     
-    _locationManager = [[PiwikLocationManager alloc] init];    
+    _locationManager = [[PiwikLocationManager alloc] init];
     _includeLocationInformation = NO;
     
     // Set default user defatult values
     NSDictionary *defaultValues = @{PiwikUserDefaultOptOutKey : @NO};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-
-    NSLog(@"Piwik Tracker created with baseURL %@ and siteID %@", baseURL, siteID);
+    
+    NSLog(@"Piwik Tracker created with siteID %@", siteID);
     
     if (self.optOut) {
       NSLog(@"Piwik Tracker user optout from tracking");
@@ -304,6 +330,7 @@ static PiwikTracker *_sharedInstance;
   else {
     return nil;
   }
+
 }
 
 
@@ -916,7 +943,6 @@ static PiwikTracker *_sharedInstance;
       
     } else {
       
-      NSString *requestURL = [[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:self.baseURL] absoluteString];
       NSDictionary *requestParameters = [self requestParametersForEvents:events];
   
       __weak typeof(self)weakSelf = self;
@@ -937,9 +963,9 @@ static PiwikTracker *_sharedInstance;
       };
       
       if (events.count == 1) {
-        [self.dispatcher sendSingleEventToPath:requestURL parameters:requestParameters success:successBlock failure:failureBlock];
+        [self.dispatcher sendSingleEventWithParameters:requestParameters success:successBlock failure:failureBlock];
       } else {
-        [self.dispatcher sendBatchEventsToPath:requestURL parameters:requestParameters success:successBlock failure:failureBlock];
+        [self.dispatcher sendBulkEventWithParameters:requestParameters success:successBlock failure:failureBlock];
       }
       
     }
@@ -1025,20 +1051,6 @@ static PiwikTracker *_sharedInstance;
 #pragma mark - Properties
 
 
-- (id<PiwikDispatcher>)defaultDispatcher {
-  
-  // Instantiate dispatchers in priority order
-  if (NSClassFromString(@"PiwikAFNetworking2Dispather")) {
-    return [[NSClassFromString(@"PiwikAFNetworking2Dispather") alloc] init];
-  } else if (NSClassFromString(@"PiwikAFNetworking1Dispather")) {
-    return [[NSClassFromString(@"PiwikAFNetworking1Dispather") alloc] init];
-  } else {
-    return [[PiwikNSURLSessionDispatcher alloc] init];
-  }
-  
-}
-
-
 - (void)setIncludeLocationInformation:(BOOL)includeLocationInformation {
   _includeLocationInformation = includeLocationInformation;
   
@@ -1052,15 +1064,13 @@ static PiwikTracker *_sharedInstance;
 
 
 - (void)setDebug:(BOOL)debug {
-
-  // TODO Refactor, dont like this solution  
-  static id<PiwikDispatcher> oldDispatcher;
   
   if (debug && !_debug) {
-    oldDispatcher = self.dispatcher;
-    self.dispatcher = [[PiwikDebugDispatcher alloc] init];
-  } else if (!debug) {
-    self.dispatcher = oldDispatcher;
+    PiwikDebugDispatcher *debugDispatcher = [[PiwikDebugDispatcher alloc] init];
+    debugDispatcher.wrappedDispatcher = self.dispatcher;
+    self.dispatcher = debugDispatcher;
+  } else if (!debug && [self.dispatcher isKindOfClass:[PiwikDebugDispatcher class]]) {
+    self.dispatcher = ((PiwikDebugDispatcher*)self.dispatcher).wrappedDispatcher;
   }
   
   _debug = debug;

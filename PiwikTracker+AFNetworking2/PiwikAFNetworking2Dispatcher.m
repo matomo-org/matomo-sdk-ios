@@ -10,28 +10,26 @@
 #import "AFNetworking.h"
 
 
-@interface PiwikAFNetworking2Dispatcher ()
-
-@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
-
-@end
-
 
 @implementation PiwikAFNetworking2Dispatcher
 
 
-- (void)sendSingleEventToPath:(NSString*)path
-                parameters:(NSDictionary*)parameters
-                   success:(void (^)())successBlock
-                   failure:(void (^)(BOOL shouldContinue))failureBlock {
-  
-  if (!self.sessionManager) {
-    self.sessionManager = [AFHTTPSessionManager manager];
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL {
+  self = [super initWithBaseURL:piwikURL];
+  if (self) {
+    // Do nothing right now
   }
+  return self;
+}
+
+
+- (void)sendSingleEventWithParameters:(NSDictionary*)parameters
+                              success:(void (^)())successBlock
+                              failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+  self.requestSerializer = [AFHTTPRequestSerializer serializer];
   
-  [self.sessionManager GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
@@ -46,18 +44,13 @@
 }
 
 
-- (void)sendBatchEventsToPath:(NSString*)path
-                   parameters:(NSDictionary*)parameters
+- (void)sendBulkEventWithParameters:(NSDictionary*)parameters
                       success:(void (^)())successBlock
                       failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  if (!self.sessionManager) {
-    self.sessionManager = [AFHTTPSessionManager manager];
-  }
+  self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
   
-  self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
-  
-  [self.sessionManager POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     NSLog(@"Successfully sent stats to Piwik server");
     successBlock();

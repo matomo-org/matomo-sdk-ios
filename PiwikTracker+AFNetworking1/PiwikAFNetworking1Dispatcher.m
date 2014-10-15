@@ -9,18 +9,20 @@
 #import "PiwikAFNetworking1Dispatcher.h"
 #import "AFHTTPClient.h"
 
+
 static NSUInteger const PiwikHTTPRequestTimeout = 5;
 
 
-@interface PiwikAFNetworking1Dispatcher ()
-
-@property (nonatomic, strong) AFHTTPClient *httpClient;
-
-@end
-
-
-
 @implementation PiwikAFNetworking1Dispatcher
+
+
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL {
+  self = [super initWithBaseURL:piwikURL];
+  if (self) {
+    // Do nothing right now
+  }
+  return self;
+}
 
 
 - (void)sendSingleEventToPath:(NSString*)path
@@ -30,11 +32,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   
   NSLog(@"Dispatch event with AFNetworking");
   
-  if (!self.httpClient) {
-    self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[path stringByDeletingLastPathComponent]]];
-  }
-  
-  self.httpClient.parameterEncoding = AFFormURLParameterEncoding;
+  self.parameterEncoding = AFFormURLParameterEncoding;
   
   NSMutableURLRequest *request = [self.httpClient requestWithMethod:@"GET" path:[path lastPathComponent] parameters:parameters];
 
@@ -47,12 +45,8 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
                    parameters:(NSDictionary*)parameters
                       success:(void (^)())successBlock
                       failure:(void (^)(BOOL shouldContinue))failureBlock {
-  
-  if (!self.httpClient) {
-    self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[path stringByDeletingLastPathComponent]]];
-  }
-  
-  self.httpClient.parameterEncoding = AFJSONParameterEncoding;
+ 
+  self.parameterEncoding = AFJSONParameterEncoding;
   
   NSMutableURLRequest *request = [self.httpClient requestWithMethod:@"POST" path:[path lastPathComponent] parameters:parameters];
   
@@ -73,7 +67,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   //        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
   //        DLog(@"Country %@", [locale objectForKey:NSLocaleCountryCode]);
   
-  AFHTTPRequestOperation *operation = [self.httpClient HTTPRequestOperationWithRequest:request
+  AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                                                  
       NSLog(@"Successfully sent stats to Piwik server");
@@ -86,7 +80,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
       
     }];
   
-  [self.httpClient enqueueHTTPRequestOperation:operation];
+  [self enqueueHTTPRequestOperation:operation];
 
 }
 

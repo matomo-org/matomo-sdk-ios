@@ -12,4 +12,6 @@
 
 @interface PiwikNSURLSessionDispatcher : NSObject <PiwikDispatcher>
 
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
+
 @end

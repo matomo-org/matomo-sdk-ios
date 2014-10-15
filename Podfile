@@ -1,3 +1,6 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
 xcodeproj 'PiwikTracker'
 workspace 'PiwikTracker'
 

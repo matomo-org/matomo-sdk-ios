@@ -12,4 +12,6 @@
 
 @interface PiwikAFNetworking1Dispatcher : NSObject <PiwikDispatcher>
 
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
+
 @end

@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "PiwikDispatcher.h"
+#import "AFHTTPSessionManager.h"
 
-@interface PiwikAFNetworking2Dispatcher : NSObject  <PiwikDispatcher>
+@interface PiwikAFNetworking2Dispatcher : AFHTTPSessionManager  <PiwikDispatcher>
+
+- (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
 
 @end

@@ -11,4 +11,6 @@
 
 @interface PiwikDebugDispatcher : NSObject <PiwikDispatcher>
 
+@property (nonatomic, strong) id<PiwikDispatcher> wrappedDispatcher;
+
 @end
