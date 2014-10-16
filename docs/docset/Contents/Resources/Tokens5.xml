@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PiwikTransaction.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PiwikTransaction</TokenIdentifier>
+			<Abstract type="html">A transaction is a composite object containing transaction information as well as an optional list of items included in the transaction.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+            
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setIdentifier:</TokenIdentifier>
+			<Abstract type="html">A unique transaction identifier. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/identifier</TokenIdentifier>
+			<Abstract type="html">A unique transaction identifier. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/identifier</TokenIdentifier>
+			<Abstract type="html">A unique transaction identifier. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *identifier</Declaration>
+			
+			
+			<Anchor>//api/name/identifier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setGrandTotal:</TokenIdentifier>
+			<Abstract type="html">The grand total for the ecommerce order. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *grandTotal</Declaration>
+			
+			
+			<Anchor>//api/name/grandTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/grandTotal</TokenIdentifier>
+			<Abstract type="html">The grand total for the ecommerce order. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *grandTotal</Declaration>
+			
+			
+			<Anchor>//api/name/grandTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/grandTotal</TokenIdentifier>
+			<Abstract type="html">The grand total for the ecommerce order. Mandatory.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *grandTotal</Declaration>
+			
+			
+			<Anchor>//api/name/grandTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setSubTotal:</TokenIdentifier>
+			<Abstract type="html">The sub total of the transaction (excluding shipping cost). Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/subTotal</TokenIdentifier>
+			<Abstract type="html">The sub total of the transaction (excluding shipping cost). Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/subTotal</TokenIdentifier>
+			<Abstract type="html">The sub total of the transaction (excluding shipping cost). Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *subTotal</Declaration>
+			
+			
+			<Anchor>//api/name/subTotal</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setTax:</TokenIdentifier>
+			<Abstract type="html">The total tax. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/tax</TokenIdentifier>
+			<Abstract type="html">The total tax. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/tax</TokenIdentifier>
+			<Abstract type="html">The total tax. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *tax</Declaration>
+			
+			
+			<Anchor>//api/name/tax</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setShippingCost:</TokenIdentifier>
+			<Abstract type="html">The total shipping cost. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *shippingCost</Declaration>
+			
+			
+			<Anchor>//api/name/shippingCost</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/shippingCost</TokenIdentifier>
+			<Abstract type="html">The total shipping cost. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *shippingCost</Declaration>
+			
+			
+			<Anchor>//api/name/shippingCost</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/shippingCost</TokenIdentifier>
+			<Abstract type="html">The total shipping cost. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *shippingCost</Declaration>
+			
+			
+			<Anchor>//api/name/shippingCost</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setDiscount:</TokenIdentifier>
+			<Abstract type="html">The total offered discount. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *discount</Declaration>
+			
+			
+			<Anchor>//api/name/discount</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/discount</TokenIdentifier>
+			<Abstract type="html">The total offered discount. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *discount</Declaration>
+			
+			
+			<Anchor>//api/name/discount</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/discount</TokenIdentifier>
+			<Abstract type="html">The total offered discount. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSNumber *discount</Declaration>
+			
+			
+			<Anchor>//api/name/discount</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/setItems:</TokenIdentifier>
+			<Abstract type="html">A list of items included in the transaction. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/PiwikTransactionItem</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/items</TokenIdentifier>
+			<Abstract type="html">A list of items included in the transaction. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/PiwikTransactionItem</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PiwikTransaction/items</TokenIdentifier>
+			<Abstract type="html">A list of items included in the transaction. Optional.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/PiwikTransactionItem</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PiwikTransaction/transactionWithBuilder:</TokenIdentifier>
+			<Abstract type="html">Create a transaction using a transaction builder.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/PiwikTransactionBuilder</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>+ (instancetype)transactionWithBuilder:(TransactionBuilderBlock)block</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>block</Name>
+					<Abstract type="html">a transaction builder block</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">a new transaction</Abstract></ReturnValue>
+			<Anchor>//api/name/transactionWithBuilder:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTransaction/initWithBuilder:</TokenIdentifier>
+			<Abstract type="html">Create a transaction from the builder.
+Use the builder method to create a new instance.</Abstract>
+			<DeclaredIn>PiwikTransaction.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/clm/PiwikTransaction/transactionWithBuilder:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (id)initWithBuilder:(PiwikTransactionBuilder *)builder</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>builder</Name>
+					<Abstract type="html">the transaction will be created from this builder</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">a new transaction</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithBuilder:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>
