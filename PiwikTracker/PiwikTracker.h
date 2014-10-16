@@ -237,23 +237,10 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendViews:(NSString*)screen, ...;
 
 /**
- Legacy event tracking.
- @warning This method is deprecated
- @param category The category of the event.
- @param action The name of the action, e.g Play, Pause, Download.
- @param label The label name, optional.
- @see sendEventWithCategory:action:name:value:
- */
-- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label __deprecated_msg("Use sendEventWithCategory:action:name:value: instead.");
-
-
-/**
- Track an event (as oppose a screen view).
+ Track an user interaction as a custom event.
  
- @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. If your app is connecting to an older Piwik server (<2.3) you can enable the legacy event encoding by defining the macro `PIWIK_LEGACY_EVENT_ENCODING` in your .pch file (`#define PIWIK_LEGACY_EVENT_ENCODING`).
+ @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. 
  
- The legacy event encoding will track events as hierarchical screen names, category/action/label. Events are prefixed with "event" by default unless prefixing scheme is turned off.
-
  @param category The category of the event
  @param action The name of the action, e.g Play, Pause, Download
  @param name Event name, e.g. song name, file name. Optional.

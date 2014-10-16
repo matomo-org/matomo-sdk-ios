@@ -433,35 +433,7 @@ static PiwikTracker *_sharedInstance;
  }
 
 
-- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action label:(NSString*)label {
-  return [self sendEventWithCategory:category action:action name:label value:nil];
-}
-
-
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action name:(NSString*)name value:(NSNumber*)value {
-  
-#ifdef PIWIK_LEGACY_EVENT_ENCODING
-  
-  // Legacy event encoding (<2.3)
-  // Track the event as a screen view by combining category, action and event into a screen name
-  NSMutableArray *components = [NSMutableArray array];
-  
-  if (self.isPrefixingEnabled) {
-    [components addObject:PiwikPrefixEvent];
-  }
-  if (category) {
-    [components addObject:category];
-  }
-  if (action) {
-    [components addObject:action];
-  }
-  if (label) {
-    [components addObject:name];
-  }
-  
-  return [self send:components];
-  
-#else
   
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   
@@ -475,8 +447,6 @@ static PiwikTracker *_sharedInstance;
   }
   
   return [self queueEvent:params];
-  
-#endif
   
 }
 

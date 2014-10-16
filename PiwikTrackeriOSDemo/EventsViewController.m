@@ -19,10 +19,7 @@
 
 - (IBAction)sendEventAction:(id)sender {
   
-  // Send a custom event tp Piwik
-  // Legacy event tracking, deprecated from Piwik 2.3
-  //[[PiwikTracker sharedInstance] sendEventWithCategory:@"TestEvent" action:@"Event1" label:@"Label"];
-  
+  // Send a custom event tp Piwik  
   [[PiwikTracker sharedInstance] sendEventWithCategory:@"TestCategory" action:@"Play" name:@"Song12" value:@(2)];
   
 }

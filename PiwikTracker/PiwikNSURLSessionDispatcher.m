@@ -45,11 +45,9 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   // URL encoded query string
   NSString *queryString = [[parameterPairs componentsJoinedByString:@"&"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
-  NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:self.piwikURL resolvingAgainstBaseURL:NO];
-  URLComponents.query = queryString;
-                                     
+  NSURL *URL = [NSURL URLWithString:[@"?" stringByAppendingString:queryString] relativeToURL:self.piwikURL];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
-                                  initWithURL:URLComponents.URL
+                                  initWithURL:URL
                                   cachePolicy:NSURLRequestReloadIgnoringCacheData
                                   timeoutInterval:PiwikHTTPRequestTimeout];
   request.HTTPMethod = @"GET";
