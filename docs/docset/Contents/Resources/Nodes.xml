@@ -13,12 +13,26 @@
 					<Subnodes>
 						<NodeRef refid="1"/>
 						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
 						
 					</Subnodes>
 				</Node>
 				
 				
                 
+				<Node>
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="8"/>
+						
+					</Subnodes>
+				</Node>
+				
                 
 			</Subnodes>
         </Node>
@@ -26,6 +40,60 @@
 	<Library>
 		
 		<Node id="1" type="file" documentType="reference">
+            <Name>PiwikDebugDispatcher</Name>
+            <Path>Classes/PiwikDebugDispatcher.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikDebugDispatcher.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikDebugDispatcher.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikDebugDispatcher.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="2" type="file" documentType="reference">
+            <Name>PiwikNSURLSessionDispatcher</Name>
+            <Path>Classes/PiwikNSURLSessionDispatcher.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikNSURLSessionDispatcher.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikNSURLSessionDispatcher.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikNSURLSessionDispatcher.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="3" type="file" documentType="reference">
             <Name>PiwikTrackedViewController</Name>
             <Path>Classes/PiwikTrackedViewController.html</Path>
             
@@ -52,7 +120,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="2" type="file" documentType="reference">
+		<Node id="4" type="file" documentType="reference">
             <Name>PiwikTracker</Name>
             <Path>Classes/PiwikTracker.html</Path>
             
@@ -91,9 +159,147 @@
             </Subnodes>
             
         </Node>
+		<Node id="5" type="file" documentType="reference">
+            <Name>PiwikTransaction</Name>
+            <Path>Classes/PiwikTransaction.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikTransaction.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikTransaction.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransaction.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransaction.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransaction.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="6" type="file" documentType="reference">
+            <Name>PiwikTransactionBuilder</Name>
+            <Path>Classes/PiwikTransactionBuilder.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionBuilder.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionBuilder.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionBuilder.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionBuilder.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="7" type="file" documentType="reference">
+            <Name>PiwikTransactionItem</Name>
+            <Path>Classes/PiwikTransactionItem.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionItem.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionItem.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionItem.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionItem.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/PiwikTransactionItem.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
 		
 		
-        
+        <Node id="8" type="file" documentType="reference">
+            <Name>PiwikDispatcher</Name>
+            <Path>Protocols/PiwikDispatcher.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Protocols/PiwikDispatcher.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Protocols/PiwikDispatcher.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Protocols/PiwikDispatcher.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		
         
 	</Library>
 </DocSetNodes>

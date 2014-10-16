@@ -43,17 +43,15 @@
 	
 	<option value="//api/name/appVersion">&nbsp;&nbsp;&nbsp;&nbsp;appVersion</option>
 	
-	<option value="//api/name/authenticationToken">&nbsp;&nbsp;&nbsp;&nbsp;authenticationToken</option>
-	
-	<option value="//api/name/clientID">&nbsp;&nbsp;&nbsp;&nbsp;clientID</option>
-	
 	<option value="//api/name/debug">&nbsp;&nbsp;&nbsp;&nbsp;debug</option>
 	
 	<option value="//api/name/dispatchInterval">&nbsp;&nbsp;&nbsp;&nbsp;dispatchInterval</option>
 	
+	<option value="//api/name/dispatcher">&nbsp;&nbsp;&nbsp;&nbsp;dispatcher</option>
+	
 	<option value="//api/name/eventsPerRequest">&nbsp;&nbsp;&nbsp;&nbsp;eventsPerRequest</option>
 	
-	<option value="//api/name/includeLocationInformation">&nbsp;&nbsp;&nbsp;&nbsp;includeLocationInformation</option>
+	<option value="//api/name/includeDefaultCustomVariable">&nbsp;&nbsp;&nbsp;&nbsp;includeDefaultCustomVariable</option>
 	
 	<option value="//api/name/isPrefixingEnabled">&nbsp;&nbsp;&nbsp;&nbsp;isPrefixingEnabled</option>
 	
@@ -69,6 +67,8 @@
 	
 	<option value="//api/name/siteID">&nbsp;&nbsp;&nbsp;&nbsp;siteID</option>
 	
+	<option value="//api/name/userID">&nbsp;&nbsp;&nbsp;&nbsp;userID</option>
+	
 	
 	
 	
@@ -76,7 +76,9 @@
 	
 	<option value="//api/name/sharedInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstance</option>
 	
-	<option value="//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstanceWithBaseURL:siteID:authenticationToken:</option>
+	<option value="//api/name/sharedInstanceWithSiteID:baseURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstanceWithSiteID:baseURL:</option>
+	
+	<option value="//api/name/sharedInstanceWithSiteID:dispatcher:">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstanceWithSiteID:dispatcher:</option>
 	
 	
 	
@@ -87,7 +89,9 @@
 	
 	<option value="//api/name/dispatch">&nbsp;&nbsp;&nbsp;&nbsp;- dispatch</option>
 	
-	<option value="//api/name/sendEventWithCategory:action:label:">&nbsp;&nbsp;&nbsp;&nbsp;- sendEventWithCategory:action:label:</option>
+	<option value="//api/name/sendCampaign:">&nbsp;&nbsp;&nbsp;&nbsp;- sendCampaign:</option>
+	
+	<option value="//api/name/sendEventWithCategory:action:name:value:">&nbsp;&nbsp;&nbsp;&nbsp;- sendEventWithCategory:action:name:value:</option>
 	
 	<option value="//api/name/sendExceptionWithDescription:isFatal:">&nbsp;&nbsp;&nbsp;&nbsp;- sendExceptionWithDescription:isFatal:</option>
 	
@@ -97,9 +101,13 @@
 	
 	<option value="//api/name/sendSocialInteraction:target:forNetwork:">&nbsp;&nbsp;&nbsp;&nbsp;- sendSocialInteraction:target:forNetwork:</option>
 	
+	<option value="//api/name/sendTransaction:">&nbsp;&nbsp;&nbsp;&nbsp;- sendTransaction:</option>
+	
 	<option value="//api/name/sendView:">&nbsp;&nbsp;&nbsp;&nbsp;- sendView:</option>
 	
 	<option value="//api/name/sendViews:">&nbsp;&nbsp;&nbsp;&nbsp;- sendViews:</option>
+	
+	<option value="//api/name/setCustomVariableForIndex:name:value:scope:">&nbsp;&nbsp;&nbsp;&nbsp;- setCustomVariableForIndex:name:value:scope:</option>
 	
 	
 	
@@ -125,6 +133,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Track screen views, events, goals and more">Track screen views, events, goals and more</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Custom variables">Custom variables</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Dispatch pending events">Dispatch pending events</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Custom visit variables">Custom visit variables</a></span></li>
@@ -141,17 +151,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appVersion">appVersion</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticationToken">authenticationToken</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientID">clientID</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug">debug</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatchInterval">dispatchInterval</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatcher">dispatcher</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/eventsPerRequest">eventsPerRequest</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/includeLocationInformation">includeLocationInformation</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/includeDefaultCustomVariable">includeDefaultCustomVariable</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isPrefixingEnabled">isPrefixingEnabled</a></span></li>
 	
@@ -167,6 +175,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/siteID">siteID</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userID">userID</a></span></li>
+	
 </ul></li>
 
 
@@ -175,7 +185,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstance">sharedInstance</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">sharedInstanceWithBaseURL:siteID:authenticationToken:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstanceWithSiteID:baseURL:">sharedInstanceWithSiteID:baseURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstanceWithSiteID:dispatcher:">sharedInstanceWithSiteID:dispatcher:</a></span></li>
 	
 </ul></li>
 
@@ -187,7 +199,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatch">dispatch</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendEventWithCategory:action:label:">sendEventWithCategory:action:label:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendCampaign:">sendCampaign:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendEventWithCategory:action:name:value:">sendEventWithCategory:action:name:value:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendExceptionWithDescription:isFatal:">sendExceptionWithDescription:isFatal:</a></span></li>
 	
@@ -197,9 +211,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendSocialInteraction:target:forNetwork:">sendSocialInteraction:target:forNetwork:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendTransaction:">sendTransaction:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendView:">sendView:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendViews:">sendViews:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCustomVariableForIndex:name:value:scope:">setCustomVariableForIndex:name:value:scope:</a></span></li>
 	
 </ul></li>
 
@@ -225,7 +243,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">AFHTTPClient</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">PiwikTracker.h<br />PiwikTracker.m</td>
@@ -247,8 +265,8 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 
 <ol>
 <li>Create and configure the tracker</li>
-<li>Track screen views, events, errors, social interaction, search and goals</li>
-<li>Let the dispatch timer dispatch pending events to the Piwik server or start the dispatch manually</li>
+<li>Track screen views, events, errors, social interaction, search, goals and more</li>
+<li>Let the SDK dispatch events to the Piwik server automatically, or dispatch events manually</li>
 </ol>
 
 
@@ -272,7 +290,13 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">+&nbsp;sharedInstanceWithBaseURL:siteID:authenticationToken:</a></code>
+		<code><a href="#//api/name/sharedInstanceWithSiteID:baseURL:">+&nbsp;sharedInstanceWithSiteID:baseURL:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInstanceWithSiteID:dispatcher:">+&nbsp;sharedInstanceWithSiteID:dispatcher:</a></code>
 	</span>
 	
 	
@@ -290,13 +314,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/authenticationToken">&nbsp;&nbsp;authenticationToken</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/clientID">&nbsp;&nbsp;clientID</a></code>
+		<code><a href="#//api/name/dispatcher">&nbsp;&nbsp;dispatcher</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -309,6 +327,12 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userID">&nbsp;&nbsp;userID</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isPrefixingEnabled">&nbsp;&nbsp;isPrefixingEnabled</a></code>
 	</span>
@@ -334,7 +358,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/includeLocationInformation">&nbsp;&nbsp;includeLocationInformation</a></code>
+		<code><a href="#//api/name/includeDefaultCustomVariable">&nbsp;&nbsp;includeDefaultCustomVariable</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -380,7 +404,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendEventWithCategory:action:label:">&ndash;&nbsp;sendEventWithCategory:action:label:</a></code>
+		<code><a href="#//api/name/sendEventWithCategory:action:name:value:">&ndash;&nbsp;sendEventWithCategory:action:name:value:</a></code>
 	</span>
 	
 	
@@ -405,6 +429,32 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sendSearchWithKeyword:category:numberOfHits:">&ndash;&nbsp;sendSearchWithKeyword:category:numberOfHits:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendTransaction:">&ndash;&nbsp;sendTransaction:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendCampaign:">&ndash;&nbsp;sendCampaign:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Custom variables" name="task_Custom variables"></a>
+						<h3 class="subsubtitle task-title">Custom variables</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCustomVariableForIndex:name:value:scope:">&ndash;&nbsp;setCustomVariableForIndex:name:value:scope:</a></code>
 	</span>
 	
 	
@@ -562,90 +612,6 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/authenticationToken" title="authenticationToken"></a>
-	<h3 class="subsubtitle method-title">authenticationToken</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Piwik authentication token generated by the Piwik server.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *authenticationToken</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The authentication token must be set in order to enabled some of the Piwik features. The value can be found in the Piwik server -> API.</p><div class="warning"><p><strong>Warning:</strong> If you change your user password on Piwik the authentication token value will also change.</p></div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PiwikTracker.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/clientID" title="clientID"></a>
-	<h3 class="subsubtitle method-title">clientID</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Unique client id, used to identify unique visitors.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *clientID</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application is uninstalled and installed again, a new value will be generated.</p>
-
-<p>Requires the authentication token to be set.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PiwikTracker.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/debug" title="debug"></a>
 	<h3 class="subsubtitle method-title">debug</h3>
 	
@@ -669,7 +635,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Instead of sending events to the Piwik server, events will be printed to the console. Can be useful during development.</p>
+		<p>Instead of sending events to the Piwik server, events will be printed to the console. Useful during development.</p>
 	</div>
 	
 	
@@ -737,6 +703,47 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/dispatcher" title="dispatcher"></a>
+	<h3 class="subsubtitle method-title">dispatcher</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The dispatcher will execute the actual network request to the Piwik server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly) id&lt;PiwikDispatcher&gt; dispatcher</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Developers can provide their own dispatchers when creating the tracker in order to implement specific security schemas, http client frameworks or network and server configurations.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/eventsPerRequest" title="eventsPerRequest"></a>
 	<h3 class="subsubtitle method-title">eventsPerRequest</h3>
 	
@@ -761,8 +768,6 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The Piwik server support sending one event at the time or in bulk mode.</p>
-
-<p>Using bulk mode requires the authentication token to be set.</p><div class="warning"><p><strong>Warning:</strong> The bulk request encoding changed in Piwik 2.0. The Piwik tracker support 2.0 encoding out of the box. If you app is connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro <code>PIWIK1_X_BULK_ENCODING</code> in your .pch file (<code>#define PIWIK1_X_BULK_ENCODING</code>). The encoding does not affect sending single events.</p></div>
 	</div>
 	
 	
@@ -780,18 +785,19 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/includeLocationInformation" title="includeLocationInformation"></a>
-	<h3 class="subsubtitle method-title">includeLocationInformation</h3>
+	<a name="//api/name/includeDefaultCustomVariable" title="includeDefaultCustomVariable"></a>
+	<h3 class="subsubtitle method-title">includeDefaultCustomVariable</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve plotting of visitors location. Default NO. This value must be set before the tracker is used the first time.</p>
+		<p>If set to YES the SDK will use custom variable index 1-3 to provide default information about the app and users device (App version, OS version and HW) for each visit.
+Set to NO to free up additional custom variable indexes for your own reporting purpose.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL includeLocationInformation</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL includeDefaultCustomVariable</code></div>
 
     
 	
@@ -803,10 +809,7 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Think about users privacy. Provide information why their location is tracked and give the user an option to opt out.</p>
-
-<p>Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.
-Please note that users can decided to not allow the app to access location information from the general Settings app.</p>
+		<p>Default values it YES.</p>
 	</div>
 	
 	
@@ -830,7 +833,7 @@ Please note that users can decided to not allow the app to access location infor
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Views, events, exceptions and social tracking will be prefixed based on type.</p>
+		<p>Views, exceptions and social tracking will be prefixed based on type.</p>
 	</div>		
 	
     
@@ -849,7 +852,6 @@ Please note that users can decided to not allow the app to access location infor
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>This will allow for logical separation and grouping of statistics in the Piwik web interface.
 Screen views will prefixed with &ldquo;screen&rdquo;.
-Events will be prefixed with &ldquo;event&rdquo;.
 Exceptions will be prefixed with &ldquo;exception&rdquo;.
 Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 
@@ -964,7 +966,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) double sampleRate</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger sampleRate</code></div>
 
     
 	
@@ -1059,8 +1061,6 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The Piwik server will also create a new session if the event is recorded 30 minutes after the previous received event.</p>
-
-<p>Requires the authentication token to be set.</p>
 	</div>
 	
 	
@@ -1084,7 +1084,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Piwik site id generated by the Piwik server.</p>
+		<p>Piwik site id.</p>
 	</div>		
 	
     
@@ -1102,6 +1102,54 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The value can be found in the Piwik server -> Settings -> Websites.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userID" title="userID"></a>
+	<h3 class="subsubtitle method-title">userID</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The user id is any non empty unique string identifying the user, such as an email address or a username.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *userID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set this value when you have a way of uniquely identifying the user in the app, e.g. after the user signed in. The user id will appear in the Piwik server and is available for segmentation reports.
+It is important that the user id is saved locally in the app and set each time directly after the tracker is started. Otherwise tracked events sent before setting this property will not be attributed to the user id.</p>
+
+<p>The user id allow events from different platforms, e.g. iOS and Android, to be associated in the Piwik server to the same user as long as the same user id is used on all platforms.</p>
+
+<p>To stop associating tracked events to a specific user set this property to nil, e.g. after user signs out.</p>
+
+<p>If no user id is provided, an internal random id will be managed by the SDK to track unique users and visits. This value will be persisted across app restarts. If the app is uninstalled/installed again or the user change device, a new id will be generated and events tracked as a new unique user.</p>
 	</div>
 	
 	
@@ -1166,7 +1214,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:">+ sharedInstanceWithBaseURL:siteID:authenticationToken:</a></p></code></li>
+			<li><code><p><a href="#//api/name/sharedInstanceWithSiteID:baseURL:">+ sharedInstanceWithSiteID:baseURL:</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1182,8 +1230,8 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sharedInstanceWithBaseURL:siteID:authenticationToken:" title="sharedInstanceWithBaseURL:siteID:authenticationToken:"></a>
-	<h3 class="subsubtitle method-title">sharedInstanceWithBaseURL:siteID:authenticationToken:</h3>
+	<a name="//api/name/sharedInstanceWithSiteID:baseURL:" title="sharedInstanceWithSiteID:baseURL:"></a>
+	<h3 class="subsubtitle method-title">sharedInstanceWithSiteID:baseURL:</h3>
 	
 	
 	
@@ -1193,7 +1241,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstanceWithBaseURL:(NSURL *)<em>baseURL</em> siteID:(NSString *)<em>siteID</em> authenticationToken:(NSString *)<em>authenticationToken</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstanceWithSiteID:(NSString *)<em>siteID</em> baseURL:(NSURL *)<em>baseURL</em></code></div>
 
     
 	
@@ -1201,18 +1249,13 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>siteID</em></dt>
+			<dd><p>The unique site id generated by the the Piwik server when a new site is created</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>baseURL</em></dt>
 			<dd><p>The base URL of the Piwik server. The URL should not include the tracking endpoint path component (/piwik.php)</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>siteID</em></dt>
-			<dd><p>The unique site id generated by the the Piwik server when the tracked application is created</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>authenticationToken</em></dt>
-			<dd><p>The unique authentication token generated by the the Piwik server when the tracked application is created</p></dd>
 		</dl>
 		
 	</div>
@@ -1227,6 +1270,76 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A default dispatcher will be selected and created based on the dependencies available:
+1) AFNetworking v2
+2) AFNetworking v1 (due to backwards compatibility, will be removed in the future)
+3) NSURLSession (fallback, will always work)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInstanceWithSiteID:dispatcher:" title="sharedInstanceWithSiteID:dispatcher:"></a>
+	<h3 class="subsubtitle method-title">sharedInstanceWithSiteID:dispatcher:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and configure a shared Piwik tracker (designated initialiser).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstanceWithSiteID:(NSString *)<em>siteID</em> dispatcher:(id&lt;PiwikDispatcher&gt;)<em>dispatcher</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>siteID</em></dt>
+			<dd><p>The unique site id generated by the the Piwik server when the tracked application is created</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dispatcher</em></dt>
+			<dd><p>The dispatcher that will perform the network request to the Piwik server</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created PiwikTracker</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Developers can provide their own dispatchers when creating the tracker in order to implement specific security schemas, http client frameworks or network and server configurations.
+Consider inheriting from the <code>AFNetworking2Dispatcher</code> to minimise the implementation effort.</p>
+	</div>
 	
 	
 	
@@ -1328,18 +1441,88 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sendEventWithCategory:action:label:" title="sendEventWithCategory:action:label:"></a>
-	<h3 class="subsubtitle method-title">sendEventWithCategory:action:label:</h3>
+	<a name="//api/name/sendCampaign:" title="sendCampaign:"></a>
+	<h3 class="subsubtitle method-title">sendCampaign:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Track an event (as oppose to a screen view).</p>
+		<p>Track that the app was launched from a Piwik campaign URL.
+The campaign information will be sent to the server with the next Piwik event.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)sendEventWithCategory:(NSString *)<em>category</em> action:(NSString *)<em>action</em> label:(NSString *)<em>label</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendCampaign:(NSString *)<em>campaignURLString</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>campaignURLString</em></dt>
+			<dd><p>A custom app URL containing campaign parameters.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if URL was detected to contain Piwik campaign parameter.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A Piwik campaign URL contains one or two special parameters for tracking campaigns.
+* pk_campaign - The name of the campaign
+* pk_keyword - A specific call to action within a campaign
+Example URL http://example.org/landing.html?pk_campaign=Email-Nov2011&amp;pk_kwd=LearnMore</p>
+
+<ol>
+<li>Register a custom URL schema in your app info.plist file. This is needed to launch your app when tapping on the campaign link</li>
+<li>Detect app launches coming from your campaign links in the <code>AppDelegate</code></li>
+<li>Generate Piwik campaigns urls using the <a href="http://piwik.org/docs/tracking-campaigns-url-builder/">Piwik URL builder tool</a></li>
+<li>Distribute your urls</li>
+</ol>
+
+
+<p>If no Piwik campaign parameters are detected in the URL will be ignored and no tracking performed.</p><div class="warning"><p><strong>Warning:</strong> Experimental feature. Not fully applicable in app context.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendEventWithCategory:action:name:value:" title="sendEventWithCategory:action:name:value:"></a>
+	<h3 class="subsubtitle method-title">sendEventWithCategory:action:name:value:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track an user interaction as a custom event.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendEventWithCategory:(NSString *)<em>category</em> action:(NSString *)<em>action</em> name:(NSString *)<em>name</em> value:(NSNumber *)<em>value</em></code></div>
 
     
 	
@@ -1353,12 +1536,17 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>action</em></dt>
-			<dd><p>The action name</p></dd>
+			<dd><p>The name of the action, e.g Play, Pause, Download</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>label</em></dt>
-			<dd><p>The label name, optional</p></dd>
+			<dt><em>name</em></dt>
+			<dd><p>Event name, e.g. song name, file name. Optional.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>A numeric value, float or integer. Optional.</p></dd>
 		</dl>
 		
 	</div>
@@ -1376,23 +1564,12 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Events are tracked as hierarchical screen names, category/action/label.</p>
-
-<p>Events are prefixed with &ldquo;event&rdquo; by default unless prefixing scheme is turned off.</p>
+		<div class="warning"><p><strong>Warning:</strong> As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box.</p></div>
 	</div>
 	
 	
 	
 	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><a href="#//api/name/isPrefixingEnabled">@property isPrefixingEnabled</a></p></code></li>
-			
-		</ul>
-	</div>
 	
 	
 	
@@ -1486,7 +1663,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)sendGoalWithID:(NSString *)<em>goalID</em> revenue:(NSUInteger)<em>revenue</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendGoalWithID:(NSUInteger)<em>goalID</em> revenue:(NSUInteger)<em>revenue</em></code></div>
 
     
 	
@@ -1672,6 +1849,77 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/sendTransaction:" title="sendTransaction:"></a>
+	<h3 class="subsubtitle method-title">sendTransaction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track an ecommerce transaction.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendTransaction:(PiwikTransaction *)<em>transaction</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>transaction</em></dt>
+			<dd><p>The transaction.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A transaction contains transaction information as well as an optional list of items included in the transaction.</p>
+
+<p>Use the transaction builder to create the transaction object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/PiwikTransactionBuilder.html">PiwikTransactionBuilder</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/PiwikTransaction.html">PiwikTransaction</a></p></code></li>
+			
+			<li><code><p><a href="../Classes/PiwikTransactionItem.html">PiwikTransactionItem</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sendView:" title="sendView:"></a>
 	<h3 class="subsubtitle method-title">sendView:</h3>
 	
@@ -1808,6 +2056,86 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setCustomVariableForIndex:name:value:scope:" title="setCustomVariableForIndex:name:value:scope:"></a>
+	<h3 class="subsubtitle method-title">setCustomVariableForIndex:name:value:scope:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Assign a custom variable.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)setCustomVariableForIndex:(NSUInteger)<em>index</em> name:(NSString *)<em>name</em> value:(NSString *)<em>value</em> scope:(CustomVariableScope)<em>scope</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>Custom variable index. You should only use unique index numbers unless you want to overwrite your data.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Custom variable name.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>Custom variable value.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>scope</em></dt>
+			<dd><p>Using visit scope will associate the custom variable with the current session. Create a new session before and after setting a visit custom variable to limit the actions associated with the custom variable. Screen scope will limit the custom variable to a single screen view.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A custom variable is a name-value pair that you can assign to your visits or individual screen views. The Piwik server will visualise how many visits, conversions, etc. occurred for each custom variable.
+You can track by default up to 5 custom variables per visit and/or up to 5 custom variables per page view. It is possible to configure the Piwik server to accept additional number of custom variables.</p>
+
+<p>Keep the name and value short to ensure that the URL length doesn’t go over the URL limit for the web server or http client.</p>
+
+<p>Please note that the iOS SDK by default will use index 1-3 to report information about your app and users device at each visit (leaving index 4-5 available to the app developer). You can turn this off if you prefer to use index 1-3 for your own reporting purpose.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/includeDefaultCustomVariable">@property includeDefaultCustomVariable</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -1823,7 +2151,7 @@ Social interaction will be prefixed with &ldquo;social&rdquo;.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Wadpam. All rights reserved. (Last updated: 2014-01-12)</span><br />
+						<p><span class="copyright">&copy; 2014 Wadpam. All rights reserved. (Last updated: 2014-10-16)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						

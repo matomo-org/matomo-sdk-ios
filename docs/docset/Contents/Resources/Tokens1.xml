@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/PiwikTrackedViewController.html">
+	<File path="Classes/PiwikDebugDispatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/PiwikTrackedViewController</TokenIdentifier>
-			<Abstract type="html">Controllers that inherit from this view controller with send a screen view event to Piwik each time the controller did show.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/PiwikDebugDispatcher</TokenIdentifier>
+			<Abstract type="html">A dispatcher that will only print events to the console and never send anything to the Piwik server.</Abstract>
+			<DeclaredIn>PiwikDebugDispatcher.h</DeclaredIn>
             
 			
 			<NodeRef refid="1"/>
@@ -13,38 +13,48 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PiwikTrackedViewController/setTrackedViewName:</TokenIdentifier>
-			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikDebugDispatcher/sendSingleEventWithParameters:success:failure:</TokenIdentifier>
+			<Abstract type="html">Send a single tracking event to the Piwik server.</Abstract>
+			<DeclaredIn>PiwikDebugDispatcher.m</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
+			<Declaration>- (void)sendSingleEventWithParameters:(NSDictionary *)parameters success:(void ( ^ ) ( ))successBlock failure:(void ( ^ ) ( BOOL shouldContinue ))failureBlock</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>parameters</Name>
+					<Abstract type="html">Event parameters. These parameters should be added to the path as a URL encoded query string</Abstract>
+				</Parameter><Parameter>
+					<Name>successBlock</Name>
+					<Abstract type="html">Run the block if the dispatch to the Piwik server is successful.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">Run this block if the dispatch to the Piwik server fails. Provide a YES to indicate if the SDK should attempt to send any pending event or NO if pending events should be saved until next dispatch. E.g. there is no use trying to send pending events if there is no network connection.</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/trackedViewName</Anchor>
+			<Anchor>//api/name/sendSingleEventWithParameters:success:failure:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/PiwikTrackedViewController/trackedViewName</TokenIdentifier>
-			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikDebugDispatcher/sendBulkEventWithParameters:success:failure:</TokenIdentifier>
+			<Abstract type="html">Send a a bulk of tracking events to the Piwik server.</Abstract>
+			<DeclaredIn>PiwikDebugDispatcher.m</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
+			<Declaration>- (void)sendBulkEventWithParameters:(NSDictionary *)parameters success:(void ( ^ ) ( ))successBlock failure:(void ( ^ ) ( BOOL shouldContinue ))failureBlock</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>parameters</Name>
+					<Abstract type="html">Event parameters. These parameters should be JSON encoded and added to the request body.</Abstract>
+				</Parameter><Parameter>
+					<Name>successBlock</Name>
+					<Abstract type="html">Run the block if the dispatch to the Piwik server is successful.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">Run this block if the dispatch to the Piwik server fails. Provide a YES to indicate if the SDK should attempt to send any pending event or NO if pending events should be saved until next dispatch. E.g. there is no use trying to send pending events if there is no network connection.</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/trackedViewName</Anchor>
-            <NodeRef refid="1"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/PiwikTrackedViewController/trackedViewName</TokenIdentifier>
-			<Abstract type="html">The screen view name that will be used in the even sent to Piwik.</Abstract>
-			<DeclaredIn>PiwikTrackedViewController.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) NSString *trackedViewName</Declaration>
-			
-			
-			<Anchor>//api/name/trackedViewName</Anchor>
+			<Anchor>//api/name/sendBulkEventWithParameters:success:failure:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
