@@ -316,14 +316,19 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  Track that the app was launched from a Piwik campaign URL.
  The campaign information will be sent to the server with the next Piwik event.
  
- A Piwik campaign URL contains one or two special parameter for tracking campaigns.
+ A Piwik campaign URL contains one or two special parameters for tracking campaigns.
  * pk_campaign - The name of the campaign
  * pk_keyword - A specific call to action within a campaign
  Example URL http://example.org/landing.html?pk_campaign=Email-Nov2011&pk_kwd=LearnMore
  
- Use the [Piwik URL builder tool](http://piwik.org/docs/tracking-campaigns-url-builder/) to safely generate Piwik campaign URLs.
+ 1. Register a custom URL schema in your app info.plist file. This is needed to launch your app when tapping on the campaign link
+ 2. Detect app launches comming from your campaign links in the `AppDelegate`
+ 3. Generate Piwik campaigns urls using the [Piwik URL builder tool](http://piwik.org/docs/tracking-campaigns-url-builder/)
+ 4. Distribute your urls
  
  If no Piwik campaign parameters are detected in the URL will be ignored and no tracking performed.
+ 
+ @warning Experimental feature. Not fully applicable in app context.
  
  @param campaignURLString A custom app URL containing campaign parameters.
  @return YES if URL was detected to contain Piwik campaign parameter.
@@ -380,11 +385,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 /**
  Specifies how many events should be sent to the Piwik server in each request. Default 20 events per request.
  
- The Piwik server support sending one event at the time or in bulk mode. 
- 
- Using bulk mode requires the authentication token to be set.
- 
- @warning The bulk request encoding changed in Piwik 2.0. The Piwik tracker support 2.0 encoding out of the box. If you app is connecting to a Piwik 1.X server you can enable 1.x bulk encoding by defining the macro `PIWIK1_X_BULK_ENCODING` in your .pch file (`#define PIWIK1_X_BULK_ENCODING`). The encoding does not affect sending single events. 
+ The Piwik server support sending one event at the time or in bulk mode.  
  */
 @property (nonatomic) NSUInteger eventsPerRequest;
 

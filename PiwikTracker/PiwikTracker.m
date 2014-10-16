@@ -968,14 +968,7 @@ static PiwikTracker *_sharedInstance;
     [events enumerateObjectsWithOptions:enumerationOption usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
       
       NSDictionary *params = (NSDictionary*)obj;
-      
-#ifdef PIWIK1_X_BULK_ENCODING
-      
-      // Piwik 1.x require the paramers to be url encoded in the request body
-      NSString *queryString = [NSString stringWithFormat:@"?%@", AFQueryStringFromParametersWithEncoding(params, NSUTF8StringEncoding)];
-      
-#else
-      
+            
       // As of Piwik 2.0 the query string should not be url encoded in the request body
       // Unfortenatly the AFNetworking methods for create parameter pairs are not external
       NSMutableArray *parameterPair = [NSMutableArray arrayWithCapacity:params.count];
@@ -984,8 +977,6 @@ static PiwikTracker *_sharedInstance;
       }];
       
       NSString *queryString = [NSString stringWithFormat:@"?%@", [parameterPair componentsJoinedByString:@"&"]];
-      
-#endif
   
       [queryStrings addObject:queryString];
       
