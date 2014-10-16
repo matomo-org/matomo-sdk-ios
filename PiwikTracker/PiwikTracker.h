@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  The Piwik tracker must have been created and configured for this method to return the tracker.
  
  @return The existing PiwikTracker object
- @see sharedInstanceWithSiteID:BaseURL:
+ @see sharedInstanceWithSiteID:baseURL:
  */
 + (instancetype)sharedInstance;
 

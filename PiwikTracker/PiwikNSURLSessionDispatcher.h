@@ -10,6 +10,9 @@
 #import "PiwikDispatcher.h"
 
 
+/**
+ A dispatcher that will use NSURLSession to send requests to the Piwik server.
+ */
 @interface PiwikNSURLSessionDispatcher : NSObject <PiwikDispatcher>
 
 - (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
