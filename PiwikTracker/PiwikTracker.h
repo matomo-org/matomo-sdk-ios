@@ -344,6 +344,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendCampaign:(NSString*)campaignURLString;
 
 
+// TODO Add content impression
+
+
 /**
  @name Custom variables
  */
