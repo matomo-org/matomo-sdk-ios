@@ -147,19 +147,24 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 @property (nonatomic) NSUInteger sampleRate;
 
-/**
- Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve showing visitors location. Default NO. This value must be set before the tracker is used the first time.
- 
- Please note that the position will only be used when showing the location in a users profile. It will not affect the visitor map.
- 
- The user will be asked for permission to use current location when the first event is sent. The user can also disable the location service from the Settings location.
- 
- Think about users privacy. Provide information why their location is tracked and give the user the option to opt out.
- 
- Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.
- Please note that users can decided to not allow the app to access location information from the general Settings app.
- */
-@property (nonatomic) BOOL includeLocationInformation;
+
+// Remove for now. This feature still depends on the auth_token being sent to the Piwik server.
+// The auth_token should not be used any longer in the clients due to security reasons.
+// Keep the code and enable once the Piwik server allow location information without passing the auth_token.
+
+///**
+// Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve showing visitors location. Default NO. This value must be set before the tracker is used the first time.
+// 
+// Please note that the position will only be used when showing the location in a users profile. It will not affect the visitor map.
+// 
+// The user will be asked for permission to use current location when the first event is sent. The user can also disable the location service from the Settings location.
+// 
+// Think about users privacy. Provide information why their location is tracked and give the user the option to opt out.
+// 
+// Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.
+// Please note that users can decided to not allow the app to access location information from the general Settings app.
+// */
+//@property (nonatomic) BOOL includeLocationInformation;
 
 
 /**

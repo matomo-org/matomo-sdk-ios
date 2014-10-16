@@ -160,6 +160,7 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic, strong) NSTimer *dispatchTimer;
 @property (nonatomic) BOOL isDispatchRunning;
 
+@property (nonatomic) BOOL includeLocationInformation; // Disabled, see comments in .h file
 @property (nonatomic, strong) PiwikLocationManager *locationManager;
 
 @property (nonatomic, readonly, strong) NSManagedObjectContext *managedObjectContext;

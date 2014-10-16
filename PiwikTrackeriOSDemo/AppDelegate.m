@@ -35,11 +35,10 @@ static NSString * const PiwikProductionSiteID = @"23";
   
   /* Configure the tracker */
   
-//  [PiwikTracker sharedInstance].debug = YES;
+  [PiwikTracker sharedInstance].debug = YES;
   [PiwikTracker sharedInstance].dispatchInterval = 30;
 //  [PiwikTracker sharedInstance].sampleRate = 50;
 //  [PiwikTracker sharedInstance].eventsPerRequest = 2;
-//  [PiwikTracker sharedInstance].includeLocationInformation = YES;
   
   // Do not track anything until the user give consent
   if (![[NSUserDefaults standardUserDefaults] boolForKey:PiwikAskedForPermissonKey]) {
