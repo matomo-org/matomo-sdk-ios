@@ -35,11 +35,16 @@
 
 - (void)startMonitoringLocationChanges {
   
+  if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted ||
+      [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+    // Not allowed to monitor location changes, do nothing
+    return;
+  }
+  
   // If the app already have permission to track user location start monitoring. Otherwise wait untill the first location is requested
   // Do this to avoid asking for permission directly when the app starts
   // This will allow the app to to ask for permission at a controlled point in the application flow
-  if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized &&
-      [CLLocationManager locationServicesEnabled]) {
+  if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
     [self _startMonitoringLocationChanges];
   } else {
     self.startMonitoringOnNextLocationRequest = YES;
@@ -48,19 +53,32 @@
 }
 
 - (void)_startMonitoringLocationChanges {
-  self.isMonitorLocationChanges = YES;
-
+  
 #if TARGET_OS_IPHONE
   
+  // Workaround
+  // Staring iOS8 you must explicitly ask for user authorization
+  // Please note that the info.plist must contain the NSLocationWhenInUseUsageDescription key
+  if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+    [self.locationManager requestWhenInUseAuthorization];
+  }
+  
   // Use significant change location service for iOS
-  [self.locationManager startMonitoringSignificantLocationChanges];
+  if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    self.isMonitorLocationChanges = YES;
+  }
   
 #else
   
-  // User standard service for OSX
-  self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-  self.locationManager.distanceFilter = 500; // meters
-  [self.locationManager startUpdatingLocation];
+  if ([CLLocationManager locationServicesEnabled]) {
+    // User standard service for OSX
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    self.locationManager.distanceFilter = 500; // meters
+    [self.locationManager startUpdatingLocation];
+
+    self.isMonitorLocationChanges = YES;
+  }
   
 #endif
   
@@ -87,14 +105,8 @@
 
 - (CLLocation*)location {
   
-  if (self.startMonitoringOnNextLocationRequest &&
-      !self.isMonitorLocationChanges &&
-      [CLLocationManager locationServicesEnabled] &&
-      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusRestricted &&
-      [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
-    
+  if (self.startMonitoringOnNextLocationRequest && !self.isMonitorLocationChanges) {
     [self _startMonitoringLocationChanges];
-  
   }
   
   // Will return nil if the location monitoring has not been started
