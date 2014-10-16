@@ -4,7 +4,7 @@ The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik serv
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
 
-*v3.0.0 only support Piwik 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slighlty.*
+*v3.0.0 only support Piwik 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly.*
 
 *A detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) has been added to the Wiki section.*
 
@@ -14,7 +14,7 @@ The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik serv
 
 ##Getting started
 
-The PiwikTracke is easy to use:
+The PiwikTracker is easy to use:
  
 1. Create a new website in the Piwik web interface called "My App". Copy the Website ID.
 2. Add the PiwikTracker to your project
@@ -32,7 +32,7 @@ If your project is using CocoaPods, add PiwikTracker as a dependency in your pod
     -- The NSURLSession class will be used for sending requests to the Piwik server
     
     pod 'PiwikTracker/AFNetworking2'
-    -- AFNetworking2 framework will be used for sending requests to the Piwik server
+    -- AFNetworking2 framework will be used for sending requests to the Piwik server. AFNetworking will be added as dependency to your project.
     
 ###Source files
 
@@ -67,7 +67,7 @@ static NSString * const PiwikServerURL = @"http://localhost/path/to/piwik/";
 static NSString * const PiwikSiteID = @"2";
 ```
     
-If you do not have access to a Piwik server your may run the tracker in debug mode. Events will be printed to the console instead of sent to the Piwik server:
+If you do not have access to a Piwik server your can run the tracker in debug mode. Events will be printed to the console instead of sent to the Piwik server:
 	
 ```objective-c
 // Print events to the console
@@ -83,7 +83,7 @@ The Piwik SDK is easy to configure and use:
 // Create and configure the tracker in your app delegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
   // The website ID is available in Piwik web interface "Settings > Websites"
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID authenticationToken:PiwikAuthenticationToken];
+  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID];
   // Any additional configuration goes here
 }
 		
@@ -94,12 +94,12 @@ The Piwik SDK is easy to configure and use:
 }
 	  
 // Track custom events when users interacts with the app
-[[PiwikTracker sharedInstance] sendEventWithCategory:@"Documentary" action:@"Play" nane:@"Thrive" value:@8.0];
+[[PiwikTracker sharedInstance] sendEventWithCategory:@"Documentary" action:@"Play" name:@"Thrive" value:@8.0];
 	
 // Measure exceptions and errors after the app gone live
 [[PiwikTracker sharedInstance] sendExceptionWithDescription:@"Ops, got and error" isFatal:NO];
 
-// Track when users interact with various social networks.
+// Track when users interact with various social networks
 [[PiwikTracker sharedInstance] sendSocialInteraction:@"Like" target:@"cat.png" forNetwork:@"Facebook"];
 	
 // Measure the most popular keywords used for different search operations in the app
@@ -118,7 +118,7 @@ PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(Piwik
 
 // Track campaigns
 campaignURLString = ...
-[[PiwikTracker sharedInstance] endCampaign:(NSString*)campaignURLString;
+[[PiwikTracker sharedInstance] sendCampaign:(NSString*)campaignURLString;
 
 ```
 	  	
@@ -126,6 +126,15 @@ Check out the full [API documentation](http://piwik.github.io/piwik-sdk-ios/docs
 
 A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) can be found in the Wiki section.
 
+###User ID
+
+Providing the tracker with a user ID lets you connect data collected from multiple devices and multiple browsers for the same user. A user ID is typically a non empty string such as a username or email address or UUID that uniquely represents a user. The User ID must be the same for a given user across all her devices and browsers.
+
+```objective-c
+[PiwikTracker sharedInstance].userID = @"mattias.levin@gmail.com"
+```
+
+If user ID is used, it should be persisted locally by the app and set directly on the tracker each time the app is started. If no user ID is used, the SDK will manage a random id for you.
 
 ###Ecommerce
 
@@ -143,7 +152,7 @@ PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(Piwik
   [builder addItemWithSku:@"SKU123" ... ];  // Item 1
   [builder addItemWithSku:@"SKU987" ... ];  // Item 2  
 }];
-[[PiwikTracker sharedInstance] sendTransaction:transaction];  
+[ sendTransaction:transaction];  
 ```
 ###Campaign tracking
 
@@ -151,7 +160,7 @@ Measure and compare how different campaigns bring traffic to your app, e.g. emai
 
 1. Register a custom URL schema in your app info.plist file. 
 This is needed to launch your app when tapping on the campaign link
-2. Detect app launches comming from your campaing links in the `AppDelegate`
+2. Detect app launches coming from your campaign links in the `AppDelegate`
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -216,9 +225,9 @@ A default dispatcher will be selected and created by the tracker automatically b
 2. AFNetworking v1 (due to backwards compatibility, will be removed in the future)
 3. NSURLSession (fallback, will always work)
 
-Developers can also set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from the `AFNetworking2Dispathcer` to minimize the effort.
+Developers can set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from the `AFNetworking2Dispathcer` to minimise the effort.
 
-##Changelog
+##Change log
 
 * Version 3.0.0 contains contains major changes. The auth_token has been removed for security reasons and the api for instantiating the tracker has changed slightly. Several new features has been added - custom events, ecommerce tracking, campaigns and more. This version only works with Piwik 2.8 and up. 
 * Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk-dispatching).
