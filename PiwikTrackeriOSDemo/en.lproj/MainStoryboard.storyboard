@@ -201,6 +201,25 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Other" id="6kC-bt-yx9">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
+                                        <rect key="frame" x="0.0" y="571" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="xqt-PP-0XP" kind="push" id="xdE-zM-rgA"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WVV-vG-MDD" style="IBUITableViewCellStyleDefault" id="2t3-Re-M7O" userLabel="Table View Cell - Campaign">
                                         <rect key="frame" x="0.0" y="571" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -527,6 +546,64 @@ Log keywords used and the number of results found.   Searches are shown in a
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQx-GN-4e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1626" y="241"/>
+        </scene>
+        <!--User ID-->
+        <scene sceneID="YPh-mF-L4v">
+            <objects>
+                <viewController id="xqt-PP-0XP" customClass="UserIDViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aTn-Vi-fRv"/>
+                        <viewControllerLayoutGuide type="bottom" id="guM-u1-IVi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hgK-Yh-NnZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-dU-TqW">
+                                <rect key="frame" x="16" y="271" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euf-jm-xQs">
+                                <rect key="frame" x="16" y="309" width="100" height="30"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="6lm-KG-r0i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ib-Au-0C4">
+                                <rect key="frame" x="204" y="309" width="100" height="30"/>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signinAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="pTe-3M-ClI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kad-JQ-T2F">
+                                <rect key="frame" x="20" y="126" width="280" height="130"/>
+                                <string key="text">Set a unqiue user id once the user signed in. 
+
+Store the id locally in the app and set it directly after the tracker is created again.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="User ID" id="PU0-p5-r10"/>
+                    <connections>
+                        <outlet property="signinButton" destination="6ib-Au-0C4" id="eWd-9D-zEn"/>
+                        <outlet property="singoutButton" destination="euf-jm-xQs" id="u0b-8K-nhz"/>
+                        <outlet property="userIDTextField" destination="sZf-dU-TqW" id="Tfv-vQ-HRe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qk3-gt-VLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="2055"/>
         </scene>
         <!--Campaign-->
         <scene sceneID="SEW-sB-SAF">

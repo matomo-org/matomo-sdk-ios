@@ -92,18 +92,26 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 @property (readonly) id<PiwikDispatcher> dispatcher;
 
-/**
- Unique client id, used to identify unique visitors.
- 
- This id is generated the first time the app is installed. The value will be retained across app restart and upgrades. If the application is uninstalled and installed again, a new client id will be generated. 
- */
-// TODO Will be removed
-@property (nonatomic, readonly) NSString *clientID;
-
 
 /**
  @name Tracker configuration
  */
+
+
+/**
+ The user id is any non empty unique string identifying the user, such as an email address or a username.
+
+ Set this value when you have a way of uniquely identifing the user in the app, e.g. after the user signed in. The user id will appear in the Piwik server and is available for segementation reports.
+ It is important that the user id is saved locally in the app and set each time directly after the tracker is started. Otherwise tracked events sent before setting this property will not be attributed to the user id.
+ 
+ The user id allow tracked events from the same user but from different platforms, e.g. iOS and Android, to be associated in the Piwik server as long as the same user id is used on all platforms.
+ 
+ To stop associating tracked events to a specific user set this property to nil, e.g. after user signs out.
+ 
+ If no user id is provided, an internal random id will be managed by the SDK to track unqiue users and visits. This value will be persisted accross app restarts. If the app is unistalled/install again or the user change device, a new id will be generated and events logged as a new unique user.
+ */
+@property (nonatomic, strong) NSString *userID;
+
 
 /**
  Views, events, exceptions and social tracking will be prefixed based on type. 

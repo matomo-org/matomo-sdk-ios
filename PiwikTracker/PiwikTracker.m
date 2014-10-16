@@ -50,6 +50,7 @@ static NSString * const PiwikParameterSeconds = @"s";
 static NSString * const PiwikParameterActionName = @"action_name";
 static NSString * const PiwikParameterURL = @"url";
 static NSString * const PiwikParameterVisitorID = @"_id";
+static NSString * const PiwikParameterUserID = @"uid";
 static NSString * const PiwikParameterVisitScopeCustomVariables = @"_cvar";
 static NSString * const PiwikParameterScreenScopeCustomVariables = @"cvar";
 static NSString * const PiwikParameterRandomNumber = @"r";
@@ -85,13 +86,6 @@ static NSString * const PiwikParameterEventValue = @"e_v";
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
 static NSString * const PiwikDefaultAPIVersionValue = @"1";
-
-/*
-// Custom variables
-static NSUInteger const PiwikCustomVariablesMaxNumber = 5;
-static NSUInteger const PiwikCustomVariablesMaxNameLength = 20;
-static NSUInteger const PiwikCustomVariablesMaxValueLengt = 100;
- */
 
 // Default values
 static NSUInteger const PiwikDefaultSessionTimeout = 120;
@@ -147,6 +141,8 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 
 @interface PiwikTracker ()
 
+@property (nonatomic, readonly) NSString *clientID;
+
 @property (nonatomic) NSUInteger totalNumberOfVisits;
 
 @property (nonatomic, readonly) NSTimeInterval firstVisitTimestamp;
@@ -173,7 +169,6 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @end
 
 
-//NSString* customVariable(NSString* name, NSString* value);
 NSString* UserDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 
 
@@ -700,6 +695,11 @@ static PiwikTracker *_sharedInstance;
 - (NSDictionary*)addPerRequestParameters:(NSDictionary*)parameters {
   
   NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+  
+  // User id
+  if (self.userID && self.userID.length > 0) {
+    joinedParameters[PiwikParameterUserID] = self.userID;
+  }
   
   // Custom parameters
   if (self.screenCustomVariables) {
