@@ -45,7 +45,7 @@ If your project is not using CocoaPods:
 
 ###Requirements
 
-The latest PiwikTracker version uses ARC and support iOS7+ and OSX10.8+. It has been tested with Piwik 2.8.
+The latest PiwikTracker version uses ARC and support iOS7+ and OSX10.8+. It has been tested with Piwik server 2.8.
 
 * iOS tracker depends on: Core Data, Core Location, Core Graphics and UIKit
 * OSX tracker depends on: Core Data, Core Graphics and Cocoa

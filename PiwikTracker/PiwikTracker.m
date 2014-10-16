@@ -41,7 +41,6 @@ static NSString * const PiwikUserDefaultOptOutKey = @"PiwikOptOutKey";
 
 // Piwik query parameter names
 static NSString * const PiwikParameterSiteID = @"idsite";
-static NSString * const PiwikParameterAuthenticationToken = @"token_auth";
 static NSString * const PiwikParameterRecord = @"rec";
 static NSString * const PiwikParameterAPIVersion = @"apiv";
 static NSString * const PiwikParameterScreenReseloution = @"res";
@@ -199,14 +198,7 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-+ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID baseURL:(NSURL*)baseURL  {
-  return [self sharedInstanceWithSiteID:(NSString*)siteID baseURL:baseURL authenticationToken:nil];
-}
-
-
-+ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID
-                                 baseURL:(NSURL*)baseURL
-                     authenticationToken:(NSString*)authenticationToken {
++ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID baseURL:(NSURL*)baseURL {
   
   // Make sure the base url is correct
   NSString *lastPathComponent = [baseURL lastPathComponent];
@@ -214,7 +206,7 @@ static PiwikTracker *_sharedInstance;
     baseURL = [baseURL URLByDeletingLastPathComponent];
   }
   
-  return [self sharedInstanceWithSiteID:siteID authenticationToken:authenticationToken dispatcher:[self defaultDispatcherWithPiwikURL:baseURL]];
+  return [self sharedInstanceWithSiteID:siteID dispatcher:[self defaultDispatcherWithPiwikURL:baseURL]];
 }
 
 
@@ -234,40 +226,33 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-+ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID
-                     authenticationToken:(NSString*)authenticationToken
-                              dispatcher:(id<PiwikDispatcher>)dispatcher {
++ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID dispatcher:(id<PiwikDispatcher>)dispatcher {
   
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _sharedInstance = [[PiwikTracker alloc] initWithSiteID:siteID authenticationToken:authenticationToken dispatcher:dispatcher];
+    _sharedInstance = [[PiwikTracker alloc] initWithSiteID:siteID dispatcher:dispatcher];
   });
   
   return _sharedInstance;
-  
 }
 
 
 + (instancetype)sharedInstance {
-  
   if (!_sharedInstance) {
-    NSLog(@"Piwik tracker must first be initialized using sharedInstanceWithBaseURL:siteID:authenticationToken:");
+    NSLog(@"Piwik tracker must first be initialized using sharedInstanceWithBaseURL:siteID:");
     return nil;
   } else {
     return _sharedInstance;
   }
-
 }
 
 
-// TODO The authenticationToken parameter will be removed sometime on the future.
-- (id)initWithSiteID:(NSString*)siteID authenticationToken:(NSString*)authenticationToken dispatcher:(id<PiwikDispatcher>)dispatcher {
+- (id)initWithSiteID:(NSString*)siteID dispatcher:(id<PiwikDispatcher>)dispatcher {
   
   if (self = [super init]) {
     
     // Initialize instance variables
     _siteID = siteID;
-    _authenticationToken = authenticationToken;
     _dispatcher = dispatcher;
     
     _isPrefixingEnabled = YES;
@@ -285,14 +270,7 @@ static PiwikTracker *_sharedInstance;
     _maxNumberOfQueuedEvents = PiwikDefaultMaxNumberOfStoredEvents;
     _isDispatchRunning = NO;
     
-    // Piwik server does not require authentication token after release 2.2.1 to send bulk requests
-    // TODO Change to bulk requests by default in the future.
-    // Bulk tracking require authentication token
-    if (_authenticationToken) {
-      _eventsPerRequest = PiwikDefaultNumberOfEventsPerRequest;
-    } else {
-      _eventsPerRequest = 1;
-    }
+    _eventsPerRequest = PiwikDefaultNumberOfEventsPerRequest;
     
     _locationManager = [[PiwikLocationManager alloc] init];
     _includeLocationInformation = NO;
@@ -836,10 +814,6 @@ static PiwikTracker *_sharedInstance;
     
     staticParameters[PiwikParameterAPIVersion] = PiwikDefaultAPIVersionValue;
     
-    if (self.authenticationToken) {
-      staticParameters[PiwikParameterAuthenticationToken] = self.authenticationToken;
-    }
-    
     // Set resolution
 #if TARGET_OS_IPHONE
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -902,8 +876,7 @@ static PiwikTracker *_sharedInstance;
 
 - (void)sendEvent {
 
-  NSUInteger numberOfEventsToSend = self.authenticationToken && self.eventsPerRequest > 0 ? self.eventsPerRequest : 1;
-  
+  NSUInteger numberOfEventsToSend = self.eventsPerRequest;
   [self eventsFromStore:numberOfEventsToSend completionBlock:^(NSArray *entityIDs, NSArray *events, BOOL hasMore) {
     
     if (!events || events.count == 0) {
@@ -956,9 +929,6 @@ static PiwikTracker *_sharedInstance;
     
     // Send events as JSON encoded post body    
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
-    
-    // Authentication token is no longer needed in bulk requests starting Piwik 2.2.1
-    JSONParams[@"token_auth"] = self.authenticationToken;
     
     // Piwik server will process each record in the batch request in reverse order, not sure if this is a bug
     // Build the request in revers order
