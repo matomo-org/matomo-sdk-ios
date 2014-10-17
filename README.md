@@ -4,11 +4,14 @@ The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik serv
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
 
-*v3.0.0 only support Piwik 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly.*
+**v3.0.0 only support Piwik 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly.**
 
 *A detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) has been added to the Wiki section.*
 
 *A [Google Analytics migration guide](https://github.com/piwik/piwik-sdk-ios/wiki/Google-Analytics-migration-guide) has recently been added to the Wiki section.*
+
+*Check out the full [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html).*
+
 
 [![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=master)](https://travis-ci.org/piwik/piwik-sdk-ios)
 
@@ -30,6 +33,8 @@ If your project is using CocoaPods, add PiwikTracker as a dependency in your pod
 
     pod 'PiwikTracker'
     -- The NSURLSession class will be used for sending requests to the Piwik server
+    
+    or
     
     pod 'PiwikTracker/AFNetworking2'
     -- AFNetworking2 framework will be used for sending requests to the Piwik server. AFNetworking will be added as dependency to your project.
@@ -128,13 +133,17 @@ A more detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/w
 
 ###User ID
 
-Providing the tracker with a user ID lets you connect data collected from multiple devices and multiple browsers for the same user. A user ID is typically a non empty string such as a username or email address or UUID that uniquely represents a user. The User ID must be the same for a given user across all her devices and browsers.
+Providing the tracker with a user ID lets you connect data collected from multiple devices and multiple browsers for the same user. 
+
+A user ID is typically a non empty string such as username, email address or UUID that uniquely identify the user. The User ID must be the same for a given user across all her devices and browsers.
 
 ```objective-c
 [PiwikTracker sharedInstance].userID = @"mattias.levin@gmail.com"
 ```
 
-If user ID is used, it should be persisted locally by the app and set directly on the tracker each time the app is started. If no user ID is used, the SDK will manage a random id for you.
+If user ID is used, it must be persisted locally by the app and set directly on the tracker each time the app is started. 
+
+If no user ID is used, the SDK will generate, manage and persist a random id for you.
 
 ###Ecommerce
 
@@ -219,13 +228,13 @@ Set the interval to 0 to dispatch events as soon as they are queued. If a negati
 
 ###Dispatchers
 
-A default dispatcher will be selected and created by the tracker automatically based on the dependencies available:
+A default dispatcher will be selected and created by the tracker automatically based on the dependencies available at run-time:
 
 1. AFNetworking v2
 2. AFNetworking v1 (due to backwards compatibility, will be removed in the future)
 3. NSURLSession (fallback, will always work)
 
-Developers can set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from the `AFNetworking2Dispatcher` to minimise the implementation effort.
+Developers can set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from `AFNetworking2Dispatcher` to minimise the implementation effort.
 
 ##Change log
 
