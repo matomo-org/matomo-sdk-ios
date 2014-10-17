@@ -231,10 +231,9 @@ Set the interval to 0 to dispatch events as soon as they are queued. If a negati
 A default dispatcher will be selected and created by the tracker automatically based on the dependencies available at run-time:
 
 1. AFNetworking v2
-2. AFNetworking v1 (due to backwards compatibility, will be removed in the future)
-3. NSURLSession (fallback, will always work)
+2. NSURLSession (fallback, will always work)
 
-Developers can set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from `AFNetworking2Dispatcher` to minimise the implementation effort.
+Developers can set their own dispatcher by implementing the `PiwikDispatcher` protocol and instantiating the tracker with their custom implementation. This can be necessary if the app require special authentication, proxy or other network configuration. Consider inheriting from `AFNetworking2Dispatcher` to minimise the implementation effort. An `AFNetworking1Dispatcher` is provided in the repo for backwards compatibility.
 
 ##Change log
 
