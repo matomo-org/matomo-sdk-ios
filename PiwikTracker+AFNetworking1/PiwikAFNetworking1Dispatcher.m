@@ -7,7 +7,6 @@
 //
 
 #import "PiwikAFNetworking1Dispatcher.h"
-#import "AFHTTPClient.h"
 
 
 static NSUInteger const PiwikHTTPRequestTimeout = 5;

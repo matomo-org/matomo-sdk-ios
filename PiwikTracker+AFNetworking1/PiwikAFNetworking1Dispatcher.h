@@ -10,7 +10,7 @@
 #import "PiwikDispatcher.h"
 #import "AFHTTPClient.h"
 
-@interface PiwikAFNetworking1Dispatcher : NSObject <PiwikDispatcher>
+@interface PiwikAFNetworking1Dispatcher : AFHTTPClient <PiwikDispatcher>
 
 - (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
 

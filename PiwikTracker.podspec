@@ -18,12 +18,13 @@ Pod::Spec.new do |spec|
   	core.ios.frameworks = 'Foundation', 'UIKit', 'CoreData', 'CoreLocation', 'CoreGraphics'
   	core.osx.frameworks = 'Foundation', 'Cocoa', 'CoreData', 'CoreGraphics'
   end
-  
-  spec.subspec 'AFNetworking1' do |afnetworking1|
-      afnetworking1.source_files   = 'PiwikTracker+AFNetworking1/*.{h,m,}'
-      afnetworking1.dependency 'PiwikTracker/Core'
-	  afnetworking1.dependency 'AFNetworking', '1.3.2'
-  end
+
+# Can not reference both AFNetworking1 and 2, will create conflicts  
+#  spec.subspec 'AFNetworking1' do |afnetworking1|
+#      afnetworking1.source_files   = 'PiwikTracker+AFNetworking1/*.{h,m,}'
+#      afnetworking1.dependency 'PiwikTracker/Core'
+#	  afnetworking1.dependency 'AFNetworking', '1.3.2'
+#  end
   
   spec.subspec 'AFNetworking2' do |afnetworking2|
       afnetworking2.source_files   = 'PiwikTracker+AFNetworking2/*.{h,m,}'

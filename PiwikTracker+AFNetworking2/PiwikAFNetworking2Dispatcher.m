@@ -29,7 +29,7 @@
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   
-  [self GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
@@ -50,7 +50,7 @@
   
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
   
-  [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
