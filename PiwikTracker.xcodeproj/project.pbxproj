@@ -78,6 +78,7 @@
 		CDA9500719F05D56004A2277 /* UserIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA9500619F05D56004A2277 /* UserIDViewController.m */; };
 		CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
+		CDD56BFE19F587A100816D5A /* ContentTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */; };
 		CDEAEAB7180B36F800EB91C2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */; };
 		CDEAEAC1180B36F900EB91C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEABF180B36F900EB91C2 /* InfoPlist.strings */; };
 		CDEAEAC3180B36F900EB91C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEAEAC2180B36F900EB91C2 /* main.m */; };
@@ -241,6 +242,8 @@
 		CDA9500619F05D56004A2277 /* UserIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDViewController.m; sourceTree = "<group>"; };
 		CDB76A597E0A5EC135205125 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		CDC7625519B0F9DA00EED980 /* PiwikDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikDispatcher.h; sourceTree = "<group>"; };
+		CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTrackerViewController.h; sourceTree = "<group>"; };
+		CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTrackerViewController.m; sourceTree = "<group>"; };
 		CDEAEAAC180B36CC00EB91C2 /* PiwikLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikLocationManager.h; sourceTree = "<group>"; };
 		CDEAEAB5180B36F800EB91C2 /* PiwikTrackerOSXDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiwikTrackerOSXDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -479,6 +482,8 @@
 				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
 				CDA9500519F05D56004A2277 /* UserIDViewController.h */,
 				CDA9500619F05D56004A2277 /* UserIDViewController.m */,
+				CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */,
+				CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */,
 				CD93EC9017E76E290062BE20 /* Supporting Files */,
 			);
 			path = PiwikTrackeriOSDemo;
@@ -903,6 +908,7 @@
 				CD91BDD419A1382900A4B80D /* CustomVariablesViewController.m in Sources */,
 				CD93ECA617E76E290062BE20 /* MenuViewController.m in Sources */,
 				CD93ECAE17E7798F0062BE20 /* ScreenViewController.m in Sources */,
+				CDD56BFE19F587A100816D5A /* ContentTrackerViewController.m in Sources */,
 				CD93ECB117E77B700062BE20 /* EventsViewController.m in Sources */,
 				CD93ECB417E77BA70062BE20 /* ExceptionViewController.m in Sources */,
 				CD93ECB717E77BEB0062BE20 /* SocialViewController.m in Sources */,
