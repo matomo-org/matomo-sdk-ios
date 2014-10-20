@@ -12,7 +12,7 @@
 
 
 static NSString * const PiwikTestServerURL = @"http://localhost/~mattias/piwik/";
-static NSString * const PiwikTestSiteID = @"5";
+static NSString * const PiwikTestSiteID = @"7";
 
 static NSString * const PiwikProductionServerURL = @"http://someserver.com/piwik/";
 static NSString * const PiwikProductionSiteID = @"23";
@@ -25,7 +25,7 @@ static NSString * const PiwikProductionSiteID = @"23";
   
   [[NSUserDefaults standardUserDefaults] registerDefaults:@{PiwikAskedForPermissonKey : @(NO)}];
     
-  // Initialize the Piwik Tracker
+  // Initialise the Piwik Tracker
   // Use different Piwik server urls and tracking site data depending on if building for test or production.
 #ifdef DEBUG
   [PiwikTracker sharedInstanceWithSiteID:PiwikTestSiteID baseURL:[NSURL URLWithString:PiwikTestServerURL]];
@@ -35,7 +35,7 @@ static NSString * const PiwikProductionSiteID = @"23";
   
   /* Configure the tracker */
   
-  [PiwikTracker sharedInstance].debug = YES;
+//  [PiwikTracker sharedInstance].debug = YES;
   [PiwikTracker sharedInstance].dispatchInterval = 30;
 //  [PiwikTracker sharedInstance].sampleRate = 50;
 //  [PiwikTracker sharedInstance].eventsPerRequest = 2;

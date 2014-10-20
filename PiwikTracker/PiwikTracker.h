@@ -320,8 +320,28 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)sendCampaign:(NSString*)campaignURLString;
 
+/**
+ Track how often a specific ad or banner is displayed in the app.
+ 
+ @param name A human readable display name of the content.
+ @param piece A more technical name/id of the content, e.g. the image name or ads id. Optional.
+ @param target The outgoing target, e.g. URL. Optional.
+ @return YES if the event was queued for dispatching.
+ @see sendContentInteractionWithName:peice:taget:
+ */
+- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target;
 
-// TODO Add content impression
+/**
+ Track when a user interact with an ad or banner.
+ When used together with content impression the conversion rate can be calculated. Make sure the same name and piece is used to accuratly calculate the conversion rate.
+ 
+ @param name A human readable display name of the content.
+ @param piece A more technical name/id of the content, e.g. the image name or ads id. Optional.
+ @param target The outgoing target, e.g. URL. Optional.
+ @return YES if the event was queued for dispatching.
+ @see sendContentImpressionWithName:piece:taget:
+ */
+- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target;
 
 
 /**

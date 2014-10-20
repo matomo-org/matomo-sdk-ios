@@ -82,10 +82,16 @@ static NSString * const PiwikParameterEventCategory = @"e_c";
 static NSString * const PiwikParameterEventAction = @"e_a";
 static NSString * const PiwikParameterEventName = @"e_n";
 static NSString * const PiwikParameterEventValue = @"e_v";
+// Content impression
+static NSString * const PiwikParameterContentName = @"c_n";
+static NSString * const PiwikParameterContentPiece = @"c_p";
+static NSString * const PiwikParameterContentTarget = @"c_t";
+static NSString * const PiwikParameterContentInteraction = @"c_i";
 
 // Piwik default parmeter values
 static NSString * const PiwikDefaultRecordValue = @"1";
 static NSString * const PiwikDefaultAPIVersionValue = @"1";
+static NSString * const PiwikDefaultContentInteractionName = @"tap";
 
 // Default values
 static NSUInteger const PiwikDefaultSessionTimeout = 120;
@@ -614,6 +620,48 @@ static PiwikTracker *_sharedInstance;
     return NO;
     
   }
+}
+
+
+- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target {
+  
+  NSParameterAssert(name);
+  
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+  
+  parameters[PiwikParameterContentName] = name;
+  if (piece) {
+    parameters[PiwikParameterContentPiece] = piece;
+  }
+  if (target) {
+    parameters[PiwikParameterContentTarget] = target;
+  }
+  
+  [self queueEvent:parameters];
+  
+  return YES;
+}
+
+
+- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target {
+  
+  NSParameterAssert(name);
+  
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+  
+  parameters[PiwikParameterContentName] = name;
+  parameters[PiwikParameterContentInteraction] = PiwikDefaultContentInteractionName;
+  if (piece) {
+    parameters[PiwikParameterContentPiece] = piece;
+  }
+  if (target) {
+    parameters[PiwikParameterContentTarget] = target;
+  }
+  
+  [self queueEvent:parameters];
+  
+  return YES;
+  
 }
 
 
