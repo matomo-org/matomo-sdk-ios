@@ -1,10 +1,10 @@
 #PiwikTracker iOS SDK
 
+**v3.0.0 is released through CocoaPods!. v3.0.0 only support Piwik server 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly. Several new features have been added.**
+
 The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik server.
  
 [Piwik](http://piwik.org) server is a downloadable, Free/Libre (GPLv3 licensed) real time analytics platform.
-
-**v3.0.0 only support Piwik 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly.**
 
 *A detailed [Getting started guide](https://github.com/piwik/piwik-sdk-ios/wiki/Getting-started-guide) has been added to the Wiki section.*
 
