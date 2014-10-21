@@ -1,6 +1,6 @@
 #PiwikTracker iOS SDK
 
-**v3.0.0 is released through CocoaPods!. v3.0.0 only support Piwik server 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly. Several new features have been added.**
+**v3.0.0 is released through CocoaPods! v3.0.0 only support Piwik server 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly. Several new features have been added.**
 
 The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik server.
  
@@ -124,6 +124,12 @@ PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(Piwik
 // Track campaigns
 campaignURLString = ...
 [[PiwikTracker sharedInstance] sendCampaign:(NSString*)campaignURLString;
+
+// Track content impressions and interactions for ads and banners
+// Track an impression when the ad is shown
+  [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+// Track an interaction when the user tap on the ad
+  [[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
 
 ```
 	  	
