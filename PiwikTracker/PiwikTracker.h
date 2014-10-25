@@ -32,6 +32,9 @@
 @interface PiwikTracker : NSObject
 
 
+extern NSString * const PiwikSessionStartNotification;
+
+
 typedef NS_ENUM(NSUInteger, CustomVariableScope) {
   VisitCustomVariableScope,
   ScreenCustomVariableScope

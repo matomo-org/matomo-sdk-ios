@@ -16,8 +16,19 @@
 
 @implementation MenuViewController
 
+-(void)dealloc {
+  
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  
+}
+
+
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(sessionStart:)
+                                               name:PiwikSessionStartNotification object:nil];
   
   // Report screen view to Piwik
   [[PiwikTracker sharedInstance] sendView:@"menu"];
@@ -37,6 +48,12 @@
     
   }
   
+}
+
+
+- (void)sessionStart:(NSNotification*)notification {
+  NSLog(@"Session start notification");
+  // Set up any visit custom variables
 }
 
 

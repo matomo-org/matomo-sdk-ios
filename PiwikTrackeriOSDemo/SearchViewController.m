@@ -17,6 +17,13 @@
 @implementation SearchViewController
 
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  [[PiwikTracker sharedInstance] sendViews:@"menu", @"search", nil];
+}
+
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
   
   NSLog(@"Search for : %@", searchBar.text);

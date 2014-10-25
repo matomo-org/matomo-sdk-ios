@@ -29,6 +29,8 @@ static NSUInteger const ItemPrice = 1;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  [[PiwikTracker sharedInstance] sendViews:@"menu", @"transaction", nil];
+  
   // Start with one items
   self.numberOfItemsTextField.text = @"1";
   

@@ -17,6 +17,13 @@
 @implementation GoalsViewController
 
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  [[PiwikTracker sharedInstance] sendViews:@"menu", @"goals", nil];
+}
+
+
 - (IBAction)sendGoalAction:(id)sender {
   
   // Track a conversion

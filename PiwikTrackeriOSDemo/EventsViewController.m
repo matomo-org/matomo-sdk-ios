@@ -17,6 +17,13 @@
 @implementation EventsViewController
 
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  [[PiwikTracker sharedInstance] sendViews:@"menu", @"events", nil];
+}
+
+
 - (IBAction)sendEventAction:(id)sender {
   
   // Send a custom event tp Piwik  
