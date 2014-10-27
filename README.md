@@ -212,6 +212,9 @@ A new user session (new visit) is automatically created when the app is launched
 
 You can change the session timeout value by setting the sessionTimeout property. You can manually force a new session start when the next event is sent by setting the sessionStart property:
 
+The SDK will send a notification `PiwikSessionStartNotification` just before a new session event is sent to the Piwik server. Use this event to add visit custom variables. 
+
+
 ```objective-c
 // Change the session timeout value to 5 minutes
 [PiwikTracker sharedInstance].sessionTimeout = 60 * 5;
