@@ -644,6 +644,62 @@ The campaign information will be sent to the server with the next Piwik event.</
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendContentImpressionWithName:piece:target:</TokenIdentifier>
+			<Abstract type="html">Track how often a specific ad or banner is displayed in the app.</Abstract>
+			<DeclaredIn>PiwikTracker.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendContentInteractionWithName:piece:target:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (BOOL)sendContentImpressionWithName:(NSString *)name piece:(NSString *)piece target:(NSString *)target</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">A human readable display name of the content.</Abstract>
+				</Parameter><Parameter>
+					<Name>piece</Name>
+					<Abstract type="html">A more technical name/id of the content, e.g. the image name or ads id. Optional.</Abstract>
+				</Parameter><Parameter>
+					<Name>target</Name>
+					<Abstract type="html">The outgoing target, e.g. an URL. Optional.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
+			<Anchor>//api/name/sendContentImpressionWithName:piece:target:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendContentInteractionWithName:piece:target:</TokenIdentifier>
+			<Abstract type="html">Track when a user interact with an ad or banner.</Abstract>
+			<DeclaredIn>PiwikTracker.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendContentImpressionWithName:piece:target:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (BOOL)sendContentInteractionWithName:(NSString *)name piece:(NSString *)piece target:(NSString *)target</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">A human readable display name of the content.</Abstract>
+				</Parameter><Parameter>
+					<Name>piece</Name>
+					<Abstract type="html">A more technical name/id of the content, e.g. the image name or ads id. Optional.</Abstract>
+				</Parameter><Parameter>
+					<Name>target</Name>
+					<Abstract type="html">The outgoing target, e.g. an URL. Optional.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
+			<Anchor>//api/name/sendContentInteractionWithName:piece:target:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/setCustomVariableForIndex:name:value:scope:</TokenIdentifier>
 			<Abstract type="html">Assign a custom variable.</Abstract>
 			<DeclaredIn>PiwikTracker.h</DeclaredIn>

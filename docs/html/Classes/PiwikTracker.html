@@ -91,6 +91,10 @@
 	
 	<option value="//api/name/sendCampaign:">&nbsp;&nbsp;&nbsp;&nbsp;- sendCampaign:</option>
 	
+	<option value="//api/name/sendContentImpressionWithName:piece:target:">&nbsp;&nbsp;&nbsp;&nbsp;- sendContentImpressionWithName:piece:target:</option>
+	
+	<option value="//api/name/sendContentInteractionWithName:piece:target:">&nbsp;&nbsp;&nbsp;&nbsp;- sendContentInteractionWithName:piece:target:</option>
+	
 	<option value="//api/name/sendEventWithCategory:action:name:value:">&nbsp;&nbsp;&nbsp;&nbsp;- sendEventWithCategory:action:name:value:</option>
 	
 	<option value="//api/name/sendExceptionWithDescription:isFatal:">&nbsp;&nbsp;&nbsp;&nbsp;- sendExceptionWithDescription:isFatal:</option>
@@ -200,6 +204,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dispatch">dispatch</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendCampaign:">sendCampaign:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendContentImpressionWithName:piece:target:">sendContentImpressionWithName:piece:target:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendContentInteractionWithName:piece:target:">sendContentInteractionWithName:piece:target:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendEventWithCategory:action:name:value:">sendEventWithCategory:action:name:value:</a></span></li>
 	
@@ -441,6 +449,18 @@ This framework implements the Piwik tracking REST API <a href="http://piwik.org/
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sendCampaign:">&ndash;&nbsp;sendCampaign:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendContentImpressionWithName:piece:target:">&ndash;&nbsp;sendContentImpressionWithName:piece:target:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendContentInteractionWithName:piece:target:">&ndash;&nbsp;sendContentInteractionWithName:piece:target:</a></code>
 	</span>
 	
 	
@@ -1275,8 +1295,7 @@ It is important that the user id is saved locally in the app and set each time d
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>A default dispatcher will be selected and created based on the dependencies available:
 1) AFNetworking v2
-2) AFNetworking v1 (due to backwards compatibility, will be removed in the future)
-3) NSURLSession (fallback, will always work)</p>
+2) NSURLSession (fallback, will always work)</p>
 	</div>
 	
 	
@@ -1499,6 +1518,156 @@ Example URL http://example.org/landing.html?pk_campaign=Email-Nov2011&amp;pk_kwd
 	
 	
 	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendContentImpressionWithName:piece:target:" title="sendContentImpressionWithName:piece:target:"></a>
+	<h3 class="subsubtitle method-title">sendContentImpressionWithName:piece:target:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track how often a specific ad or banner is displayed in the app.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendContentImpressionWithName:(NSString *)<em>name</em> piece:(NSString *)<em>piece</em> target:(NSString *)<em>target</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>A human readable display name of the content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>piece</em></dt>
+			<dd><p>A more technical name/id of the content, e.g. the image name or ads id. Optional.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>The outgoing target, e.g. an URL. Optional.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check out the <a href="http://piwik.org/docs/content-tracking/">content tracking user guide at Piwik</a> for additional details.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/sendContentInteractionWithName:piece:target:">- sendContentInteractionWithName:piece:target:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PiwikTracker.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendContentInteractionWithName:piece:target:" title="sendContentInteractionWithName:piece:target:"></a>
+	<h3 class="subsubtitle method-title">sendContentInteractionWithName:piece:target:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Track when a user interact with an ad or banner.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)sendContentInteractionWithName:(NSString *)<em>name</em> piece:(NSString *)<em>piece</em> target:(NSString *)<em>target</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>A human readable display name of the content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>piece</em></dt>
+			<dd><p>A more technical name/id of the content, e.g. the image name or ads id. Optional.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>The outgoing target, e.g. an URL. Optional.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the event was queued for dispatching.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>When used together with content impression the conversion rate can be calculated. Make sure the same name and piece is used to accuratly calculate the conversion rate.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/sendContentImpressionWithName:piece:target:">- sendContentImpressionWithName:piece:target:</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -2151,7 +2320,7 @@ You can track by default up to 5 custom variables per visit and/or up to 5 custo
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Wadpam. All rights reserved. (Last updated: 2014-10-16)</span><br />
+						<p><span class="copyright">&copy; 2014 Wadpam. All rights reserved. (Last updated: 2014-10-27)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
