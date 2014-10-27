@@ -1,5 +1,7 @@
 #PiwikTracker iOS SDK
 
+**v3.1.0 adds support for content tracking (ads and banners).**
+
 **v3.0.0 is released through CocoaPods! v3.0.0 only support Piwik server 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly. Several new features have been added.**
 
 The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik server.
@@ -125,7 +127,7 @@ PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(Piwik
 campaignURLString = ...
 [[PiwikTracker sharedInstance] sendCampaign:(NSString*)campaignURLString;
 
-// Track content impressions and interactions for ads and banners
+// Track content impressions and interactions with ads and banners
 // Track an impression when the ad is shown
   [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
 // Track an interaction when the user tap on the ad
@@ -243,6 +245,7 @@ Developers can set their own dispatcher by implementing the `PiwikDispatcher` pr
 
 ##Change log
 
+* Version 3.1.0 adds support for content tracking (ads and banners)
 * Version 3.0.0 contains contains major changes. The auth_token has been removed for security reasons and the api for instantiating the tracker has changed slightly. Several new features has been added - custom events, ecommerce tracking, campaigns and more. This version only works with Piwik 2.8 and up. 
 * Version 2.5.2 contains an important fix for supporting the Piwik 2.0 bulk request API. Users still using Piwik 1.X can enable the old bulk request format by following the [instructions above](#bulk-dispatching).
 * Version 2.5 contains many new features, including tracking social interaction, exceptions and searches. All events are prefixed according to its type to provide grouping and structure in the Piwik web interface. This would be the preferred behaviour for most developers but it can be turned off if interfering with an existing structure.
