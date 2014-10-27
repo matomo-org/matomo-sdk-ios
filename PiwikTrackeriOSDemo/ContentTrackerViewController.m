@@ -16,13 +16,13 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view.
   
-  [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+  [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" target:@"http://dn.se"];
   
 }
 
 - (IBAction)adInteraction:(id)sender {
   
-  [[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+  [[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" target:@"http://dn.se"];
 
   // Open link in external web browser
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dn.se"]];

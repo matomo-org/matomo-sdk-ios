@@ -332,9 +332,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param piece A more technical name/id of the content, e.g. the image name or ads id. Optional.
  @param target The outgoing target, e.g. an URL. Optional.
  @return YES if the event was queued for dispatching.
- @see sendContentInteractionWithName:peice:taget:
+ @see sendContentInteractionWithName:peice:target:
  */
-- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target;
+- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target;
 
 /**
  Track when a user interact with an ad or banner.
@@ -345,9 +345,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param piece A more technical name/id of the content, e.g. the image name or ads id. Optional.
  @param target The outgoing target, e.g. an URL. Optional.
  @return YES if the event was queued for dispatching.
- @see sendContentImpressionWithName:piece:taget:
+ @see sendContentImpressionWithName:piece:target:
  */
-- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target;
+- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target;
 
 
 /**

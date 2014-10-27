@@ -651,7 +651,7 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target {
+- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target {
   
   NSParameterAssert(name);
   
@@ -671,7 +671,7 @@ static PiwikTracker *_sharedInstance;
 }
 
 
-- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece taget:(NSString*)target {
+- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target {
   
   NSParameterAssert(name);
   
