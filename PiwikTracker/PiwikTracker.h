@@ -332,7 +332,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param piece A more technical name/id of the content, e.g. the image name or ads id. Optional.
  @param target The outgoing target, e.g. an URL. Optional.
  @return YES if the event was queued for dispatching.
- @see sendContentInteractionWithName:peice:target:
+ @see sendContentInteractionWithName:piece:target:
  */
 - (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target;
 
