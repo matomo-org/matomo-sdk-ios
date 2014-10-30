@@ -23,13 +23,15 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   return self;
 }
 
+// TODO: This code should be reviewed and updated or removed
+
 
 - (void)sendSingleEventToPath:(NSString*)path
                    parameters:(NSDictionary*)parameters
                       success:(void (^)())successBlock
                       failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  NSLog(@"Dispatch event with AFNetworking");
+  //NSLog(@"Dispatch event with AFNetworking");
   
   self.parameterEncoding = AFFormURLParameterEncoding;
   
@@ -54,27 +56,23 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
 }
 
 
-- (void)sendRequest:(NSURLRequest*)request  success:(void (^)())successBlock failure:(void (^)(BOOL shouldContinue))failureBlock {
+- (void)sendRequest:(NSURLRequest*)request success:(void (^)())successBlock failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   request.timeoutInterval = PiwikHTTPRequestTimeout;
   
-  NSLog(@"Request %@", request);
-  NSLog(@"Request headers %@", [request allHTTPHeaderFields]);
-  NSLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
-  
-  //        NSLocale *locale = [NSLocale currentLocale];
-  //        DLog(@"Language %@", [locale objectForKey:NSLocaleLanguageCode]);
-  //        DLog(@"Country %@", [locale objectForKey:NSLocaleCountryCode]);
+  //NSLog(@"Request %@", request);
+  //NSLog(@"Request headers %@", [request allHTTPHeaderFields]);
+  //NSLog(@"Request body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
   
   AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request
     success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                                                  
-      NSLog(@"Successfully sent stats to Piwik server");
+      //NSLog(@"Successfully sent stats to Piwik server");
       successBlock();
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
       
-      NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
+      //NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
       failureBlock([self shouldAbortdispatchForNetworkError:error]);
       
     }];

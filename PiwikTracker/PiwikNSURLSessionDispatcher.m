@@ -35,7 +35,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
                               success:(void (^)())successBlock
                               failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  NSLog(@"Dispatch single event with NSURLSession dispatcher");
+  //NSLog(@"Dispatch single event with NSURLSession dispatcher");
     
   NSMutableArray *parameterPairs = [NSMutableArray arrayWithCapacity:parameters.count];
   [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -61,7 +61,7 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
                             success:(void (^)())successBlock
                             failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  NSLog(@"Dispatch batch events with NSURLSession dispatcher");
+  //NSLog(@"Dispatch batch events with NSURLSession dispatcher");
   
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.piwikURL
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData

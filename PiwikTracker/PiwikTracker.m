@@ -28,6 +28,19 @@
 #endif
 
 
+//#define PIWIK_DEBUG_LOG
+
+// Debug logging
+#ifdef PIWIK_DEBUG_LOG
+  #define PiwikDebugLog(fmt,...) NSLog(@"[Piwik] %@",[NSString stringWithFormat:(fmt), ##__VA_ARGS__]);
+#else
+  #define PiwikDebugLog(...)
+#endif
+
+// Always logging
+#define PiwikLog(fmt,...) NSLog(@"[Piwik] %@",[NSString stringWithFormat:(fmt), ##__VA_ARGS__]);
+
+
 #pragma mark - Constants
 
 // Notifications
@@ -246,7 +259,7 @@ static PiwikTracker *_sharedInstance;
 
 + (instancetype)sharedInstance {
   if (!_sharedInstance) {
-    NSLog(@"Piwik tracker must first be initialized using sharedInstanceWithBaseURL:siteID:");
+    PiwikLog(@"Tracker must first be initialized using sharedInstanceWithBaseURL:siteID:");
     return nil;
   } else {
     return _sharedInstance;
@@ -286,14 +299,14 @@ static PiwikTracker *_sharedInstance;
     NSDictionary *defaultValues = @{PiwikUserDefaultOptOutKey : @NO};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     
-    NSLog(@"Piwik Tracker created with siteID %@", siteID);
+    PiwikLog(@"Tracker created with siteID %@", siteID);
     
     if (self.optOut) {
-      NSLog(@"Piwik Tracker user optout from tracking");
+      PiwikLog(@"Tracker user optout from tracking");
     }
     
     if (_debug) {
-      NSLog(@"Piwik Tracker in debug mode, nothing will be sent to the server");
+      PiwikLog(@"Tracker in debug mode, nothing will be sent to the server");
     }
     
     [self startDispatchTimer];
@@ -338,7 +351,7 @@ static PiwikTracker *_sharedInstance;
                                                               userInfo:nil
                                                                repeats:NO];
       
-      NSLog(@"Dispatch timer started with interval %f", weakSelf.dispatchInterval);
+      PiwikDebugLog(@"Dispatch timer started with interval %f", weakSelf.dispatchInterval);
       
     }
     
@@ -353,7 +366,7 @@ static PiwikTracker *_sharedInstance;
     [self.dispatchTimer invalidate];
     self.dispatchTimer = nil;
     
-    NSLog(@"Dispatch timer stopped");
+    PiwikDebugLog(@"Dispatch timer stopped");
   }
   
 }
@@ -510,8 +523,6 @@ static PiwikTracker *_sharedInstance;
   
   // Setting the url is mandatory
   params[PiwikParameterURL] = [self generatPageURL:components];
-  
-  //NSLog(@"Send page view %@", actionName);
   
   return [self queueEvent:params];
 }
@@ -700,10 +711,10 @@ static PiwikTracker *_sharedInstance;
   NSParameterAssert(value);
   
   if (index < 1) {
-    NSLog(@"Custom variable index must be > 0");
+    PiwikLog(@"Custom variable index must be > 0");
     return NO;
   } else if (scope == VisitCustomVariableScope && self.includeDefaultCustomVariable && index <= 3) {
-    NSLog(@"Custom variable index conflicting with default indexes used by the SDK. Change index or turn off default default variables");
+    PiwikLog(@"Custom variable index conflicting with default indexes used by the SDK. Change index or turn off default default variables");
     return NO;
   }
   
@@ -751,7 +762,7 @@ static PiwikTracker *_sharedInstance;
   parameters = [self addSessionParameters:parameters];
   parameters = [self addStaticParameters:parameters];
   
-  NSLog(@"Store event with parameters %@", parameters);
+  PiwikDebugLog(@"Store event with parameters %@", parameters);
   
   [self storeEventWithParameters:parameters completionBlock:^{
     
@@ -975,7 +986,7 @@ static PiwikTracker *_sharedInstance;
       };
       
       void (^failureBlock)(BOOL shouldContinue) = ^ (BOOL shouldContinue) {
-        NSLog(@"Failed to send stats to Piwik server");
+        PiwikDebugLog(@"Failed to send stats to Piwik server");
         
         if (shouldContinue) {
           [weakSelf sendEventDidFinishHasMorePending:hasMore];
@@ -1369,7 +1380,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       [self.managedObjectContext save:&error];
       
     } else {
-      NSLog(@"Piwik tracker reach maximum number of queued events");
+      PiwikLog(@"Tracker reach maximum number of queued events");
     }
     
     completionBlock();
@@ -1517,7 +1528,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       // Could not open the database, remote it ans try again
       [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
       
-      NSLog(@"Removed incompatible model version: %@", [storeURL lastPathComponent]);
+      PiwikLog(@"Removed incompatible model version: %@", [storeURL lastPathComponent]);
       
       // Try one more time to create the store
       [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
@@ -1531,7 +1542,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
         error = nil;
       } else {
         // Not possible to recover of workaround
-        NSLog(@"Unresolved error when setting up code data stack %@, %@", error, [error userInfo]);
+        PiwikLog(@"Unresolved error when setting up code data stack %@, %@", error, [error userInfo]);
         abort();
       }
       

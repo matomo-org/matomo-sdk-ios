@@ -16,7 +16,7 @@
                               success:(void (^)())successBlock
                               failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  NSLog(@"Dispatch single event with debug dispatcher");
+  //NSLog(@"Dispatch single event with debug dispatcher");
   
   NSLog(@"Request: \n%@", parameters);
   
@@ -29,7 +29,7 @@
                             success:(void (^)())successBlock
                             failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  NSLog(@"Dispatch batch events with debug dispatcher");
+  //NSLog(@"Dispatch batch events with debug dispatcher");
   
   NSLog(@"Request: \n%@", parameters);
   

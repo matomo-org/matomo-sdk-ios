@@ -31,12 +31,12 @@
   
   [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
-    NSLog(@"Successfully sent stats to Piwik server");
+    //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
     
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     
-    NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
+    //NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
     failureBlock([self shouldAbortdispatchForNetworkError:error]);
     
   }];
@@ -52,12 +52,12 @@
   
   [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
-    NSLog(@"Successfully sent stats to Piwik server");
+    //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
     
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
     
-    NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
+    //NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
     failureBlock([self shouldAbortdispatchForNetworkError:error]);
     
   }];
