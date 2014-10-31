@@ -63,6 +63,7 @@ static NSString * const PiwikParameterScreenReseloution = @"res";
 static NSString * const PiwikParameterHours = @"h";
 static NSString * const PiwikParameterMinutes = @"m";
 static NSString * const PiwikParameterSeconds = @"s";
+static NSString * const PiwikParameterDateAndTime = @"cdt";
 static NSString * const PiwikParameterActionName = @"action_name";
 static NSString * const PiwikParameterURL = @"url";
 static NSString * const PiwikParameterVisitorID = @"_id";
@@ -816,12 +817,22 @@ static PiwikTracker *_sharedInstance;
   }
   
   // Add local time
+  NSDate *now = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
-  NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
+  NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:now];
   joinedParameters[PiwikParameterHours] = [NSString stringWithFormat:@"%ld", (long)[dateComponents hour]];
   joinedParameters[PiwikParameterMinutes] = [NSString stringWithFormat:@"%ld", (long)[dateComponents minute]];
   joinedParameters[PiwikParameterSeconds] = [NSString stringWithFormat:@"%ld", (long)[dateComponents second]];
+  
+  // Add UTC time
+  static NSDateFormatter *UTCDateFormatter = nil;
+  if (!UTCDateFormatter) {
+    UTCDateFormatter = [[NSDateFormatter alloc] init];
+    UTCDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    UTCDateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+  }
+  joinedParameters[PiwikParameterDateAndTime] = [UTCDateFormatter stringFromDate:now];
   
   return joinedParameters;
 }
