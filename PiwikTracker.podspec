@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "PiwikTracker"
-  spec.version      = "3.1.0"
+  spec.version      = "3.1.1"
   spec.summary      = "A Piwik tracker written in Objective-C for iOS and OSX apps."
   spec.homepage     = "https://github.com/piwik/piwik-sdk-ios/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
