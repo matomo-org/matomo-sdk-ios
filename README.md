@@ -131,9 +131,9 @@ campaignURLString = ...
 
 // Track content impressions and interactions with ads and banners
 // Track an impression when the ad is shown
-  [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+[[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
 // Track an interaction when the user tap on the ad
-  [[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+[[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
 
 ```
 	  	
