@@ -226,6 +226,18 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendViews:(NSString*)screen, ...;
 
 /**
+ @name Track outlinks to external websites and apps
+ */
+
+/**
+ *  Track an outlink to an external website or app.
+ *
+ *  @param url The url which leads to an external website or app.
+ *  @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendOutlink:(NSString*)url;
+
+/**
  Track an user interaction as a custom event.
  
  @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. 

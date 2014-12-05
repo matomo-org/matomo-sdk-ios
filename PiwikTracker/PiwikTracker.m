@@ -83,6 +83,7 @@ static NSString * const PiwikParameterLongitude = @"long";
 static NSString * const PiwikParameterSearchKeyword = @"search";
 static NSString * const PiwikParameterSearchCategory = @"search_cat";
 static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
+static NSString * const PiwikParameterLink = @"link";
 // Ecommerce
 static NSString * const PiwikParameterTransactionIdentifier = @"ec_id";
 static NSString * const PiwikParameterTransactionSubTotal = @"ec_st";
@@ -431,6 +432,17 @@ static PiwikTracker *_sharedInstance;
   return [self send:components];
  }
 
+- (BOOL)sendOutlink:(NSString*)url
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[PiwikParameterLink] = url;
+    
+    // Setting the url is mandatory
+    params[PiwikParameterURL] = url;
+    
+    return [self queueEvent:params];
+}
 
 - (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action name:(NSString*)name value:(NSNumber*)value {
   
