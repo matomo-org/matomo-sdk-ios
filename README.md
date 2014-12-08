@@ -117,6 +117,9 @@ The Piwik SDK is easy to configure and use:
 // Track goals and conversion rate
 [[PiwikTracker sharedInstance] sendGoalWithID:@"1" revenue:100];
 
+// Track outlinks to external websites and apps
+[[PiwikTracker sharedInstance] sendOutlink:@"anotherapp://somwhere/else?origin=myapp"];
+
 // Track ecommerce transactions
 PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(PiwikTransactionBuilder *builder) {
   builder.identifier =
