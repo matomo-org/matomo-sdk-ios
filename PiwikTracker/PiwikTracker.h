@@ -226,6 +226,19 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendViews:(NSString*)screen, ...;
 
 /**
+ Track a single hierarchical screen view specified as an array.
+ 
+ Piwik support hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
+ 
+ Screen views are prefixed with "screen" by default unless prefixing scheme is turned off.
+ 
+ @param screens An array of screen names to track.
+ @return YES if the event was queued for dispatching.
+ @see isPrefixingEnabled
+ */
+- (BOOL)sendViewsFromArray:(NSArray*)screens;
+
+/**
  Track an user interaction as a custom event.
  
  @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. 
