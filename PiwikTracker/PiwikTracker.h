@@ -225,17 +225,19 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)sendViews:(NSString*)screen, ...;
 
-/**
- @name Track outlinks to external websites and apps
- */
 
 /**
- *  Track an outlink to an external website or app.
- *
- *  @param url The url which leads to an external website or app.
- *  @return YES if the event was queued for dispatching.
+ Track a single hierarchical screen view specified as an array.
+ 
+ Piwik support hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
+ 
+ Screen views are prefixed with "screen" by default unless prefixing scheme is turned off.
+ 
+ @param screens An array of screen names to track.
+ @return YES if the event was queued for dispatching.
+ @see isPrefixingEnabled
  */
-- (BOOL)sendOutlink:(NSString*)url;
+- (BOOL)sendViewsFromArray:(NSArray*)screens;
 
 /**
  Track an user interaction as a custom event.
@@ -311,6 +313,13 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)sendTransaction:(PiwikTransaction*)transaction;
 
+/**
+ Track an outlink to an external website or app.
+ 
+ @param url The url which leads to an external website or app.
+ *@return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendOutlink:(NSString*)url;
 
 /**
  Track that the app was launched from a Piwik campaign URL.
