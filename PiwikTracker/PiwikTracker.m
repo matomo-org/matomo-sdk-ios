@@ -237,10 +237,10 @@ static PiwikTracker *_sharedInstance;
   NSURL *endpoint = [[NSURL alloc] initWithString:@"piwik.php" relativeToURL:piwikURL];
   
   // Instantiate dispatchers in priority order
-  if (NSClassFromString(@"PiwikAFNetworking2Dispather")) {
-    return [[NSClassFromString(@"PiwikAFNetworking2Dispather") alloc] initWithPiwikURL:endpoint];
-  } else if (NSClassFromString(@"PiwikAFNetworking1Dispather")) {
-    return [[NSClassFromString(@"PiwikAFNetworking1Dispather") alloc] initWithPiwikURL:endpoint];
+  if (NSClassFromString(@"PiwikAFNetworking2Dispatcher")) {
+    return [[NSClassFromString(@"PiwikAFNetworking2Dispatcher") alloc] initWithPiwikURL:endpoint];
+  } else if (NSClassFromString(@"PiwikAFNetworking1Dispatcher")) {
+    return [[NSClassFromString(@"PiwikAFNetworking1Dispatcher") alloc] initWithPiwikURL:endpoint];
   } else {
     return [[PiwikNSURLSessionDispatcher alloc] initWithPiwikURL:endpoint];
   }
