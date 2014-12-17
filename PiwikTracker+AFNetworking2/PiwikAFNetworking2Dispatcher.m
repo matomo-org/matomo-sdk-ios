@@ -28,6 +28,7 @@
                               failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
+  self.responseSerializer = [AFImageResponseSerializer serializer];
   
   [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
@@ -48,8 +49,9 @@
                       success:(void (^)())successBlock
                       failure:(void (^)(BOOL shouldContinue))failureBlock {
   
-  self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
-  
+  self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
+  self.responseSerializer = [AFJSONResponseSerializer serializer];
+    
   [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     //NSLog(@"Successfully sent stats to Piwik server");
