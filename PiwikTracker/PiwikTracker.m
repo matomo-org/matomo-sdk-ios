@@ -84,6 +84,7 @@ static NSString * const PiwikParameterSearchKeyword = @"search";
 static NSString * const PiwikParameterSearchCategory = @"search_cat";
 static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
 static NSString * const PiwikParameterLink = @"link";
+static NSString * const PiwikParameterDownload = @"download";
 // Ecommerce
 static NSString * const PiwikParameterTransactionIdentifier = @"ec_id";
 static NSString * const PiwikParameterTransactionSubTotal = @"ec_st";
@@ -441,6 +442,18 @@ static PiwikTracker *_sharedInstance;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     params[PiwikParameterLink] = url;
+    
+    // Setting the url is mandatory
+    params[PiwikParameterURL] = url;
+    
+    return [self queueEvent:params];
+}
+
+- (BOOL)sendDownload:(NSString *)url
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[PiwikParameterDownload] = url;
     
     // Setting the url is mandatory
     params[PiwikParameterURL] = url;

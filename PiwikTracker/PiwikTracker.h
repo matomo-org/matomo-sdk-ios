@@ -246,6 +246,18 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendOutlink:(NSString*)url;
 
 /**
+ @name Track downloads
+ */
+
+/**
+ *  Track a download.
+ *
+ *  @param url The url which leads to the downloaded file.
+ *  @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendDownload:(NSString *)url;
+
+/**
  Track an user interaction as a custom event.
  
  @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. 

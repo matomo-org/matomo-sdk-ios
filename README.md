@@ -120,6 +120,9 @@ The Piwik SDK is easy to configure and use:
 // Track outlinks to external websites and apps
 [[PiwikTracker sharedInstance] sendOutlink:@"anotherapp://somwhere/else?origin=myapp"];
 
+// Track downloads
+[[PiwikTracker sharedInstance] sendDownload:@"http://somwhere/else/file.txt"];
+
 // Track ecommerce transactions
 PiwikTransaction *transaction = [PiwikTransaction transactionWithBuilder:^(PiwikTransactionBuilder *builder) {
   builder.identifier =
