@@ -20,6 +20,12 @@
  */
 @protocol PiwikDispatcher <NSObject>
 
+/**
+ *  Set a custom user agent the dispatchers will use for requests.
+ *
+ *  @param customUserAgent The user agent string.
+ */
+- (void)setCustomUserAgent:(NSString *)customUserAgent;
 
 /**
  Send a single tracking event to the Piwik server.

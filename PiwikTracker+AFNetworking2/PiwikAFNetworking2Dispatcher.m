@@ -9,7 +9,11 @@
 #import "PiwikAFNetworking2Dispatcher.h"
 #import "AFNetworking.h"
 
+@interface PiwikAFNetworking2Dispatcher ()
 
+@property (nonatomic, strong) NSString *customUserAgent;
+
+@end
 
 @implementation PiwikAFNetworking2Dispatcher
 
@@ -22,6 +26,10 @@
   return self;
 }
 
+- (void)setCustomUserAgent:(NSString *)customUserAgent
+{
+    _customUserAgent = customUserAgent;
+}
 
 - (void)sendSingleEventWithParameters:(NSDictionary*)parameters
                               success:(void (^)())successBlock
@@ -29,7 +37,11 @@
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   self.responseSerializer = [AFImageResponseSerializer serializer];
-  
+
+  if (self.customUserAgent) {
+    [self.requestSerializer setValue:self.customUserAgent forHTTPHeaderField:@"User-Agent"];
+  }
+
   [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     
     //NSLog(@"Successfully sent stats to Piwik server");
@@ -51,6 +63,10 @@
   
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
   self.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+  if (self.customUserAgent) {
+    [self.requestSerializer setValue:self.customUserAgent forHTTPHeaderField:@"User-Agent"];
+  }
     
   [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     

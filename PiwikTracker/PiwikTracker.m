@@ -333,6 +333,10 @@ static PiwikTracker *_sharedInstance;
 
 }
 
+- (void)setCustomUserAgent:(NSString *)customUserAgent
+{
+    [self.dispatcher setCustomUserAgent:customUserAgent];
+}
 
 - (void)startDispatchTimer {
   

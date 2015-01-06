@@ -12,6 +12,7 @@
 @interface PiwikNSURLSessionDispatcher ()
 
 @property (nonatomic, strong) NSURL *piwikURL;
+@property (nonatomic, strong) NSString *customUserAgent;
 
 @end
 
@@ -30,6 +31,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   return self;
 }
 
+- (void)setCustomUserAgent:(NSString *)customUserAgent
+{
+    _customUserAgent = customUserAgent;
+}
 
 - (void)sendSingleEventWithParameters:(NSDictionary*)parameters
                               success:(void (^)())successBlock
@@ -50,6 +55,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
                                   initWithURL:URL
                                   cachePolicy:NSURLRequestReloadIgnoringCacheData
                                   timeoutInterval:PiwikHTTPRequestTimeout];
+  if (self.customUserAgent) {
+    [request setValue:self.customUserAgent forHTTPHeaderField:@"User-Agent"];
+  }
+    
   request.HTTPMethod = @"GET";
   
   [self sendRequest:request success:successBlock failure:failureBlock];
@@ -66,6 +75,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.piwikURL
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                           timeoutInterval:PiwikHTTPRequestTimeout];
+  if (self.customUserAgent) {
+    [request setValue:self.customUserAgent forHTTPHeaderField:@"User-Agent"];
+  }
+    
   request.HTTPMethod = @"POST";
   
   NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
