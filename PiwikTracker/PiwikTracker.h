@@ -317,9 +317,17 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  Track an outlink to an external website or app.
  
  @param url The url which leads to an external website or app.
- *@return YES if the event was queued for dispatching.
+ @return YES if the event was queued for dispatching.
  */
 - (BOOL)sendOutlink:(NSString*)url;
+
+/**
+ Track a download initiated by the app.
+ 
+ @param url The url of the downloaded content.
+ @return YES if the event was queued for dispatching.
+ */
+- (BOOL)sendDownload:(NSString*)url;
 
 /**
  Track that the app was launched from a Piwik campaign URL.
