@@ -10,14 +10,14 @@
 #import "AFNetworking.h"
 
 
-
 @implementation PiwikAFNetworking2Dispatcher
 
+static NSIndexSet *acceptableStatusCodes;
 
 - (instancetype)initWithPiwikURL:(NSURL*)piwikURL {
   self = [super initWithBaseURL:piwikURL];
   if (self) {
-    // Do nothing right now
+    acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 299)];
   }
   return self;
 }
@@ -29,17 +29,14 @@
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   self.responseSerializer = [AFImageResponseSerializer serializer];
+  self.responseSerializer.acceptableStatusCodes = acceptableStatusCodes;
   
   [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-    
     //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
-    
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-    
     //NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
     failureBlock([self shouldAbortdispatchForNetworkError:error]);
-    
   }];
   
 }
@@ -51,17 +48,14 @@
   
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
   self.responseSerializer = [AFJSONResponseSerializer serializer];
-    
+  self.responseSerializer.acceptableStatusCodes = acceptableStatusCodes;
+  
   [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-    
     //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
-    
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-    
     //NSLog(@"Failed to send stats to Piwik server with reason : %@", error);
-    failureBlock([self shouldAbortdispatchForNetworkError:error]);
-    
+    failureBlock([self shouldAbortdispatchForNetworkError:error]);    
   }];
   
 }

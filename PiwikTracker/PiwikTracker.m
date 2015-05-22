@@ -84,6 +84,7 @@ static NSString * const PiwikParameterSearchKeyword = @"search";
 static NSString * const PiwikParameterSearchCategory = @"search_cat";
 static NSString * const PiwikParameterSearchNumberOfHits = @"search_count";
 static NSString * const PiwikParameterLink = @"link";
+static NSString * const PiwikParameterSendImage = @"send_image";
 // Ecommerce
 static NSString * const PiwikParameterTransactionIdentifier = @"ec_id";
 static NSString * const PiwikParameterTransactionSubTotal = @"ec_st";
@@ -949,6 +950,10 @@ static PiwikTracker *_sharedInstance;
     
     // Timestamps
     staticParameters[PiwikParameterFirstVisitTimestamp] = [NSString stringWithFormat:@"%.0f", self.firstVisitTimestamp];
+    
+    // As of Piwik server 2.10.0, the server will return http 204 (not content) when including send_image=0
+    // If the parameter is not included http 200 and an image will be returned
+    staticParameters[PiwikParameterSendImage] = @(0);
     
     self.staticParameters = staticParameters;
   }
