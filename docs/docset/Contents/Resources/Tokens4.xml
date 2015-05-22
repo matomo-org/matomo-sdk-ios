@@ -480,6 +480,28 @@ Set to NO to free up additional custom variable indexes for your own reporting p
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendViewsFromArray:</TokenIdentifier>
+			<Abstract type="html">Track a single hierarchical screen view specified as an array.</Abstract>
+			<DeclaredIn>PiwikTracker.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/PiwikTracker/isPrefixingEnabled</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (BOOL)sendViewsFromArray:(NSArray *)screens</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>screens</Name>
+					<Abstract type="html">An array of screen names to track.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
+			<Anchor>//api/name/sendViewsFromArray:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendEventWithCategory:action:name:value:</TokenIdentifier>
 			<Abstract type="html">Track an user interaction as a custom event.</Abstract>
 			<DeclaredIn>PiwikTracker.h</DeclaredIn>
@@ -622,6 +644,40 @@ Set to NO to free up additional custom variable indexes for your own reporting p
 			</Parameters>
 			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
 			<Anchor>//api/name/sendTransaction:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendOutlink:</TokenIdentifier>
+			<Abstract type="html">Track an outlink to an external website or app.</Abstract>
+			<DeclaredIn>PiwikTracker.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)sendOutlink:(NSString *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">The url which leads to an external website or app.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
+			<Anchor>//api/name/sendOutlink:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikTracker/sendDownload:</TokenIdentifier>
+			<Abstract type="html">Track a download initiated by the app.</Abstract>
+			<DeclaredIn>PiwikTracker.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)sendDownload:(NSString *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">The url of the downloaded content.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">YES if the event was queued for dispatching.</Abstract></ReturnValue>
+			<Anchor>//api/name/sendDownload:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		

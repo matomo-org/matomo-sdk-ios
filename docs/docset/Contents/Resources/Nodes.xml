@@ -29,7 +29,6 @@
 					<Path>index.html</Path>
 					<Subnodes>
 						<NodeRef refid="8"/>
-						<NodeRef refid="9"/>
 						
 					</Subnodes>
 				</Node>
@@ -298,11 +297,6 @@
                 </Node>
                 
             </Subnodes>
-            
-        </Node>
-		<Node id="9" type="file" documentType="reference">
-            <Name>PiwikEventStore</Name>
-            <Path>Protocols/PiwikEventStore.html</Path>
             
         </Node>
 		
