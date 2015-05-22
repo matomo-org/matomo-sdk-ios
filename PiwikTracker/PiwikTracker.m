@@ -382,7 +382,7 @@ static PiwikTracker *_sharedInstance;
   }
 
   // Create new session?
-  if (labs([self.appDidEnterBackgroundDate timeIntervalSinceNow]) >= self.sessionTimeout) {
+  if (fabs([self.appDidEnterBackgroundDate timeIntervalSinceNow]) >= self.sessionTimeout) {
     self.sessionStart = YES;
   }
   
