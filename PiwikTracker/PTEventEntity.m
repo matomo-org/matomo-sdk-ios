@@ -12,7 +12,7 @@
 @implementation PTEventEntity
 
 @dynamic date;
-@dynamic requestParameters;
+@dynamic piwikRequestParameters;
 
 
 - (void)awakeFromInsert {

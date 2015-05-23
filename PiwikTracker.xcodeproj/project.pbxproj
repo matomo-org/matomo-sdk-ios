@@ -39,7 +39,6 @@
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
 		CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
-		CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */; };
 		CD152F4E188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
 		CD152F53188C54720090BFD3 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
 		CD152F58188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
@@ -77,6 +76,10 @@
 		CD9AC5461801C6BB00EE8F43 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9AC5451801C6BB00EE8F43 /* SearchViewController.m */; };
 		CD9AC5491801CA6500EE8F43 /* GoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9AC5481801CA6500EE8F43 /* GoalsViewController.m */; };
 		CDA9500719F05D56004A2277 /* UserIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA9500619F05D56004A2277 /* UserIDViewController.m */; };
+		CDBCF6FB1B10C6C200F77481 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDBCF6F81B10C6C200F77481 /* piwiktracker.xcdatamodeld */; };
+		CDBCF6FD1B10D1C100F77481 /* CoreDataMigrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCF6FC1B10D1C100F77481 /* CoreDataMigrationTests.m */; };
+		CDBCF7001B10D39800F77481 /* piwiktracker_v1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CDBCF6FF1B10D39800F77481 /* piwiktracker_v1.sqlite */; };
+		CDBCF7011B10D47300F77481 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDBCF6F81B10C6C200F77481 /* piwiktracker.xcdatamodeld */; };
 		CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
 		CDD56BFE19F587A100816D5A /* ContentTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */; };
@@ -178,7 +181,6 @@
 		CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PiwikTracker-Prefix.pch"; sourceTree = "<group>"; };
 		CD10FAEA17B037B50012BE50 /* PiwikTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		CD10FAEB17B037B50012BE50 /* PiwikTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PiwikTracker.m; sourceTree = "<group>"; };
-		CD10FAED17B037B50012BE50 /* piwiktracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piwiktracker.xcdatamodel; sourceTree = "<group>"; };
 		CD152F3B188BE59F0090BFD3 /* PiwikTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTransaction.h; sourceTree = "<group>"; };
 		CD152F41188C4B010090BFD3 /* PiwikTransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTransactionItem.h; sourceTree = "<group>"; };
 		CD152F4C188C52BA0090BFD3 /* PiwikTransactionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikTransactionBuilder.h; sourceTree = "<group>"; };
@@ -244,6 +246,10 @@
 		CDA9500519F05D56004A2277 /* UserIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDViewController.h; sourceTree = "<group>"; };
 		CDA9500619F05D56004A2277 /* UserIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDViewController.m; sourceTree = "<group>"; };
 		CDB76A597E0A5EC135205125 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		CDBCF6F91B10C6C200F77481 /* piwiktracker v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "piwiktracker v2.xcdatamodel"; sourceTree = "<group>"; };
+		CDBCF6FA1B10C6C200F77481 /* piwiktracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piwiktracker.xcdatamodel; sourceTree = "<group>"; };
+		CDBCF6FC1B10D1C100F77481 /* CoreDataMigrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataMigrationTests.m; sourceTree = "<group>"; };
+		CDBCF6FF1B10D39800F77481 /* piwiktracker_v1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = piwiktracker_v1.sqlite; sourceTree = "<group>"; };
 		CDC7625519B0F9DA00EED980 /* PiwikDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikDispatcher.h; sourceTree = "<group>"; };
 		CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTrackerViewController.h; sourceTree = "<group>"; };
 		CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTrackerViewController.m; sourceTree = "<group>"; };
@@ -410,7 +416,7 @@
 				CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */,
 				CDEAEAAC180B36CC00EB91C2 /* PiwikLocationManager.h */,
 				CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */,
-				CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */,
+				CDBCF6F81B10C6C200F77481 /* piwiktracker.xcdatamodeld */,
 				CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */,
 			);
 			path = PiwikTracker;
@@ -438,6 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */,
+				CDBCF6FC1B10D1C100F77481 /* CoreDataMigrationTests.m */,
+				CDBCF6FE1B10D39800F77481 /* DataStores */,
 				CD1EEBDF19B713F4009BAA7A /* Supporting Files */,
 			);
 			path = PiwikTrackerTests;
@@ -506,6 +514,14 @@
 				CD93EC9F17E76E290062BE20 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDBCF6FE1B10D39800F77481 /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCF6FF1B10D39800F77481 /* piwiktracker_v1.sqlite */,
+			);
+			path = DataStores;
 			sourceTree = "<group>";
 		};
 		CDEAEAB8180B36F800EB91C2 /* Other Frameworks */ = {
@@ -709,6 +725,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDBCF7001B10D39800F77481 /* piwiktracker_v1.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,9 +882,9 @@
 			files = (
 				CD10FAF017B037B50012BE50 /* PiwikTracker.m in Sources */,
 				CD152F5D188C7CCA0090BFD3 /* PiwikLocationManager.m in Sources */,
-				CD10FAF217B037B50012BE50 /* piwiktracker.xcdatamodeld in Sources */,
 				CD152F58188C549F0090BFD3 /* PiwikTransactionItem.m in Sources */,
 				CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */,
+				CDBCF6FB1B10C6C200F77481 /* piwiktracker.xcdatamodeld in Sources */,
 				CD152F4E188C52BA0090BFD3 /* PiwikTransactionBuilder.m in Sources */,
 				CD1EEB2219B4A208009BAA7A /* PiwikDebugDispatcher.m in Sources */,
 				CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
@@ -896,7 +913,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDBCF7011B10D47300F77481 /* piwiktracker.xcdatamodeld in Sources */,
 				CD1EEBE219B713F4009BAA7A /* PiwikTrackerTests.m in Sources */,
+				CDBCF6FD1B10D1C100F77481 /* CoreDataMigrationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,12 +1469,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CD10FAEC17B037B50012BE50 /* piwiktracker.xcdatamodeld */ = {
+		CDBCF6F81B10C6C200F77481 /* piwiktracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CD10FAED17B037B50012BE50 /* piwiktracker.xcdatamodel */,
+				CDBCF6F91B10C6C200F77481 /* piwiktracker v2.xcdatamodel */,
+				CDBCF6FA1B10C6C200F77481 /* piwiktracker.xcdatamodel */,
 			);
-			currentVersion = CD10FAED17B037B50012BE50 /* piwiktracker.xcdatamodel */;
+			currentVersion = CDBCF6F91B10C6C200F77481 /* piwiktracker v2.xcdatamodel */;
 			path = piwiktracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

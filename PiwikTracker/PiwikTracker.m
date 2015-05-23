@@ -1439,7 +1439,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       
       // Create new event entity
       PTEventEntity *eventEntity = [NSEntityDescription insertNewObjectForEntityForName:@"PTEventEntity" inManagedObjectContext:self.managedObjectContext];
-      eventEntity.requestParameters = [NSKeyedArchiver archivedDataWithRootObject:parameters];
+      eventEntity.piwikRequestParameters = [NSKeyedArchiver archivedDataWithRootObject:parameters];
       
       [self.managedObjectContext save:&error];
       
@@ -1481,7 +1481,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
         usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
           
           PTEventEntity *eventEntity = (PTEventEntity*)obj;
-          NSDictionary *parameters = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:eventEntity.requestParameters];
+          NSDictionary *parameters = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:eventEntity.piwikRequestParameters];
 
           [events addObject:parameters];
           [entityIDs addObject:eventEntity.objectID];
@@ -1581,18 +1581,29 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   
   NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"piwiktracker"];
   
+  // Support lightweigt data migration
+  NSDictionary *options = @{
+                            NSMigratePersistentStoresAutomaticallyOption: @(YES),
+                            NSInferMappingModelAutomaticallyOption: @(YES)
+                           };
+  
   NSError *error = nil;
   _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-  if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+  if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                 configuration:nil
+                                                           URL:storeURL
+                                                       options:options
+                                                         error:&error]) {
     
     BOOL isMigrationError = [error code] == NSPersistentStoreIncompatibleVersionHashError || [error code] == NSMigrationMissingSourceModelError;
     
     if ([[error domain] isEqualToString:NSCocoaErrorDomain] && isMigrationError) {
       
-      // Could not open the database, remote it ans try again
+      PiwikLog(@"Remove incompatible model version: %@", [storeURL lastPathComponent]);
+      
+      // Could not open the database, remove it and try again
       [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
       
-      PiwikLog(@"Removed incompatible model version: %@", [storeURL lastPathComponent]);
       
       // Try one more time to create the store
       [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
@@ -1603,6 +1614,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       
       if (_persistentStoreCoordinator) {
         // If we successfully added a store, remove the error that was initially created
+        PiwikLog(@"Recovered from migration error");
         error = nil;
       } else {
         // Not possible to recover of workaround

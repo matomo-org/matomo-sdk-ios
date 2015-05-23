@@ -13,6 +13,6 @@
 @interface PTEventEntity : NSManagedObject
 
 @property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSData * requestParameters;
+@property (nonatomic, retain) NSData * piwikRequestParameters;
 
 @end
