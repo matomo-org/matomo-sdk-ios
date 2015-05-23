@@ -1,4 +1,4 @@
-s//
+//
 //  PiwikAFNetworking2Dispatcher.m
 //  PiwikTracker
 //
@@ -10,14 +10,20 @@ s//
 #import "AFNetworking.h"
 
 
+@interface PiwikAFNetworking2Dispatcher ()
+@property (nonatomic, readonly) NSString *piwikPath;
+@end
+
+
 @implementation PiwikAFNetworking2Dispatcher
 
-static NSIndexSet *acceptableStatusCodes;
-
 - (instancetype)initWithPiwikURL:(NSURL*)piwikURL {
-  self = [super initWithBaseURL:piwikURL];
+  
+  // AF Networkning adds training / to the base URL automatically
+  self = [super initWithBaseURL:piwikURL.baseURL];
   if (self) {
-    acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 299)];
+    // Since the path below starts with a / the base URL will be truncated
+    _piwikPath = piwikURL.path;
   }
   return self;
 }
@@ -30,7 +36,7 @@ static NSIndexSet *acceptableStatusCodes;
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   self.responseSerializer = [AFImageResponseSerializer serializer];
   
-  [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self GET:self.piwikPath parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
   } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -48,7 +54,7 @@ static NSIndexSet *acceptableStatusCodes;
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
   self.responseSerializer = [AFJSONResponseSerializer serializer];
   
-  [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+  [self POST:self.piwikPath parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
     successBlock();
   } failure:^(NSURLSessionDataTask *task, NSError *error) {

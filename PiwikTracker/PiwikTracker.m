@@ -226,7 +226,7 @@ static PiwikTracker *_sharedInstance;
   
   // Make sure the base url is correct
   NSString *lastPathComponent = [baseURL lastPathComponent];
-  if ([lastPathComponent isEqualToString:@"piwik.php"] && [lastPathComponent isEqualToString:@"piwik-proxy.php"]) {
+  if ([lastPathComponent isEqualToString:@"piwik.php"] || [lastPathComponent isEqualToString:@"piwik-proxy.php"]) {
     baseURL = [baseURL URLByDeletingLastPathComponent];
   }
   
