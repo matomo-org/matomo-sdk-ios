@@ -1,4 +1,4 @@
-//
+s//
 //  PiwikAFNetworking2Dispatcher.m
 //  PiwikTracker
 //
@@ -29,7 +29,6 @@ static NSIndexSet *acceptableStatusCodes;
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   self.responseSerializer = [AFImageResponseSerializer serializer];
-  self.responseSerializer.acceptableStatusCodes = acceptableStatusCodes;
   
   [self GET:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
@@ -48,7 +47,6 @@ static NSIndexSet *acceptableStatusCodes;
   
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
   self.responseSerializer = [AFJSONResponseSerializer serializer];
-  self.responseSerializer.acceptableStatusCodes = acceptableStatusCodes;
   
   [self POST:@"" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
