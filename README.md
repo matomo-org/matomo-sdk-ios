@@ -1,5 +1,7 @@
 #PiwikTracker iOS SDK
 
+**v3.2.0 Added download tracking feature. Bug fixes.**
+
 **v3.1.1 Bug fixes.**
 
 **v3.1.0 adds support for content tracking (ads and banners).**
