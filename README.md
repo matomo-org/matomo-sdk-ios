@@ -94,7 +94,7 @@ The Piwik SDK is easy to configure and use:
 // Create and configure the tracker in your app delegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
   // The website ID is available in Piwik web interface "Settings > Websites"
-  [PiwikTracker sharedInstanceWithBaseURL:[NSURL URLWithString:PiwikServerURL] siteID:PiwikSiteID];
+  [PiwikTracker sharedInstanceWithSiteID:PiwikSiteID baseURL:[NSURL URLWithString:PiwikServerURL]];
   // Any additional configuration goes here
 }
 		
