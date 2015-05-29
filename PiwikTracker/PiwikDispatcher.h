@@ -20,7 +20,6 @@
  */
 @protocol PiwikDispatcher <NSObject>
 
-
 /**
  Send a single tracking event to the Piwik server.
  
@@ -46,6 +45,16 @@
 - (void)sendBulkEventWithParameters:(NSDictionary*)parameters
                             success:(void (^)())successBlock
                             failure:(void (^)(BOOL shouldContinue))failureBlock;
+
+
+@optional
+
+/**
+ *  Set a custom user agent the dispatchers will use for requests.
+ *
+ *  @param userAgent The user agent string.
+ */
+- (void)setUserAgent:(NSString*)userAgent;
 
 
 @end
