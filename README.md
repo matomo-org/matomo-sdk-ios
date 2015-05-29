@@ -1,6 +1,6 @@
 #PiwikTracker iOS SDK
 
-**v3.2.3 Added support for custom user-agent header. Renamed a core data entity property due to name conflict. **
+**v3.2.3 Added support for custom user-agent header. Renamed a core data entity property due to name conflict.**
 
 **v3.2.0 Added download tracking feature. Bug fixes.**
 
