@@ -15,6 +15,8 @@
  */
 @interface PiwikNSURLSessionDispatcher : NSObject <PiwikDispatcher>
 
+@property (nonatomic, strong) NSString *userAgent;
+
 - (instancetype)initWithPiwikURL:(NSURL*)piwikURL;
 
 @end

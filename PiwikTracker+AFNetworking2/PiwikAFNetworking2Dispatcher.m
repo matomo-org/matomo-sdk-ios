@@ -9,9 +9,10 @@
 #import "PiwikAFNetworking2Dispatcher.h"
 #import "AFNetworking.h"
 
-
 @interface PiwikAFNetworking2Dispatcher ()
+
 @property (nonatomic, readonly) NSString *piwikPath;
+
 @end
 
 
@@ -28,13 +29,16 @@
   return self;
 }
 
-
 - (void)sendSingleEventWithParameters:(NSDictionary*)parameters
                               success:(void (^)())successBlock
                               failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   self.requestSerializer = [AFHTTPRequestSerializer serializer];
   self.responseSerializer = [AFImageResponseSerializer serializer];
+  
+  if (self.userAgent) {
+    [self.requestSerializer setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+  }
   
   [self GET:self.piwikPath parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
@@ -46,13 +50,16 @@
   
 }
 
-
 - (void)sendBulkEventWithParameters:(NSDictionary*)parameters
                       success:(void (^)())successBlock
                       failure:(void (^)(BOOL shouldContinue))failureBlock {
   
   self.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:kNilOptions];
   self.responseSerializer = [AFJSONResponseSerializer serializer];
+
+  if (self.userAgent) {
+    [self.requestSerializer setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+  }
   
   [self POST:self.piwikPath parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
     //NSLog(@"Successfully sent stats to Piwik server");
@@ -63,7 +70,6 @@
   }];
   
 }
-
 
 // Should the dispatch be aborted and pending events rescheduled
 - (BOOL)shouldAbortdispatchForNetworkError:(NSError*)error {

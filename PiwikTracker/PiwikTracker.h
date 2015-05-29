@@ -178,6 +178,14 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 
 
 /**
+ Custom user agent.
+ 
+ A custom user agent the dispatchers will use for requests.
+ */
+@property (nonatomic, strong) NSString *customUserAgent;
+
+
+/**
  @name Session control
  */
 

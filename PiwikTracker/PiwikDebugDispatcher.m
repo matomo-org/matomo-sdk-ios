@@ -11,6 +11,9 @@
 
 @implementation PiwikDebugDispatcher
 
+- (void)setUserAgent:(NSString *)userAgent {
+    NSLog(@"Set custom user agent: \n%@", userAgent);
+}
 
 - (void)sendSingleEventWithParameters:(NSDictionary*)parameters
                               success:(void (^)())successBlock

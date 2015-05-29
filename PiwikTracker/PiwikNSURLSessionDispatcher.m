@@ -30,7 +30,6 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   return self;
 }
 
-
 - (void)sendSingleEventWithParameters:(NSDictionary*)parameters
                               success:(void (^)())successBlock
                               failure:(void (^)(BOOL shouldContinue))failureBlock {
@@ -50,6 +49,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
                                   initWithURL:URL
                                   cachePolicy:NSURLRequestReloadIgnoringCacheData
                                   timeoutInterval:PiwikHTTPRequestTimeout];
+  if (self.userAgent) {
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+  }
+    
   request.HTTPMethod = @"GET";
   
   [self sendRequest:request success:successBlock failure:failureBlock];
@@ -66,6 +69,10 @@ static NSUInteger const PiwikHTTPRequestTimeout = 5;
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.piwikURL
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                           timeoutInterval:PiwikHTTPRequestTimeout];
+  if (self.userAgent) {
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+  }
+    
   request.HTTPMethod = @"POST";
   
   NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
