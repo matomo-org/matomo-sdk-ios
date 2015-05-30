@@ -335,13 +335,6 @@ static PiwikTracker *_sharedInstance;
 
 }
 
-- (void)setCustomUserAgent:(NSString *)customUserAgent {
-  _customUserAgent = customUserAgent;
-  if ([self.dispatcher respondsToSelector:@selector(setUserAgent:)]) {
-    [self.dispatcher setUserAgent:_customUserAgent];
-  }
-}
-
 - (void)startDispatchTimer {
   
   // Run on main thread run loop
