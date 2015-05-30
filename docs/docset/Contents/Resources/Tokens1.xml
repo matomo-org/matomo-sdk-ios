@@ -13,6 +13,23 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PiwikDebugDispatcher/setUserAgent:</TokenIdentifier>
+			<Abstract type="html">Set a custom user agent the dispatchers will use for requests.</Abstract>
+			<DeclaredIn>PiwikDebugDispatcher.m</DeclaredIn>
+			
+			<Declaration>- (void)setUserAgent:(NSString *)userAgent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>userAgent</Name>
+					<Abstract type="html">The user agent string.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setUserAgent:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/PiwikDebugDispatcher/sendSingleEventWithParameters:success:failure:</TokenIdentifier>
 			<Abstract type="html">Send a single tracking event to the Piwik server.</Abstract>
 			<DeclaredIn>PiwikDebugDispatcher.m</DeclaredIn>

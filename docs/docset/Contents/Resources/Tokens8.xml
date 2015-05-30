@@ -58,6 +58,23 @@
             <NodeRef refid="8"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/PiwikDispatcher/setUserAgent:</TokenIdentifier>
+			<Abstract type="html">Set a custom user agent the dispatchers will use for requests.</Abstract>
+			<DeclaredIn>PiwikDispatcher.h</DeclaredIn>
+			
+			<Declaration>- (void)setUserAgent:(NSString *)userAgent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>userAgent</Name>
+					<Abstract type="html">The user agent string.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setUserAgent:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
         
 	</File>
 </Tokens>
