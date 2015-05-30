@@ -37,8 +37,12 @@ static NSString * const PiwikProductionSiteID = @"23";
   
   [PiwikTracker sharedInstance].debug = YES;
   [PiwikTracker sharedInstance].dispatchInterval = 30;
+  
 //  id<PiwikDispatcher> dispatcher = [PiwikTracker sharedInstance].dispatcher;
-//  [dispatcher setUserAgent:@"My-User-Agent"];
+//  if ([dispatcher respondsToSelector:@selector(setUserAgent:)]) {
+//    [dispatcher setUserAgent:@"My-User-Agent"];
+//  }
+  
 //  [PiwikTracker sharedInstance].sampleRate = 50;
 //  [PiwikTracker sharedInstance].eventsPerRequest = 2;
   

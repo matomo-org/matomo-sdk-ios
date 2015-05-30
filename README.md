@@ -1,6 +1,6 @@
 #PiwikTracker iOS SDK
 
-**v3.2.4 Setting custom user-agent header is only possible through the PiwikDispatcher.**
+**v3.3.0 Setting custom user-agent header is only possible through the PiwikDispatcher.**
 
 **v3.2.3 Added support for custom user-agent header. Renamed a core data entity property due to name conflict.**
 
@@ -145,8 +145,9 @@ campaignURLString = ...
 // Set a custom user agent profile in requests sent to the Piwik Server
 // This can be used to provide additional information about the users device
 id<PiwikDispatcher> dispatcher = [PiwikTracker sharedInstance].dispatcher;
-[dispatcher setUserAgent:@"My-User-Agent"];
-
+if ([dispatcher respondsToSelector:@selector(setUserAgent:)]) {
+  [dispatcher setUserAgent:@"My-User-Agent"];
+}
 ```
 	  	
 Check out the full [API documentation](http://piwik.github.io/piwik-sdk-ios/docs/html/index.html) for additional methods and details.
