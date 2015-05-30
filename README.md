@@ -1,14 +1,11 @@
 #PiwikTracker iOS SDK
 
+**v3.2.4 Setting custom user-agent header is only possible through the PiwikDispatcher.**
+
 **v3.2.3 Added support for custom user-agent header. Renamed a core data entity property due to name conflict.**
 
 **v3.2.0 Added download tracking feature. Bug fixes.**
 
-**v3.1.1 Bug fixes.**
-
-**v3.1.0 adds support for content tracking (ads and banners).**
-
-**v3.0.0 only support Piwik server 2.8 and above. Support for auth_token has been removed due to security reasons and the api for instantiating the tracker has changed slightly. Several new features have been added.**
 
 The PiwikTracker is an iOS and OSX SDK for sending app analytics to a Piwik server.
  
@@ -144,6 +141,11 @@ campaignURLString = ...
 [[PiwikTracker sharedInstance] sendContentImpressionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
 // Track an interaction when the user tap on the ad
 [[PiwikTracker sharedInstance] sendContentInteractionWithName:@"DN" piece:@"dn_image.png" taget:@"http://dn.se"];
+
+// Set a custom user agent profile in requests sent to the Piwik Server
+// This can be used to provide additional information about the users device
+id<PiwikDispatcher> dispatcher = [PiwikTracker sharedInstance].dispatcher;
+[dispatcher setUserAgent:@"My-User-Agent"];
 
 ```
 	  	
