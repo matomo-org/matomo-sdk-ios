@@ -1377,8 +1377,10 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     if ([platform isEqualToString:@"iPhone5,4"])    return @"iPhone 5c (Global)";
     if ([platform isEqualToString:@"iPhone6,1"])    return @"iPhone 5s (GSM)";
     if ([platform isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
-    if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6+";
+    if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
     if ([platform isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
+    if ([platform isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
+    if ([platform isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
     
     // iPod
     if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
@@ -1386,6 +1388,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
     if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
     if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch 5G";
+    if ([platform isEqualToString:@"iPod7,1"])      return @"iPod Touch 6G";
     
     // iPad
     if ([platform isEqualToString:@"iPad1,1"])      return @"iPad";
@@ -1411,8 +1414,11 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     if ([platform isEqualToString:@"iPad4,7"])      return @"iPad Mini 3 (WiFi)";
     if ([platform isEqualToString:@"iPad4,8"])      return @"iPad Mini 3 (A1600)";
     if ([platform isEqualToString:@"iPad4,9"])      return @"iPad Mini 3 (A1601)";
+    if ([platform isEqualToString:@"iPad5,1"])      return @"iPad Mini 4 (WiFi)";
+    if ([platform isEqualToString:@"iPad5,2"])      return @"iPad Mini 4 (LTE);
     if ([platform isEqualToString:@"iPad5,3"])      return @"iPad Air 2 (WiFi)";
     if ([platform isEqualToString:@"iPad5,4"])      return @"iPad Air 2 (Cellular)";
+    if ([platform isEqualToString:@"iPad6,8"])      return @"iPad Pro";
     
     if ([platform isEqualToString:@"i386"])         return @"Simulator";
     if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
