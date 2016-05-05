@@ -54,6 +54,7 @@
 - (void)sessionStart:(NSNotification*)notification {
   NSLog(@"Session start notification");
   // Set up any visit custom variables
+  [[PiwikTracker sharedInstance] trackNewAppDownload];
 }
 
 

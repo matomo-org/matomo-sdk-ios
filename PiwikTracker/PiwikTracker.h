@@ -330,6 +330,19 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 - (BOOL)sendDownload:(NSString*)url;
 
 /**
+ Track that the app was launched for the first time.
+ Sends an event to track a download/update for an app. You may choose to either pass
+ in a version, or use the bundle's information. The event will only be tracked once per app 
+ and, like the Android SDK, passes along the bundle information and an MD5 of the package via
+ the referrer field. If "hybrid_app" is passed into package_type, the event will instead put an
+ MD5 of the bundle information onto 
+**/
+
+- (BOOL)trackNewAppDownload;
+
+- (BOOL)trackNewAppDownload:(NSString*)version package_type:(NSString*)package_type;
+
+/**
  Track that the app was launched from a Piwik campaign URL.
  The campaign information will be sent to the server with the next Piwik event.
  

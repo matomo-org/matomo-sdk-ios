@@ -644,6 +644,7 @@
 				CD93EC8817E76E290062BE20 /* Frameworks */,
 				CD93EC8917E76E290062BE20 /* Resources */,
 				AD6EA65F0F2334BE1EBF2A97 /* Copy Pods Resources */,
+				84F8143A225371C50F0B7584 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -663,6 +664,7 @@
 				CDEAEAB2180B36F800EB91C2 /* Frameworks */,
 				CDEAEAB3180B36F800EB91C2 /* Resources */,
 				B11EDC1A757EEF54DFB2AB82 /* Copy Pods Resources */,
+				178BB6A7184B2E0A7BCCBA92 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -755,6 +757,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		178BB6A7184B2E0A7BCCBA92 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-osx/Pods-osx-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1C0D2CA3BB233198C7158D5A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -783,6 +800,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		84F8143A225371C50F0B7584 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		946D17AD38CF25D3C743636F /* Check Pods Manifest.lock */ = {
@@ -1270,6 +1302,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiwikTrackeriOSDemo/PiwikTrackeriOSDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"COCOAPODS=1",
+					$inherited,
+				);
 				INFOPLIST_FILE = "PiwikTrackeriOSDemo/PiwikTrackeriOSDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
