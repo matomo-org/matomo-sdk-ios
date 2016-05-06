@@ -45,7 +45,7 @@
     [alertView show];
     
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:PiwikAskedForPermissonKey];
-    
+    [[PiwikTracker sharedInstance] trackNewAppDownload];
   }
   
 }
@@ -54,7 +54,6 @@
 - (void)sessionStart:(NSNotification*)notification {
   NSLog(@"Session start notification");
   // Set up any visit custom variables
-  [[PiwikTracker sharedInstance] trackNewAppDownload];
 }
 
 
@@ -66,7 +65,7 @@
   } else {
     [PiwikTracker sharedInstance].optOut = NO;
   }
-  
+
 }
 
 

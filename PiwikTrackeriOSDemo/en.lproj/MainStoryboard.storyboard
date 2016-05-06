@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -26,12 +27,12 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="13">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Events" id="RkN-yx-egP" userLabel="Table View Section - Events">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="EYc-RM-MMH" style="IBUITableViewCellStyleDefault" id="q3h-dc-9VC" userLabel="Table View Cell - Screen views">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3h-dc-9VC" id="6QM-lt-Nvm">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -40,7 +41,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Screens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EYc-RM-MMH">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -50,7 +51,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="BaN-7v-REO" style="IBUITableViewCellStyleDefault" id="faA-Rc-sb1" userLabel="Table View Cell - Events">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="158" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="faA-Rc-sb1" id="YVK-Q3-3tw">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -60,7 +61,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -70,7 +71,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="FzY-SE-YEP" style="IBUITableViewCellStyleDefault" id="YbN-sD-lqf" userLabel="Table View Cell - Custom variables">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="202" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YbN-sD-lqf" id="feu-lM-6Kn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -80,7 +81,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -89,8 +90,28 @@
                                             <segue destination="CDD-fq-XoC" kind="push" id="rNl-Ig-rRF"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="02q-Uf-wc1" style="IBUITableViewCellStyleDefault" id="9AA-nW-cQc" userLabel="Table View Cell - Custom variables">
+                                        <rect key="frame" x="0.0" y="246" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AA-nW-cQc" id="jwZ-hy-5sR">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Custom dimensions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02q-Uf-wc1">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uJL-qW-HD4" kind="push" id="Lj4-Ai-eXT"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9IC-4G-KnW" style="IBUITableViewCellStyleDefault" id="Rnt-o0-uS7" userLabel="Table View Cell - Exceptions">
-                                        <rect key="frame" x="0.0" y="207" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="290" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rnt-o0-uS7" id="OLA-0D-0Va">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -100,7 +121,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -110,7 +131,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PDz-rK-OoO" style="IBUITableViewCellStyleDefault" id="KG9-Yu-6wh" userLabel="Table View Cell - Social interaction">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="334" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KG9-Yu-6wh" id="gKQ-Us-Q4J">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -120,7 +141,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -130,7 +151,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hoq-y7-LZB" style="IBUITableViewCellStyleDefault" id="ujn-YL-G8y" userLabel="Table View Cell - Content tracking">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="378" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ujn-YL-G8y" id="Goz-NC-F3a">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -140,7 +161,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -150,7 +171,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rJq-aR-fRd" style="IBUITableViewCellStyleDefault" id="wj3-q5-M7f" userLabel="Table View Cell - Content tracking">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="422" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wj3-q5-M7f" id="exP-aE-kCY">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -160,7 +181,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -174,7 +195,7 @@
                             <tableViewSection headerTitle="Search" id="D2G-yR-FkY" userLabel="Table View Section - Search">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Go-tE-Ysp" style="IBUITableViewCellStyleDefault" id="dij-ud-Cse" userLabel="Table View Cell - Search">
-                                        <rect key="frame" x="0.0" y="343" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="509" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dij-ud-Cse" id="wfU-9V-eCn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -184,7 +205,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -198,7 +219,7 @@
                             <tableViewSection headerTitle="Conversion" id="Ykb-Nf-a3l" userLabel="Table View Section - Conversion">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
-                                        <rect key="frame" x="0.0" y="435" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="596" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QY8-q1-L0P" id="gNI-EU-T3B">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -208,7 +229,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -218,7 +239,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wFM-RN-ccQ" style="IBUITableViewCellStyleDefault" id="opC-Eg-HGF" userLabel="Table View Cell - Ecommerce">
-                                        <rect key="frame" x="0.0" y="479" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="640" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="opC-Eg-HGF" id="H1r-jj-weM">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -228,7 +249,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -242,7 +263,7 @@
                             <tableViewSection headerTitle="Other" id="6kC-bt-yx9">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
-                                        <rect key="frame" x="0.0" y="571" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="727" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -251,7 +272,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -261,7 +282,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WVV-vG-MDD" style="IBUITableViewCellStyleDefault" id="2t3-Re-M7O" userLabel="Table View Cell - Campaign">
-                                        <rect key="frame" x="0.0" y="571" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="771" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2t3-Re-M7O" id="ffB-O7-QqS">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -270,7 +291,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Campaign" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WVV-vG-MDD">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -280,7 +301,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
-                                        <rect key="frame" x="0.0" y="615" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="815" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lXW-WA-gLT" id="eVL-TU-VbE">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -289,7 +310,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Optout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0JJ-uO-Kcd">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -299,7 +320,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="x17-Qe-MIr" style="IBUITableViewCellStyleDefault" id="kGR-0X-zCv" userLabel="Table View Cell - Configuration">
-                                        <rect key="frame" x="0.0" y="659" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="859" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kGR-0X-zCv" id="wkf-i6-Rie">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -308,7 +329,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x17-Qe-MIr">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -327,15 +348,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="459" y="64"/>
+            <point key="canvasLocation" x="440" y="-218"/>
         </scene>
         <!--Configuration-->
         <scene sceneID="FLW-Ji-YLm">
             <objects>
                 <viewController id="ELK-4A-Qjl" customClass="ConfigurationViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9dV-fz-7Hl"/>
-                        <viewControllerLayoutGuide type="bottom" id="8eu-MH-Ft6"/>
+                        <viewControllerLayoutGuide type="top" id="pUW-Bg-7HA"/>
+                        <viewControllerLayoutGuide type="bottom" id="PrM-l0-cEx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4ll-cH-kGS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -344,7 +365,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create new session for current user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-z5-2ZP">
                                 <rect key="frame" x="40" y="107" width="241" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-8g-GWa">
@@ -359,7 +380,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dispatch queued events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPX-cX-hGF">
                                 <rect key="frame" x="67" y="222" width="186" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLz-Lp-6Cf">
@@ -385,8 +406,8 @@
             <objects>
                 <viewController id="TLS-vi-nag" customClass="OptOutViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="62G-Jz-gIP"/>
-                        <viewControllerLayoutGuide type="bottom" id="BrW-d4-gYF"/>
+                        <viewControllerLayoutGuide type="top" id="XNa-l1-KPj"/>
+                        <viewControllerLayoutGuide type="bottom" id="2aY-NH-l0i"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fmb-xT-VQp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -397,7 +418,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Depending on application context, country and regulations, users should have the option to optout from tracking due to privacy reasons.</string>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-yo-FvA">
@@ -428,8 +449,8 @@
             <objects>
                 <viewController id="b7m-Cl-bUW" customClass="EcommerceViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sd1-ro-hor"/>
-                        <viewControllerLayoutGuide type="bottom" id="ncA-Yx-rsn"/>
+                        <viewControllerLayoutGuide type="top" id="iw6-di-TNk"/>
+                        <viewControllerLayoutGuide type="bottom" id="xSo-Yg-G3X"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PJi-wV-95F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -439,7 +460,7 @@
                                 <rect key="frame" x="20" y="119" width="280" height="84"/>
                                 <string key="text">Ecommerce measurement allows you to send in-app purchases and sales to Piwik. Ecommerce data is comprised of transaction and items.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No. Items ($1)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfG-60-mAv">
@@ -517,8 +538,8 @@
             <objects>
                 <viewController id="zpc-4j-H26" customClass="DownloadViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bvI-kz-t8o"/>
-                        <viewControllerLayoutGuide type="bottom" id="s6W-IH-l2g"/>
+                        <viewControllerLayoutGuide type="top" id="SSP-Hx-5JH"/>
+                        <viewControllerLayoutGuide type="bottom" id="SHt-1G-SP8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qxH-kW-fXn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -530,7 +551,7 @@
 Tracked downloads are presetned in a seperate section in the Piwik server.
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEf-Du-tkR">
@@ -556,8 +577,8 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
             <objects>
                 <viewController title="Social" id="T3G-ki-nmF" customClass="SocialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4r6-lc-JWb"/>
-                        <viewControllerLayoutGuide type="bottom" id="gek-Qs-Mq5"/>
+                        <viewControllerLayoutGuide type="top" id="ivj-l8-ZtL"/>
+                        <viewControllerLayoutGuide type="bottom" id="fcv-QE-5sk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ira-xk-ufJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -592,8 +613,8 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
             <objects>
                 <viewController title="Search" id="kAP-P3-tFI" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xej-FL-iaI"/>
-                        <viewControllerLayoutGuide type="bottom" id="91h-Ie-Rue"/>
+                        <viewControllerLayoutGuide type="top" id="ai1-UX-OFV"/>
+                        <viewControllerLayoutGuide type="bottom" id="QRY-JU-i7A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PUh-dh-dj7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -631,8 +652,8 @@ Log keywords used and the number of results found.   Searches are shown in a
             <objects>
                 <viewController id="Mn5-Jo-OEE" customClass="ContentTrackerViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jaF-UO-x1D"/>
-                        <viewControllerLayoutGuide type="bottom" id="05k-w6-iJ2"/>
+                        <viewControllerLayoutGuide type="top" id="QUn-JW-9RV"/>
+                        <viewControllerLayoutGuide type="bottom" id="3ac-Xn-W5V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="log-mT-SE5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -650,7 +671,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                                 <rect key="frame" x="16" y="129" width="288" height="142"/>
                                 <string key="text">Track when ads and banners are shown as Content Impression.  Track when users interact with ads and banners as Content interations to measure converision rates.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -672,8 +693,8 @@ Log keywords used and the number of results found.   Searches are shown in a
             <objects>
                 <viewController id="xqt-PP-0XP" customClass="UserIDViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aTn-Vi-fRv"/>
-                        <viewControllerLayoutGuide type="bottom" id="guM-u1-IVi"/>
+                        <viewControllerLayoutGuide type="top" id="dBQ-bY-8eK"/>
+                        <viewControllerLayoutGuide type="bottom" id="LhO-1P-bNk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hgK-Yh-NnZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -708,7 +729,7 @@ Log keywords used and the number of results found.   Searches are shown in a
 
 Store the id locally in the app and set it directly after the tracker is created again.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -730,8 +751,8 @@ Store the id locally in the app and set it directly after the tracker is created
             <objects>
                 <viewController id="otS-XA-W6b" customClass="CampaignViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="szY-5p-uJe"/>
-                        <viewControllerLayoutGuide type="bottom" id="Gwb-9k-2XR"/>
+                        <viewControllerLayoutGuide type="top" id="1Gc-Uj-utr"/>
+                        <viewControllerLayoutGuide type="bottom" id="FYQ-rh-f3D"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LW6-5d-OiB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -766,8 +787,8 @@ Store the id locally in the app and set it directly after the tracker is created
             <objects>
                 <viewController title="Goals" id="mjb-xj-Rpd" customClass="GoalsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2jJ-06-pJd"/>
-                        <viewControllerLayoutGuide type="bottom" id="5ZZ-Ow-tRK"/>
+                        <viewControllerLayoutGuide type="top" id="qqa-Ss-gri"/>
+                        <viewControllerLayoutGuide type="bottom" id="GTX-4g-l2h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mTS-Ee-qHa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -802,8 +823,8 @@ Store the id locally in the app and set it directly after the tracker is created
             <objects>
                 <viewController title="Exceptions" id="bt7-Hr-t4k" customClass="ExceptionViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J9e-08-TYW"/>
-                        <viewControllerLayoutGuide type="bottom" id="r15-I5-guP"/>
+                        <viewControllerLayoutGuide type="top" id="uGN-jr-csS"/>
+                        <viewControllerLayoutGuide type="bottom" id="f8A-o1-Xbj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8MP-bX-LB1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -838,8 +859,8 @@ Store the id locally in the app and set it directly after the tracker is created
             <objects>
                 <viewController title="Events" id="EE7-OR-Lgd" customClass="EventsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sge-Px-nzM"/>
-                        <viewControllerLayoutGuide type="bottom" id="HfH-E0-oi6"/>
+                        <viewControllerLayoutGuide type="top" id="DgP-s4-Ew7"/>
+                        <viewControllerLayoutGuide type="bottom" id="CV8-W0-zOp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mWd-pT-ADY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -849,7 +870,7 @@ Store the id locally in the app and set it directly after the tracker is created
                                 <rect key="frame" x="20" y="120" width="280" height="179"/>
                                 <string key="text">Track events to collect data about the users interaction with the app, like button taps, completing a level in a game, downloading a file etc.  An event contains a category, action, name and optional value.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-u4-LMD">
@@ -875,8 +896,8 @@ Store the id locally in the app and set it directly after the tracker is created
             <objects>
                 <viewController id="CDD-fq-XoC" customClass="CustomVariablesViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cAl-Nl-YcF"/>
-                        <viewControllerLayoutGuide type="bottom" id="8N5-4k-gwz"/>
+                        <viewControllerLayoutGuide type="top" id="0J5-p0-Yuj"/>
+                        <viewControllerLayoutGuide type="bottom" id="wy8-T1-jvO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pSV-jD-kPE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -888,7 +909,7 @@ Store the id locally in the app and set it directly after the tracker is created
 
 The Piwik server will visualize how many visits, conversions, etc. occured for each custom variable.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyW-3f-6RA">
@@ -903,7 +924,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Index 4, visit scope" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWu-fH-679">
                                 <rect key="frame" x="20" y="292" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAn-E6-Ihh">
@@ -918,13 +939,13 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Index 1, screen scope" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmW-62-gH5">
                                 <rect key="frame" x="20" y="344" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Custom variables" id="pLN-CW-KT9"/>
+                    <navigationItem key="navigationItem" title="Custom variables" id="TQU-wL-1xF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-I5-hgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -935,8 +956,8 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
             <objects>
                 <viewController title="Screen Views" id="21" customClass="ScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BSr-mZ-vQZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="FuA-Pu-dLL"/>
+                        <viewControllerLayoutGuide type="top" id="Sg6-h8-tVI"/>
+                        <viewControllerLayoutGuide type="bottom" id="DrN-uX-FYx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="22">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -947,7 +968,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Track screen views when a new view become vissible.   The recommendation is to report the full hierarchy of a screen, in this case "screen/menu/screen view".  By default screen views are prefixed with "screen".</string>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcE-1A-9jV">
@@ -975,8 +996,8 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
             <objects>
                 <viewController title="Screen view 2" id="Bj1-bB-7qk" customClass="Screen2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="x3D-Hg-I9v"/>
-                        <viewControllerLayoutGuide type="bottom" id="tWZ-mG-V2w"/>
+                        <viewControllerLayoutGuide type="top" id="p1f-QF-Lzo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tv9-CF-aOT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bcA-lu-hJ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -986,7 +1007,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                                 <rect key="frame" x="20" y="209" width="280" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -998,10 +1019,61 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
             </objects>
             <point key="canvasLocation" x="2138" y="-2604"/>
         </scene>
+        <!--Custom dimensions-->
+        <scene sceneID="pMG-Ws-m3w">
+            <objects>
+                <viewController id="uJL-qW-HD4" userLabel="Custom dimensions" customClass="CustomDimensionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sEf-uR-t5I"/>
+                        <viewControllerLayoutGuide type="bottom" id="kbj-6o-525"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nCT-r6-kgC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fg-MV-Yt0">
+                                <rect key="frame" x="126" y="269" width="68" height="119"/>
+                                <state key="normal" title="Custom A">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="customDimensionAAction:" destination="uJL-qW-HD4" eventType="touchUpInside" id="bCb-Iq-QyC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Index 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyg-yg-0cz">
+                                <rect key="frame" x="20" y="340" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="I9e-0M-SxJ">
+                                <rect key="frame" x="20" y="99" width="280" height="157"/>
+                                <string key="text">With Custom Dimensions you can assign any custom data to your visitors or actions (like pages, events, …) and then visualize the reports of how many visits, conversions, pageviews, etc. there were for each Custom Dimension.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwE-17-alg">
+                                <rect key="frame" x="74" y="37" width="173" height="19"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Custom dimensions">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Custom Dimensions" id="5xb-zP-xEU" userLabel="Custom dimensions" propertyAccessControl="none"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNl-aC-pRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2447" y="-1524"/>
+        </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

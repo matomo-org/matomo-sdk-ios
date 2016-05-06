@@ -822,12 +822,10 @@ static PiwikTracker *_sharedInstance;
     
     NSParameterAssert(index > 0);
     NSParameterAssert(value);
-    
     if (index < 1) {
         PiwikLog(@"Custom variable index must be > 0");
         return NO;
     }
-    
     self.customDimensions[@(index)] = value;
     return YES;
 }
@@ -937,7 +935,7 @@ static PiwikTracker *_sharedInstance;
     // Reset session params and visit custom variables to force a rebuild
     self.sessionParameters = nil;
     self.visitCustomVariables = nil;
-    self.customDimensions = nil;
+    self.customDimensions = [NSMutableDictionary dictionary];
     
     // Send notifications to allow observers to set new visit custom variables
     [[NSNotificationCenter defaultCenter] postNotificationName:PiwikSessionStartNotification object:self];
@@ -953,18 +951,20 @@ static PiwikTracker *_sharedInstance;
     if (self.visitCustomVariables) {
       sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitCustomVariables];
     }
-      
-    if (self.customDimensions) {
+
+    self.sessionParameters = sessionParameters;
+  }
+    
+  if (self.customDimensions) {
       NSUInteger index = 1;
+      NSMutableDictionary *sessionParameters = [NSMutableDictionary dictionaryWithDictionary:self.sessionParameters];
       for (NSString *value in [self.customDimensions objectEnumerator]) {
           NSString *encodedString = [value stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
           NSString *key = [NSString stringWithFormat:PiwikParameterCustomDimensions, (unsigned long)index];
-          sessionParameters[key] = encodedString;
+          [sessionParameters setObject:encodedString forKey:key];
           index++;
       }
-    }
-
-    self.sessionParameters = sessionParameters;
+      self.sessionParameters = sessionParameters;
   }
   
   // Join event parameters with session parameters
@@ -1272,12 +1272,9 @@ static PiwikTracker *_sharedInstance;
     // Get from user defaults
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     _fired = [userDefaults stringForKey:UserDefaultKeyWithSiteID(self.siteID, fired_str)];
-    NSLog(@"IN FIRED EVAL");
-    NSLog(_fired ? @"FIRED!" : @"NOT FIRED");
     if (nil == _fired) {
         [userDefaults setValue:@"set" forKey:UserDefaultKeyWithSiteID(self.siteID, fired_str)];
         [userDefaults synchronize];
-        NSLog(@"IN FIRED NIL EVAL");
         return FALSE;
     }
     return TRUE;

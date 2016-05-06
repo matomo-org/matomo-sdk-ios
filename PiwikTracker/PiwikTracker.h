@@ -414,6 +414,18 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)setCustomVariableForIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value scope:(CustomVariableScope)scope;
 
+/**
+ Assign a custom variable.
+ 
+ With Custom Dimensions you can assign any custom data to your visitors or actions (like pages, events, …) and then visualize the reports of how many visits, conversions, pageviews, etc. there were for each Custom Dimension. They are similar to Custom Variables.
+ 
+ Keep the name and value short to ensure that the URL length doesn’t go over the URL limit for the web server or http client.
+ 
+ @param index Custom dimension index. You should only use unique index numbers unless you want to overwrite your data.
+ @param value Custom dimension value.
+ */
+
+- (BOOL)setCustomDimensionForIndex:(NSUInteger)index value:(NSString*)value;
 
 /**
  @name Dispatch pending events
