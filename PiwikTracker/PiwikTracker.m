@@ -483,10 +483,11 @@ static PiwikTracker *_sharedInstance;
 }
 
 - (BOOL)trackNewAppDownload {
-    [self trackNewAppDownload:nil package_type:nil];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    [self trackNewAppDownload:infoDictionary[(NSString*)kCFBundleVersionKey]];
 }
 
-- (BOOL)trackNewAppDownload:(NSString*)version package_type:(NSString *)package_type {
+- (BOOL)trackNewAppDownload:(NSString*)version {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
@@ -512,15 +513,9 @@ static PiwikTracker *_sharedInstance;
         [md5_string appendString:fired];
         [fired appendString:self.deviceName];
         params[PiwikParameterReferrer] = fired;
-        if ([package_type  isEqual: @"hybrid_app"]){
-            md5 = [PiwikTracker md5:build];
-            [md5_string appendString:md5];
-        }
-        else{
-            NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
-            md5 = [PiwikTracker md5HashOfPath:bundlePath];
-            [md5_string appendString:md5];
-        }
+        NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+        md5 = [PiwikTracker md5HashOfPath:bundlePath];
+        [md5_string appendString:md5];
         params[PiwikParameterDownload] = md5_string;
     }
     return [self queueEvent:params];
