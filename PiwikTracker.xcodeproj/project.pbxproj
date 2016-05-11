@@ -48,6 +48,7 @@
 		AEF1C9F01CE327670049FC3E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		AEF1C9F11CE327670049FC3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
 		AEF1C9F21CE327670049FC3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
+		AEF1CA111CE334610049FC3E /* PiwikTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CD10FAEA17B037B50012BE50 /* PiwikTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C027567BEC62566E6F824230 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB58213275F072D13140292 /* libPods-ios.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
@@ -604,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEF1C9DF1CE326070049FC3E /* PiwikTracker-iOS.h in Headers */,
+				AEF1CA111CE334610049FC3E /* PiwikTracker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

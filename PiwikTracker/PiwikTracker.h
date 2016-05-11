@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PiwikDebugDispatcher.h"
 
 @class PiwikTransaction;
-
+@protocol PiwikDispatcher;
 
 /**
  
