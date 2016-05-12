@@ -17,6 +17,7 @@
 #import "PiwikLocationManager.h"
 
 #import "PiwikDispatcher.h"
+#import "PiwikDebugDispatcher.h"
 #import "PiwikNSURLSessionDispatcher.h"
 
 #include <sys/types.h>
