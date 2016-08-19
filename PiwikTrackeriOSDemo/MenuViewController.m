@@ -45,7 +45,7 @@
     [alertView show];
     
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:PiwikAskedForPermissonKey];
-    
+    [[PiwikTracker sharedInstance] trackNewAppDownload];
   }
   
 }
@@ -65,7 +65,7 @@
   } else {
     [PiwikTracker sharedInstance].optOut = NO;
   }
-  
+
 }
 
 

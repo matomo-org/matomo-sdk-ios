@@ -21,6 +21,7 @@
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
+#import <sys/utsname.h>
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #else
@@ -69,6 +70,7 @@ static NSString * const PiwikParameterURL = @"url";
 static NSString * const PiwikParameterVisitorID = @"_id";
 static NSString * const PiwikParameterUserID = @"uid";
 static NSString * const PiwikParameterVisitScopeCustomVariables = @"_cvar";
+static NSString * const PiwikParameterCustomDimensions = @"dimension%lu";
 static NSString * const PiwikParameterScreenScopeCustomVariables = @"cvar";
 static NSString * const PiwikParameterRandomNumber = @"r";
 static NSString * const PiwikParameterFirstVisitTimestamp = @"_idts";
@@ -162,7 +164,6 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 
 @end
 
-
 #pragma mark - Pwik tracker
 
 @interface PiwikTracker ()
@@ -174,12 +175,14 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 @property (nonatomic) NSUInteger totalNumberOfVisits;
 
 @property (nonatomic, readonly) NSTimeInterval firstVisitTimestamp;
+@property (nonatomic, readonly) BOOL firedKey;
 @property (nonatomic) NSTimeInterval previousVisitTimestamp;
 @property (nonatomic) NSTimeInterval currentVisitTimestamp;
 @property (nonatomic, strong) NSDate *appDidEnterBackgroundDate;
 
 @property (nonatomic, strong) NSMutableDictionary *screenCustomVariables;
 @property (nonatomic, strong) NSMutableDictionary *visitCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *customDimensions;
 @property (nonatomic, strong) NSDictionary *sessionParameters;
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
@@ -208,6 +211,7 @@ NSString* UserDefaultKeyWithSiteID(NSString* siteID, NSString *key);
 @synthesize previousVisitTimestamp = _previousVisitTimestamp;
 @synthesize currentVisitTimestamp = _currentVisitTimestamp;
 @synthesize clientID = _clientID;
+@synthesize firedKey = _firedKey;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -476,6 +480,58 @@ static PiwikTracker *_sharedInstance;
   
   return [self queueEvent:params];
   
+}
+
+- (BOOL)trackNewAppDownload {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    [self trackNewAppDownload:infoDictionary[(NSString*)kCFBundleVersionKey]];
+    return true;
+}
+
+- (BOOL)trackNewAppDownload:(NSString*)version {
+    NSLog(@"IN");
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    
+    NSString *name = self.appName;
+    if (version == nil){
+        version = self.appVersion;
+    }
+    else{
+        self.appVersion = version;
+    }
+    NSMutableString *fired = [NSMutableString string];
+    NSLog(@"BEFORE FIRED IF");
+    [fired appendString:@"http://downloaded:"];
+    [fired appendString:name];
+    [fired appendString:@":"];
+    [fired appendString:version];
+    NSLog(@"BEFORE IF");
+    if ([self firedKey] == FALSE){
+        NSLog(@"BEFORE params");
+        params[PiwikParameterEventCategory] = @"Application";
+        params[PiwikParameterEventAction] = @"downloaded";
+        params[PiwikParameterEventName] = @"application/downloaded";
+        params[PiwikParameterURL] = @"http://application/downloaded";
+        NSLog(@"BEFORE Decl");
+        NSString *build = infoDictionary[(NSString*)kCFBundleVersionKey];
+        NSString *md5;
+        NSMutableString *md5_string = [NSMutableString string];
+        NSLog(@"BEFORE FIRED");
+        [fired appendString:@":"];
+        [md5_string appendString:fired];
+        [fired appendString:self.deviceName];
+        params[PiwikParameterReferrer] = fired;
+        NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+        md5 = [PiwikTracker md5HashOfPath:bundlePath];
+        [md5_string appendString:md5];
+        NSLog(@"HERE");
+//        NSLog(md5_string);
+        params[PiwikParameterDownload] = md5_string;
+    }
+    return [self queueEvent:params];
+    
 }
 
 
@@ -769,6 +825,23 @@ static PiwikTracker *_sharedInstance;
   return YES;
 }
 
+- (BOOL)setCustomDimensionForIndex:(NSUInteger)index value:(NSString*)value {
+    
+    NSParameterAssert(index > 0);
+    NSParameterAssert(value);
+    if (index < 1) {
+        PiwikLog(@"Custom variable index must be > 0");
+        return NO;
+    }
+    self.customDimensions[@(index)] = value;
+    return YES;
+}
+
+- (BOOL)setUserId:(NSString*)userId{
+    NSParameterAssert(userId > 0);
+    self.userID = userId;
+    return YES;
+}
 
 - (BOOL)queueEvent:(NSDictionary*)parameters {
   
@@ -874,6 +947,7 @@ static PiwikTracker *_sharedInstance;
     // Reset session params and visit custom variables to force a rebuild
     self.sessionParameters = nil;
     self.visitCustomVariables = nil;
+    self.customDimensions = [NSMutableDictionary dictionary];
     
     // Send notifications to allow observers to set new visit custom variables
     [[NSNotificationCenter defaultCenter] postNotificationName:PiwikSessionStartNotification object:self];
@@ -889,8 +963,20 @@ static PiwikTracker *_sharedInstance;
     if (self.visitCustomVariables) {
       sessionParameters[PiwikParameterVisitScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.visitCustomVariables];
     }
-    
+
     self.sessionParameters = sessionParameters;
+  }
+    
+  if (self.customDimensions) {
+      NSUInteger index = 1;
+      NSMutableDictionary *sessionParameters = [NSMutableDictionary dictionaryWithDictionary:self.sessionParameters];
+      for (NSString *value in [self.customDimensions objectEnumerator]) {
+          NSString *encodedString = [value stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+          NSString *key = [NSString stringWithFormat:PiwikParameterCustomDimensions, (unsigned long)index];
+          [sessionParameters setObject:encodedString forKey:key];
+          index++;
+      }
+      self.sessionParameters = sessionParameters;
   }
   
   // Join event parameters with session parameters
@@ -1187,6 +1273,33 @@ static PiwikTracker *_sharedInstance;
   return _clientID;
 }
 
+- (BOOL)firedKey {
+    NSString *name = self.appName;
+    NSString *version = self.appVersion;
+    NSMutableString *fired_str = [NSMutableString string];
+    [fired_str appendString:@"downloaded:"];
+    [fired_str appendString:name];
+    [fired_str appendString:@":"];
+    [fired_str appendString:version];
+    // Get from user defaults
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog(fired_str);
+    NSLog(@"FIRED STR");
+    _firedKey = [userDefaults stringForKey:UserDefaultKeyWithSiteID(self.siteID, fired_str)];
+    if (_firedKey)
+        NSLog(@"YES");
+    else
+        NSLog(@"NO");
+    if (nil == _firedKey) {
+        [userDefaults setValue:@"set" forKey:UserDefaultKeyWithSiteID(self.siteID, fired_str)];
+        [userDefaults synchronize];
+        NSLog(@"RETURN FALSE");
+        return FALSE;
+    }
+    NSLog(@"RETURN TRUE");
+    return TRUE;
+}
+
 
 inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   return [NSString stringWithFormat:@"%@_%@", siteID, key];
@@ -1318,6 +1431,78 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   return _appVersion;
 }
 
+- (NSString*) deviceName
+{
+    struct utsname systemInfo;
+    
+    uname(&systemInfo);
+    
+    NSString* code = [NSString stringWithCString:systemInfo.machine
+                                        encoding:NSUTF8StringEncoding];
+    
+    static NSDictionary* deviceNamesByCode = nil;
+    
+    if (!deviceNamesByCode) {
+        
+        deviceNamesByCode = @{@"i386"      :@"Simulator",
+                              @"x86_64"    :@"Simulator",
+                              @"iPod1,1"   :@"iPod Touch",      // (Original)
+                              @"iPod2,1"   :@"iPod Touch",      // (Second Generation)
+                              @"iPod3,1"   :@"iPod Touch",      // (Third Generation)
+                              @"iPod4,1"   :@"iPod Touch",      // (Fourth Generation)
+                              @"iPod7,1"   :@"iPod Touch",      // (6th Generation)
+                              @"iPhone1,1" :@"iPhone",          // (Original)
+                              @"iPhone1,2" :@"iPhone",          // (3G)
+                              @"iPhone2,1" :@"iPhone",          // (3GS)
+                              @"iPad1,1"   :@"iPad",            // (Original)
+                              @"iPad2,1"   :@"iPad 2",          //
+                              @"iPad3,1"   :@"iPad",            // (3rd Generation)
+                              @"iPhone3,1" :@"iPhone 4",        // (GSM)
+                              @"iPhone3,3" :@"iPhone 4",        // (CDMA/Verizon/Sprint)
+                              @"iPhone4,1" :@"iPhone 4S",       //
+                              @"iPhone5,1" :@"iPhone 5",        // (model A1428, AT&T/Canada)
+                              @"iPhone5,2" :@"iPhone 5",        // (model A1429, everything else)
+                              @"iPad3,4"   :@"iPad",            // (4th Generation)
+                              @"iPad2,5"   :@"iPad Mini",       // (Original)
+                              @"iPhone5,3" :@"iPhone 5c",       // (model A1456, A1532 | GSM)
+                              @"iPhone5,4" :@"iPhone 5c",       // (model A1507, A1516, A1526 (China), A1529 | Global)
+                              @"iPhone6,1" :@"iPhone 5s",       // (model A1433, A1533 | GSM)
+                              @"iPhone6,2" :@"iPhone 5s",       // (model A1457, A1518, A1528 (China), A1530 | Global)
+                              @"iPhone7,1" :@"iPhone 6 Plus",   //
+                              @"iPhone7,2" :@"iPhone 6",        //
+                              @"iPhone8,1" :@"iPhone 6S",       //
+                              @"iPhone8,2" :@"iPhone 6S Plus",  //
+                              @"iPhone8,4" :@"iPhone SE",       //
+                              @"iPad4,1"   :@"iPad Air",        // 5th Generation iPad (iPad Air) - Wifi
+                              @"iPad4,2"   :@"iPad Air",        // 5th Generation iPad (iPad Air) - Cellular
+                              @"iPad4,4"   :@"iPad Mini",       // (2nd Generation iPad Mini - Wifi)
+                              @"iPad4,5"   :@"iPad Mini",       // (2nd Generation iPad Mini - Cellular)
+                              @"iPad4,7"   :@"iPad Mini"        // (3rd Generation iPad Mini - Wifi (model A1599))
+                              };
+    }
+    
+    NSString* deviceName = [deviceNamesByCode objectForKey:code];
+    
+    if (!deviceName) {
+        // Not found on database. At least guess main device type from string contents:
+        
+        if ([code rangeOfString:@"iPod"].location != NSNotFound) {
+            deviceName = @"iPod Touch";
+        }
+        else if([code rangeOfString:@"iPad"].location != NSNotFound) {
+            deviceName = @"iPad";
+        }
+        else if([code rangeOfString:@"iPhone"].location != NSNotFound){
+            deviceName = @"iPhone";
+        }
+        else {
+            deviceName = @"Unknown";
+        }
+    }
+    
+    return deviceName;
+}
+
 
 #pragma mark - Help methods
 
@@ -1332,6 +1517,31 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   }
   
   return hexString;
+}
+
++(NSString *)md5HashOfPath:(NSString *)path
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    // Make sure the file exists
+    if( [fileManager fileExistsAtPath:path isDirectory:nil] )
+    {
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        unsigned char digest[CC_MD5_DIGEST_LENGTH];
+        CC_MD5( data.bytes, (CC_LONG)data.length, digest );
+        
+        NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+        
+        for( int i = 0; i < CC_MD5_DIGEST_LENGTH; i++ )
+        {
+            [output appendFormat:@"%02x", digest[i]];
+        }
+        
+        return output;
+    }
+    else
+    {
+        return @"";
+    }
 }
 
 
