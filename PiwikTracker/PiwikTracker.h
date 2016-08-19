@@ -328,6 +328,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @return YES if the event was queued for dispatching.
  */
 - (BOOL)sendDownload:(NSString*)url;
+- (BOOL)setUserId:(NSString*)url;
 
 /**
  Track that the app was launched for the first time.
@@ -340,7 +341,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 
 - (BOOL)trackNewAppDownload;
 
-- (BOOL)trackNewAppDownload:(NSString*)version package_type:(NSString*)package_type;
+- (BOOL)trackNewAppDownload:(NSString*)version;
 
 /**
  Track that the app was launched from a Piwik campaign URL.

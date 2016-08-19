@@ -35,6 +35,8 @@
 /* Begin PBXBuildFile section */
 		0E172B96F586F42885484C49 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEF98FA72F773DD178FA44C /* libPods-osx.a */; };
 		1D2707CC1CDC06F100B88AB1 /* CustomDimensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2707CB1CDC06F100B88AB1 /* CustomDimensionsViewController.m */; };
+		1D4515231CE40F75007922CB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
+		1D4515241CE40F83007922CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */; };
 		C027567BEC62566E6F824230 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB58213275F072D13140292 /* libPods-ios.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
@@ -168,6 +170,9 @@
 		1C9F1D16D44C44B74B85E7D1 /* Pods-iosafnetworking2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking2.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2.release.xcconfig"; sourceTree = "<group>"; };
 		1D2707CA1CDC06E200B88AB1 /* CustomDimensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDimensionsViewController.h; sourceTree = "<group>"; };
 		1D2707CB1CDC06F100B88AB1 /* CustomDimensionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDimensionsViewController.m; sourceTree = "<group>"; };
+		1D3D73811CEA90400035D616 /* PiwikTracker.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PiwikTracker.podspec; sourceTree = "<group>"; };
+		1D3D73821CEA90400035D616 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1D3D73831CEA90400035D616 /* Rakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		757D4EC37134059C538CA7A0 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		939DCF0E27BAA5C4003FB741 /* Pods-iosafnetworking2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -282,8 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1EA93517B0DA4400F63E14 /* UIKit.framework in Frameworks */,
-				CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */,
 				CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */,
+				1D4515231CE40F75007922CB /* CoreLocation.framework in Frameworks */,
+				1D4515241CE40F83007922CB /* CoreGraphics.framework in Frameworks */,
+				CD1EA93317B0DA3E00F63E14 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +359,9 @@
 		CD10FAB317B0378D0012BE50 = {
 			isa = PBXGroup;
 			children = (
+				1D3D73811CEA90400035D616 /* PiwikTracker.podspec */,
+				1D3D73821CEA90400035D616 /* Podfile */,
+				1D3D73831CEA90400035D616 /* Rakefile */,
 				CD10FAC117B0378D0012BE50 /* PiwikTracker */,
 				CD1EEB9C19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */,
 				CD1EEBBA19B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */,
@@ -783,6 +793,7 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/myfile",
 			);
 			name = "Copy Pods Resources";
 			outputPaths = (
