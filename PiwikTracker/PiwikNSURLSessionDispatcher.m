@@ -9,13 +9,6 @@
 #import "PiwikNSURLSessionDispatcher.h"
 
 
-@interface PiwikNSURLSessionDispatcher ()
-
-@property (nonatomic, strong) NSURL *piwikURL;
-
-@end
-
-
 static NSUInteger const PiwikHTTPRequestTimeout = 5;
 
 
