@@ -20,7 +20,7 @@ internal class PiwikDebugDispatcher: PiwikDispatcher {
         success()
     }
     
-    func sendBulkEvent(with parameters: [AnyHashable:AnyHashable], success: ()->(), failure: ()->(Bool)) {
+    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: ()->(Bool)) {
         debugPrint("Request: \(parameters)")
         success()
     }

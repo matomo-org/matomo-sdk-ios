@@ -13,5 +13,5 @@ public protocol PiwikDispatcher {
     var userAgent: String? { get set }
     
     func sendEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: ()->(Bool));
-    func sendBulkEvent(with parameters: [AnyHashable:AnyHashable], success: ()->(), failure: ()->(Bool));
+    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: ()->(Bool));
 }
