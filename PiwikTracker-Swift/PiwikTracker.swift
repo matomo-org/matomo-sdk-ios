@@ -103,12 +103,36 @@ public class PiwikTracker: NSObject {
     private func dispatchNextBatch() {
         eventQueue.events(withLimit: eventsPerRequest) { (entityIds, events, hasMore) in
             if events.count == 0 {
-                dispatcherRunning = false
-                startDispatchTimer()
+                finishDispatching()
             } else {
                 let parameter = requestParameters(forEvents: events)
+                let success = {
+                    if hasMore {
+                        self.eventQueue.deleteEvents(withEntityIds: entityIds)
+                        self.dispatchNextBatch()
+                    } else {
+                        self.finishDispatching()
+                    }
+                }
+                let error:(Bool)->() = { shouldContinue in
+                    if shouldContinue {
+                        self.dispatchNextBatch()
+                    } else {
+                        self.finishDispatching()
+                    }
+                }
+                if events.count == 1 {
+                    self.dispatcher.sendEvent(with: parameter as [AnyHashable : AnyObject], success: success, failure: error)
+                } else {
+                    self.dispatcher.sendBulkEvent(with: parameter as [AnyHashable : AnyObject], success: success, failure: error)
+                }
             }
         }
+    }
+    
+    private func finishDispatching() {
+        dispatcherRunning = false
+        startDispatchTimer()
     }
     
     private func requestParameters(forEvents events: [[String:String]]) -> [String:String] {

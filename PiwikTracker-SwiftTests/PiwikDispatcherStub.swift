@@ -16,13 +16,13 @@ class PiwikDispatcherStub : PiwikDispatcher {
     
     var userAgent: String?
     
-    func sendEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: ()->(Bool)) {
+    func sendEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
         lastParameters = parameters
         numberOfCalls += 1
         success()
     }
     
-    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: ()->(Bool)) {
+    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
         lastParameters = parameters
         numberOfCalls += 1
         success()

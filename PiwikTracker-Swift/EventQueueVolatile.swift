@@ -22,4 +22,5 @@ class EventQueueVolatile: EventQueue {
     }
     
     func deleteEvents(withEntityIds entityIds: [EntityId]) { }
+    func deleteAllEvents() {}
 }

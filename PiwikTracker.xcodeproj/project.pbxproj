@@ -42,6 +42,7 @@
 		1F8B485C1DAA7522003012F7 /* EventQueueVolatile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B485B1DAA7521003012F7 /* EventQueueVolatile.swift */; };
 		1F8B485E1DAA87A6003012F7 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B485D1DAA87A6003012F7 /* Campaign.swift */; };
 		1F8B485F1DAA9EEF003012F7 /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B48481DAA694F003012F7 /* CustomVariable.swift */; };
+		1F8B48631DAC36AA003012F7 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B48621DAC36AA003012F7 /* UIDevice+Extension.swift */; };
 		1FECA87E1DA7DDDB00859C13 /* PiwikTrackerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FECA8751DA7DDDB00859C13 /* PiwikTrackerSwift.framework */; };
 		1FECA8851DA7DDDB00859C13 /* PiwikTracker-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FECA8771DA7DDDB00859C13 /* PiwikTracker-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FECA88D1DA7DDF100859C13 /* PTEventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECA88C1DA7DDF100859C13 /* PTEventEntity.swift */; };
@@ -195,6 +196,7 @@
 		1F8B48591DAA750D003012F7 /* EventQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQueue.swift; sourceTree = "<group>"; };
 		1F8B485B1DAA7521003012F7 /* EventQueueVolatile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQueueVolatile.swift; sourceTree = "<group>"; };
 		1F8B485D1DAA87A6003012F7 /* Campaign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
+		1F8B48621DAC36AA003012F7 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		1FECA8751DA7DDDB00859C13 /* PiwikTrackerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PiwikTrackerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FECA8771DA7DDDB00859C13 /* PiwikTracker-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PiwikTracker-Swift.h"; sourceTree = "<group>"; };
 		1FECA8781DA7DDDB00859C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				1F8B484A1DAA6D78003012F7 /* StringExtension.swift */,
 				1F8B48561DAA6FE4003012F7 /* PiwikTrackerSwift-BridgingHeader.h */,
 				1F8B485D1DAA87A6003012F7 /* Campaign.swift */,
+				1F8B48621DAC36AA003012F7 /* UIDevice+Extension.swift */,
 			);
 			path = "PiwikTracker-Swift";
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8B485C1DAA7522003012F7 /* EventQueueVolatile.swift in Sources */,
+				1F8B48631DAC36AA003012F7 /* UIDevice+Extension.swift in Sources */,
 				1F8B485F1DAA9EEF003012F7 /* CustomVariable.swift in Sources */,
 				1FECA8911DA7E0DA00859C13 /* PiwikDispatcher.swift in Sources */,
 				1FECA88F1DA7DEAC00859C13 /* PiwikTrackedViewController.swift in Sources */,

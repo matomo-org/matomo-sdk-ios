@@ -29,10 +29,10 @@ class PiwikTrackerSpecs: QuickSpec {
             }
             
             // pending
-            it("should not be initializable with an empty siteid") {
-                let tracker = PiwikTracker(siteId: "", dispatcher: dispatcher)
-                expect(tracker).to(beNil())
-            }
+//            it("should not be initializable with an empty siteid") {
+//                let tracker = PiwikTracker(siteId: "", dispatcher: dispatcher)
+//                expect(tracker).to(beNil())
+//            }
             
             it("should be instantiated with the correct properties") {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
