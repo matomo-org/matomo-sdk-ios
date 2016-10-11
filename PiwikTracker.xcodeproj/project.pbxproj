@@ -396,6 +396,7 @@
 			children = (
 				1F8B48591DAA750D003012F7 /* EventQueue.swift */,
 				1F8B485B1DAA7521003012F7 /* EventQueueVolatile.swift */,
+				1FECA88C1DA7DDF100859C13 /* PTEventEntity.swift */,
 			);
 			name = EventQueue;
 			sourceTree = "<group>";
@@ -407,7 +408,6 @@
 				1FECA8941DA7E3A300859C13 /* Dispatcher */,
 				1FECA8771DA7DDDB00859C13 /* PiwikTracker-Swift.h */,
 				1FECA8781DA7DDDB00859C13 /* Info.plist */,
-				1FECA88C1DA7DDF100859C13 /* PTEventEntity.swift */,
 				1FECA88E1DA7DEAC00859C13 /* PiwikTrackedViewController.swift */,
 				1FECA8951DA7E3C600859C13 /* PiwikTracker.swift */,
 				1FECA8971DA7ED3800859C13 /* PiwikConstants.swift */,

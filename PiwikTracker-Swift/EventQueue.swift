@@ -8,12 +8,13 @@
 
 import Foundation
 
-typealias EntityId = AnyObject
+typealias EntityId = String
+typealias Event = [String:String]
 
 protocol EventQueue {
     
-    func storeEvent(withParameters parameters: [String:String], completion: ()->())
-    func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [[String:String]], _ hasMore: Bool)->())
+    func storeEvent(event: Event, completion: ()->())
+    func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [Event], _ hasMore: Bool)->())
     
     func deleteEvents(withEntityIds entityIds: [EntityId])
     func deleteAllEvents()

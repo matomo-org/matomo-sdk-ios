@@ -64,7 +64,7 @@ public class PiwikTracker: NSObject {
         //        parameters = [self addSessionParameters:parameters];
         //        parameters = [self addStaticParameters:parameters];
         
-        eventQueue.storeEvent(withParameters: parameters) {
+        eventQueue.storeEvent(event: parameters) {
             if dispatchInterval == 0 {
                 DispatchQueue.main.async(execute: { [unowned self] in
                     let _ = self.dispatch()

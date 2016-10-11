@@ -10,14 +10,14 @@ import Foundation
 
 class EventQueueVolatile: EventQueue {
     
-    var events = [[String:String]]()
+    var events = [Event]()
     
-    func storeEvent(withParameters parameters: [String:String], completion: ()->()) {
-        events.append(parameters)
+    func storeEvent(event: Event, completion: ()->()) {
+        events.append(event)
         completion()
     }
     
-    func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [[String:String]], _ hasMore: Bool)->()) {
+    func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [Event], _ hasMore: Bool)->()) {
         completion([], events, false)
     }
     
