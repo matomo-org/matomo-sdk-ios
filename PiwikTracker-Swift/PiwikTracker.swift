@@ -43,24 +43,6 @@ public class PiwikTracker: NSObject {
     public var maxNumberOfQueuedevents: UInt32 = PiwikConstants.DefaultMaxNumberOfStoredEvents
     public var eventsPerRequest: UInt8 = PiwikConstants.DefaultNumberOfEventsPerRequest
     
-    
-    internal var _clientID: String?
-    internal var clientID: String {
-        get {
-            if let clientID = _clientID { return clientID }
-            let userdefaultsKey = "\(siteID)_\(PiwikConstants.UserDefaultVisitorIDKey)"
-            if let clientID = UserDefaults.standard.string(forKey: userdefaultsKey) { _clientID = clientID; return clientID }
-            
-            // none found, generate a key
-            let uuid: String = UUID().uuidString.md5
-            let clientID = uuid.substring(length: 16)
-            UserDefaults.standard.setValue(clientID, forKey: userdefaultsKey)
-            UserDefaults.standard.synchronize()
-            return clientID
-        }
-    }
-    
-    
     init(siteId: String, dispatcher: PiwikDispatcher) {
         self.siteID = siteId
         self.dispatcher = dispatcher
