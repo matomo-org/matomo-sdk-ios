@@ -9,7 +9,6 @@
 import Foundation
 
 typealias EntityId = String
-typealias Event = [String:String]
 
 protocol EventQueue {
     

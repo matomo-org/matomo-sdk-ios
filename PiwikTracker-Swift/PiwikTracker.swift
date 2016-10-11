@@ -64,13 +64,13 @@ public class PiwikTracker: NSObject {
         //        parameters = [self addSessionParameters:parameters];
         //        parameters = [self addStaticParameters:parameters];
         
-        eventQueue.storeEvent(event: parameters) {
-            if dispatchInterval == 0 {
-                DispatchQueue.main.async(execute: { [unowned self] in
-                    let _ = self.dispatch()
-                })
-            }
-        }
+//        eventQueue.storeEvent(event: parameters) {
+//            if dispatchInterval == 0 {
+//                DispatchQueue.main.async(execute: { [unowned self] in
+//                    let _ = self.dispatch()
+//                })
+//            }
+//        }
         return false
     }
     
@@ -117,7 +117,7 @@ public class PiwikTracker: NSObject {
         startDispatchTimer()
     }
     
-    private func requestParameters(forEvents events: [[String:String]]) -> [String:String] {
+    private func requestParameters(forEvents events: [Event]) -> [String:String] {
         // FIXME: implement me proper
         return [:]
     }
@@ -305,14 +305,12 @@ extension PiwikTracker {
     }
     
     public func sendContentInteraction(withName name: String, piece: String?, target: String?) -> Bool {
-        let event = [
+        let event = Dictionary.removeOptionals(dictionary: [
             PiwikConstants.ParameterContentName: name,
             PiwikConstants.ParameterContentPiece: piece,
             PiwikConstants.ParameterContentTarget: target
-        ]
-        // FIXME: remove optionals
-        //        return queue(event: event)
-        return false
+        ])
+        return queue(event: event)
     }
     
     public func setCustomVariable(forIndex index: UInt, name: String, value: String, scope: CustomVariableScope) -> Bool {

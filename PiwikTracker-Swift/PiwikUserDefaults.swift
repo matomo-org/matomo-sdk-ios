@@ -76,7 +76,7 @@ class PiwikUserDefaults {
     }
     
     internal func clientId(withKeyPrefix keyPrefix: String) -> String {
-        let key = "\(keyPrefix)\(PiwikConstants.UserDefaultVisitorIDKey)"
+        let key = "\(keyPrefix)_\(PiwikConstants.UserDefaultVisitorIDKey)"
         if let storedId = UserDefaults.standard.string(forKey: key) {
             return storedId
         }
