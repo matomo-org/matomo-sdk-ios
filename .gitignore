@@ -21,5 +21,4 @@ xcuserdata
 # Exclude generate documentation
 Doc/
 Pods
-Podfile.lock
 /DerivedData
