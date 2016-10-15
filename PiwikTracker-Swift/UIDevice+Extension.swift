@@ -8,7 +8,7 @@
 
 import UIKit
 
-private extension UIDevice {
+internal extension UIDevice {
     
     static var platform: String { get {
         var size = 0
@@ -76,6 +76,11 @@ private extension UIDevice {
             
         default: return platform
         }
+        }}
+    
+    static var screenSize: CGSize { get {
+        // MARK implement me
+        return CGSize(width: 0, height: 0)
         }}
     
 }

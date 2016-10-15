@@ -15,13 +15,13 @@ internal class PiwikDebugDispatcher: PiwikDispatcher {
         }
     }
     
-    func sendEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(parameters)")
+    func send(event: Event, success: ()->(), failure: (Bool)->()) {
+        debugPrint("Request: \(event.parametersDictionary)")
         success()
     }
     
-    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(parameters)")
+    func send(events: [Event], success: ()->(), failure: (Bool)->()) {
+        debugPrint("Request: \(events.first!.parametersDictionary)")
         success()
     }
 }

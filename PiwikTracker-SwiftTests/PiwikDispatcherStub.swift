@@ -12,18 +12,18 @@ import PiwikTrackerSwift
 class PiwikDispatcherStub : PiwikDispatcher {
     
     public var numberOfCalls: UInt = 0
-    public var lastParameters: [AnyHashable:AnyObject]? = nil
+    public var lastParameters: [String:String]? = nil
     
     var userAgent: String?
     
-    func sendEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
-        lastParameters = parameters
+    func send(event: Event, success: ()->(), failure: (Bool)->()) {
+        lastParameters = event.parametersDictionary
         numberOfCalls += 1
         success()
     }
     
-    func sendBulkEvent(with parameters: [AnyHashable:AnyObject], success: ()->(), failure: (Bool)->()) {
-        lastParameters = parameters
+    func send(events: [Event], success: ()->(), failure: (Bool)->()) {
+        lastParameters = events.first!.parametersDictionary
         numberOfCalls += 1
         success()
     }

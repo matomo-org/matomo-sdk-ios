@@ -9,90 +9,90 @@
 import Foundation
 import UIKit
 
-// the parameters are directly mapped from http://developer.piwik.org/api-reference/tracking-api
-struct Event {
-    let siteId: String
-    let url: URL
+public struct Event {
     
-    let actionName: String?
-    let visitorId: String?
-    // the rand, apiv and record parameter should be generated/set by the dispatcher
-    
-    // MARK: Optional User info
-    let visitCustomVariables: String? // should this be in another format?
-    let totalNumberOfVisits: UInt32?
-    let previousVisit: Date?
-    let firstVisit: Date?
-    
-    let campaignName: String?
-    let campaignKeyword: String?
-    
-    let resolution: CGSize?
-    let eventTime: Date?
-    
-    let customUserAgent: String?
-    let language: String?
-    let userId: String?
-    
-    let newVisit: Bool = false
-    
-    // dimensions?
-    
-    // MARK: Optional Action info
-    let pageCustomVariables: String? // should this be in another format?
-    let link: URL? // set the url to the same value
-    let download: URL? // set the url to the same
-    
-    let searchKeyword: String?
-    let searchCategory: String?
-    let searchResultCount: UInt32?
-    
-    let pageViewIdentifier: String? // currently not implemented
-    
-    let goalId: String?
-    let revenue: UInt32?
-    
-    let pageGenerationDuration: TimeInterval? // maybe to check the performance on different devices?
-    // skipping the charset
-    
-    // MARK: Optional Event Tracking info
-    let eventCategory: String?
-    let eventAction: String?
-    let eventName: String?
-    let eventValue: UInt32? // unsigned? float?
-    
-    // MARK: Optional Content Tracking info
-    let contentName: String?
-    let contentPiece: String?
-    let contentTarget: String?
-    let contentInteraction: String?
-    
-    // MARK: Optional Ecommerce info
-    // should we put all this in a "Transaction" object?
-    let transactionIdentifier: String?
-    let transactionItems: String? // FIXME: here should be items
-    let transactionSubtotal: UInt32? // int or better float?
-    let transactionTax: UInt32? // or better float?
-    let transactionShipping: UInt32?
-    let transactionDiscount: UInt32?
-    let lastTransaction: Date?
-    
-    // for now i am skipping all the token_auth parameters
-    
-    // the send_image parameter should be set by the Dispatcher aswell
-    
-    init(tracker: PiwikTracker, userDefaults: PiwikUserDefaults) {
-        siteId = tracker.siteID
-        url = URL(string: "http://piwik.org")! // FIXME
-        visitorId = userDefaults.clientId(withKeyPrefix: siteId)
+    static var _UTCDateFormatter: DateFormatter?
+    static var UTCDateFormatter: DateFormatter {
+        get {
+            if let dateFormatter = _UTCDateFormatter {
+                return dateFormatter
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            _UTCDateFormatter = dateFormatter
+            return dateFormatter
+        }
     }
     
-    var parametersDictionary: [String:String] {
-        get {
-            return Dictionary.removeOptionals(dictionary: [
-                PiwikConstants.ParameterSiteID:siteId
-                ])
+    internal(set) public var parametersDictionary: [String:String] = [:]
+    
+    
+    init() {
+        parametersDictionary[PiwikConstants.ParameterScreenReseloution] = String(format: "%.0fx%.0f", UIDevice.screenSize.width, UIDevice.screenSize.height)
+        
+        let now = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .second], from: now)
+        parametersDictionary[PiwikConstants.ParameterHours] = "\(components.hour)"
+        parametersDictionary[PiwikConstants.ParameterMinutes] = "\(components.minute)"
+        parametersDictionary[PiwikConstants.ParameterSeconds] = "\(components.second)"
+        parametersDictionary[PiwikConstants.ParameterDateAndTime] = Event.UTCDateFormatter.string(from: now)
+    }
+    
+    mutating func setParameters(fromUserDefaults userDefaults: PiwikUserDefaults) {
+        // parametersDictionary[PiwikConstants.ParameterVisitorID] = userDefaults.clientId(withKeyPrefix: siteId)
+        parametersDictionary[PiwikConstants.ParameterFirstVisitTimestamp] = "\(userDefaults.firstVisit.timeIntervalSince1970)"
+        parametersDictionary[PiwikConstants.ParameterTotalNumberOfVisits] = "\(userDefaults.totalNumberOfVisits)"
+        if let previousVisit = userDefaults.previousVisit {
+            parametersDictionary[PiwikConstants.ParameterPreviousVisitTimestamp] = "\(previousVisit.timeIntervalSince1970)"
         }
+    }
+    
+    mutating func setParameters(fromTracker tracker: PiwikTracker) {
+        parametersDictionary[PiwikConstants.ParameterSiteID] = tracker.siteID
+        parametersDictionary[PiwikConstants.ParameterURL] = "http://piwik.org"
+        if let userID = tracker.userID {
+            parametersDictionary[PiwikConstants.ParameterUserID] = userID
+        }
+    }
+}
+
+extension Event {
+    init(withViews views: [String], addPrefix: Bool) {
+        self.init()
+        var actionName: String
+        if addPrefix {
+            let prefixedViews = [PiwikConstants.PrefixView] + views
+            actionName = prefixedViews.joined(separator: "/")
+        } else {
+            actionName = views.joined(separator: "/")
+        }
+        parametersDictionary[PiwikConstants.ParameterActionName] = actionName
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    init(withOutlink outlink: String) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterLink] = outlink
+        parametersDictionary[PiwikConstants.ParameterURL] = outlink
+    }
+    
+    init(withDownload download: String) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterDownload] = download
+        parametersDictionary[PiwikConstants.ParameterURL] = download
+    }
+    
+    init(withCategory category: String, action: String, name: String? = nil, value: String? = nil) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterEventCategory] = category
+        parametersDictionary[PiwikConstants.ParameterEventAction] = action
+        parametersDictionary[PiwikConstants.ParameterEventName] = name
+        parametersDictionary[PiwikConstants.ParameterEventValue] = value
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
 }
 

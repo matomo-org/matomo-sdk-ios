@@ -24,7 +24,7 @@ public class PiwikTracker: NSObject {
     private let eventQueue: EventQueue
     
     // FIXME: handle those
-    public var userID: String?
+    public var userID: String? = nil
     public var prefixingEnabled: Bool = true
     public var debug: Bool = false
     public var optOut: Bool = false // FIXME: get this from the userdefaults
@@ -54,23 +54,27 @@ public class PiwikTracker: NSObject {
         // observe UIApplicationDidBecomeActiveNotification and UIApplicationWillResignActiveNotification
     }
     
-    func queue(event: [String:String]) -> Bool {
+    func queue(event: Event) -> Bool {
         guard !optOut else { return true }
         guard sampleRate == 100 || sampleRate < UInt8(arc4random_uniform(101)) else { return true }
         
-        var parameters = event
+        var mutatedEvent = event
+        
         // FIXME: add those special parameters
         //        parameters = [self addPerRequestParameters:parameters];
         //        parameters = [self addSessionParameters:parameters];
         //        parameters = [self addStaticParameters:parameters];
         
-//        eventQueue.storeEvent(event: parameters) {
-//            if dispatchInterval == 0 {
-//                DispatchQueue.main.async(execute: { [unowned self] in
-//                    let _ = self.dispatch()
-//                })
-//            }
-//        }
+        mutatedEvent.setParameters(fromTracker: self)
+        mutatedEvent.setParameters(fromUserDefaults: PiwikUserDefaults.standard)
+        
+        eventQueue.storeEvent(event: mutatedEvent) {
+            if dispatchInterval == 0 {
+                DispatchQueue.main.async(execute: { [unowned self] in
+                    let _ = self.dispatch()
+                })
+            }
+        }
         return false
     }
     
@@ -87,7 +91,6 @@ public class PiwikTracker: NSObject {
             if events.count == 0 {
                 finishDispatching()
             } else {
-                let parameter = requestParameters(forEvents: events)
                 let success = {
                     if hasMore {
                         self.eventQueue.deleteEvents(withEntityIds: entityIds)
@@ -104,9 +107,9 @@ public class PiwikTracker: NSObject {
                     }
                 }
                 if events.count == 1 {
-                    self.dispatcher.sendEvent(with: parameter as [AnyHashable : AnyObject], success: success, failure: error)
+                    self.dispatcher.send(event: events.first!, success: success, failure: error)
                 } else {
-                    self.dispatcher.sendBulkEvent(with: parameter as [AnyHashable : AnyObject], success: success, failure: error)
+                    self.dispatcher.send(events: events, success: success, failure: error)
                 }
             }
         }
@@ -185,39 +188,23 @@ extension PiwikTracker {
     }
     
     public func send(views: [String]) -> Bool {
-        if prefixingEnabled {
-            let prefixed = [PiwikConstants.PrefixView] + views
-            return send(components: prefixed)
-        }
-        return send(components: views)
+        let event = Event(withViews: views, addPrefix: prefixingEnabled)
+        return queue(event: event)
     }
     
     public func send(outlink url: String) -> Bool {
-        let event = [
-            PiwikConstants.ParameterLink: url,
-            PiwikConstants.ParameterURL: url]
+        let event = Event(withOutlink: url)
         return queue(event: event)
     }
     
     public func send(download url: String) -> Bool {
-        let event = [
-            PiwikConstants.ParameterDownload: url,
-            PiwikConstants.ParameterURL: url]
+        let event = Event(withDownload: url)
         return queue(event: event)
     }
     
     public func sendEvent(withCategory category: String, action: String, name: String? = nil, value: String? = nil) -> Bool {
-        let event = [
-            PiwikConstants.ParameterEventCategory: category,
-            PiwikConstants.ParameterEventAction: action,
-            PiwikConstants.ParameterEventName: name,
-            PiwikConstants.ParameterEventValue: value,
-            // FIXME: generate page url
-            //PiwikConstants.ParameterURL: [self generatePageURL:nil]
-        ]
-        // FIXME: remove optionals
-        //return queue(event: event)
-        return false
+        let event = Event(withCategory: category, action: action, name: name, value: value)
+        return queue(event: event)
     }
     
     public func sendException(withDescription description: String, fatal: Bool) -> Bool {
@@ -247,11 +234,12 @@ extension PiwikTracker {
     
     internal func send(components: [String]) -> Bool {
         // FIXME: generatePageURL
-        let event = [
-            PiwikConstants.ParameterActionName: components.joined(separator: "/"),
-            PiwikConstants.ParameterURL: "" // [self generatePageURL:components];
-        ]
-        return queue(event: event)
+//        let event = [
+//            PiwikConstants.ParameterActionName: components.joined(separator: "/"),
+//            PiwikConstants.ParameterURL: "" // [self generatePageURL:components];
+//        ]
+//        return queue(event: event)
+        return false
     }
     
     public func sendGoal(withId id: UInt, revenue: UInt) -> Bool {
@@ -305,12 +293,13 @@ extension PiwikTracker {
     }
     
     public func sendContentInteraction(withName name: String, piece: String?, target: String?) -> Bool {
-        let event = Dictionary.removeOptionals(dictionary: [
-            PiwikConstants.ParameterContentName: name,
-            PiwikConstants.ParameterContentPiece: piece,
-            PiwikConstants.ParameterContentTarget: target
-        ])
-        return queue(event: event)
+//        let event = Dictionary.removeOptionals(dictionary: [
+//            PiwikConstants.ParameterContentName: name,
+//            PiwikConstants.ParameterContentPiece: piece,
+//            PiwikConstants.ParameterContentTarget: target
+//        ])
+//        return queue(event: event)
+        return false
     }
     
     public func setCustomVariable(forIndex index: UInt, name: String, value: String, scope: CustomVariableScope) -> Bool {

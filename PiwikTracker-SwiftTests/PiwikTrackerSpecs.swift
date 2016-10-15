@@ -29,10 +29,10 @@ class PiwikTrackerSpecs: QuickSpec {
             }
             
             // pending
-//            it("should not be initializable with an empty siteid") {
-//                let tracker = PiwikTracker(siteId: "", dispatcher: dispatcher)
-//                expect(tracker).to(beNil())
-//            }
+            //            it("should not be initializable with an empty siteid") {
+            //                let tracker = PiwikTracker(siteId: "", dispatcher: dispatcher)
+            //                expect(tracker).to(beNil())
+            //            }
             
             it("should be instantiated with the correct properties") {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
@@ -55,26 +55,33 @@ class PiwikTrackerSpecs: QuickSpec {
             }
             context("with a userID set") {
                 let userId = "_specUserId"
-                PiwikTracker.sharedInstance?.userID = userId
+                let siteId = "trackerWithUserIdSet"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.userID = userId
+                tracker.dispatchInterval = 0
                 it("should save the value") {
-                    expect(PiwikTracker.sharedInstance?.userID).to(equal(userId))
+                    expect(tracker.userID).to(equal(userId))
                 }
                 it("should set the userid as the uid parameter") {
-                    tracker?.send(view: "_speckView")
-                    tracker?.dispatch()
-                    expect(dispatcher.lastParameters?["uid"] as? String).toEventually(equal(userId))
+                    let _ = tracker.send(view: "_speckView")
+                    expect(dispatcher.lastParameters?["uid"]).toEventually(equal(userId))
                 }
             }
             context("with the userID set to nil") {
-                PiwikTracker.sharedInstance?.userID = nil
+                let siteId = "trackerWithUserIdSetToNil"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.userID = nil
+                tracker.dispatchInterval = 0
                 it("should save the value") {
-                    expect(PiwikTracker.sharedInstance?.userID).to(beNil())
+                    expect(tracker.userID).to(beNil())
                 }
                 it("should not set the userid as the uid parameter") {
-                    tracker?.send(view: "_speckView")
-                    tracker?.dispatch()
+                    dispatcher.lastParameters = nil
+                    let _ = tracker.send(view: "_speckView")
                     expect(dispatcher.lastParameters).toEventuallyNot(beNil())
-                    expect(dispatcher.lastParameters?["uid"] as? String).toEventually(beNil())
+                    expect(dispatcher.lastParameters?["uid"]).toEventually(beNil())
                 }
             }
         }
