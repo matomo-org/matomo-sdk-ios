@@ -208,63 +208,23 @@ extension PiwikTracker {
     }
     
     public func sendException(withDescription description: String, fatal: Bool) -> Bool {
-        let limitedDescription = UInt(description.lengthOfBytes(using: .utf8)) > PiwikConstants.ExceptionDescriptionMaximumLength ? description.substring(length: PiwikConstants.ExceptionDescriptionMaximumLength) : description
-        let components: [String?] = [
-            prefixingEnabled ? PiwikConstants.PrefixException : nil,
-            fatal ? PiwikConstants.PrefixExceptionFatal : PiwikConstants.PrefixExceptionCaught,
-            description
-        ]
-        // FIXME: remove optionals
-//        return send(components: components)
-        return false
+        let event = Event(withException: description, fatal: fatal, addPrefix: prefixingEnabled)
+        return queue(event: event)
     }
     
     public func sendSocial(action: String, forNetwork network: String, target: String? = nil) -> Bool {
-        let components: [String?] = [
-            prefixingEnabled ? PiwikConstants.PrefixSocial : nil,
-            network,
-            action,
-            target
-        ]
-        // FIXME: remove optionals
-        //        return send(components: components)
-        return false
-    }
-    
-    
-    internal func send(components: [String]) -> Bool {
-        // FIXME: generatePageURL
-//        let event = [
-//            PiwikConstants.ParameterActionName: components.joined(separator: "/"),
-//            PiwikConstants.ParameterURL: "" // [self generatePageURL:components];
-//        ]
-//        return queue(event: event)
-        return false
+        let event = Event(withSocialAction: action, forNetwork: network, target: target, addPrefix: prefixingEnabled)
+        return queue(event: event)
     }
     
     public func sendGoal(withId id: UInt, revenue: UInt) -> Bool {
-        // FIXME: generatePageURL
-        let event: [String : Any] = [
-            PiwikConstants.ParameterGoalID: id,
-            PiwikConstants.ParameterRevenue: revenue,
-            PiwikConstants.ParameterURL: "" // [self generatePageURL:components];
-        ]
-        // FIXME: event is a String:String ?
-//        return queue(event: event)
-        return false
+        let event = Event(withGoalId: id, revenue: revenue)
+        return queue(event: event)
     }
     
     public func sendSearch(withKeyword keyword: String, category: String?, hitcount: UInt?) -> Bool {
-        // FIXME: generatePageURL
-        let event: [String : Any] = [
-            PiwikConstants.ParameterSearchKeyword: keyword,
-            PiwikConstants.ParameterSearchCategory: category,
-            PiwikConstants.ParameterSearchNumberOfHits: (hitcount != nil && hitcount! > 0) ? hitcount : nil,
-            PiwikConstants.ParameterURL: "" // [self generatePageURL:components];
-        ]
-        // FIXME: remove optionals
-//        return queue(event: event)
-        return false
+        let event = Event(withSearchKeyword: keyword, category: category, hitcount: hitcount)
+        return queue(event: event)
     }
     
     // FIXME: implement Transactions
@@ -282,24 +242,13 @@ extension PiwikTracker {
     }
     
     public func sendContentImpression(withName name: String, piece: String?, target: String?) -> Bool {
-        let event = [
-            PiwikConstants.ParameterContentName: name,
-            PiwikConstants.ParameterContentPiece: piece,
-            PiwikConstants.ParameterContentTarget: target
-        ]
-        // FIXME: remove optionals
-        //        return queue(event: event)
-        return false
+        let event = Event(withContentImpressionName: name, piece: piece, target: target)
+        return queue(event: event)
     }
     
     public func sendContentInteraction(withName name: String, piece: String?, target: String?) -> Bool {
-//        let event = Dictionary.removeOptionals(dictionary: [
-//            PiwikConstants.ParameterContentName: name,
-//            PiwikConstants.ParameterContentPiece: piece,
-//            PiwikConstants.ParameterContentTarget: target
-//        ])
-//        return queue(event: event)
-        return false
+        let event = Event(withContentInteractionName: name, piece: piece, target: target)
+        return queue(event: event)
     }
     
     public func setCustomVariable(forIndex index: UInt, name: String, value: String, scope: CustomVariableScope) -> Bool {

@@ -22,4 +22,12 @@ extension Dictionary {
         }
         return filtered
     }
+    
+}
+
+extension Array {
+    public func strings() -> [String] {
+        let strings = self.map({ $0 as? String })
+        return strings.filter({ $0 != nil }) as! [String]
+    }
 }

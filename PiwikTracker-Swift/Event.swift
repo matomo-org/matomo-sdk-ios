@@ -94,6 +94,89 @@ extension Event {
         // FIXME: add proper URL
         parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
+    
+    init(withException description: String, fatal: Bool, addPrefix: Bool) {
+        self.init()
+        let limitedDescription = UInt(description.lengthOfBytes(using: .utf8)) > PiwikConstants.ExceptionDescriptionMaximumLength ? description.substring(length: PiwikConstants.ExceptionDescriptionMaximumLength) : description
+        let components: [String?] = [
+            addPrefix ? PiwikConstants.PrefixException : nil,
+            fatal ? PiwikConstants.PrefixExceptionFatal : PiwikConstants.PrefixExceptionCaught,
+            limitedDescription
+        ]
+        let actionName = components.strings().joined(separator: "/")
+
+        // MARK: Is this really an action name?
+        parametersDictionary[PiwikConstants.ParameterActionName] = actionName
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    init(withSocialAction action: String, forNetwork network: String, target: String?, addPrefix: Bool) {
+        self.init()
+        let components: [String?] = [
+            addPrefix ? PiwikConstants.PrefixSocial : nil,
+            network,
+            action,
+            target
+        ]
+        let actionName = components.strings().joined(separator: "/")
+        
+        // MARK: Is this really an action name?
+        parametersDictionary[PiwikConstants.ParameterActionName] = actionName
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    init(withGoalId id: UInt, revenue: UInt) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterGoalID] = "\(id)"
+        parametersDictionary[PiwikConstants.ParameterRevenue] = "\(revenue)"
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    init(withSearchKeyword keyword: String, category: String?, hitcount: UInt?) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterSearchKeyword] = keyword
+        if let category = category {
+            parametersDictionary[PiwikConstants.ParameterSearchCategory] = category
+        }
+        if let hitcount = hitcount {
+            parametersDictionary[PiwikConstants.ParameterSearchNumberOfHits] = "\(hitcount)"
+        }
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    // campaign
+    
+    init(withContentImpressionName name: String, piece: String?, target: String?) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterContentName] = name
+        if let piece = piece {
+            parametersDictionary[PiwikConstants.ParameterContentPiece] = piece
+        }
+        if let target = target {
+            parametersDictionary[PiwikConstants.ParameterContentTarget] = target
+        }
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
+    init(withContentInteractionName name: String, piece: String?, target: String?) {
+        self.init()
+        parametersDictionary[PiwikConstants.ParameterContentName] = name
+        if let piece = piece {
+            parametersDictionary[PiwikConstants.ParameterContentPiece] = piece
+        }
+        if let target = target {
+            parametersDictionary[PiwikConstants.ParameterContentTarget] = target
+        }
+        parametersDictionary[PiwikConstants.ParameterContentInteraction] = PiwikConstants.DefaultContentInteractionName
+        // FIXME: add proper URL
+        parametersDictionary[PiwikConstants.ParameterURL] = ""
+    }
+    
 }
 
 
