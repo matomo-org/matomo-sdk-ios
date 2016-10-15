@@ -40,7 +40,7 @@ public class PiwikTracker: NSObject {
     public var sessionStart: Bool = true // I can see this matches the backend concept, but shouldn't it better be a function? "restartSession" or "finishCurrentSession" or such?
     public var sessionTimeout: TimeInterval = PiwikConstants.DefaultSessionTimeout
     public var dispatchInterval: TimeInterval = PiwikConstants.DefaultDispatchTimer
-    public var maxNumberOfQueuedevents: UInt32 = PiwikConstants.DefaultMaxNumberOfStoredEvents
+    public var maxNumberOfQueuedEvents: UInt32 = PiwikConstants.DefaultMaxNumberOfStoredEvents
     public var eventsPerRequest: UInt8 = PiwikConstants.DefaultNumberOfEventsPerRequest
     
     init(siteId: String, dispatcher: PiwikDispatcher) {
@@ -57,6 +57,10 @@ public class PiwikTracker: NSObject {
     func queue(event: Event) -> Bool {
         guard !optOut else { return true }
         guard sampleRate == 100 || sampleRate < UInt8(arc4random_uniform(101)) else { return true }
+        guard eventQueue.eventCount < maxNumberOfQueuedEvents else {
+            debugPrint("Tracker reach maximum number of queued events")
+            return true // should we better return false?
+        }
         
         var mutatedEvent = event
         
@@ -120,16 +124,6 @@ public class PiwikTracker: NSObject {
         startDispatchTimer()
     }
     
-    private func requestParameters(forEvents events: [Event]) -> [String:String] {
-        // FIXME: implement me proper
-        return [:]
-    }
-    
-    
-    internal var totalNumberOfVisits: UInt32 = 0
-    internal var firstVisit: Date = Date()
-    internal var previousVisit: Date?
-    internal var currentVisit: Date = Date()
     internal var appDidEnterBackground: Date?
     
     internal var dispatcherRunning = false
@@ -168,9 +162,13 @@ extension PiwikTracker {
     }
     
     public class func sharedInstance(withSiteId siteId: String, baseURL: URL) -> PiwikTracker? {
+        let dispatcher: PiwikDispatcher
         let lastPathComponent = baseURL.lastPathComponent
-        // FIXME: add url cleanup (remove last component?)
-        let dispatcher = defaultDispatcher(withBaseUrl: baseURL)
+        if lastPathComponent == "piwik.php" || lastPathComponent == "piwik-proxy.php" {
+            dispatcher = defaultDispatcher(withBaseUrl: baseURL.deletingPathExtension())
+        } else {
+            dispatcher = defaultDispatcher(withBaseUrl: baseURL)
+        }
         self._sharedInstance = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
         return sharedInstance
     }

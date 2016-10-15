@@ -86,6 +86,71 @@ class PiwikTrackerSpecs: QuickSpec {
             }
         }
         
+        describe("optOut") {
+            it("should be false per default") {
+                let siteId = "testOptOut"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                expect(tracker.optOut).to(beFalse())
+            }
+            context("with the optout to be false") {
+                let siteId = "trackerWithOptOutFalse"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.optOut = false
+                it("should dispatch events") {
+                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.dispatch()
+                    expect(dispatcher.lastParameters).toNot(beNil())
+                }
+            }
+            context("with the optout to be true") {
+                let siteId = "trackerWithOptOutTrue"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.optOut = true
+                it("should not dispatch events") {
+                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.dispatch()
+                    expect(dispatcher.lastParameters).to(beNil())
+                }
+            }
+        }
+        
+        describe("includeDefaultCustomVariable") {
+            it("should be true per default") {
+                let siteId = "testIncludeDefaultCustomVariable"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                expect(tracker.includeDefaultCustomVariable).to(beTrue())
+            }
+            context("with the includeDefaultCustomVariable to be false") {
+                let siteId = "trackerWithOptOutFalse"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.includeDefaultCustomVariable = false
+                it("shoud set the default custom variables") {
+                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.dispatch()
+                    expect(dispatcher.lastParameters?["_cvar"]).to(equal("{}"))
+                }
+            }
+            context("with the includeDefaultCustomVariable to be true") {
+                let siteId = "trackerWithOptOutFalse"
+                let dispatcher = PiwikDispatcherStub()
+                let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+                tracker.includeDefaultCustomVariable = true
+                it("shoud set the default custom variables") {
+                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.dispatch()
+                    let cvar = dispatcher.lastParameters!["_cvar"]!.data(using: .utf8)!
+                    let json = try! JSONSerialization.jsonObject(with: cvar, options: []) as! [String:[String]]
+                    expect(json["1"]).to(contain("Platform"))
+                    expect(json["2"]).to(contain("OS version"))
+                    expect(json["3"]).to(contain("App version"))
+                }
+            }
+        }
         
     }
 }

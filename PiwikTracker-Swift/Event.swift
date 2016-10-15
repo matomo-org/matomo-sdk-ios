@@ -25,11 +25,21 @@ public struct Event {
         }
     }
     
-    internal(set) public var parametersDictionary: [String:String] = [:]
-    
+    fileprivate(set) var parametersDictionary: [String:String] = [:]
+    public var dictionary: [String:String] {
+        get {
+            var dictionary = parametersDictionary
+            do {
+                let visitCustomVariablesData = try JSONSerialization.data(withJSONObject: visitCustomVariables, options: [])
+                dictionary[PiwikConstants.ParameterVisitScopeCustomVariables] = String(data: visitCustomVariablesData, encoding: .utf8)
+            } catch {}
+            return dictionary
+        }
+    }
+    fileprivate var visitCustomVariables: [String:[String]] = [:]
     
     init() {
-        parametersDictionary[PiwikConstants.ParameterScreenReseloution] = String(format: "%.0fx%.0f", UIDevice.screenSize.width, UIDevice.screenSize.height)
+        parametersDictionary[PiwikConstants.ParameterScreenReseloution] = String(format: "%.0fx%.0f", Device.screenSize.width, Device.screenSize.height)
         
         let now = Date()
         let calendar = Calendar.current
@@ -38,6 +48,9 @@ public struct Event {
         parametersDictionary[PiwikConstants.ParameterMinutes] = "\(components.minute)"
         parametersDictionary[PiwikConstants.ParameterSeconds] = "\(components.second)"
         parametersDictionary[PiwikConstants.ParameterDateAndTime] = Event.UTCDateFormatter.string(from: now)
+        
+        // this is quite what the android app does; Is there any need to add a path after this?
+        parametersDictionary[PiwikConstants.ParameterURL] = "http://\(UIApplication.appName)"
     }
     
     mutating func setParameters(fromUserDefaults userDefaults: PiwikUserDefaults) {
@@ -55,6 +68,11 @@ public struct Event {
         if let userID = tracker.userID {
             parametersDictionary[PiwikConstants.ParameterUserID] = userID
         }
+        if tracker.includeDefaultCustomVariable {
+            visitCustomVariables["1"] = ["Platform", Device.platformName]
+            visitCustomVariables["2"] = ["OS version", Device.osVersion]
+            visitCustomVariables["3"] = ["App version", Device.appVersion]
+        }
     }
 }
 
@@ -69,8 +87,6 @@ extension Event {
             actionName = views.joined(separator: "/")
         }
         parametersDictionary[PiwikConstants.ParameterActionName] = actionName
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withOutlink outlink: String) {
@@ -91,8 +107,6 @@ extension Event {
         parametersDictionary[PiwikConstants.ParameterEventAction] = action
         parametersDictionary[PiwikConstants.ParameterEventName] = name
         parametersDictionary[PiwikConstants.ParameterEventValue] = value
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withException description: String, fatal: Bool, addPrefix: Bool) {
@@ -104,11 +118,9 @@ extension Event {
             limitedDescription
         ]
         let actionName = components.strings().joined(separator: "/")
-
+        
         // MARK: Is this really an action name?
         parametersDictionary[PiwikConstants.ParameterActionName] = actionName
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withSocialAction action: String, forNetwork network: String, target: String?, addPrefix: Bool) {
@@ -123,16 +135,12 @@ extension Event {
         
         // MARK: Is this really an action name?
         parametersDictionary[PiwikConstants.ParameterActionName] = actionName
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withGoalId id: UInt, revenue: UInt) {
         self.init()
         parametersDictionary[PiwikConstants.ParameterGoalID] = "\(id)"
         parametersDictionary[PiwikConstants.ParameterRevenue] = "\(revenue)"
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withSearchKeyword keyword: String, category: String?, hitcount: UInt?) {
@@ -144,10 +152,9 @@ extension Event {
         if let hitcount = hitcount {
             parametersDictionary[PiwikConstants.ParameterSearchNumberOfHits] = "\(hitcount)"
         }
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
+    // transactions
     // campaign
     
     init(withContentImpressionName name: String, piece: String?, target: String?) {
@@ -159,8 +166,6 @@ extension Event {
         if let target = target {
             parametersDictionary[PiwikConstants.ParameterContentTarget] = target
         }
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
     init(withContentInteractionName name: String, piece: String?, target: String?) {
@@ -173,8 +178,6 @@ extension Event {
             parametersDictionary[PiwikConstants.ParameterContentTarget] = target
         }
         parametersDictionary[PiwikConstants.ParameterContentInteraction] = PiwikConstants.DefaultContentInteractionName
-        // FIXME: add proper URL
-        parametersDictionary[PiwikConstants.ParameterURL] = ""
     }
     
 }

@@ -10,6 +10,10 @@ import Foundation
 
 class EventQueueVolatile: EventQueue {
     
+    var eventCount: UInt32 { get {
+        return UInt32(events.count)
+        }}
+    
     var events = [Event]()
     
     func storeEvent(event: Event, completion: ()->()) {

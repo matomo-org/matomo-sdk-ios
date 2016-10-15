@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal extension UIDevice {
+class Device {
     
     static var platform: String { get {
         var size = 0
@@ -79,8 +79,20 @@ internal extension UIDevice {
         }}
     
     static var screenSize: CGSize { get {
-        // MARK implement me
+        // FIXME: implement me
         return CGSize(width: 0, height: 0)
+        }}
+    
+    static var osVersion: String { get {
+        // FIXME: distinct between iOS and Mac OS
+        return UIDevice.current.systemVersion
+        }}
+    
+    static var appVersion: String { get {
+        if let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return version
+        }
+        return "unknown"
         }}
     
 }

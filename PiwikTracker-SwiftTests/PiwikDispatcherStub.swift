@@ -17,13 +17,13 @@ class PiwikDispatcherStub : PiwikDispatcher {
     var userAgent: String?
     
     func send(event: Event, success: ()->(), failure: (Bool)->()) {
-        lastParameters = event.parametersDictionary
+        lastParameters = event.dictionary
         numberOfCalls += 1
         success()
     }
     
     func send(events: [Event], success: ()->(), failure: (Bool)->()) {
-        lastParameters = events.first!.parametersDictionary
+        lastParameters = events.first!.dictionary
         numberOfCalls += 1
         success()
     }

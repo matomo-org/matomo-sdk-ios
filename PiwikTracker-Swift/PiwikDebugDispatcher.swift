@@ -16,12 +16,12 @@ internal class PiwikDebugDispatcher: PiwikDispatcher {
     }
     
     func send(event: Event, success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(event.parametersDictionary)")
+        debugPrint("Request: \(event.dictionary)")
         success()
     }
     
     func send(events: [Event], success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(events.first!.parametersDictionary)")
+        debugPrint("Request: \(events.first!.dictionary)")
         success()
     }
 }

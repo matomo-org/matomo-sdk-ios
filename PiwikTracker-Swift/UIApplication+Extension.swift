@@ -24,4 +24,7 @@ extension UIApplication {
             return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         }
     }
+    static var appName: String {
+        return bundleDisplayName ?? bundleName ?? "unknown"
+    }
 }
