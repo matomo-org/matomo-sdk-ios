@@ -13,7 +13,7 @@ namespace :test do
   end
 
   desc "Run the PiwikTracker-Swift tests for iOS"
-  task :ios => :prepare do
+  task :ios_swift => :prepare do
     run_tests('PiwikTrackerSwift', 'iphonesimulator')
     tests_failed('iOS') unless $?.success?
   end
@@ -35,6 +35,7 @@ end
 desc "Run the PiwikTracker tests for iOS & Mac OS X"
 task :test do
   Rake::Task['test:ios'].invoke
+  Rake::Task['test:ios_swift'].invoke
   Rake::Task['test:ios_demo'].invoke
   Rake::Task['test:osx_demo'].invoke if is_mavericks_or_above
 end
@@ -49,7 +50,7 @@ def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,O
 end
 
 def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
-  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
+  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
 def is_mavericks_or_above
