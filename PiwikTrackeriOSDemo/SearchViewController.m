@@ -7,31 +7,23 @@
 //
 
 #import "SearchViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface SearchViewController ()
 @end
 
-
 @implementation SearchViewController
 
-
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  [[PiwikTracker sharedInstance] sendViews:@"menu", @"search", nil];
+    [super viewDidLoad];
+    [[PiwikTracker sharedInstance] sendViews:@[@"menu", @"search"]];
 }
-
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-  
-  NSLog(@"Search for : %@", searchBar.text);
-
-  // Send the search keyword and the number of found results to Piwik  
-  [[PiwikTracker sharedInstance] sendSearchWithKeyword:searchBar.text category:@"PiwikSearch" numberOfHits:@(arc4random_uniform(100))];
-  
+    NSLog(@"Search for : %@", searchBar.text);
+    
+    // Send the search keyword and the number of found results to Piwik
+    [[PiwikTracker sharedInstance] sendSearchWithKeyword:searchBar.text category:@"PiwikSearch" hitcount:arc4random_uniform(100)];
 }
-
 
 @end

@@ -7,14 +7,12 @@
 //
 
 #import "DownloadViewController.h"
-#import "PiwikTracker.h"
+@import PiwikTrackerSwift;
 
 @implementation DownloadViewController
 
 - (IBAction)downloadAction:(id)sender {
-
-  [[PiwikTracker sharedInstance] sendDownload:@"http://dn.se/some/content/image.png"];
-  
+    [[PiwikTracker sharedInstance] sendDownloadWithUrl:@"http://dn.se/some/content/image.png"];
 }
 
 @end

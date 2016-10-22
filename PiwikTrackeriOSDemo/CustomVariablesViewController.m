@@ -7,32 +7,18 @@
 //
 
 #import "CustomVariablesViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @implementation CustomVariablesViewController
 
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  // Do any additional setup after loading the view.
-}
-
-
 - (IBAction)customVariableAAction:(id)sender {
-  
-  NSArray *values = @[@"Member", @"Admin", @"Anonymous"];
-  
-  [[PiwikTracker sharedInstance] setCustomVariableForIndex:4 name:@"CustomA" value:values[arc4random_uniform(3)] scope:VisitCustomVariableScope];
+    NSArray *values = @[@"Member", @"Admin", @"Anonymous"];
+    [[PiwikTracker sharedInstance] setCustomVariableForIndex:4 name:@"CustomA" value:values[arc4random_uniform(3)] scope:CustomVariableScopeVisit];
 }
-
 
 - (IBAction)CustomVariableBAction:(id)sender {
-  
-  NSArray *values = @[@"Computers", @"Keyboard", @"Mouse"];
-  
-  [[PiwikTracker sharedInstance] setCustomVariableForIndex:1 name:@"Custom B" value:values[arc4random_uniform(3)] scope:ScreenCustomVariableScope];
+    NSArray *values = @[@"Computers", @"Keyboard", @"Mouse"];
+    [[PiwikTracker sharedInstance] setCustomVariableForIndex:1 name:@"Custom B" value:values[arc4random_uniform(3)] scope:CustomVariableScopeScreen];
 }
-
 
 @end
