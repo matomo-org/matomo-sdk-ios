@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// Controllers that inherit from this view controller with send a screen view event to Piwik each time the controller did show.
 /// The tracker will use the trackedViewName as the screen view name or if that is not set the title of the controller. If neither is set, not event will be send.
 public class PiwikTrackedViewController: UIViewController {
@@ -21,8 +20,7 @@ public class PiwikTrackedViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if let trackedViewName = self.trackedViewName ?? self.title {
-            // FIXME: add tracking here
-            // [[PiwikTracker sharedInstance] sendView:name];
+            let _ = PiwikTracker.sharedInstance?.sendView(trackedViewName)
         }
     }
 

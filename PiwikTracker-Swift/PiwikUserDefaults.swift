@@ -82,7 +82,7 @@ class PiwikUserDefaults {
         }
         // none found, generate a key
         let uuid: String = UUID().uuidString.md5
-        let clientID = uuid.substring(length: 16)
+        let clientID = uuid.prefix(ofMaximumLength: 16)
         UserDefaults.standard.setValue(clientID, forKey: key)
         UserDefaults.standard.synchronize()
         return clientID

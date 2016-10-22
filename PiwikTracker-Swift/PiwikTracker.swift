@@ -8,12 +8,6 @@
 
 import Foundation
 
-@objc public enum CustomVariableScope: Int {
-    case Visit
-    case Screen
-}
-
-
 public class PiwikTracker: NSObject {
     static var SessionStartNotification: String =  {
         return "PiwikSessionStartNotification"
@@ -22,13 +16,29 @@ public class PiwikTracker: NSObject {
     internal static var _sharedInstance: PiwikTracker?
     public let siteID: String
     public let dispatcher: PiwikDispatcher
+    private let debugDispatcher = PiwikDebugDispatcher()
+    private var usedDispatcher: PiwikDispatcher {
+        if debug {
+            return debugDispatcher
+        } else {
+            return dispatcher
+        }
+    }
     private let eventQueue: EventQueue
     
     // FIXME: handle those
     public var userID: String? = nil
     public var prefixingEnabled: Bool = true
     public var debug: Bool = false
-    public var optOut: Bool = false // FIXME: get this from the userdefaults
+    public var optOut: Bool {
+        get {
+            return PiwikUserDefaults.standard.optOut
+        }
+        set {
+            print("setting optOut to \(newValue)")
+            PiwikUserDefaults.standard.optOut = newValue
+        }
+    }
     public var sampleRate: UInt8 = PiwikConstants.DefaultSampleRate {
         didSet {
             sampleRate = [100, sampleRate].min()!
@@ -52,11 +62,11 @@ public class PiwikTracker: NSObject {
         // observe UIApplicationDidBecomeActiveNotification and UIApplicationWillResignActiveNotification
     }
     
-    func queue(event: Event) -> Bool {
+    internal func queue(event: Event) -> Bool {
         guard !optOut else { return true }
         guard sampleRate == 100 || sampleRate < UInt8(arc4random_uniform(101)) else { return true }
         guard eventQueue.eventCount < maxNumberOfQueuedEvents else {
-            debugPrint("Tracker reach maximum number of queued events")
+            print("Tracker reach maximum number of queued events")
             return false
         }
         
@@ -68,6 +78,7 @@ public class PiwikTracker: NSObject {
         //        parameters = [self addStaticParameters:parameters];
         
         mutatedEvent.setParameters(fromUserDefaults: PiwikUserDefaults.standard, andTracker: self)
+        sessionStart = false // just set it to false
         
         eventQueue.storeEvent(event: mutatedEvent) {
             if dispatchInterval == 0 {
@@ -76,7 +87,7 @@ public class PiwikTracker: NSObject {
                     })
             }
         }
-        return false
+        return true
     }
     
     public func dispatch() -> Bool {
@@ -84,6 +95,10 @@ public class PiwikTracker: NSObject {
         dispatcherRunning = true
         dispatchNextBatch()
         return true
+    }
+    
+    public func deleteQueuedEvents() {
+        eventQueue.deleteAllEvents()
     }
     
     private func dispatchNextBatch() {
@@ -107,9 +122,9 @@ public class PiwikTracker: NSObject {
                     }
                 }
                 if events.count == 1 {
-                    self.dispatcher.send(event: events.first!, success: success, failure: error)
+                    self.usedDispatcher.send(event: events.first!, success: success, failure: error)
                 } else {
-                    self.dispatcher.send(events: events, success: success, failure: error)
+                    self.usedDispatcher.send(events: events, success: success, failure: error)
                 }
             }
         }
@@ -257,18 +272,16 @@ extension PiwikTracker {
     }
     
     public func setCustomVariable(forIndex index: UInt, name: String, value: String, scope: CustomVariableScope) -> Bool {
-        if includeDefaultCustomVariable && scope == .Visit && index <= 3 {
-            debugPrint("Custom variable index conflicting with default indexes used by the SDK. Change index or turn off default default variables")
+        let customVariable = CustomVariable(index: index, name: name, value: value, scope: scope)
+        return setCustomVariable(customVariable)
+    }
+    
+    func setCustomVariable(_ customVariable: CustomVariable) -> Bool {
+        if includeDefaultCustomVariable && customVariable.scope == .Visit && customVariable.index <= 3 {
+            print("Custom variable index conflicting with default indexes used by the SDK. Change index or turn off default default variables")
             return false
         }
-        
-        let customVariable = CustomVariable(index: index, name: name, value: value)
-        //        switch scope {
-        //        case .Screen:
-        //        case .Visit:
-        //        }
-        // FIXME: add the variable to the visit/screen customVariables
-        // return true
+        // FIXME: implement me
         return false
     }
     

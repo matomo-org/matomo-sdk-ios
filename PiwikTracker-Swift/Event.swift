@@ -74,6 +74,9 @@ public struct Event {
             visitCustomVariables["2"] = ["OS version", Device.osVersion]
             visitCustomVariables["3"] = ["App version", Device.appVersion]
         }
+        if tracker.sessionStart {
+            parametersDictionary[PiwikConstants.ParameterSessionStart] = "1"
+        }
     }
 }
 
@@ -112,7 +115,7 @@ extension Event {
     
     init(withException description: String, fatal: Bool, addPrefix: Bool) {
         self.init()
-        let limitedDescription = UInt(description.lengthOfBytes(using: .utf8)) > PiwikConstants.ExceptionDescriptionMaximumLength ? description.substring(length: PiwikConstants.ExceptionDescriptionMaximumLength) : description
+        let limitedDescription = UInt(description.lengthOfBytes(using: .utf8)) > PiwikConstants.ExceptionDescriptionMaximumLength ? description.prefix(ofMaximumLength: PiwikConstants.ExceptionDescriptionMaximumLength) : description
         let components: [String?] = [
             addPrefix ? PiwikConstants.PrefixException : nil,
             fatal ? PiwikConstants.PrefixExceptionFatal : PiwikConstants.PrefixExceptionCaught,

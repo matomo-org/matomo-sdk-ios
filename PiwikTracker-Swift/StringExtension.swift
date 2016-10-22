@@ -27,8 +27,7 @@ extension String {
         return String(format: hash as String)
     }
     
-    // FIXME: length is not really correct; It would be better to make clear it is the first x chars
-    func substring(length: UInt) -> String {
+    func prefix(ofMaximumLength length: UInt) -> String {
         let start = startIndex
         let end = index(start, offsetBy: Int(length))
         return substring(with: start..<end)

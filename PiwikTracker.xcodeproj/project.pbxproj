@@ -417,6 +417,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7BFA5D1DBBE43B0030D9CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F8B48481DAA694F003012F7 /* CustomVariable.swift */,
+				1F7BFA581DBBC8350030D9CE /* Transaction.swift */,
+				1FB91E751DAD71FD00882B85 /* Event.swift */,
+				1F8B485D1DAA87A6003012F7 /* Campaign.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1F7BFA5E1DBBE46D0030D9CE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F8B484A1DAA6D78003012F7 /* StringExtension.swift */,
+				1F8B48621DAC36AA003012F7 /* UIDevice+Extension.swift */,
+				1FB91E771DAD7E3700882B85 /* Dictionary+Extension.swift */,
+				1F0673C41DAD342B000A7E05 /* UIApplication+Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		1F8B48581DAA74F7003012F7 /* EventQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,23 +452,17 @@
 		1FECA8761DA7DDDB00859C13 /* PiwikTracker-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				1F7BFA5E1DBBE46D0030D9CE /* Extensions */,
+				1F7BFA5D1DBBE43B0030D9CE /* Models */,
 				1F8B48581DAA74F7003012F7 /* EventQueue */,
 				1FECA8941DA7E3A300859C13 /* Dispatcher */,
 				1FECA8771DA7DDDB00859C13 /* PiwikTracker-Swift.h */,
+				1F8B48561DAA6FE4003012F7 /* PiwikTrackerSwift-BridgingHeader.h */,
 				1FECA8781DA7DDDB00859C13 /* Info.plist */,
 				1FECA88E1DA7DEAC00859C13 /* PiwikTrackedViewController.swift */,
 				1FECA8951DA7E3C600859C13 /* PiwikTracker.swift */,
 				1FECA8971DA7ED3800859C13 /* PiwikConstants.swift */,
-				1F8B48481DAA694F003012F7 /* CustomVariable.swift */,
-				1F8B484A1DAA6D78003012F7 /* StringExtension.swift */,
-				1F8B48561DAA6FE4003012F7 /* PiwikTrackerSwift-BridgingHeader.h */,
-				1F8B485D1DAA87A6003012F7 /* Campaign.swift */,
-				1F8B48621DAC36AA003012F7 /* UIDevice+Extension.swift */,
-				1F0673C41DAD342B000A7E05 /* UIApplication+Extension.swift */,
 				1F0673C61DAD34F9000A7E05 /* PiwikUserDefaults.swift */,
-				1FB91E751DAD71FD00882B85 /* Event.swift */,
-				1FB91E771DAD7E3700882B85 /* Dictionary+Extension.swift */,
-				1F7BFA581DBBC8350030D9CE /* Transaction.swift */,
 			);
 			path = "PiwikTracker-Swift";
 			sourceTree = "<group>";
