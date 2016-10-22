@@ -7,8 +7,7 @@
 //
 
 #import "Screen2ViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @implementation Screen2ViewController
 
@@ -16,7 +15,7 @@
   [super viewDidLoad];
   
   // Report screen view to Piwik
-  [[PiwikTracker sharedInstance] sendViews:@"menu", @"screen view", @"screen view 2", nil];
+  [[PiwikTracker sharedInstance] sendViews:@[@"menu", @"screen view", @"screen view 2"]];
 
 }
 

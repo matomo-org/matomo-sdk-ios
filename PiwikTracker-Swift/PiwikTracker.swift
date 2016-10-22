@@ -8,15 +8,16 @@
 
 import Foundation
 
-public enum CustomVariableScope: Int {
+@objc public enum CustomVariableScope: Int {
     case Visit
     case Screen
 }
 
-let PiwikSessionStartNotification: String = "PiwikSessionStartNotification"
-
 
 public class PiwikTracker: NSObject {
+    static var SessionStartNotification: String =  {
+        return "PiwikSessionStartNotification"
+    }()
     
     internal static var _sharedInstance: PiwikTracker?
     public let siteID: String
@@ -30,10 +31,7 @@ public class PiwikTracker: NSObject {
     public var optOut: Bool = false // FIXME: get this from the userdefaults
     public var sampleRate: UInt8 = PiwikConstants.DefaultSampleRate {
         didSet {
-            if sampleRate > 100 {
-                // FIXME: ad a log warning here?
-                sampleRate = 100
-            }
+            sampleRate = [100, sampleRate].min()!
         }
     }
     public var includeDefaultCustomVariable: Bool = true
@@ -59,7 +57,7 @@ public class PiwikTracker: NSObject {
         guard sampleRate == 100 || sampleRate < UInt8(arc4random_uniform(101)) else { return true }
         guard eventQueue.eventCount < maxNumberOfQueuedEvents else {
             debugPrint("Tracker reach maximum number of queued events")
-            return true // should we better return false?
+            return false
         }
         
         var mutatedEvent = event
@@ -69,14 +67,13 @@ public class PiwikTracker: NSObject {
         //        parameters = [self addSessionParameters:parameters];
         //        parameters = [self addStaticParameters:parameters];
         
-        mutatedEvent.setParameters(fromTracker: self)
-        mutatedEvent.setParameters(fromUserDefaults: PiwikUserDefaults.standard)
+        mutatedEvent.setParameters(fromUserDefaults: PiwikUserDefaults.standard, andTracker: self)
         
         eventQueue.storeEvent(event: mutatedEvent) {
             if dispatchInterval == 0 {
                 DispatchQueue.main.async(execute: { [unowned self] in
                     let _ = self.dispatch()
-                })
+                    })
             }
         }
         return false
@@ -89,15 +86,14 @@ public class PiwikTracker: NSObject {
         return true
     }
     
-    
     private func dispatchNextBatch() {
         eventQueue.events(withLimit: eventsPerRequest) { (entityIds, events, hasMore) in
             if events.count == 0 {
                 finishDispatching()
             } else {
                 let success = {
+                    self.eventQueue.deleteEvents(withUUIDs: entityIds)
                     if hasMore {
-                        self.eventQueue.deleteEvents(withEntityIds: entityIds)
                         self.dispatchNextBatch()
                     } else {
                         self.finishDispatching()
@@ -161,7 +157,7 @@ extension PiwikTracker {
         get { return _sharedInstance }
     }
     
-    public class func sharedInstance(withSiteId siteId: String, baseURL: URL) -> PiwikTracker? {
+    public class func sharedInstance(withSiteID siteID: String, baseURL: URL) -> PiwikTracker? {
         let dispatcher: PiwikDispatcher
         let lastPathComponent = baseURL.lastPathComponent
         if lastPathComponent == "piwik.php" || lastPathComponent == "piwik-proxy.php" {
@@ -169,43 +165,48 @@ extension PiwikTracker {
         } else {
             dispatcher = defaultDispatcher(withBaseUrl: baseURL)
         }
-        self._sharedInstance = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+        self._sharedInstance = PiwikTracker(siteId: siteID, dispatcher: dispatcher)
         return sharedInstance
     }
     
-    public class func sharedInstance(withSiteId siteId: String, dispatcher: PiwikDispatcher) -> PiwikTracker? {
-        self._sharedInstance = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
+    public class func sharedInstance(withSiteID siteID: String, dispatcher: PiwikDispatcher) -> PiwikTracker? {
+        self._sharedInstance = PiwikTracker(siteId: siteID, dispatcher: dispatcher)
         return sharedInstance
     }
 }
 
 // MARK: sending events
 extension PiwikTracker {
-    public func send(view: String) -> Bool {
-        return send(views: [view])
+    public func sendView(_ view: String) -> Bool {
+        return sendViews([view])
     }
     
-    public func send(views: [String]) -> Bool {
+    public func sendViews(_ views: [String]) -> Bool {
         let event = Event(withViews: views, addPrefix: prefixingEnabled)
         return queue(event: event)
     }
     
-    public func send(outlink url: String) -> Bool {
+    public func sendOutlink(url: String) -> Bool {
         let event = Event(withOutlink: url)
         return queue(event: event)
     }
     
-    public func send(download url: String) -> Bool {
+    public func sendDownload(url: String) -> Bool {
         let event = Event(withDownload: url)
         return queue(event: event)
     }
     
-    public func sendEvent(withCategory category: String, action: String, name: String? = nil, value: String? = nil) -> Bool {
+    public func sendEvent(category: String, action: String, name: String? = nil) -> Bool {
+        let event = Event(withCategory: category, action: action, name: name, value: nil)
+        return queue(event: event)
+    }
+    
+    public func sendEvent(category: String, action: String, name: String? = nil, value: Float) -> Bool {
         let event = Event(withCategory: category, action: action, name: name, value: value)
         return queue(event: event)
     }
     
-    public func sendException(withDescription description: String, fatal: Bool) -> Bool {
+    public func sendException(description: String, fatal: Bool) -> Bool {
         let event = Event(withException: description, fatal: fatal, addPrefix: prefixingEnabled)
         return queue(event: event)
     }
@@ -215,36 +216,42 @@ extension PiwikTracker {
         return queue(event: event)
     }
     
-    public func sendGoal(withId id: UInt, revenue: UInt) -> Bool {
+    public func sendGoal(id: UInt, revenue: UInt) -> Bool {
         let event = Event(withGoalId: id, revenue: revenue)
         return queue(event: event)
     }
     
-    public func sendSearch(withKeyword keyword: String, category: String?, hitcount: UInt?) -> Bool {
+    public func sendSearch(keyword: String, category: String?) -> Bool {
+        let event = Event(withSearchKeyword: keyword, category: category, hitcount: nil)
+        return queue(event: event)
+    }
+    
+    public func sendSearch(keyword: String, category: String?, hitcount: UInt) -> Bool {
         let event = Event(withSearchKeyword: keyword, category: category, hitcount: hitcount)
         return queue(event: event)
     }
     
-    // FIXME: implement Transactions
-//    public func sendTransaction()
-    
-    public func sendCampaign(_ campaign: Campaign) -> Bool {
-        let campaignParameters = [
-            PiwikConstants.ParameterCampaignName: campaign.name,
-            PiwikConstants.ParameterCampaignKeyword: campaign.keyword,
-            PiwikConstants.ParameterReferrer: campaign.url.absoluteString
-        ]
-        // FIXME: handle these campaignParameters
-        // self.campaignParameters = [NSDictionary dictionaryWithDictionary:parameters];
-        return false
+    public func sendTransaction(_ transaction: Transaction) -> Bool {
+        let event = Event(withTransaction: transaction)
+        return queue(event: event)
     }
     
-    public func sendContentImpression(withName name: String, piece: String?, target: String?) -> Bool {
+    public func sendCampaign(url: URL) -> Bool {
+        guard let campaign = Campaign(url) else { return false }
+        return sendCampaign(campaign)
+    }
+    
+    public func sendCampaign(_ campaign: Campaign) -> Bool {
+        let event = Event(withCampaign: campaign)
+        return queue(event: event)
+    }
+    
+    public func sendContentImpression(name: String, piece: String?, target: String?) -> Bool {
         let event = Event(withContentImpressionName: name, piece: piece, target: target)
         return queue(event: event)
     }
     
-    public func sendContentInteraction(withName name: String, piece: String?, target: String?) -> Bool {
+    public func sendContentInteraction(name: String, piece: String?, target: String?) -> Bool {
         let event = Event(withContentInteractionName: name, piece: piece, target: target)
         return queue(event: event)
     }
@@ -256,10 +263,10 @@ extension PiwikTracker {
         }
         
         let customVariable = CustomVariable(index: index, name: name, value: value)
-//        switch scope {
-//        case .Screen:
-//        case .Visit:
-//        }
+        //        switch scope {
+        //        case .Screen:
+        //        case .Visit:
+        //        }
         // FIXME: add the variable to the visit/screen customVariables
         // return true
         return false

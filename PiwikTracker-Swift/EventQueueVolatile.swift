@@ -22,9 +22,15 @@ class EventQueueVolatile: EventQueue {
     }
     
     func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [Event], _ hasMore: Bool)->()) {
-        completion([], events, false)
+        let uuids = events.map({ $0.uuid })
+        completion(uuids, events, false)
     }
     
-    func deleteEvents(withEntityIds entityIds: [EntityId]) { }
-    func deleteAllEvents() {}
+    func deleteEvents(withUUIDs uuids: [String]) {
+        events = events.filter({ !uuids.contains($0.uuid) })
+    }
+    
+    func deleteAllEvents() {
+        events = []
+    }
 }

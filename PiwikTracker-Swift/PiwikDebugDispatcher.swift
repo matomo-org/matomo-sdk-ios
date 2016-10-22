@@ -11,17 +11,19 @@ import Foundation
 internal class PiwikDebugDispatcher: PiwikDispatcher {
     var userAgent: String? {
         didSet {
-            debugPrint("Set custom user agent: \(userAgent)")
+            print("Set custom user agent: \(userAgent)")
         }
     }
     
     func send(event: Event, success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(event.dictionary)")
+        print("Request: \(event)")
         success()
     }
     
     func send(events: [Event], success: ()->(), failure: (Bool)->()) {
-        debugPrint("Request: \(events.first!.dictionary)")
+        for event in events {
+            print("Request: \(event)")
+        }
         success()
     }
 }

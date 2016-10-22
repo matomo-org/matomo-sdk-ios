@@ -7,21 +7,16 @@
 //
 
 #import "ExceptionViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface ExceptionViewController ()
 @end
 
-
 @implementation ExceptionViewController
 
-
 - (IBAction)sendExceptionAction:(id)sender {
-  
-  // Send an exception event to the Piwik server
-  [[PiwikTracker sharedInstance] sendExceptionWithDescription:@"Send a fake exception from my app" isFatal:NO];
-  
+    // Send an exception event to the Piwik server
+    [[PiwikTracker sharedInstance] sendExceptionWithDescription:@"Send a fake exception from my app" fatal:NO];
 }
 
 

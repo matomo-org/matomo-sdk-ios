@@ -16,6 +16,6 @@ protocol EventQueue {
     func storeEvent(event: Event, completion: ()->())
     func events(withLimit limit: UInt8, completion: (_ entityIds: [EntityId], _ events: [Event], _ hasMore: Bool)->())
     
-    func deleteEvents(withEntityIds entityIds: [EntityId])
+    func deleteEvents(withUUIDs uuids: [String])
     func deleteAllEvents()
 }

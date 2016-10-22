@@ -7,28 +7,21 @@
 //
 
 #import "EventsViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface EventsViewController ()
 @end
 
-
 @implementation EventsViewController
 
-
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  [[PiwikTracker sharedInstance] sendViews:@"menu", @"events", nil];
+    [super viewDidLoad];
+    [[PiwikTracker sharedInstance] sendViews:@[@"menu", @"events"]];
 }
 
-
 - (IBAction)sendEventAction:(id)sender {
-  
-  // Send a custom event tp Piwik  
-  [[PiwikTracker sharedInstance] sendEventWithCategory:@"TestCategory" action:@"Play" name:@"Song12" value:@(2)];
-  
+    // Send a custom event tp Piwik
+    [[PiwikTracker sharedInstance] sendEventWithCategory:@"TestCategory" action:@"Play" name:@"Song12" value:1.2];
 }
 
 

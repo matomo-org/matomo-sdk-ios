@@ -7,28 +7,21 @@
 //
 
 #import "GoalsViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface GoalsViewController ()
 @end
 
-
 @implementation GoalsViewController
-
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [[PiwikTracker sharedInstance] sendViews:@"menu", @"goals", nil];
+  [[PiwikTracker sharedInstance] sendViews:@[@"menu", @"goals"]];
 }
 
-
 - (IBAction)sendGoalAction:(id)sender {
-  
   // Track a conversion
-  [[PiwikTracker sharedInstance] sendGoalWithID:1 revenue:5];
-  
+    [[PiwikTracker sharedInstance] sendGoalWithId:1 revenue:5];  
 }
 
 

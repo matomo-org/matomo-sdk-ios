@@ -7,22 +7,16 @@
 //
 
 #import "ConfigurationViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @implementation ConfigurationViewController
 
-
 - (IBAction)newSessionAction:(id)sender {
-  // Create a new session
-  [PiwikTracker sharedInstance].sessionStart = YES;
+    [PiwikTracker sharedInstance].sessionStart = YES;
 }
-
 
 - (IBAction)dispatchEventsAction:(id)sender {
-  // Dispatch queued events
-  [[PiwikTracker sharedInstance] dispatch];
+    [[PiwikTracker sharedInstance] dispatch];
 }
-
 
 @end

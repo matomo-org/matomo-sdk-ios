@@ -25,6 +25,8 @@ public struct Event {
         }
     }
     
+    internal let uuid = NSUUID().uuidString
+    
     fileprivate(set) var parametersDictionary: [String:String] = [:]
     public var dictionary: [String:String] {
         get {
@@ -44,25 +46,24 @@ public struct Event {
         let now = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute, .second], from: now)
-        parametersDictionary[PiwikConstants.ParameterHours] = "\(components.hour)"
-        parametersDictionary[PiwikConstants.ParameterMinutes] = "\(components.minute)"
-        parametersDictionary[PiwikConstants.ParameterSeconds] = "\(components.second)"
+        if let hour = components.hour, let minute = components.minute, let second = components.second {
+            parametersDictionary[PiwikConstants.ParameterHours] = "\(hour)"
+            parametersDictionary[PiwikConstants.ParameterMinutes] = "\(minute)"
+            parametersDictionary[PiwikConstants.ParameterSeconds] = "\(second)"
+        }
         parametersDictionary[PiwikConstants.ParameterDateAndTime] = Event.UTCDateFormatter.string(from: now)
         
         // this is quite what the android app does; Is there any need to add a path after this?
         parametersDictionary[PiwikConstants.ParameterURL] = "http://\(UIApplication.appName)"
     }
     
-    mutating func setParameters(fromUserDefaults userDefaults: PiwikUserDefaults) {
-        // parametersDictionary[PiwikConstants.ParameterVisitorID] = userDefaults.clientId(withKeyPrefix: siteId)
+    mutating func setParameters(fromUserDefaults userDefaults: PiwikUserDefaults, andTracker tracker: PiwikTracker) {
+        parametersDictionary[PiwikConstants.ParameterVisitorID] = userDefaults.clientId(withKeyPrefix: tracker.siteID)
         parametersDictionary[PiwikConstants.ParameterFirstVisitTimestamp] = "\(userDefaults.firstVisit.timeIntervalSince1970)"
         parametersDictionary[PiwikConstants.ParameterTotalNumberOfVisits] = "\(userDefaults.totalNumberOfVisits)"
         if let previousVisit = userDefaults.previousVisit {
             parametersDictionary[PiwikConstants.ParameterPreviousVisitTimestamp] = "\(previousVisit.timeIntervalSince1970)"
         }
-    }
-    
-    mutating func setParameters(fromTracker tracker: PiwikTracker) {
         parametersDictionary[PiwikConstants.ParameterSiteID] = tracker.siteID
         parametersDictionary[PiwikConstants.ParameterURL] = "http://piwik.org"
         if let userID = tracker.userID {
@@ -101,12 +102,12 @@ extension Event {
         parametersDictionary[PiwikConstants.ParameterURL] = download
     }
     
-    init(withCategory category: String, action: String, name: String? = nil, value: String? = nil) {
+    init(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
         self.init()
         parametersDictionary[PiwikConstants.ParameterEventCategory] = category
         parametersDictionary[PiwikConstants.ParameterEventAction] = action
         parametersDictionary[PiwikConstants.ParameterEventName] = name
-        parametersDictionary[PiwikConstants.ParameterEventValue] = value
+        parametersDictionary[PiwikConstants.ParameterEventValue] = "\(value)"
     }
     
     init(withException description: String, fatal: Bool, addPrefix: Bool) {
@@ -154,8 +155,31 @@ extension Event {
         }
     }
     
-    // transactions
-    // campaign
+    init(withCampaign campaign: Campaign) {
+        parametersDictionary[PiwikConstants.ParameterCampaignName] = campaign.name
+        parametersDictionary[PiwikConstants.ParameterReferrer] = campaign.url.absoluteString
+        if let keyword = campaign.keyword {
+            parametersDictionary[PiwikConstants.ParameterCampaignKeyword] = keyword
+        }
+    }
+    
+    init(withTransaction transaction: Transaction) {
+        parametersDictionary[PiwikConstants.ParameterTransactionIdentifier] = transaction.identifier
+        parametersDictionary[PiwikConstants.ParameterRevenue] = "\(transaction.revenue)"
+        parametersDictionary[PiwikConstants.ParameterTransactionTax] = "\(transaction.tax)"
+        parametersDictionary[PiwikConstants.ParameterTransactionShipping] = "\(transaction.discount)"
+        parametersDictionary[PiwikConstants.ParameterTransactionSubTotal] = "\(transaction.subTotal)"
+        parametersDictionary[PiwikConstants.ParameterTransactionIdentifier] = "\(transaction.identifier)"
+        do {
+            let serializableItems = transaction.items.map({ $0.asArray() })
+            let serializedItemData = try JSONSerialization.data(withJSONObject: serializableItems, options: [])
+            if let serializedItems = String(data: serializedItemData, encoding: .utf8) {
+                parametersDictionary[PiwikConstants.ParameterTransactionItems] = serializedItems
+            }
+        } catch {
+            print("Unable to encode transaction items")
+        }
+    }
     
     init(withContentImpressionName name: String, piece: String?, target: String?) {
         self.init()
@@ -182,5 +206,9 @@ extension Event {
     
 }
 
-
-
+extension Event: CustomStringConvertible {
+    
+    public var description : String {
+        return parametersDictionary.description
+    }
+}

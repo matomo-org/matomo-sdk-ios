@@ -7,22 +7,16 @@
 //
 
 #import "SocialViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface SocialViewController ()
 @end
 
-
 @implementation SocialViewController
 
-
 - (IBAction)sendSocialInteractionAction:(id)sender {
-  
-  // Send social interacations to Piwik
-  [[PiwikTracker sharedInstance] sendSocialInteraction:@"like" target:@"Piwik app" forNetwork:@"Facebook"];
-    
+    // Send social interacations to Piwik
+    [[PiwikTracker sharedInstance] sendSocialWithAction:@"like" forNetwork:@"Facebook" target:@"Piwik app"];
 }
-
 
 @end

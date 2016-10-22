@@ -7,39 +7,27 @@
 //
 
 #import "OptOutViewController.h"
-#import "PiwikTracker.h"
-
+@import PiwikTrackerSwift;
 
 @interface OptOutViewController ()
 @end
 
-
 @implementation OptOutViewController
 
-
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  self.optOutSwitch.on = ![PiwikTracker sharedInstance].optOut;
-  
+    [super viewDidLoad];
+    self.optOutSwitch.on = ![PiwikTracker sharedInstance].optOut;
 }
-
 
 - (IBAction)sendOptOutAction:(id)sender {
-  
-  UISwitch *option = (UISwitch*)sender;
-  
-  if (option.on) {
     
-    [PiwikTracker sharedInstance].optOut = NO;
+    UISwitch *option = (UISwitch*)sender;
     
-  } else {
-    
-    [PiwikTracker sharedInstance].optOut = YES;
-    
-  }
-  
+    if (option.on) {
+        [PiwikTracker sharedInstance].optOut = NO;
+    } else {
+        [PiwikTracker sharedInstance].optOut = YES;
+    }
 }
-
 
 @end

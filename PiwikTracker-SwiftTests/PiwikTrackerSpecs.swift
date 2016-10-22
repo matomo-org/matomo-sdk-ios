@@ -17,7 +17,7 @@ class PiwikTrackerSpecs: QuickSpec {
         
         let siteId = "_specSiteId"
         let dispatcher = PiwikDispatcherStub()
-        let tracker = PiwikTracker.sharedInstance(withSiteId: siteId, dispatcher: dispatcher)
+        let tracker = PiwikTracker.sharedInstance(withSiteID: siteId, dispatcher: dispatcher)
         
         describe("initWithSiteID:dispatcher:") {
             let siteId = "testInitWithSiteIdAndDispatcherSiteId"
@@ -64,7 +64,7 @@ class PiwikTrackerSpecs: QuickSpec {
                     expect(tracker.userID).to(equal(userId))
                 }
                 it("should set the userid as the uid parameter") {
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     expect(dispatcher.lastParameters?["uid"]).toEventually(equal(userId))
                 }
             }
@@ -79,7 +79,7 @@ class PiwikTrackerSpecs: QuickSpec {
                 }
                 it("should not set the userid as the uid parameter") {
                     dispatcher.lastParameters = nil
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     expect(dispatcher.lastParameters).toEventuallyNot(beNil())
                     expect(dispatcher.lastParameters?["uid"]).toEventually(beNil())
                 }
@@ -99,7 +99,7 @@ class PiwikTrackerSpecs: QuickSpec {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
                 tracker.optOut = false
                 it("should dispatch events") {
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     let _ = tracker.dispatch()
                     expect(dispatcher.lastParameters).toNot(beNil())
                 }
@@ -110,7 +110,7 @@ class PiwikTrackerSpecs: QuickSpec {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
                 tracker.optOut = true
                 it("should not dispatch events") {
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     let _ = tracker.dispatch()
                     expect(dispatcher.lastParameters).to(beNil())
                 }
@@ -130,7 +130,7 @@ class PiwikTrackerSpecs: QuickSpec {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
                 tracker.includeDefaultCustomVariable = false
                 it("shoud set the default custom variables") {
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     let _ = tracker.dispatch()
                     expect(dispatcher.lastParameters?["_cvar"]).to(equal("{}"))
                 }
@@ -141,7 +141,7 @@ class PiwikTrackerSpecs: QuickSpec {
                 let tracker = PiwikTracker(siteId: siteId, dispatcher: dispatcher)
                 tracker.includeDefaultCustomVariable = true
                 it("shoud set the default custom variables") {
-                    let _ = tracker.send(view: "_speckView")
+                    let _ = tracker.sendView("_speckView")
                     let _ = tracker.dispatch()
                     let cvar = dispatcher.lastParameters!["_cvar"]!.data(using: .utf8)!
                     let json = try! JSONSerialization.jsonObject(with: cvar, options: []) as! [String:[String]]
