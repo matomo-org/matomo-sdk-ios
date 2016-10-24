@@ -15,10 +15,9 @@ build/*
 *.perspective
 *.perspectivev3
 *.pbxuser
-*.xcworkspace
 xcuserdata
 
 # Exclude generate documentation
 Doc/
 Pods
-Podfile.lock
+DerivedData
