@@ -48,8 +48,6 @@
 		CD1EA96917B0E5B400F63E14 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
 		CD1EEB2219B4A208009BAA7A /* PiwikDebugDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB1F19B4A208009BAA7A /* PiwikDebugDispatcher.m */; };
 		CD1EEB2319B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */; };
-		CD1EEBB419B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBB319B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m */; };
-		CD1EEBD219B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */; };
 		CD1EEBE219B713F4009BAA7A /* PiwikTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */; };
 		CD1EEBE319B713F4009BAA7A /* libPiwikTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */; };
 		CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
@@ -91,7 +89,6 @@
 		CDEAEACD180B36F900EB91C2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACB180B36F900EB91C2 /* MainMenu.xib */; };
 		CDEAEACF180B36F900EB91C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACE180B36F900EB91C2 /* Images.xcassets */; };
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
-		F7721453CB80D9F26E178A5D /* libPods-iosafnetworking2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,24 +139,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD1EEB9919B5E600009BAA7A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD1EEBB719B5E85A009BAA7A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -197,12 +176,6 @@
 		CD1EEB1F19B4A208009BAA7A /* PiwikDebugDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikDebugDispatcher.m; sourceTree = "<group>"; };
 		CD1EEB2019B4A208009BAA7A /* PiwikNSURLSessionDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikNSURLSessionDispatcher.h; sourceTree = "<group>"; };
 		CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikNSURLSessionDispatcher.m; sourceTree = "<group>"; };
-		CD1EEB9B19B5E600009BAA7A /* libPiwikTracker+AFNetworking1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPiwikTracker+AFNetworking1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD1EEBB219B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikAFNetworking1Dispatcher.h; sourceTree = "<group>"; };
-		CD1EEBB319B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikAFNetworking1Dispatcher.m; sourceTree = "<group>"; };
-		CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPiwikTracker+AFNetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD1EEBD019B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiwikAFNetworking2Dispatcher.h; sourceTree = "<group>"; };
-		CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiwikAFNetworking2Dispatcher.m; sourceTree = "<group>"; };
 		CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiwikTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1EEBE019B713F4009BAA7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD1EEBE119B713F4009BAA7A /* PiwikTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiwikTrackerTests.m; sourceTree = "<group>"; };
@@ -284,21 +257,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD1EEB9819B5E600009BAA7A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD1EEBB619B5E85A009BAA7A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F7721453CB80D9F26E178A5D /* libPods-iosafnetworking2.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD1EEBDA19B713F4009BAA7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,8 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				CD10FAC117B0378D0012BE50 /* PiwikTracker */,
-				CD1EEB9C19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */,
-				CD1EEBBA19B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */,
 				CD93EC8F17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEABC180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CD1EEBDE19B713F4009BAA7A /* PiwikTrackerTests */,
@@ -367,8 +323,6 @@
 				CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */,
 				CD93EC8B17E76E290062BE20 /* PiwikTrackeriOSDemo.app */,
 				CDEAEAB5180B36F800EB91C2 /* PiwikTrackerOSXDemo.app */,
-				CD1EEB9B19B5E600009BAA7A /* libPiwikTracker+AFNetworking1.a */,
-				CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */,
 				CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */,
 			);
 			name = Products;
@@ -420,24 +374,6 @@
 				CD10FAE917B037B50012BE50 /* PiwikTracker-Prefix.pch */,
 			);
 			path = PiwikTracker;
-			sourceTree = "<group>";
-		};
-		CD1EEB9C19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */ = {
-			isa = PBXGroup;
-			children = (
-				CD1EEBB219B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.h */,
-				CD1EEBB319B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m */,
-			);
-			path = "PiwikTracker+AFNetworking1";
-			sourceTree = "<group>";
-		};
-		CD1EEBBA19B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */ = {
-			isa = PBXGroup;
-			children = (
-				CD1EEBD019B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.h */,
-				CD1EEBD119B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m */,
-			);
-			path = "PiwikTracker+AFNetworking2";
 			sourceTree = "<group>";
 		};
 		CD1EEBDE19B713F4009BAA7A /* PiwikTrackerTests */ = {
@@ -578,42 +514,6 @@
 			productReference = CD10FABC17B0378D0012BE50 /* libPiwikTracker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		CD1EEB9A19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD1EEBB019B5E601009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking1" */;
-			buildPhases = (
-				CD1EEB9719B5E600009BAA7A /* Sources */,
-				CD1EEB9819B5E600009BAA7A /* Frameworks */,
-				CD1EEB9919B5E600009BAA7A /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PiwikTracker+AFNetworking1";
-			productName = "PiwikTracker+AFNetworking1";
-			productReference = CD1EEB9B19B5E600009BAA7A /* libPiwikTracker+AFNetworking1.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		CD1EEBB819B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD1EEBCA19B5E85A009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking2" */;
-			buildPhases = (
-				946D17AD38CF25D3C743636F /* Check Pods Manifest.lock */,
-				CD1EEBB519B5E85A009BAA7A /* Sources */,
-				CD1EEBB619B5E85A009BAA7A /* Frameworks */,
-				CD1EEBB719B5E85A009BAA7A /* CopyFiles */,
-				1C0D2CA3BB233198C7158D5A /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PiwikTracker+AFNetworking2";
-			productName = "PiwikTracker+AFNetworking2";
-			productReference = CD1EEBB919B5E85A009BAA7A /* libPiwikTracker+AFNetworking2.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		CD1EEBDC19B713F4009BAA7A /* PiwikTrackerTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD1EEBE619B713F4009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */;
@@ -683,12 +583,6 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Mattias Levin";
 				TargetAttributes = {
-					CD1EEB9A19B5E600009BAA7A = {
-						CreatedOnToolsVersion = 6.0;
-					};
-					CD1EEBB819B5E85A009BAA7A = {
-						CreatedOnToolsVersion = 6.0;
-					};
 					CD1EEBDC19B713F4009BAA7A = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = CD10FABB17B0378D0012BE50;
@@ -709,8 +603,6 @@
 			projectRoot = "";
 			targets = (
 				CD10FABB17B0378D0012BE50 /* PiwikTracker */,
-				CD1EEB9A19B5E600009BAA7A /* PiwikTracker+AFNetworking1 */,
-				CD1EEBB819B5E85A009BAA7A /* PiwikTracker+AFNetworking2 */,
 				CD93EC8A17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEAB4180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CDC335FE17B97B110098386C /* Documentation */,
@@ -755,37 +647,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C0D2CA3BB233198C7158D5A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		39C709EE464B76B8DA479C7E /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		946D17AD38CF25D3C743636F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -890,22 +752,6 @@
 				CD2F7DB317B96D0000E240FC /* PiwikTrackedViewController.m in Sources */,
 				CD152F53188C54720090BFD3 /* PiwikTransaction.m in Sources */,
 				CD1EEB2319B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD1EEB9719B5E600009BAA7A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD1EEBB419B5E640009BAA7A /* PiwikAFNetworking1Dispatcher.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD1EEBB519B5E85A009BAA7A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD1EEBD219B5E94B009BAA7A /* PiwikAFNetworking2Dispatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,106 +952,6 @@
 			};
 			name = Release;
 		};
-		CD1EEBAC19B5E601009BAA7A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		CD1EEBAD19B5E601009BAA7A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		CD1EEBCB19B5E85A009BAA7A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 939DCF0E27BAA5C4003FB741 /* Pods-iosafnetworking2.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		CD1EEBCC19B5E85A009BAA7A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C9F1D16D44C44B74B85E7D1 /* Pods-iosafnetworking2.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		CD1EEBE719B713F4009BAA7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1399,24 +1145,6 @@
 			buildConfigurations = (
 				CD10FAE217B0378E0012BE50 /* Debug */,
 				CD10FAE317B0378E0012BE50 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CD1EEBB019B5E601009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking1" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD1EEBAC19B5E601009BAA7A /* Debug */,
-				CD1EEBAD19B5E601009BAA7A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CD1EEBCA19B5E85A009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD1EEBCB19B5E85A009BAA7A /* Debug */,
-				CD1EEBCC19B5E85A009BAA7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
