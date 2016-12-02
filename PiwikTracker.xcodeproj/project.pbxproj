@@ -89,6 +89,30 @@
 		CDEAEACD180B36F900EB91C2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACB180B36F900EB91C2 /* MainMenu.xib */; };
 		CDEAEACF180B36F900EB91C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACE180B36F900EB91C2 /* Images.xcassets */; };
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
+		D8D551521DF1A6A300B90177 /* Piwik.h in Headers */ = {isa = PBXBuildFile; fileRef = D8D551501DF1A6A300B90177 /* Piwik.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551561DF1A6BB00B90177 /* PiwikTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = CD10FAEA17B037B50012BE50 /* PiwikTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551571DF1A6BB00B90177 /* PiwikTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10FAEB17B037B50012BE50 /* PiwikTracker.m */; };
+		D8D551581DF1A6BB00B90177 /* PiwikDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = CDC7625519B0F9DA00EED980 /* PiwikDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551591DF1A6BB00B90177 /* PiwikDebugDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1EEB1E19B4A208009BAA7A /* PiwikDebugDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D5515A1DF1A6BB00B90177 /* PiwikDebugDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB1F19B4A208009BAA7A /* PiwikDebugDispatcher.m */; };
+		D8D5515B1DF1A6BB00B90177 /* PiwikNSURLSessionDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1EEB2019B4A208009BAA7A /* PiwikNSURLSessionDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D5515C1DF1A6BB00B90177 /* PiwikNSURLSessionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EEB2119B4A208009BAA7A /* PiwikNSURLSessionDispatcher.m */; };
+		D8D5515D1DF1A6BB00B90177 /* PiwikTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = CD152F3B188BE59F0090BFD3 /* PiwikTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D5515E1DF1A6BB00B90177 /* PiwikTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F52188C54720090BFD3 /* PiwikTransaction.m */; };
+		D8D5515F1DF1A6BB00B90177 /* PiwikTransactionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = CD152F41188C4B010090BFD3 /* PiwikTransactionItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551601DF1A6BB00B90177 /* PiwikTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F57188C549F0090BFD3 /* PiwikTransactionItem.m */; };
+		D8D551611DF1A6BB00B90177 /* PiwikTransactionBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CD152F4C188C52BA0090BFD3 /* PiwikTransactionBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551621DF1A6BB00B90177 /* PiwikTransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F4D188C52BA0090BFD3 /* PiwikTransactionBuilder.m */; };
+		D8D551631DF1A6BB00B90177 /* PiwikTrackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2F7DB117B96D0000E240FC /* PiwikTrackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551641DF1A6BB00B90177 /* PiwikTrackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2F7DB217B96D0000E240FC /* PiwikTrackedViewController.m */; };
+		D8D551651DF1A6BB00B90177 /* PTEventEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1EA96717B0E5B400F63E14 /* PTEventEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551661DF1A6BB00B90177 /* PTEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1EA96817B0E5B400F63E14 /* PTEventEntity.m */; };
+		D8D551671DF1A6BB00B90177 /* PiwikLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEAEAAC180B36CC00EB91C2 /* PiwikLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D551681DF1A6BB00B90177 /* PiwikLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD152F5C188C7CCA0090BFD3 /* PiwikLocationManager.m */; };
+		D8D551691DF1A6DB00B90177 /* piwiktracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDBCF6F81B10C6C200F77481 /* piwiktracker.xcdatamodeld */; };
+		D8D5516B1DF1A72B00B90177 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D5516A1DF1A72B00B90177 /* MobileCoreServices.framework */; };
+		D8D5516C1DF1A73600B90177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
+		D8D5516E1DF1A73A00B90177 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D5516D1DF1A73A00B90177 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +268,11 @@
 		CDEAEAD5180B36F900EB91C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
 		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
+		D8D5514E1DF1A6A300B90177 /* Piwik.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Piwik.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D551501DF1A6A300B90177 /* Piwik.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Piwik.h; sourceTree = "<group>"; };
+		D8D551511DF1A6A300B90177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8D5516A1DF1A72B00B90177 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D8D5516D1DF1A73A00B90177 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +317,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8D5514A1DF1A6A300B90177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8D5516E1DF1A73A00B90177 /* SystemConfiguration.framework in Frameworks */,
+				D8D5516C1DF1A73600B90177 /* Foundation.framework in Frameworks */,
+				D8D5516B1DF1A72B00B90177 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -311,6 +350,7 @@
 				CD93EC8F17E76E290062BE20 /* PiwikTrackeriOSDemo */,
 				CDEAEABC180B36F800EB91C2 /* PiwikTrackerOSXDemo */,
 				CD1EEBDE19B713F4009BAA7A /* PiwikTrackerTests */,
+				D8D5514F1DF1A6A300B90177 /* Piwik */,
 				CD10FABE17B0378D0012BE50 /* Frameworks */,
 				CD10FABD17B0378D0012BE50 /* Products */,
 				2C303341E475657FAF926959 /* Pods */,
@@ -324,6 +364,7 @@
 				CD93EC8B17E76E290062BE20 /* PiwikTrackeriOSDemo.app */,
 				CDEAEAB5180B36F800EB91C2 /* PiwikTrackerOSXDemo.app */,
 				CD1EEBDD19B713F4009BAA7A /* PiwikTrackerTests.xctest */,
+				D8D5514E1DF1A6A300B90177 /* Piwik.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -331,6 +372,8 @@
 		CD10FABE17B0378D0012BE50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8D5516D1DF1A73A00B90177 /* SystemConfiguration.framework */,
+				D8D5516A1DF1A72B00B90177 /* MobileCoreServices.framework */,
 				CD5F3BED18678C9000D04E03 /* CoreLocation.framework */,
 				CD10FABF17B0378D0012BE50 /* Foundation.framework */,
 				CD10FACE17B0378D0012BE50 /* SenTestingKit.framework */,
@@ -494,7 +537,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D8D5514F1DF1A6A300B90177 /* Piwik */ = {
+			isa = PBXGroup;
+			children = (
+				D8D551501DF1A6A300B90177 /* Piwik.h */,
+				D8D551511DF1A6A300B90177 /* Info.plist */,
+			);
+			path = Piwik;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D8D5514B1DF1A6A300B90177 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8D551611DF1A6BB00B90177 /* PiwikTransactionBuilder.h in Headers */,
+				D8D551631DF1A6BB00B90177 /* PiwikTrackedViewController.h in Headers */,
+				D8D551671DF1A6BB00B90177 /* PiwikLocationManager.h in Headers */,
+				D8D551651DF1A6BB00B90177 /* PTEventEntity.h in Headers */,
+				D8D551561DF1A6BB00B90177 /* PiwikTracker.h in Headers */,
+				D8D5515F1DF1A6BB00B90177 /* PiwikTransactionItem.h in Headers */,
+				D8D551581DF1A6BB00B90177 /* PiwikDispatcher.h in Headers */,
+				D8D551591DF1A6BB00B90177 /* PiwikDebugDispatcher.h in Headers */,
+				D8D551521DF1A6A300B90177 /* Piwik.h in Headers */,
+				D8D5515D1DF1A6BB00B90177 /* PiwikTransaction.h in Headers */,
+				D8D5515B1DF1A6BB00B90177 /* PiwikNSURLSessionDispatcher.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		CD10FABB17B0378D0012BE50 /* PiwikTracker */ = {
@@ -573,6 +646,24 @@
 			productReference = CDEAEAB5180B36F800EB91C2 /* PiwikTrackerOSXDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D8D5514D1DF1A6A300B90177 /* Piwik */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8D551531DF1A6A300B90177 /* Build configuration list for PBXNativeTarget "Piwik" */;
+			buildPhases = (
+				D8D551491DF1A6A300B90177 /* Sources */,
+				D8D5514A1DF1A6A300B90177 /* Frameworks */,
+				D8D5514B1DF1A6A300B90177 /* Headers */,
+				D8D5514C1DF1A6A300B90177 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Piwik;
+			productName = Piwik;
+			productReference = D8D5514E1DF1A6A300B90177 /* Piwik.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -586,6 +677,10 @@
 					CD1EEBDC19B713F4009BAA7A = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = CD10FABB17B0378D0012BE50;
+					};
+					D8D5514D1DF1A6A300B90177 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -608,6 +703,7 @@
 				CDC335FE17B97B110098386C /* Documentation */,
 				CDE4CAE61813DDFE007E0EF7 /* Upload API */,
 				CD1EEBDC19B713F4009BAA7A /* PiwikTrackerTests */,
+				D8D5514D1DF1A6A300B90177 /* Piwik */,
 			);
 		};
 /* End PBXProject section */
@@ -641,6 +737,13 @@
 				CDEAEACF180B36F900EB91C2 /* Images.xcassets in Resources */,
 				CDEAEAC7180B36F900EB91C2 /* Credits.rtf in Resources */,
 				CDEAEACD180B36F900EB91C2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8D5514C1DF1A6A300B90177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +899,23 @@
 			files = (
 				CDEAEACA180B36F900EB91C2 /* AppDelegate.m in Sources */,
 				CDEAEAC3180B36F900EB91C2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8D551491DF1A6A300B90177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8D551681DF1A6BB00B90177 /* PiwikLocationManager.m in Sources */,
+				D8D551571DF1A6BB00B90177 /* PiwikTracker.m in Sources */,
+				D8D551601DF1A6BB00B90177 /* PiwikTransactionItem.m in Sources */,
+				D8D5515C1DF1A6BB00B90177 /* PiwikNSURLSessionDispatcher.m in Sources */,
+				D8D551621DF1A6BB00B90177 /* PiwikTransactionBuilder.m in Sources */,
+				D8D551691DF1A6DB00B90177 /* piwiktracker.xcdatamodeld in Sources */,
+				D8D5515A1DF1A6BB00B90177 /* PiwikDebugDispatcher.m in Sources */,
+				D8D551661DF1A6BB00B90177 /* PTEventEntity.m in Sources */,
+				D8D5515E1DF1A6BB00B90177 /* PiwikTransaction.m in Sources */,
+				D8D551641DF1A6BB00B90177 /* PiwikTrackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,6 +1248,93 @@
 			};
 			name = Release;
 		};
+		D8D551541DF1A6A300B90177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = Piwik/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.Piwik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D8D551551DF1A6A300B90177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = Piwik/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.Piwik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1193,6 +1400,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D8D551531DF1A6A300B90177 /* Build configuration list for PBXNativeTarget "Piwik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8D551541DF1A6A300B90177 /* Debug */,
+				D8D551551DF1A6A300B90177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
