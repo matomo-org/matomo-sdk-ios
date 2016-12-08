@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "PiwikDebugDispatcher.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class PiwikTransaction;
 
 
@@ -56,7 +58,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param baseURL The base URL of the Piwik server. The URL should not include the tracking endpoint path component (/piwik.php)
  @return The newly created PiwikTracker
  */
-+ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID baseURL:(NSURL*)baseURL;
++ (nullable instancetype)sharedInstanceWithSiteID:(NSString*)siteID baseURL:(NSURL*)baseURL;
 
 /**
  Create and configure a shared Piwik tracker (designated initialiser).
@@ -68,7 +70,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param dispatcher The dispatcher that will perform the network request to the Piwik server
  @return The newly created PiwikTracker
  */
-+ (instancetype)sharedInstanceWithSiteID:(NSString*)siteID dispatcher:(id<PiwikDispatcher>)dispatcher;
++ (nullable instancetype)sharedInstanceWithSiteID:(NSString*)siteID dispatcher:(id<PiwikDispatcher>)dispatcher;
 
 /**
  Return the shared Piwik tracker.
@@ -78,7 +80,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @return The existing PiwikTracker object
  @see sharedInstanceWithSiteID:baseURL:
  */
-+ (instancetype)sharedInstance;
++ (nullable instancetype)sharedInstance;
 
 /**
  Piwik site id.
@@ -250,7 +252,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param value A numeric value, float or integer. Optional.
  @return YES if the event was queued for dispatching.
  */
-- (BOOL)sendEventWithCategory:(NSString*)category action:(NSString*)action name:(NSString*)name value:(NSNumber*)value;
+- (BOOL)sendEventWithCategory:(NSString*)category action:(nullable NSString*)action name:(nullable NSString*)name value:(nullable NSNumber*)value;
 
 /**
  Track a caught exception or error.
@@ -296,7 +298,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param numberOfHits The number of results found (optional).
  @return YES if the event was queued for dispatching.
  */
-- (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits;
+- (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(nullable NSString*)category numberOfHits:(nullable NSNumber*)numberOfHits;
 
 /**
  Track an ecommerce transaction.
@@ -363,7 +365,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @return YES if the event was queued for dispatching.
  @see sendContentInteractionWithName:piece:target:
  */
-- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target;
+- (BOOL)sendContentImpressionWithName:(NSString*)name piece:(nullable NSString*)piece target:(nullable NSString*)target;
 
 /**
  Track when a user interact with an ad or banner.
@@ -376,7 +378,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @return YES if the event was queued for dispatching.
  @see sendContentImpressionWithName:piece:target:
  */
-- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(NSString*)piece target:(NSString*)target;
+- (BOOL)sendContentInteractionWithName:(NSString*)name piece:(nullable NSString*)piece target:(nullable NSString*)target;
 
 
 /**
@@ -461,3 +463,5 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 @property (nonatomic, strong) NSString *appVersion;
 
 @end
+
+NS_ASSUME_NONNULL_END
