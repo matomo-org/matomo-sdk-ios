@@ -19,11 +19,11 @@ class Dummy: NSObject, NSCoding {
 }
 
 struct MemoryQueueFixture {
-    static func empty() -> MemoryQueue {
+    static func empty() -> MemoryQueue<Any> {
         return MemoryQueue()
     }
-    static func withTwoItems() -> MemoryQueue {
-        let queue = MemoryQueue()
+    static func withTwoItems() -> MemoryQueue<Dummy> {
+        var queue = MemoryQueue<Dummy>()
         queue.queue(item: Dummy(), completion: {})
         queue.queue(item: Dummy(), completion: {})
         return queue

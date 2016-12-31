@@ -1,7 +1,8 @@
 import Foundation
 
-/// The MemoryQueue is a **thread-unsave** in memory Queue.
-class MemoryQueue: Queue {
+/// The MemoryQueue is a **not thread safe** in memory Queue.
+struct MemoryQueue<E: Any>: Queue {
+    typealias T = E
     private var items = [Data]()
     
     var itemCount: Int { get {
@@ -9,20 +10,20 @@ class MemoryQueue: Queue {
         }
     }
     
-    func queue(item: NSCoding, completion: ()->()) {
+    mutating func queue(item: T, completion: ()->()) {
         let data = NSKeyedArchiver.archivedData(withRootObject: item)
         items.append(data)
         completion()
     }
     
-    func dequeue(withLimit limit: Int, completion: (_ items: [Any])->()) {
+    mutating func dequeue(withLimit limit: Int, completion: (_ items: [T])->()) {
         let amount = [limit,itemCount].min()!
-        let dequeuedItems = items[0..<amount].flatMap({ NSKeyedUnarchiver.unarchiveObject(with: $0) })
+        let dequeuedItems = items[0..<amount].flatMap({ NSKeyedUnarchiver.unarchiveObject(with: $0) as? T })
         items.removeSubrange(0..<amount)
         completion(dequeuedItems)
     }
     
-    func deleteAll() {
+    mutating func deleteAll() {
         items = []
     }
 }

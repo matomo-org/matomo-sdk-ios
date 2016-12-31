@@ -1,8 +1,8 @@
 import Foundation
 
-/// A queue in which Objects that conform to queueable can be stored.
 protocol Queue {
-    /// The number of queud items.
+    associatedtype T
+    /// The number of queued items.
     var itemCount: Int { get }
     
     /// Queues an Item.
@@ -10,15 +10,21 @@ protocol Queue {
     /// - Parameters:
     ///   - item: The Item to queue.
     ///   - completion: A closure to be called once queueing is completed.
-    func queue(item: NSCoding, completion: ()->())
+    mutating func queue(item: T, completion: ()->())
     
     /// Dequeues and returns a certain amount of items.
     ///
     /// - Parameters:
     ///   - limit: The maximum amount of items to dequeue. May return less if less are queued.
     ///   - completion: A closure to be called once the elements are dequeued. The closure will be called with the dequeued items.
-    func dequeue(withLimit limit: Int, completion: (_ items: [Any])->())
+    mutating func dequeue(withLimit limit: Int, completion: (_ items: [T])->())
     
     /// Removes all items from the queue.
-    func deleteAll()
+    mutating func deleteAll()
+}
+
+extension Queue {
+    mutating func dequeue(completion: (_ items: [T])->()) {
+        dequeue(withLimit: 1, completion: completion)
+    }
 }

@@ -6,7 +6,7 @@ class MemoryQueueSpec: QuickSpec {
     override func spec() {
         describe("init") {
             it("should return not null") {
-                let queue = MemoryQueue()
+                let queue = MemoryQueue<Any>()
                 expect(queue).toNot(beNil())
             }
         }
@@ -26,12 +26,12 @@ class MemoryQueueSpec: QuickSpec {
         }
         describe("queue") {
             it("should increase item count") {
-                let queue = MemoryQueueFixture.empty()
+                var queue = MemoryQueueFixture.empty()
                 queue.queue(item: MemoryQueueFixture.queueable(), completion: {})
                 expect(queue.itemCount).toEventually(equal(1))
             }
             it("should call the completion closure") {
-                let queue = MemoryQueueFixture.empty()
+                var queue = MemoryQueueFixture.empty()
                 var calledClosure = false
                 queue.queue(item: MemoryQueueFixture.queueable(), completion: {
                     calledClosure = true
@@ -39,7 +39,7 @@ class MemoryQueueSpec: QuickSpec {
                 expect(calledClosure).toEventually(beTrue())
             }
             it("should enqueue the object") {
-                let queue = MemoryQueueFixture.empty()
+                var queue = MemoryQueueFixture.empty()
                 let dummy = Dummy()
                 var dequeued: Dummy? = nil
                 queue.queue(item: dummy, completion: {})
@@ -52,7 +52,7 @@ class MemoryQueueSpec: QuickSpec {
         }
         describe("dequeue") {
             context("with an empty queue") {
-                let queue = MemoryQueueFixture.empty()
+                var queue = MemoryQueueFixture.empty()
                 it("should call the completionblock without items") {
                     var dequeuedItems: [Any]? = nil
                     queue.dequeue(withLimit: 10, completion: { items in
@@ -64,7 +64,7 @@ class MemoryQueueSpec: QuickSpec {
             }
             context("with a queue with two items") {
                 it("should return one item if just asked for one") {
-                    let queue = MemoryQueueFixture.withTwoItems()
+                    var queue = MemoryQueueFixture.withTwoItems()
                     var dequeuedItems: [Any]? = nil
                     queue.dequeue(withLimit: 1, completion: { items in
                         dequeuedItems = items
@@ -72,7 +72,7 @@ class MemoryQueueSpec: QuickSpec {
                     expect(dequeuedItems?.count).toEventually(equal(1))
                 }
                 it("should return two items if asked for two or more") {
-                    let queue = MemoryQueueFixture.withTwoItems()
+                    var queue = MemoryQueueFixture.withTwoItems()
                     var dequeuedItems: [Any]? = nil
                     queue.dequeue(withLimit: 10, completion: { items in
                         dequeuedItems = items
@@ -80,7 +80,7 @@ class MemoryQueueSpec: QuickSpec {
                     expect(dequeuedItems?.count).toEventually(equal(2))
                 }
                 it("should remove dequeued objects from the queue") {
-                    let queue = MemoryQueueFixture.withTwoItems()
+                    var queue = MemoryQueueFixture.withTwoItems()
                     queue.dequeue(withLimit: 1, completion: { items in })
                     expect(queue.itemCount).toEventually(equal(1))
                 }
@@ -88,7 +88,7 @@ class MemoryQueueSpec: QuickSpec {
         }
         describe("deleteAll") {
             it("should remove all items") {
-                let queue = MemoryQueueFixture.withTwoItems()
+                var queue = MemoryQueueFixture.withTwoItems()
                 queue.deleteAll()
                 expect(queue.itemCount) == 0
             }
