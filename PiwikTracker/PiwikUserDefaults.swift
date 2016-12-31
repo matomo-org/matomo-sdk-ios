@@ -4,91 +4,77 @@ import Foundation
 /// mapping onto values stored in the UserDefaults.
 /// All getter and setter are sideeffect free and automatically syncronize
 /// after writing.
-internal class PiwikUserDefaults {
-    internal static let standard = PiwikUserDefaults()
-    internal let userDefaults = UserDefaults.standard
+internal struct PiwikUserDefaults {
+    static let standard = PiwikUserDefaults()
+    let userDefaults = UserDefaults.standard
     
-    internal var totalNumberOfVisits: UInt32 {
+    var totalNumberOfVisits: Int {
         get {
-            return UInt32(self.userDefaults.integer(forKey: PiwikUserDefaults.Constants.UserDefaultTotalNumberOfVisitsKey))
+            return userDefaults.integer(forKey: PiwikUserDefaults.Key.totalNumberOfVisits)
         }
         set {
-            self.userDefaults.set(newValue, forKey: PiwikUserDefaults.Constants.UserDefaultTotalNumberOfVisitsKey)
-            self.userDefaults.synchronize()
+            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.totalNumberOfVisits)
+            userDefaults.synchronize()
         }
     }
     
-    internal var firstVisit: Date? {
+    var firstVisit: Date? {
         get {
-            return self.date(forKey: PiwikUserDefaults.Constants.UserDefaultFirstVistsTimestampKey)
+            return userDefaults.object(forKey: PiwikUserDefaults.Key.firstVistsTimestamp) as? Date
         }
         set {
-            self.userDefaults.set(newValue, forKey: PiwikUserDefaults.Constants.UserDefaultFirstVistsTimestampKey)
-            self.userDefaults.synchronize()
+            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.firstVistsTimestamp)
+            userDefaults.synchronize()
         }
     }
     
-    internal var previousVisit: Date? {
+    var previousVisit: Date? {
         get {
-            return self.date(forKey: PiwikUserDefaults.Constants.UserDefaultPreviousVistsTimestampKey)
+            return userDefaults.object(forKey: PiwikUserDefaults.Key.previousVistsTimestamp) as? Date
         }
         set {
-            self.userDefaults.set(newValue, forKey: PiwikUserDefaults.Constants.UserDefaultPreviousVistsTimestampKey)
-            self.userDefaults.synchronize()
+            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.previousVistsTimestamp)
+            userDefaults.synchronize()
         }
     }
     
-    internal var currentVisit: Date? {
+    var currentVisit: Date? {
         get {
-            return self.date(forKey: PiwikUserDefaults.Constants.UserDefaultCurrentVisitTimestampKey)
+            return userDefaults.object(forKey: PiwikUserDefaults.Key.currentVisitTimestamp) as? Date
         }
         set {
-            self.userDefaults.set(newValue, forKey: PiwikUserDefaults.Constants.UserDefaultCurrentVisitTimestampKey)
-            self.userDefaults.synchronize()
+            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.currentVisitTimestamp)
+            userDefaults.synchronize()
         }
     }
     
-    internal var optOut: Bool {
+    var optOut: Bool {
         get {
-            return self.userDefaults.bool(forKey: PiwikUserDefaults.Constants.UserDefaultOptOutKey)
+            return userDefaults.bool(forKey: PiwikUserDefaults.Key.optOut)
         }
         set {
-            self.userDefaults.set(newValue, forKey: PiwikUserDefaults.Constants.UserDefaultOptOutKey)
-            self.userDefaults.synchronize()
+            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.optOut)
+            userDefaults.synchronize()
         }
     }
     
-    internal func clientId(prefix: String) -> String? {
-        let key = "\(prefix)_\(PiwikUserDefaults.Constants.UserDefaultVisitorIDKey)"
-        return self.userDefaults.string(forKey: key)
+    func clientId() -> String? {
+        return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorID)
     }
     
-    internal func set(clientId: String, prefix: String) {
-        let key = "\(prefix)_\(PiwikUserDefaults.Constants.UserDefaultVisitorIDKey)"
-        self.userDefaults.setValue(clientId, forKey: key)
-        self.userDefaults.synchronize()
+    func set(clientId: String) {
+        userDefaults.setValue(clientId, forKey: PiwikUserDefaults.Key.visitorID)
+        userDefaults.synchronize()
     }
 }
 
 extension PiwikUserDefaults {
-    internal func set(date: Date, forKey key: String) {
-        let timestamp = date.timeIntervalSince1970
-        self.userDefaults.set(timestamp, forKey: key)
-    }
-    internal func date(forKey key: String) -> Date? {
-        guard self.userDefaults.object(forKey: key) != nil else { return nil }
-        let storedDouble = self.userDefaults.double(forKey: key)
-        return Date(timeIntervalSince1970: storedDouble)
-    }
-}
-
-extension PiwikUserDefaults {
-    fileprivate struct Constants {
-        static let UserDefaultTotalNumberOfVisitsKey = "PiwikTotalNumberOfVistsKey"
-        static let UserDefaultCurrentVisitTimestampKey = "PiwikCurrentVisitTimestampKey"
-        static let UserDefaultPreviousVistsTimestampKey = "PiwikPreviousVistsTimestampKey"
-        static let UserDefaultFirstVistsTimestampKey = "PiwikFirstVistsTimestampKey"
-        static let UserDefaultVisitorIDKey = "PiwikVisitorIDKey"
-        static let UserDefaultOptOutKey = "PiwikOptOutKey"
+    fileprivate struct Key {
+        static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
+        static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
+        static let previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
+        static let firstVistsTimestamp = "PiwikFirstVistsTimestampKey"
+        static let visitorID = "PiwikVisitorIDKey"
+        static let optOut = "PiwikOptOutKey"
     }
 }
