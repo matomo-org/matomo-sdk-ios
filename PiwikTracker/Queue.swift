@@ -24,7 +24,9 @@ protocol Queue {
 }
 
 extension Queue {
-    mutating func dequeue(completion: (_ items: [T])->()) {
-        dequeue(withLimit: 1, completion: completion)
+    mutating func dequeue(completion: (_ item: T?)->()) {
+        dequeue(withLimit: 1, completion: { items in
+            completion(items.first)
+        })
     }
 }

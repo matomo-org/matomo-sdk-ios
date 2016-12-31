@@ -43,9 +43,9 @@ class MemoryQueueSpec: QuickSpec {
                 let dummy = Dummy()
                 var dequeued: Dummy? = nil
                 queue.queue(item: dummy, completion: {})
-                queue.dequeue(withLimit: 1, completion: { item in
-                    dequeued = item.first as? Dummy
-                })
+                queue.dequeue{ item in
+                    dequeued = item as? Dummy
+                }
                 expect(dequeued).toEventuallyNot(beNil())
                 expect(dequeued?.uuid).toEventually(equal(dummy.uuid))
             }
