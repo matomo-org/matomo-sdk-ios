@@ -2,27 +2,35 @@ import UIKit
 
 internal struct Device {
     
-    /// A shared instance holding the properties for the current device
-    static let current:Device = Device(platform: currentPlatform(),
-                                       humanReadablePlatformName: currentHumanReadablePlatformName(),
-                                       osVersion: currentOSVersion(),
-                                       screenSize: currentScreenSize(),
-                                       nativeScreenSize: currentNativeScreenSize())
+    /// Creates an returns a new device object representing the current device
+    static func makeCurrentDevice() ->  Device {
+        let platform = currentPlatform()
+        let humanReadablePlatformName = humanReadablePlatformNameForCurrentDevice()
+        let os = osVersionForCurrentDevice()
+        let screenSize = screenSizeForCurrentDevice()
+        let nativeScreenSize = nativeScreenSizeForCurrentDevice()
+        return Device(platform: platform,
+                      humanReadablePlatformName: humanReadablePlatformName,
+                      osVersion: os,
+                      screenSize: screenSize,
+                      nativeScreenSize: nativeScreenSize)
+    }
+    
     /// The platform name of the device i.e. "iPhone1,1" or "iPad3,6"
     let platform: String
     
     /// A human readable version of the platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
-    /// Or the platform name in case no human readable name was found.
-    let humanReadablePlatformName: String
+    /// Will be nil if no human readable string was found.
+    let humanReadablePlatformName: String?
     
     /// The version number of the OS as String i.e. "1.2" or "9.4"
     let osVersion: String
     
     // The screen size in points
-    let screenSize: String
+    let screenSize: CGSize
     
     // The screen size in pixels
-    let nativeScreenSize: String
+    let nativeScreenSize: CGSize
     
     /// The platform name of the current device i.e. "iPhone1,1" or "iPad3,6"
     private static func currentPlatform() -> String  {
@@ -34,8 +42,8 @@ internal struct Device {
     }
     
     /// Returns a human readable version of the current platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
-    /// Or the platform name in case no human readable name was found.
-    private static func currentHumanReadablePlatformName() -> String {
+    /// Will return nil, if no human readable string could be found for the current platform
+    private static func humanReadablePlatformNameForCurrentDevice() -> String? {
         let platform = currentPlatform()
         switch platform {
             
@@ -69,7 +77,7 @@ internal struct Device {
         case "iPod3,1":      return "iPod Touch 3G"
         case "iPod4,1":      return "iPod Touch 4G"
         case "iPod5,1":      return "iPod Touch 5G"
-        case "iPod6,1":      return "iPod Touch 6G"
+        case "iPod7,1":      return "iPod Touch 6G"
             
         // iPad
         case "iPad1,1":      return "iPad 1"
@@ -104,28 +112,42 @@ internal struct Device {
         case "iPad6,7":      return "iPad Pro 12.9 (WiFi)"
         case "iPad6,8":      return "iPad Pro 12.9 (Cellular)"
             
+        // Apple Watch
+        case "Watch1,1":      return "Apple Watch 38mm"
+        case "Watch1,2":      return "Apple Watch 42mm"
+        case "Watch2,3":      return "Apple Watch 38mm (Series 2)"
+        case "Watch2,4":      return "Apple Watch 42mm (Series 2)"
+        case "Watch2,6":      return "Apple Watch 38mm (Series 1)"
+        case "Watch2,7":      return "Apple Watch 42mm (Series 1)"
+            
+        // Apple TV
+        case "AppleTV2,1":      return "Apple TV 2G"
+        case "AppleTV3,1":      return "Apple TV 3G"
+        case "AppleTV3,2":      return "Apple TV 3G (2013)"
+        case "AppleTV5,3":      return "Apple TV 4G"
+            
         case "i386":         return "Simulator"
         case "x86_64":       return "Simulator"
             
-        default: return platform
+        default: return nil
         }
     }
     
     /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
-    private static func currentOSVersion() -> String  {
+    private static func osVersionForCurrentDevice() -> String  {
         return UIDevice.current.systemVersion
     }
     
     // Returns the screen size in points
-    private static func currentScreenSize() ->  String {
+    private static func screenSizeForCurrentDevice() ->  CGSize {
         let bounds = UIScreen.main.bounds
-        return "\(bounds.size.width)x\(bounds.size.height)"
+        return bounds.size
     }
     
     // Returns the screen size in pixels
-    private static func currentNativeScreenSize() ->  String {
+    private static func nativeScreenSizeForCurrentDevice() ->  CGSize {
         let bounds = UIScreen.main.nativeBounds
-        return "\(bounds.size.width)x\(bounds.size.height)"
+        return bounds.size
     }
 }
 
