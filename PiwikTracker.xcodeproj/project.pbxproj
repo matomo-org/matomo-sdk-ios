@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3CA5881E071F2C00121FDC /* PiwikUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CA5871E071F2C00121FDC /* PiwikUserDefaults.swift */; };
 		1FCA6D451DBE0B2F0033F01C /* PiwikTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */; };
 		1FCA6D4A1DBE0B2F0033F01C /* PiwikTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA6D491DBE0B2F0033F01C /* PiwikTrackerTests.swift */; };
 		1FCA6D4C1DBE0B2F0033F01C /* PiwikTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F3CA5871E071F2C00121FDC /* PiwikUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaults.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PiwikTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		1FCA6D3F1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		1FCA6D3D1DBE0B2F0033F01C /* PiwikTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1F3CA5871E071F2C00121FDC /* PiwikUserDefaults.swift */,
 				1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 			);
@@ -143,11 +146,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = PIWIK;
 				TargetAttributes = {
 					1FCA6D3A1DBE0B2F0033F01C = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1FCA6D431DBE0B2F0033F01C = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3CA5881E071F2C00121FDC /* PiwikUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +241,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -289,6 +295,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -320,6 +327,7 @@
 		1FCA6D501DBE0B2F0033F01C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -331,6 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.PiwikTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +347,7 @@
 		1FCA6D511DBE0B2F0033F01C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +366,7 @@
 		1FCA6D531DBE0B2F0033F01C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PiwikTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.PiwikTrackerTests;
@@ -367,6 +378,7 @@
 		1FCA6D541DBE0B2F0033F01C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PiwikTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.PiwikTrackerTests;
