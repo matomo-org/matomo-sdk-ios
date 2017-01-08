@@ -27,55 +27,61 @@ import Foundation
 /// - dimension: For now we don't support dimension.
 /// - UserAgent (ua) should be set in the dispatcher, right?
 internal struct Event {
-    internal let uuid = NSUUID().uuidString
+    let uuid: NSUUID
+    let visitor: Visitor
+    let session: Session
     
     /// The Date and Time the event occurred.
     /// api-key: h, m, s
-    internal let date: Date
+    let date: Date
     
     /// The full URL for the current action. 
-    internal let url: URL
+    /// api-key: url
+    let url: URL
     
     /// api-key: action_name
-    internal let actionName: [String]
-    
-    /// Unique ID per visitor (device in this case). Should be
-    /// generated upon first start and never changed after.
-    /// api-key: _id
-    internal let visitorId: String
-    
-    /// An optional user identifier such as email or username.
-    /// api-key: uid
-    internal let userId: String?
-    
-    /// The number of sessions of the current user.
-    /// api-key: _idvc
-    internal let sessionsCount: Int
-    
-    /// The timestamp of the previous visit.
-    /// Discussion: Should this be now for the first request?
-    /// api-key: _viewts
-    internal let lastVisit: Date?
-    
-    /// The timestamp of the fist visit.
-    /// Discussion: Should this be now for the first request?
-    /// api-key: _idts
-    internal let firstVisit: Date?
+    let actionName: [String]
     
     /// The language of the device.
     /// Should be in the format of the Accept-Language HTTP header field.
     /// api-key: lang
-    internal let language: String
+    let language: String
     
     /// Should be set to true for the first event of a session.
     /// api-key: new_visit
-    internal let isNewSesssion: Bool
+    let isNewSession: Bool
     
     /// Currently only used for Campaigns
     /// api-key: urlref
-    internal let referer: URL?
+    let referer: URL?
     
     /// api-key: _cvar
-    //internal let customVariables: [CustomVariable]
+    //let customVariables: [CustomVariable]
 }
 
+internal struct Visitor {
+    /// Unique ID per visitor (device in this case). Should be
+    /// generated upon first start and never changed after.
+    /// api-key: _id
+    let id: String
+    
+    /// An optional user identifier such as email or username.
+    /// api-key: uid
+    let userId: String?
+}
+
+internal struct Session {
+    /// The number of sessions of the current user.
+    /// api-key: _idvc
+    let sessionsCount: Int
+    
+    /// The timestamp of the previous visit.
+    /// Discussion: Should this be now for the first request?
+    /// api-key: _viewts
+    let lastVisit: Date
+    
+    /// The timestamp of the fist visit.
+    /// Discussion: Should this be now for the first request?
+    /// api-key: _idts
+    let firstVisit: Date
+}
