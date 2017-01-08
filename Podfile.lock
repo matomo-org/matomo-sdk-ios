@@ -1,18 +1,24 @@
 PODS:
+  - Nimble (5.1.1)
   - PiwikTracker (3.3.0):
     - PiwikTracker/Core (= 3.3.0)
   - PiwikTracker/Core (3.3.0)
+  - Quick (0.10.0)
 
 DEPENDENCIES:
+  - Nimble (~> 5.1)
   - PiwikTracker (from `./`)
+  - Quick (~> 0.10)
 
 EXTERNAL SOURCES:
   PiwikTracker:
     :path: "./"
 
 SPEC CHECKSUMS:
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   PiwikTracker: 7147287d30a3192289bef9cddb2b5342d67dae43
+  Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
 
-PODFILE CHECKSUM: 86a49073b130b0cfa2a3e8055c1d251f1ce82098
+PODFILE CHECKSUM: f70fd7401353e20adf4e5df7e414158725d0461d
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

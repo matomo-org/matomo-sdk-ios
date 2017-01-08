@@ -7,6 +7,7 @@ namespace :test do
 
   desc 'Run the PiwikTracker Unit tests'
   task ios: :prepare do
+    run_tests('PiwikTracker', 'iphonesimulator')
   end
 
   # currently this links against nonexisting files
@@ -37,12 +38,12 @@ task default: 'test'
 
 private
 
-def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
+def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
-def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
-  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
+def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
+  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
 def is_mavericks_or_above
