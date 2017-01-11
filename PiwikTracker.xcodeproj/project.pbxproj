@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F092C141E224C3E00394B30 /* PiwikUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */; };
 		1F092C161E225E0200394B30 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C151E225E0200394B30 /* Event.swift */; };
+		1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C191E26B44500394B30 /* Dispatcher.swift */; };
 		1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F11E17A91100458199 /* MemoryQueue.swift */; };
 		1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */; };
 		1F1949F81E17B2C800458199 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaults.swift; sourceTree = "<group>"; };
 		1F092C151E225E0200394B30 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1F092C191E26B44500394B30 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		1F1949F11E17A91100458199 /* MemoryQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueue.swift; sourceTree = "<group>"; };
 		1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueueSpec.swift; sourceTree = "<group>"; };
 		1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryQueueFixtures.swift; path = Fixtures/MemoryQueueFixtures.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		1FCA6D3D1DBE0B2F0033F01C /* PiwikTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1F092C191E26B44500394B30 /* Dispatcher.swift */,
 				1F092C151E225E0200394B30 /* Event.swift */,
 				1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */,
 				1F3CA58B1E09A30600121FDC /* Queue.swift */,
@@ -300,6 +303,7 @@
 				1F092C141E224C3E00394B30 /* PiwikUserDefaults.swift in Sources */,
 				1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */,
 				1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */,
+				1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
