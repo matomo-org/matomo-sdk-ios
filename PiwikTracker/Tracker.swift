@@ -14,10 +14,8 @@ final public class Tracker: NSObject {
         startDispatchTimer()
     }
     
-    private func queue(event: Event) {
-        queue.queue(item: event) { 
-            // Discussion: Do we want the possibility to dispatch synchronous?
-        }
+    func queue(event: Event) {
+        queue.enqueue(event: event)
     }
     
     // MARK: dispatching
@@ -27,7 +25,7 @@ final public class Tracker: NSObject {
     
     func dispatch () {
         guard !isDispatching else { return }
-        guard queue.itemCount > 0 else {
+        guard queue.eventCount > 0 else {
             startDispatchTimer()
             return
         }
@@ -36,16 +34,12 @@ final public class Tracker: NSObject {
     }
     
     private func dispatchBatch() {
-        queue.dequeue(withLimit: dispatchCount) { events in
+        queue.first(limit: dispatchCount) { events in
             self.dispatcher.send(events: events, success: {
-                dispatchBatch()
-            }, failure: { shouldContinue in
-                // Should the events be dispatched in exact order? If so, in case of a failure we cannot continue with the next items.
-                
-                // Also: Dequeueing items an re-queueing items in case of an error is error-prone. If the app crashes during dispatching all currently dispatching events would be lost. And requeueing results in wrong ordered events if we don't sort them otherwise.
-                for event in events {
-                    self.queue.queue(item: event) {}
-                }
+                self.queue.remove(events: events, completion: {
+                    dispatchBatch()
+                })
+            }, failure: {
                 self.isDispatching = false
             })
         }

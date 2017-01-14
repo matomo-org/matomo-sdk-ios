@@ -14,8 +14,8 @@ struct MemoryQueueFixture {
     }
     static func withTwoItems() -> MemoryQueue {
         var queue = MemoryQueue()
-        queue.queue(item: EventFixture.event(), completion: {})
-        queue.queue(item: EventFixture.event(), completion: {})
+        queue.enqueue(event: EventFixture.event())
+        queue.enqueue(event: EventFixture.event())
         return queue
     }
 }
