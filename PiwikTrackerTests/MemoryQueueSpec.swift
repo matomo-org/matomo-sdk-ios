@@ -6,7 +6,7 @@ class MemoryQueueSpec: QuickSpec {
     override func spec() {
         describe("init") {
             it("should return not null") {
-                let queue = MemoryQueue<Any>()
+                let queue = MemoryQueue()
                 expect(queue).toNot(beNil())
             }
         }
@@ -27,27 +27,27 @@ class MemoryQueueSpec: QuickSpec {
         describe("queue") {
             it("should increase item count") {
                 var queue = MemoryQueueFixture.empty()
-                queue.queue(item: MemoryQueueFixture.queueable(), completion: {})
+                queue.queue(item: EventFixture.event(), completion: {})
                 expect(queue.itemCount).toEventually(equal(1))
             }
             it("should call the completion closure") {
                 var queue = MemoryQueueFixture.empty()
                 var calledClosure = false
-                queue.queue(item: MemoryQueueFixture.queueable(), completion: {
+                queue.queue(item: EventFixture.event(), completion: {
                     calledClosure = true
                 })
                 expect(calledClosure).toEventually(beTrue())
             }
             it("should enqueue the object") {
                 var queue = MemoryQueueFixture.empty()
-                let dummy = Dummy()
-                var dequeued: Dummy? = nil
-                queue.queue(item: dummy, completion: {})
+                let event = EventFixture.event()
+                var dequeued: Event? = nil
+                queue.queue(item: event, completion: {})
                 queue.dequeue{ item in
-                    dequeued = item as? Dummy
+                    dequeued = item
                 }
                 expect(dequeued).toEventuallyNot(beNil())
-                expect(dequeued?.uuid).toEventually(equal(dummy.uuid))
+                expect(dequeued?.uuid).toEventually(equal(event.uuid))
             }
         }
         describe("dequeue") {
