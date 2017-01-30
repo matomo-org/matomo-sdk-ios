@@ -42,9 +42,9 @@ final public class Tracker: NSObject {
             }
             self.dispatcher.send(events: events, success: {
                 self.queue.remove(events: events, completion: {
-                    dispatchBatch()
+                    self.dispatchBatch()
                 })
-            }, failure: {
+            }, failure: { _ in
                 self.isDispatching = false
             })
         }
