@@ -20,7 +20,7 @@ final public class Tracker: NSObject {
     
     // MARK: dispatching
     
-    private let dispatchCount = 20
+    private let numberOfEventsDispatchedAtOnce = 20
     public private(set) var isDispatching = false
     
     func dispatch () {
@@ -34,7 +34,12 @@ final public class Tracker: NSObject {
     }
     
     private func dispatchBatch() {
-        queue.first(limit: dispatchCount) { events in
+        queue.first(limit: numberOfEventsDispatchedAtOnce) { events in
+            guard events.count > 0 else {
+                // there are no more events queued, finish dispatching
+                self.isDispatching = false
+                return
+            }
             self.dispatcher.send(events: events, success: {
                 self.queue.remove(events: events, completion: {
                     dispatchBatch()
