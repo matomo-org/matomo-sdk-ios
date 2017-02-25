@@ -1,34 +1,21 @@
 @testable import PiwikTracker
-import Foundation
 
-class Dummy: NSObject, NSCoding {
-    let uuid: UUID
-    public override init() {
-        uuid = UUID()
-    }
-    public init(uuid: UUID) {
-        self.uuid = uuid
-    }
-    public func encode(with aCoder: NSCoder) {
-        aCoder.encode(uuid, forKey: "uuid")
-    }
-    public convenience required init?(coder aDecoder: NSCoder) {
-        let uuid = aDecoder.decodeObject(forKey: "uuid") as! UUID
-        self.init(uuid: uuid)
+struct EventFixture {
+    static func event() -> Event {
+        let visitor = Visitor(id: "spec_visitor_id", userId: "spec_user_id")
+        let session = Session(sessionsCount: 0, lastVisit: Date(), firstVisit: Date())
+        return Event(uuid: NSUUID.init(), visitor: visitor, session: session, date: Date(), url: URL(string: "http://spec_url")!, actionName: ["spec_action"], language: "spec_language", isNewSession: true, referer: nil)
     }
 }
 
 struct MemoryQueueFixture {
-    static func empty() -> MemoryQueue<Any> {
+    static func empty() -> MemoryQueue {
         return MemoryQueue()
     }
-    static func withTwoItems() -> MemoryQueue<Dummy> {
-        var queue = MemoryQueue<Dummy>()
-        queue.queue(item: Dummy(), completion: {})
-        queue.queue(item: Dummy(), completion: {})
+    static func withTwoItems() -> MemoryQueue {
+        var queue = MemoryQueue()
+        queue.enqueue(event: EventFixture.event())
+        queue.enqueue(event: EventFixture.event())
         return queue
-    }
-    static func queueable() -> NSCoding {
-        return Dummy()
     }
 }

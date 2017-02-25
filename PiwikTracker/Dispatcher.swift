@@ -1,9 +1,10 @@
 import Foundation
 
-internal protocol Dispatcher {    
+public protocol Dispatcher {
+    
+    var baseURL: URL { get }
+    
     var userAgent: String? { get }
-    
-    func send(event: Event, success: ()->(), failure: (_ shouldContinue: Bool)->());
-    
-    func send(events: [Event], success: ()->(), failure: (_ shouldContinue: Bool)->());
+        
+    func send(events: [Event], success: ()->(), failure: ()->());
 }

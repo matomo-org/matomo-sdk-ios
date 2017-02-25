@@ -26,7 +26,7 @@ import Foundation
 /// - cid: We will use the uid instead of the cid.
 /// - dimension: For now we don't support dimension.
 /// - UserAgent (ua) should be set in the dispatcher, right?
-internal struct Event {
+public struct Event {
     let uuid: NSUUID
     let visitor: Visitor
     let session: Session
