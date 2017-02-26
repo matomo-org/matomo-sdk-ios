@@ -59,30 +59,3 @@ public struct Event {
     /// api-key: _cvar
     //let customVariables: [CustomVariable]
 }
-
-struct Visitor {
-    /// Unique ID per visitor (device in this case). Should be
-    /// generated upon first start and never changed after.
-    /// api-key: _id
-    let id: String
-    
-    /// An optional user identifier such as email or username.
-    /// api-key: uid
-    let userId: String?
-}
-
-struct Session {
-    /// The number of sessions of the current user.
-    /// api-key: _idvc
-    let sessionsCount: Int
-    
-    /// The timestamp of the previous visit.
-    /// Discussion: Should this be now for the first request?
-    /// api-key: _viewts
-    let lastVisit: Date
-    
-    /// The timestamp of the fist visit.
-    /// Discussion: Should this be now for the first request?
-    /// api-key: _idts
-    let firstVisit: Date
-}

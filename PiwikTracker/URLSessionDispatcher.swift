@@ -33,9 +33,9 @@ final class URLSessionDispatcher: Dispatcher {
         let eventsAsQueryItems = events.map({ event in event.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
             items.flatMap({ item in
-                guard let value = item.value else { return nil }
-                let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                return "\(item.name)=\(value)"
+                guard let value = item.value,
+                    let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return nil }
+                return "\(item.name)=\(encodedValue)"
             }).joined(separator: "&")
         })
         let body = ["requests": serializedEvents.map({ "?\($0)" })]
@@ -54,6 +54,8 @@ final class URLSessionDispatcher: Dispatcher {
     
     private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
         let task = session.dataTask(with: request) { data, response, error in
+            // should we check the response?
+            // let dataString = String(data: data!, encoding: String.Encoding.utf8)
             if error == nil {
                 success()
             } else {

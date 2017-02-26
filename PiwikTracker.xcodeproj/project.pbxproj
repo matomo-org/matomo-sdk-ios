@@ -10,6 +10,8 @@
 		1F092C141E224C3E00394B30 /* PiwikUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */; };
 		1F092C161E225E0200394B30 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C151E225E0200394B30 /* Event.swift */; };
 		1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F092C191E26B44500394B30 /* Dispatcher.swift */; };
+		1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0A15CD1E6335D800FEAE72 /* Visitor.swift */; };
+		1F0A15D01E6335E900FEAE72 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0A15CF1E6335E900FEAE72 /* Session.swift */; };
 		1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F11E17A91100458199 /* MemoryQueue.swift */; };
 		1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */; };
 		1F1949F81E17B2C800458199 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
@@ -41,6 +43,8 @@
 		1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaults.swift; sourceTree = "<group>"; };
 		1F092C151E225E0200394B30 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1F092C191E26B44500394B30 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		1F0A15CD1E6335D800FEAE72 /* Visitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visitor.swift; sourceTree = "<group>"; };
+		1F0A15CF1E6335E900FEAE72 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1F1949F11E17A91100458199 /* MemoryQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueue.swift; sourceTree = "<group>"; };
 		1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueueSpec.swift; sourceTree = "<group>"; };
 		1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryQueueFixtures.swift; path = Fixtures/MemoryQueueFixtures.swift; sourceTree = "<group>"; };
@@ -83,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0A15CC1E6335CA00FEAE72 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				1F092C151E225E0200394B30 /* Event.swift */,
+				1F0A15CD1E6335D800FEAE72 /* Visitor.swift */,
+				1F0A15CF1E6335E900FEAE72 /* Session.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
 		1F1949F51E17B2A400458199 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +128,10 @@
 		1FCA6D3D1DBE0B2F0033F01C /* PiwikTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1F0A15CC1E6335CA00FEAE72 /* Event */,
 				2DD4A0971E34013600CCFA93 /* Application.swift */,
 				2DE767EE1E0890CA00CA3CD7 /* Device.swift */,
 				1F092C191E26B44500394B30 /* Dispatcher.swift */,
-				1F092C151E225E0200394B30 /* Event.swift */,
 				1F1949F11E17A91100458199 /* MemoryQueue.swift */,
 				1F092C131E224C3E00394B30 /* PiwikUserDefaults.swift */,
 				1F3CA58B1E09A30600121FDC /* Queue.swift */,
@@ -220,7 +234,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = PIWIK;
 				TargetAttributes = {
 					1FCA6D3A1DBE0B2F0033F01C = {
@@ -330,7 +344,9 @@
 				1F6F0CD71E61E35A008170FC /* Tracker.swift in Sources */,
 				1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */,
 				1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */,
+				1F0A15D01E6335E900FEAE72 /* Session.swift in Sources */,
 				1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */,
+				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +393,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -430,6 +447,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -469,6 +487,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PiwikTracker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.PiwikTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -489,6 +508,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PiwikTracker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.PiwikTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
