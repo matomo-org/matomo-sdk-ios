@@ -6,7 +6,11 @@ final class URLSessionDispatcher: Dispatcher {
     let session: URLSession
     let baseURL: URL
     
-    var userAgent: String? = "Piwik iOS SDK URLSessionDispatcher"
+    var userAgent: String? = {
+        let webView = UIWebView(frame: .zero)
+        let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        return currentUserAgent.appending(" Piwik iOS SDK URLSessionDispatcher")
+    }()
     
     init(baseURL: URL) {
         if !baseURL.absoluteString.hasSuffix("piwik.php") {
@@ -28,8 +32,10 @@ final class URLSessionDispatcher: Dispatcher {
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
         let eventsAsQueryItems = events.map({ event in event.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
-            items.map({ item in
-                return "\(item.name)=\(item.value)"
+            items.flatMap({ item in
+                guard let value = item.value else { return nil }
+                let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                return "\(item.name)=\(value)"
             }).joined(separator: "&")
         })
         let body = ["requests": serializedEvents.map({ "?\($0)" })]
@@ -63,21 +69,23 @@ fileprivate extension Event {
     var queryItems: [URLQueryItem] {
         get {
             return [
+                URLQueryItem(name: "idsite", value: siteId),
+                URLQueryItem(name: "rec", value: "1"),
                 // Visitor
                 URLQueryItem(name: "_id", value: visitor.id),
                 URLQueryItem(name: "uid", value: visitor.userId),
                 
                 // Session
                 URLQueryItem(name: "_idvc", value: "\(session.sessionsCount)"),
-                URLQueryItem(name: "_viewts", value: "\(session.lastVisit.timeIntervalSince1970)"),
-                URLQueryItem(name: "_idts", value: "\(session.firstVisit.timeIntervalSince1970)"),
+                URLQueryItem(name: "_viewts", value: "\(Int(session.lastVisit.timeIntervalSince1970))"),
+                URLQueryItem(name: "_idts", value: "\(Int(session.firstVisit.timeIntervalSince1970))"),
                 
                 URLQueryItem(name: "url", value:url.absoluteString),
                 URLQueryItem(name: "action_name", value: actionName.joined(separator: "/")),
                 URLQueryItem(name: "lang", value: language),
                 URLQueryItem(name: "urlref", value: referer?.absoluteString),
                 URLQueryItem(name: "new_visit", value: isNewSession ? "1" : nil),
-                
+
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),

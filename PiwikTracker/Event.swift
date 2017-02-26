@@ -27,6 +27,7 @@ import Foundation
 /// - dimension: For now we don't support dimension.
 /// - UserAgent (ua) should be set in the dispatcher, right?
 public struct Event {
+    let siteId: String
     let uuid: NSUUID
     let visitor: Visitor
     let session: Session
@@ -59,7 +60,7 @@ public struct Event {
     //let customVariables: [CustomVariable]
 }
 
-internal struct Visitor {
+struct Visitor {
     /// Unique ID per visitor (device in this case). Should be
     /// generated upon first start and never changed after.
     /// api-key: _id
@@ -70,7 +71,7 @@ internal struct Visitor {
     let userId: String?
 }
 
-internal struct Session {
+struct Session {
     /// The number of sessions of the current user.
     /// api-key: _idvc
     let sessionsCount: Int
