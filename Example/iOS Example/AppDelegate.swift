@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Example
-//
-//  Created by Cornelius Horstmann on 25.02.17.
-//  Copyright © 2017 Mattias Levin. All rights reserved.
-//
-
 import UIKit
 import PiwikTracker
 
