@@ -72,7 +72,7 @@ final public class Tracker: NSObject {
 
 // shared instance
 extension Tracker {
-    public static var sharedInstance: Tracker? {
+    public static var shared: Tracker? {
         get { return _sharedInstance }
     }
     

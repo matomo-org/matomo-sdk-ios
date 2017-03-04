@@ -8,7 +8,7 @@ class ConfigurationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Tracker.sharedInstance?.track(view: ["configuration"])
+        Tracker.shared?.track(view: ["configuration"])
         
         baseURLTextField.text = UserDefaults.standard.url(forKey: "piwik-example-baseurl")?.absoluteString
         siteIDTextField.text = UserDefaults.standard.string(forKey: "piwik-example-siteid")
@@ -30,7 +30,7 @@ class ConfigurationViewController: UIViewController {
     }
     
     @IBAction func dispatchButtonTapped(_ sender: UIButton) {
-        Tracker.sharedInstance?.dispatch()
+        Tracker.shared?.dispatch()
     }
 
 }
