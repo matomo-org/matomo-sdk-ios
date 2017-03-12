@@ -5,7 +5,7 @@ import Foundation
 /// All getter and setter are sideeffect free and automatically syncronize
 /// after writing.
 internal struct PiwikUserDefaults {
-    static let standard = PiwikUserDefaults()
+    static var standard = PiwikUserDefaults()
     let userDefaults = UserDefaults.standard
     
     var totalNumberOfVisits: Int {
@@ -58,13 +58,14 @@ internal struct PiwikUserDefaults {
         }
     }
     
-    func clientId() -> String? {
-        return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorID)
-    }
-    
-    func set(clientId: String) {
-        userDefaults.setValue(clientId, forKey: PiwikUserDefaults.Key.visitorID)
-        userDefaults.synchronize()
+    var clientId: String? {
+        get {
+            return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorID)
+        }
+        set {
+            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.visitorID)
+            userDefaults.synchronize()
+        }
     }
 }
 

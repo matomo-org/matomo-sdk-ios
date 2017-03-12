@@ -2,6 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 abstract_target :example do
   platform :ios, '8.0'
+  use_frameworks!
   inhibit_all_warnings!
   workspace 'PiwikTracker'
   project 'Example/Example'
