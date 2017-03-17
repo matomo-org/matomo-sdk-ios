@@ -845,7 +845,7 @@ static PiwikTracker *_sharedInstance;
   // Add local time
   NSDate *now = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
-  unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit |  NSSecondCalendarUnit;
+  unsigned unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute |  NSCalendarUnitSecond;
   NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:now];
   joinedParameters[PiwikParameterHours] = [NSString stringWithFormat:@"%ld", (long)[dateComponents hour]];
   joinedParameters[PiwikParameterMinutes] = [NSString stringWithFormat:@"%ld", (long)[dateComponents minute]];
