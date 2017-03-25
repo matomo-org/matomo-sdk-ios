@@ -8,7 +8,7 @@ class ConfigurationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Tracker.shared?.track(view: ["configuration"])
+        Tracker.shared?.track(view: ["menu","configuration"])
         
         baseURLTextField.text = UserDefaults.standard.url(forKey: "piwik-example-baseurl")?.absoluteString
         siteIDTextField.text = UserDefaults.standard.string(forKey: "piwik-example-siteid")
