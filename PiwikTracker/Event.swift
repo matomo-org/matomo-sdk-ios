@@ -58,4 +58,11 @@ public struct Event {
     
     /// api-key: _cvar
     //let customVariables: [CustomVariable]
+    
+    /// Event tracking
+    /// https://piwik.org/docs/event-tracking/
+    let eventCategory: String?
+    let eventAction: String?
+    let eventName: String?
+    let eventValue: Float?
 }
