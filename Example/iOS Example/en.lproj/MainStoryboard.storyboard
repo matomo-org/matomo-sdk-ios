@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,7 +77,7 @@
                                             <segue destination="EE7-OR-Lgd" kind="push" id="wnn-E8-GXc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="FzY-SE-YEP" style="IBUITableViewCellStyleDefault" id="YbN-sD-lqf" userLabel="Table View Cell - Custom variables">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="FzY-SE-YEP" style="IBUITableViewCellStyleDefault" id="YbN-sD-lqf" userLabel="Table View Cell - Custom variables">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YbN-sD-lqf" id="feu-lM-6Kn">
@@ -96,7 +97,7 @@
                                             <segue destination="CDD-fq-XoC" kind="push" id="rNl-Ig-rRF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9IC-4G-KnW" style="IBUITableViewCellStyleDefault" id="Rnt-o0-uS7" userLabel="Table View Cell - Exceptions">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9IC-4G-KnW" style="IBUITableViewCellStyleDefault" id="Rnt-o0-uS7" userLabel="Table View Cell - Exceptions">
                                         <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rnt-o0-uS7" id="OLA-0D-0Va">
@@ -116,7 +117,7 @@
                                             <segue destination="bt7-Hr-t4k" kind="push" id="8jN-nl-uEj"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PDz-rK-OoO" style="IBUITableViewCellStyleDefault" id="KG9-Yu-6wh" userLabel="Table View Cell - Social interaction">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PDz-rK-OoO" style="IBUITableViewCellStyleDefault" id="KG9-Yu-6wh" userLabel="Table View Cell - Social interaction">
                                         <rect key="frame" x="0.0" y="231.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KG9-Yu-6wh" id="gKQ-Us-Q4J">
@@ -136,7 +137,7 @@
                                             <segue destination="T3G-ki-nmF" kind="push" id="aQE-wl-YPo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hoq-y7-LZB" style="IBUITableViewCellStyleDefault" id="ujn-YL-G8y" userLabel="Table View Cell - Content tracking">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hoq-y7-LZB" style="IBUITableViewCellStyleDefault" id="ujn-YL-G8y" userLabel="Table View Cell - Content tracking">
                                         <rect key="frame" x="0.0" y="275.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ujn-YL-G8y" id="Goz-NC-F3a">
@@ -156,7 +157,7 @@
                                             <segue destination="Mn5-Jo-OEE" kind="push" id="zAK-q6-4db"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rJq-aR-fRd" style="IBUITableViewCellStyleDefault" id="wj3-q5-M7f" userLabel="Table View Cell - Content tracking">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rJq-aR-fRd" style="IBUITableViewCellStyleDefault" id="wj3-q5-M7f" userLabel="Table View Cell - Content tracking">
                                         <rect key="frame" x="0.0" y="319.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wj3-q5-M7f" id="exP-aE-kCY">
@@ -180,7 +181,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Search" id="D2G-yR-FkY" userLabel="Table View Section - Search">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Go-tE-Ysp" style="IBUITableViewCellStyleDefault" id="dij-ud-Cse" userLabel="Table View Cell - Search">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Go-tE-Ysp" style="IBUITableViewCellStyleDefault" id="dij-ud-Cse" userLabel="Table View Cell - Search">
                                         <rect key="frame" x="0.0" y="411.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dij-ud-Cse" id="wfU-9V-eCn">
@@ -204,7 +205,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Conversion" id="Ykb-Nf-a3l" userLabel="Table View Section - Conversion">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
                                         <rect key="frame" x="0.0" y="503.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QY8-q1-L0P" id="gNI-EU-T3B">
@@ -224,7 +225,7 @@
                                             <segue destination="mjb-xj-Rpd" kind="push" id="dNO-VD-dob"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wFM-RN-ccQ" style="IBUITableViewCellStyleDefault" id="opC-Eg-HGF" userLabel="Table View Cell - Ecommerce">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wFM-RN-ccQ" style="IBUITableViewCellStyleDefault" id="opC-Eg-HGF" userLabel="Table View Cell - Ecommerce">
                                         <rect key="frame" x="0.0" y="547.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="opC-Eg-HGF" id="H1r-jj-weM">
@@ -248,7 +249,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Other" id="6kC-bt-yx9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
                                         <rect key="frame" x="0.0" y="639.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
@@ -268,7 +269,7 @@
                                             <segue destination="xqt-PP-0XP" kind="push" id="xdE-zM-rgA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WVV-vG-MDD" style="IBUITableViewCellStyleDefault" id="2t3-Re-M7O" userLabel="Table View Cell - Campaign">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WVV-vG-MDD" style="IBUITableViewCellStyleDefault" id="2t3-Re-M7O" userLabel="Table View Cell - Campaign">
                                         <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2t3-Re-M7O" id="ffB-O7-QqS">
@@ -288,7 +289,7 @@
                                             <segue destination="otS-XA-W6b" kind="push" id="dZR-iq-O8b"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
                                         <rect key="frame" x="0.0" y="727.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lXW-WA-gLT" id="eVL-TU-VbE">
@@ -352,34 +353,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create new session for current user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-z5-2ZP">
-                                <rect key="frame" x="46" y="320" width="241" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piwik base URL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk2-cN-zsm">
+                                <rect key="frame" x="26" y="83" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://piwik.org/piwik.php" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-8W-4Id">
+                                <rect key="frame" x="26" y="112" width="323" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piwik site ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v5-vg-4Cc">
+                                <rect key="frame" x="26" y="178" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltT-74-Efe">
+                                <rect key="frame" x="26" y="207" width="323" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new session for current user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-z5-2ZP">
+                                <rect key="frame" x="26" y="320" width="323" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-8g-GWa">
-                                <rect key="frame" x="123" y="349" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New session">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-8g-GWa">
+                                <rect key="frame" x="26" y="345" width="323" height="30"/>
+                                <state key="normal" title="New session"/>
                                 <connections>
-                                    <action selector="newSessionAction:" destination="ELK-4A-Qjl" eventType="touchUpInside" id="LOv-h7-bSa"/>
                                     <action selector="newSessionButtonTapped:" destination="ELK-4A-Qjl" eventType="touchUpInside" id="I4L-1r-0XH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dispatch queued events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPX-cX-hGF">
-                                <rect key="frame" x="73" y="435" width="186" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dispatch queued events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPX-cX-hGF">
+                                <rect key="frame" x="26" y="431" width="323" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLz-Lp-6Cf">
-                                <rect key="frame" x="126" y="464" width="81" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLz-Lp-6Cf">
+                                <rect key="frame" x="26" y="456" width="323" height="30"/>
                                 <state key="normal" title="Dispatch">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -387,36 +405,34 @@
                                     <action selector="dispatchButtonTapped:" destination="ELK-4A-Qjl" eventType="touchUpInside" id="kqs-VC-KlB"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://piwik.org/piwik.php" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-8W-4Id">
-                                <rect key="frame" x="46" y="112" width="271" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltT-74-Efe">
-                                <rect key="frame" x="139" y="207" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Piwik base URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk2-cN-zsm">
-                                <rect key="frame" x="128" y="83" width="118" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Piwik site ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v5-vg-4Cc">
-                                <rect key="frame" x="135" y="178" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hk2-cN-zsm" firstAttribute="leading" secondItem="4ll-cH-kGS" secondAttribute="leadingMargin" constant="10" id="5Kd-nV-P5g"/>
+                            <constraint firstItem="NLz-Lp-6Cf" firstAttribute="top" secondItem="vPX-cX-hGF" secondAttribute="bottom" constant="8" id="5gy-6N-vrl"/>
+                            <constraint firstItem="ltT-74-Efe" firstAttribute="leading" secondItem="9v5-vg-4Cc" secondAttribute="leading" id="7Ac-WU-8aQ"/>
+                            <constraint firstItem="ZiI-8g-GWa" firstAttribute="top" secondItem="qg7-z5-2ZP" secondAttribute="bottom" constant="8" id="9Fr-3H-7SV"/>
+                            <constraint firstItem="ZiI-8g-GWa" firstAttribute="trailing" secondItem="qg7-z5-2ZP" secondAttribute="trailing" id="9Fv-oj-JYR"/>
+                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="top" secondItem="NbW-8W-4Id" secondAttribute="bottom" constant="36" id="F1q-0Q-Dpv"/>
+                            <constraint firstItem="vPX-cX-hGF" firstAttribute="top" secondItem="ZiI-8g-GWa" secondAttribute="bottom" constant="56" id="HN5-ui-I1f"/>
+                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="top" secondItem="ltT-74-Efe" secondAttribute="bottom" constant="83" id="M7b-OB-rUK"/>
+                            <constraint firstItem="NbW-8W-4Id" firstAttribute="top" secondItem="Hk2-cN-zsm" secondAttribute="bottom" constant="8" id="N6S-c2-y2a"/>
+                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="leading" secondItem="ltT-74-Efe" secondAttribute="leading" id="NTw-JM-p94"/>
+                            <constraint firstItem="NbW-8W-4Id" firstAttribute="leading" secondItem="Hk2-cN-zsm" secondAttribute="leading" id="Q7y-Z6-vfA"/>
+                            <constraint firstItem="NbW-8W-4Id" firstAttribute="trailing" secondItem="Hk2-cN-zsm" secondAttribute="trailing" id="XWG-Bg-vv2"/>
+                            <constraint firstItem="vPX-cX-hGF" firstAttribute="leading" secondItem="ZiI-8g-GWa" secondAttribute="leading" id="XY9-I6-brN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hk2-cN-zsm" secondAttribute="trailing" constant="10" id="Zjg-9w-MZJ"/>
+                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="leading" secondItem="NbW-8W-4Id" secondAttribute="leading" id="cpX-js-4ap"/>
+                            <constraint firstItem="vPX-cX-hGF" firstAttribute="trailing" secondItem="ZiI-8g-GWa" secondAttribute="trailing" id="dZU-gS-7v9"/>
+                            <constraint firstItem="ltT-74-Efe" firstAttribute="top" secondItem="9v5-vg-4Cc" secondAttribute="bottom" constant="8" id="eJc-r8-NrO"/>
+                            <constraint firstItem="Hk2-cN-zsm" firstAttribute="top" secondItem="9dV-fz-7Hl" secondAttribute="bottom" constant="19" id="f05-u8-vuz"/>
+                            <constraint firstItem="NLz-Lp-6Cf" firstAttribute="leading" secondItem="vPX-cX-hGF" secondAttribute="leading" id="gHV-ug-XlX"/>
+                            <constraint firstItem="ZiI-8g-GWa" firstAttribute="leading" secondItem="qg7-z5-2ZP" secondAttribute="leading" id="gLt-7g-UeW"/>
+                            <constraint firstItem="ltT-74-Efe" firstAttribute="trailing" secondItem="9v5-vg-4Cc" secondAttribute="trailing" id="nPt-YV-DDg"/>
+                            <constraint firstItem="NLz-Lp-6Cf" firstAttribute="trailing" secondItem="vPX-cX-hGF" secondAttribute="trailing" id="seh-9M-oTA"/>
+                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="trailing" secondItem="NbW-8W-4Id" secondAttribute="trailing" id="uGO-hb-3JH"/>
+                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="trailing" secondItem="ltT-74-Efe" secondAttribute="trailing" id="v5I-zn-H9b"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Configuration" id="ueI-zU-Ipw"/>
                     <connections>
@@ -916,7 +932,7 @@ Store the id locally in the app and set it directly after the tracker is created
         <!--Events-->
         <scene sceneID="MgX-5m-tVq">
             <objects>
-                <viewController title="Events" id="EE7-OR-Lgd" customClass="EventsViewController" sceneMemberID="viewController">
+                <viewController title="Events" id="EE7-OR-Lgd" customClass="EventsViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sge-Px-nzM"/>
                         <viewControllerLayoutGuide type="bottom" id="HfH-E0-oi6"/>
@@ -925,32 +941,37 @@ Store the id locally in the app and set it directly after the tracker is created
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="rjy-TF-AYA">
-                                <rect key="frame" x="20" y="120" width="280" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="rjy-TF-AYA">
+                                <rect key="frame" x="26" y="114" width="323" height="117"/>
                                 <string key="text">Track events to collect data about the users interaction with the app, like button taps, completing a level in a game, downloading a file etc.  An event contains a category, action, name and optional value.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-u4-LMD">
-                                <rect key="frame" x="120" y="307" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-u4-LMD">
+                                <rect key="frame" x="147" y="281" width="81" height="30"/>
                                 <state key="normal" title="Track Event">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendEventAction:" destination="EE7-OR-Lgd" eventType="touchUpInside" id="MrV-17-Nnp"/>
+                                    <action selector="trackEventButtonTapped:" destination="EE7-OR-Lgd" eventType="touchUpInside" id="oHR-DK-GEj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rjy-TF-AYA" firstAttribute="top" secondItem="Sge-Px-nzM" secondAttribute="bottom" constant="50" id="2gv-qe-V7j"/>
+                            <constraint firstItem="yeh-u4-LMD" firstAttribute="top" secondItem="rjy-TF-AYA" secondAttribute="bottom" constant="50" id="Hw0-G4-W6X"/>
+                            <constraint firstItem="rjy-TF-AYA" firstAttribute="leading" secondItem="mWd-pT-ADY" secondAttribute="leadingMargin" constant="10" id="JWx-dp-JwR"/>
+                            <constraint firstItem="yeh-u4-LMD" firstAttribute="centerX" secondItem="mWd-pT-ADY" secondAttribute="centerX" id="PPx-0y-OaF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rjy-TF-AYA" secondAttribute="trailing" constant="10" id="f2h-kL-fiZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="cOg-hy-k3B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aL-fE-DAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="-1925"/>
+            <point key="canvasLocation" x="1617" y="-2054"/>
         </scene>
         <!--Custom variables-->
         <scene sceneID="ynN-jo-rwj">
@@ -1020,7 +1041,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
         <!--Screen Views-->
         <scene sceneID="24">
             <objects>
-                <viewController title="Screen Views" id="21" customClass="ScreenViewController" sceneMemberID="viewController">
+                <viewController title="Screen Views" id="21" customClass="ScreenViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BSr-mZ-vQZ"/>
                         <viewControllerLayoutGuide type="bottom" id="FuA-Pu-dLL"/>
@@ -1029,18 +1050,16 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="27">
-                                <rect key="frame" x="20" y="120" width="280" height="151"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="27">
+                                <rect key="frame" x="26" y="114" width="323" height="100.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Track screen views when a new view become vissible.   The recommendation is to report the full hierarchy of a screen, in this case "screen/menu/screen view".  By default screen views are prefixed with "screen".</string>
+                                <string key="text">Track screen views when a new view become vissible.   The recommendation is to report the full hierarchy of a screen, in this case "menu/screen view".</string>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcE-1A-9jV">
-                                <rect key="frame" x="119" y="279" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcE-1A-9jV">
+                                <rect key="frame" x="146" y="264.5" width="83" height="30"/>
                                 <state key="normal" title="Next screen">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -1050,6 +1069,13 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="27" secondAttribute="trailing" constant="10" id="5hv-Xd-9sm"/>
+                            <constraint firstItem="kcE-1A-9jV" firstAttribute="top" secondItem="27" secondAttribute="bottom" constant="50" id="9ps-pI-84U"/>
+                            <constraint firstItem="kcE-1A-9jV" firstAttribute="centerX" secondItem="22" secondAttribute="centerX" id="Pjb-o9-tkw"/>
+                            <constraint firstItem="27" firstAttribute="leading" secondItem="22" secondAttribute="leadingMargin" constant="10" id="VFU-ow-wSj"/>
+                            <constraint firstItem="27" firstAttribute="top" secondItem="BSr-mZ-vQZ" secondAttribute="bottom" constant="50" id="sk0-h1-upi"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Screen View" id="26">
                         <barButtonItem key="backBarButtonItem" title="Back" id="2hS-Fp-nvS"/>
@@ -1057,12 +1083,12 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="-2620"/>
+            <point key="canvasLocation" x="1617" y="-2789"/>
         </scene>
         <!--Screen view 2-->
         <scene sceneID="StQ-nc-ptj">
             <objects>
-                <viewController title="Screen view 2" id="Bj1-bB-7qk" customClass="Screen2ViewController" sceneMemberID="viewController">
+                <viewController title="Screen view 2" id="Bj1-bB-7qk" customClass="SecondScreenViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x3D-Hg-I9v"/>
                         <viewControllerLayoutGuide type="bottom" id="tWZ-mG-V2w"/>
@@ -1071,9 +1097,8 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="New screen view tracked as &quot;screen/menu/screen view/screen view 2&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-Ld-SCX">
-                                <rect key="frame" x="20" y="209" width="280" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="New screen view tracked as &quot;screen/menu/screen view/screen view 2&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-Ld-SCX">
+                                <rect key="frame" x="26" y="317" width="323" height="33.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1081,12 +1106,18 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bhH-Ld-SCX" firstAttribute="leading" secondItem="bcA-lu-hJ6" secondAttribute="leadingMargin" constant="10" id="9wi-7W-UFY"/>
+                            <constraint firstItem="bhH-Ld-SCX" firstAttribute="centerY" secondItem="bcA-lu-hJ6" secondAttribute="centerY" id="IPo-sX-FrQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bhH-Ld-SCX" secondAttribute="trailing" constant="10" id="SBi-d4-2mh"/>
+                            <constraint firstItem="bhH-Ld-SCX" firstAttribute="centerX" secondItem="bcA-lu-hJ6" secondAttribute="centerX" id="W2N-3f-uPv"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Screen view 2" id="ly9-sv-k2Z"/>
+                    <navigationItem key="navigationItem" title="Screen View 2" id="ly9-sv-k2Z"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guE-vD-t8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="-2604"/>
+            <point key="canvasLocation" x="2110" y="-2790"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

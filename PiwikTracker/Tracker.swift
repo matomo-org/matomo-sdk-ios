@@ -143,7 +143,31 @@ extension Tracker {
             actionName: action,
             language: Locale.httpAcceptLanguage,
             isNewSession: false, // set this to true once we can start a new session
-            referer: nil)
+            referer: nil,
+            eventCategory: nil,
+            eventAction: nil,
+            eventName: nil,
+            eventValue: nil
+        )
+    }
+    internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
+        return Event(
+            siteId: siteId,
+            uuid: NSUUID(),
+            visitor: visitor,
+            session: session,
+            
+            date: Date(),
+            url: URL(string: "http://example.com")!,
+            actionName: [],
+            language: Locale.httpAcceptLanguage,
+            isNewSession: false, // set this to true once we can start a new session
+            referer: nil,
+            eventCategory: category,
+            eventAction: action,
+            eventName: name,
+            eventValue: value
+        )
     }
 }
 
@@ -155,5 +179,10 @@ extension Tracker {
     /// - Parameter view: An array of hierarchical screen names.
     public func track(view: [String]) {
         queue(event: event(action: view))
+    }
+    
+    /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
+    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
+        queue(event: event(withCategory: category, action: action, name: name, value: value))
     }
 }
