@@ -23,7 +23,7 @@ Then run `pod install`. In every file you want to use the PiwikTracker, don't fo
 Befor the first usage, the PiwikTracker has to be configured. This is best to be done in the `application(_:, didFinishLaunchingWithOptions:)` method in the `AppDelegate`.
 
 ```
-Tracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://piwik.org/piwik.php")!)
+Tracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!)
 ```
 
 The `siteId` is the id that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
@@ -38,7 +38,7 @@ Tracker.shared?.track(view: ["path","to","your","page"])
 
 ### Tracking Events
 
-Events can be used to track user interactions such as taps on a button. An event consists of four parts.
+Events can be used to track user interactions such as taps on a button. An event consists of four parts:
 
 - Category
 - Action
