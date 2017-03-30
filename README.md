@@ -1,4 +1,4 @@
-#PiwikTracker iOS SDK
+# PiwikTracker iOS SDK
 
 The PiwikTracker is an iOS SDK for sending app analytics to a Piwik server.
 
