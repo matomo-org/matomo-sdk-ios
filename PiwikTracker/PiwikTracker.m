@@ -1501,22 +1501,20 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 - (void)deleteEventsWithIDs:(NSArray*)entityIDs {
 
-  [self.managedObjectContext performBlock:^{
-    
-    NSError *error;
-    
-    for (NSManagedObjectID *entityID in entityIDs) {
-      
-      PTEventEntity *event = (PTEventEntity*)[self.managedObjectContext existingObjectWithID:entityID error:&error];
-      if (event) {
-        [self.managedObjectContext deleteObject:event];
-      }
-
-    }
-    
-    [self.managedObjectContext save:&error];
-    
-  }];
+    [self.managedObjectContext performBlockAndWait:^{
+        NSError *error;
+        
+        for (NSManagedObjectID *entityID in entityIDs) {
+            
+            PTEventEntity *event = (PTEventEntity*)[self.managedObjectContext existingObjectWithID:entityID error:&error];
+            if (event) {
+                [self.managedObjectContext deleteObject:event];
+            }
+            
+        }
+        
+        [self.managedObjectContext save:&error];
+    }];
   
 }
 
