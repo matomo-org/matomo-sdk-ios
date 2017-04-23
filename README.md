@@ -12,7 +12,7 @@ The PiwikTracker is an iOS SDK for sending app analytics to a Piwik server.
 Use the following in your Podfile.
 
 ```
-pod 'PiwikTracker', branch: 'swift3'
+pod 'PiwikTracker', git: 'https://github.com/piwik/piwik-sdk-ios.git', branch: 'swift3'
 ```
 
 Then run `pod install`. In every file you want to use the PiwikTracker, don't forget to import the framwork with `import PiwikTracker`.
