@@ -10,6 +10,7 @@ final public class Tracker: NSObject {
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
+    internal var dimensions: [Dimension] = []
     
     internal static var _sharedInstance: Tracker?
     
@@ -147,7 +148,8 @@ extension Tracker {
             eventCategory: nil,
             eventAction: nil,
             eventName: nil,
-            eventValue: nil
+            eventValue: nil,
+            dimensions: dimensions
         )
     }
     internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
@@ -166,7 +168,8 @@ extension Tracker {
             eventCategory: category,
             eventAction: action,
             eventName: name,
-            eventValue: value
+            eventValue: value,
+            dimensions: dimensions
         )
     }
 }
@@ -184,5 +187,32 @@ extension Tracker {
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
     public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
         queue(event: event(withCategory: category, action: action, name: name, value: value))
+    }
+}
+
+extension Tracker {
+    /// Set a permanent custom dimension.
+    ///
+    /// Use this method to set a dimension that will be send with every event. This is best for Custom Dimensions in scope "Visit". A typical example could be any device information or the version of the app the visitor is using.
+    ///
+    /// For more information on custom dimensions visit https://piwik.org/docs/custom-dimensions/
+    ///
+    /// - Parameter value: The value you want to set for this dimension.
+    /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
+    func set(value: String, forDimension index: Int) {
+        let dimension = Dimension(index: index, value: value)
+        remove(dimensionAt: dimension.index)
+        dimensions.append(dimension)
+    }
+    
+    /// Removes a previously set custom dimension.
+    ///
+    /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
+    ///
+    /// - Parameter intex: The index of the dimension.
+    func remove(dimensionAt index: Int) {
+        dimensions = dimensions.filter({ dimension in
+            dimension.index != index
+        })
     }
 }
