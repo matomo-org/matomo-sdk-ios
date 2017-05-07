@@ -10,13 +10,10 @@ namespace :test do
     run_tests('PiwikTracker', 'iphonesimulator')
   end
 
-  # currently this links against nonexisting files
-  # once we implemented certain features we can adapt them in
-  # the iOS demo app
   desc 'Build the PiwikTracker iOS demo'
   task ios_demo: :prepare do
-    # run_build('PiwikTrackeriOSDemo', 'iphonesimulator')
-    # build_failed('iOS') unless $?.success?
+    run_build('ios', 'iphonesimulator')
+    build_failed('iOS') unless $?.success?
   end
 
   # right now there is no OSX demo app
@@ -38,11 +35,11 @@ task default: 'test'
 
 private
 
-def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
+def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
-def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
+def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
