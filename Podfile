@@ -5,7 +5,7 @@ abstract_target :example do
   use_frameworks!
   inhibit_all_warnings!
   workspace 'PiwikTracker'
-  project 'Example/Example'
+  project 'Example/ios'
 
   target :ios do
     pod 'PiwikTracker', path: './'

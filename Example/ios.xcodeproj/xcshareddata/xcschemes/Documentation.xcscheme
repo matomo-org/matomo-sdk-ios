@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CDE4CAE61813DDFE007E0EF7"
-               BuildableName = "Upload API"
-               BlueprintName = "Upload API"
-               ReferencedContainer = "container:Example.xcodeproj">
+               BlueprintIdentifier = "CDC335FE17B97B110098386C"
+               BuildableName = "Documentation"
+               BlueprintName = "Documentation"
+               ReferencedContainer = "container:ios.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CDE4CAE61813DDFE007E0EF7"
-            BuildableName = "Upload API"
-            BlueprintName = "Upload API"
-            ReferencedContainer = "container:Example.xcodeproj">
+            BlueprintIdentifier = "CDC335FE17B97B110098386C"
+            BuildableName = "Documentation"
+            BlueprintName = "Documentation"
+            ReferencedContainer = "container:ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CDE4CAE61813DDFE007E0EF7"
-            BuildableName = "Upload API"
-            BlueprintName = "Upload API"
-            ReferencedContainer = "container:Example.xcodeproj">
+            BlueprintIdentifier = "CDC335FE17B97B110098386C"
+            BuildableName = "Documentation"
+            BlueprintName = "Documentation"
+            ReferencedContainer = "container:ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
