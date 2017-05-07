@@ -2,7 +2,7 @@
 
 The PiwikTracker is an iOS SDK for sending app analytics to a Piwik server.
 
-**This is not the final and stable version but a prerelease of the Swift rewrite. Please check the ToDo section to see what is left.**
+**This is not the final and stable version but a prerelease of the Swift rewrite. Please check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
 [![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=swift3)](https://travis-ci.org/piwik/piwik-sdk-ios)
 
@@ -59,16 +59,17 @@ The PiwikTracker will dispatch events every 30 seconds automatically. If you wan
 Tracker.shared?.dispatch()
 ```
 
+## Contributing
+Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
 ## ToDo
 ### These features aren't implemented yet
 
 - Basic functionality
-  - Sessions (Right now there is no way to start a new session manually)
-  - OptOut
-  - Persisting non dispatched events, for when the application terminates
-  - [Custom Variables](https://piwik.org/docs/custom-variables/) / [Custom Dimensions](https://piwik.org/docs/custom-dimensions/)
-    - Should we go for Custom Dimensions right away? https://piwik.org/faq/general/faq_21117/
+  - [Sessions](https://github.com/piwik/piwik-sdk-ios/issues/136)
+  - [OptOut](https://github.com/piwik/piwik-sdk-ios/issues/124)
+  - [Persisting non dispatched events](https://github.com/piwik/piwik-sdk-ios/issues/137)
+  - [Custom Dimensions](https://github.com/piwik/piwik-sdk-ios/issues/111)
 - Tracking of more things
   - Exceptions
   - Social Interactions
@@ -76,22 +77,15 @@ Tracker.shared?.dispatch()
   - Goals and Conversions
   - Outlinks
   - Downloads
-  - Ecommerce Transactions
-  - Campaigns
-  - Conten Impressions / Content Interactions
+  - [Ecommerce Transactions](https://github.com/piwik/piwik-sdk-ios/issues/110)
+  - [Campaigns](https://github.com/piwik/piwik-sdk-ios/issues/109)
+  - Content Impressions / Content Interactions
 - Customizing the tracker
   - Custom User Agent
   - userID
   - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
   - use different dispatchers (Alamofire)
-
-### Things we can Improve
-
-- Documentation
-  - Write a migration guide for SDK 3.x users
-- Test Coverage
-- macOS, tvOS support
 
 ## License
 
