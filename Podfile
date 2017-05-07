@@ -1,13 +1,19 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 abstract_target :example do
-  platform :ios, '8.0'
   use_frameworks!
   inhibit_all_warnings!
   workspace 'PiwikTracker'
-  project 'Example/ios'
 
   target :ios do
+    platform :ios, '8.0'
+    project 'Example/ios'
+    pod 'PiwikTracker', path: './'
+  end
+
+  target :macos do
+    platform :osx, '10.12'
+    project 'Example/macos/macos'
     pod 'PiwikTracker', path: './'
   end
 

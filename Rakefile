@@ -19,8 +19,8 @@ namespace :test do
   # right now there is no OSX demo app
   desc 'Build the PiwikTracker OSX demo'
   task osx_demo: :prepare do
-    # run_build('PiwikTrackerOSXDemo', 'macosx')
-    # build_failed('OSX') unless $?.success?
+    run_build('macos', 'macosx', 'platform=macOS,arch=x86_64')
+    build_failed('OSX') unless $?.success?
   end
 end
 

@@ -5,15 +5,12 @@
       location = "group:PiwikTracker.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/Example.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/iOS/Example.xcodeproj">
+      location = "group:Example/ios.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/ios.xcodeproj">
+      location = "group:Example/macos/macos.xcodeproj">
    </FileRef>
 </Workspace>
