@@ -3,4 +3,7 @@ before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
     - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
     - cd $TRAVIS_BUILD_DIR
+    - pod install || pod install --repo-update
 script: rake test
+osx_image: xcode8
+cache: cocoapods
