@@ -24,7 +24,7 @@
  1. Create and configure the tracker
  2. Track screen views, events, errors, social interaction, search, goals and more
  3. Let the SDK dispatch events to the Piwik server automatically, or dispatch events manually
-
+ 
  All events are persisted locally in Core Data until they are dispatched and successfully received by the Piwik server.
  
  All methods are asynchronous and will return immediately.
@@ -102,7 +102,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 
 /**
  The user id is any non empty unique string identifying the user, such as an email address or a username.
-
+ 
  Set this value when you have a way of uniquely identifying the user in the app, e.g. after the user signed in. The user id will appear in the Piwik server and is available for segmentation reports.
  It is important that the user id is saved locally in the app and set each time directly after the tracker is started. Otherwise tracked events sent before setting this property will not be attributed to the user id.
  
@@ -155,13 +155,13 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 
 ///**
 // Events sent to the Piwik server will include the users current position when the event was generated. This can be used to improve showing visitors location. Default NO. This value must be set before the tracker is used the first time.
-// 
+//
 // Please note that the position will only be used when showing the location in a users profile. It will not affect the visitor map.
-// 
+//
 // The user will be asked for permission to use current location when the first event is sent. The user can also disable the location service from the Settings location.
-// 
+//
 // Think about users privacy. Provide information why their location is tracked and give the user the option to opt out.
-// 
+//
 // Turning this ON will potentially use more battery power. The tracker will only react to significant location changes to reduce battery impact. Location changes will not be tracked when the app is terminated or running in the background.
 // Please note that users can decided to not allow the app to access location information from the general Settings app.
 // */
@@ -242,7 +242,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 /**
  Track an user interaction as a custom event.
  
- @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box. 
+ @warning As of Piwik server 2.3 events are presented in a separate section and support sending a numeric value (float or integer). The Piwik tracker support this out of the box.
  
  @param category The category of the event
  @param action The name of the action, e.g Play, Pause, Download
@@ -272,7 +272,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  @param action The action taken by the user, e.g. like, tweet
  @param target The target of the action, e.g. a comment, picture or video (often an unique id or name)
  @param network The social network the user is interacting with, e.g. Facebook
- @return YES if the event was queued for dispatching. 
+ @return YES if the event was queued for dispatching.
  @see isPrefixingEnabled
  */
 - (BOOL)sendSocialInteraction:(NSString*)action target:(NSString*)target forNetwork:(NSString*)network;
@@ -401,6 +401,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)setCustomVariableForIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value scope:(CustomVariableScope)scope;
 
+// Assign a custom dimension. The dimension will be included in all event requests until cleared.
+- (BOOL)setCustomDimension:(NSUInteger)index value:(NSString *)value;
+- (BOOL)clearCustomDimension:(NSUInteger)index;
 
 /**
  @name Dispatch pending events
@@ -425,7 +428,7 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
 /**
  Specifies how many events should be sent to the Piwik server in each request. Default 20 events per request.
  
- The Piwik server support sending one event at the time or in bulk mode.  
+ The Piwik server support sending one event at the time or in bulk mode.
  */
 @property (nonatomic) NSUInteger eventsPerRequest;
 
