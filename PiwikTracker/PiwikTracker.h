@@ -87,6 +87,9 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 @property (nonatomic, readonly) NSString *siteID;
 
+// update base url
+- (void)setBaseUrl:(NSURL*)baseURL;
+
 /**
  The dispatcher will execute the actual network request to the Piwik server.
  

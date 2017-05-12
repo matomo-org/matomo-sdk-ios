@@ -338,6 +338,13 @@ static PiwikTracker *_sharedInstance;
   
 }
 
+- (void)setBaseUrl:(NSURL *)baseURL
+{
+  [self deleteQueuedEvents];
+  PiwikNSURLSessionDispatcher *dispatcher = [self dispatcher];
+  [dispatcher setPiwikURL:[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:baseURL]];
+}
+
 - (void)startDispatchTimer {
   
   // Run on main thread run loop
