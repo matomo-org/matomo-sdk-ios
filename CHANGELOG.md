@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **fixed** The value of an event got wronly encoded when dispatching. [#140](https://github.com/piwik/piwik-sdk-ios/pull/140)
+
 ## 4.0.0-beta1
 * no changes
 
