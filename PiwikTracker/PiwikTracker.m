@@ -32,9 +32,9 @@
 
 // Debug logging
 #ifdef PIWIK_DEBUG_LOG
-  #define PiwikDebugLog(fmt,...) NSLog(@"[Piwik] %@",[NSString stringWithFormat:(fmt), ##__VA_ARGS__]);
+#define PiwikDebugLog(fmt,...) NSLog(@"[Piwik] %@",[NSString stringWithFormat:(fmt), ##__VA_ARGS__]);
 #else
-  #define PiwikDebugLog(...)
+#define PiwikDebugLog(...)
 #endif
 
 // Always logging
@@ -54,6 +54,7 @@ static NSString * const PiwikUserDefaultPreviousVistsTimestampKey = @"PiwikPrevi
 static NSString * const PiwikUserDefaultFirstVistsTimestampKey = @"PiwikFirstVistsTimestampKey";
 static NSString * const PiwikUserDefaultVisitorIDKey = @"PiwikVisitorIDKey";
 static NSString * const PiwikUserDefaultOptOutKey = @"PiwikOptOutKey";
+static NSString * const PiwikUserDefaulUniqueUserIdKey = @"PiwikUserDefaulUniqueUserIdKey";
 
 // Piwik query parameter names
 static NSString * const PiwikParameterSiteID = @"idsite";
@@ -70,6 +71,7 @@ static NSString * const PiwikParameterVisitorID = @"_id";
 static NSString * const PiwikParameterUserID = @"uid";
 static NSString * const PiwikParameterVisitScopeCustomVariables = @"_cvar";
 static NSString * const PiwikParameterScreenScopeCustomVariables = @"cvar";
+static NSString * const PiwikParameterCustomDimensions = @"dimension";
 static NSString * const PiwikParameterRandomNumber = @"r";
 static NSString * const PiwikParameterFirstVisitTimestamp = @"_idts";
 static NSString * const PiwikParameterPreviousVisitTimestamp = @"_viewts";
@@ -180,6 +182,7 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 
 @property (nonatomic, strong) NSMutableDictionary *screenCustomVariables;
 @property (nonatomic, strong) NSMutableDictionary *visitCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *sessionCustomDimensions;
 @property (nonatomic, strong) NSDictionary *sessionParameters;
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
@@ -332,7 +335,14 @@ static PiwikTracker *_sharedInstance;
   else {
     return nil;
   }
+  
+}
 
+- (void)setBaseUrl:(NSURL *)baseURL
+{
+  [self deleteQueuedEvents];
+  PiwikNSURLSessionDispatcher *dispatcher = [self dispatcher];
+  [dispatcher setPiwikURL:[[NSURL alloc] initWithString:@"piwik.php" relativeToURL:baseURL]];
 }
 
 - (void)startDispatchTimer {
@@ -381,7 +391,7 @@ static PiwikTracker *_sharedInstance;
     // Cold start, init have already configured and started any services needed
     return;
   }
-
+  
   // Create new session?
   if (fabs([self.appDidEnterBackgroundDate timeIntervalSinceNow]) >= self.sessionTimeout) {
     self.sessionStart = YES;
@@ -391,7 +401,7 @@ static PiwikTracker *_sharedInstance;
     [self.locationManager startMonitoringLocationChanges];
   }
   
-  [self startDispatchTimer];  
+  [self startDispatchTimer];
 }
 
 
@@ -415,7 +425,7 @@ static PiwikTracker *_sharedInstance;
 
 // Piwik support screen names with / and will group views hierarchically
 - (BOOL)sendViews:(NSString*)screen, ... {
-    
+  
   // Collect var args
   NSMutableArray *components = [NSMutableArray array];
   va_list args;
@@ -429,7 +439,7 @@ static PiwikTracker *_sharedInstance;
 }
 
 - (BOOL)sendViewsFromArray:(NSArray*)screens {
-    
+  
   if (self.isPrefixingEnabled) {
     // Add prefix
     NSMutableArray *prefixedScreens = [NSMutableArray arrayWithObject:PiwikPrefixView];
@@ -441,14 +451,14 @@ static PiwikTracker *_sharedInstance;
 }
 
 - (BOOL)sendOutlink:(NSString*)url {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    params[PiwikParameterLink] = url;
-    
-    // Setting the url is mandatory
-    params[PiwikParameterURL] = url;
-    
-    return [self queueEvent:params];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+  params[PiwikParameterLink] = url;
+  
+  // Setting the url is mandatory
+  params[PiwikParameterURL] = url;
+  
+  return [self queueEvent:params];
 }
 
 - (BOOL)sendDownload:(NSString*)url {
@@ -523,9 +533,9 @@ static PiwikTracker *_sharedInstance;
 
 
 - (BOOL)sendSocialInteraction:(NSString*)action target:(NSString*)target forNetwork:(NSString*)network {
-
+  
   NSMutableArray *components = [NSMutableArray array];
-
+  
   if (self.isPrefixingEnabled) {
     [components addObject:PiwikPrefixSocial];
   }
@@ -564,7 +574,7 @@ static PiwikTracker *_sharedInstance;
   
   // Setting the url is mandatory
   params[PiwikParameterURL] = [self generatePageURL:nil];
-
+  
   return [self queueEvent:params];
 }
 
@@ -572,9 +582,9 @@ static PiwikTracker *_sharedInstance;
 - (BOOL)sendSearchWithKeyword:(NSString*)keyword category:(NSString*)category numberOfHits:(NSNumber*)numberOfHits {
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
-
+  
   params[PiwikParameterSearchKeyword] = keyword;
-
+  
   if (category) {
     params[PiwikParameterSearchCategory] = category;
   }
@@ -643,7 +653,7 @@ static PiwikTracker *_sharedInstance;
     if (item.quantity) {
       [itemArray addObject:item.quantity];
     }
-
+    
     [JSONObject addObject:itemArray];
   }
   
@@ -769,6 +779,39 @@ static PiwikTracker *_sharedInstance;
   return YES;
 }
 
+- (BOOL)setCustomDimension:(NSUInteger)index value:(NSString *)value
+{
+  if (index < 1 || !value || ![value isKindOfClass:[NSString class]]) {
+    return NO;
+  }
+  
+  self.sessionCustomDimensions[@(index)] = value;
+  
+  return YES;
+}
+
+- (BOOL)clearCustomDimension:(NSUInteger)index
+{
+  if (index < 1) {
+    return NO;
+  } else if (![[self.sessionCustomDimensions allKeys] containsObject:@(index)]) {
+    return YES;
+  }
+  
+  [self.sessionCustomDimensions removeObjectForKey:@(index)];
+  
+  return YES;
+}
+
+- (NSMutableDictionary *)sessionCustomDimensions
+{
+  if (!_sessionCustomDimensions) {
+    _sessionCustomDimensions = [NSMutableDictionary new];
+  }
+  
+  return _sessionCustomDimensions;
+}
+
 
 - (BOOL)queueEvent:(NSDictionary*)parameters {
   
@@ -806,7 +849,6 @@ static PiwikTracker *_sharedInstance;
   return YES;
 }
 
-
 - (NSDictionary*)addPerRequestParameters:(NSDictionary*)parameters {
   
   NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
@@ -814,6 +856,24 @@ static PiwikTracker *_sharedInstance;
   // User id
   if (self.userID && self.userID.length > 0) {
     joinedParameters[PiwikParameterUserID] = self.userID;
+  } else {
+    NSString *userId = [[NSUserDefaults standardUserDefaults] stringForKey:PiwikUserDefaulUniqueUserIdKey];
+    
+    if (!userId || ![[NSUUID alloc] initWithUUIDString:userId]) {
+      userId = [[[NSUUID UUID] UUIDString] lowercaseString];
+      [[NSUserDefaults standardUserDefaults] setObject:userId forKey:PiwikUserDefaulUniqueUserIdKey];
+      [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    joinedParameters[PiwikParameterUserID] = userId;
+  }
+  
+  // Custom dimensions
+  if (self.sessionCustomDimensions.count > 0) {
+    for (NSNumber *dimensionIndex in [self.sessionCustomDimensions allKeys]) {
+      NSString *paramKey = [NSString stringWithFormat:@"%@%@",PiwikParameterCustomDimensions,dimensionIndex];
+      joinedParameters[paramKey] = [self.sessionCustomDimensions objectForKey:dimensionIndex];
+    }
   }
   
   // Custom parameters
@@ -850,15 +910,7 @@ static PiwikTracker *_sharedInstance;
   joinedParameters[PiwikParameterHours] = [NSString stringWithFormat:@"%ld", (long)[dateComponents hour]];
   joinedParameters[PiwikParameterMinutes] = [NSString stringWithFormat:@"%ld", (long)[dateComponents minute]];
   joinedParameters[PiwikParameterSeconds] = [NSString stringWithFormat:@"%ld", (long)[dateComponents second]];
-  
-  // Add UTC time
-  static NSDateFormatter *UTCDateFormatter = nil;
-  if (!UTCDateFormatter) {
-    UTCDateFormatter = [[NSDateFormatter alloc] init];
-    UTCDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    UTCDateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-  }
-  joinedParameters[PiwikParameterDateAndTime] = [UTCDateFormatter stringFromDate:now];
+  joinedParameters[PiwikParameterDateAndTime] = [NSString stringWithFormat:@"%ld", (long)round([now timeIntervalSince1970])];
   
   return joinedParameters;
 }
@@ -926,11 +978,11 @@ static PiwikTracker *_sharedInstance;
     
     _visitCustomVariables[@(2)] = [[CustomVariable alloc] initWithIndex:3 name:@"App version" value:self.appVersion];
   }
-
+  
   return _visitCustomVariables;
 }
 
-   
+
 - (NSDictionary*)addStaticParameters:(NSDictionary*)parameters {
   
   if (!self.staticParameters) {
@@ -968,7 +1020,7 @@ static PiwikTracker *_sharedInstance;
   // Join event parameters with static parameters
   NSMutableDictionary *joinedParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
   [joinedParameters addEntriesFromDictionary:self.staticParameters];
-    
+  
   return joinedParameters;
 }
 
@@ -978,7 +1030,7 @@ static PiwikTracker *_sharedInstance;
   // Travers all custom variables and create a JSON object that be be serialized
   NSMutableDictionary *JSONObject = [NSMutableDictionary dictionaryWithCapacity:variables.count];
   for (CustomVariable *customVariable in [variables objectEnumerator]) {
-        JSONObject[[NSString stringWithFormat:@"%ld", (long)customVariable.index]] = [NSArray arrayWithObjects:customVariable.name, customVariable.value, nil];
+    JSONObject[[NSString stringWithFormat:@"%ld", (long)customVariable.index]] = [NSArray arrayWithObjects:customVariable.name, customVariable.value, nil];
   }
   
   NSError *error;
@@ -1007,7 +1059,7 @@ static PiwikTracker *_sharedInstance;
 
 
 - (void)sendEvent {
-
+  
   NSUInteger numberOfEventsToSend = self.eventsPerRequest;
   [self eventsFromStore:numberOfEventsToSend completionBlock:^(NSArray *entityIDs, NSArray *events, BOOL hasMore) {
     
@@ -1019,7 +1071,7 @@ static PiwikTracker *_sharedInstance;
     } else {
       
       NSDictionary *requestParameters = [self requestParametersForEvents:events];
-  
+      
       __weak typeof(self)weakSelf = self;
       void (^successBlock)(void) = ^ () {
         [weakSelf deleteEventsWithIDs:entityIDs];
@@ -1059,18 +1111,18 @@ static PiwikTracker *_sharedInstance;
     
   } else {
     
-    // Send events as JSON encoded post body    
+    // Send events as JSON encoded post body
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
     
     // Piwik server will process each record in the batch request in reverse order, not sure if this is a bug
     // Build the request in revers order
     NSEnumerationOptions enumerationOption = NSEnumerationReverse;
-  
+    
     NSMutableArray *queryStrings = [NSMutableArray arrayWithCapacity:events.count];
     [events enumerateObjectsWithOptions:enumerationOption usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
       
       NSDictionary *params = (NSDictionary*)obj;
-            
+      
       // As of Piwik 2.0 the query string should not be url encoded in the request body
       // Unfortenatly the AFNetworking methods for create parameter pairs are not external
       NSMutableArray *parameterPair = [NSMutableArray arrayWithCapacity:params.count];
@@ -1079,30 +1131,28 @@ static PiwikTracker *_sharedInstance;
       }];
       
       NSString *queryString = [NSString stringWithFormat:@"?%@", [parameterPair componentsJoinedByString:@"&"]];
-  
+      
       [queryStrings addObject:queryString];
       
     }];
-        
+    
     JSONParams[@"requests"] = queryStrings;
-//    DLog(@"Bulk request:\n%@", JSONParams);
     
     return JSONParams;
-    
   }
   
 }
 
 
 - (void)sendEventDidFinishHasMorePending:(BOOL)hasMore {
- 
+  
   if (hasMore) {
     [self sendEvent];
   } else {
     self.isDispatchRunning = NO;
     [self startDispatchTimer];
   }
-
+  
 }
 
 
@@ -1178,7 +1228,7 @@ static PiwikTracker *_sharedInstance;
       NSString *UUID = [PiwikTracker UUIDString];
       // md5 and max 16 chars
       _clientID = [[PiwikTracker md5:UUID] substringToIndex:16];
-           
+      
       [userDefaults setValue:_clientID forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultVisitorIDKey)];
       [userDefaults synchronize];
     }
@@ -1194,9 +1244,9 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 
 
 - (void)setCurrentVisitTimestamp:(NSTimeInterval)currentVisitTimestamp {
-    
+  
   self.previousVisitTimestamp = _currentVisitTimestamp;
-   
+  
   _currentVisitTimestamp = currentVisitTimestamp;
   
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -1227,10 +1277,10 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 - (void)setPreviousVisitTimestamp:(NSTimeInterval)previousVisitTimestamp {
   
   _previousVisitTimestamp = previousVisitTimestamp;
-
+  
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   [userDefaults setDouble:previousVisitTimestamp forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
-  [userDefaults synchronize]; 
+  [userDefaults synchronize];
 }
 
 
@@ -1247,7 +1297,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       [userDefaults setDouble:_previousVisitTimestamp  forKey:UserDefaultKeyWithSiteID(self.siteID, PiwikUserDefaultPreviousVistsTimestampKey)];
       [userDefaults synchronize];
     }
-
+    
   }
   
   return _previousVisitTimestamp;
@@ -1360,63 +1410,63 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
 - (NSString*)platformName  {
   
   NSString *platform = [self platform];
-
-    // https://gist.github.com/Jaybles/1323251
-    // https://www.theiphonewiki.com/wiki/Models
-    
-    // iPhone
-    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
-    if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
-    if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
-    if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
-    if ([platform isEqualToString:@"iPhone3,3"])    return @"Verizon iPhone 4";
-    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
-    if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5 (GSM)";
-    if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone 5 (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPhone5,3"])    return @"iPhone 5c (GSM)";
-    if ([platform isEqualToString:@"iPhone5,4"])    return @"iPhone 5c (Global)";
-    if ([platform isEqualToString:@"iPhone6,1"])    return @"iPhone 5s (GSM)";
-    if ([platform isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
-    if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6+";
-    if ([platform isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
-    
-    // iPod
-    if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
-    if ([platform isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
-    if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
-    if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
-    if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch 5G";
-    
-    // iPad
-    if ([platform isEqualToString:@"iPad1,1"])      return @"iPad";
-    if ([platform isEqualToString:@"iPad2,1"])      return @"iPad 2 (WiFi)";
-    if ([platform isEqualToString:@"iPad2,2"])      return @"iPad 2 (GSM)";
-    if ([platform isEqualToString:@"iPad2,3"])      return @"iPad 2 (CDMA)";
-    if ([platform isEqualToString:@"iPad2,4"])      return @"iPad 2 (WiFi)";
-    if ([platform isEqualToString:@"iPad2,5"])      return @"iPad Mini (WiFi)";
-    if ([platform isEqualToString:@"iPad2,6"])      return @"iPad Mini (GSM)";
-    if ([platform isEqualToString:@"iPad2,7"])      return @"iPad Mini (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad3,1"])      return @"iPad 3 (WiFi)";
-    if ([platform isEqualToString:@"iPad3,2"])      return @"iPad 3 (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad3,3"])      return @"iPad 3 (GSM)";
-    if ([platform isEqualToString:@"iPad3,4"])      return @"iPad 4 (WiFi)";
-    if ([platform isEqualToString:@"iPad3,5"])      return @"iPad 4 (GSM)";
-    if ([platform isEqualToString:@"iPad3,6"])      return @"iPad 4 (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad4,1"])      return @"iPad Air (WiFi)";
-    if ([platform isEqualToString:@"iPad4,2"])      return @"iPad Air (Cellular)";
-    if ([platform isEqualToString:@"iPad4,3"])      return @"iPad Air";
-    if ([platform isEqualToString:@"iPad4,4"])      return @"iPad Mini 2 (WiFi)";
-    if ([platform isEqualToString:@"iPad4,5"])      return @"iPad Mini 2 (Cellular)";
-    if ([platform isEqualToString:@"iPad4,6"])      return @"iPad Mini 2 (Rev)";
-    if ([platform isEqualToString:@"iPad4,7"])      return @"iPad Mini 3 (WiFi)";
-    if ([platform isEqualToString:@"iPad4,8"])      return @"iPad Mini 3 (A1600)";
-    if ([platform isEqualToString:@"iPad4,9"])      return @"iPad Mini 3 (A1601)";
-    if ([platform isEqualToString:@"iPad5,3"])      return @"iPad Air 2 (WiFi)";
-    if ([platform isEqualToString:@"iPad5,4"])      return @"iPad Air 2 (Cellular)";
-    
-    if ([platform isEqualToString:@"i386"])         return @"Simulator";
-    if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
-    
+  
+  // https://gist.github.com/Jaybles/1323251
+  // https://www.theiphonewiki.com/wiki/Models
+  
+  // iPhone
+  if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
+  if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
+  if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
+  if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
+  if ([platform isEqualToString:@"iPhone3,3"])    return @"Verizon iPhone 4";
+  if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
+  if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5 (GSM)";
+  if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone 5 (GSM+CDMA)";
+  if ([platform isEqualToString:@"iPhone5,3"])    return @"iPhone 5c (GSM)";
+  if ([platform isEqualToString:@"iPhone5,4"])    return @"iPhone 5c (Global)";
+  if ([platform isEqualToString:@"iPhone6,1"])    return @"iPhone 5s (GSM)";
+  if ([platform isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
+  if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6+";
+  if ([platform isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
+  
+  // iPod
+  if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
+  if ([platform isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
+  if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
+  if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
+  if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch 5G";
+  
+  // iPad
+  if ([platform isEqualToString:@"iPad1,1"])      return @"iPad";
+  if ([platform isEqualToString:@"iPad2,1"])      return @"iPad 2 (WiFi)";
+  if ([platform isEqualToString:@"iPad2,2"])      return @"iPad 2 (GSM)";
+  if ([platform isEqualToString:@"iPad2,3"])      return @"iPad 2 (CDMA)";
+  if ([platform isEqualToString:@"iPad2,4"])      return @"iPad 2 (WiFi)";
+  if ([platform isEqualToString:@"iPad2,5"])      return @"iPad Mini (WiFi)";
+  if ([platform isEqualToString:@"iPad2,6"])      return @"iPad Mini (GSM)";
+  if ([platform isEqualToString:@"iPad2,7"])      return @"iPad Mini (GSM+CDMA)";
+  if ([platform isEqualToString:@"iPad3,1"])      return @"iPad 3 (WiFi)";
+  if ([platform isEqualToString:@"iPad3,2"])      return @"iPad 3 (GSM+CDMA)";
+  if ([platform isEqualToString:@"iPad3,3"])      return @"iPad 3 (GSM)";
+  if ([platform isEqualToString:@"iPad3,4"])      return @"iPad 4 (WiFi)";
+  if ([platform isEqualToString:@"iPad3,5"])      return @"iPad 4 (GSM)";
+  if ([platform isEqualToString:@"iPad3,6"])      return @"iPad 4 (GSM+CDMA)";
+  if ([platform isEqualToString:@"iPad4,1"])      return @"iPad Air (WiFi)";
+  if ([platform isEqualToString:@"iPad4,2"])      return @"iPad Air (Cellular)";
+  if ([platform isEqualToString:@"iPad4,3"])      return @"iPad Air";
+  if ([platform isEqualToString:@"iPad4,4"])      return @"iPad Mini 2 (WiFi)";
+  if ([platform isEqualToString:@"iPad4,5"])      return @"iPad Mini 2 (Cellular)";
+  if ([platform isEqualToString:@"iPad4,6"])      return @"iPad Mini 2 (Rev)";
+  if ([platform isEqualToString:@"iPad4,7"])      return @"iPad Mini 3 (WiFi)";
+  if ([platform isEqualToString:@"iPad4,8"])      return @"iPad Mini 3 (A1600)";
+  if ([platform isEqualToString:@"iPad4,9"])      return @"iPad Mini 3 (A1601)";
+  if ([platform isEqualToString:@"iPad5,3"])      return @"iPad Air 2 (WiFi)";
+  if ([platform isEqualToString:@"iPad5,4"])      return @"iPad Air 2 (Cellular)";
+  
+  if ([platform isEqualToString:@"i386"])         return @"Simulator";
+  if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
+  
   return platform;
   
 }
@@ -1463,7 +1513,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     // Oldest first
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     fetchRequest.sortDescriptors = @[sortDescriptor];
-
+    
     fetchRequest.fetchLimit = numberOfEvents + 1;
     
     NSError *error;
@@ -1477,15 +1527,15 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     if (eventEntities && eventEntities.count > 0) {
       
       [eventEntities enumerateObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, returnCount)] options:0
-        usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-          
-          PTEventEntity *eventEntity = (PTEventEntity*)obj;
-          NSDictionary *parameters = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:eventEntity.piwikRequestParameters];
-
-          [events addObject:parameters];
-          [entityIDs addObject:eventEntity.objectID];
-          
-      }];
+                                    usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                      
+                                      PTEventEntity *eventEntity = (PTEventEntity*)obj;
+                                      NSDictionary *parameters = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:eventEntity.piwikRequestParameters];
+                                      
+                                      [events addObject:parameters];
+                                      [entityIDs addObject:eventEntity.objectID];
+                                      
+                                    }];
       
       completionBlock(entityIDs, events, eventEntities.count == fetchRequest.fetchLimit ? YES : NO);
       
@@ -1495,12 +1545,12 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     }
     
   }];
-    
+  
 }
 
 
 - (void)deleteEventsWithIDs:(NSArray*)entityIDs {
-
+  
   [self.managedObjectContext performBlock:^{
     
     NSError *error;
@@ -1511,7 +1561,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
       if (event) {
         [self.managedObjectContext deleteObject:event];
       }
-
+      
     }
     
     [self.managedObjectContext save:&error];
@@ -1528,8 +1578,8 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
     NSError *error;
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"PTEventEntity"];
-
-    NSArray *events = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];    
+    
+    NSArray *events = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     for (NSManagedObject *event in events) {
       [self.managedObjectContext deleteObject:event];
     }
@@ -1584,7 +1634,7 @@ inline NSString* UserDefaultKeyWithSiteID(NSString *siteID, NSString *key) {
   NSDictionary *options = @{
                             NSMigratePersistentStoresAutomaticallyOption: @(YES),
                             NSInferMappingModelAutomaticallyOption: @(YES)
-                           };
+                            };
   
   NSError *error = nil;
   _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
