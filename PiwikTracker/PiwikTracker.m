@@ -910,7 +910,7 @@ static PiwikTracker *_sharedInstance;
   joinedParameters[PiwikParameterHours] = [NSString stringWithFormat:@"%ld", (long)[dateComponents hour]];
   joinedParameters[PiwikParameterMinutes] = [NSString stringWithFormat:@"%ld", (long)[dateComponents minute]];
   joinedParameters[PiwikParameterSeconds] = [NSString stringWithFormat:@"%ld", (long)[dateComponents second]];
-  joinedParameters[PiwikParameterDateAndTime] = @(round([now timeIntervalSince1970]));
+  joinedParameters[PiwikParameterDateAndTime] = [NSString stringWithFormat:@"%ld", (long)round([now timeIntervalSince1970])];
   
   return joinedParameters;
 }
