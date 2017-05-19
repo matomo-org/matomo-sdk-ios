@@ -1114,12 +1114,15 @@ static PiwikTracker *_sharedInstance;
     // Send events as JSON encoded post body
     NSMutableDictionary *JSONParams = [NSMutableDictionary dictionaryWithCapacity:2];
     
-    // Sort events from old to recent
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:PiwikParameterDateAndTime ascending:YES];
-    NSArray *orderedEvents = [events sortedArrayUsingDescriptors:@[descriptor]];
+    // Piwik server will process each record in the batch request in reverse order, not sure if this is a bug
+    // Build the request in revers order
+    NSEnumerationOptions enumerationOption = NSEnumerationReverse;
     
     NSMutableArray *queryStrings = [NSMutableArray arrayWithCapacity:events.count];
-    for (NSDictionary *params in orderedEvents) {
+    [events enumerateObjectsWithOptions:enumerationOption usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      
+      NSDictionary *params = (NSDictionary*)obj;
+      
       // As of Piwik 2.0 the query string should not be url encoded in the request body
       // Unfortenatly the AFNetworking methods for create parameter pairs are not external
       NSMutableArray *parameterPair = [NSMutableArray arrayWithCapacity:params.count];
@@ -1130,12 +1133,12 @@ static PiwikTracker *_sharedInstance;
       NSString *queryString = [NSString stringWithFormat:@"?%@", [parameterPair componentsJoinedByString:@"&"]];
       
       [queryStrings addObject:queryString];
-    }
+      
+    }];
     
     JSONParams[@"requests"] = queryStrings;
     
     return JSONParams;
-    
   }
   
 }
