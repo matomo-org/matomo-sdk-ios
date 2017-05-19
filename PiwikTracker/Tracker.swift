@@ -24,6 +24,7 @@ final public class Tracker: NSObject {
         self.queue = queue
         self.dispatcher = dispatcher
         super.init()
+        startNewSession()
         startDispatchTimer()
     }
     
@@ -43,6 +44,7 @@ final public class Tracker: NSObject {
     
     internal func queue(event: Event) {
         queue.enqueue(event: event)
+        nextEventStartsANewSession = false
     }
     
     // MARK: dispatching
@@ -51,7 +53,8 @@ final public class Tracker: NSObject {
     private(set) var isDispatching = false
     
     
-    /// Manually start the dispatching process.
+    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationDidEnterBackground` to transmit all data
+    /// whenever the user leaves the application.
     public func dispatch() {
         guard !isDispatching else { return }
         guard queue.eventCount > 0 else {
@@ -95,6 +98,20 @@ final public class Tracker: NSObject {
     
     internal var visitor = Visitor.current()
     internal var session = Session.current()
+    internal var nextEventStartsANewSession = true
+}
+
+extension Tracker {
+    /// Starts a new Session
+    ///
+    /// Use this function to manually start a new Session. A new Session will be automatically created only on app start.
+    /// You can use the AppDelegates `applicationWillEnterForeground` to start a new visit whenever the app enters foreground.
+    public func startNewSession() {
+        PiwikUserDefaults.standard.previousVisit = PiwikUserDefaults.standard.currentVisit
+        PiwikUserDefaults.standard.currentVisit = Date()
+        PiwikUserDefaults.standard.totalNumberOfVisits += 1
+        self.session = Session.current()
+    }
 }
 
 // shared instance
@@ -142,7 +159,7 @@ extension Tracker {
             url: URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/")),
             actionName: action,
             language: Locale.httpAcceptLanguage,
-            isNewSession: false, // set this to true once we can start a new session
+            isNewSession: nextEventStartsANewSession,
             referer: nil,
             eventCategory: nil,
             eventAction: nil,
@@ -156,12 +173,11 @@ extension Tracker {
             uuid: NSUUID(),
             visitor: visitor,
             session: session,
-            
             date: Date(),
             url: URL(string: "http://example.com")!,
             actionName: [],
             language: Locale.httpAcceptLanguage,
-            isNewSession: false, // set this to true once we can start a new session
+            isNewSession: nextEventStartsANewSession,
             referer: nil,
             eventCategory: category,
             eventAction: action,
