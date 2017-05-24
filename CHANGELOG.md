@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **fixed** The value of an event got wronly encoded when dispatching. [#140](https://github.com/piwik/piwik-sdk-ios/pull/140)
+* **fixed** Fixed an issue where tracking an event wasn’t possible from Objective-C code. [#142](https://github.com/piwik/piwik-sdk-ios/issues/142)
 
 ## 4.0.0-beta1
 * no changes
