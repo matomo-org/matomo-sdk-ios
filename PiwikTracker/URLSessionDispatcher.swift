@@ -1,14 +1,25 @@
 import Foundation
 
+#if os(OSX)
+    import WebKit
+#elseif os(iOS)
+    import UIKit
+#endif
+
 final class URLSessionDispatcher: Dispatcher {
     
     let timeout: TimeInterval
     let session: URLSession
     let baseURL: URL
-    
+
     var userAgent: String? = {
-        let webView = UIWebView(frame: .zero)
-        let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #if os(OSX)
+            let webView = WebView(frame: .zero)
+            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #elseif os(iOS)
+            let webView = UIWebView(frame: .zero)
+            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #endif
         return currentUserAgent.appending(" Piwik iOS SDK URLSessionDispatcher")
     }()
     

@@ -1,3 +1,5 @@
+#if os(OSX)
+#elseif os(iOS)
 import UIKit
 
 internal struct Application {
@@ -42,3 +44,4 @@ internal struct Application {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 }
+#endif

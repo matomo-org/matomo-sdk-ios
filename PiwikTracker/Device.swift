@@ -1,3 +1,5 @@
+#if os(OSX)
+#elseif os(iOS)
 import UIKit
 
 internal struct Device {
@@ -150,5 +152,4 @@ internal struct Device {
         return bounds.size
     }
 }
-
-
+#endif

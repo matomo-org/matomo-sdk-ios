@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PiwikTracker
 
 class ViewController: NSViewController {
 
@@ -14,6 +15,13 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        Tracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
+        Tracker.shared?.track(view: ["start"])
+        Tracker.shared?.dispatch()
     }
 
     override var representedObject: Any? {
