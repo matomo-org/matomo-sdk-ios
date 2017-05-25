@@ -132,14 +132,15 @@ extension Tracker {
 }
 
 extension Tracker {
-    internal func event(action: [String]) -> Event {
+    internal func event(action: [String], url: URL? = nil) -> Event {
+        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
         return Event(
             siteId: siteId,
             uuid: NSUUID(),
             visitor: visitor,
             session: session,
             date: Date(),
-            url: URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/")),
+            url: url,
             actionName: action,
             language: Locale.httpAcceptLanguage,
             isNewSession: false, // set this to true once we can start a new session
@@ -177,8 +178,9 @@ extension Tracker {
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
     ///
     /// - Parameter view: An array of hierarchical screen names.
-    public func track(view: [String]) {
-        queue(event: event(action: view))
+    /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
+    public func track(view: [String], url: URL? = nil) {
+        queue(event: event(action: view, url: url))
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
