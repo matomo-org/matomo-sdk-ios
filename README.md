@@ -59,10 +59,24 @@ This will log that the user slided the volume slider on the player to 35.1%.
 
 ### Advanced
 
-The PiwikTracker will dispatch events every 30 seconds automatically. If you want to dispatch events manually, you can use the `dispatch()` function.
+#### Manual dispatching
+
+The PiwikTracker will dispatch events every 30 seconds automatically. If you want to dispatch events manually, you can use the `dispatch()` function. You can, for example, dispatch whenever the application enter the background.
 
 ```
-Tracker.shared?.dispatch()
+func applicationDidEnterBackground(_ application: UIApplication) {
+  Tracker.shared?.dispatch()
+}
+```
+
+#### Session Management
+
+The PiwikTracker starts a new session whenever the application starts. If you want to start a new session manually, you can use the `startNewSession()` function. You can, for example, start a new session whenever the user enters the application.
+
+```
+func applicationWillEnterForeground(_ application: UIApplication) {
+  Tracker.shared?.startNewSession()
+}
 ```
 
 ## Contributing

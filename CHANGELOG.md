@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **feature** Added the possibility to set the url for a sreen view event. [#92](https://github.com/piwik/piwik-sdk-ios/issues/92)
+* **feature** Added the functionality to start new sessions. [#136](https://github.com/piwik/piwik-sdk-ios/pull/136)
 * **fixed** The value of an event got wronly encoded when dispatching. [#140](https://github.com/piwik/piwik-sdk-ios/pull/140)
 
 ## 4.0.0-beta1
