@@ -27,6 +27,7 @@ class ConfigurationViewController: UIViewController {
     }
     
     @IBAction func newSessionButtonTapped(_ sender: UIButton) {
+        Tracker.shared?.startNewSession()
     }
     
     @IBAction func dispatchButtonTapped(_ sender: UIButton) {
