@@ -36,6 +36,12 @@ The PiwikTracker can track hierarchical screen names, e.g. screen/settings/regis
 Tracker.shared?.track(view: ["path","to","your","page"])
 ```
 
+You can also set the url of the page. 
+```
+let url = URL(string: "https://piwik.org/get-involved/")
+Tracker.shared?.track(view: ["community","get-involved"], url: url)
+```
+
 ### Tracking Events
 
 Events can be used to track user interactions such as taps on a button. An event consists of four parts:
