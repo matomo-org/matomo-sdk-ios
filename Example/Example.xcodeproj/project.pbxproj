@@ -36,6 +36,7 @@
 		1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */; };
 		1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */; };
 		1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */; };
+		1F71BBC41ED5F108003A5460 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F71BBC31ED5F108003A5460 /* ObjectiveCCompatibilityChecker.m */; };
 		1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */; };
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
@@ -68,6 +69,8 @@
 		1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
 		1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
+		1F71BBC21ED5F108003A5460 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
+		1F71BBC31ED5F108003A5460 /* ObjectiveCCompatibilityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCCompatibilityChecker.m; sourceTree = "<group>"; };
 		1F72DA6D1E61ECAF00EFF764 /* ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				CDA9500519F05D56004A2277 /* UserIDViewController.h */,
 				CDA9500619F05D56004A2277 /* UserIDViewController.m */,
 				1F72DA6D1E61ECAF00EFF764 /* ios-Bridging-Header.h */,
+				1F71BBC21ED5F108003A5460 /* ObjectiveCCompatibilityChecker.h */,
+				1F71BBC31ED5F108003A5460 /* ObjectiveCCompatibilityChecker.m */,
 			);
 			path = "iOS Example";
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */,
 				1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */,
 				1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */,
+				1F71BBC41ED5F108003A5460 /* ObjectiveCCompatibilityChecker.m in Sources */,
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,
 				1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */,
 				1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */,

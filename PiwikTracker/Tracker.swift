@@ -204,3 +204,13 @@ extension Tracker {
         queue(event: event(withCategory: category, action: action, name: name, value: value))
     }
 }
+
+// Objective-c compatibility extension
+extension Tracker {
+    
+    @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
+        let value = number == nil ? nil : number!.floatValue
+        track(eventWithCategory: category, action: action, name: name, value: value)
+    }
+}
+
