@@ -23,7 +23,7 @@ Then run `pod install`. In every file you want to use the PiwikTracker, don't fo
 Befor the first usage, the PiwikTracker has to be configured. This is best to be done in the `application(_:, didFinishLaunchingWithOptions:)` method in the `AppDelegate`.
 
 ```
-Tracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!)
+PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!)
 ```
 
 The `siteId` is the id that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
@@ -33,13 +33,13 @@ The `siteId` is the id that you can get if you [add a website](https://piwik.org
 The PiwikTracker can track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
 
 ```
-Tracker.shared?.track(view: ["path","to","your","page"])
+PiwikTracker.shared?.track(view: ["path","to","your","page"])
 ```
 
 You can also set the url of the page. 
 ```
 let url = URL(string: "https://piwik.org/get-involved/")
-Tracker.shared?.track(view: ["community","get-involved"], url: url)
+PiwikTracker.shared?.track(view: ["community","get-involved"], url: url)
 ```
 
 ### Tracking Events
@@ -52,7 +52,7 @@ Events can be used to track user interactions such as taps on a button. An event
 - Value (optional)
 
 ```
-Tracker.shared?.track(eventWithCategory: "player", action: "slide", name: "volume", value: 35.1)
+PiwikTracker.shared?.track(eventWithCategory: "player", action: "slide", name: "volume", value: 35.1)
 ```
 
 This will log that the user slided the volume slider on the player to 35.1%.
@@ -65,7 +65,7 @@ The PiwikTracker will dispatch events every 30 seconds automatically. If you wan
 
 ```
 func applicationDidEnterBackground(_ application: UIApplication) {
-  Tracker.shared?.dispatch()
+  PiwikTracker.shared?.dispatch()
 }
 ```
 
@@ -75,7 +75,7 @@ The PiwikTracker starts a new session whenever the application starts. If you wa
 
 ```
 func applicationWillEnterForeground(_ application: UIApplication) {
-  Tracker.shared?.startNewSession()
+  PiwikTracker.shared?.startNewSession()
 }
 ```
 
