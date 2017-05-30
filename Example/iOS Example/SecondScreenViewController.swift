@@ -4,6 +4,6 @@ import PiwikTracker
 class SecondScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Tracker.shared?.track(view: ["menu","screen view", "screen view 2"])
+        PiwikTracker.shared?.track(view: ["menu","screen view", "screen view 2"])
     }
 }

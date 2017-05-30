@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Renamed the Tracker to PiwikTracker. [#146](https://github.com/piwik/piwik-sdk-ios/issues/146)
 * **feature** Added isOptedOut parameter to the PiwikTracker. [#124](https://github.com/piwik/piwik-sdk-ios/issues/124)
 
 ## 4.0.0-beta2
