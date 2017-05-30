@@ -5,13 +5,13 @@ import Foundation
 /// ## Basic Usage
 /// * Configure the shared instance as early as possible in your application lifecyle.
 /// * Use the track methods to track your views, events and more.
-final public class Tracker: NSObject {
+final public class PiwikTracker: NSObject {
     
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
     
-    internal static var _sharedInstance: Tracker?
+    internal static var _sharedInstance: PiwikTracker?
     
     /// Create and Configure a new Tracker
     ///
@@ -101,7 +101,7 @@ final public class Tracker: NSObject {
     internal var nextEventStartsANewSession = true
 }
 
-extension Tracker {
+extension PiwikTracker {
     /// Starts a new Session
     ///
     /// Use this function to manually start a new Session. A new Session will be automatically created only on app start.
@@ -115,10 +115,10 @@ extension Tracker {
 }
 
 // shared instance
-extension Tracker {
+extension PiwikTracker {
     
     /// Returns the shared tracker. Will return nil if the tracker was not properly confured before.
-    public static var shared: Tracker? {
+    public static var shared: PiwikTracker? {
         get { return _sharedInstance }
     }
     
@@ -133,7 +133,7 @@ extension Tracker {
     public class func configureSharedInstance(withSiteID siteID: String, baseURL: URL) {
         let queue = MemoryQueue()
         let dispatcher = URLSessionDispatcher(baseURL: baseURL)
-        self._sharedInstance = Tracker.init(siteId: siteID, queue: queue, dispatcher: dispatcher)
+        self._sharedInstance = PiwikTracker.init(siteId: siteID, queue: queue, dispatcher: dispatcher)
     }
     
     /// Configures the shared instance.
@@ -144,11 +144,11 @@ extension Tracker {
     ///   - queue: The queue to use to store all analytics until it is dispatched to the server.
     ///   - dispatcher: The dispatcher to use to transmit all analytics to the server.
     public class func configureSharedInstance(withSiteID siteID: String, queue: Queue = MemoryQueue(), dispatcher: Dispatcher) {
-        self._sharedInstance = Tracker(siteId: siteID, queue: queue, dispatcher: dispatcher)
+        self._sharedInstance = PiwikTracker(siteId: siteID, queue: queue, dispatcher: dispatcher)
     }
 }
 
-extension Tracker {
+extension PiwikTracker {
     internal func event(action: [String], url: URL? = nil) -> Event {
         let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
         return Event(
@@ -188,7 +188,7 @@ extension Tracker {
     }
 }
 
-extension Tracker {
+extension PiwikTracker {
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
@@ -206,7 +206,7 @@ extension Tracker {
 }
 
 // Objective-c compatibility extension
-extension Tracker {
+extension PiwikTracker {
     
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         let value = number == nil ? nil : number!.floatValue
