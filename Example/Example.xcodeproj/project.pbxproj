@@ -40,6 +40,7 @@
 		1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */; };
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
+		1F8D35951EE2F4DC0058940F /* CustomEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D35941EE2F4DC0058940F /* CustomEventsViewController.swift */; };
 		1FEF8EFB1EDCB1B3001D907F /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -76,6 +77,7 @@
 		1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		1F8D35941EE2F4DC0058940F /* CustomEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEventsViewController.swift; sourceTree = "<group>"; };
 		1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7BD4274A519A9E5A07FAB5 /* Pods-example-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.release.xcconfig"; path = "../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */,
 				1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */,
 				1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */,
+				1F8D35941EE2F4DC0058940F /* CustomEventsViewController.swift */,
 				CD5C9813193E65CF00A8A801 /* CampaignViewController.h */,
 				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
 				CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */,
@@ -406,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8D35951EE2F4DC0058940F /* CustomEventsViewController.swift in Sources */,
 				1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */,
 				1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */,
 				1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */,

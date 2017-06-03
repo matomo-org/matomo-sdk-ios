@@ -70,7 +70,7 @@ final class URLSessionDispatcher: Dispatcher {
 fileprivate extension Event {
     var queryItems: [URLQueryItem] {
         get {
-            return [
+            let basicQueryItems = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
                 // Visitor
@@ -98,6 +98,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
                 ].filter({ $0.value != nil }) // remove the items that lack the value
+            return basicQueryItems + customTrackingParameters.map({ key, value in return URLQueryItem(name: key, value: value) })
         }
     }
 }

@@ -161,26 +161,7 @@ extension PiwikTracker {
 }
 
 extension PiwikTracker {
-    internal func event(action: [String], url: URL? = nil) -> Event {
-        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
-        return Event(
-            siteId: siteId,
-            uuid: NSUUID(),
-            visitor: visitor,
-            session: session,
-            date: Date(),
-            url: url,
-            actionName: action,
-            language: Locale.httpAcceptLanguage,
-            isNewSession: nextEventStartsANewSession,
-            referer: nil,
-            eventCategory: nil,
-            eventAction: nil,
-            eventName: nil,
-            eventValue: nil
-        )
-    }
-    internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
+    public func event() -> Event {
         return Event(
             siteId: siteId,
             uuid: NSUUID(),
@@ -192,15 +173,34 @@ extension PiwikTracker {
             language: Locale.httpAcceptLanguage,
             isNewSession: nextEventStartsANewSession,
             referer: nil,
-            eventCategory: category,
-            eventAction: action,
-            eventName: name,
-            eventValue: value
+            eventCategory: nil,
+            eventAction: nil,
+            eventName: nil,
+            eventValue: nil,
+            customTrackingParameters: [:]
         )
+    }
+    
+    internal func event(action: [String], url: URL? = nil) -> Event {
+        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
+        return Event(event: event(), url: url, actionName: action)
+    }
+    
+    internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
+        return Event(event: event(), eventCategory: category, eventAction: action, eventName: name, eventValue: value)
     }
 }
 
 extension PiwikTracker {
+    
+    /// Tracks a custom event. Use this method if you want to create your custom event or want to track an Event
+    /// with custom parameters.
+    ///
+    /// - Parameter event: The Event that should be tracked.
+    public func track(_ event: Event) {
+        queue(event: event)
+    }
+    
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
