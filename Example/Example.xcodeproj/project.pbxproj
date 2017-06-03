@@ -40,6 +40,7 @@
 		1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */; };
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
+		1FEF8EFB1EDCB1B3001D907F /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
 		CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */; };
@@ -75,6 +76,7 @@
 		1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7BD4274A519A9E5A07FAB5 /* Pods-example-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.release.xcconfig"; path = "../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.release.xcconfig"; sourceTree = "<group>"; };
 		6C276775C7D0B1B7781C2D47 /* Pods-example-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 		AFEF98FA72F773DD178FA44C /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B5B0C3E097FF9B11D67CEF /* Pods-osx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.release.xcconfig"; path = "Pods/Target Support Files/Pods-osx/Pods-osx.release.xcconfig"; sourceTree = "<group>"; };
 		CD03D99517E8FDFC00D7723F /* OptOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptOutViewController.h; sourceTree = "<group>"; };
-		CD03D99617E8FDFC00D7723F /* OptOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptOutViewController.m; sourceTree = "<group>"; };
 		CD10FABF17B0378D0012BE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD1EA93217B0DA3E00F63E14 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CD1EA93417B0DA4400F63E14 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -205,6 +206,7 @@
 				1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */,
 				1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */,
 				1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */,
+				1FEF8EFA1EDCB1B3001D907F /* OptOutViewController.swift */,
 				CD5C9813193E65CF00A8A801 /* CampaignViewController.h */,
 				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
 				CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */,
@@ -223,7 +225,6 @@
 				CD9AC5481801CA6500EE8F43 /* GoalsViewController.m */,
 				CD93ECA117E76E290062BE20 /* MainStoryboard.storyboard */,
 				CD03D99517E8FDFC00D7723F /* OptOutViewController.h */,
-				CD03D99617E8FDFC00D7723F /* OptOutViewController.m */,
 				CD9AC5441801C6BB00EE8F43 /* SearchViewController.h */,
 				CD9AC5451801C6BB00EE8F43 /* SearchViewController.m */,
 				CD93ECB517E77BEB0062BE20 /* SocialViewController.h */,
@@ -412,6 +413,7 @@
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,
 				1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */,
 				1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */,
+				1FEF8EFB1EDCB1B3001D907F /* OptOutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

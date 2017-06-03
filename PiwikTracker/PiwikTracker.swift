@@ -7,6 +7,17 @@ import Foundation
 /// * Use the track methods to track your views, events and more.
 final public class PiwikTracker: NSObject {
     
+    /// Defines if the user opted out of tracking. When set to true, every event
+    /// will be discarded immediately. This property is persisted between app launches.
+    public var isOptedOut: Bool {
+        get {
+            return PiwikUserDefaults.standard.optOut
+        }
+        set {
+            PiwikUserDefaults.standard.optOut = newValue
+        }
+    }
+    
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
@@ -43,6 +54,7 @@ final public class PiwikTracker: NSObject {
     }
     
     internal func queue(event: Event) {
+        guard !isOptedOut else { return }
         queue.enqueue(event: event)
         nextEventStartsANewSession = false
     }

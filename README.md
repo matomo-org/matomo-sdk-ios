@@ -28,6 +28,14 @@ PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http
 
 The `siteId` is the id that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
 
+#### OptOut
+
+The PiwikTracker SDK supports opting out of tracking. Please use the `isOptedOut` property of the PiwikTracker to define if the user opted out of tracking.
+
+```
+PiwikTracker.shared?.isOptedOut = true
+```
+
 ### Tracking Page Views
 
 The PiwikTracker can track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.

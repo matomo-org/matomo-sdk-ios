@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -289,7 +289,7 @@
                                             <segue destination="otS-XA-W6b" kind="push" id="dZR-iq-O8b"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
                                         <rect key="frame" x="0.0" y="727.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lXW-WA-gLT" id="eVL-TU-VbE">
@@ -447,7 +447,7 @@
         <!--Optout-->
         <scene sceneID="aBm-gG-tsm">
             <objects>
-                <viewController id="TLS-vi-nag" customClass="OptOutViewController" sceneMemberID="viewController">
+                <viewController id="TLS-vi-nag" customClass="OptOutViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="62G-Jz-gIP"/>
                         <viewControllerLayoutGuide type="bottom" id="BrW-d4-gYF"/>
@@ -456,39 +456,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="0fm-9j-nwg">
-                                <rect key="frame" x="20" y="120" width="280" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="0fm-9j-nwg">
+                                <rect key="frame" x="26" y="114" width="323" height="67"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Depending on application context, country and regulations, users should have the option to optout from tracking due to privacy reasons.</string>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-yo-FvA">
-                                <rect key="frame" x="194" y="268" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="sendOptOutAction:" destination="TLS-vi-nag" eventType="valueChanged" id="cUB-GL-R4k"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Allow tracking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5B-48-hKU">
-                                <rect key="frame" x="78" y="273" width="108" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfX-pC-QtU">
+                                <rect key="frame" x="59" y="231" width="257" height="71"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opt Out of tracking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5B-48-hKU">
+                                        <rect key="frame" x="20" y="25" width="148" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-yo-FvA">
+                                        <rect key="frame" x="188" y="20" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="optOutSwitchChanged:" destination="TLS-vi-nag" eventType="valueChanged" id="oZC-f7-wlh"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="z5B-48-hKU" firstAttribute="centerY" secondItem="ur6-yo-FvA" secondAttribute="centerY" id="5nL-oV-czE"/>
+                                    <constraint firstItem="z5B-48-hKU" firstAttribute="leading" secondItem="NfX-pC-QtU" secondAttribute="leading" constant="20" id="9uJ-vM-CUw"/>
+                                    <constraint firstItem="ur6-yo-FvA" firstAttribute="leading" secondItem="z5B-48-hKU" secondAttribute="trailing" constant="20" id="abc-XF-oP3"/>
+                                    <constraint firstItem="ur6-yo-FvA" firstAttribute="top" secondItem="NfX-pC-QtU" secondAttribute="top" constant="20" id="e45-jm-pMn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ur6-yo-FvA" secondAttribute="trailing" constant="20" id="j4e-4p-xje"/>
+                                    <constraint firstAttribute="bottom" secondItem="ur6-yo-FvA" secondAttribute="bottom" constant="20" id="t3f-kL-EdL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="NfX-pC-QtU" secondAttribute="trailing" constant="10" id="G69-20-DLI"/>
+                            <constraint firstItem="0fm-9j-nwg" firstAttribute="leading" secondItem="Fmb-xT-VQp" secondAttribute="leadingMargin" constant="10" id="Pks-dQ-mJI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0fm-9j-nwg" secondAttribute="trailing" constant="10" id="Vfa-5M-ZsQ"/>
+                            <constraint firstItem="NfX-pC-QtU" firstAttribute="centerX" secondItem="Fmb-xT-VQp" secondAttribute="centerX" id="YuG-rT-cBH"/>
+                            <constraint firstItem="NfX-pC-QtU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fmb-xT-VQp" secondAttribute="leadingMargin" constant="10" id="c5T-Qn-VAz"/>
+                            <constraint firstItem="NfX-pC-QtU" firstAttribute="top" secondItem="0fm-9j-nwg" secondAttribute="bottom" constant="50" id="eRR-oT-xjx"/>
+                            <constraint firstItem="0fm-9j-nwg" firstAttribute="top" secondItem="62G-Jz-gIP" secondAttribute="bottom" constant="50" id="new-X0-Sk0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Optout" id="3nJ-wJ-3Q3"/>
                     <connections>
-                        <outlet property="optOutSwitch" destination="ur6-yo-FvA" id="5nF-fe-xaD"/>
+                        <outlet property="optOutSwitch" destination="ur6-yo-FvA" id="pwe-rn-BFO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tyf-Nd-tt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="1704"/>
+            <point key="canvasLocation" x="2109.5" y="1703.5"/>
         </scene>
         <!--Ecommerce-->
         <scene sceneID="deo-cP-bhp">
