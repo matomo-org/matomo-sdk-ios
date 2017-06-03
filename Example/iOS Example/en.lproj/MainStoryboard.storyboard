@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3h-dc-9VC" id="6QM-lt-Nvm">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Screens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EYc-RM-MMH">
@@ -177,12 +177,32 @@
                                             <segue destination="zpc-4j-H26" kind="push" id="Lim-Xs-kmO"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MaB-48-OYq" style="IBUITableViewCellStyleDefault" id="ifd-6P-qve" userLabel="Table View Cell - Content tracking">
+                                        <rect key="frame" x="0.0" y="363.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ifd-6P-qve" id="XFP-3j-HtE">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Custom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MaB-48-OYq">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="8Cc-CO-lh0" kind="push" id="Oqg-Qe-jzt"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Search" id="D2G-yR-FkY" userLabel="Table View Section - Search">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Go-tE-Ysp" style="IBUITableViewCellStyleDefault" id="dij-ud-Cse" userLabel="Table View Cell - Search">
-                                        <rect key="frame" x="0.0" y="411.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dij-ud-Cse" id="wfU-9V-eCn">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -206,7 +226,7 @@
                             <tableViewSection headerTitle="Conversion" id="Ykb-Nf-a3l" userLabel="Table View Section - Conversion">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
-                                        <rect key="frame" x="0.0" y="503.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="547.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QY8-q1-L0P" id="gNI-EU-T3B">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -226,7 +246,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wFM-RN-ccQ" style="IBUITableViewCellStyleDefault" id="opC-Eg-HGF" userLabel="Table View Cell - Ecommerce">
-                                        <rect key="frame" x="0.0" y="547.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="591.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="opC-Eg-HGF" id="H1r-jj-weM">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -250,10 +270,10 @@
                             <tableViewSection headerTitle="Other" id="6kC-bt-yx9">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
-                                        <rect key="frame" x="0.0" y="639.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
@@ -270,10 +290,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WVV-vG-MDD" style="IBUITableViewCellStyleDefault" id="2t3-Re-M7O" userLabel="Table View Cell - Campaign">
-                                        <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="727.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2t3-Re-M7O" id="ffB-O7-QqS">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Campaign" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WVV-vG-MDD">
@@ -290,10 +310,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JJ-uO-Kcd" style="IBUITableViewCellStyleDefault" id="lXW-WA-gLT" userLabel="Table View Cell - OptOut">
-                                        <rect key="frame" x="0.0" y="727.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="771.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lXW-WA-gLT" id="eVL-TU-VbE">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Optout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0JJ-uO-Kcd">
@@ -310,10 +330,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="x17-Qe-MIr" style="IBUITableViewCellStyleDefault" id="kGR-0X-zCv" userLabel="Table View Cell - Configuration">
-                                        <rect key="frame" x="0.0" y="771.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="815.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kGR-0X-zCv" id="wkf-i6-Rie">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x17-Qe-MIr">
@@ -442,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nh-Ps-MWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545.5" y="1862.5"/>
+            <point key="canvasLocation" x="1153" y="2692"/>
         </scene>
         <!--Optout-->
         <scene sceneID="aBm-gG-tsm">
@@ -508,7 +528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tyf-Nd-tt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109.5" y="1703.5"/>
+            <point key="canvasLocation" x="1717" y="2533"/>
         </scene>
         <!--Ecommerce-->
         <scene sceneID="deo-cP-bhp">
@@ -608,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vr-eb-14W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="773"/>
+            <point key="canvasLocation" x="1588" y="2375"/>
         </scene>
         <!--Download-->
         <scene sceneID="VWi-2I-pHn">
@@ -649,7 +669,7 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sir-hE-PUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="283"/>
+            <point key="canvasLocation" x="2029" y="2335"/>
         </scene>
         <!--Social-->
         <scene sceneID="EPK-0i-p81">
@@ -687,7 +707,7 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4O-6M-aMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="-537"/>
+            <point key="canvasLocation" x="1526" y="2326"/>
         </scene>
         <!--Search-->
         <scene sceneID="VIK-2u-TLt">
@@ -728,7 +748,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQx-GN-4e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="241"/>
+            <point key="canvasLocation" x="1057" y="2392"/>
         </scene>
         <!--Content Tracking-->
         <scene sceneID="59A-61-H45">
@@ -771,7 +791,53 @@ Log keywords used and the number of results found.   Searches are shown in a
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2123" y="-184"/>
+            <point key="canvasLocation" x="1617" y="117"/>
+        </scene>
+        <!--Custom-->
+        <scene sceneID="leL-M8-blx">
+            <objects>
+                <viewController id="8Cc-CO-lh0" customClass="CustomEventsViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="30s-Om-csf"/>
+                        <viewControllerLayoutGuide type="bottom" id="mBl-X6-zPM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1sN-yf-4Be">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeB-Qc-Tax">
+                                <rect key="frame" x="26" y="114" width="323" height="81.5"/>
+                                <string key="text">It is possible to track custom Events and add customTrackingParameters. With this it is possible to use every feature of the HTTP Api.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYV-rB-3Aj">
+                                <rect key="frame" x="120.5" y="245.5" width="134" height="30"/>
+                                <state key="normal" title="Track Custon Event">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackCustomEventButtonTapped:" destination="8Cc-CO-lh0" eventType="touchUpInside" id="cGv-Ce-KdF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="UeB-Qc-Tax" secondAttribute="trailing" constant="10" id="0r3-Ye-hFt"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="xYV-rB-3Aj" secondAttribute="trailing" constant="10" id="6U0-yd-cI8"/>
+                            <constraint firstItem="xYV-rB-3Aj" firstAttribute="top" secondItem="UeB-Qc-Tax" secondAttribute="bottom" constant="50" id="G97-Ew-chg"/>
+                            <constraint firstItem="UeB-Qc-Tax" firstAttribute="leading" secondItem="1sN-yf-4Be" secondAttribute="leadingMargin" constant="10" id="OMg-95-Atz"/>
+                            <constraint firstItem="UeB-Qc-Tax" firstAttribute="top" secondItem="30s-Om-csf" secondAttribute="bottom" constant="50" id="RbG-W9-9QP"/>
+                            <constraint firstItem="xYV-rB-3Aj" firstAttribute="centerX" secondItem="1sN-yf-4Be" secondAttribute="centerX" id="hKJ-tb-9kT"/>
+                            <constraint firstItem="xYV-rB-3Aj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1sN-yf-4Be" secondAttribute="leadingMargin" constant="10" id="q8v-8d-hRR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Custom" id="6xr-es-KlL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hP3-5o-x0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616.5" y="842.5"/>
         </scene>
         <!--User ID-->
         <scene sceneID="YPh-mF-L4v">
@@ -871,7 +937,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJa-KD-lnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="2055"/>
+            <point key="canvasLocation" x="499" y="2884"/>
         </scene>
         <!--Goals-->
         <scene sceneID="kdY-CR-wlV">
@@ -909,7 +975,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alD-RZ-1zC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="1045"/>
+            <point key="canvasLocation" x="1104" y="2647"/>
         </scene>
         <!--Exceptions-->
         <scene sceneID="MWf-Xp-ias">
@@ -947,7 +1013,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfZ-K1-HBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-1243"/>
+            <point key="canvasLocation" x="1617" y="-1335"/>
         </scene>
         <!--Events-->
         <scene sceneID="MgX-5m-tVq">
@@ -991,7 +1057,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aL-fE-DAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-2054"/>
+            <point key="canvasLocation" x="1617" y="-2062"/>
         </scene>
         <!--Custom variables-->
         <scene sceneID="ynN-jo-rwj">
@@ -1056,7 +1122,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-I5-hgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="-1524"/>
+            <point key="canvasLocation" x="1617" y="-611"/>
         </scene>
         <!--Screen Views-->
         <scene sceneID="24">
