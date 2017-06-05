@@ -7,7 +7,7 @@ abstract_target :example do
 
   target :ios do
     platform :ios, '8.0'
-    project 'Example/ios'
+    project 'Example/ios/ios'
     pod 'PiwikTracker', path: './'
   end
 

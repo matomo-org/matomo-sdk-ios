@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "container:"
+      name = "Examples">
+      <FileRef
+         location = "group:Example/ios/ios.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Example/macos/macos.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Example/tvos/tvos.xcodeproj">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:PiwikTracker.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Example/ios.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Example/macos/macos.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Example/tvos/tvos.xcodeproj">
    </FileRef>
 </Workspace>
