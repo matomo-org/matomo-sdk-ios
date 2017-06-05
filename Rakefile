@@ -33,7 +33,8 @@ desc 'Run the PiwikTracker tests for iOS & Mac OS X'
 task :test do
   Rake::Task['test:ios'].invoke
   Rake::Task['test:ios_demo'].invoke
-  Rake::Task['test:osx_demo'].invoke if is_mavericks_or_above
+  Rake::Task['test:osx_demo'].invoke
+  Rake::Task['test:tvos_demo'].invoke
 end
 
 task default: 'test'
