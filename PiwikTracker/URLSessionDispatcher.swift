@@ -34,7 +34,7 @@ final class URLSessionDispatcher: Dispatcher {
         self.session = URLSession.shared
     }
     
-    func send(event: Event, success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    func send(event: Event, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let url = baseURL.setting(event.queryItems)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
         request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
@@ -42,7 +42,7 @@ final class URLSessionDispatcher: Dispatcher {
         send(request: request, success: success, failure: failure)
     }
     
-    func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let eventsAsQueryItems = events.map({ event in event.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
             items.flatMap({ item in
@@ -52,9 +52,11 @@ final class URLSessionDispatcher: Dispatcher {
             }).joined(separator: "&")
         })
         let body = ["requests": serializedEvents.map({ "?\($0)" })]
-        guard let jsonBody = try? JSONSerialization.data(withJSONObject: body, options: []) else {
-            puts("Unable to serialize JSONData")
-            failure(false)
+        let jsonBody: Data
+        do {
+            jsonBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch  {
+            failure(error)
             return
         }
         var request = URLRequest(url: baseURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
@@ -65,14 +67,14 @@ final class URLSessionDispatcher: Dispatcher {
         send(request: request, success: success, failure: failure)
     }
     
-    private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let task = session.dataTask(with: request) { data, response, error in
             // should we check the response?
             // let dataString = String(data: data!, encoding: String.Encoding.utf8)
-            if error == nil {
-                success()
+            if let error = error {
+                failure(error)
             } else {
-                failure(false)
+                success()
             }
         }
         task.resume()
@@ -100,7 +102,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "lang", value: language),
                 URLQueryItem(name: "urlref", value: referer?.absoluteString),
                 URLQueryItem(name: "new_visit", value: isNewSession ? "1" : nil),
-
+                
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),

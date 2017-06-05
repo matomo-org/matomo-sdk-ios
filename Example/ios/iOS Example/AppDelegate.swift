@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
         }
         PiwikTracker.configureSharedInstance(withSiteID: siteid, baseURL: baseurl)
+        PiwikTracker.shared?.logger = DefaultLogger(minLevel: .info)
     }
     
 }

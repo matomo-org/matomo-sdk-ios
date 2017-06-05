@@ -15,6 +15,7 @@
 		1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F11E17A91100458199 /* MemoryQueue.swift */; };
 		1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */; };
 		1F1949F81E17B2C800458199 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
+		1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBF71EE568D10021FBF8 /* Logger.swift */; };
 		1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CA58B1E09A30600121FDC /* Queue.swift */; };
 		1F6F0CD71E61E35A008170FC /* PiwikTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD61E61E35A008170FC /* PiwikTracker.swift */; };
 		1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD81E61E377008170FC /* DispatcherStub.swift */; };
@@ -49,6 +50,7 @@
 		1F1949F11E17A91100458199 /* MemoryQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueue.swift; sourceTree = "<group>"; };
 		1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueueSpec.swift; sourceTree = "<group>"; };
 		1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryQueueFixtures.swift; path = Fixtures/MemoryQueueFixtures.swift; sourceTree = "<group>"; };
+		1F38EBF71EE568D10021FBF8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F3CA58B1E09A30600121FDC /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1F6F0CD61E61E35A008170FC /* PiwikTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikTracker.swift; sourceTree = "<group>"; };
 		1F6F0CD81E61E377008170FC /* DispatcherStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatcherStub.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				1F3CA58B1E09A30600121FDC /* Queue.swift */,
 				1F6F0CD61E61E35A008170FC /* PiwikTracker.swift */,
 				1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */,
+				1F38EBF71EE568D10021FBF8 /* Logger.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */,
 			);
@@ -357,6 +360,7 @@
 				1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */,
 				1F0A15D01E6335E900FEAE72 /* Session.swift in Sources */,
 				1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */,
+				1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
 				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,
