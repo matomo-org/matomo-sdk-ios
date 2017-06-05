@@ -1,0 +1,373 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F38EBE91EE55AE50021FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBE81EE55AE50021FBF8 /* AppDelegate.swift */; };
+		1F38EBEB1EE55AE50021FBF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */; };
+		1F38EBEE1EE55AE50021FBF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */; };
+		1F38EBF01EE55AE50021FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */; };
+		607D4B3ABA064DC5DA050144 /* Pods_example_tvos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0907CCC9B4E1BA377380424F /* Pods_example_tvos.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0907CCC9B4E1BA377380424F /* Pods_example_tvos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_tvos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F38EBE51EE55AE50021FBF8 /* tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F38EBE81EE55AE50021FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F38EBED1EE55AE50021FBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F38EBF11EE55AE50021FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.release.xcconfig"; sourceTree = "<group>"; };
+		918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F38EBE21EE55AE50021FBF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607D4B3ABA064DC5DA050144 /* Pods_example_tvos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		150A8A694C0964F809ACA0E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */,
+				2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1F38EBDC1EE55AE50021FBF8 = {
+			isa = PBXGroup;
+			children = (
+				1F38EBE71EE55AE50021FBF8 /* tvos */,
+				1F38EBE61EE55AE50021FBF8 /* Products */,
+				150A8A694C0964F809ACA0E5 /* Pods */,
+				D3EFD56183CA883BC9A8C5F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1F38EBE61EE55AE50021FBF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F38EBE51EE55AE50021FBF8 /* tvos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F38EBE71EE55AE50021FBF8 /* tvos */ = {
+			isa = PBXGroup;
+			children = (
+				1F38EBE81EE55AE50021FBF8 /* AppDelegate.swift */,
+				1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */,
+				1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */,
+				1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */,
+				1F38EBF11EE55AE50021FBF8 /* Info.plist */,
+			);
+			path = tvos;
+			sourceTree = "<group>";
+		};
+		D3EFD56183CA883BC9A8C5F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0907CCC9B4E1BA377380424F /* Pods_example_tvos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F38EBE41EE55AE50021FBF8 /* tvos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F38EBF41EE55AE50021FBF8 /* Build configuration list for PBXNativeTarget "tvos" */;
+			buildPhases = (
+				A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */,
+				1F38EBE11EE55AE50021FBF8 /* Sources */,
+				1F38EBE21EE55AE50021FBF8 /* Frameworks */,
+				1F38EBE31EE55AE50021FBF8 /* Resources */,
+				1BAD3F74505E36F2DCCEFA9D /* [CP] Embed Pods Frameworks */,
+				38DBD44A2E80CAA046528641 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tvos;
+			productName = tvos;
+			productReference = 1F38EBE51EE55AE50021FBF8 /* tvos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F38EBDD1EE55AE50021FBF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Piwik;
+				TargetAttributes = {
+					1F38EBE41EE55AE50021FBF8 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1F38EBE01EE55AE50021FBF8 /* Build configuration list for PBXProject "tvos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F38EBDC1EE55AE50021FBF8;
+			productRefGroup = 1F38EBE61EE55AE50021FBF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F38EBE41EE55AE50021FBF8 /* tvos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F38EBE31EE55AE50021FBF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F38EBF01EE55AE50021FBF8 /* Assets.xcassets in Resources */,
+				1F38EBEE1EE55AE50021FBF8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BAD3F74505E36F2DCCEFA9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38DBD44A2E80CAA046528641 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F38EBE11EE55AE50021FBF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F38EBEB1EE55AE50021FBF8 /* ViewController.swift in Sources */,
+				1F38EBE91EE55AE50021FBF8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F38EBED1EE55AE50021FBF8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F38EBF21EE55AE50021FBF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		1F38EBF31EE55AE50021FBF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F38EBF51EE55AE50021FBF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = tvos/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.tvos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1F38EBF61EE55AE50021FBF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = tvos/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.tvos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F38EBE01EE55AE50021FBF8 /* Build configuration list for PBXProject "tvos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F38EBF21EE55AE50021FBF8 /* Debug */,
+				1F38EBF31EE55AE50021FBF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F38EBF41EE55AE50021FBF8 /* Build configuration list for PBXNativeTarget "tvos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F38EBF51EE55AE50021FBF8 /* Debug */,
+				1F38EBF61EE55AE50021FBF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F38EBDD1EE55AE50021FBF8 /* Project object */;
+}

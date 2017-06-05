@@ -13,4 +13,7 @@
    <FileRef
       location = "group:Example/macos/macos.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Example/tvos/tvos.xcodeproj">
+   </FileRef>
 </Workspace>

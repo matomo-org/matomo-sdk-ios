@@ -16,11 +16,16 @@ namespace :test do
     build_failed('iOS') unless $?.success?
   end
 
-  # right now there is no OSX demo app
   desc 'Build the PiwikTracker OSX demo'
   task osx_demo: :prepare do
     run_build('macos', 'macosx', 'platform=macOS,arch=x86_64')
-    build_failed('OSX') unless $?.success?
+    build_failed('macOS') unless $?.success?
+  end
+
+  desc 'Build the PiwikTracker tvOS demo'
+  task tvos_demo: :prepare do
+    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.2')
+    build_failed('tvOS') unless $?.success?
   end
 end
 

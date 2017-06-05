@@ -17,11 +17,12 @@ abstract_target :example do
     pod 'PiwikTracker', path: './'
   end
 
-  #target :osx do
-    # platform :osx, '10.8'
-    # link_with ['PiwikTrackerOSXDemo']
-    # pod 'PiwikTracker', :path => './'
-  #end
+  target :tvos do
+    platform :tvos, '10.2'
+    project 'Example/tvos/tvos'
+    pod 'PiwikTracker', path: './'
+  end
+
 end
 
 target 'PiwikTrackerTests' do

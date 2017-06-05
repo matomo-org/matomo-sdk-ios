@@ -19,8 +19,10 @@ final class URLSessionDispatcher: Dispatcher {
         #elseif os(iOS)
             let webView = UIWebView(frame: .zero)
             let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #elseif os(tvOS)
+            let currentUserAgent = ""
         #endif
-        return currentUserAgent.appending(" Piwik iOS SDK URLSessionDispatcher")
+        return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
     }()
     
     init(baseURL: URL) {
