@@ -92,6 +92,10 @@ fileprivate extension Event {
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
                 
+                
+                //screen resolution
+                URLQueryItem(name: "res", value: String(describing: screenResolution.width)+"x"+String(describing: screenResolution.height)),
+
                 URLQueryItem(name: "e_c", value: eventCategory),
                 URLQueryItem(name: "e_a", value: eventAction),
                 URLQueryItem(name: "e_n", value: eventName),
