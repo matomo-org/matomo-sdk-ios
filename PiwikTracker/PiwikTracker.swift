@@ -111,6 +111,14 @@ final public class PiwikTracker: NSObject {
     internal var visitor = Visitor.current()
     internal var session = Session.current()
     internal var nextEventStartsANewSession = true
+    
+    public func userAgent () -> String {
+        return self.dispatcher.userAgent!
+    }
+    public func setUserAgent (userAgent: String)
+    {
+        self.dispatcher.setUserAgent(ua: userAgent)
+    }
 }
 
 extension PiwikTracker {
@@ -225,4 +233,8 @@ extension PiwikTracker {
         track(eventWithCategory: category, action: action, name: name, value: value)
     }
 }
+
+
+
+
 
