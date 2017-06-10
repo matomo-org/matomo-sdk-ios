@@ -8,7 +8,7 @@ class ConfigurationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Tracker.shared?.track(view: ["menu","configuration"])
+        PiwikTracker.shared?.track(view: ["menu","configuration"])
         
         baseURLTextField.text = UserDefaults.standard.url(forKey: "piwik-example-baseurl")?.absoluteString
         siteIDTextField.text = UserDefaults.standard.string(forKey: "piwik-example-siteid")
@@ -23,14 +23,15 @@ class ConfigurationViewController: UIViewController {
         UserDefaults.standard.set(siteID, forKey: "piwik-example-siteid")
         UserDefaults.standard.synchronize()
         
-        Tracker.configureSharedInstance(withSiteID: siteID, baseURL: baseURL)
+        PiwikTracker.configureSharedInstance(withSiteID: siteID, baseURL: baseURL)
     }
     
     @IBAction func newSessionButtonTapped(_ sender: UIButton) {
+        PiwikTracker.shared?.startNewSession()
     }
     
     @IBAction func dispatchButtonTapped(_ sender: UIButton) {
-        Tracker.shared?.dispatch()
+        PiwikTracker.shared?.dispatch()
     }
 
 }

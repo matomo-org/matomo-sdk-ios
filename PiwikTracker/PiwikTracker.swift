@@ -5,13 +5,24 @@ import Foundation
 /// ## Basic Usage
 /// * Configure the shared instance as early as possible in your application lifecyle.
 /// * Use the track methods to track your views, events and more.
-final public class Tracker: NSObject {
+final public class PiwikTracker: NSObject {
+    
+    /// Defines if the user opted out of tracking. When set to true, every event
+    /// will be discarded immediately. This property is persisted between app launches.
+    public var isOptedOut: Bool {
+        get {
+            return PiwikUserDefaults.standard.optOut
+        }
+        set {
+            PiwikUserDefaults.standard.optOut = newValue
+        }
+    }
     
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
     
-    internal static var _sharedInstance: Tracker?
+    internal static var _sharedInstance: PiwikTracker?
     
     /// Create and Configure a new Tracker
     ///
@@ -24,6 +35,7 @@ final public class Tracker: NSObject {
         self.queue = queue
         self.dispatcher = dispatcher
         super.init()
+        startNewSession()
         startDispatchTimer()
     }
     
@@ -42,7 +54,9 @@ final public class Tracker: NSObject {
     }
     
     internal func queue(event: Event) {
+        guard !isOptedOut else { return }
         queue.enqueue(event: event)
+        nextEventStartsANewSession = false
     }
     
     // MARK: dispatching
@@ -51,7 +65,8 @@ final public class Tracker: NSObject {
     private(set) var isDispatching = false
     
     
-    /// Manually start the dispatching process.
+    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationDidEnterBackground` to transmit all data
+    /// whenever the user leaves the application.
     public func dispatch() {
         guard !isDispatching else { return }
         guard queue.eventCount > 0 else {
@@ -95,13 +110,27 @@ final public class Tracker: NSObject {
     
     internal var visitor = Visitor.current()
     internal var session = Session.current()
+    internal var nextEventStartsANewSession = true
+}
+
+extension PiwikTracker {
+    /// Starts a new Session
+    ///
+    /// Use this function to manually start a new Session. A new Session will be automatically created only on app start.
+    /// You can use the AppDelegates `applicationWillEnterForeground` to start a new visit whenever the app enters foreground.
+    public func startNewSession() {
+        PiwikUserDefaults.standard.previousVisit = PiwikUserDefaults.standard.currentVisit
+        PiwikUserDefaults.standard.currentVisit = Date()
+        PiwikUserDefaults.standard.totalNumberOfVisits += 1
+        self.session = Session.current()
+    }
 }
 
 // shared instance
-extension Tracker {
+extension PiwikTracker {
     
     /// Returns the shared tracker. Will return nil if the tracker was not properly confured before.
-    public static var shared: Tracker? {
+    public static var shared: PiwikTracker? {
         get { return _sharedInstance }
     }
     
@@ -116,7 +145,7 @@ extension Tracker {
     public class func configureSharedInstance(withSiteID siteID: String, baseURL: URL) {
         let queue = MemoryQueue()
         let dispatcher = URLSessionDispatcher(baseURL: baseURL)
-        self._sharedInstance = Tracker.init(siteId: siteID, queue: queue, dispatcher: dispatcher)
+        self._sharedInstance = PiwikTracker.init(siteId: siteID, queue: queue, dispatcher: dispatcher)
     }
     
     /// Configures the shared instance.
@@ -127,22 +156,23 @@ extension Tracker {
     ///   - queue: The queue to use to store all analytics until it is dispatched to the server.
     ///   - dispatcher: The dispatcher to use to transmit all analytics to the server.
     public class func configureSharedInstance(withSiteID siteID: String, queue: Queue = MemoryQueue(), dispatcher: Dispatcher) {
-        self._sharedInstance = Tracker(siteId: siteID, queue: queue, dispatcher: dispatcher)
+        self._sharedInstance = PiwikTracker(siteId: siteID, queue: queue, dispatcher: dispatcher)
     }
 }
 
-extension Tracker {
-    internal func event(action: [String]) -> Event {
+extension PiwikTracker {
+    internal func event(action: [String], url: URL? = nil) -> Event {
+        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
         return Event(
             siteId: siteId,
             uuid: NSUUID(),
             visitor: visitor,
             session: session,
             date: Date(),
-            url: URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/")),
+            url: url,
             actionName: action,
             language: Locale.httpAcceptLanguage,
-            isNewSession: false, // set this to true once we can start a new session
+            isNewSession: nextEventStartsANewSession,
             referer: nil,
             eventCategory: nil,
             eventAction: nil,
@@ -156,12 +186,11 @@ extension Tracker {
             uuid: NSUUID(),
             visitor: visitor,
             session: session,
-            
             date: Date(),
             url: URL(string: "http://example.com")!,
             actionName: [],
             language: Locale.httpAcceptLanguage,
-            isNewSession: false, // set this to true once we can start a new session
+            isNewSession: nextEventStartsANewSession,
             referer: nil,
             eventCategory: category,
             eventAction: action,
@@ -171,14 +200,15 @@ extension Tracker {
     }
 }
 
-extension Tracker {
+extension PiwikTracker {
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
     ///
     /// - Parameter view: An array of hierarchical screen names.
-    public func track(view: [String]) {
-        queue(event: event(action: view))
+    /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
+    public func track(view: [String], url: URL? = nil) {
+        queue(event: event(action: view, url: url))
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
@@ -186,3 +216,13 @@ extension Tracker {
         queue(event: event(withCategory: category, action: action, name: name, value: value))
     }
 }
+
+// Objective-c compatibility extension
+extension PiwikTracker {
+    
+    @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
+        let value = number == nil ? nil : number!.floatValue
+        track(eventWithCategory: category, action: action, name: name, value: value)
+    }
+}
+

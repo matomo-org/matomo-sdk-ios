@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Tracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string:"http://piwik.tboprojects.de/piwik.php")!)
-        Tracker.shared?.track(view: ["start"])
-        Tracker.shared?.dispatch()
+        PiwikTracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
+        PiwikTracker.shared?.track(view: ["start"])
+        PiwikTracker.shared?.dispatch()
     }
 
     override func didReceiveMemoryWarning() {

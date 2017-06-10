@@ -8,6 +8,9 @@ namespace :test do
   desc 'Run the PiwikTracker Unit tests'
   task ios: :prepare do
     run_tests('PiwikTracker', 'iphonesimulator')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
   end
 
   desc 'Build the PiwikTracker iOS demo'
@@ -41,11 +44,11 @@ task default: 'test'
 
 private
 
-def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3')
+def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
-def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3')
+def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
