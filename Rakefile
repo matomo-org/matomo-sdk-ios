@@ -8,22 +8,27 @@ namespace :test do
   desc 'Run the PiwikTracker Unit tests'
   task ios: :prepare do
     run_tests('PiwikTracker', 'iphonesimulator')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
   end
 
-  # currently this links against nonexisting files
-  # once we implemented certain features we can adapt them in
-  # the iOS demo app
   desc 'Build the PiwikTracker iOS demo'
   task ios_demo: :prepare do
-    # run_build('PiwikTrackeriOSDemo', 'iphonesimulator')
-    # build_failed('iOS') unless $?.success?
+    run_build('ios', 'iphonesimulator')
+    build_failed('iOS') unless $?.success?
   end
 
-  # right now there is no OSX demo app
   desc 'Build the PiwikTracker OSX demo'
   task osx_demo: :prepare do
-    # run_build('PiwikTrackerOSXDemo', 'macosx')
-    # build_failed('OSX') unless $?.success?
+    run_build('macos', 'macosx', 'platform=macOS,arch=x86_64')
+    build_failed('macOS') unless $?.success?
+  end
+
+  desc 'Build the PiwikTracker tvOS demo'
+  task tvos_demo: :prepare do
+    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.2')
+    build_failed('tvOS') unless $?.success?
   end
 end
 
@@ -31,18 +36,19 @@ desc 'Run the PiwikTracker tests for iOS & Mac OS X'
 task :test do
   Rake::Task['test:ios'].invoke
   Rake::Task['test:ios_demo'].invoke
-  Rake::Task['test:osx_demo'].invoke if is_mavericks_or_above
+  Rake::Task['test:osx_demo'].invoke
+  Rake::Task['test:tvos_demo'].invoke
 end
 
 task default: 'test'
 
 private
 
-def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
+def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
-def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.0')
+def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
   sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
