@@ -1,9 +1,4 @@
-#if os(OSX)
-#elseif os(iOS)
-import UIKit
-
 internal struct Device {
-    
     /// Creates an returns a new device object representing the current device
     static func makeCurrentDevice() ->  Device {
         let platform = currentPlatform()
@@ -28,11 +23,11 @@ internal struct Device {
     /// The version number of the OS as String i.e. "1.2" or "9.4"
     let osVersion: String
     
-    // The screen size in points
+    // The screen size
     let screenSize: CGSize
     
-    // The screen size in pixels
-    let nativeScreenSize: CGSize
+    // The native screen size
+    let nativeScreenSize: CGSize?
     
     /// The platform name of the current device i.e. "iPhone1,1" or "iPad3,6"
     private static func currentPlatform() -> String  {
@@ -135,21 +130,45 @@ internal struct Device {
         }
     }
     
-    /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
-    private static func osVersionForCurrentDevice() -> String  {
-        return UIDevice.current.systemVersion
-    }
-    
-    // Returns the screen size in points
-    private static func screenSizeForCurrentDevice() ->  CGSize {
-        let bounds = UIScreen.main.bounds
-        return bounds.size
-    }
-    
-    // Returns the screen size in pixels
-    private static func nativeScreenSizeForCurrentDevice() ->  CGSize {
-        let bounds = UIScreen.main.nativeBounds
-        return bounds.size
-    }
 }
+#if os(OSX)
+    extension Device {
+        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        internal static func osVersionForCurrentDevice() -> String  {
+            let version = ProcessInfo.processInfo.operatingSystemVersion
+            return "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+        }
+        
+        // Returns the screen size in points
+        internal static func screenSizeForCurrentDevice() ->  CGSize {
+            guard let mainScreen = NSScreen.main() else { return CGSize.zero }
+            return mainScreen.visibleFrame.size
+        }
+        
+        // Returns the screen size in pixels
+        internal static func nativeScreenSizeForCurrentDevice() ->  CGSize? {
+            return nil
+        }
+    }
+#elseif os(iOS) || os(tvOS)
+    import UIKit
+    extension Device {
+        
+        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        internal static func osVersionForCurrentDevice() -> String  {
+            return UIDevice.current.systemVersion
+        }
+        
+        // Returns the screen size in points
+        internal static func screenSizeForCurrentDevice() ->  CGSize {
+            let bounds = UIScreen.main.bounds
+            return bounds.size
+        }
+        
+        // Returns the screen size in pixels
+        internal static func nativeScreenSizeForCurrentDevice() ->  CGSize {
+            let bounds = UIScreen.main.nativeBounds
+            return bounds.size
+        }
+    }
 #endif

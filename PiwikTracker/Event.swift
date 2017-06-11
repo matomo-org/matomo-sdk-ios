@@ -55,7 +55,7 @@ public struct Event {
     /// Currently only used for Campaigns
     /// api-key: urlref
     let referer: URL?
-    
+    let screenResolution : CGSize = Device.makeCurrentDevice().screenSize
     /// api-key: _cvar
     //let customVariables: [CustomVariable]
     

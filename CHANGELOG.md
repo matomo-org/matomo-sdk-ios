@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Transmitting the Screen resolution to the Piwik Backend. [#149](https://github.com/piwik/piwik-sdk-ios/issues/149) (by @akshaykolte)
 * **feature** Added macOS and tvOS compatibility. [#134](https://github.com/piwik/piwik-sdk-ios/issues/134)
 
 ## 4.0.0
