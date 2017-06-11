@@ -7,6 +7,8 @@ Pod::Spec.new do |spec|
   spec.author       = { "Mattias Levin" => "mattias.levin@gmail.com", "Cornelius Horstmann" => "site-github@brototyp.de" }
   spec.source       = { :git => "https://github.com/piwik/piwik-sdk-ios.git", :tag => "v#{spec.version}" }
   spec.ios.deployment_target = '8.0'
+  spec.tvos.deployment_target = '9.0'
+  spec.osx.deployment_target = '10.12'
   spec.requires_arc = true
   spec.default_subspecs = 'Core'
   
