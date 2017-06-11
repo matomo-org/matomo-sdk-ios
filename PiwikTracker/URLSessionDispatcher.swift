@@ -94,7 +94,7 @@ fileprivate extension Event {
                 
                 
                 //screen resolution
-                URLQueryItem(name: "res", value: String(describing: screenResolution.width)+"x"+String(describing: screenResolution.height)),
+                URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
 
                 URLQueryItem(name: "e_c", value: eventCategory),
                 URLQueryItem(name: "e_a", value: eventAction),
