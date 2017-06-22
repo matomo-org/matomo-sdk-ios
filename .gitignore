@@ -21,3 +21,4 @@ xcuserdata
 Doc/
 Pods
 DerivedData
+/Podfile.lock

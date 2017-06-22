@@ -87,6 +87,20 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 }
 ```
 
+#### Logging
+
+The PiwikTracker per default loggs `warning` and `error` messages to the console. You can change the `LogLevel`.
+
+```
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .verbose)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .debug)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .info)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .warning)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
+```
+
+You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
+
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 

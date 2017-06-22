@@ -22,6 +22,12 @@ final public class PiwikTracker: NSObject {
     private var queue: Queue
     internal let siteId: String
     
+    
+    /// This logger is used to perform logging of all sorts of piwik related information.
+    /// Per default it is a `DefaultLogger` with a `minLevel` of `LogLevel.warning`. You can
+    /// set your own Logger with a custom `minLevel` or a complete custom logging mechanism.
+    public var logger: Logger = DefaultLogger(minLevel: .warning)
+    
     internal static var _sharedInstance: PiwikTracker?
     
     /// Create and Configure a new Tracker
@@ -55,6 +61,7 @@ final public class PiwikTracker: NSObject {
     
     internal func queue(event: Event) {
         guard !isOptedOut else { return }
+        logger.verbose("Queued event: \(event)")
         queue.enqueue(event: event)
         nextEventStartsANewSession = false
     }
@@ -68,11 +75,16 @@ final public class PiwikTracker: NSObject {
     /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationDidEnterBackground` to transmit all data
     /// whenever the user leaves the application.
     public func dispatch() {
-        guard !isDispatching else { return }
+        guard !isDispatching else {
+            logger.verbose("PiwikTracker is already dispatching.")
+            return
+        }
         guard queue.eventCount > 0 else {
+            logger.info("No need to dispatch. Dispatch queue is empty.")
             startDispatchTimer()
             return
         }
+        logger.info("Start dispatching events")
         isDispatching = true
         dispatchBatch()
     }
@@ -82,13 +94,16 @@ final public class PiwikTracker: NSObject {
             guard events.count > 0 else {
                 // there are no more events queued, finish dispatching
                 self.isDispatching = false
+                self.logger.info("Finished dispatching events")
                 return
             }
             self.dispatcher.send(events: events, success: {
                 self.queue.remove(events: events, completion: {
+                    self.logger.info("Dispatched batch of \(events.count) events.")
                     self.dispatchBatch()
                 })
-            }, failure: { _ in
+            }, failure: { shouldContinue in
+                self.logger.warning("Failed dispatching events with error \(shouldContinue)")
                 self.isDispatching = false
             })
         }
