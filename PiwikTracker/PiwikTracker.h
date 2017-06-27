@@ -401,6 +401,14 @@ typedef NS_ENUM(NSUInteger, CustomVariableScope) {
  */
 - (BOOL)setCustomVariableForIndex:(NSUInteger)index name:(NSString*)name value:(NSString*)value scope:(CustomVariableScope)scope;
 
+/**
+ 
+ Sets a custom dimension
+ 
+ @dimensionId the dimension Id
+ @value the dimension string value
+ */
+- (BOOL)setCustomDimension:(NSUInteger)dimensionId value:(NSString *)value;
 
 /**
  @name Dispatch pending events

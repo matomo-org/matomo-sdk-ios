@@ -180,6 +180,7 @@ static NSString * const PiwikURLCampaignKeyword = @"pk_kwd";
 
 @property (nonatomic, strong) NSMutableDictionary *screenCustomVariables;
 @property (nonatomic, strong) NSMutableDictionary *visitCustomVariables;
+@property (nonatomic, strong) NSMutableDictionary *screenCustomDimensions;
 @property (nonatomic, strong) NSDictionary *sessionParameters;
 @property (nonatomic, strong) NSDictionary *staticParameters;
 @property (nonatomic, strong) NSDictionary *campaignParameters;
@@ -769,6 +770,19 @@ static PiwikTracker *_sharedInstance;
   return YES;
 }
 
+- (BOOL)setCustomDimension:(NSUInteger)dimensionId value:(NSString *)value
+{
+    NSString *dimensionString = [NSString stringWithFormat:@"dimension%d",(unsigned)dimensionId];
+    
+    if (!self.screenCustomDimensions)
+    {
+        self.screenCustomDimensions = [NSMutableDictionary dictionary];
+    }
+    
+    self.screenCustomDimensions[dimensionString] = value;
+    
+    return YES;
+}
 
 - (BOOL)queueEvent:(NSDictionary*)parameters {
   
@@ -821,6 +835,16 @@ static PiwikTracker *_sharedInstance;
     joinedParameters[PiwikParameterScreenScopeCustomVariables] = [PiwikTracker JSONEncodeCustomVariables:self.screenCustomVariables];
     self.screenCustomVariables = nil;
   }
+    
+  // Custom dimension parameters
+  if (self.screenCustomDimensions) {
+    for (NSString *key in self.screenCustomDimensions) {
+        NSString *value = self.screenCustomDimensions[key];
+        joinedParameters[key] = value;
+    }
+    self.screenCustomDimensions = nil;
+  }
+
   
   // Add campaign parameters if they are set
   if (self.campaignParameters.count > 0) {
