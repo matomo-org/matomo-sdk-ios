@@ -5,8 +5,11 @@ import Foundation
 /// All getter and setter are sideeffect free and automatically syncronize
 /// after writing.
 internal struct MatomoUserDefaults {
-    static var standard = MatomoUserDefaults()
-    let userDefaults = UserDefaults.standard
+    let userDefaults: UserDefaults
+
+    init(suiteName: String?) {
+        userDefaults = UserDefaults(suiteName: suiteName)!
+    }
     
     var totalNumberOfVisits: Int {
         get {
