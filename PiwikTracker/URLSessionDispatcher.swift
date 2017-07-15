@@ -85,7 +85,7 @@ final class URLSessionDispatcher: Dispatcher {
 fileprivate extension Event {
     var queryItems: [URLQueryItem] {
         get {
-            return [
+            var items = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
                 // Visitor
@@ -117,6 +117,10 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
                 ].filter({ $0.value != nil }) // remove the items that lack the value
+            for dimension in dimensions {
+                items.append(URLQueryItem(name: "dimension\(dimension.index)", value: dimension.value))
+            }
+            return items
         }
     }
 }

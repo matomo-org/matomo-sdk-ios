@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3h-dc-9VC" id="6QM-lt-Nvm">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Screens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EYc-RM-MMH">
@@ -77,14 +77,14 @@
                                             <segue destination="EE7-OR-Lgd" kind="push" id="wnn-E8-GXc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="FzY-SE-YEP" style="IBUITableViewCellStyleDefault" id="YbN-sD-lqf" userLabel="Table View Cell - Custom variables">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="FzY-SE-YEP" style="IBUITableViewCellStyleDefault" id="YbN-sD-lqf" userLabel="Table View Cell - Custom variables">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YbN-sD-lqf" id="feu-lM-6Kn">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Custom variables" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FzY-SE-YEP">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Custom Dimensions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FzY-SE-YEP">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -993,10 +993,10 @@ Store the id locally in the app and set it directly after the tracker is created
             </objects>
             <point key="canvasLocation" x="1617" y="-2054"/>
         </scene>
-        <!--Custom variables-->
+        <!--Custom Diemensions-->
         <scene sceneID="ynN-jo-rwj">
             <objects>
-                <viewController id="CDD-fq-XoC" customClass="CustomVariablesViewController" sceneMemberID="viewController">
+                <viewController id="CDD-fq-XoC" customClass="CustomDimensionsViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cAl-Nl-YcF"/>
                         <viewControllerLayoutGuide type="bottom" id="8N5-4k-gwz"/>
@@ -1005,58 +1005,49 @@ Store the id locally in the app and set it directly after the tracker is created
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-6k-u8x">
-                                <rect key="frame" x="20" y="104" width="280" height="157"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">A custom variable is a name-value pair that you can assign to your visits or individual screen views. 
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-6k-u8x">
+                                <rect key="frame" x="26" y="114" width="323" height="117"/>
+                                <string key="text">A custom dimension is a name-value pair that you can assign to your visits or individual screen views. 
 
-The Piwik server will visualize how many visits, conversions, etc. occured for each custom variable.</string>
+The Piwik server will visualize how many visits, conversions, etc. occured for each custom dimension.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyW-3f-6RA">
-                                <rect key="frame" x="126" y="269" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Custom A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyW-3f-6RA">
+                                <rect key="frame" x="26" y="281" width="323" height="30"/>
+                                <state key="normal" title="Visit">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="customVariableAAction:" destination="CDD-fq-XoC" eventType="touchUpInside" id="BHA-g6-9H1"/>
+                                    <action selector="setVisitCustomDimensionsTapped:" destination="CDD-fq-XoC" eventType="touchUpInside" id="Xvk-wY-WzS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Index 4, visit scope" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWu-fH-679">
-                                <rect key="frame" x="20" y="292" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAn-E6-Ihh">
-                                <rect key="frame" x="126" y="321" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Custom B">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="CustomVariableBAction:" destination="CDD-fq-XoC" eventType="touchUpInside" id="w6V-XG-7f2"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Index 1, screen scope" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmW-62-gH5">
-                                <rect key="frame" x="20" y="344" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adds Custom Dimensions do every Event for App version, OS version and Hardware." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWu-fH-679">
+                                <rect key="frame" x="26" y="321" width="323" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TWu-fH-679" firstAttribute="top" secondItem="zyW-3f-6RA" secondAttribute="bottom" constant="10" id="390-9P-vJg"/>
+                            <constraint firstItem="cxY-6k-u8x" firstAttribute="leading" secondItem="pSV-jD-kPE" secondAttribute="leadingMargin" constant="10" id="3F7-kH-SbK"/>
+                            <constraint firstItem="TWu-fH-679" firstAttribute="leading" secondItem="pSV-jD-kPE" secondAttribute="leadingMargin" constant="10" id="5uX-Ql-Dkj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cxY-6k-u8x" secondAttribute="trailing" constant="10" id="7Du-vK-djP"/>
+                            <constraint firstItem="zyW-3f-6RA" firstAttribute="leading" secondItem="pSV-jD-kPE" secondAttribute="leadingMargin" constant="10" id="JQ7-29-v7Z"/>
+                            <constraint firstItem="cxY-6k-u8x" firstAttribute="top" secondItem="cAl-Nl-YcF" secondAttribute="bottom" constant="50" id="K8E-Qj-cuK"/>
+                            <constraint firstItem="zyW-3f-6RA" firstAttribute="top" secondItem="cxY-6k-u8x" secondAttribute="bottom" constant="50" id="RiC-Mb-Rmo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TWu-fH-679" secondAttribute="trailing" constant="10" id="VPh-Rs-NoO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zyW-3f-6RA" secondAttribute="trailing" constant="10" id="nDd-6F-cKa"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Custom variables" id="pLN-CW-KT9"/>
+                    <navigationItem key="navigationItem" title="Custom Diemensions" id="pLN-CW-KT9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-I5-hgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="-1524"/>
+            <point key="canvasLocation" x="2069.5" y="-1524.5"/>
         </scene>
         <!--Screen Views-->
         <scene sceneID="24">

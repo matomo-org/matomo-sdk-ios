@@ -39,6 +39,11 @@
 		1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */; };
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
+		1FDC91761F1A648C0046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91701F1A648C0046F506 /* Application.swift */; };
+		1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */; };
+		1FDC91781F1A648C0046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91721F1A648C0046F506 /* Device.swift */; };
+		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
+		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
 		CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */; };
@@ -70,6 +75,12 @@
 		1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		1FDC91701F1A648C0046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimensionsViewController.swift; sourceTree = "<group>"; };
+		1FDC91721F1A648C0046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
+		1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCCompatibilityChecker.m; sourceTree = "<group>"; };
+		1FDC91751F1A648C0046F506 /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB58213275F072D13140292 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +194,8 @@
 		CD93EC8F17E76E290062BE20 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
+				1FDC91701F1A648C0046F506 /* Application.swift */,
+				1FDC91721F1A648C0046F506 /* Device.swift */,
 				CD93EC9017E76E290062BE20 /* Supporting Files */,
 				1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */,
 				1F72DA701E62E55200EFF764 /* MenuViewController.swift */,
@@ -190,6 +203,8 @@
 				1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */,
 				1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */,
 				1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */,
+				1FDC91751F1A648C0046F506 /* OptOutViewController.swift */,
+				1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */,
 				CD5C9813193E65CF00A8A801 /* CampaignViewController.h */,
 				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
 				CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */,
@@ -215,6 +230,8 @@
 				CD93ECB617E77BEB0062BE20 /* SocialViewController.m */,
 				CDA9500519F05D56004A2277 /* UserIDViewController.h */,
 				CDA9500619F05D56004A2277 /* UserIDViewController.m */,
+				1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */,
+				1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */,
 				1F72DA6D1E61ECAF00EFF764 /* ios-Bridging-Header.h */,
 			);
 			path = "iOS Example";
@@ -389,6 +406,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */,
+				1FDC91761F1A648C0046F506 /* Application.swift in Sources */,
+				1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */,
+				1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */,
+				1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */,
+				1FDC91781F1A648C0046F506 /* Device.swift in Sources */,
 				1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */,
 				1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */,
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,

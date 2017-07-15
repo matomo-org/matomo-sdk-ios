@@ -21,6 +21,8 @@ final public class PiwikTracker: NSObject {
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
+
+    internal var dimensions: [CustomDimension] = []
     
     
     /// This logger is used to perform logging of all sorts of piwik related information.
@@ -192,7 +194,8 @@ extension PiwikTracker {
             eventCategory: nil,
             eventAction: nil,
             eventName: nil,
-            eventValue: nil
+            eventValue: nil,
+            dimensions: dimensions
         )
     }
     internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
@@ -210,7 +213,8 @@ extension PiwikTracker {
             eventCategory: category,
             eventAction: action,
             eventName: name,
-            eventValue: value
+            eventValue: value,
+            dimensions: dimensions
         )
     }
 }
@@ -232,6 +236,33 @@ extension PiwikTracker {
     }
 }
 
+extension PiwikTracker {
+    /// Set a permanent custom dimension.
+    ///
+    /// Use this method to set a dimension that will be send with every event. This is best for Custom Dimensions in scope "Visit". A typical example could be any device information or the version of the app the visitor is using.
+    ///
+    /// For more information on custom dimensions visit https://piwik.org/docs/custom-dimensions/
+    ///
+    /// - Parameter value: The value you want to set for this dimension.
+    /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
+    public func set(value: String, forIndex index: Int) {
+        let dimension = CustomDimension(index: index, value: value)
+        remove(dimensionAtIndex: dimension.index)
+        dimensions.append(dimension)
+    }
+    
+    /// Removes a previously set custom dimension.
+    ///
+    /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
+    ///
+    /// - Parameter index: The index of the dimension.
+    public func remove(dimensionAtIndex index: Int) {
+        dimensions = dimensions.filter({ dimension in
+            dimension.index != index
+        })
+    }
+}
+
 // Objective-c compatibility extension
 extension PiwikTracker {
     
@@ -240,4 +271,3 @@ extension PiwikTracker {
         track(eventWithCategory: category, action: action, name: name, value: value)
     }
 }
-
