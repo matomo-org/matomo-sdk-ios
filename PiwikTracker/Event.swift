@@ -66,5 +66,5 @@ public struct Event {
     let eventName: String?
     let eventValue: Float?
     
-    let dimensions: [Dimension]
+    let dimensions: [CustomDimension]
 }

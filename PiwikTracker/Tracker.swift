@@ -10,7 +10,7 @@ final public class Tracker: NSObject {
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
-    internal var dimensions: [Dimension] = []
+    internal var dimensions: [CustomDimension] = []
     
     internal static var _sharedInstance: Tracker?
     
@@ -199,8 +199,8 @@ extension Tracker {
     ///
     /// - Parameter value: The value you want to set for this dimension.
     /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
-    func set(value: String, forDimension index: Int) {
-        let dimension = Dimension(index: index, value: value)
+    public func set(value: String, forDimension index: Int) {
+        let dimension = CustomDimension(index: index, value: value)
         remove(dimensionAt: dimension.index)
         dimensions.append(dimension)
     }
@@ -209,8 +209,8 @@ extension Tracker {
     ///
     /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
     ///
-    /// - Parameter intex: The index of the dimension.
-    func remove(dimensionAt index: Int) {
+    /// - Parameter index: The index of the dimension.
+    public func remove(dimensionAt index: Int) {
         dimensions = dimensions.filter({ dimension in
             dimension.index != index
         })
