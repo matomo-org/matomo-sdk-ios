@@ -8,7 +8,7 @@ struct EventFixture {
                      eventCategory: nil,
                      eventAction: nil,
                      eventName: nil,
-                     eventValue: nil)
+                     eventValue: nil, dimensions: [])
     }
 }
 

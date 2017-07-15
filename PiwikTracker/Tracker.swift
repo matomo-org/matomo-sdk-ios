@@ -199,9 +199,9 @@ extension Tracker {
     ///
     /// - Parameter value: The value you want to set for this dimension.
     /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
-    public func set(value: String, forDimension index: Int) {
+    public func set(value: String, forIndex index: Int) {
         let dimension = CustomDimension(index: index, value: value)
-        remove(dimensionAt: dimension.index)
+        remove(dimensionAtIndex: dimension.index)
         dimensions.append(dimension)
     }
     
@@ -210,7 +210,7 @@ extension Tracker {
     /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
     ///
     /// - Parameter index: The index of the dimension.
-    public func remove(dimensionAt index: Int) {
+    public func remove(dimensionAtIndex index: Int) {
         dimensions = dimensions.filter({ dimension in
             dimension.index != index
         })

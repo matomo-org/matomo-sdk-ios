@@ -11,8 +11,8 @@ class CustomDimensionsViewController: UIViewController {
     @IBAction func setVisitCustomDimensionsTapped(_ sender: UIButton) {
         let application = Application.makeCurrentApplication()
         let device = Device.makeCurrentDevice()
-        Tracker.shared?.set(value: device.osVersion, forDimension: 1)
-        Tracker.shared?.set(value: device.humanReadablePlatformName ?? device.platform, forDimension: 2)
-        Tracker.shared?.set(value: application.bundleShortVersion ?? "unknown", forDimension: 3)
+        Tracker.shared?.set(value: device.osVersion, forIndex: 1)
+        Tracker.shared?.set(value: device.humanReadablePlatformName ?? device.platform, forIndex: 2)
+        Tracker.shared?.set(value: application.bundleShortVersion ?? "unknown", forIndex: 3)
     }
 }
