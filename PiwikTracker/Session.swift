@@ -26,9 +26,12 @@ struct Session {
 
 extension Session {
     static func current() -> Session {
-        guard let firstVisit = PiwikUserDefaults.standard.firstVisit else {
-            PiwikUserDefaults.standard.firstVisit = Date()
-            return current()
+        let firstVisit: Date
+        if let existingFirstVisit = PiwikUserDefaults.standard.firstVisit {
+            firstVisit = existingFirstVisit
+        } else {
+            firstVisit = Date()
+            PiwikUserDefaults.standard.firstVisit = firstVisit
         }
         let sessionCount = PiwikUserDefaults.standard.totalNumberOfVisits
         let lastVisit = PiwikUserDefaults.standard.previousVisit ?? Date()

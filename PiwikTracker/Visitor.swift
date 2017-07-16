@@ -21,9 +21,13 @@ struct Visitor {
 
 extension Visitor {
     static func current() -> Visitor {
-        guard let id = PiwikUserDefaults.standard.clientId else {
-            PiwikUserDefaults.standard.clientId = newVisitorID()
-            return current()
+        let id: String
+        if let existingId = PiwikUserDefaults.standard.clientId {
+            id = existingId
+        } else {
+            let newId = newVisitorID()
+            PiwikUserDefaults.standard.clientId = newId
+            id = newId
         }
         let userId: String? = nil // we can add the userid later
         return Visitor(id: id, userId: userId)
