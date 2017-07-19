@@ -5,5 +5,5 @@ before_install:
     - cd $TRAVIS_BUILD_DIR
     - pod install || pod install --repo-update
 script: rake test
-osx_image: xcode8
+osx_image: xcode8.3
 cache: cocoapods

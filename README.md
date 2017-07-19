@@ -65,6 +65,24 @@ PiwikTracker.shared?.track(eventWithCategory: "player", action: "slide", name: "
 
 This will log that the user slided the volume slider on the player to 35.1%.
 
+### Custom Dimension
+
+The Piwik SDK currently supports Custom Dimensions for the Visit Scope. Using Custom Dimensions you can add properties to the whole visit, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?" and such. Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://piwik.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.
+
+After that you can set a new Dimension,
+
+```
+PiwikTracker.shared?.set(value: "1.0.0-beta2", forIndex: 1)
+```
+
+or remove an already set dimension.
+
+```
+PiwikTracker.shared?.remove(dimensionAtIndex: 1)
+```
+
+Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
+
 ### Advanced
 
 #### Manual dispatching
@@ -86,6 +104,20 @@ func applicationWillEnterForeground(_ application: UIApplication) {
   PiwikTracker.shared?.startNewSession()
 }
 ```
+
+#### Logging
+
+The PiwikTracker per default loggs `warning` and `error` messages to the console. You can change the `LogLevel`.
+
+```
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .verbose)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .debug)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .info)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .warning)
+PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
+```
+
+You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.

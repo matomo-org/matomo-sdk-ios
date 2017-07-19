@@ -1,15 +1,28 @@
 import Foundation
 
+#if os(OSX)
+    import WebKit
+#elseif os(iOS)
+    import UIKit
+#endif
+
 final class URLSessionDispatcher: Dispatcher {
     
     let timeout: TimeInterval
     let session: URLSession
     let baseURL: URL
-    
+
     var userAgent: String? = {
-        let webView = UIWebView(frame: .zero)
-        let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-        return currentUserAgent.appending(" Piwik iOS SDK URLSessionDispatcher")
+        #if os(OSX)
+            let webView = WebView(frame: .zero)
+            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #elseif os(iOS)
+            let webView = UIWebView(frame: .zero)
+            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+        #elseif os(tvOS)
+            let currentUserAgent = ""
+        #endif
+        return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
     }()
     
     func setUserAgent(ua: String) {
@@ -25,7 +38,7 @@ final class URLSessionDispatcher: Dispatcher {
         self.session = URLSession.shared
     }
     
-    func send(event: Event, success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    func send(event: Event, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let url = baseURL.setting(event.queryItems)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
         request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
@@ -33,7 +46,7 @@ final class URLSessionDispatcher: Dispatcher {
         send(request: request, success: success, failure: failure)
     }
     
-    func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let eventsAsQueryItems = events.map({ event in event.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
             items.flatMap({ item in
@@ -43,9 +56,11 @@ final class URLSessionDispatcher: Dispatcher {
             }).joined(separator: "&")
         })
         let body = ["requests": serializedEvents.map({ "?\($0)" })]
-        guard let jsonBody = try? JSONSerialization.data(withJSONObject: body, options: []) else {
-            puts("Unable to serialize JSONData")
-            failure(false)
+        let jsonBody: Data
+        do {
+            jsonBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch  {
+            failure(error)
             return
         }
         var request = URLRequest(url: baseURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
@@ -56,14 +71,14 @@ final class URLSessionDispatcher: Dispatcher {
         send(request: request, success: success, failure: failure)
     }
     
-    private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ shouldContinue: Bool)->()) {
+    private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let task = session.dataTask(with: request) { data, response, error in
             // should we check the response?
             // let dataString = String(data: data!, encoding: String.Encoding.utf8)
-            if error == nil {
-                success()
+            if let error = error {
+                failure(error)
             } else {
-                failure(false)
+                success()
             }
         }
         task.resume()
@@ -74,7 +89,7 @@ final class URLSessionDispatcher: Dispatcher {
 fileprivate extension Event {
     var queryItems: [URLQueryItem] {
         get {
-            return [
+            var items = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
                 // Visitor
@@ -91,17 +106,25 @@ fileprivate extension Event {
                 URLQueryItem(name: "lang", value: language),
                 URLQueryItem(name: "urlref", value: referer?.absoluteString),
                 URLQueryItem(name: "new_visit", value: isNewSession ? "1" : nil),
-
+                
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
                 
+                
+                //screen resolution
+                URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
+
                 URLQueryItem(name: "e_c", value: eventCategory),
                 URLQueryItem(name: "e_a", value: eventAction),
                 URLQueryItem(name: "e_n", value: eventName),
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
                 ].filter({ $0.value != nil }) // remove the items that lack the value
+            for dimension in dimensions {
+                items.append(URLQueryItem(name: "dimension\(dimension.index)", value: dimension.value))
+            }
+            return items
         }
     }
 }

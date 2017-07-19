@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+* **feature** Added Custom Dimension Tracking for the Visit Scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111) 
+* **feature** Transmitting the Screen resolution to the Piwik Backend. [#149](https://github.com/piwik/piwik-sdk-ios/issues/149) (by @akshaykolte)
+* **feature** Added a Logger that can log messages in different levels. [#147](https://github.com/piwik/piwik-sdk-ios/issues/147)
+* **feature** Added macOS and tvOS compatibility. [#134](https://github.com/piwik/piwik-sdk-ios/issues/134)
+
 ## 4.0.0
 * **feature** Renamed the Tracker to PiwikTracker. [#146](https://github.com/piwik/piwik-sdk-ios/issues/146)
 * **feature** Added isOptedOut parameter to the PiwikTracker. [#124](https://github.com/piwik/piwik-sdk-ios/issues/124)

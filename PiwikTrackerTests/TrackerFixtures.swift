@@ -3,12 +3,12 @@
 struct TrackerFixture {
     public var queue: Queue
     public var dispatcher: Dispatcher
-    public var tracker: Tracker
+    public var tracker: PiwikTracker
 
     init(queue: Queue = QueueStub(), dispatcher: Dispatcher = DispatcherStub()) {
         self.queue = queue
         self.dispatcher = dispatcher
-        self.tracker = Tracker(siteId: "spec_siteId", queue: self.queue, dispatcher: self.dispatcher)
+        self.tracker = PiwikTracker(siteId: "spec_siteId", queue: self.queue, dispatcher: self.dispatcher)
     }
     
     static func withQueueEventsCallback(queueEvents: @escaping QueueStub.Callback.QueueEvents) -> TrackerFixture {
