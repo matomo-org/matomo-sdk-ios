@@ -12,8 +12,7 @@ final class DispatcherStub: Dispatcher {
     
     let userAgent: String? = "DispatcherStub"
     
-    
-    func send(event: Event, success: @escaping ()->(), failure: @escaping (Error)->()){
+    func send(event: Event, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         send(events: [event], success: success, failure: failure)
     }
     

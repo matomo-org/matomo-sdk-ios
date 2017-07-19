@@ -96,6 +96,7 @@ final public class PiwikTracker: NSObject {
             guard events.count > 0 else {
                 // there are no more events queued, finish dispatching
                 self.isDispatching = false
+                self.startDispatchTimer()
                 self.logger.info("Finished dispatching events")
                 return
             }
@@ -104,16 +105,21 @@ final public class PiwikTracker: NSObject {
                     self.logger.info("Dispatched batch of \(events.count) events.")
                     self.dispatchBatch()
                 })
-            }, failure: { shouldContinue in
-                self.logger.warning("Failed dispatching events with error \(shouldContinue)")
+            }, failure: { error in
                 self.isDispatching = false
+                self.startDispatchTimer()
+                self.logger.warning("Failed dispatching events with error \(error)")
             })
         }
     }
     
     // MARK: dispatch timer
     
-    private let dispatchInterval: TimeInterval = 30.0 // Discussion: move this into a configuration?
+    public var dispatchInterval: TimeInterval = 30.0 {
+        didSet {
+            startDispatchTimer()
+        }
+    }
     private var dispatchTimer: Timer?
     
     private func startDispatchTimer() {
