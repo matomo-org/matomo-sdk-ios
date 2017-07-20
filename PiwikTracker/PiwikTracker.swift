@@ -18,7 +18,7 @@ final public class PiwikTracker: NSObject {
         }
     }
     
-    private let dispatcher: Dispatcher
+    private var dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
 
@@ -134,7 +134,7 @@ final public class PiwikTracker: NSObject {
     }
     public func setUserAgent (userAgent: String)
     {
-        self.dispatcher.setUserAgent(ua: userAgent)
+        self.dispatcher.userAgent = userAgent;
     }
 }
 

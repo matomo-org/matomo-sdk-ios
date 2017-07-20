@@ -25,10 +25,6 @@ final class URLSessionDispatcher: Dispatcher {
         return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
     }()
     
-    func setUserAgent(ua: String) {
-        self.userAgent = ua
-    }
-    
     init(baseURL: URL) {
         if !baseURL.absoluteString.hasSuffix("piwik.php") {
             fatalError("The baseURL is expected to end in piwik.php")
