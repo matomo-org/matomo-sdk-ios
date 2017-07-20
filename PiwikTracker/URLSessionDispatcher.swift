@@ -25,13 +25,16 @@ final class URLSessionDispatcher: Dispatcher {
         return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
     }()
     
-    init(baseURL: URL) {
+    init(baseURL: URL, userAgent: String? = nil) {
         if !baseURL.absoluteString.hasSuffix("piwik.php") {
             fatalError("The baseURL is expected to end in piwik.php")
         }
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
+        if (userAgent != nil) {
+            self.userAgent = userAgent
+        }
     }
     
     func send(event: Event, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
