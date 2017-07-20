@@ -129,8 +129,8 @@ final public class PiwikTracker: NSObject {
     internal var session = Session.current()
     internal var nextEventStartsANewSession = true
     
-    public func userAgent () -> String {
-        return self.dispatcher.userAgent!
+    public func userAgent () -> String? {
+        return self.dispatcher.userAgent;
     }
     public func setUserAgent (userAgent: String)
     {
