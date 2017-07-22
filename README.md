@@ -120,15 +120,7 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
 ### Custom User Agent
-You have 2 ways to change the user agent of `PiwikTracker`.
-
-- You can pass custom user agent in the constructor of `PiwikTracker`.
-- You can change the user agent anytime you want by using follow code
-
-```
-let customUserAgent: String = __custom_user_agent__
-tracker.setUserAgent(userAgent: customUserAgent)
-```
+You can now use custom user agent of `PiwikTracker`. Add a parameter for custom user agent in the constructor of `PiwikTracker`.
 
 **BTW, be notice, `PiwikTracker` will create a default user agent by creating a web view if you didn't pass the custom one. In another words, you should create instance of `PiwikTracker` in the main thread.**
 
