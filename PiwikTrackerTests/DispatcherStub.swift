@@ -10,8 +10,7 @@ final class DispatcherStub: Dispatcher {
     
     var sendEvents: Callback.SendEvents? = nil
     
-    let userAgent: String? = "DispatcherStub"
-    
+    var userAgent: String? = "DispatcherStub"
     
     func send(event: Event, success: @escaping ()->(), failure: @escaping (Error)->()){
         send(events: [event], success: success, failure: failure)
