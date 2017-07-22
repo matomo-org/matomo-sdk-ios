@@ -18,7 +18,7 @@ final public class PiwikTracker: NSObject {
         }
     }
     
-    private var dispatcher: Dispatcher
+    private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
 
@@ -128,14 +128,7 @@ final public class PiwikTracker: NSObject {
     internal var visitor = Visitor.current()
     internal var session = Session.current()
     internal var nextEventStartsANewSession = true
-    
-    public func userAgent () -> String? {
-        return self.dispatcher.userAgent
-    }
-    public func setUserAgent (userAgent: String)
-    {
-        self.dispatcher.userAgent = userAgent
-    }
+
 }
 
 extension PiwikTracker {

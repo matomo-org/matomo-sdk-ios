@@ -4,7 +4,7 @@ public protocol Dispatcher {
     
     var baseURL: URL { get }
     
-    var userAgent: String? { get set }
+    var userAgent: String? { get }
         
     func send(event: Event, success: @escaping ()->(), failure: @escaping (_ error: Error)->())
     
