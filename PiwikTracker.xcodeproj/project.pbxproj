@@ -33,8 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0E172B96F586F42885484C49 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEF98FA72F773DD178FA44C /* libPods-osx.a */; };
-		C027567BEC62566E6F824230 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB58213275F072D13140292 /* libPods-ios.a */; };
+		23EC246E370867B79A6B0003 /* libPods-example-PiwikTrackerOSXDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F8B3902D8507B3E7A35B0A /* libPods-example-PiwikTrackerOSXDemo.a */; };
 		CD03D99417E8F8CB00D7723F /* Screen2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */; };
 		CD03D99717E8FDFD00D7723F /* OptOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03D99617E8FDFC00D7723F /* OptOutViewController.m */; };
 		CD10FAC017B0378D0012BE50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -91,7 +90,7 @@
 		CDEAEACD180B36F900EB91C2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACB180B36F900EB91C2 /* MainMenu.xib */; };
 		CDEAEACF180B36F900EB91C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDEAEACE180B36F900EB91C2 /* Images.xcassets */; };
 		CDEDC029189518B00054CF73 /* EcommerceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEDC028189518B00054CF73 /* EcommerceViewController.m */; };
-		F7721453CB80D9F26E178A5D /* libPods-iosafnetworking2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */; };
+		D8C12A99F05176D036D234C2 /* libPods-example-PiwikTrackeriOSDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E28FC119D94CBF7BE15D91 /* libPods-example-PiwikTrackeriOSDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,13 +163,16 @@
 
 /* Begin PBXFileReference section */
 		03ED166FC145EC4B32AC013E /* Pods-osx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-osx/Pods-osx.debug.xcconfig"; sourceTree = "<group>"; };
-		1C9F1D16D44C44B74B85E7D1 /* Pods-iosafnetworking2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking2.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2.release.xcconfig"; sourceTree = "<group>"; };
+		0A9CF0202BEA3AA0CB905678 /* Pods-example-PiwikTrackerOSXDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-PiwikTrackerOSXDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-example-PiwikTrackerOSXDemo/Pods-example-PiwikTrackerOSXDemo.release.xcconfig"; sourceTree = "<group>"; };
+		28F8B3902D8507B3E7A35B0A /* libPods-example-PiwikTrackerOSXDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example-PiwikTrackerOSXDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E28FC119D94CBF7BE15D91 /* libPods-example-PiwikTrackeriOSDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example-PiwikTrackeriOSDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		757D4EC37134059C538CA7A0 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
-		939DCF0E27BAA5C4003FB741 /* Pods-iosafnetworking2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosafnetworking2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2.debug.xcconfig"; sourceTree = "<group>"; };
+		8B7FAEDFFD7E08F06EB8328C /* Pods-example-PiwikTrackeriOSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-PiwikTrackeriOSDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-example-PiwikTrackeriOSDemo/Pods-example-PiwikTrackeriOSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9BB58213275F072D13140292 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEF98FA72F773DD178FA44C /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B5B0C3E097FF9B11D67CEF /* Pods-osx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.release.xcconfig"; path = "Pods/Target Support Files/Pods-osx/Pods-osx.release.xcconfig"; sourceTree = "<group>"; };
+		C99A6482E0ACCF08B42008C4 /* Pods-example-PiwikTrackerOSXDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-PiwikTrackerOSXDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-example-PiwikTrackerOSXDemo/Pods-example-PiwikTrackerOSXDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		CD03D99217E8F8CB00D7723F /* Screen2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen2ViewController.h; sourceTree = "<group>"; };
 		CD03D99317E8F8CB00D7723F /* Screen2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen2ViewController.m; sourceTree = "<group>"; };
 		CD03D99517E8FDFC00D7723F /* OptOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptOutViewController.h; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		CDEAEAD5180B36F900EB91C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
 		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
+		FA0547BB8DE7006F20EE8CB4 /* Pods-example-PiwikTrackeriOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-PiwikTrackeriOSDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-example-PiwikTrackeriOSDemo/Pods-example-PiwikTrackeriOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +298,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7721453CB80D9F26E178A5D /* libPods-iosafnetworking2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +318,7 @@
 				CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */,
 				CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */,
 				CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */,
-				C027567BEC62566E6F824230 /* libPods-ios.a in Frameworks */,
+				D8C12A99F05176D036D234C2 /* libPods-example-PiwikTrackeriOSDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +328,7 @@
 			files = (
 				CD5F3BEE18678C9000D04E03 /* CoreLocation.framework in Frameworks */,
 				CDEAEAB7180B36F800EB91C2 /* Cocoa.framework in Frameworks */,
-				0E172B96F586F42885484C49 /* libPods-osx.a in Frameworks */,
+				23EC246E370867B79A6B0003 /* libPods-example-PiwikTrackerOSXDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,10 +340,12 @@
 			children = (
 				CDB76A597E0A5EC135205125 /* Pods-ios.debug.xcconfig */,
 				757D4EC37134059C538CA7A0 /* Pods-ios.release.xcconfig */,
-				939DCF0E27BAA5C4003FB741 /* Pods-iosafnetworking2.debug.xcconfig */,
-				1C9F1D16D44C44B74B85E7D1 /* Pods-iosafnetworking2.release.xcconfig */,
 				03ED166FC145EC4B32AC013E /* Pods-osx.debug.xcconfig */,
 				B3B5B0C3E097FF9B11D67CEF /* Pods-osx.release.xcconfig */,
+				C99A6482E0ACCF08B42008C4 /* Pods-example-PiwikTrackerOSXDemo.debug.xcconfig */,
+				0A9CF0202BEA3AA0CB905678 /* Pods-example-PiwikTrackerOSXDemo.release.xcconfig */,
+				FA0547BB8DE7006F20EE8CB4 /* Pods-example-PiwikTrackeriOSDemo.debug.xcconfig */,
+				8B7FAEDFFD7E08F06EB8328C /* Pods-example-PiwikTrackeriOSDemo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -390,6 +394,8 @@
 				9BB58213275F072D13140292 /* libPods-ios.a */,
 				3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */,
 				AFEF98FA72F773DD178FA44C /* libPods-osx.a */,
+				28F8B3902D8507B3E7A35B0A /* libPods-example-PiwikTrackerOSXDemo.a */,
+				65E28FC119D94CBF7BE15D91 /* libPods-example-PiwikTrackeriOSDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -599,11 +605,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD1EEBCA19B5E85A009BAA7A /* Build configuration list for PBXNativeTarget "PiwikTracker+AFNetworking2" */;
 			buildPhases = (
-				946D17AD38CF25D3C743636F /* Check Pods Manifest.lock */,
 				CD1EEBB519B5E85A009BAA7A /* Sources */,
 				CD1EEBB619B5E85A009BAA7A /* Frameworks */,
 				CD1EEBB719B5E85A009BAA7A /* CopyFiles */,
-				1C0D2CA3BB233198C7158D5A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -639,11 +643,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "PiwikTrackeriOSDemo" */;
 			buildPhases = (
-				39C709EE464B76B8DA479C7E /* Check Pods Manifest.lock */,
+				39C709EE464B76B8DA479C7E /* [CP] Check Pods Manifest.lock */,
 				CD93EC8717E76E290062BE20 /* Sources */,
 				CD93EC8817E76E290062BE20 /* Frameworks */,
 				CD93EC8917E76E290062BE20 /* Resources */,
-				AD6EA65F0F2334BE1EBF2A97 /* Copy Pods Resources */,
+				AD6EA65F0F2334BE1EBF2A97 /* [CP] Copy Pods Resources */,
+				3E7C633564509BC950D3C55A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -658,11 +663,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEAEAE2180B36F900EB91C2 /* Build configuration list for PBXNativeTarget "PiwikTrackerOSXDemo" */;
 			buildPhases = (
-				BEAA8608C5AA226DB1DA6B7F /* Check Pods Manifest.lock */,
+				BEAA8608C5AA226DB1DA6B7F /* [CP] Check Pods Manifest.lock */,
 				CDEAEAB1180B36F800EB91C2 /* Sources */,
 				CDEAEAB2180B36F800EB91C2 /* Frameworks */,
 				CDEAEAB3180B36F800EB91C2 /* Resources */,
-				B11EDC1A757EEF54DFB2AB82 /* Copy Pods Resources */,
+				B11EDC1A757EEF54DFB2AB82 /* [CP] Copy Pods Resources */,
+				8865364C811E5777E15DD051 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -755,94 +761,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C0D2CA3BB233198C7158D5A /* Copy Pods Resources */ = {
+		39C709EE464B76B8DA479C7E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosafnetworking2/Pods-iosafnetworking2-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		39C709EE464B76B8DA479C7E /* Check Pods Manifest.lock */ = {
+		3E7C633564509BC950D3C55A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example-PiwikTrackeriOSDemo/Pods-example-PiwikTrackeriOSDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		946D17AD38CF25D3C743636F /* Check Pods Manifest.lock */ = {
+		8865364C811E5777E15DD051 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example-PiwikTrackerOSXDemo/Pods-example-PiwikTrackerOSXDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD6EA65F0F2334BE1EBF2A97 /* Copy Pods Resources */ = {
+		AD6EA65F0F2334BE1EBF2A97 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example-PiwikTrackeriOSDemo/Pods-example-PiwikTrackeriOSDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B11EDC1A757EEF54DFB2AB82 /* Copy Pods Resources */ = {
+		B11EDC1A757EEF54DFB2AB82 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-osx/Pods-osx-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example-PiwikTrackerOSXDemo/Pods-example-PiwikTrackerOSXDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BEAA8608C5AA226DB1DA6B7F /* Check Pods Manifest.lock */ = {
+		BEAA8608C5AA226DB1DA6B7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC3360217B97B190098386C /* Build appledoc */ = {
@@ -1157,7 +1163,6 @@
 		};
 		CD1EEBCB19B5E85A009BAA7A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 939DCF0E27BAA5C4003FB741 /* Pods-iosafnetworking2.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1184,7 +1189,6 @@
 		};
 		CD1EEBCC19B5E85A009BAA7A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C9F1D16D44C44B74B85E7D1 /* Pods-iosafnetworking2.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1265,7 +1269,7 @@
 		};
 		CD93ECAA17E76E290062BE20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDB76A597E0A5EC135205125 /* Pods-ios.debug.xcconfig */;
+			baseConfigurationReference = FA0547BB8DE7006F20EE8CB4 /* Pods-example-PiwikTrackeriOSDemo.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1279,7 +1283,7 @@
 		};
 		CD93ECAB17E76E290062BE20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 757D4EC37134059C538CA7A0 /* Pods-ios.release.xcconfig */;
+			baseConfigurationReference = 8B7FAEDFFD7E08F06EB8328C /* Pods-example-PiwikTrackeriOSDemo.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1322,7 +1326,7 @@
 		};
 		CDEAEAE3180B36F900EB91C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03ED166FC145EC4B32AC013E /* Pods-osx.debug.xcconfig */;
+			baseConfigurationReference = C99A6482E0ACCF08B42008C4 /* Pods-example-PiwikTrackerOSXDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1354,7 +1358,7 @@
 		};
 		CDEAEAE4180B36F900EB91C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3B5B0C3E097FF9B11D67CEF /* Pods-osx.release.xcconfig */;
+			baseConfigurationReference = 0A9CF0202BEA3AA0CB905678 /* Pods-example-PiwikTrackerOSXDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_BOOL_CONVERSION = YES;
