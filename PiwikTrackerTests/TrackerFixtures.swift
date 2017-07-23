@@ -34,4 +34,10 @@ struct TrackerFixture {
         dispatcher.sendEvents = sendEvents
         return TrackerFixture(queue: queue, dispatcher: dispatcher)
     }
+    
+    static func withSendEventsCallback(sendEvents: @escaping DispatcherStub.Callback.SendEvents) -> TrackerFixture {
+        let dispatcher = DispatcherStub()
+        dispatcher.sendEvents = sendEvents
+        return TrackerFixture(queue: MemoryQueue(), dispatcher: dispatcher)
+    }
 }

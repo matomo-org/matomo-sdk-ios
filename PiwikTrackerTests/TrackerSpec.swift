@@ -48,8 +48,30 @@ class TrackerSpec: QuickSpec {
                     
                 }
                 it("should stop dispatching if the queue is empty") {
-                    
                 }
+            }
+            it("should start a new DispatchTimer if dispatching failed") {
+                var numberOfDispatches = 0
+                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
+                    numberOfDispatches += 1
+                    failure(NSError(domain: "spec", code: 0))
+                }
+                trackerFixture.tracker.queue(event: EventFixture.event())
+                trackerFixture.tracker.dispatchInterval = 0.1
+                expect(numberOfDispatches).toEventually(equal(5), timeout: 5)
+            }
+            it("should start a new DispatchTimer if dispatching succeeded") {
+                var numberOfDispatches = 0
+                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
+                    numberOfDispatches += 1
+                    success()
+                }
+                trackerFixture.tracker.queue(event: EventFixture.event())
+                let _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                    trackerFixture.tracker.queue(event: EventFixture.event())
+                }
+                trackerFixture.tracker.dispatchInterval = 0.1
+                expect(numberOfDispatches).toEventually(equal(5), timeout: 5)
             }
             context("with an already dispatching tracker") {
                 it("should not ask the queue for events") {

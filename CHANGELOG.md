@@ -5,6 +5,7 @@
 * **feature** Transmitting the Screen resolution to the Piwik Backend. [#149](https://github.com/piwik/piwik-sdk-ios/issues/149) (by @akshaykolte)
 * **feature** Added a Logger that can log messages in different levels. [#147](https://github.com/piwik/piwik-sdk-ios/issues/147)
 * **feature** Added macOS and tvOS compatibility. [#134](https://github.com/piwik/piwik-sdk-ios/issues/134)
+* **bugfix** Fixed a bug, where the tracker would stop automatic dispatching. [#167](https://github.com/piwik/piwik-sdk-ios/issues/167)
 
 ## 4.0.0
 * **feature** Renamed the Tracker to PiwikTracker. [#146](https://github.com/piwik/piwik-sdk-ios/issues/146)
