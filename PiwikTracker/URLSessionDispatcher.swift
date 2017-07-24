@@ -25,6 +25,11 @@ final class URLSessionDispatcher: Dispatcher {
         return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
     }()
     
+    /// Generate a URLSessionDispatcher instance
+    ///
+    /// - Parameters:
+    ///   - baseURL: The url of the piwik server. This url has to end in `piwik.php`.
+    ///   - userAgent: An optional parameter for custom user agent.
     init(baseURL: URL, userAgent: String? = nil) {
         if !baseURL.absoluteString.hasSuffix("piwik.php") {
             fatalError("The baseURL is expected to end in piwik.php")
