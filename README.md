@@ -1,10 +1,10 @@
 # PiwikTracker iOS SDK
 
-The PiwikTracker is an iOS SDK for sending app analytics to a Piwik server.
+The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Piwik server.
 
-**This is not the final and stable version but a prerelease of the Swift rewrite. Please check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
+**Fancy help improving this SDK? Check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
-[![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=swift3)](https://travis-ci.org/piwik/piwik-sdk-ios)
+[![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=develop)](https://travis-ci.org/piwik/piwik-sdk-ios)
 
 ## Installation
 ### [CocoaPods](https://cocoapods.org)
@@ -12,7 +12,7 @@ The PiwikTracker is an iOS SDK for sending app analytics to a Piwik server.
 Use the following in your Podfile.
 
 ```
-pod 'PiwikTracker', '~> 4.0.0-beta'
+pod 'PiwikTracker', '~> 4.1.0'
 ```
 
 Then run `pod install`. In every file you want to use the PiwikTracker, don't forget to import the framwork with `import PiwikTracker`.
@@ -134,7 +134,7 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
   - [Sessions](https://github.com/piwik/piwik-sdk-ios/issues/136)
   - [OptOut](https://github.com/piwik/piwik-sdk-ios/issues/124)
   - [Persisting non dispatched events](https://github.com/piwik/piwik-sdk-ios/issues/137)
-  - [Custom Dimensions](https://github.com/piwik/piwik-sdk-ios/issues/111)
+  - [Custom Dimensions](https://github.com/piwik/piwik-sdk-ios/issues/111) (Action Scope is not implemented yet)
 - Tracking of more things
   - Exceptions
   - Social Interactions

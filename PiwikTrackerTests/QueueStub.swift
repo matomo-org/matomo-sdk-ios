@@ -21,15 +21,27 @@ final class QueueStub: Queue {
     }
     
     func enqueue(events: [Event], completion: (()->())?) {
-        queueEvents?(events, completion ?? {})
+        if let closure = queueEvents {
+            closure(events, completion ?? {})
+        } else {
+            completion?()
+        }
     }
     
     func first(limit: Int, completion: ([Event]) -> ()) {
-        firstItems?(limit, completion)
+        if let closure = firstItems {
+            closure(limit, completion)
+        } else {
+            completion([])
+        }
     }
     
     func remove(events: [Event], completion: () -> ()) {
-        removeEventsCallback?(events, completion)
+        if let closure = removeEventsCallback {
+            closure(events, completion)
+        } else {
+            completion()
+        }
     }
     
 }

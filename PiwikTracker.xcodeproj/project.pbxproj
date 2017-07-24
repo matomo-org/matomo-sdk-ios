@@ -106,6 +106,7 @@
 		1F1949F51E17B2A400458199 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				1F6F0CDA1E61E377008170FC /* TrackerFixtures.swift */,
 				1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */,
 			);
 			name = Fixtures;
@@ -167,7 +168,6 @@
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
 				1F6F0CD81E61E377008170FC /* DispatcherStub.swift */,
 				1F6F0CD91E61E377008170FC /* QueueStub.swift */,
-				1F6F0CDA1E61E377008170FC /* TrackerFixtures.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
 			);
