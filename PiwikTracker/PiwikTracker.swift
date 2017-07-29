@@ -123,6 +123,12 @@ final public class PiwikTracker: NSObject {
     private var dispatchTimer: Timer?
     
     private func startDispatchTimer() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.sync {
+                self.startDispatchTimer()
+            }
+            return
+        }
         guard dispatchInterval > 0  else { return } // Discussion: Do we want the possibility to dispatch synchronous? That than would be dispatchInterval = 0
         if let dispatchTimer = dispatchTimer {
             dispatchTimer.invalidate()
