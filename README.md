@@ -120,9 +120,23 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
 ### Custom User Agent
-You can now use custom user agent of `PiwikTracker`. Add a parameter for custom user agent in the constructor of `PiwikTracker`.
+The `PiwikTracker` will create a default user agent derived from the WKWebView user agent. This is why you should always instantiate and configure the `PiwikTracker` on the main thread.
+You can instantiate the `PiwikTracker` using your own user agent.
 
-**BTW, be notice, `PiwikTracker` will create a default user agent by creating a web view if you didn't pass the custom one. In another words, you should create instance of `PiwikTracker` in the main thread.**
+```
+PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!, userAgent: "Your custom user agent")
+```
+
+#### Objective-C compatibility
+
+Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/piwik/piwik-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
+
+```
+[PiwikTracker configureSharedInstanceWithSiteID:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-piwik/piwik.php"] userAgent:nil];
+[PiwikTracker shared] trackWithView:@[@"example"] url:nil];
+[[PiwikTracker shared] trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil];
+[[PiwikTracker shared] dispatch];
+```
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
