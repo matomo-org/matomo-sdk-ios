@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added ability to customize user agent. [#168](https://github.com/piwik/piwik-sdk-ios/pull/168)
 
 ## 4.1.0
 * **feature** Added Custom Dimension Tracking for the Visit Scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111) 
@@ -28,3 +29,5 @@
 * **feature** Tracking Events
 * **feature** URLSessionDispatcher
 * **feature** Non persistent Event Queue
+
+

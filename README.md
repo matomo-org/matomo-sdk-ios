@@ -119,6 +119,11 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 
 You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
+### Custom User Agent
+You can now use custom user agent of `PiwikTracker`. Add a parameter for custom user agent in the constructor of `PiwikTracker`.
+
+**BTW, be notice, `PiwikTracker` will create a default user agent by creating a web view if you didn't pass the custom one. In another words, you should create instance of `PiwikTracker` in the main thread.**
+
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
@@ -141,7 +146,7 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
   - [Campaigns](https://github.com/piwik/piwik-sdk-ios/issues/109)
   - Content Impressions / Content Interactions
 - Customizing the tracker
-  - Custom User Agent
+  - ~~Custom User Agent~~
   - userID
   - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
@@ -150,3 +155,5 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
 ## License
 
 PiwikTracker is available under the [MIT license](LICENSE.md).
+
+
