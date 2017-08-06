@@ -12,7 +12,24 @@ final class URLSessionDispatcher: Dispatcher {
     let session: URLSession
     let baseURL: URL
 
-    var userAgent: String? = {
+    private(set) var userAgent: String?
+    
+    /// Generate a URLSessionDispatcher instance
+    ///
+    /// - Parameters:
+    ///   - baseURL: The url of the piwik server. This url has to end in `piwik.php`.
+    ///   - userAgent: An optional parameter for custom user agent.
+    init(baseURL: URL, userAgent: String? = nil) {                
+        self.baseURL = baseURL
+        self.timeout = 5
+        self.session = URLSession.shared
+        asyncMain {
+            self.userAgent = userAgent ?? URLSessionDispatcher.defaultUserAgent()
+        }
+    }
+    
+    private static func defaultUserAgent() -> String {
+        assetMainThread()
         #if os(OSX)
             let webView = WebView(frame: .zero)
             let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
@@ -23,35 +40,16 @@ final class URLSessionDispatcher: Dispatcher {
             let currentUserAgent = ""
         #endif
         return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
-    }()
-    
-    /// Generate a URLSessionDispatcher instance
-    ///
-    /// - Parameters:
-    ///   - baseURL: The url of the piwik server. This url has to end in `piwik.php`.
-    ///   - userAgent: An optional parameter for custom user agent.
-    init(baseURL: URL, userAgent: String? = nil) {
-        if !baseURL.absoluteString.hasSuffix("piwik.php") {
-            fatalError("The baseURL is expected to end in piwik.php")
-        }
-        self.baseURL = baseURL
-        self.timeout = 5
-        self.session = URLSession.shared
-        if (userAgent != nil) {
-            self.userAgent = userAgent
-        }
     }
     
     func send(event: Event, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let url = baseURL.setting(event.queryItems)
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
-        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-        request.httpMethod = "GET"
+        let request = buildRequest(baseURL: url, method: "GET")
         send(request: request, success: success, failure: failure)
     }
     
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
-        let eventsAsQueryItems = events.map({ event in event.queryItems })
+        let eventsAsQueryItems = events.map({ $0.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
             items.flatMap({ item in
                 guard let value = item.value,
@@ -67,12 +65,17 @@ final class URLSessionDispatcher: Dispatcher {
             failure(error)
             return
         }
-        var request = URLRequest(url: baseURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-        request.httpMethod = "POST"
-        request.httpBody = jsonBody
+        let request = buildRequest(baseURL: baseURL, method: "POST", contentType: "application/json; charset=utf-8", body: jsonBody)
         send(request: request, success: success, failure: failure)
+    }
+    
+    private func buildRequest(baseURL: URL, method: String, contentType: String? = nil, body: Data? = nil) -> URLRequest {
+        var request = URLRequest(url: baseURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
+        request.httpMethod = method
+        body.map { request.httpBody = $0 }
+        contentType.map { request.setValue($0, forHTTPHeaderField: "Content-Type") }
+        userAgent.map { request.setValue($0, forHTTPHeaderField: "User-Agent") }
+        return request
     }
     
     private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
@@ -93,7 +96,7 @@ final class URLSessionDispatcher: Dispatcher {
 fileprivate extension Event {
     var queryItems: [URLQueryItem] {
         get {
-            var items = [
+            let items = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
                 // Visitor
@@ -115,7 +118,6 @@ fileprivate extension Event {
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
                 
-                
                 //screen resolution
                 URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
 
@@ -124,11 +126,11 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_n", value: eventName),
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
-                ].filter({ $0.value != nil }) // remove the items that lack the value
-            for dimension in dimensions {
-                items.append(URLQueryItem(name: "dimension\(dimension.index)", value: dimension.value))
-            }
-            return items + customTrackingParameters.map({ key, value in return URLQueryItem(name: key, value: value) })
+                ].filter { $0.value != nil }
+            
+            let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
+            let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
+            return items + dimensionItems + customItems
         }
     }
 }

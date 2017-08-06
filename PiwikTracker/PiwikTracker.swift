@@ -69,6 +69,8 @@ final public class PiwikTracker: NSObject {
     ///   - baseURL: The url of the piwik server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
     convenience public init(siteId: String, baseURL: URL, userAgent: String? = nil) {
+        assert(baseURL.absoluteString.hasSuffix("piwik.php"), "The baseURL is expected to end in piwik.php")
+        
         let queue = MemoryQueue()
         let dispatcher = URLSessionDispatcher(baseURL: baseURL, userAgent: userAgent)
         self.init(siteId: siteId, queue: queue, dispatcher: dispatcher)
