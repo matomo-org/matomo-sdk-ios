@@ -67,11 +67,11 @@ class TrackerSpec: QuickSpec {
                     success()
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
-                let _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                    trackerFixture.tracker.queue(event: EventFixture.event())
-                }
+                let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.1)
+                autoTracker.start()
                 trackerFixture.tracker.dispatchInterval = 0.1
                 expect(numberOfDispatches).toEventually(equal(5), timeout: 5)
+                autoTracker.stop()
             }
             context("with an already dispatching tracker") {
                 it("should not ask the queue for events") {
