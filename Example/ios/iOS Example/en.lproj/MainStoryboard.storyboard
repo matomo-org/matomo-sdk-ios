@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3h-dc-9VC" id="6QM-lt-Nvm">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Screens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EYc-RM-MMH">
@@ -249,7 +249,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Other" id="6kC-bt-yx9">
                                 <cells>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YlU-MW-xot" style="IBUITableViewCellStyleDefault" id="2Bz-NF-AGQ" userLabel="Table View Cell - User ID">
                                         <rect key="frame" x="0.0" y="639.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
@@ -776,7 +776,7 @@ Log keywords used and the number of results found.   Searches are shown in a
         <!--User ID-->
         <scene sceneID="YPh-mF-L4v">
             <objects>
-                <viewController id="xqt-PP-0XP" customClass="UserIDViewController" sceneMemberID="viewController">
+                <viewController id="xqt-PP-0XP" customClass="UserIDViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aTn-Vi-fRv"/>
                         <viewControllerLayoutGuide type="bottom" id="guM-u1-IVi"/>
@@ -798,7 +798,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signOutAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="6lm-KG-r0i"/>
+                                    <action selector="signOutAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="Z1X-Ow-HrW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ib-Au-0C4">
@@ -808,7 +808,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signinAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="pTe-3M-ClI"/>
+                                    <action selector="signinAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="lRU-iU-0Gc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kad-JQ-T2F">
@@ -826,8 +826,8 @@ Store the id locally in the app and set it directly after the tracker is created
                     </view>
                     <navigationItem key="navigationItem" title="User ID" id="PU0-p5-r10"/>
                     <connections>
-                        <outlet property="signinButton" destination="6ib-Au-0C4" id="eWd-9D-zEn"/>
-                        <outlet property="singoutButton" destination="euf-jm-xQs" id="u0b-8K-nhz"/>
+                        <outlet property="signinButton" destination="6ib-Au-0C4" id="Soo-zc-gOR"/>
+                        <outlet property="signoutButton" destination="euf-jm-xQs" id="Fw5-NG-bwP"/>
                         <outlet property="userIDTextField" destination="sZf-dU-TqW" id="Tfv-vQ-HRe"/>
                     </connections>
                 </viewController>
