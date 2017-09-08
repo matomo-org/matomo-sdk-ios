@@ -18,6 +18,16 @@ final public class PiwikTracker: NSObject {
         }
     }
     
+    public var visitorId: String? {
+        get {
+            return PiwikUserDefaults.standard.visitorId
+        }
+        set {
+            PiwikUserDefaults.standard.visitorId = newValue
+            visitor = Visitor.current()
+        }
+    }
+    
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
