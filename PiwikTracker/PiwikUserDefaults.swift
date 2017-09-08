@@ -60,10 +60,20 @@ internal struct PiwikUserDefaults {
     
     var clientId: String? {
         get {
-            return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorID)
+            return userDefaults.string(forKey: PiwikUserDefaults.Key.clientID)
         }
         set {
-            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.visitorID)
+            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.clientID)
+            userDefaults.synchronize()
+        }
+    }
+    
+    var visitorId: String? {
+        get {
+            return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorID);
+        }
+        set {
+            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.visitorID);
             userDefaults.synchronize()
         }
     }
@@ -75,6 +85,7 @@ extension PiwikUserDefaults {
         static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
         static let previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
         static let firstVistsTimestamp = "PiwikFirstVistsTimestampKey"
+        static let clientID = "PiwikClientIDKey"
         static let visitorID = "PiwikVisitorIDKey"
         static let optOut = "PiwikOptOutKey"
     }
