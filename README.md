@@ -44,7 +44,7 @@ The PiwikTracker can track hierarchical screen names, e.g. screen/settings/regis
 PiwikTracker.shared?.track(view: ["path","to","your","page"])
 ```
 
-You can also set the url of the page. 
+You can also set the url of the page.
 ```
 let url = URL(string: "https://piwik.org/get-involved/")
 PiwikTracker.shared?.track(view: ["community","get-involved"], url: url)
@@ -82,6 +82,16 @@ PiwikTracker.shared?.remove(dimensionAtIndex: 1)
 ```
 
 Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
+
+### Custom User ID
+
+To add a [custom User ID](https://piwik.org/docs/user-id/), simply set the value you'd like to use on the `visitorId` field of the shared tracker:
+
+```
+PiwikTracker.shared?.visitorId = "coolUsername123"
+```
+
+All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
 
 ### Advanced
 
@@ -161,7 +171,6 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
   - Content Impressions / Content Interactions
 - Customizing the tracker
   - ~~Custom User Agent~~
-  - userID
   - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
   - use different dispatchers (Alamofire)
@@ -169,5 +178,3 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
 ## License
 
 PiwikTracker is available under the [MIT license](LICENSE.md).
-
-
