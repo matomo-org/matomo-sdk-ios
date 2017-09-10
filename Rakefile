@@ -32,6 +32,19 @@ namespace :test do
   end
 end
 
+namespace :package_manager do
+  desc 'Prepare tests'
+  task :prepare do
+  end
+
+  desc 'Builds the project with Carthage'
+  task carthage: :prepare do
+    sh("carthage build --no-skip-current") rescue nil
+    package_manager_failed('Carthage integration') unless $?.success?
+  end
+end
+
+
 desc 'Run the PiwikTracker tests for iOS & Mac OS X'
 task :test do
   Rake::Task['test:ios'].invoke
@@ -40,7 +53,13 @@ task :test do
   Rake::Task['test:tvos_demo'].invoke
 end
 
+desc 'Check the integration of PiwikTracker with package managers'
+task :build_with_package_manager do
+  Rake::Task['package_manager:carthage'].invoke
+end
+
 task default: 'test'
+
 
 private
 
@@ -64,6 +83,11 @@ end
 
 def tests_failed(platform)
   puts red("#{platform} unit tests failed")
+  exit $?.exitstatus
+end
+
+def package_manager_failed(package_manager)
+  puts red("Integration with #{package_manager} failed")
   exit $?.exitstatus
 end
 

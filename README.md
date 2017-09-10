@@ -1,6 +1,6 @@
 # PiwikTracker iOS SDK
 
-The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Piwik server.
+The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Piwik server. PiwikTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
 
 **Fancy help improving this SDK? Check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
@@ -93,9 +93,8 @@ PiwikTracker.shared?.visitorId = "coolUsername123"
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
 
-### Advanced
-
-#### Manual dispatching
+## Advanced Usage
+### Manual dispatching
 
 The PiwikTracker will dispatch events every 30 seconds automatically. If you want to dispatch events manually, you can use the `dispatch()` function. You can, for example, dispatch whenever the application enter the background.
 
@@ -105,7 +104,7 @@ func applicationDidEnterBackground(_ application: UIApplication) {
 }
 ```
 
-#### Session Management
+### Session Management
 
 The PiwikTracker starts a new session whenever the application starts. If you want to start a new session manually, you can use the `startNewSession()` function. You can, for example, start a new session whenever the user enters the application.
 
@@ -115,7 +114,7 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 }
 ```
 
-#### Logging
+### Logging
 
 The PiwikTracker per default loggs `warning` and `error` messages to the console. You can change the `LogLevel`.
 
@@ -137,7 +136,7 @@ You can instantiate the `PiwikTracker` using your own user agent.
 PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!, userAgent: "Your custom user agent")
 ```
 
-#### Objective-C compatibility
+### Objective-C compatibility
 
 Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/piwik/piwik-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
 

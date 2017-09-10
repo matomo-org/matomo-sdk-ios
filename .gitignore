@@ -1,5 +1,6 @@
 # Exclude the build directory
 build/*
+DerivedData
  
 # Exclude temp nibs and swap files
 *~.nib
@@ -19,6 +20,8 @@ xcuserdata
 
 # Exclude generate documentation
 Doc/
+
+# Exclude build products from dependency managers
 Pods
-DerivedData
 /Podfile.lock
+Carthage/

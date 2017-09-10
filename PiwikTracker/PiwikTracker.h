@@ -6,7 +6,7 @@
 //  Copyright © 2016 PIWIK. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for PiwikTracker.
 FOUNDATION_EXPORT double PiwikTrackerVersionNumber;
