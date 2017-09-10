@@ -22,10 +22,10 @@ final public class PiwikTracker: NSObject {
     /// is persisted between app launches.
     public var visitorId: String? {
         get {
-            return PiwikUserDefaults.standard.visitorId
+            return PiwikUserDefaults.standard.visitorUserId
         }
         set {
-            PiwikUserDefaults.standard.visitorId = newValue
+            PiwikUserDefaults.standard.visitorUserId = newValue
             visitor = Visitor.current()
         }
     }

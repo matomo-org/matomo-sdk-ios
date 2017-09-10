@@ -25,7 +25,7 @@ extension Visitor {
             PiwikUserDefaults.standard.clientId = newVisitorID()
             return current()
         }
-        let userId = PiwikUserDefaults.standard.visitorId
+        let userId = PiwikUserDefaults.standard.visitorUserId
         return Visitor(id: id, userId: userId)
     }
     
