@@ -132,6 +132,7 @@ internal struct Device {
     
 }
 #if os(OSX)
+    import AppKit
     extension Device {
         /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
         internal static func osVersionForCurrentDevice() -> String  {
