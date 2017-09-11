@@ -154,8 +154,6 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
 ### These features aren't implemented yet
 
 - Basic functionality
-  - [Sessions](https://github.com/piwik/piwik-sdk-ios/issues/136)
-  - [OptOut](https://github.com/piwik/piwik-sdk-ios/issues/124)
   - [Persisting non dispatched events](https://github.com/piwik/piwik-sdk-ios/issues/137)
   - [Custom Dimensions](https://github.com/piwik/piwik-sdk-ios/issues/111) (Action Scope is not implemented yet)
 - Tracking of more things
@@ -169,7 +167,6 @@ Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3
   - [Campaigns](https://github.com/piwik/piwik-sdk-ios/issues/109)
   - Content Impressions / Content Interactions
 - Customizing the tracker
-  - ~~Custom User Agent~~
   - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://piwik.github.io/piwik-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
   - use different dispatchers (Alamofire)

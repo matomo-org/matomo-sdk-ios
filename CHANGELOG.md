@@ -3,7 +3,7 @@
 ## Unreleased
 * **feature** Added ability to customize user agent. [#168](https://github.com/piwik/piwik-sdk-ios/pull/168)
 * **feature** Added ability to customize User ID.
-[#180](https://github.com/piwik/piwik-sdk-ios/issues/180)
+[#180](https://github.com/piwik/piwik-sdk-ios/issues/180) (by @niksawtschuk)
 
 ## 4.1.0
 * **feature** Added Custom Dimension Tracking for the Visit Scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
