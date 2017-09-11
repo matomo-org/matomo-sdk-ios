@@ -18,6 +18,18 @@ final public class PiwikTracker: NSObject {
         }
     }
     
+    /// Will be used to associate all future events with a given userID. This property
+    /// is persisted between app launches.
+    public var visitorId: String? {
+        get {
+            return PiwikUserDefaults.standard.visitorUserId
+        }
+        set {
+            PiwikUserDefaults.standard.visitorUserId = newValue
+            visitor = Visitor.current()
+        }
+    }
+    
     private let dispatcher: Dispatcher
     private var queue: Queue
     internal let siteId: String
