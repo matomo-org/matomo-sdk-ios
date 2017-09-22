@@ -32,6 +32,6 @@ target 'PiwikTrackerTests' do
   workspace 'PiwikTracker'
   inherit! :search_paths
   
-  pod 'Quick', '~> 0.10'
-  pod 'Nimble', '~> 5.1'
+  pod 'Quick', '~> 1.1'
+  pod 'Nimble', '~> 7.0'
 end

@@ -8,6 +8,7 @@ namespace :test do
   desc 'Run the PiwikTracker Unit tests'
   task ios: :prepare do
     run_tests('PiwikTracker', 'iphonesimulator')
+    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=11.0')
     run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
     run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
     run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
