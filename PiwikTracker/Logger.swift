@@ -1,6 +1,6 @@
 import Foundation
 
-public enum LogLevel: Int {
+@objc public enum LogLevel: Int {
     case verbose = 10
     case debug = 20
     case info = 30
@@ -20,7 +20,7 @@ public enum LogLevel: Int {
 
 /// The Logger protocol defines a common interface that is used to log every message from the sdk.
 /// You can easily writer your own to perform custom logging.
-public protocol Logger {
+@objc public protocol Logger {
     /// This method should perform the logging. It can be called from every thread. The implementation has
     /// to handle synchronizing different threads.
     ///
@@ -57,12 +57,13 @@ public final class DisabledLogger: Logger {
 }
 
 /// This Logger loggs every message to the console with a `print` statement.
-public final class DefaultLogger: Logger {
+@objc public final class DefaultLogger: NSObject, Logger {
     private let dispatchQueue = DispatchQueue(label: "DefaultLogger", qos: .background)
     private let minLevel: LogLevel
     
-    public init(minLevel: LogLevel) {
+    @objc public init(minLevel: LogLevel) {
         self.minLevel = minLevel
+        super.init()
     }
     
     public func log(_ message: @autoclosure () -> String, with level: LogLevel, file: String = #file, function: String = #function, line: Int = #line) {
