@@ -2,6 +2,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ObjectiveCCompatibilityCheker : NSObject
+@interface ObjectiveCCompatibilityChecker : NSObject
 
 @end

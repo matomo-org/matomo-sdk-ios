@@ -142,7 +142,7 @@ internal struct Device {
         
         // Returns the screen size in points
         internal static func screenSizeForCurrentDevice() ->  CGSize {
-            guard let mainScreen = NSScreen.main() else { return CGSize.zero }
+            guard let mainScreen = NSScreen.main else { return CGSize.zero }
             return mainScreen.visibleFrame.size
         }
         
