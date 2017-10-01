@@ -116,7 +116,9 @@ final public class PiwikTracker: NSObject {
             self.dispatcher.send(events: events, success: {
                 self.queue.remove(events: events, completion: {
                     self.logger.info("Dispatched batch of \(events.count) events.")
-                    self.dispatchBatch()
+                    DispatchQueue.main.async {
+                        self.dispatchBatch()
+                    }
                 })
             }, failure: { error in
                 self.isDispatching = false
