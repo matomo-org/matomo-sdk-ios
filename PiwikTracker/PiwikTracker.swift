@@ -224,7 +224,8 @@ extension PiwikTracker {
             eventAction: nil,
             eventName: nil,
             eventValue: nil,
-            dimensions: dimensions
+            dimensions: dimensions,
+            customTrackingParameters: [:]
         )
     }
     internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
@@ -243,12 +244,16 @@ extension PiwikTracker {
             eventAction: action,
             eventName: name,
             eventValue: value,
-            dimensions: dimensions
+            dimensions: dimensions,
+            customTrackingParameters: [:]
         )
     }
 }
 
 extension PiwikTracker {
+    public func track(_ event: Event) {
+        queue(event: event)
+    }
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
