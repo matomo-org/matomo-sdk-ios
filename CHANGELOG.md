@@ -1,9 +1,12 @@
 # Changelog
 
-## Unreleased
+## 4.2.0
 * **feature** Added ability to customize user agent. [#168](https://github.com/piwik/piwik-sdk-ios/pull/168)
 * **feature** Added ability to customize User ID.
 [#180](https://github.com/piwik/piwik-sdk-ios/issues/180) (by @niksawtschuk)
+* **feature** Added Carthage support [#74](https://github.com/piwik/piwik-sdk-ios/issues/74) (by @elitalon)
+* **feature** Added a way to set a custom visitor ID [#180](https://github.com/piwik/piwik-sdk-ios/pull/181) (by @niksawtschuk)
+* **improvement** Added Swift support
 
 ## 4.1.0
 * **feature** Added Custom Dimension Tracking for the Visit Scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
