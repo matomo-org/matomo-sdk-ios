@@ -23,7 +23,7 @@ final class URLSessionDispatcher: Dispatcher {
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
-        asyncMain {
+        DispatchQueue.main.async {
             self.userAgent = userAgent ?? URLSessionDispatcher.defaultUserAgent()
         }
     }
