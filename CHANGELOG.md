@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **feature** Added the ability to send custom events with custom tracking parameters. [#153](https://github.com/piwik/piwik-sdk-ios/issues/153)
+
 ## 4.2.0
 * **feature** Added ability to customize user agent. [#168](https://github.com/piwik/piwik-sdk-ios/pull/168)
 * **feature** Added ability to customize User ID.

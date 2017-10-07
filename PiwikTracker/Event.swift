@@ -25,8 +25,6 @@ import CoreGraphics
 /// - idsite, rec, rand, apiv, res, cookie,
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 /// - cid: We will use the uid instead of the cid.
-/// - dimension: For now we don't support dimension.
-/// - UserAgent (ua) should be set in the dispatcher, right?
 public struct Event {
     let siteId: String
     let uuid: NSUUID
