@@ -128,7 +128,7 @@ fileprivate extension Event {
             for dimension in dimensions {
                 items.append(URLQueryItem(name: "dimension\(dimension.index)", value: dimension.value))
             }
-            return items
+            return items + customTrackingParameters.map({ key, value in return URLQueryItem(name: key, value: value) })
         }
     }
 }
