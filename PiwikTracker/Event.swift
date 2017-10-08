@@ -25,8 +25,6 @@ import CoreGraphics
 /// - idsite, rec, rand, apiv, res, cookie,
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 /// - cid: We will use the uid instead of the cid.
-/// - dimension: For now we don't support dimension.
-/// - UserAgent (ua) should be set in the dispatcher, right?
 public struct Event {
     let siteId: String
     let uuid: NSUUID
@@ -68,4 +66,28 @@ public struct Event {
     let eventValue: Float?
     
     let dimensions: [CustomDimension]
+    
+    let customTrackingParameters: [String:String]
+}
+
+extension Event {
+    public init(tracker: PiwikTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:]) {
+        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
+        self.siteId = tracker.siteId
+        self.uuid = NSUUID()
+        self.visitor = tracker.visitor
+        self.session = tracker.session
+        self.date = Date()
+        self.url = url
+        self.actionName = action
+        self.language = Locale.httpAcceptLanguage
+        self.isNewSession = tracker.nextEventStartsANewSession
+        self.referer = referer
+        self.eventCategory = eventCategory
+        self.eventAction = eventAction
+        self.eventName = eventName
+        self.eventValue = eventValue
+        self.dimensions = tracker.dimensions
+        self.customTrackingParameters = customTrackingParameters
+    }
 }

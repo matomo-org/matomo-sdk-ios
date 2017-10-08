@@ -22,6 +22,11 @@ class UserIDViewController: UIViewController {
         toggleState()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        PiwikTracker.shared?.track(view: ["menu","user id"])
+    }
+    
     private func toggleState() {
         self.userIDTextField.text = PiwikTracker.shared?.visitorId
         

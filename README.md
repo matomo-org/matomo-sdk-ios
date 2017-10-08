@@ -147,6 +147,23 @@ Version 4 of this SDK is written in Swift, but you can use it in your Objective-
 [[PiwikTracker shared] dispatch];
 ```
 
+### Sending custom events
+
+Instead of using the convenience functions for events and sreenviews for example you can create your event manually and even send custom tracking parameters. This feature isn't usable from Objective-C.
+
+```
+func sendCustomEvent() {
+  guard let piwikTracker = PiwikTracker.shared else { return }
+  let downloadURL = URL(string: "https://builds.piwik.org/piwik.zip")!
+  let event = Event(tracker: piwikTracker, action: ["menu", "custom tracking parameters"], url: downloadURL, customTrackingParameters: ["download": downloadURL.absoluteString])
+  PiwikTracker.shared?.track(event)
+}
+```
+
+All custom events will be url encoded and dispatched along with the default Event parameters. Please read the [Tracking API Documentation](https://developer.piwik.org/api-reference/tracking-api) for more information on which parameters can be used.
+
+Also: You cannot override Custom Parameter keys that are allready defined by the Event itself. If you set those keys in the `customTrackingParameters` they will be discarded.
+
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
