@@ -12,7 +12,7 @@ The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Pi
 Use the following in your Podfile.
 
 ```
-pod 'PiwikTracker', '~> 4.1.0'
+pod 'PiwikTracker', '~> 4.3'
 ```
 
 Then run `pod install`. In every file you want to use the PiwikTracker, don't forget to import the framwork with `import PiwikTracker`.

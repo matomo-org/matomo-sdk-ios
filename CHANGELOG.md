@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased
+## 4.3.0
 * **feature** Added the ability to send custom events with custom tracking parameters. [#153](https://github.com/piwik/piwik-sdk-ios/issues/153)
+* **bugfix** Fixed a crash when initializing a new tracker. [#162](https://github.com/piwik/piwik-sdk-ios/issues/162)
+* **bugfix** Removed old, unused AFNetworking Submodule to fix Carthage usage. [#190](https://github.com/piwik/piwik-sdk-ios/issues/190)
 
 ## 4.2.0
 * **feature** Added ability to customize user agent. [#168](https://github.com/piwik/piwik-sdk-ios/pull/168)
