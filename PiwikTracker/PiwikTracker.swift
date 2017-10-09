@@ -218,14 +218,14 @@ extension PiwikTracker {
     ///
     /// - Parameter view: An array of hierarchical screen names.
     /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
-    @objc public func track(view: [String], url: URL? = nil) {
-        let event = Event(tracker: self, action: view, url: url)
+    public func track(view: [String], url: URL? = nil, dimensions: [CustomDimension] = []) {
+        let event = Event(tracker: self, action: view, url: url, dimensions: dimensions)
         queue(event: event)
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
-    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
-        let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value)
+    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = []) {
+        let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
         queue(event: event)
     }
 }
@@ -239,8 +239,21 @@ extension PiwikTracker {
     ///
     /// - Parameter value: The value you want to set for this dimension.
     /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
+    @available(*, deprecated, message: "use setDimension: instead")
     public func set(value: String, forIndex index: Int) {
         let dimension = CustomDimension(index: index, value: value)
+        remove(dimensionAtIndex: dimension.index)
+        dimensions.append(dimension)
+    }
+    
+    /// Set a permanent custom dimension.
+    ///
+    /// Use this method to set a dimension that will be send with every event. This is best for Custom Dimensions in scope "Visit". A typical example could be any device information or the version of the app the visitor is using.
+    ///
+    /// For more information on custom dimensions visit https://piwik.org/docs/custom-dimensions/
+    ///
+    /// - Parameter dimension: The Dimension to set
+    public func set(dimension: CustomDimension) {
         remove(dimensionAtIndex: dimension.index)
         dimensions.append(dimension)
     }
@@ -259,6 +272,10 @@ extension PiwikTracker {
 
 // Objective-c compatibility extension
 extension PiwikTracker {
+    
+    @objc public func track(view: [String], url: URL? = nil) {
+        track(view: view, url: url)
+    }
     
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         let value = number == nil ? nil : number!.floatValue
