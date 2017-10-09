@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **improvement** The PiwikTracker is now save to create in a background thread. [#175](https://github.com/piwik/piwik-sdk-ios/pull/175)
+
 ## 4.3.0
 * **feature** Added the ability to send custom events with custom tracking parameters. [#153](https://github.com/piwik/piwik-sdk-ios/issues/153)
 * **bugfix** Fixed a crash when initializing a new tracker. [#162](https://github.com/piwik/piwik-sdk-ios/issues/162)
