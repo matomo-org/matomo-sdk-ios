@@ -209,50 +209,6 @@ extension PiwikTracker {
 }
 
 extension PiwikTracker {
-    internal func event(action: [String], url: URL? = nil) -> Event {
-        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
-        return Event(
-            siteId: siteId,
-            uuid: NSUUID(),
-            visitor: visitor,
-            session: session,
-            date: Date(),
-            url: url,
-            actionName: action,
-            language: Locale.httpAcceptLanguage,
-            isNewSession: nextEventStartsANewSession,
-            referer: nil,
-            eventCategory: nil,
-            eventAction: nil,
-            eventName: nil,
-            eventValue: nil,
-            dimensions: dimensions,
-            customTrackingParameters: [:]
-        )
-    }
-    internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
-        return Event(
-            siteId: siteId,
-            uuid: NSUUID(),
-            visitor: visitor,
-            session: session,
-            date: Date(),
-            url: URL(string: "http://example.com")!,
-            actionName: [],
-            language: Locale.httpAcceptLanguage,
-            isNewSession: nextEventStartsANewSession,
-            referer: nil,
-            eventCategory: category,
-            eventAction: action,
-            eventName: name,
-            eventValue: value,
-            dimensions: dimensions,
-            customTrackingParameters: [:]
-        )
-    }
-}
-
-extension PiwikTracker {
     public func track(_ event: Event) {
         queue(event: event)
     }
@@ -263,12 +219,14 @@ extension PiwikTracker {
     /// - Parameter view: An array of hierarchical screen names.
     /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
     @objc public func track(view: [String], url: URL? = nil) {
-        queue(event: event(action: view, url: url))
+        let event = Event(tracker: self, action: view, url: url)
+        queue(event: event)
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
     public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
-        queue(event: event(withCategory: category, action: action, name: name, value: value))
+        let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value)
+        queue(event: event)
     }
 }
 
