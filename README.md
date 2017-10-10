@@ -129,7 +129,7 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
 ### Custom User Agent
-The `PiwikTracker` will create a default user agent derived from the WKWebView user agent. This is why you should always instantiate and configure the `PiwikTracker` on the main thread.
+The `PiwikTracker` will create a default user agent derived from the WKWebView user agent.
 You can instantiate the `PiwikTracker` using your own user agent.
 
 ```
