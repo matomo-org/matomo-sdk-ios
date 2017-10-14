@@ -209,21 +209,36 @@ extension PiwikTracker {
 }
 
 extension PiwikTracker {
+    
+    /// Tracks a custom Event
+    ///
+    /// - Parameter event: The event that should be tracked.
     public func track(_ event: Event) {
         queue(event: event)
     }
+    
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
     ///
     /// - Parameter view: An array of hierarchical screen names.
     /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
+    /// - Parameter dimensions: An optional array of dimensions, that will be set only in the scope of this view.
     public func track(view: [String], url: URL? = nil, dimensions: [CustomDimension] = []) {
         let event = Event(tracker: self, action: view, url: url, dimensions: dimensions)
         queue(event: event)
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
+    
+    /// Track an event as described here: https://piwik.org/docs/event-tracking/
+    ///
+    /// - Parameters:
+    ///   - category: The Category of the Event
+    ///   - action: The Action of the Event
+    ///   - name: The optional name of the Event
+    ///   - value: The optional value of the Event
+    ///   - dimensions: An optional array of dimensions, that will be set only in the scope of this event.
     public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = []) {
         let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
         queue(event: event)
@@ -274,7 +289,7 @@ extension PiwikTracker {
 extension PiwikTracker {
     
     @objc public func track(view: [String], url: URL? = nil) {
-        track(view: view, url: url)
+        track(view: view, url: url, dimensions: [])
     }
     
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {

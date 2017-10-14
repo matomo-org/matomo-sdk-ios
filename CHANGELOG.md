@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added a way to add custom dimension in the action scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
 * **improvement** The PiwikTracker is now save to create in a background thread. [#175](https://github.com/piwik/piwik-sdk-ios/pull/175)
 
 ## 4.3.0
