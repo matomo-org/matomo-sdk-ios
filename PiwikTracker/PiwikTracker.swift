@@ -209,66 +209,39 @@ extension PiwikTracker {
 }
 
 extension PiwikTracker {
-    internal func event(action: [String], url: URL? = nil) -> Event {
-        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
-        return Event(
-            siteId: siteId,
-            uuid: NSUUID(),
-            visitor: visitor,
-            session: session,
-            date: Date(),
-            url: url,
-            actionName: action,
-            language: Locale.httpAcceptLanguage,
-            isNewSession: nextEventStartsANewSession,
-            referer: nil,
-            eventCategory: nil,
-            eventAction: nil,
-            eventName: nil,
-            eventValue: nil,
-            dimensions: dimensions,
-            customTrackingParameters: [:]
-        )
-    }
-    internal func event(withCategory category: String, action: String, name: String? = nil, value: Float? = nil) -> Event {
-        return Event(
-            siteId: siteId,
-            uuid: NSUUID(),
-            visitor: visitor,
-            session: session,
-            date: Date(),
-            url: URL(string: "http://example.com")!,
-            actionName: [],
-            language: Locale.httpAcceptLanguage,
-            isNewSession: nextEventStartsANewSession,
-            referer: nil,
-            eventCategory: category,
-            eventAction: action,
-            eventName: name,
-            eventValue: value,
-            dimensions: dimensions,
-            customTrackingParameters: [:]
-        )
-    }
-}
-
-extension PiwikTracker {
+    
+    /// Tracks a custom Event
+    ///
+    /// - Parameter event: The event that should be tracked.
     public func track(_ event: Event) {
         queue(event: event)
     }
+    
     /// Tracks a screenview.
     ///
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
     ///
     /// - Parameter view: An array of hierarchical screen names.
     /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
-    @objc public func track(view: [String], url: URL? = nil) {
-        queue(event: event(action: view, url: url))
+    /// - Parameter dimensions: An optional array of dimensions, that will be set only in the scope of this view.
+    public func track(view: [String], url: URL? = nil, dimensions: [CustomDimension] = []) {
+        let event = Event(tracker: self, action: view, url: url, dimensions: dimensions)
+        queue(event: event)
     }
     
     /// Tracks an event as described here: https://piwik.org/docs/event-tracking/
-    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil) {
-        queue(event: event(withCategory: category, action: action, name: name, value: value))
+    
+    /// Track an event as described here: https://piwik.org/docs/event-tracking/
+    ///
+    /// - Parameters:
+    ///   - category: The Category of the Event
+    ///   - action: The Action of the Event
+    ///   - name: The optional name of the Event
+    ///   - value: The optional value of the Event
+    ///   - dimensions: An optional array of dimensions, that will be set only in the scope of this event.
+    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = []) {
+        let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
+        queue(event: event)
     }
 }
 
@@ -281,8 +254,21 @@ extension PiwikTracker {
     ///
     /// - Parameter value: The value you want to set for this dimension.
     /// - Parameter index: The index of the dimension. A dimension with this index must be setup in the piwik backend.
+    @available(*, deprecated, message: "use setDimension: instead")
     public func set(value: String, forIndex index: Int) {
         let dimension = CustomDimension(index: index, value: value)
+        remove(dimensionAtIndex: dimension.index)
+        dimensions.append(dimension)
+    }
+    
+    /// Set a permanent custom dimension.
+    ///
+    /// Use this method to set a dimension that will be send with every event. This is best for Custom Dimensions in scope "Visit". A typical example could be any device information or the version of the app the visitor is using.
+    ///
+    /// For more information on custom dimensions visit https://piwik.org/docs/custom-dimensions/
+    ///
+    /// - Parameter dimension: The Dimension to set
+    public func set(dimension: CustomDimension) {
         remove(dimensionAtIndex: dimension.index)
         dimensions.append(dimension)
     }
@@ -301,6 +287,10 @@ extension PiwikTracker {
 
 // Objective-c compatibility extension
 extension PiwikTracker {
+    
+    @objc public func track(view: [String], url: URL? = nil) {
+        track(view: view, url: url, dimensions: [])
+    }
     
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         let value = number == nil ? nil : number!.floatValue
