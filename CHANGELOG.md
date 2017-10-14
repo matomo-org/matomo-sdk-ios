@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **improvement** The PiwikTracker is now save to create in a background thread. [#175](https://github.com/piwik/piwik-sdk-ios/pull/175)
+* **improvement** The Logger is now objc compatible. [#185](https://github.com/piwik/piwik-sdk-ios/issues/185)
 
 ## 4.3.0
 * **feature** Added the ability to send custom events with custom tracking parameters. [#153](https://github.com/piwik/piwik-sdk-ios/issues/153)
