@@ -40,7 +40,7 @@ final public class PiwikTracker: NSObject {
     /// This logger is used to perform logging of all sorts of piwik related information.
     /// Per default it is a `DefaultLogger` with a `minLevel` of `LogLevel.warning`. You can
     /// set your own Logger with a custom `minLevel` or a complete custom logging mechanism.
-    public var logger: Logger = DefaultLogger(minLevel: .warning)
+    @objc public var logger: Logger = DefaultLogger(minLevel: .warning)
     
     internal static var _sharedInstance: PiwikTracker?
     
