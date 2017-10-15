@@ -2,13 +2,10 @@
 
 
 ## Unreleased
-* **bugfix** Fixed an issue with `WKWebView` on iOS not returning a user agent string [#322](https://github.com/matomo-org/matomo-sdk-ios/issues/322)
-
-## 7.0.3
+* **feature** Added support for the Swift Package Manager. [#312](https://github.com/matomo-org/matomo-sdk-ios/pull/312)
 * **improvement** Added new devices info [#321](https://github.com/matomo-org/matomo-sdk-ios/pull/321)
-
-## 7.0.2 
 * **improvement** Added `timeout` property to URLSessionDispatcher initialization method
+* **bugfix** Fixed an issue with `WKWebView` on iOS not returning a user agent string [#322](https://github.com/matomo-org/matomo-sdk-ios/issues/322)
 
 ## 7.0.1
 * **bugfix** Fixed an issue with a new `forcedVisitorId` value validation. [#315](https://github.com/matomo-org/matomo-sdk-ios/pull/315)
