@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **feature** Added a way to add custom dimension in the action scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
+* **feature** Added automatic generation of the url property. [#197](https://github.com/piwik/piwik-sdk-ios/issues/197)
 * **improvement** The PiwikTracker is now save to create in a background thread. [#175](https://github.com/piwik/piwik-sdk-ios/pull/175)
 * **improvement** The Logger is now objc compatible. [#185](https://github.com/piwik/piwik-sdk-ios/issues/185)
 * **improvement** Default `example.com` urls aren't generated anymore. [#194](https://github.com/piwik/piwik-sdk-ios/pull/195)

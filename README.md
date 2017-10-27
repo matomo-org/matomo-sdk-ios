@@ -164,6 +164,10 @@ All custom events will be URL-encoded and dispatched along with the default Even
 
 Also: You cannot override Custom Parameter keys that are already defined by the Event itself. If you set those keys in the `customTrackingParameters` they will be discarded.
 
+### Automatic url generation
+
+You can define the url property on every `Event`. If none is defined, the SDK will try to generate a url based on the `contentBase` of the `PiwikTracker`. If the `contentBase` is nil, no url will be generated. If the `contentBase` is set, it will append the actions of the event to it and use it as the url. Per default the `contentBase` is generated using the application bundle identifier. For example `http://org.piwik.skd`. This will not result in resolvable urls, but enables the backend to analyse and structure them.
+
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
