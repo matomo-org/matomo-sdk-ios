@@ -29,7 +29,7 @@ final class URLSessionDispatcher: Dispatcher {
     }
     
     private static func defaultUserAgent() -> String {
-        assetMainThread()
+        assertMainThread()
         #if os(OSX)
             let webView = WebView(frame: .zero)
             let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
@@ -108,7 +108,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "_viewts", value: "\(Int(session.lastVisit.timeIntervalSince1970))"),
                 URLQueryItem(name: "_idts", value: "\(Int(session.firstVisit.timeIntervalSince1970))"),
                 
-                URLQueryItem(name: "url", value:url.absoluteString),
+                URLQueryItem(name: "url", value:url?.absoluteString),
                 URLQueryItem(name: "action_name", value: actionName.joined(separator: "/")),
                 URLQueryItem(name: "lang", value: language),
                 URLQueryItem(name: "urlref", value: referer?.absoluteString),

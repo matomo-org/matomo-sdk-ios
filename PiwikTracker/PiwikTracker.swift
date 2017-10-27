@@ -222,7 +222,7 @@ extension PiwikTracker {
     /// This method can be used to track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Piwik web interface.
     ///
     /// - Parameter view: An array of hierarchical screen names.
-    /// - Parameter url: The url of the page that was viewed. If none set the url will be http://example.com appended by the screen segments. Example: http://example.com/players/john-appleseed
+    /// - Parameter url: The optional url of the page that was viewed.
     /// - Parameter dimensions: An optional array of dimensions, that will be set only in the scope of this view.
     public func track(view: [String], url: URL? = nil, dimensions: [CustomDimension] = []) {
         let event = Event(tracker: self, action: view, url: url, dimensions: dimensions)
@@ -239,8 +239,9 @@ extension PiwikTracker {
     ///   - name: The optional name of the Event
     ///   - value: The optional value of the Event
     ///   - dimensions: An optional array of dimensions, that will be set only in the scope of this event.
-    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = []) {
-        let event = Event(tracker: self, action: [], eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
+    ///   - url: The optional url of the page that was viewed.
+    public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = [], url: URL? = nil) {
+        let event = Event(tracker: self, action: [], url: url, eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
         queue(event: event)
     }
 }
@@ -292,9 +293,14 @@ extension PiwikTracker {
         track(view: view, url: url, dimensions: [])
     }
     
-    @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
+    @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil, url: URL? = nil) {
         let value = number == nil ? nil : number!.floatValue
-        track(eventWithCategory: category, action: action, name: name, value: value)
+        track(eventWithCategory: category, action: action, name: name, value: value, url: url)
+    }
+    
+    @available(*, deprecated, message: "use trackEventWithCategory:action:name:number:url instead")
+    @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
+        track(eventWithCategory: category, action: action, name: name, number: number, url: nil)
     }
 }
 

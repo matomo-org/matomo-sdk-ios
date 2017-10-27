@@ -37,7 +37,7 @@ public struct Event {
     
     /// The full URL for the current action. 
     /// api-key: url
-    let url: URL
+    let url: URL?
     
     /// api-key: action_name
     let actionName: [String]
@@ -72,7 +72,6 @@ public struct Event {
 
 extension Event {
     public init(tracker: PiwikTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], dimensions: [CustomDimension] = []) {
-        let url = url ?? URL(string: "http://example.com")!.appendingPathComponent(action.joined(separator: "/"))
         self.siteId = tracker.siteId
         self.uuid = NSUUID()
         self.visitor = tracker.visitor
