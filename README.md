@@ -2,7 +2,7 @@
 
 The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Piwik server. PiwikTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
 
-**Fancy help improving this SDK? Check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
+**Fancy help improve this SDK? Check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
 [![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=develop)](https://travis-ci.org/piwik/piwik-sdk-ios)
 
@@ -15,20 +15,20 @@ Use the following in your Podfile.
 pod 'PiwikTracker', '~> 4.3'
 ```
 
-Then run `pod install`. In every file you want to use the PiwikTracker, don't forget to import the framwork with `import PiwikTracker`.
+Then run `pod install`. In every file you want to use the PiwikTracker, don't forget to import the framework with `import PiwikTracker`.
 
 ## Usage
 ### Configuration
 
-Befor the first usage, the PiwikTracker has to be configured. This is best to be done in the `application(_:, didFinishLaunchingWithOptions:)` method in the `AppDelegate`.
+Before the first usage, the PiwikTracker has to be configured. This is best done in the `application(_:, didFinishLaunchingWithOptions:)` method in the `AppDelegate`.
 
 ```
 PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!)
 ```
 
-The `siteId` is the id that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
+The `siteId` is the ID that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
 
-#### OptOut
+#### Opting Out
 
 The PiwikTracker SDK supports opting out of tracking. Please use the `isOptedOut` property of the PiwikTracker to define if the user opted out of tracking.
 
@@ -63,7 +63,7 @@ Events can be used to track user interactions such as taps on a button. An event
 PiwikTracker.shared?.track(eventWithCategory: "player", action: "slide", name: "volume", value: 35.1)
 ```
 
-This will log that the user slided the volume slider on the player to 35.1%.
+This will log that the user slid the volume slider on the player to 35.1%.
 
 ### Custom Dimension
 
@@ -116,7 +116,7 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 
 ### Logging
 
-The PiwikTracker per default loggs `warning` and `error` messages to the console. You can change the `LogLevel`.
+The PiwikTracker per default logs `warning` and `error` messages to the console. You can change the `LogLevel`.
 
 ```
 PiwikTracker.shared?.logger = DefaultLogger(minLevel: .verbose)
@@ -126,7 +126,7 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .warning)
 PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 ```
 
-You can also write your own `Logger` and send the logs whereever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
+You can also write your own `Logger` and send the logs wherever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
 
 ### Custom User Agent
 The `PiwikTracker` will create a default user agent derived from the WKWebView user agent.
@@ -149,7 +149,7 @@ Version 4 of this SDK is written in Swift, but you can use it in your Objective-
 
 ### Sending custom events
 
-Instead of using the convenience functions for events and sreenviews for example you can create your event manually and even send custom tracking parameters. This feature isn't usable from Objective-C.
+Instead of using the convenience functions for events and screen views for example you can create your event manually and even send custom tracking parameters. This feature isn't available from Objective-C.
 
 ```
 func sendCustomEvent() {
@@ -160,9 +160,9 @@ func sendCustomEvent() {
 }
 ```
 
-All custom events will be url encoded and dispatched along with the default Event parameters. Please read the [Tracking API Documentation](https://developer.piwik.org/api-reference/tracking-api) for more information on which parameters can be used.
+All custom events will be URL-encoded and dispatched along with the default Event parameters. Please read the [Tracking API Documentation](https://developer.piwik.org/api-reference/tracking-api) for more information on which parameters can be used.
 
-Also: You cannot override Custom Parameter keys that are allready defined by the Event itself. If you set those keys in the `customTrackingParameters` they will be discarded.
+Also: You cannot override Custom Parameter keys that are already defined by the Event itself. If you set those keys in the `customTrackingParameters` they will be discarded.
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
