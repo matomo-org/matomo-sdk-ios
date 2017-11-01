@@ -1,6 +1,6 @@
-internal struct Device {
+public struct Device {
     /// Creates an returns a new device object representing the current device
-    static func makeCurrentDevice() ->  Device {
+    public static func makeCurrentDevice() ->  Device {
         let platform = currentPlatform()
         let humanReadablePlatformName = humanReadablePlatformNameForCurrentDevice()
         let os = osVersionForCurrentDevice()
@@ -14,21 +14,23 @@ internal struct Device {
     }
     
     /// The platform name of the device i.e. "iPhone1,1" or "iPad3,6"
-    let platform: String
+    public let platform: String
     
     /// A human readable version of the platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
     /// Will be nil if no human readable string was found.
-    let humanReadablePlatformName: String?
+    public let humanReadablePlatformName: String?
     
     /// The version number of the OS as String i.e. "1.2" or "9.4"
-    let osVersion: String
+    public let osVersion: String
     
     // The screen size
-    let screenSize: CGSize
+    public let screenSize: CGSize
     
     // The native screen size
-    let nativeScreenSize: CGSize?
-    
+    public let nativeScreenSize: CGSize?
+}
+
+extension Device {
     /// The platform name of the current device i.e. "iPhone1,1" or "iPad3,6"
     private static func currentPlatform() -> String  {
         var size = 0
@@ -129,8 +131,8 @@ internal struct Device {
         default: return nil
         }
     }
-    
 }
+
 #if os(OSX)
     import AppKit
     extension Device {

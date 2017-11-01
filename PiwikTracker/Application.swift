@@ -1,29 +1,31 @@
-#if os(OSX)
-#elseif os(iOS)
-import UIKit
-
-internal struct Application {
+public struct Application {
     /// Creates an returns a new application object representing the current application
-    static func makeCurrentApplication() ->  Application {
+    public static func makeCurrentApplication() -> Application {
         let displayName = bundleDisplayNameForCurrentApplication()
         let name = bundleNameForCurrentApplication()
+        let identifier = bundleIdentifierForCurrentApplication()
         let version = bundleVersionForCurrentApplication()
         let shortVersion = bundleShortVersionForCurrentApplication()
-        return Application(bundleDisplayName: displayName, bundleName: name, bundleVersion: version, bundleShortVersion: shortVersion)
+        return Application(bundleDisplayName: displayName, bundleName: name, bundleIdentifier: identifier, bundleVersion: version, bundleShortVersion: shortVersion)
     }
     
     /// The name of your app as displayed on the homescreen i.e. "My App"
-    let bundleDisplayName: String?
+    public let bundleDisplayName: String?
     
-    /// The bundle name of your app i.e. "com.my-company.my-app"
-    let bundleName: String?
+    /// The bundle name of your app i.e. "my-app"
+    public let bundleName: String?
+    
+    /// The bundle identifier of your app i.e. "com.my-company.my-app"
+    public let bundleIdentifier: String?
     
     /// The bundle version a.k.a. build number as String i.e. "149"
-    let bundleVersion: String?
+    public let bundleVersion: String?
     
     /// The app version as String i.e. "1.0.1"
-    let bundleShortVersion: String?
-    
+    public let bundleShortVersion: String?
+}
+
+extension Application {
     /// Returns the name of the app as displayed on the homescreen
     private static func bundleDisplayNameForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
@@ -32,6 +34,11 @@ internal struct Application {
     /// Returns the bundle name of the app
     private static func bundleNameForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String
+    }
+    
+    /// Returns the bundle identifier
+    private static func bundleIdentifierForCurrentApplication() -> String? {
+        return Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
     }
     
     /// Returns the bundle version
@@ -44,4 +51,3 @@ internal struct Application {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 }
-#endif
