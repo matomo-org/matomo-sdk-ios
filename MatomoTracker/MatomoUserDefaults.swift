@@ -83,6 +83,23 @@ internal struct MatomoUserDefaults {
 }
 
 extension MatomoUserDefaults {
+    internal mutating func migrateFromNilSuite() {
+        guard !userDefaults.bool(forKey: "didMigrateFromNilSuite") else {
+            // no migration necessary
+            return
+        }
+        totalNumberOfVisits = UserDefaults.standard.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
+        firstVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
+        previousVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
+        currentVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp) as? Date
+        optOut = UserDefaults.standard.bool(forKey: MatomoUserDefaults.Key.optOut)
+        clientId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.clientID)
+        visitorUserId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.visitorUserID)
+        userDefaults.set(true, forKey: "didMigrateFromNilSuite")
+    }
+}
+
+extension MatomoUserDefaults {
     fileprivate struct Key {
         static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
         static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
