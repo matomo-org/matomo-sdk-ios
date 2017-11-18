@@ -168,6 +168,10 @@ Also: You cannot override Custom Parameter keys that are already defined by the 
 
 You can define the url property on every `Event`. If none is defined, the SDK will try to generate a url based on the `contentBase` of the `PiwikTracker`. If the `contentBase` is nil, no url will be generated. If the `contentBase` is set, it will append the actions of the event to it and use it as the url. Per default the `contentBase` is generated using the application bundle identifier. For example `http://org.piwik.skd`. This will not result in resolvable urls, but enables the backend to analyse and structure them.
 
+### Event dispatching
+
+Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of thos events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/piwik/piwik-sdk-ios/issues/137)
+
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
