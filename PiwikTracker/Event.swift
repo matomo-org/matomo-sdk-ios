@@ -77,7 +77,7 @@ extension Event {
         self.visitor = tracker.visitor
         self.session = tracker.session
         self.date = Date()
-        self.url = url
+        self.url = url ?? tracker.contentBase?.appendingPathComponent(action.joined(separator: "/"))
         self.actionName = action
         self.language = Locale.httpAcceptLanguage
         self.isNewSession = tracker.nextEventStartsANewSession
