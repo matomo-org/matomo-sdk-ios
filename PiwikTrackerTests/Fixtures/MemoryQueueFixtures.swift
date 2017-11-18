@@ -8,7 +8,9 @@ struct EventFixture {
                      eventCategory: nil,
                      eventAction: nil,
                      eventName: nil,
-                     eventValue: nil, dimensions: [])
+                     eventValue: nil,
+                     dimensions: [],
+                     customTrackingParameters: [:])
     }
 }
 

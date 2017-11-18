@@ -40,9 +40,7 @@
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
 		1F9C69F31F89254200728626 /* CustomTrackingParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */; };
-		1FDC91761F1A648C0046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91701F1A648C0046F506 /* Application.swift */; };
 		1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */; };
-		1FDC91781F1A648C0046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91721F1A648C0046F506 /* Device.swift */; };
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
 		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
 		24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */; };
@@ -78,9 +76,7 @@
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTrackingParametersViewController.swift; sourceTree = "<group>"; };
-		1FDC91701F1A648C0046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimensionsViewController.swift; sourceTree = "<group>"; };
-		1FDC91721F1A648C0046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
 		1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCCompatibilityChecker.m; sourceTree = "<group>"; };
 		1FDC91751F1A648C0046F506 /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
@@ -196,8 +192,6 @@
 		CD93EC8F17E76E290062BE20 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
-				1FDC91701F1A648C0046F506 /* Application.swift */,
-				1FDC91721F1A648C0046F506 /* Device.swift */,
 				CD93EC9017E76E290062BE20 /* Supporting Files */,
 				1F72DA6E1E61ECAF00EFF764 /* AppDelegate.swift */,
 				1F72DA701E62E55200EFF764 /* MenuViewController.swift */,
@@ -360,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDC3360217B97B190098386C /* Build appledoc */ = {
@@ -415,11 +409,9 @@
 			files = (
 				1F9C69F31F89254200728626 /* CustomTrackingParametersViewController.swift in Sources */,
 				1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */,
-				1FDC91761F1A648C0046F506 /* Application.swift in Sources */,
 				1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */,
 				1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */,
 				1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */,
-				1FDC91781F1A648C0046F506 /* Device.swift in Sources */,
 				1F72DA6F1E61ECAF00EFF764 /* AppDelegate.swift in Sources */,
 				1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */,
 				24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */,
