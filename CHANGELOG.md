@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.4.0
 * **feature** Added a way to add custom dimension in the action scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
 * **feature** Added automatic generation of the url property. [#197](https://github.com/piwik/piwik-sdk-ios/issues/197)
 * **improvement** The PiwikTracker is now save to create in a background thread. [#175](https://github.com/piwik/piwik-sdk-ios/pull/175)
