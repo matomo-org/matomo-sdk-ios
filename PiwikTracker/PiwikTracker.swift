@@ -9,7 +9,7 @@ final public class PiwikTracker: NSObject {
     
     /// Defines if the user opted out of tracking. When set to true, every event
     /// will be discarded immediately. This property is persisted between app launches.
-    public var isOptedOut: Bool {
+    @objc public var isOptedOut: Bool {
         get {
             return PiwikUserDefaults.standard.optOut
         }
