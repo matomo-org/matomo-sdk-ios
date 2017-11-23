@@ -315,16 +315,17 @@ extension PiwikTracker {
         return cvars[startIndex...]
     }
     
-    /// Adds a new Custom Dimension.
+    /// Adds a new Custom Variable.
     ///
     /// - Parameter name: The name of the new Custom Variable
     /// - Parameter value: The value of the new Custom Variable
-    /// - Returns: The index of the new parameter. Note that indices start at 3 to accommodate the default Custom Variables.
-    @objc public func addCustomVariable(_ name: String, value: String) -> Int {
+    /// - Returns: The index of the new parameter. Note that indices start at 3 to accommodate the default Custom Variables. Also note that when default Custom Variables are turned off, the returned index is offset by 3 to what is actually sent to the Piwik API.
+    @objc @discardableResult public func addCustomVariable(_ name: String, value: String) -> Int {
         cvars.append(CustomVariable(name: name, value: value))
         return cvars.count
     }
     
+    /// Remove a previously set Custom Variable. Note that the default Custom Variables cannot be removed.
     @objc public func removeCustomVariableAtIndex(_ index: Int) {
         assert(index >= 3 && index < cvars.count, "Index out of bounds")
         cvars.remove(at: index)
