@@ -283,12 +283,22 @@ extension PiwikTracker {
         dimensions.append(dimension)
     }
     
+    /// Set a permanent custom dimension by value and index.
+    ///
+    /// This is a convenience alternative to set(dimension:) and calls the exact same functionality. Also, it is accessible from Objective-C.
+    ///
+    /// - Parameter value: The value for the new Custom Dimension
+    /// - Parameter forIndex: The index of the new Custom Dimension
+    @objc public func setDimension(_ value: String, forIndex index: Int) {
+        set(dimension: CustomDimension( index: index, value: value ));
+    }
+    
     /// Removes a previously set custom dimension.
     ///
     /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
     ///
     /// - Parameter index: The index of the dimension.
-    public func remove(dimensionAtIndex index: Int) {
+    @objc public func remove(dimensionAtIndex index: Int) {
         dimensions = dimensions.filter({ dimension in
             dimension.index != index
         })
@@ -303,7 +313,7 @@ extension PiwikTracker {
         let app = Application.makeCurrentApplication()
         
         return [
-            CustomVariable( name: "Platform", value: currentDevice.platform  ),
+            CustomVariable( name: "Platform", value: currentDevice.platform ),
             CustomVariable( name: "OS version", value: currentDevice.osVersion ),
             CustomVariable( name: "App version", value: app.bundleVersion ?? "unknown" )
         ]
@@ -326,6 +336,10 @@ extension PiwikTracker {
     }
     
     /// Remove a previously set Custom Variable. Note that the default Custom Variables cannot be removed.
+    ///
+    /// Note that, as with any array, the index of any succeeding Custom Variables is decremented by 1.
+    ///
+    /// - Parameter index: The index that was previously returned by addCustomVariable().
     @objc public func removeCustomVariableAtIndex(_ index: Int) {
         assert(index >= 3 && index < cvars.count, "Index out of bounds")
         cvars.remove(at: index)
