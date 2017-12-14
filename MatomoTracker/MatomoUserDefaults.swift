@@ -83,11 +83,7 @@ internal struct MatomoUserDefaults {
 }
 
 extension MatomoUserDefaults {
-    internal mutating func migrateFromNilSuite() {
-        guard !userDefaults.bool(forKey: "didMigrateFromNilSuite") else {
-            // no migration necessary
-            return
-        }
+    public mutating func copy(from userDefaults: UserDefaults) {
         totalNumberOfVisits = UserDefaults.standard.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
         firstVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
         previousVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
@@ -95,7 +91,6 @@ extension MatomoUserDefaults {
         optOut = UserDefaults.standard.bool(forKey: MatomoUserDefaults.Key.optOut)
         clientId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.clientID)
         visitorUserId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.visitorUserID)
-        userDefaults.set(true, forKey: "didMigrateFromNilSuite")
     }
 }
 

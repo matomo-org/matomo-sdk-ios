@@ -19,9 +19,8 @@ class ViewController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        MatomoTracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
-        MatomoTracker.shared?.track(view: ["start"])
-        MatomoTracker.shared?.dispatch()
+        MatomoTracker.shared.track(view: ["start"])
+        MatomoTracker.shared.dispatch()
     }
 
     override var representedObject: Any? {

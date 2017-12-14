@@ -14,9 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        MatomoTracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
-        MatomoTracker.shared?.track(view: ["start"])
-        MatomoTracker.shared?.dispatch()
+        MatomoTracker.shared.track(view: ["start"])
+        MatomoTracker.shared.dispatch()
     }
 
     override func didReceiveMemoryWarning() {

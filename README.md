@@ -18,22 +18,33 @@ pod 'MatomoTracker', '~> 4.4'
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
 
 ## Usage
-### Configuration
+### Piwik Instance
 
-Before the first usage, the MatomoTracker has to be configured. This is best done in the `application(_:, didFinishLaunchingWithOptions:)` method in the `AppDelegate`.
+The Piwik iOS SDK doesn't provide a instance of the PiwikTracker. In order to be able to track data you have to create an instance first.
 
 ```
-MatomoTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!)
+let piwikTracker = PiwikTracker(siteId: "23", baseURL: URL(string: "https://demo2.piwik.org/piwik.php")!)
 ```
 
-The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` it the URL to your Matomo web instance and has to include the "piwik.php" string.
+
+The `siteId` is the ID that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
+
+You can either pass around this instance, or add an extension to the `MatomoTracker` class and add a shared instance property.
+
+```
+extension PiwikTracker {
+    static let shared: PiwikTracker = PiwikTracker(siteId: "1", baseURL: URL(string: "https://example.com/piwik.php")!)
+}
+```
+
+You can use multiple instances within one application.
 
 #### Opting Out
 
 The MatomoTracker SDK supports opting out of tracking. Please use the `isOptedOut` property of the MatomoTracker to define if the user opted out of tracking.
 
 ```
-MatomoTracker.shared?.isOptedOut = true
+matomoTracker.isOptedOut = true
 ```
 
 ### Tracking Page Views
@@ -41,13 +52,13 @@ MatomoTracker.shared?.isOptedOut = true
 The MatomoTracker can track hierarchical screen names, e.g. screen/settings/register. Use this to create a hierarchical and logical grouping of screen views in the Matomo web interface.
 
 ```
-MatomoTracker.shared?.track(view: ["path","to","your","page"])
+matomoTracker.track(view: ["path","to","your","page"])
 ```
 
 You can also set the url of the page.
 ```
 let url = URL(string: "https://matomo.org/get-involved/")
-MatomoTracker.shared?.track(view: ["community","get-involved"], url: url)
+matomoTracker.track(view: ["community","get-involved"], url: url)
 ```
 
 ### Tracking Events
@@ -60,7 +71,7 @@ Events can be used to track user interactions such as taps on a button. An event
 - Value (optional)
 
 ```
-MatomoTracker.shared?.track(eventWithCategory: "player", action: "slide", name: "volume", value: 35.1)
+matomoTracker.track(eventWithCategory: "player", action: "slide", name: "volume", value: 35.1)
 ```
 
 This will log that the user slid the volume slider on the player to 35.1%.
@@ -72,23 +83,23 @@ The Matomo SDK currently supports Custom Dimensions for the Visit Scope. Using C
 After that you can set a new Dimension,
 
 ```
-MatomoTracker.shared?.set(value: "1.0.0-beta2", forIndex: 1)
+matomoTracker.set(value: "1.0.0-beta2", forIndex: 1)
 ```
 
 or remove an already set dimension.
 
 ```
-MatomoTracker.shared?.remove(dimensionAtIndex: 1)
+matomoTracker.remove(dimensionAtIndex: 1)
 ```
 
 Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
 
 ### Custom User ID
 
-To add a [custom User ID](https://matomo.org/docs/user-id/), simply set the value you'd like to use on the `visitorId` field of the shared tracker:
+To add a [custom User ID](https://matomo.org/docs/user-id/), simply set the value you'd like to use on the `visitorId` field of the tracker:
 
 ```
-MatomoTracker.shared?.visitorId = "coolUsername123"
+matomoTracker.visitorId = "coolUsername123"
 ```
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
@@ -100,7 +111,7 @@ The MatomoTracker will dispatch events every 30 seconds automatically. If you wa
 
 ```
 func applicationDidEnterBackground(_ application: UIApplication) {
-  MatomoTracker.shared?.dispatch()
+  matomoTracker.dispatch()
 }
 ```
 
@@ -110,7 +121,7 @@ The MatomoTracker starts a new session whenever the application starts. If you w
 
 ```
 func applicationWillEnterForeground(_ application: UIApplication) {
-  MatomoTracker.shared?.startNewSession()
+  matomoTracker.startNewSession()
 }
 ```
 
@@ -119,11 +130,11 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 The MatomoTracker per default logs `warning` and `error` messages to the console. You can change the `LogLevel`.
 
 ```
-MatomoTracker.shared?.logger = DefaultLogger(minLevel: .verbose)
-MatomoTracker.shared?.logger = DefaultLogger(minLevel: .debug)
-MatomoTracker.shared?.logger = DefaultLogger(minLevel: .info)
-MatomoTracker.shared?.logger = DefaultLogger(minLevel: .warning)
-MatomoTracker.shared?.logger = DefaultLogger(minLevel: .error)
+matomoTracker.logger = DefaultLogger(minLevel: .verbose)
+matomoTracker.logger = DefaultLogger(minLevel: .debug)
+matomoTracker.logger = DefaultLogger(minLevel: .info)
+matomoTracker.logger = DefaultLogger(minLevel: .warning)
+matomoTracker.logger = DefaultLogger(minLevel: .error)
 ```
 
 You can also write your own `Logger` and send the logs wherever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
@@ -133,7 +144,7 @@ The `MatomoTracker` will create a default user agent derived from the WKWebView 
 You can instantiate the `MatomoTracker` using your own user agent.
 
 ```
-MatomoTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!, userAgent: "Your custom user agent")
+let matomoTracker = MatomoTracker(siteId: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!, userAgent: "Your custom user agent")
 ```
 
 ### Objective-C compatibility
@@ -141,10 +152,11 @@ MatomoTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "htt
 Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/matomo-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
 
 ```
-[MatomoTracker configureSharedInstanceWithSiteID:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-matomo/piwik.php"] userAgent:nil];
-[MatomoTracker shared] trackWithView:@[@"example"] url:nil];
-[[MatomoTracker shared] trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil];
-[[MatomoTracker shared] dispatch];
+MatomoTracker * matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-matomo/piwik.php"] userAgent:nil];
+[matomoTracker trackWithView:@[@"example"] url:nil];
+[matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
+[matomoTracker dispatch];
+matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
 ```
 
 ### Sending custom events
@@ -153,10 +165,10 @@ Instead of using the convenience functions for events and screen views for examp
 
 ```
 func sendCustomEvent() {
-  guard let MatomoTracker = MatomoTracker.shared else { return }
+  guard let matomoTracker = MatomoTracker.shared else { return }
   let downloadURL = URL(string: "https://builds.matomo.org/piwik.zip")!
-  let event = Event(tracker: MatomoTracker, action: ["menu", "custom tracking parameters"], url: downloadURL, customTrackingParameters: ["download": downloadURL.absoluteString])
-  MatomoTracker.shared?.track(event)
+  let event = Event(tracker: matomoTracker, action: ["menu", "custom tracking parameters"], url: downloadURL, customTrackingParameters: ["download": downloadURL.absoluteString])
+  matomoTracker.track(event)
 }
 ```
 
