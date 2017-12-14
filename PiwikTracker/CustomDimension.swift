@@ -7,4 +7,9 @@ public struct CustomDimension {
     
     /// The value you want to set for this dimension.
     let value: String
+    
+    public init(index: Int, value: String) {
+      self.index = index
+      self.value = value
+    }
 }
