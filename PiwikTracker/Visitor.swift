@@ -38,6 +38,6 @@ extension Visitor {
         let sanitizedUUID = uuid.replacingOccurrences(of: "-", with: "")
         let start = sanitizedUUID.startIndex
         let end = sanitizedUUID.index(start, offsetBy: 16)
-        return sanitizedUUID.substring(with: start..<end)
+        return String(sanitizedUUID[start..<end])
     }
 }
