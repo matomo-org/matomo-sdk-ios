@@ -114,6 +114,12 @@ final public class PiwikTracker: NSObject {
     }
     
     private func dispatchBatch() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.sync {
+                self.dispatchBatch()
+            }
+            return
+        }
         queue.first(limit: numberOfEventsDispatchedAtOnce) { events in
             guard events.count > 0 else {
                 // there are no more events queued, finish dispatching
