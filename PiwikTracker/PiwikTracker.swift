@@ -84,6 +84,12 @@ final public class PiwikTracker: NSObject {
     }
     
     internal func queue(event: Event) {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.sync {
+                self.queue(event: event)
+            }
+            return
+        }
         guard !isOptedOut else { return }
         logger.verbose("Queued event: \(event)")
         queue.enqueue(event: event)

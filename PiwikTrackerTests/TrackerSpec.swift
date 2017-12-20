@@ -17,6 +17,15 @@ class TrackerSpec: QuickSpec {
                 trackerFixture.tracker.queue(event: event)
                 expect(queuedEvent).toNot(beNil())
             }
+            it("should not throw an assertion if called from a background thread") {
+                let trackerFixture = TrackerFixture(queue: MemoryQueue(), dispatcher: DispatcherStub())
+                var queued = false
+                DispatchQueue.global(qos: .background).async {
+                    expect{ trackerFixture.tracker.queue(event: EventFixture.event()) }.toNot(throwAssertion())
+                    queued = true
+                }
+                expect(queued).toEventually(beTrue())
+            }
         }
         describe("dispatch") {
             context("with an idle tracker and queued events") {
