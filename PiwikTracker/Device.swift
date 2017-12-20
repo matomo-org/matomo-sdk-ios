@@ -32,7 +32,7 @@ public struct Device {
 
 extension Device {
     /// The platform name of the current device i.e. "iPhone1,1" or "iPad3,6"
-    private static func currentPlatform() -> String  {
+    fileprivate static func currentPlatform() -> String  {
         var size = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)
         var machine = [CChar](repeating: 0,  count: Int(size))
@@ -42,7 +42,7 @@ extension Device {
     
     /// Returns a human readable version of the current platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
     /// Will return nil, if no human readable string could be found for the current platform
-    private static func humanReadablePlatformNameForCurrentDevice() -> String? {
+    fileprivate static func humanReadablePlatformNameForCurrentDevice() -> String? {
         let platform = currentPlatform()
         switch platform {
             
