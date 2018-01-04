@@ -13,10 +13,14 @@ final class DispatcherStub: Dispatcher {
     let userAgent: String? = "DispatcherStub"
     
     func send(event: Event, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        send(events: [event], success: success, failure: failure)
+        DispatchQueue.global(qos: .background).async {
+            self.send(events: [event], success: success, failure: failure)
+        }
     }
     
     func send(events: [Event], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        sendEvents?(events, success, failure)
+        DispatchQueue.global(qos: .background).async {
+            self.sendEvents?(events, success, failure)
+        }
     }
 }

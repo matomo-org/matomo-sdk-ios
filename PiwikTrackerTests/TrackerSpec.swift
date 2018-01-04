@@ -17,9 +17,18 @@ class TrackerSpec: QuickSpec {
                 trackerFixture.tracker.queue(event: event)
                 expect(queuedEvent).toNot(beNil())
             }
+            it("should not throw an assertion if called from a background thread") {
+                let trackerFixture = TrackerFixture(queue: MemoryQueue(), dispatcher: DispatcherStub())
+                var queued = false
+                DispatchQueue.global(qos: .background).async {
+                    expect{ trackerFixture.tracker.queue(event: EventFixture.event()) }.toNot(throwAssertion())
+                    queued = true
+                }
+                expect(queued).toEventually(beTrue())
+            }
         }
         describe("dispatch") {
-            context("with an idle tracke and queued events") {
+            context("with an idle tracker and queued events") {
                 it("should ask the queue for event") {
                     var didAskForItems = false
                     let trackerFixture = TrackerFixture.nonEmptyQueueWithFirstItemsCallback() { limit, completion in
@@ -34,12 +43,22 @@ class TrackerSpec: QuickSpec {
                         eventsDispatched = events
                     }
                     trackerFixture.tracker.dispatch()
-                    expect(eventsDispatched.count) == 1
+                    expect(eventsDispatched.count).toEventually(equal(1))
                 }
                 it("should set isDispatching to true") {
-                    let trackerFixture = TrackerFixture.nonEmptyQueueWithFirstItemsCallback() { limit, completion in}
+                    let trackerFixture = TrackerFixture.nonEmptyQueueWithFirstItemsCallback() { limit, completion in }
                     trackerFixture.tracker.dispatch()
                     expect(trackerFixture.tracker.isDispatching).to(beTrue())
+                }
+                it("should not throw an assertion if called from a background thread") {
+                    var trackerFixture = TrackerFixture(queue: MemoryQueue(), dispatcher: DispatcherStub())
+                    trackerFixture.queue.enqueue(event: EventFixture.event())
+                    var dispatched = false
+                    DispatchQueue.global(qos: .background).async {
+                        expect{ trackerFixture.tracker.dispatch() }.toNot(throwAssertion())
+                        dispatched = true
+                    }
+                    expect(dispatched).toEventually(beTrue())
                 }
                 it("should cancel dispatching if the dispatcher failes") {
                     
