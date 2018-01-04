@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **bugfix** Fixed a crash happening due to concurrent access of the MemoryQueue. [#216](https://github.com/piwik/piwik-sdk-ios/pull/216)
+
 ## 4.4.0
 * **feature** Added a way to add custom dimension in the action scope. [#111](https://github.com/piwik/piwik-sdk-ios/issues/111)
 * **feature** Added automatic generation of the url property. [#197](https://github.com/piwik/piwik-sdk-ios/issues/197)
