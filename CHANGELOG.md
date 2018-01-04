@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.4.1
 * **bugfix** Fixed a crash happening due to concurrent access of the MemoryQueue. [#216](https://github.com/piwik/piwik-sdk-ios/pull/216)
 
 ## 4.4.0
