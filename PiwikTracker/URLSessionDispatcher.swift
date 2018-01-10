@@ -94,9 +94,15 @@ final class URLSessionDispatcher: Dispatcher {
 }
 
 fileprivate extension Event {
+    
+    private func cvarParameterValue() -> String {
+        var cvars: Array<String> = customVariables.enumerated().map { "\"\($0.offset + 1)\":[\"\($0.element.name)\",\"\($0.element.value)\"]" }
+        return "{\(cvars.joined(separator: ","))}"
+    }
+    
     var queryItems: [URLQueryItem] {
         get {
-            let items = [
+            var items = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
                 // Visitor
@@ -128,9 +134,13 @@ fileprivate extension Event {
                 
                 ].filter { $0.value != nil }
             
-            let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
-            let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
-            return items + dimensionItems + customItems
+            items += dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
+            items += customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
+            if customVariables.count > 0 {
+                items.append( URLQueryItem(name: "_cvar", value: cvarParameterValue()) )
+            }
+            
+            return items
         }
     }
 }
