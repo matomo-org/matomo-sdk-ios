@@ -141,7 +141,7 @@ final public class PiwikTracker: NSObject {
     
     // MARK: dispatch timer
     
-    public var dispatchInterval: TimeInterval = 30.0 {
+    @objc public var dispatchInterval: TimeInterval = 30.0 {
         didSet {
             startDispatchTimer()
         }
