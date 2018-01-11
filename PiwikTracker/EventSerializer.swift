@@ -9,7 +9,7 @@
 import Foundation
 
 final class EventSerializer {
-    internal func jsonEncoded(_ events: [Event]) throws -> Data {
+    internal func jsonData(for events: [Event]) throws -> Data {
         let eventsAsQueryItems = events.map({ $0.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
             items.flatMap({ item in
@@ -87,6 +87,6 @@ fileprivate extension CharacterSet {
     
     /// Returns the character set for characters allowed in a query parameter URL component.
     fileprivate static var urlQueryParameterAllowed: CharacterSet {
-        return CharacterSet.urlQueryAllowed//.subtracting(CharacterSet(charactersIn: "&/?"))
+        return CharacterSet.urlQueryAllowed.subtracting(CharacterSet(charactersIn: "&/?"))
     }
 }

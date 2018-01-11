@@ -46,7 +46,7 @@ final class URLSessionDispatcher: Dispatcher {
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let jsonBody: Data
         do {
-            jsonBody = try serializer.jsonEncoded(events)
+            jsonBody = try serializer.jsonData(for: events)
         } catch  {
             failure(error)
             return
