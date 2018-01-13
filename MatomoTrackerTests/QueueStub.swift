@@ -1,4 +1,4 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 
 final class QueueStub: Queue {
     struct Callback {

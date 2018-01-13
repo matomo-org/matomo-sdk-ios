@@ -1,14 +1,14 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 
 struct TrackerFixture {
     public var queue: Queue
     public var dispatcher: Dispatcher
-    public var tracker: PiwikTracker
+    public var tracker: MatomoTracker
 
     init(queue: Queue = QueueStub(), dispatcher: Dispatcher = DispatcherStub()) {
         self.queue = queue
         self.dispatcher = dispatcher
-        self.tracker = PiwikTracker(siteId: "spec_siteId", queue: self.queue, dispatcher: self.dispatcher)
+        self.tracker = MatomoTracker(siteId: "spec_siteId", queue: self.queue, dispatcher: self.dispatcher)
     }
     
     static func withQueueEventsCallback(queueEvents: @escaping QueueStub.Callback.QueueEvents) -> TrackerFixture {

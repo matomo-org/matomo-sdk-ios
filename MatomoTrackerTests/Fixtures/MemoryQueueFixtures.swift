@@ -1,4 +1,4 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 
 struct EventFixture {
     static func event() -> Event {
