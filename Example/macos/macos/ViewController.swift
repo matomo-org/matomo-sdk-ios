@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import PiwikTracker
+import MatomoTracker
 
 class ViewController: NSViewController {
 
@@ -19,9 +19,9 @@ class ViewController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        PiwikTracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
-        PiwikTracker.shared?.track(view: ["start"])
-        PiwikTracker.shared?.dispatch()
+        MatomoTracker.configureSharedInstance(withSiteID: "<id>", baseURL: URL(string:"http://example.com/piwik.php")!)
+        MatomoTracker.shared?.track(view: ["start"])
+        MatomoTracker.shared?.dispatch()
     }
 
     override var representedObject: Any? {

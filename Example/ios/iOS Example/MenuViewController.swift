@@ -1,9 +1,9 @@
 import UIKit
-import PiwikTracker
+import MatomoTracker
 
 class MenuViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        PiwikTracker.shared?.track(view: ["menu"])
+        MatomoTracker.shared?.track(view: ["menu"])
     }
 }

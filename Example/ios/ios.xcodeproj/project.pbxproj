@@ -552,7 +552,7 @@
 				INFOPLIST_FILE = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matomo.iostracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Example/ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -574,7 +574,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.piwik.iostracker;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matomo.iostracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Example/ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
