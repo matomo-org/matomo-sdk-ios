@@ -18,7 +18,7 @@ final class URLSessionDispatcher: Dispatcher {
     /// Generate a URLSessionDispatcher instance
     ///
     /// - Parameters:
-    ///   - baseURL: The url of the piwik server. This url has to end in `piwik.php`.
+    ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
     init(baseURL: URL, userAgent: String? = nil) {                
         self.baseURL = baseURL
@@ -40,7 +40,7 @@ final class URLSessionDispatcher: Dispatcher {
         #elseif os(tvOS)
             let currentUserAgent = ""
         #endif
-        return currentUserAgent.appending(" PiwikTracker SDK URLSessionDispatcher")
+        return currentUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
     }
     
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {

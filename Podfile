@@ -8,19 +8,19 @@ abstract_target :example do
   target :ios do
     platform :ios, '8.0'
     project 'Example/ios/ios'
-    pod 'PiwikTracker', path: './'
+    pod 'MatomoTracker', path: './'
   end
 
   target :macos do
     platform :osx, '10.12'
     project 'Example/macos/macos'
-    pod 'PiwikTracker', path: './'
+    pod 'MatomoTracker', path: './'
   end
 
   target :tvos do
     platform :tvos, '10.2'
     project 'Example/tvos/tvos'
-    pod 'PiwikTracker', path: './'
+    pod 'MatomoTracker', path: './'
   end
 
 end

@@ -328,11 +328,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PiwikTracker-iOS/PiwikTracker.framework",
+				"${BUILT_PRODUCTS_DIR}/MatomoTracker-iOS/MatomoTracker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PiwikTracker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MatomoTracker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
