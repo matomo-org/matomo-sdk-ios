@@ -5,28 +5,28 @@ namespace :test do
   task :prepare do
   end
 
-  desc 'Run the PiwikTracker Unit tests'
+  desc 'Run the MatomoTracker Unit tests'
   task ios: :prepare do
-    run_tests('PiwikTracker', 'iphonesimulator')
-    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=11.0')
-    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
-    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
-    run_tests('PiwikTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
+    run_tests('MatomoTracker', 'iphonesimulator')
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=11.0')
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
   end
 
-  desc 'Build the PiwikTracker iOS demo'
+  desc 'Build the MatomoTracker iOS demo'
   task ios_demo: :prepare do
     run_build('ios', 'iphonesimulator')
     build_failed('iOS') unless $?.success?
   end
 
-  desc 'Build the PiwikTracker OSX demo'
+  desc 'Build the MatomoTracker OSX demo'
   task osx_demo: :prepare do
     run_build('macos', 'macosx', 'platform=macOS,arch=x86_64')
     build_failed('macOS') unless $?.success?
   end
 
-  desc 'Build the PiwikTracker tvOS demo'
+  desc 'Build the MatomoTracker tvOS demo'
   task tvos_demo: :prepare do
     run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.2')
     build_failed('tvOS') unless $?.success?
@@ -46,7 +46,7 @@ namespace :package_manager do
 end
 
 
-desc 'Run the PiwikTracker tests for iOS & Mac OS X'
+desc 'Run the MatomoTracker tests for iOS & Mac OS X'
 task :test do
   Rake::Task['test:ios'].invoke
   Rake::Task['test:ios_demo'].invoke
@@ -54,7 +54,7 @@ task :test do
   Rake::Task['test:tvos_demo'].invoke
 end
 
-desc 'Check the integration of PiwikTracker with package managers'
+desc 'Check the integration of MatomoTracker with package managers'
 task :build_with_package_manager do
   Rake::Task['package_manager:carthage'].invoke
 end
@@ -65,11 +65,11 @@ task default: 'test'
 private
 
 def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
-  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
+  sh("xcodebuild -workspace MatomoTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
 def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
-  sh("xcodebuild -workspace PiwikTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
+  sh("xcodebuild -workspace MatomoTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
 def is_mavericks_or_above

@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name         = "MatomoTracker"
   spec.version      = "4.4.2"
   spec.summary      = "A Matomo tracker written in Swift for iOS, tvOS and macOS apps."
-  spec.homepage     = "https://github.com/piwik/piwik-sdk-ios/"
+  spec.homepage     = "https://github.com/matomo-org/piwik-sdk-ios/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   spec.author       = { "Mattias Levin" => "mattias.levin@gmail.com", "Cornelius Horstmann" => "site-github@brototyp.de" }
   spec.source       = { :git => "https://github.com/matomo-org/piwik-sdk-ios.git", :tag => "v#{spec.version}" }
