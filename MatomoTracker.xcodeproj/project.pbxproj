@@ -26,11 +26,10 @@
 		1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */; };
 		1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C667E1F8C096F0066CC64 /* MainThread.swift */; };
 		1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */; };
-		1FAA68D92007ABDE009B4B04 /* EventSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */; };
-		1FAA68DB2007BC3C009B4B04 /* EventSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */; };
-		1FCA6D451DBE0B2F0033F01C /* PiwikTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */; };
+		1FCA6D451DBE0B2F0033F01C /* MatomoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */; };
 		1FCA6D4C1DBE0B2F0033F01C /* PiwikTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */; };
+		1FD9E01C201B22A8006C3AD3 /* EventSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */; };
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
 		82A551CEC50ABB2EAD50FC4E /* Pods_PiwikTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */; };
@@ -66,13 +65,12 @@
 		1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
 		1F7C667E1F8C096F0066CC64 /* MainThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
 		1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+HttpAcceptLanguage.swift"; sourceTree = "<group>"; };
-		1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSerializer.swift; sourceTree = "<group>"; };
-		1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSerializerSpec.swift; sourceTree = "<group>"; };
-		1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PiwikTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatomoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		1FCA6D3F1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FCA6D441DBE0B2F0033F01C /* PiwikTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiwikTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FCA6D441DBE0B2F0033F01C /* MatomoTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatomoTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D4B1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSerializer.swift; sourceTree = "<group>"; };
 		1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimension.swift; sourceTree = "<group>"; };
 		1FDC917D1F1A65150046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -93,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FCA6D451DBE0B2F0033F01C /* PiwikTracker.framework in Frameworks */,
+				1FCA6D451DBE0B2F0033F01C /* MatomoTracker.framework in Frameworks */,
 				82A551CEC50ABB2EAD50FC4E /* Pods_PiwikTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,8 +129,8 @@
 		1FCA6D311DBE0B2F0033F01C = {
 			isa = PBXGroup;
 			children = (
-				1FCA6D3D1DBE0B2F0033F01C /* PiwikTracker */,
-				1FCA6D481DBE0B2F0033F01C /* PiwikTrackerTests */,
+				1FCA6D3D1DBE0B2F0033F01C /* MatomoTracker */,
+				1FCA6D481DBE0B2F0033F01C /* MatomoTrackerTests */,
 				1FCA6D3C1DBE0B2F0033F01C /* Products */,
 				2031C9E411023782603AB505 /* Pods */,
 				ADAE39D28F21B08F51A5C6A8 /* Frameworks */,
@@ -142,13 +140,13 @@
 		1FCA6D3C1DBE0B2F0033F01C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */,
-				1FCA6D441DBE0B2F0033F01C /* PiwikTrackerTests.xctest */,
+				1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */,
+				1FCA6D441DBE0B2F0033F01C /* MatomoTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FCA6D3D1DBE0B2F0033F01C /* PiwikTracker */ = {
+		1FCA6D3D1DBE0B2F0033F01C /* MatomoTracker */ = {
 			isa = PBXGroup;
 			children = (
 				1F80856D1E6B4B8000A61AAF /* Extensions */,
@@ -164,14 +162,14 @@
 				1FDC917D1F1A65150046F506 /* Application.swift */,
 				1FDC917E1F1A65150046F506 /* Device.swift */,
 				1F7C667E1F8C096F0066CC64 /* MainThread.swift */,
+				1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */,
-				1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */,
 			);
-			path = PiwikTracker;
+			path = MatomoTracker;
 			sourceTree = "<group>";
 		};
-		1FCA6D481DBE0B2F0033F01C /* PiwikTrackerTests */ = {
+		1FCA6D481DBE0B2F0033F01C /* MatomoTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
 				1F1949F51E17B2A400458199 /* Fixtures */,
@@ -181,9 +179,8 @@
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
 				1F5D08711F5D79AD0064314F /* AutoTracker.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
-				1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */,
 			);
-			path = PiwikTrackerTests;
+			path = MatomoTrackerTests;
 			sourceTree = "<group>";
 		};
 		2031C9E411023782603AB505 /* Pods */ = {
@@ -217,9 +214,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1FCA6D3A1DBE0B2F0033F01C /* PiwikTracker */ = {
+		1FCA6D3A1DBE0B2F0033F01C /* MatomoTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FCA6D4F1DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "PiwikTracker" */;
+			buildConfigurationList = 1FCA6D4F1DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "MatomoTracker" */;
 			buildPhases = (
 				1FCA6D361DBE0B2F0033F01C /* Sources */,
 				1FCA6D371DBE0B2F0033F01C /* Frameworks */,
@@ -230,14 +227,14 @@
 			);
 			dependencies = (
 			);
-			name = PiwikTracker;
+			name = MatomoTracker;
 			productName = PiwikTracker;
-			productReference = 1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */;
+			productReference = 1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1FCA6D431DBE0B2F0033F01C /* PiwikTrackerTests */ = {
+		1FCA6D431DBE0B2F0033F01C /* MatomoTrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FCA6D521DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */;
+			buildConfigurationList = 1FCA6D521DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "MatomoTrackerTests" */;
 			buildPhases = (
 				40E940918D712CC15E5735CE /* [CP] Check Pods Manifest.lock */,
 				1FCA6D401DBE0B2F0033F01C /* Sources */,
@@ -251,9 +248,9 @@
 			dependencies = (
 				1FCA6D471DBE0B2F0033F01C /* PBXTargetDependency */,
 			);
-			name = PiwikTrackerTests;
+			name = MatomoTrackerTests;
 			productName = PiwikTrackerTests;
-			productReference = 1FCA6D441DBE0B2F0033F01C /* PiwikTrackerTests.xctest */;
+			productReference = 1FCA6D441DBE0B2F0033F01C /* MatomoTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -278,7 +275,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1FCA6D351DBE0B2F0033F01C /* Build configuration list for PBXProject "PiwikTracker" */;
+			buildConfigurationList = 1FCA6D351DBE0B2F0033F01C /* Build configuration list for PBXProject "MatomoTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -290,8 +287,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1FCA6D3A1DBE0B2F0033F01C /* PiwikTracker */,
-				1FCA6D431DBE0B2F0033F01C /* PiwikTrackerTests */,
+				1FCA6D3A1DBE0B2F0033F01C /* MatomoTracker */,
+				1FCA6D431DBE0B2F0033F01C /* MatomoTrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -386,7 +383,7 @@
 				1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
-				1FAA68D92007ABDE009B4B04 /* EventSerializer.swift in Sources */,
+				1FD9E01C201B22A8006C3AD3 /* EventSerializer.swift in Sources */,
 				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1FDC917F1F1A65150046F506 /* Application.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,
@@ -400,7 +397,6 @@
 				1F1949F81E17B2C800458199 /* MemoryQueueFixtures.swift in Sources */,
 				1F6F0CDD1E61E377008170FC /* QueueStub.swift in Sources */,
 				1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */,
-				1FAA68DB2007BC3C009B4B04 /* EventSerializerSpec.swift in Sources */,
 				1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */,
 				1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,
@@ -413,7 +409,7 @@
 /* Begin PBXTargetDependency section */
 		1FCA6D471DBE0B2F0033F01C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1FCA6D3A1DBE0B2F0033F01C /* PiwikTracker */;
+			target = 1FCA6D3A1DBE0B2F0033F01C /* MatomoTracker */;
 			targetProxy = 1FCA6D461DBE0B2F0033F01C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -609,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1FCA6D351DBE0B2F0033F01C /* Build configuration list for PBXProject "PiwikTracker" */ = {
+		1FCA6D351DBE0B2F0033F01C /* Build configuration list for PBXProject "MatomoTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FCA6D4D1DBE0B2F0033F01C /* Debug */,
@@ -618,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FCA6D4F1DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "PiwikTracker" */ = {
+		1FCA6D4F1DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "MatomoTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FCA6D501DBE0B2F0033F01C /* Debug */,
@@ -627,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FCA6D521DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "PiwikTrackerTests" */ = {
+		1FCA6D521DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "MatomoTrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FCA6D531DBE0B2F0033F01C /* Debug */,

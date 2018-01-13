@@ -15,7 +15,7 @@
       </FileRef>
    </Group>
    <FileRef
-      location = "group:PiwikTracker.xcodeproj">
+      location = "group:/Users/corneliushorstmann/Development/piwik-sdk-ios/MatomoTracker.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
