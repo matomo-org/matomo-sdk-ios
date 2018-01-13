@@ -20,4 +20,7 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:MatomoTracker.xcodeproj">
+   </FileRef>
 </Workspace>

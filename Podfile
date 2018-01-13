@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 abstract_target :example do
   use_frameworks!
   inhibit_all_warnings!
-  workspace 'PiwikTracker'
+  workspace 'MatomoTracker'
 
   target :ios do
     platform :ios, '8.0'
@@ -25,11 +25,11 @@ abstract_target :example do
 
 end
 
-target 'PiwikTrackerTests' do
+target 'MatomoTrackerTests' do
   use_frameworks!
   platform :ios, '8.0'
   inhibit_all_warnings!
-  workspace 'PiwikTracker'
+  workspace 'MatomoTracker'
   inherit! :search_paths
   
   pod 'Quick', '~> 1.1'
