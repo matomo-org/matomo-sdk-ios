@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **bugfix** Fixed an issue where an ampersand lead to incomplete tracking information. [#217](https://github.com/matomo-org/piwik-sdk-ios/issues/217)
+
 ## 4.4.1
 * **bugfix** Fixed a crash happening due to concurrent access of the MemoryQueue. [#216](https://github.com/piwik/piwik-sdk-ios/pull/216)
 

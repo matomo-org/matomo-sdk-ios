@@ -26,6 +26,8 @@
 		1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */; };
 		1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C667E1F8C096F0066CC64 /* MainThread.swift */; };
 		1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */; };
+		1FAA68D92007ABDE009B4B04 /* EventSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */; };
+		1FAA68DB2007BC3C009B4B04 /* EventSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */; };
 		1FCA6D451DBE0B2F0033F01C /* PiwikTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */; };
 		1FCA6D4C1DBE0B2F0033F01C /* PiwikTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */; };
@@ -64,6 +66,8 @@
 		1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
 		1F7C667E1F8C096F0066CC64 /* MainThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
 		1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+HttpAcceptLanguage.swift"; sourceTree = "<group>"; };
+		1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSerializer.swift; sourceTree = "<group>"; };
+		1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSerializerSpec.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* PiwikTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PiwikTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiwikTracker.h; sourceTree = "<group>"; };
 		1FCA6D3F1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				1F7C667E1F8C096F0066CC64 /* MainThread.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* PiwikTracker.h */,
+				1FAA68D82007ABDE009B4B04 /* EventSerializer.swift */,
 			);
 			path = PiwikTracker;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
 				1F5D08711F5D79AD0064314F /* AutoTracker.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
+				1FAA68DA2007BC3C009B4B04 /* EventSerializerSpec.swift */,
 			);
 			path = PiwikTrackerTests;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
+				1FAA68D92007ABDE009B4B04 /* EventSerializer.swift in Sources */,
 				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1FDC917F1F1A65150046F506 /* Application.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,
@@ -393,6 +400,7 @@
 				1F1949F81E17B2C800458199 /* MemoryQueueFixtures.swift in Sources */,
 				1F6F0CDD1E61E377008170FC /* QueueStub.swift in Sources */,
 				1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */,
+				1FAA68DB2007BC3C009B4B04 /* EventSerializerSpec.swift in Sources */,
 				1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */,
 				1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,
