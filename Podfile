@@ -3,6 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 abstract_target :example do
   use_frameworks!
   inhibit_all_warnings!
+  project 'MatomoTracker'
   workspace 'MatomoTracker'
 
   target :ios do
@@ -29,6 +30,7 @@ target 'MatomoTrackerTests' do
   use_frameworks!
   platform :ios, '8.0'
   inhibit_all_warnings!
+  project 'MatomoTracker'
   workspace 'MatomoTracker'
   inherit! :search_paths
   

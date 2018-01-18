@@ -2,9 +2,9 @@
 
 The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Matomo (former Piwik) server. MatomoTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
 
-**Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
+**Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
-[![Build Status](https://travis-ci.org/matomo-org/piwik-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/piwik-sdk-ios)
+[![Build Status](https://travis-ci.org/matomo-org/matomo-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/matomo-sdk-ios)
 
 ## Installation
 ### [CocoaPods](https://cocoapods.org)
@@ -138,7 +138,7 @@ MatomoTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "htt
 
 ### Objective-C compatibility
 
-Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/piwik-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
+Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/matomo-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
 
 ```
 [MatomoTracker configureSharedInstanceWithSiteID:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-matomo/piwik.php"] userAgent:nil];
@@ -170,16 +170,16 @@ You can define the url property on every `Event`. If none is defined, the SDK wi
 
 ### Event dispatching
 
-Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of those events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/matomo-org/piwik-sdk-ios/issues/137)
+Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of those events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 
 ## Contributing
-Please read [CONTRIBUTING.md](https://github.com/matomo-org/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
+Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
 
 ## ToDo
 ### These features aren't implemented yet
 
 - Basic functionality
-  - [Persisting non dispatched events](https://github.com/matomo-org/piwik-sdk-ios/issues/137)
+  - [Persisting non dispatched events](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 - Tracking of more things
   - Exceptions
   - Social Interactions
@@ -187,11 +187,11 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/piwik-sdk-ios/blob/s
   - Goals and Conversions
   - Outlinks
   - Downloads
-  - [Ecommerce Transactions](https://github.com/matomo-org/piwik-sdk-ios/issues/110)
-  - [Campaigns](https://github.com/matomo-org/piwik-sdk-ios/issues/109)
+  - [Ecommerce Transactions](https://github.com/matomo-org/matomo-sdk-ios/issues/110)
+  - [Campaigns](https://github.com/matomo-org/matomo-sdk-ios/issues/109)
   - Content Impressions / Content Interactions
 - Customizing the tracker
-  - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://matomo-org.github.io/piwik-sdk-ios/piwik_prefixing.png))
+  - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://matomo-org.github.io/matomo-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
   - use different dispatchers (Alamofire)
 
