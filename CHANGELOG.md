@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.4.2
 * **bugfix** Fixed an issue where an ampersand lead to incomplete tracking information. [#217](https://github.com/matomo-org/piwik-sdk-ios/issues/217)
 
 ## 4.4.1
