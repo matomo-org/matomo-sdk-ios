@@ -7,11 +7,14 @@ namespace :test do
 
   desc 'Run the MatomoTracker Unit tests'
   task ios: :prepare do
-    run_tests('MatomoTracker', 'iphonesimulator')
-    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=11.0')
-    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.2')
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=11.2')
+    build_failed('tests') unless $?.success?
+    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
+    build_failed('tests') unless $?.success?
     run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
+    build_failed('tests') unless $?.success?
     run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
+    build_failed('tests') unless $?.success?
   end
 
   desc 'Build the MatomoTracker iOS demo'
@@ -28,7 +31,7 @@ namespace :test do
 
   desc 'Build the MatomoTracker tvOS demo'
   task tvos_demo: :prepare do
-    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.2')
+    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV,OS=11.2')
     build_failed('tvOS') unless $?.success?
   end
 end
