@@ -4,7 +4,7 @@ The PiwikTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Pi
 
 **Fancy help improve this SDK? Check [this list](https://github.com/piwik/piwik-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
-[![Build Status](https://travis-ci.org/piwik/piwik-sdk-ios.svg?branch=develop)](https://travis-ci.org/piwik/piwik-sdk-ios)
+[![Build Status](https://travis-ci.org/matomo-org/piwik-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/piwik-sdk-ios)
 
 ## Installation
 ### [CocoaPods](https://cocoapods.org)
