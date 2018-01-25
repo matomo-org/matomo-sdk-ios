@@ -170,7 +170,7 @@ You can define the url property on every `Event`. If none is defined, the SDK wi
 
 ### Event dispatching
 
-Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of thos events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/piwik/piwik-sdk-ios/issues/137)
+Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of those events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/piwik/piwik-sdk-ios/issues/137)
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/piwik/piwik-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
