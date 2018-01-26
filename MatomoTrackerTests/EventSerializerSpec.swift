@@ -1,11 +1,11 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 import Quick
 import Nimble
 
 class EventSerializerSpec: QuickSpec {
     override func spec() {
         describe("jsonEncoded") {
-            let tracker = PiwikTracker(siteId: "spec_id", baseURL: URL(string: "https://speck.domain.com/piwik.php")!)
+            let tracker = MatomoTracker(siteId: "spec_id", baseURL: URL(string: "https://speck.domain.com/piwik.php")!)
             let serializer = EventSerializer()
             it("should encode & characters") {
                 let event = Event(tracker: tracker, action: ["_specs_&_specs_"])

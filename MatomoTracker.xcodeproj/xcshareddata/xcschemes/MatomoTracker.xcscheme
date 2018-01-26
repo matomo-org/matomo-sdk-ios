@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1FCA6D3A1DBE0B2F0033F01C"
-               BuildableName = "PiwikTracker.framework"
-               BlueprintName = "PiwikTracker"
-               ReferencedContainer = "container:PiwikTracker.xcodeproj">
+               BuildableName = "MatomoTracker.framework"
+               BlueprintName = "MatomoTracker"
+               ReferencedContainer = "container:MatomoTracker.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1FCA6D431DBE0B2F0033F01C"
+               BuildableName = "MatomoTrackerTests.xctest"
+               BlueprintName = "MatomoTrackerTests"
+               ReferencedContainer = "container:MatomoTracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,21 +48,12 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1FCA6D431DBE0B2F0033F01C"
-               BuildableName = "PiwikTrackerTests.xctest"
-               BlueprintName = "PiwikTrackerTests"
-               ReferencedContainer = "container:PiwikTracker.xcodeproj">
+               BuildableName = "MatomoTrackerTests.xctest"
+               BlueprintName = "MatomoTrackerTests"
+               ReferencedContainer = "container:MatomoTracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FCA6D3A1DBE0B2F0033F01C"
-            BuildableName = "PiwikTracker.framework"
-            BlueprintName = "PiwikTracker"
-            ReferencedContainer = "container:PiwikTracker.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -67,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1FCA6D3A1DBE0B2F0033F01C"
-            BuildableName = "PiwikTracker.framework"
-            BlueprintName = "PiwikTracker"
-            ReferencedContainer = "container:PiwikTracker.xcodeproj">
+            BuildableName = "MatomoTracker.framework"
+            BlueprintName = "MatomoTracker"
+            ReferencedContainer = "container:MatomoTracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,9 +90,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1FCA6D3A1DBE0B2F0033F01C"
-            BuildableName = "PiwikTracker.framework"
-            BlueprintName = "PiwikTracker"
-            ReferencedContainer = "container:PiwikTracker.xcodeproj">
+            BuildableName = "MatomoTracker.framework"
+            BlueprintName = "MatomoTracker"
+            ReferencedContainer = "container:MatomoTracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
