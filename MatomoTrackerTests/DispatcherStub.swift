@@ -1,8 +1,8 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 
 final class DispatcherStub: Dispatcher {
 
-    public var baseURL: URL = URL(string: "http://piwik.org/spec_url")!
+    public var baseURL: URL = URL(string: "http://matomo.org/spec_url")!
 
     struct Callback {
         typealias SendEvents = (_ events: [Event], _ success: () -> (), _ failure: (Error) -> ()) -> ()

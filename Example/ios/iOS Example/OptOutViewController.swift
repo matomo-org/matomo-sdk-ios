@@ -1,20 +1,20 @@
 import UIKit
-import PiwikTracker
+import MatomoTracker
 
 class OptOutViewController: UIViewController {
     
     @IBOutlet weak var optOutSwitch: UISwitch!
     @IBAction func optOutSwitchChanged(_ sender: Any) {
-        PiwikTracker.shared?.isOptedOut = optOutSwitch.isOn
+        MatomoTracker.shared?.isOptedOut = optOutSwitch.isOn
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        optOutSwitch.isOn = PiwikTracker.shared?.isOptedOut ?? false
+        optOutSwitch.isOn = MatomoTracker.shared?.isOptedOut ?? false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        PiwikTracker.shared?.track(view: ["menu","opt out"])
+        MatomoTracker.shared?.track(view: ["menu","opt out"])
     }
 }

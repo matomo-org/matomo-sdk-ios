@@ -1,85 +1,85 @@
 import Foundation
 
-/// PiwikUserDefaults is a wrapper for the UserDefaults with properties
+/// MatomoUserDefaults is a wrapper for the UserDefaults with properties
 /// mapping onto values stored in the UserDefaults.
 /// All getter and setter are sideeffect free and automatically syncronize
 /// after writing.
-internal struct PiwikUserDefaults {
-    static var standard = PiwikUserDefaults()
+internal struct MatomoUserDefaults {
+    static var standard = MatomoUserDefaults()
     let userDefaults = UserDefaults.standard
     
     var totalNumberOfVisits: Int {
         get {
-            return userDefaults.integer(forKey: PiwikUserDefaults.Key.totalNumberOfVisits)
+            return userDefaults.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
         }
         set {
-            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.totalNumberOfVisits)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
             userDefaults.synchronize()
         }
     }
     
     var firstVisit: Date? {
         get {
-            return userDefaults.object(forKey: PiwikUserDefaults.Key.firstVistsTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.firstVistsTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.firstVistsTimestamp)
             userDefaults.synchronize()
         }
     }
     
     var previousVisit: Date? {
         get {
-            return userDefaults.object(forKey: PiwikUserDefaults.Key.previousVistsTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.previousVistsTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.previousVistsTimestamp)
             userDefaults.synchronize()
         }
     }
     
     var currentVisit: Date? {
         get {
-            return userDefaults.object(forKey: PiwikUserDefaults.Key.currentVisitTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.currentVisitTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.currentVisitTimestamp)
             userDefaults.synchronize()
         }
     }
     
     var optOut: Bool {
         get {
-            return userDefaults.bool(forKey: PiwikUserDefaults.Key.optOut)
+            return userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut)
         }
         set {
-            userDefaults.set(newValue, forKey: PiwikUserDefaults.Key.optOut)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.optOut)
             userDefaults.synchronize()
         }
     }
     
     var clientId: String? {
         get {
-            return userDefaults.string(forKey: PiwikUserDefaults.Key.clientID)
+            return userDefaults.string(forKey: MatomoUserDefaults.Key.clientID)
         }
         set {
-            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.clientID)
+            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.clientID)
             userDefaults.synchronize()
         }
     }
     
     var visitorUserId: String? {
         get {
-            return userDefaults.string(forKey: PiwikUserDefaults.Key.visitorUserID);
+            return userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID);
         }
         set {
-            userDefaults.setValue(newValue, forKey: PiwikUserDefaults.Key.visitorUserID);
+            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.visitorUserID);
             userDefaults.synchronize()
         }
     }
 }
 
-extension PiwikUserDefaults {
+extension MatomoUserDefaults {
     fileprivate struct Key {
         static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
         static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
