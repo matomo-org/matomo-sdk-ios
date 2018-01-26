@@ -9,6 +9,7 @@ struct TrackerFixture {
         self.queue = queue
         self.dispatcher = dispatcher
         self.tracker = MatomoTracker(siteId: "spec_siteId", queue: self.queue, dispatcher: self.dispatcher)
+        self.tracker.isOptedOut = false
     }
     
     static func withQueueEventsCallback(queueEvents: @escaping QueueStub.Callback.QueueEvents) -> TrackerFixture {
