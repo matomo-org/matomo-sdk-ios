@@ -18,22 +18,22 @@ pod 'MatomoTracker', '~> 4.4'
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
 
 ## Usage
-### Piwik Instance
+### Matomo Instance
 
-The Piwik iOS SDK doesn't provide a instance of the PiwikTracker. In order to be able to track data you have to create an instance first.
+The Matomo iOS SDK doesn't provide a instance of the PiwikTracker. In order to be able to track data you have to create an instance first.
 
 ```
-let piwikTracker = PiwikTracker(siteId: "23", baseURL: URL(string: "https://demo2.piwik.org/piwik.php")!)
+let matomoTracker = MatomoTracker(siteId: "23", baseURL: URL(string: "https://demo2.matomo.org/piwik.php")!)
 ```
 
 
-The `siteId` is the ID that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
+The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` it the URL to your Matomo web instance and has to include the "piwik.php" string.
 
 You can either pass around this instance, or add an extension to the `MatomoTracker` class and add a shared instance property.
 
 ```
-extension PiwikTracker {
-    static let shared: PiwikTracker = PiwikTracker(siteId: "1", baseURL: URL(string: "https://example.com/piwik.php")!)
+extension MatomoTracker {
+    static let shared: MatomoTracker = MatomoTracker(siteId: "1", baseURL: URL(string: "https://example.com/piwik.php")!)
 }
 ```
 

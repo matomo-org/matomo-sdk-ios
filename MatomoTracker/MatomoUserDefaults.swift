@@ -95,7 +95,7 @@ extension MatomoUserDefaults {
 }
 
 extension MatomoUserDefaults {
-    fileprivate struct Key {
+    internal struct Key {
         static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
         static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
         static let previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
