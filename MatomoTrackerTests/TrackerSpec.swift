@@ -1,4 +1,4 @@
-@testable import PiwikTracker
+@testable import MatomoTracker
 import Quick
 import Nimble
 

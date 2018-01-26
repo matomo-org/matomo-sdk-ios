@@ -24,10 +24,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>org.piwik.iostracker</string>
+			<string>org.matomo.iostracker</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>piwik-demo</string>
+				<string>matomo-demo</string>
 			</array>
 		</dict>
 	</array>

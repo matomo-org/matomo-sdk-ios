@@ -1,5 +1,5 @@
 import UIKit
-import PiwikTracker
+import MatomoTracker
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setupPiwik()
+        setupMatomo()
         return true
     }
     
@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        PiwikTracker.shared?.dispatch()
+        MatomoTracker.shared?.dispatch()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        PiwikTracker.shared?.startNewSession()
+        MatomoTracker.shared?.startNewSession()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -35,15 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func setupPiwik() {
-        guard let siteid = UserDefaults.standard.string(forKey: "piwik-example-siteid"),
-            let baseurl = UserDefaults.standard.url(forKey: "piwik-example-baseurl") else {
+    func setupMatomo() {
+        guard let siteid = UserDefaults.standard.string(forKey: "matomo-example-siteid"),
+            let baseurl = UserDefaults.standard.url(forKey: "matomo-example-baseurl") else {
                 let alert = UIAlertView(title: "Configuration", message: "Please configure this example application before usage", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 return
         }
-        PiwikTracker.configureSharedInstance(withSiteID: siteid, baseURL: baseurl)
-        PiwikTracker.shared?.logger = DefaultLogger(minLevel: .info)
+        MatomoTracker.configureSharedInstance(withSiteID: siteid, baseURL: baseurl)
+        MatomoTracker.shared?.logger = DefaultLogger(minLevel: .info)
     }
     
 }

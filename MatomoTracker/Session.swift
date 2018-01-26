@@ -27,14 +27,14 @@ struct Session {
 extension Session {
     static func current() -> Session {
         let firstVisit: Date
-        if let existingFirstVisit = PiwikUserDefaults.standard.firstVisit {
+        if let existingFirstVisit = MatomoUserDefaults.standard.firstVisit {
             firstVisit = existingFirstVisit
         } else {
             firstVisit = Date()
-            PiwikUserDefaults.standard.firstVisit = firstVisit
+            MatomoUserDefaults.standard.firstVisit = firstVisit
         }
-        let sessionCount = PiwikUserDefaults.standard.totalNumberOfVisits
-        let lastVisit = PiwikUserDefaults.standard.previousVisit ?? Date()
+        let sessionCount = MatomoUserDefaults.standard.totalNumberOfVisits
+        let lastVisit = MatomoUserDefaults.standard.previousVisit ?? Date()
         return Session(sessionsCount: sessionCount, lastVisit: lastVisit, firstVisit: firstVisit)
     }
 }
