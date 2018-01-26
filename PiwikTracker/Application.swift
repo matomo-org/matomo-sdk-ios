@@ -27,27 +27,27 @@ public struct Application {
 
 extension Application {
     /// Returns the name of the app as displayed on the homescreen
-    private static func bundleDisplayNameForCurrentApplication() -> String? {
+    fileprivate static func bundleDisplayNameForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
     }
     
     /// Returns the bundle name of the app
-    private static func bundleNameForCurrentApplication() -> String? {
+    fileprivate static func bundleNameForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String
     }
     
     /// Returns the bundle identifier
-    private static func bundleIdentifierForCurrentApplication() -> String? {
+    fileprivate static func bundleIdentifierForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
     }
     
     /// Returns the bundle version
-    private static func bundleVersionForCurrentApplication() -> String? {
+    fileprivate static func bundleVersionForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
     }
     
     /// Returns the app version
-    private static func bundleShortVersionForCurrentApplication() -> String? {
+    fileprivate static func bundleShortVersionForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 }
