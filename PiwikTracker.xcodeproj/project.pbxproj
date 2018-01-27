@@ -33,6 +33,7 @@
 		1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */; };
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
+		32033A4E201C815D007CB511 /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32033A4D201C815D007CB511 /* CustomVariable.swift */; };
 		82A551CEC50ABB2EAD50FC4E /* Pods_PiwikTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimension.swift; sourceTree = "<group>"; };
 		1FDC917D1F1A65150046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		32033A4D201C815D007CB511 /* CustomVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVariable.swift; sourceTree = "<group>"; };
 		68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PiwikTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F688B0F18F298B5E61552AC /* Pods-PiwikTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FD284F50B998823EAFB0CEE9 /* Pods-PiwikTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1F6F0CD61E61E35A008170FC /* PiwikTracker.swift */,
 				1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */,
 				1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */,
+				32033A4D201C815D007CB511 /* CustomVariable.swift */,
 				1F38EBF71EE568D10021FBF8 /* Logger.swift */,
 				1FDC917D1F1A65150046F506 /* Application.swift */,
 				1FDC917E1F1A65150046F506 /* Device.swift */,
@@ -383,6 +386,7 @@
 				1F0A15D01E6335E900FEAE72 /* Session.swift in Sources */,
 				1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */,
 				1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */,
+				32033A4E201C815D007CB511 /* CustomVariable.swift in Sources */,
 				1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
