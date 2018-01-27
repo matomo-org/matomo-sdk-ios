@@ -36,8 +36,7 @@ final public class PiwikTracker: NSObject {
 
     internal var dimensions: [CustomDimension] = []
     
-    @objc public var useDefaultCustomVariables: Bool = false
-    private lazy var cvars: [CustomVariable] = getDefaultCVars()
+    internal var customVariables: [CustomVariable] = []
     
     /// This logger is used to perform logging of all sorts of piwik related information.
     /// Per default it is a `DefaultLogger` with a `minLevel` of `LogLevel.warning`. You can
@@ -322,43 +321,40 @@ extension PiwikTracker {
 
 extension PiwikTracker {
     
-    internal func getDefaultCVars() -> [CustomVariable] {
+    public func getDefaultCVars() -> [CustomVariable] {
         let currentDevice = Device.makeCurrentDevice()
         let app = Application.makeCurrentApplication()
         
         return [
-            CustomVariable( name: "Platform", value: currentDevice.platform ),
-            CustomVariable( name: "OS version", value: currentDevice.osVersion ),
-            CustomVariable( name: "App version", value: app.bundleVersion ?? "unknown" )
+            CustomVariable( index:1, name: "Platform", value: currentDevice.platform ),
+            CustomVariable( index:2, name: "OS version", value: currentDevice.osVersion ),
+            CustomVariable( index:3, name: "App version", value: app.bundleVersion ?? "unknown" )
         ]
     }
-    
-    /// - Returns: A view on the Custom Variables.
-    var customVariables: ArraySlice<CustomVariable> {
-        let startIndex = useDefaultCustomVariables ? 0 : 3
-        return cvars[startIndex...]
-    }
-    
-    /// Adds a new Custom Variable.
+
+    /// Set a permanent new Custom Variable.
     ///
+    /// - Parameter dimension: The Custom Variable to set
+    public func set(customVariable: CustomVariable) {
+        removeCustomVariable(withIndex: customVariable.index)
+        customVariables.append(customVariable)
+    }
+
+    /// Set a permanent new Custom Variable.
+    ///
+    /// - Parameter name: The index of the new Custom Variable
     /// - Parameter name: The name of the new Custom Variable
     /// - Parameter value: The value of the new Custom Variable
-    /// - Returns: The index of the new parameter. Note that indices start at 3 to accommodate the default Custom Variables. Also note that when default Custom Variables are turned off, the returned index is offset by 3 to what is actually sent to the Piwik API.
-    @objc @discardableResult public func addCustomVariable(_ name: String, value: String) -> Int {
-        cvars.append(CustomVariable(name: name, value: value))
-        return cvars.count
+    @objc public func setCustomVariable(withIndex index: UInt, name: String, value: String) {
+        set(customVariable: CustomVariable(index: index, name: name, value: value))
     }
     
-    /// Remove a previously set Custom Variable. Note that the default Custom Variables cannot be removed.
+    /// Remove a previously set Custom Variable.
     ///
-    /// Note that, as with any array, the index of any succeeding Custom Variables is decremented by 1.
-    ///
-    /// - Parameter index: The index that was previously returned by addCustomVariable().
-    @objc public func removeCustomVariableAtIndex(_ index: Int) {
-        assert(index >= 3 && index < cvars.count, "Index out of bounds")
-        cvars.remove(at: index)
+    /// - Parameter index: The index of the Custom Variable.
+    @objc public func removeCustomVariable(withIndex index: UInt) {
+        customVariables = customVariables.filter { $0.index != index }
     }
-    
 }
 
 // Objective-c compatibility extension
