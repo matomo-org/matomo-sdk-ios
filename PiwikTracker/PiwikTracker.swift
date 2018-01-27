@@ -320,17 +320,6 @@ extension PiwikTracker {
 
 
 extension PiwikTracker {
-    
-    public func getDefaultCVars() -> [CustomVariable] {
-        let currentDevice = Device.makeCurrentDevice()
-        let app = Application.makeCurrentApplication()
-        
-        return [
-            CustomVariable( index:1, name: "Platform", value: currentDevice.platform ),
-            CustomVariable( index:2, name: "OS version", value: currentDevice.osVersion ),
-            CustomVariable( index:3, name: "App version", value: app.bundleVersion ?? "unknown" )
-        ]
-    }
 
     /// Set a permanent new Custom Variable.
     ///
