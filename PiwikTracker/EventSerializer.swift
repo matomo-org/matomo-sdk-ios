@@ -25,8 +25,8 @@ final class EventSerializer {
 
 fileprivate extension Event {
     
-    private func cvarParameterValue() -> String {
-        var cvars: Array<String> = customVariables.enumerated().map { "\"\($0.offset + 1)\":[\"\($0.element.name)\",\"\($0.element.value)\"]" }
+    private func customVariablesParameterValue() -> String {
+        let cvars: Array<String> = customVariables.enumerated().map { "\"\($0.offset + 1)\":[\"\($0.element.name)\",\"\($0.element.value)\"]" }
         return "{\(cvars.joined(separator: ","))}"
     }
 
@@ -67,7 +67,7 @@ fileprivate extension Event {
             items += dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
             items += customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
             if customVariables.count > 0 {
-                items.append( URLQueryItem(name: "_cvar", value: cvarParameterValue()) )
+                items.append( URLQueryItem(name: "_cvar", value: customVariablesParameterValue()) )
             }
 
             return items
