@@ -26,7 +26,7 @@ final class EventSerializer {
 fileprivate extension Event {
     
     private func customVariableParameterValue() -> String {
-        let customVariableParameterValue: Array<String> = customVariables.enumerated().map { "\"\($0.element.index)\":[\"\($0.element.name)\",\"\($0.element.value)\"]" }
+        let customVariableParameterValue: [String] = customVariables.map { "\"\($0.index)\":[\"\($0.name)\",\"\($0.value)\"]" }
         return "{\(customVariableParameterValue.joined(separator: ","))}"
     }
 
