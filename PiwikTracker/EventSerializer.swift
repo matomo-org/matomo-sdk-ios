@@ -24,6 +24,12 @@ final class EventSerializer {
 }
 
 fileprivate extension Event {
+    
+    private func customVariableParameterValue() -> String {
+        let customVariableParameterValue: [String] = customVariables.map { "\"\($0.index)\":[\"\($0.name)\",\"\($0.value)\"]" }
+        return "{\(customVariableParameterValue.joined(separator: ","))}"
+    }
+
     var queryItems: [URLQueryItem] {
         get {
             let items = [
@@ -57,10 +63,12 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
                 ].filter { $0.value != nil }
-            
+
             let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
             let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
-            return items + dimensionItems + customItems
+            let customVariableItems = customVariables.count > 0 ? [URLQueryItem(name: "_cvar", value: customVariableParameterValue())] : []
+
+            return items + dimensionItems + customItems + customVariableItems
         }
     }
 }
