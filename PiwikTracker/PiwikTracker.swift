@@ -36,6 +36,7 @@ final public class PiwikTracker: NSObject {
 
     internal var dimensions: [CustomDimension] = []
     
+    internal var customVariables: [CustomVariable] = []
     
     /// This logger is used to perform logging of all sorts of piwik related information.
     /// Per default it is a `DefaultLogger` with a `minLevel` of `LogLevel.warning`. You can
@@ -153,7 +154,7 @@ final public class PiwikTracker: NSObject {
     
     // MARK: dispatch timer
     
-    public var dispatchInterval: TimeInterval = 30.0 {
+    @objc public var dispatchInterval: TimeInterval = 30.0 {
         didSet {
             startDispatchTimer()
         }
@@ -295,15 +296,53 @@ extension PiwikTracker {
         dimensions.append(dimension)
     }
     
+    /// Set a permanent custom dimension by value and index.
+    ///
+    /// This is a convenience alternative to set(dimension:) and calls the exact same functionality. Also, it is accessible from Objective-C.
+    ///
+    /// - Parameter value: The value for the new Custom Dimension
+    /// - Parameter forIndex: The index of the new Custom Dimension
+    @objc public func setDimension(_ value: String, forIndex index: Int) {
+        set(dimension: CustomDimension( index: index, value: value ));
+    }
+    
     /// Removes a previously set custom dimension.
     ///
     /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
     ///
     /// - Parameter index: The index of the dimension.
-    public func remove(dimensionAtIndex index: Int) {
+    @objc public func remove(dimensionAtIndex index: Int) {
         dimensions = dimensions.filter({ dimension in
             dimension.index != index
         })
+    }
+}
+
+
+extension PiwikTracker {
+
+    /// Set a permanent new Custom Variable.
+    ///
+    /// - Parameter dimension: The Custom Variable to set
+    public func set(customVariable: CustomVariable) {
+        removeCustomVariable(withIndex: customVariable.index)
+        customVariables.append(customVariable)
+    }
+
+    /// Set a permanent new Custom Variable.
+    ///
+    /// - Parameter name: The index of the new Custom Variable
+    /// - Parameter name: The name of the new Custom Variable
+    /// - Parameter value: The value of the new Custom Variable
+    @objc public func setCustomVariable(withIndex index: UInt, name: String, value: String) {
+        set(customVariable: CustomVariable(index: index, name: name, value: value))
+    }
+    
+    /// Remove a previously set Custom Variable.
+    ///
+    /// - Parameter index: The index of the Custom Variable.
+    @objc public func removeCustomVariable(withIndex index: UInt) {
+        customVariables = customVariables.filter { $0.index != index }
     }
 }
 
