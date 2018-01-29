@@ -81,6 +81,12 @@ extension Device {
         case "iPhone9,2":    return "iPhone 7 Plus (GSM+CDMA)"
         case "iPhone9,3":    return "iPhone 7 (Global)"
         case "iPhone9,4":    return "iPhone 7 Plus (Global)"
+        case "iPhone10,1":   return "iPhone 8 (GSM+CDMA)"
+        case "iPhone10,2":   return "iPhone 8 Plus (GSM+CDMA)"
+        case "iPhone10,3":   return "iPhone X (GSM+CDMA)"
+        case "iPhone10,4":   return "iPhone 8 (Global)"
+        case "iPhone10,5":   return "iPhone 8 Plus (Global)"
+        case "iPhone10,6":   return "iPhone X (Global)"
             
         // iPod
         case "iPod1,1":      return "iPod Touch 1G"
