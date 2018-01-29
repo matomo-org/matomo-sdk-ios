@@ -11,6 +11,7 @@
 		1F38EBEB1EE55AE50021FBF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */; };
 		1F38EBEE1EE55AE50021FBF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */; };
 		1F38EBF01EE55AE50021FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */; };
+		1F963079201B3AD1007B2AE7 /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963078201B3AD1007B2AE7 /* MatomoTracker+SharedInstance.swift */; };
 		607D4B3ABA064DC5DA050144 /* Pods_example_tvos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0907CCC9B4E1BA377380424F /* Pods_example_tvos.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		1F38EBED1EE55AE50021FBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F38EBF11EE55AE50021FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F963078201B3AD1007B2AE7 /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MatomoTracker+SharedInstance.swift"; path = "../../ios/iOS Example/MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
 		2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.release.xcconfig"; sourceTree = "<group>"; };
 		918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +70,7 @@
 		1F38EBE71EE55AE50021FBF8 /* tvos */ = {
 			isa = PBXGroup;
 			children = (
+				1F963078201B3AD1007B2AE7 /* MatomoTracker+SharedInstance.swift */,
 				1F38EBE81EE55AE50021FBF8 /* AppDelegate.swift */,
 				1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */,
 				1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */,
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F963079201B3AD1007B2AE7 /* MatomoTracker+SharedInstance.swift in Sources */,
 				1F38EBEB1EE55AE50021FBF8 /* ViewController.swift in Sources */,
 				1F38EBE91EE55AE50021FBF8 /* AppDelegate.swift in Sources */,
 			);

@@ -40,6 +40,7 @@
 		1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA701E62E55200EFF764 /* MenuViewController.swift */; };
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
 		1F9C69F31F89254200728626 /* CustomTrackingParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */; };
+		1FC89ADD1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */; };
 		1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */; };
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
 		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
@@ -76,6 +77,7 @@
 		1F72DA701E62E55200EFF764 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTrackingParametersViewController.swift; sourceTree = "<group>"; };
+		1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
 		1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimensionsViewController.swift; sourceTree = "<group>"; };
 		1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
 		1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCCompatibilityChecker.m; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */,
 				1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */,
 				1F72DA6D1E61ECAF00EFF764 /* ios-Bridging-Header.h */,
+				1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */,
 			);
 			path = "iOS Example";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9C69F31F89254200728626 /* CustomTrackingParametersViewController.swift in Sources */,
+				1FC89ADD1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift in Sources */,
 				1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */,
 				1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */,
 				1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */,

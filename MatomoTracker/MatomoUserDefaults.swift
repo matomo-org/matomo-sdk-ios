@@ -5,8 +5,11 @@ import Foundation
 /// All getter and setter are sideeffect free and automatically syncronize
 /// after writing.
 internal struct MatomoUserDefaults {
-    static var standard = MatomoUserDefaults()
-    let userDefaults = UserDefaults.standard
+    let userDefaults: UserDefaults
+
+    init(suiteName: String?) {
+        userDefaults = UserDefaults(suiteName: suiteName)!
+    }
     
     var totalNumberOfVisits: Int {
         get {
@@ -80,7 +83,19 @@ internal struct MatomoUserDefaults {
 }
 
 extension MatomoUserDefaults {
-    fileprivate struct Key {
+    public mutating func copy(from userDefaults: UserDefaults) {
+        totalNumberOfVisits = UserDefaults.standard.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
+        firstVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
+        previousVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
+        currentVisit = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp) as? Date
+        optOut = UserDefaults.standard.bool(forKey: MatomoUserDefaults.Key.optOut)
+        clientId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.clientID)
+        visitorUserId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.visitorUserID)
+    }
+}
+
+extension MatomoUserDefaults {
+    internal struct Key {
         static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
         static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
         static let previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
