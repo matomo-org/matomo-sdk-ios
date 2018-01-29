@@ -20,16 +20,17 @@ struct Visitor {
 }
 
 extension Visitor {
-    static func current() -> Visitor {
+    static func current(in matomoUserDefaults: MatomoUserDefaults) -> Visitor {
+        var matomoUserDefaults = matomoUserDefaults
         let id: String
-        if let existingId = MatomoUserDefaults.standard.clientId {
+        if let existingId = matomoUserDefaults.clientId {
             id = existingId
         } else {
             let newId = newVisitorID()
-            MatomoUserDefaults.standard.clientId = newId
+            matomoUserDefaults.clientId = newId
             id = newId
         }
-        let userId = MatomoUserDefaults.standard.visitorUserId
+        let userId = matomoUserDefaults.visitorUserId
         return Visitor(id: id, userId: userId)
     }
     

@@ -8,10 +8,10 @@ class ConfigurationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        MatomoTracker.shared?.track(view: ["menu","configuration"])
+        MatomoTracker.shared.track(view: ["menu","configuration"])
         
-        baseURLTextField.text = UserDefaults.standard.url(forKey: "matomo-example-baseurl")?.absoluteString
-        siteIDTextField.text = UserDefaults.standard.string(forKey: "matomo-example-siteid")
+        baseURLTextField.text = UserDefaults.standard.url(forKey: "piwik-example-baseurl")?.absoluteString
+        siteIDTextField.text = UserDefaults.standard.string(forKey: "piwik-example-siteid")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -19,19 +19,19 @@ class ConfigurationViewController: UIViewController {
         guard let baseURLText = baseURLTextField.text,
             let baseURL = URL(string: baseURLText),
             let siteID = siteIDTextField.text else { return }
-        UserDefaults.standard.set(baseURL, forKey: "matomo-example-baseurl")
-        UserDefaults.standard.set(siteID, forKey: "matomo-example-siteid")
+        UserDefaults.standard.set(baseURL, forKey: "piwik-example-baseurl")
+        UserDefaults.standard.set(siteID, forKey: "piwik-example-siteid")
         UserDefaults.standard.synchronize()
         
-        MatomoTracker.configureSharedInstance(withSiteID: siteID, baseURL: baseURL)
+//        PiwikTracker.configureSharedInstance(withSiteID: siteID, baseURL: baseURL)
     }
     
     @IBAction func newSessionButtonTapped(_ sender: UIButton) {
-        MatomoTracker.shared?.startNewSession()
+        MatomoTracker.shared.startNewSession()
     }
     
     @IBAction func dispatchButtonTapped(_ sender: UIButton) {
-        MatomoTracker.shared?.dispatch()
+        MatomoTracker.shared.dispatch()
     }
 
 }
