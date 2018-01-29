@@ -1,6 +1,8 @@
-public struct Device {
+import Foundation
+
+final public class Device: NSObject {
     /// Creates an returns a new device object representing the current device
-    public static func makeCurrentDevice() ->  Device {
+    @objc public static func makeCurrentDevice() ->  Device {
         let platform = currentPlatform()
         let humanReadablePlatformName = humanReadablePlatformNameForCurrentDevice()
         let os = osVersionForCurrentDevice()
@@ -14,20 +16,30 @@ public struct Device {
     }
     
     /// The platform name of the device i.e. "iPhone1,1" or "iPad3,6"
-    public let platform: String
+    @objc public let platform: String
     
     /// A human readable version of the platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
     /// Will be nil if no human readable string was found.
-    public let humanReadablePlatformName: String?
+    @objc public let humanReadablePlatformName: String?
     
     /// The version number of the OS as String i.e. "1.2" or "9.4"
-    public let osVersion: String
+    @objc public let osVersion: String
     
     // The screen size
-    public let screenSize: CGSize
+    @objc public let screenSize: CGSize
     
     // The native screen size
-    public let nativeScreenSize: CGSize?
+    @objc public let nativeScreenSize: CGSize
+
+    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize) {
+        self.platform = platform
+        self.humanReadablePlatformName = humanReadablePlatformName
+        self.osVersion = osVersion
+        self.screenSize = screenSize
+        self.nativeScreenSize = nativeScreenSize
+
+        super.init()
+    }
 }
 
 extension Device {
