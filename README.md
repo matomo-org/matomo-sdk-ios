@@ -12,7 +12,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 4.4'
+pod 'MatomoTracker', '~> 5.0'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
