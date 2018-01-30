@@ -25,18 +25,19 @@ final public class Device: NSObject {
     /// The version number of the OS as String i.e. "1.2" or "9.4"
     @objc public let osVersion: String
     
-    // The screen size
+    /// The screen size
     @objc public let screenSize: CGSize
     
-    // The native screen size
+    /// The native screen size
+    /// Will be CGSize.zero if the value is not defined on the running platorm.
     @objc public let nativeScreenSize: CGSize
 
-    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize) {
+    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize? = nil) {
         self.platform = platform
         self.humanReadablePlatformName = humanReadablePlatformName
         self.osVersion = osVersion
         self.screenSize = screenSize
-        self.nativeScreenSize = nativeScreenSize
+        self.nativeScreenSize = nativeScreenSize != nil ? nativeScreenSize! : CGSize.zero
 
         super.init()
     }
@@ -154,7 +155,7 @@ extension Device {
 #if os(OSX)
     import AppKit
     extension Device {
-        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
         internal static func osVersionForCurrentDevice() -> String  {
             let version = ProcessInfo.processInfo.operatingSystemVersion
             return "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
@@ -175,7 +176,7 @@ extension Device {
     import UIKit
     extension Device {
         
-        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
         internal static func osVersionForCurrentDevice() -> String  {
             return UIDevice.current.systemVersion
         }
