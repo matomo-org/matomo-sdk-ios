@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased
+## 5.0.0-alpha1
 * **feature** It now is possible to use multiple PiwikTracker instances within one appliaction. Please check [this](https://github.com/matomo-org/matomo-sdk-ios/wiki/Migration#50) guide how to migrate from the shared instance in version 4. [#164](https://github.com/piwik/piwik-sdk-ios/pull/164)
+* **feature** Added compatibility to custom variables. [#223](https://github.com/matomo-org/matomo-sdk-ios/pull/223) (by @manuroe and @zantoku)
+* **improvement** Renamed Piwik to Matomo [#221](https://github.com/matomo-org/matomo-sdk-ios/pull/221)
 
 ## 4.4.2
 * **bugfix** Fixed an issue where an ampersand lead to incomplete tracking information. [#217](https://github.com/matomo-org/piwik-sdk-ios/issues/217)
