@@ -1,6 +1,6 @@
-# MatomoTracker iOS SDK
+# MatomoTracker (former PiwikTracker) iOS SDK
 
-The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Matomo (former Piwik) server. MatomoTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
+The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Matomo server. MatomoTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
 
 **Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
 
