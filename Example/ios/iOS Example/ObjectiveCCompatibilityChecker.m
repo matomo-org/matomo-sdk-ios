@@ -1,19 +1,20 @@
-@import PiwikTracker;
+@import MatomoTracker;
 
 #import "ObjectiveCCompatibilityChecker.h"
 
 @implementation ObjectiveCCompatibilityChecker
 
 - (void)check {
-    [PiwikTracker configureSharedInstanceWithSiteID:@"5" baseURL:[NSURL URLWithString:@"http://example.com/piwik.php"] userAgent:nil];
-    [[PiwikTracker shared] trackWithView:@[@"example"] url:nil];
-    [[PiwikTracker shared] trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
-    [[PiwikTracker shared] dispatch];
-    [PiwikTracker shared].logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
+    MatomoTracker *matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://example.com/piwik.php"] userAgent:nil];
+    [matomoTracker trackWithView:@[@"example"] url:nil];
+    [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
+    [matomoTracker dispatch];
+    matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
 }
 
 - (void)checkDeprecated {
-    [[PiwikTracker shared] trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil];
+    MatomoTracker *matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://example.com/piwik.php"] userAgent:nil];
+    [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil];
 }
 
 @end

@@ -55,8 +55,9 @@ public struct Event {
     /// api-key: urlref
     let referer: URL?
     let screenResolution : CGSize = Device.makeCurrentDevice().screenSize
+    
     /// api-key: _cvar
-    //let customVariables: [CustomVariable]
+    let customVariables: [CustomVariable]
     
     /// Event tracking
     /// https://piwik.org/docs/event-tracking/
@@ -71,7 +72,7 @@ public struct Event {
 }
 
 extension Event {
-    public init(tracker: PiwikTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], dimensions: [CustomDimension] = []) {
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], dimensions: [CustomDimension] = [], variables: [CustomVariable] = []) {
         self.siteId = tracker.siteId
         self.uuid = NSUUID()
         self.visitor = tracker.visitor
@@ -88,5 +89,6 @@ extension Event {
         self.eventValue = eventValue
         self.dimensions = tracker.dimensions + dimensions
         self.customTrackingParameters = customTrackingParameters
+        self.customVariables = tracker.customVariables + variables
     }
 }
