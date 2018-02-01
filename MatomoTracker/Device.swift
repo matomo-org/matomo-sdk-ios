@@ -1,6 +1,8 @@
-public struct Device {
+import Foundation
+
+final public class Device: NSObject {
     /// Creates an returns a new device object representing the current device
-    public static func makeCurrentDevice() ->  Device {
+    @objc public static func makeCurrentDevice() ->  Device {
         let platform = currentPlatform()
         let humanReadablePlatformName = humanReadablePlatformNameForCurrentDevice()
         let os = osVersionForCurrentDevice()
@@ -14,20 +16,31 @@ public struct Device {
     }
     
     /// The platform name of the device i.e. "iPhone1,1" or "iPad3,6"
-    public let platform: String
+    @objc public let platform: String
     
     /// A human readable version of the platform name i.e. "iPhone 6 Plus" or "iPad Air 2 (WiFi)"
     /// Will be nil if no human readable string was found.
-    public let humanReadablePlatformName: String?
+    @objc public let humanReadablePlatformName: String?
     
     /// The version number of the OS as String i.e. "1.2" or "9.4"
-    public let osVersion: String
+    @objc public let osVersion: String
     
-    // The screen size
-    public let screenSize: CGSize
+    /// The screen size
+    @objc public let screenSize: CGSize
     
-    // The native screen size
-    public let nativeScreenSize: CGSize?
+    /// The native screen size
+    /// Will be CGSize.zero if the value is not defined on the running platorm.
+    @objc public let nativeScreenSize: CGSize
+
+    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize? = nil) {
+        self.platform = platform
+        self.humanReadablePlatformName = humanReadablePlatformName
+        self.osVersion = osVersion
+        self.screenSize = screenSize
+        self.nativeScreenSize = nativeScreenSize != nil ? nativeScreenSize! : CGSize.zero
+
+        super.init()
+    }
 }
 
 extension Device {
@@ -69,6 +82,12 @@ extension Device {
         case "iPhone9,2":    return "iPhone 7 Plus (GSM+CDMA)"
         case "iPhone9,3":    return "iPhone 7 (Global)"
         case "iPhone9,4":    return "iPhone 7 Plus (Global)"
+        case "iPhone10,1":   return "iPhone 8 (GSM+CDMA)"
+        case "iPhone10,2":   return "iPhone 8 Plus (GSM+CDMA)"
+        case "iPhone10,3":   return "iPhone X (GSM+CDMA)"
+        case "iPhone10,4":   return "iPhone 8 (Global)"
+        case "iPhone10,5":   return "iPhone 8 Plus (Global)"
+        case "iPhone10,6":   return "iPhone X (Global)"
             
         // iPod
         case "iPod1,1":      return "iPod Touch 1G"
@@ -136,7 +155,7 @@ extension Device {
 #if os(OSX)
     import AppKit
     extension Device {
-        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
         internal static func osVersionForCurrentDevice() -> String  {
             let version = ProcessInfo.processInfo.operatingSystemVersion
             return "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
@@ -157,7 +176,7 @@ extension Device {
     import UIKit
     extension Device {
         
-        /// Reaturns the version number of the current OS as String i.e. "1.2" or "9.4"
+        /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
         internal static func osVersionForCurrentDevice() -> String  {
             return UIDevice.current.systemVersion
         }

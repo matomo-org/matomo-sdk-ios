@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Device.swift is now usable from Objective-C and recognizes iPhone 8 and X platform identifier. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/224) (by @manuroe)
+
 ## 5.0.0-beta1
 * **feature** It now is possible to use multiple PiwikTracker instances within one appliaction. Please check [this](https://github.com/matomo-org/matomo-sdk-ios/wiki/Migration#50) guide how to migrate from the shared instance in version 4. [#164](https://github.com/piwik/piwik-sdk-ios/pull/164)
 * **feature** Added compatibility to custom variables. [#223](https://github.com/matomo-org/matomo-sdk-ios/pull/223) (by @manuroe and @zantoku)
