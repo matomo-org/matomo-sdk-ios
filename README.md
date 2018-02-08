@@ -26,7 +26,7 @@ Before the first usage, the PiwikTracker has to be configured. This is best done
 PiwikTracker.configureSharedInstance(withSiteID: "5", baseURL: URL(string: "http://your.server.org/path-to-piwik/piwik.php")!)
 ```
 
-The `siteId` is the ID that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` it the URL to your Piwik web instance and has to include the "piwik.php" string.
+The `siteId` is the ID that you can get if you [add a website](https://piwik.org/docs/manage-websites/#add-a-website) within the Piwik web interface. The `baseURL` is the URL to your Piwik web instance and has to include the "piwik.php" string.
 
 #### Opting Out
 
@@ -126,7 +126,7 @@ PiwikTracker.shared?.logger = DefaultLogger(minLevel: .warning)
 PiwikTracker.shared?.logger = DefaultLogger(minLevel: .error)
 ```
 
-You can also write your own `Logger` and send the logs wherever you want. Just write a new class/struct an let it conform to the `Logger` protocol.
+You can also write your own `Logger` and send the logs wherever you want. Just write a new class/struct and let it conform to the `Logger` protocol.
 
 ### Custom User Agent
 The `PiwikTracker` will create a default user agent derived from the WKWebView user agent.
