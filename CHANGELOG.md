@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 5.0.0
 * Device.swift is now usable from Objective-C and recognizes iPhone 8 and X platform identifier. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/224) (by @manuroe)
 
 ## 5.0.0-beta1
