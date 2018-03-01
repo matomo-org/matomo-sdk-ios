@@ -78,6 +78,14 @@ matomoTracker.track(eventWithCategory: "player", action: "slide", name: "volume"
 
 This will log that the user slid the volume slider on the player to 35.1%.
 
+### Tracking search
+
+The `MatomoTracker` can track how users use your app internal search. You can track what keywords were searched for, what categories they use, the number of results for a certain search and what searches resulted in no results.
+
+```Swift
+matomoTracker.trackSearch(query: "Best mobile tracking", category: "Technology", resultCount: 15)
+```
+
 ### Custom Dimension
 
 The Matomo SDK currently supports Custom Dimensions for the Visit Scope. Using Custom Dimensions you can add properties to the whole visit, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?" and such. Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://matomo.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.
