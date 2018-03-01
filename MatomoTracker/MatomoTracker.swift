@@ -343,7 +343,10 @@ extension MatomoTracker {
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         track(eventWithCategory: category, action: action, name: name, number: number, url: nil)
     }
-}
+    
+    @objc public func trackSearch(query: String, category: String?, resultCount: Int, url: URL? = nil) {
+        trackSearch(query: query, category: category, resultCount: resultCount, url: url)
+    }}
 
 extension MatomoTracker {
     public func copyFromOldSharedInstance() {
