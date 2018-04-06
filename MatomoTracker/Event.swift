@@ -66,6 +66,11 @@ public struct Event {
     let eventName: String?
     let eventValue: Float?
     
+    /// Campaign tracking
+    /// https://matomo.org/docs/tracking-campaigns/
+    let campaignName: String?
+    let campaignKeyword: String?
+    
     let dimensions: [CustomDimension]
     
     let customTrackingParameters: [String:String]
@@ -88,6 +93,8 @@ extension Event {
         self.eventName = eventName
         self.eventValue = eventValue
         self.dimensions = tracker.dimensions + dimensions
+        self.campaignName = tracker.campaignName
+        self.campaignKeyword = tracker.campaignKeyword
         self.customTrackingParameters = customTrackingParameters
         self.customVariables = tracker.customVariables + variables
     }

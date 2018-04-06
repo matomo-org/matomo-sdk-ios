@@ -62,6 +62,9 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_n", value: eventName),
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
+                URLQueryItem(name: "_rcn", value: campaignName),
+                URLQueryItem(name: "_rck", value: campaignKeyword),
+                
                 ].filter { $0.value != nil }
 
             let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
