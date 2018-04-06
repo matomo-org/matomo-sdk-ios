@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Exposed the `visitorId` to Objective-C. [#234](https://github.com/matomo-org/matomo-sdk-ios/issues/234)
+
 ## 5.0.0
 * Device.swift is now usable from Objective-C and recognizes iPhone 8 and X platform identifier. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/224) (by @manuroe)
 
