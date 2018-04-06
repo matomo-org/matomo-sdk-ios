@@ -194,7 +194,7 @@ final public class MatomoTracker: NSObject {
     /// - Parameters:
     ///   - name: The name of the campaign.
     ///   - keyword: The keyword of the campaign.
-    public func trackCampaign(name: String?, keyword: String?) {
+    @objc public func trackCampaign(name: String?, keyword: String?) {
         campaignName = name
         campaignKeyword = keyword
     }

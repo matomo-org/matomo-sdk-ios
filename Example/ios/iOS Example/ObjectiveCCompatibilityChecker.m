@@ -10,6 +10,7 @@
     [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
     [matomoTracker dispatch];
     matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
+    [matomoTracker trackCampaignWithName:@"campaign_name" keyword:@"campaign_keyword"];
 }
 
 - (void)checkDeprecated {
