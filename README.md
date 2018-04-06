@@ -106,6 +106,14 @@ matomoTracker.visitorId = "coolUsername123"
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
 
+### Campaign Tracking
+
+The Matomo iOS SDK supports [campaign tracking](https://matomo.org/docs/tracking-campaigns/).
+
+```Swift
+matomoTracker.trackCampaign(name: @"campaign_name", keyword: @"campaign_keyword")
+```
+
 ## Advanced Usage
 ### Manual dispatching
 
