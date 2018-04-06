@@ -220,8 +220,6 @@ extension MatomoTracker {
     }
     
     /// Tracks an event as described here: https://matomo.org/docs/event-tracking/
-    
-    /// Track an event as described here: https://matomo.org/docs/event-tracking/
     ///
     /// - Parameters:
     ///   - category: The Category of the Event
@@ -232,6 +230,22 @@ extension MatomoTracker {
     ///   - url: The optional url of the page that was viewed.
     public func track(eventWithCategory category: String, action: String, name: String? = nil, value: Float? = nil, dimensions: [CustomDimension] = [], url: URL? = nil) {
         let event = Event(tracker: self, action: [], url: url, eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
+        queue(event: event)
+    }
+}
+
+extension MatomoTracker {
+    
+    /// Tracks a search result page as described here: https://matomo.org/docs/site-search/
+    ///
+    /// - Parameters:
+    ///   - query: The string the user was searching for
+    ///   - category: An optional category which the user was searching in
+    ///   - resultCount: The number of results that were displayed for that search
+    ///   - dimensions: An optional array of dimensions, that will be set only in the scope of this event.
+    ///   - url: The optional url of the page that was viewed.
+    public func trackSearch(query: String, category: String?, resultCount: Int?, dimensions: [CustomDimension] = [], url: URL? = nil) {
+        let event = Event(tracker: self, action: [], url: url, searchQuery: query, searchCategory: category, searchResultsCount: resultCount, dimensions: dimensions)
         queue(event: event)
     }
 }
@@ -329,7 +343,10 @@ extension MatomoTracker {
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         track(eventWithCategory: category, action: action, name: name, number: number, url: nil)
     }
-}
+    
+    @objc public func trackSearch(query: String, category: String?, resultCount: Int, url: URL? = nil) {
+        trackSearch(query: query, category: category, resultCount: resultCount, url: url)
+    }}
 
 extension MatomoTracker {
     public func copyFromOldSharedInstance() {

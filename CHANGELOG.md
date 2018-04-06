@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Added a function to track searches within the application. [#230](https://github.com/matomo-org/matomo-sdk-ios/issues/230)
+
 ## 5.0.0
 * Device.swift is now usable from Objective-C and recognizes iPhone 8 and X platform identifier. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/224) (by @manuroe)
 

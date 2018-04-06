@@ -10,6 +10,9 @@ struct EventFixture {
                      eventAction: nil,
                      eventName: nil,
                      eventValue: nil,
+                     searchQuery: nil,
+                     searchCategory: nil,
+                     searchResultsCount: nil,
                      dimensions: [],
                      customTrackingParameters: [:])
     }
