@@ -66,13 +66,19 @@ public struct Event {
     let eventName: String?
     let eventValue: Float?
     
+    /// Search tracking
+    /// api-keys: search, search_cat, search_count
+    let searchQuery: String?
+    let searchCategory: String?
+    let searchResultsCount: Int?
+    
     let dimensions: [CustomDimension]
     
     let customTrackingParameters: [String:String]
 }
 
 extension Event {
-    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], dimensions: [CustomDimension] = [], variables: [CustomVariable] = []) {
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = []) {
         self.siteId = tracker.siteId
         self.uuid = NSUUID()
         self.visitor = tracker.visitor
@@ -87,6 +93,9 @@ extension Event {
         self.eventAction = eventAction
         self.eventName = eventName
         self.eventValue = eventValue
+        self.searchQuery = searchQuery
+        self.searchCategory = searchCategory
+        self.searchResultsCount = searchResultsCount
         self.dimensions = tracker.dimensions + dimensions
         self.customTrackingParameters = customTrackingParameters
         self.customVariables = tracker.customVariables + variables
