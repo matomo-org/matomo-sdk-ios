@@ -36,6 +36,7 @@
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
 		5804E9A4755E642D58301330 /* Pods_MatomoTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */; };
+		FDE4330E209367A000A9CC36 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = FDE4330D209367A000A9CC36 /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		8F688B0F18F298B5E61552AC /* Pods-PiwikTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ECADEAA1E653EE3DA30A1FDC /* Pods-MatomoTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatomoTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MatomoTrackerTests/Pods-MatomoTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD284F50B998823EAFB0CEE9 /* Pods-PiwikTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FDE4330D209367A000A9CC36 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		1FCA6D311DBE0B2F0033F01C = {
 			isa = PBXGroup;
 			children = (
+				FDE4330D209367A000A9CC36 /* .travis.yml */,
 				1FCA6D3D1DBE0B2F0033F01C /* MatomoTracker */,
 				1FCA6D481DBE0B2F0033F01C /* MatomoTrackerTests */,
 				1FCA6D3C1DBE0B2F0033F01C /* Products */,
@@ -312,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE4330E209367A000A9CC36 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
