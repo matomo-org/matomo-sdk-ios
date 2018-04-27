@@ -100,7 +100,6 @@
 				1F38EBE21EE55AE50021FBF8 /* Frameworks */,
 				1F38EBE31EE55AE50021FBF8 /* Resources */,
 				1BAD3F74505E36F2DCCEFA9D /* [CP] Embed Pods Frameworks */,
-				38DBD44A2E80CAA046528641 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -174,21 +173,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		38DBD44A2E80CAA046528641 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */ = {
