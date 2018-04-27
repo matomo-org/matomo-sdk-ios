@@ -12,7 +12,7 @@ final class EventSerializer {
     internal func jsonData(for events: [Event]) throws -> Data {
         let eventsAsQueryItems = events.map({ $0.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
-            items.flatMap({ item in
+            items.compactMap({ item in
                 guard let value = item.value,
                     let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed) else { return nil }
                 return "\(item.name)=\(encodedValue)"
