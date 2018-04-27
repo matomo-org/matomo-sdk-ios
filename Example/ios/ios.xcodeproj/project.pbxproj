@@ -261,7 +261,6 @@
 				CD93EC8817E76E290062BE20 /* Frameworks */,
 				CD93EC8917E76E290062BE20 /* Resources */,
 				01A5049A4137D2B0AC2675EF /* [CP] Embed Pods Frameworks */,
-				CFD8060A28B5CB0CDA3FF3F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -386,21 +385,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Remove tmp directory\"\ncd /tmp\nrm -rf PiwikTracker\n\necho \"Clone documentation branch\"\ngit clone -b gh-pages https://github.com/piwik/piwik-sdk-ios.git\n\necho \"Copy new documentation into place\"\ncd piwik-sdk-ios\nrm -rf docs\ncp -rv \"$SOURCE_ROOT\"/Doc docs\n\necho \"Commit changes\"\ngit commit -am \"Update API documentation\"\n\necho \"Push changes\"\ngit push origin gh-pages";
-		};
-		CFD8060A28B5CB0CDA3FF3F0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -546,7 +530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -568,7 +552,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
