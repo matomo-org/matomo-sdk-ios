@@ -93,7 +93,7 @@ class MemoryQueueSpec: QuickSpec {
         }
         describe("remove") {
             it("should remove events that are enqueued") {
-                var queue = MemoryQueueFixture.withTwoItems()
+                let queue = MemoryQueueFixture.withTwoItems()
                 var dequeuedItem: Event? = nil
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
@@ -102,7 +102,7 @@ class MemoryQueueSpec: QuickSpec {
                 expect(queue.eventCount) == 1
             }
             it("should ignore if one event is tried to remove twice") {
-                var queue = MemoryQueueFixture.withTwoItems()
+                let queue = MemoryQueueFixture.withTwoItems()
                 var dequeuedItem: Event? = nil
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
@@ -112,7 +112,7 @@ class MemoryQueueSpec: QuickSpec {
                 expect(queue.eventCount) == 1
             }
             it("should skip not queued events") {
-                var queue = MemoryQueueFixture.withTwoItems()
+                let queue = MemoryQueueFixture.withTwoItems()
                 var dequeuedItem: Event? = nil
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
