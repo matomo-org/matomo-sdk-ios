@@ -1,12 +1,11 @@
 language: objective-c
+osx_image: xcode9.2
+cache: cocoapods
 before_install:
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
     - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-    - brew install carthage
     - cd $TRAVIS_BUILD_DIR
     - pod install || pod install --repo-update
 script:
   - rake test
   - rake build_with_package_manager
-osx_image: xcode9.2
-cache: cocoapods
