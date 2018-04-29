@@ -12,6 +12,9 @@ struct EventFixture {
                      eventValue: nil,
                      campaignName: nil,
                      campaignKeyword: nil,
+                     searchQuery: nil,
+                     searchCategory: nil,
+                     searchResultsCount: nil,
                      dimensions: [],
                      customTrackingParameters: [:])
     }

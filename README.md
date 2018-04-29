@@ -17,6 +17,14 @@ pod 'MatomoTracker', '~> 5.0'
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
 
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a non intrusive way to install MatomoTracker to your project. It makes no changes to your Xcode project and workspace. Add the following to your Cartfile:
+
+```
+github "matomo-org/matomo-sdk-ios"
+```
+
 ## Usage
 ### Matomo Instance
 
@@ -77,6 +85,14 @@ matomoTracker.track(eventWithCategory: "player", action: "slide", name: "volume"
 ```
 
 This will log that the user slid the volume slider on the player to 35.1%.
+
+### Tracking search
+
+The `MatomoTracker` can track how users use your app internal search. You can track what keywords were searched for, what categories they use, the number of results for a certain search and what searches resulted in no results.
+
+```Swift
+matomoTracker.trackSearch(query: "Best mobile tracking", category: "Technology", resultCount: 15)
+```
 
 ### Custom Dimension
 
