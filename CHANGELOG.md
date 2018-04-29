@@ -2,6 +2,7 @@
 
 ## Unreleased 
 * **feature** Added a function to track searches within the application. [#230](https://github.com/matomo-org/matomo-sdk-ios/issues/230)
+* **feature** Added campaign tracking. [#109](https://github.com/matomo-org/matomo-sdk-ios/issues/109)
 * **improvement** Exposed the visitorId to Objective-C. [#228](https://github.com/matomo-org/matomo-sdk-ios/issues/228)
 
 ## 5.0.0

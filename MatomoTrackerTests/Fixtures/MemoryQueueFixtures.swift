@@ -10,6 +10,8 @@ struct EventFixture {
                      eventAction: nil,
                      eventName: nil,
                      eventValue: nil,
+                     campaignName: nil,
+                     campaignKeyword: nil,
                      searchQuery: nil,
                      searchCategory: nil,
                      searchResultsCount: nil,

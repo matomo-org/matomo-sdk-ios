@@ -62,6 +62,9 @@ fileprivate extension Event {
                 URLQueryItem(name: "e_n", value: eventName),
                 URLQueryItem(name: "e_v", value: eventValue != nil ? "\(eventValue!)" : nil),
                 
+                URLQueryItem(name: "_rcn", value: campaignName),
+                URLQueryItem(name: "_rck", value: campaignKeyword),
+
                 URLQueryItem(name: "search", value: searchQuery),
                 URLQueryItem(name: "search_cat", value: searchCategory),
                 URLQueryItem(name: "search_count", value: searchResultsCount != nil ? "\(searchResultsCount!)" : nil),

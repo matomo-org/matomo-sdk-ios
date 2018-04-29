@@ -183,6 +183,21 @@ final public class MatomoTracker: NSObject {
     internal var session: Session
     internal var nextEventStartsANewSession = true
 
+    internal var campaignName: String? = nil
+    internal var campaignKeyword: String? = nil
+    
+    /// Adds the name and keyword for the current campaign.
+    /// This is usually very helpfull if you use deeplinks into your app.
+    ///
+    /// More information on campaigns: [https://matomo.org/docs/tracking-campaigns/](https://matomo.org/docs/tracking-campaigns/)
+    ///
+    /// - Parameters:
+    ///   - name: The name of the campaign.
+    ///   - keyword: The keyword of the campaign.
+    @objc public func trackCampaign(name: String?, keyword: String?) {
+        campaignName = name
+        campaignKeyword = keyword
+    }
 }
 
 extension MatomoTracker {
@@ -205,6 +220,11 @@ extension MatomoTracker {
     /// - Parameter event: The event that should be tracked.
     public func track(_ event: Event) {
         queue(event: event)
+        
+        if (event.campaignName == campaignName && event.campaignKeyword == campaignKeyword) {
+            campaignName = nil
+            campaignKeyword = nil
+        }
     }
     
     /// Tracks a screenview.

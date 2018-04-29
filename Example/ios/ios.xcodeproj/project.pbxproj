@@ -45,6 +45,7 @@
 		1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */; };
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
 		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
+		1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */; };
 		24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -84,6 +85,7 @@
 		1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
 		1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCCompatibilityChecker.m; sourceTree = "<group>"; };
 		1FDC91751F1A648C0046F506 /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
+		1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIDViewController.swift; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB58213275F072D13140292 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,8 +99,6 @@
 		CD1EA93417B0DA4400F63E14 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		CD5C9813193E65CF00A8A801 /* CampaignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaignViewController.h; sourceTree = "<group>"; };
-		CD5C9814193E65CF00A8A801 /* CampaignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignViewController.m; sourceTree = "<group>"; };
 		CD5F3BED18678C9000D04E03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CD7ABB131B0FD0D2002312DA /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		CD7ABB141B0FD0D2002312DA /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
@@ -206,8 +206,7 @@
 				24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */,
 				1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */,
 				1FA444972047A16800F7E37E /* SearchViewController.swift */,
-				CD5C9813193E65CF00A8A801 /* CampaignViewController.h */,
-				CD5C9814193E65CF00A8A801 /* CampaignViewController.m */,
+				1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */,
 				CDD56BFC19F587A100816D5A /* ContentTrackerViewController.h */,
 				CDD56BFD19F587A100816D5A /* ContentTrackerViewController.m */,
 				CD91BDD219A1382900A4B80D /* CustomVariablesViewController.h */,
@@ -403,6 +402,7 @@
 				1FA444982047A16800F7E37E /* SearchViewController.swift in Sources */,
 				1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */,
 				24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */,
+				1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */,
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,
 				1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */,
 				1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */,

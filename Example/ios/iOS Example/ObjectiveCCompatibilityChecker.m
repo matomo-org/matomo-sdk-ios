@@ -11,6 +11,7 @@
     [matomoTracker trackSearchWithQuery:@"custom search string" category:@"custom search category" resultCount:15 url:nil];
     [matomoTracker dispatch];
     matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
+    [matomoTracker trackCampaignWithName:@"campaign_name" keyword:@"campaign_keyword"];
     matomoTracker.visitorId = @"Just a custom id";
 }
 
