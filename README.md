@@ -17,6 +17,14 @@ pod 'MatomoTracker', '~> 5.0'
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
 
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a non intrusive way to install MatomoTracker to your project. It makes no changes to your Xcode project and workspace. Add the following to your Cartfile:
+
+```
+github "matomo-org/matomo-sdk-ios"
+```
+
 ## Usage
 ### Matomo Instance
 
