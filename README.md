@@ -12,7 +12,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 5.0'
+pod 'MatomoTracker', '~> 5.1'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
@@ -219,17 +219,13 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/
 - Basic functionality
   - [Persisting non dispatched events](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 - Tracking of more things
-  - Exceptions
   - Social Interactions
-  - Search
   - Goals and Conversions
   - Outlinks
   - Downloads
   - [Ecommerce Transactions](https://github.com/matomo-org/matomo-sdk-ios/issues/110)
-  - [Campaigns](https://github.com/matomo-org/matomo-sdk-ios/issues/109)
   - Content Impressions / Content Interactions
 - Customizing the tracker
-  - add prefixing? (The objc-SDK had a prefixing functionality ![Example screenshot](http://matomo-org.github.io/matomo-sdk-ios/piwik_prefixing.png))
   - set the dispatch interval
   - use different dispatchers (Alamofire)
 
