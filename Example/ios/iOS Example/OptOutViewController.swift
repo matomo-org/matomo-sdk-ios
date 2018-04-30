@@ -10,7 +10,7 @@ class OptOutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        optOutSwitch.isOn = MatomoTracker.shared.isOptedOut ?? false
+        optOutSwitch.isOn = MatomoTracker.shared.isOptedOut
     }
     
     override func viewDidAppear(_ animated: Bool) {
