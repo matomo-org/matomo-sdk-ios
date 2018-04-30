@@ -16,7 +16,7 @@
 
 - (void)checkDeprecated {
     MatomoTracker *matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://example.com/piwik.php"] userAgent:nil];
-    [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil];
+    [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
 }
 
 @end
