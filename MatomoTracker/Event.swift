@@ -26,8 +26,9 @@ import CoreGraphics
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 /// - cid: We will use the uid instead of the cid.
 public struct Event {
+    public let uuid: NSUUID
+    
     let siteId: String
-    let uuid: NSUUID
     let visitor: Visitor
     let session: Session
     
