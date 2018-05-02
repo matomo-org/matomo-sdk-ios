@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Session {
+struct Session: Codable {
     /// The number of sessions of the current user.
     /// api-key: _idvc
     let sessionsCount: Int

@@ -25,8 +25,8 @@ import CoreGraphics
 /// - idsite, rec, rand, apiv, res, cookie,
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 /// - cid: We will use the uid instead of the cid.
-public struct Event {
-    public let uuid: NSUUID
+public struct Event: Codable {
+    public let uuid: UUID
     
     let siteId: String
     let visitor: Visitor
@@ -86,7 +86,7 @@ public struct Event {
 extension Event {
     public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = []) {
         self.siteId = tracker.siteId
-        self.uuid = NSUUID()
+        self.uuid = UUID()
         self.visitor = tracker.visitor
         self.session = tracker.session
         self.date = Date()

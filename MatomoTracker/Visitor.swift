@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Visitor {
+struct Visitor: Codable {
     /// Unique ID per visitor (device in this case). Should be
     /// generated upon first start and never changed after.
     /// api-key: _id
