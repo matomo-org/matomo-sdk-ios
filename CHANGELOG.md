@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.1.1
+* **bugfix** Fixed Xcode build settings for Carthage support. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/244) (by @manuroe)
+
 ## 5.1.0
 * **feature** Added a function to track searches within the application. [#230](https://github.com/matomo-org/matomo-sdk-ios/issues/230)
 * **feature** Added campaign tracking. [#109](https://github.com/matomo-org/matomo-sdk-ios/issues/109)
