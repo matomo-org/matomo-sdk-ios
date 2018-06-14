@@ -175,7 +175,7 @@ let matomoTracker = MatomoTracker(siteId: "5", baseURL: URL(string: "http://your
 
 ### Objective-C compatibility
 
-Version 4 of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/matomo-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
+Version 4 (and higher) of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/matomo-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
 
 ```objc
 MatomoTracker *matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-matomo/piwik.php"] userAgent:nil];
