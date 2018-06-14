@@ -36,7 +36,16 @@ final class URLSessionDispatcher: Dispatcher {
             let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
         #elseif os(iOS)
             let webView = UIWebView(frame: .zero)
-            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+            var currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+            if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive) {
+                let deviceModel = Device.makeCurrentDevice().platform
+                currentUserAgent = regex.stringByReplacingMatches(
+                    in: currentUserAgent,
+                    options: .withTransparentBounds,
+                    range: NSRange(location: 0, length: currentUserAgent.count),
+                    withTemplate: "(\(deviceModel);"
+                )
+            }
         #elseif os(tvOS)
             let currentUserAgent = ""
         #endif
