@@ -198,6 +198,21 @@ final public class MatomoTracker: NSObject {
         campaignName = name
         campaignKeyword = keyword
     }
+    
+    /// There are several ways to track content impressions and interactions manually, semi-automatically and automatically. Please be aware that content impressions will be tracked using bulk tracking which will always send a POST request, even if  GET is configured which is the default. For more details have a look at the in-depth guide to Content Tracking.
+    /// More information on content: [https://matomo.org/docs/content-tracking/](https://matomo.org/docs/content-tracking/)
+    ///
+    /// - Parameters:
+    ///   - name: The name of the content. For instance 'Ad Foo Bar'
+    ///   - piece: The actual content piece. For instance the path to an image, video, audio, any text
+    ///   - target: The target of the content. For instance the URL of a landing page
+    ///   - interaction: The name of the interaction with the content. For instance a 'click'
+    @objc public func trackContentImpression(name: String, piece: String?, target: String?) {
+        track(Event(tracker: self, action: [], contentName: name, contentPiece: piece, contentTarget: target))
+    }
+    @objc public func trackContentInteraction(name: String, interaction: String, piece: String?, target: String?) {
+        track(Event(tracker: self, action: [], contentName: name, contentInteraction: interaction, contentPiece: piece, contentTarget: target))
+    }
 }
 
 extension MatomoTracker {

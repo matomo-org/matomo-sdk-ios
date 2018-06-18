@@ -80,10 +80,17 @@ public struct Event {
     let dimensions: [CustomDimension]
     
     let customTrackingParameters: [String:String]
+    
+    /// Content tracking
+    /// https://matomo.org/docs/content-tracking/
+    let contentName: String?
+    let contentPiece: String?
+    let contentTarget: String?
+    let contentInteraction: String?
 }
 
 extension Event {
-    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = []) {
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil) {
         self.siteId = tracker.siteId
         self.uuid = NSUUID()
         self.visitor = tracker.visitor
@@ -106,5 +113,9 @@ extension Event {
         self.campaignKeyword = tracker.campaignKeyword
         self.customTrackingParameters = customTrackingParameters
         self.customVariables = tracker.customVariables + variables
+        self.contentName = contentName
+        self.contentPiece = contentPiece
+        self.contentTarget = contentTarget
+        self.contentInteraction = contentInteraction
     }
 }

@@ -16,7 +16,11 @@ struct EventFixture {
                      searchCategory: nil,
                      searchResultsCount: nil,
                      dimensions: [],
-                     customTrackingParameters: [:])
+                     customTrackingParameters: [:],
+                     contentName: nil,
+                     contentPiece: nil,
+                     contentTarget: nil,
+                     contentInteraction: nil)
     }
 }
 
