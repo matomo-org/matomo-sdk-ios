@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.1.2
+* **bugfix** Replaced generic phone model by device model. [#254](https://github.com/matomo-org/matomo-sdk-ios/pull/253)
+
 ## 5.1.1
 * **bugfix** Fixed Xcode build settings for Carthage support. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/244) (by @phranck)
 
