@@ -2,6 +2,7 @@
 
 ## 5.1.2
 * **feature** Added a function to track content within the application. [#230](https://github.com/matomo-org/matomo-sdk-ios/pull/256) (by @wongnai)
+* **improvement** Replaced generic phone model by device model. [#254](https://github.com/matomo-org/matomo-sdk-ios/pull/253)
 
 ## 5.1.1
 * **bugfix** Fixed Xcode build settings for Carthage support. [#224](https://github.com/matomo-org/matomo-sdk-ios/pull/244) (by @phranck)
