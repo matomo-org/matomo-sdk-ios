@@ -130,6 +130,15 @@ The Matomo iOS SDK supports [campaign tracking](https://matomo.org/docs/tracking
 matomoTracker.trackCampaign(name: @"campaign_name", keyword: @"campaign_keyword")
 ```
 
+### Content Tracking
+
+The Matomo iOS SDK supports [content tracking](https://matomo.org/docs/content-tracking/).
+
+```Swift
+matomoTracker.trackContentImpression(name: "content_name", piece: "content_piece", target: "content_target")
+matomoTracker.trackContentInteraction(name: "content_name", interaction: "content_interaction", piece: "content_piece", target: "content_target")
+```
+
 ## Advanced Usage
 ### Manual dispatching
 
