@@ -12,7 +12,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 5.1'
+pod 'MatomoTracker', '~> 5.2'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
@@ -135,8 +135,8 @@ matomoTracker.trackCampaign(name: @"campaign_name", keyword: @"campaign_keyword"
 The Matomo iOS SDK supports [content tracking](https://matomo.org/docs/content-tracking/).
 
 ```Swift
-matomoTracker.trackContentImpression(name: "content_name", piece: "content_piece", target: "content_target")
-matomoTracker.trackContentInteraction(name: "content_name", interaction: "content_interaction", piece: "content_piece", target: "content_target")
+matomoTracker.trackContentImpression(name: "preview-liveaboard", piece: "Malaysia", target: "https://dummy.matomo.org/liveaboard/malaysia")
+matomoTracker.trackContentInteraction(name: "preview-liveaboard", interaction: "tap", piece: "Malaysia", target: "https://dummy.matomo.org/liveaboard/malaysia")
 ```
 
 ## Advanced Usage
