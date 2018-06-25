@@ -1,11 +1,21 @@
 language: objective-c
 osx_image: xcode9.2
 cache: cocoapods
+
 before_install:
-    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-    - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-    - cd $TRAVIS_BUILD_DIR
-    - pod install || pod install --repo-update
+  - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+
+install:
+  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install danger
+  - cd $TRAVIS_BUILD_DIR
+  - pod install || pod install --repo-update
+
 script:
   - rake test
   - rake build_with_package_manager
+
+before_script:
+  - export LANG=en_US.UTF-8
+  - danger
