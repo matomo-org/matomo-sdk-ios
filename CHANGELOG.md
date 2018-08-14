@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **bugfix** Fixed an issue where `trackSearch` called from Objective-C would end in an infinite loop. [#263](https://github.com/matomo-org/matomo-sdk-ios/issues/263)
+
 ## 5.2.0
 * **feature** Added a function to track content within the application. [#230](https://github.com/matomo-org/matomo-sdk-ios/pull/256) (by @wongnai)
 * **improvement** Replaced generic phone model by device model. [#254](https://github.com/matomo-org/matomo-sdk-ios/pull/253)
