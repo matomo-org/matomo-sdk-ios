@@ -11,6 +11,7 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.12'
   spec.requires_arc = true
   spec.default_subspecs = 'Core'
+  spec.swift_version = '4.1'
   
   spec.subspec 'Core' do |core|
   	core.source_files = 'MatomoTracker/*.swift'
