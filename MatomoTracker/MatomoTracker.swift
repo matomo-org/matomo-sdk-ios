@@ -380,8 +380,9 @@ extension MatomoTracker {
     }
     
     @objc public func trackSearch(query: String, category: String?, resultCount: Int, url: URL? = nil) {
-        trackSearch(query: query, category: category, resultCount: resultCount, url: url)
-    }}
+        trackSearch(query: query, category: category, resultCount: resultCount, dimensions: [], url: url)
+    }
+}
 
 extension MatomoTracker {
     public func copyFromOldSharedInstance() {
