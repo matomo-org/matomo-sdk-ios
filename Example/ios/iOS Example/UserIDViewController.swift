@@ -8,13 +8,13 @@ class UserIDViewController: UIViewController {
     
     @IBAction func signinAction(_ sender: UIButton) {
         if (self.userIDTextField.text != nil) && (self.userIDTextField.text?.count)! > 0 {
-            MatomoTracker.shared.visitorId = self.userIDTextField.text
+            MatomoTracker.shared.userId = self.userIDTextField.text
             toggleState()
         }
     }
     
     @IBAction func signOutAction(_ sender: UIButton) {
-        MatomoTracker.shared.visitorId = nil
+        MatomoTracker.shared.userId = nil
         toggleState()
     }
     
@@ -28,14 +28,14 @@ class UserIDViewController: UIViewController {
     }
     
     private func toggleState() {
-        self.userIDTextField.text = MatomoTracker.shared.visitorId
+        self.userIDTextField.text = MatomoTracker.shared.userId
         
         self.signinButton.isEnabled = !isVisitorIdValid()
         self.signoutButton.isEnabled = !self.signinButton.isEnabled
     }
     
     private func isVisitorIdValid() -> Bool {
-        let currentVisitorId = MatomoTracker.shared.visitorId
+        let currentVisitorId = MatomoTracker.shared.userId
 
         return (currentVisitorId != nil) && (currentVisitorId?.count)! > 0
     }

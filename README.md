@@ -114,10 +114,10 @@ Dimensions in the Visit Scope will be sent along every Page View or Event. Custo
 
 ### Custom User ID
 
-To add a [custom User ID](https://matomo.org/docs/user-id/), simply set the value you'd like to use on the `visitorId` field of the tracker:
+To add a [custom User ID](https://matomo.org/docs/user-id/), simply set the value you'd like to use on the `userId` field of the tracker:
 
 ```Swift
-matomoTracker.visitorId = "coolUsername123"
+matomoTracker.userId = "coolUsername123"
 ```
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
