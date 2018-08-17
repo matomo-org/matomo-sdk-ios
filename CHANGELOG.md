@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **improvement** Renamed the `visitorId` property to `userId` to be more inline with the Documentation. [#258](https://github.com/matomo-org/matomo-sdk-ios/issues/258)
 * **bugfix** Fixed an issue where `trackSearch` called from Objective-C would end in an infinite loop. [#263](https://github.com/matomo-org/matomo-sdk-ios/issues/263)
 * **bugfix** Fixed an issue on Objective-C project where swift version was't set. [#260](https://github.com/matomo-org/matomo-sdk-ios/issues/260)
 

@@ -19,13 +19,23 @@ final public class MatomoTracker: NSObject {
     
     /// Will be used to associate all future events with a given userID. This property
     /// is persisted between app launches.
-    @objc public var visitorId: String? {
+    @objc public var userId: String? {
         get {
             return matomoUserDefaults.visitorUserId
         }
         set {
             matomoUserDefaults.visitorUserId = newValue
             visitor = Visitor.current(in: matomoUserDefaults)
+        }
+    }
+    
+    @available(*, deprecated, message: "use userId instead")
+    @objc public var visitorId: String? {
+        get {
+            return userId
+        }
+        set {
+            userId = newValue
         }
     }
     
