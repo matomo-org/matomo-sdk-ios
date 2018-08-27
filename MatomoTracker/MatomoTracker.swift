@@ -39,6 +39,30 @@ final public class MatomoTracker: NSObject {
         }
     }
     
+    /// Will be used to associate all future events with a given visitorId / cid. This property
+    /// is persisted between app launches.
+    /// The `forcedVisitorId` can only be a 16 character long hexadecimal string. Setting an invalid
+    /// string will have no effect.
+    @objc public var forcedVisitorId: String? {
+        get {
+            return matomoUserDefaults.forcedVisitorId
+        }
+        set {
+            logger.debug("Setting the forcedVisitorId to \(forcedVisitorId)")
+            if let newValue = newValue {
+                let isValidString = Int(newValue, radix: 16) != nil && newValue.count == 16
+                if isValidString {
+                    matomoUserDefaults.forcedVisitorId = newValue
+                } else {
+                    logger.error("forcedVisitorId is invalid. It must be a 16 character long hex string.")
+                    logger.error("forcedVisitorId is still \(forcedVisitorId)")
+                }
+            } else {
+                matomoUserDefaults.forcedVisitorId = nil
+            }
+        }
+    }
+    
     internal var matomoUserDefaults: MatomoUserDefaults
     private let dispatcher: Dispatcher
     private var queue: Queue

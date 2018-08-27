@@ -14,6 +14,10 @@ struct Visitor {
     /// api-key: _id
     let id: String
     
+    /// A unique visitor ID, possuble to override by the SDK user.
+    /// api-key: cid
+    let forcedId: String?
+    
     /// An optional user identifier such as email or username.
     /// api-key: uid
     let userId: String?
@@ -30,8 +34,9 @@ extension Visitor {
             matomoUserDefaults.clientId = newId
             id = newId
         }
+        let forcedVisitorId = matomoUserDefaults.forcedVisitorId
         let userId = matomoUserDefaults.visitorUserId
-        return Visitor(id: id, userId: userId)
+        return Visitor(id: id, forcedId: forcedVisitorId, userId: userId)
     }
     
     static func newVisitorID() -> String {
