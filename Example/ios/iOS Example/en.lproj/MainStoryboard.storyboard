@@ -253,11 +253,11 @@
                                         <rect key="frame" x="0.0" y="639.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID / Visitor ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -273,11 +273,11 @@
                                         <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w4a-q3-D6h" id="lLS-sN-T9i">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="custom tracking parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBe-sk-E0E">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -798,7 +798,7 @@ Log keywords used and the number of results found.   Searches are shown in a
             </objects>
             <point key="canvasLocation" x="2123" y="-184"/>
         </scene>
-        <!--User ID-->
+        <!--User ID / Visitor ID-->
         <scene sceneID="YPh-mF-L4v">
             <objects>
                 <viewController id="xqt-PP-0XP" customClass="UserIDViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -842,16 +842,43 @@ Store the id locally in the app and set it directly after the tracker is created
                                     <action selector="signinAction:" destination="xqt-PP-0XP" eventType="touchUpInside" id="lRU-iU-0Gc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can also set a custom visitor ID." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okE-5R-yVI">
+                                <rect key="frame" x="10" y="391" width="355" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-uv-niG">
+                                <rect key="frame" x="16" y="458" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doI-rl-vIf">
+                                <rect key="frame" x="172.5" y="508" width="30" height="30"/>
+                                <state key="normal" title="Set"/>
+                                <connections>
+                                    <action selector="visitorIdTapped:" destination="xqt-PP-0XP" eventType="touchUpInside" id="bdJ-Ra-Gu4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Kad-JQ-T2F" firstAttribute="top" secondItem="aTn-Vi-fRv" secondAttribute="bottom" constant="50" id="1VF-pu-ZBF"/>
+                            <constraint firstAttribute="trailing" secondItem="okE-5R-yVI" secondAttribute="trailing" constant="10" id="2tU-ri-G8o"/>
                             <constraint firstAttribute="trailing" secondItem="6ib-Au-0C4" secondAttribute="trailing" constant="10" id="36K-6r-mdC"/>
                             <constraint firstItem="6ib-Au-0C4" firstAttribute="top" secondItem="sZf-dU-TqW" secondAttribute="bottom" constant="20" id="6MP-tB-bg6"/>
+                            <constraint firstItem="DQi-uv-niG" firstAttribute="top" secondItem="okE-5R-yVI" secondAttribute="bottom" constant="50" id="7Xe-j4-dbb"/>
                             <constraint firstItem="6ib-Au-0C4" firstAttribute="leading" secondItem="euf-jm-xQs" secondAttribute="trailing" constant="20" id="8mG-Rc-cMw"/>
                             <constraint firstItem="euf-jm-xQs" firstAttribute="top" secondItem="sZf-dU-TqW" secondAttribute="bottom" constant="20" id="9Sh-iS-ulj"/>
                             <constraint firstItem="euf-jm-xQs" firstAttribute="width" secondItem="6ib-Au-0C4" secondAttribute="width" id="BNP-cp-4TJ"/>
+                            <constraint firstItem="DQi-uv-niG" firstAttribute="leading" secondItem="hgK-Yh-NnZ" secondAttribute="leading" constant="16" id="G5C-5J-dPs"/>
+                            <constraint firstItem="okE-5R-yVI" firstAttribute="leading" secondItem="hgK-Yh-NnZ" secondAttribute="leading" constant="10" id="OkC-06-lFb"/>
+                            <constraint firstItem="okE-5R-yVI" firstAttribute="top" secondItem="euf-jm-xQs" secondAttribute="bottom" constant="80" id="VZX-nL-fZe"/>
+                            <constraint firstItem="doI-rl-vIf" firstAttribute="top" secondItem="DQi-uv-niG" secondAttribute="bottom" constant="20" id="WdT-8j-7r5"/>
                             <constraint firstAttribute="trailing" secondItem="Kad-JQ-T2F" secondAttribute="trailing" constant="10" id="Whs-fI-BUy"/>
+                            <constraint firstItem="doI-rl-vIf" firstAttribute="centerX" secondItem="hgK-Yh-NnZ" secondAttribute="centerX" id="YUa-EQ-VkC"/>
+                            <constraint firstAttribute="trailing" secondItem="DQi-uv-niG" secondAttribute="trailing" constant="16" id="azR-vT-T8q"/>
                             <constraint firstItem="sZf-dU-TqW" firstAttribute="top" secondItem="Kad-JQ-T2F" secondAttribute="bottom" constant="50" id="cUH-j2-qn9"/>
                             <constraint firstItem="Kad-JQ-T2F" firstAttribute="leading" secondItem="hgK-Yh-NnZ" secondAttribute="leading" constant="10" id="fpr-4E-Rwm"/>
                             <constraint firstItem="euf-jm-xQs" firstAttribute="leading" secondItem="hgK-Yh-NnZ" secondAttribute="leading" constant="10" id="jZ0-ON-Qq1"/>
@@ -859,16 +886,17 @@ Store the id locally in the app and set it directly after the tracker is created
                             <constraint firstItem="sZf-dU-TqW" firstAttribute="leading" secondItem="hgK-Yh-NnZ" secondAttribute="leading" constant="10" id="yTH-0R-YV6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="User ID" id="PU0-p5-r10"/>
+                    <navigationItem key="navigationItem" title="User ID / Visitor ID" id="PU0-p5-r10"/>
                     <connections>
                         <outlet property="signinButton" destination="6ib-Au-0C4" id="Soo-zc-gOR"/>
                         <outlet property="signoutButton" destination="euf-jm-xQs" id="Fw5-NG-bwP"/>
                         <outlet property="userIDTextField" destination="sZf-dU-TqW" id="Tfv-vQ-HRe"/>
+                        <outlet property="visitorIdTextField" destination="DQi-uv-niG" id="y4A-3l-erF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qk3-gt-VLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318" y="1863"/>
+            <point key="canvasLocation" x="317.5" y="1862.5"/>
         </scene>
         <!--Campaign-->
         <scene sceneID="SEW-sB-SAF">
