@@ -32,7 +32,7 @@ fileprivate extension Event {
     
     private func orderItemParameterValue() -> String {
         let orderItemParameterValue: [String] = orderItems.map { "[\"\($0.sku)\",\"\($0.name)\",\"\($0.category)\",\"\($0.price)\",\"\($0.quantity)\"]" }
-        return "{\(orderItemParameterValue.joined(separator: ","))}"
+        return "[\(orderItemParameterValue.joined(separator: ","))]"
     }
 
     var queryItems: [URLQueryItem] {
