@@ -139,6 +139,14 @@ matomoTracker.trackContentImpression(name: "preview-liveaboard", piece: "Malaysi
 matomoTracker.trackContentInteraction(name: "preview-liveaboard", interaction: "tap", piece: "Malaysia", target: "https://dummy.matomo.org/liveaboard/malaysia")
 ```
 
+### Order Tracking
+
+The Matomo iOS SDK supports [order tracking](https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required).
+
+```Swift
+matomoTracker.trackOrder(id: String, items: [OrderItem], revenue: Float, subTotal: Float, tax: Float, shippingCost: Float, discount: Float)
+```
+
 ## Advanced Usage
 ### Manual dispatching
 
