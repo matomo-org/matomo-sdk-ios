@@ -91,8 +91,9 @@ fileprivate extension Event {
             let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
             let customVariableItems = customVariables.count > 0 ? [URLQueryItem(name: "_cvar", value: customVariableParameterValue())] : []
             let ecommerceOrderItems = orderItems.count > 0 ? [URLQueryItem(name: "ec_items", value: orderItemParameterValue())] : []
+            let ecommerceExtension = orderId != nil ? "&idgoal=0" : ""
 
-            return items + dimensionItems + customItems + customVariableItems + ecommerceOrderItems
+            return items + dimensionItems + customItems + customVariableItems + ecommerceOrderItems + ecommerceExtension
         }
     }
 }
