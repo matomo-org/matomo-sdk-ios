@@ -93,10 +93,9 @@ fileprivate extension Event {
             let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
             let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
             let customVariableItems = customVariables.count > 0 ? [URLQueryItem(name: "_cvar", value: customVariableParameterValue())] : []
-            let ecommerceOrderItems = orderItems.count > 0 ? [URLQueryItem(name: "ec_items", value: orderItemParameterValue())] : []
-            let ecommerceExtension = orderId != nil ? "&idgoal=0" : ""
+            let ecommerceOrderItemsAndFlag = orderItems.count > 0 ? [URLQueryItem(name: "ec_items", value: orderItemParameterValue()), URLQueryItem(name: "idgoal", value: "0")] : []
 
-            return items + dimensionItems + customItems + customVariableItems + ecommerceOrderItems + ecommerceExtension
+            return items + dimensionItems + customItems + customVariableItems + ecommerceOrderItemsAndFlag
         }
     }
 }
