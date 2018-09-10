@@ -147,6 +147,14 @@ The Matomo iOS SDK supports [goal tracking](https://matomo.org/docs/tracking-goa
 matomoTracker.track(goalWithId: 1, revenue: 99.99)
 ```
 
+### Order Tracking
+
+The Matomo iOS SDK supports [order tracking](https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required).
+
+```Swift
+matomoTracker.trackOrder(id: String, items: [OrderItem], revenue: Float, subTotal: Float, tax: Float, shippingCost: Float, discount: Float)
+```
+
 ## Advanced Usage
 ### Manual dispatching
 

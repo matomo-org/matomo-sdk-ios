@@ -24,7 +24,7 @@ struct EventFixture {
                      goalId: nil,
                      revenue: nil,
                      orderId: nil,
-                     orderItems: [:],
+                     orderItems: [],
                      orderRevenue: nil,
                      orderSubTotal: nil,
                      orderTax: nil,
