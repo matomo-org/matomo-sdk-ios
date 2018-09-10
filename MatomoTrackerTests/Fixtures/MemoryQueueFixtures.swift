@@ -20,7 +20,14 @@ struct EventFixture {
                      contentName: nil,
                      contentPiece: nil,
                      contentTarget: nil,
-                     contentInteraction: nil)
+                     contentInteraction: nil,
+                     orderId: nil,
+                     orderItems: [:],
+                     orderRevenue: nil,
+                     orderSubTotal: nil,
+                     orderTax: nil,
+                     orderShippingCost: nil,
+                     orderDiscount: nil)
     }
 }
 

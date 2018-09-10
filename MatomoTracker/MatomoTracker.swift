@@ -277,6 +277,21 @@ extension MatomoTracker {
         let event = Event(tracker: self, action: [], url: url, eventCategory: category, eventAction: action, eventName: name, eventValue: value, dimensions: dimensions)
         queue(event: event)
     }
+    
+    /// Tracks an order as described here: https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
+    ///
+    /// - Parameters:
+    ///   - id: The unique ID of the order
+    ///   - items: The array of items to be ordered
+    ///   - revenue: The grand total for the order (includes tax, shipping and subtracted discount)
+    ///   - subTotal: The sub total of the order (excludes shipping)
+    ///   - tax: The tax amount of the order
+    ///   - shippingCost: The shipping cost of the order
+    ///   - discount: The discount offered
+    public func trackOrder(id: String, items: [OrderItem], revenue: Float, subTotal: Float? = nil, tax: Float? = nil, shippingCost: Float? = nil, discount: Float? = nil) {
+        let event = Event(tracker: self, action: [], orderId: id, orderItems: items, orderRevenue: revenue, orderSubTotal: subTotal, orderTax: tax, orderShippingCost: shippingCost, orderDiscount: discount)
+        queue(event: event)
+    }
 }
 
 extension MatomoTracker {
