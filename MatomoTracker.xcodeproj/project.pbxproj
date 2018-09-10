@@ -36,6 +36,7 @@
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
 		5804E9A4755E642D58301330 /* Pods_MatomoTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */; };
+		5ACB1FAD21426FFB007C766B /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB1FAC21426FFB007C766B /* OrderItem.swift */; };
 		FDCA325A2093BFFB007D6B42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDCA32592093BFFB007D6B42 /* README.md */; };
 		FDE4330E209367A000A9CC36 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = FDE4330D209367A000A9CC36 /* .travis.yml */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		1FDC917D1F1A65150046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2FD38CC515C49A9A8922407D /* Pods-MatomoTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatomoTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatomoTrackerTests/Pods-MatomoTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		5ACB1FAC21426FFB007C766B /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatomoTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F0C25DEF98C13D32CC46DD /* Pods_PiwikTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PiwikTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F688B0F18F298B5E61552AC /* Pods-PiwikTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PiwikTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PiwikTrackerTests/Pods-PiwikTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */,
+				5ACB1FAC21426FFB007C766B /* OrderItem.swift */,
 			);
 			path = MatomoTracker;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */,
 				1FC2B429201F8C010061F5AD /* CustomVariable.swift in Sources */,
 				1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */,
+				5ACB1FAD21426FFB007C766B /* OrderItem.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
 				1FD9E01C201B22A8006C3AD3 /* EventSerializer.swift in Sources */,
