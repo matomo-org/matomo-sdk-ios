@@ -139,6 +139,14 @@ matomoTracker.trackContentImpression(name: "preview-liveaboard", piece: "Malaysi
 matomoTracker.trackContentInteraction(name: "preview-liveaboard", interaction: "tap", piece: "Malaysia", target: "https://dummy.matomo.org/liveaboard/malaysia")
 ```
 
+### Goal Tracking
+
+The Matomo iOS SDK supports [goal tracking](https://matomo.org/docs/tracking-goals-web-analytics/).
+
+```Swift
+matomoTracker.track(goalWithId: 1, revenue: 99.99)
+```
+
 ## Advanced Usage
 ### Manual dispatching
 

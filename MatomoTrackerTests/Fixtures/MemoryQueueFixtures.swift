@@ -20,7 +20,9 @@ struct EventFixture {
                      contentName: nil,
                      contentPiece: nil,
                      contentTarget: nil,
-                     contentInteraction: nil)
+                     contentInteraction: nil,
+                     goalId: nil,
+                     revenue: nil)
     }
 }
 
