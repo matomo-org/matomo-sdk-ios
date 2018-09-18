@@ -29,7 +29,8 @@ struct EventFixture {
                      orderSubTotal: nil,
                      orderTax: nil,
                      orderShippingCost: nil,
-                     orderDiscount: nil)
+                     orderDiscount: nil,
+                     lastOrderTimestamp: nil)
     }
 }
 

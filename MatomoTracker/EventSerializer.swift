@@ -88,6 +88,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "ec_tx", value: orderTax != nil ? "\(orderTax!)" : nil),
                 URLQueryItem(name: "ec_sh", value: orderShippingCost != nil ? "\(orderShippingCost!)" : nil),
                 URLQueryItem(name: "ec_dt", value: orderDiscount != nil ? "\(orderDiscount!)" : nil),
+                URLQueryItem(name: "_ects", value: lastOrderTimestamp != nil ? "\(lastOrderTimestamp!)" : nil),
                 ].filter { $0.value != nil }
 
             let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
