@@ -224,7 +224,6 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/
   - Outlinks
   - Downloads
   - [Ecommerce Transactions](https://github.com/matomo-org/matomo-sdk-ios/issues/110)
-  - Content Impressions / Content Interactions
 - Customizing the tracker
   - set the dispatch interval
   - use different dispatchers (Alamofire)
