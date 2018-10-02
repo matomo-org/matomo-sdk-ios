@@ -30,7 +30,7 @@ struct EventFixture {
                      orderTax: nil,
                      orderShippingCost: nil,
                      orderDiscount: nil,
-                     lastOrderTimestamp: nil)
+                     orderLastDate: nil)
     }
 }
 
