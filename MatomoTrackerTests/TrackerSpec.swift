@@ -98,5 +98,29 @@ class TrackerSpec: QuickSpec {
                 }
             }
         }
+        describe("forcedVisitorID") {
+            it("populates the cid value if set") {
+                var queuedEvent: Event? = nil
+                let trackerFixture = TrackerFixture.withQueueEventsCallback() { events, completion in
+                    queuedEvent = events.first
+                    completion()
+                }
+                trackerFixture.tracker.forcedVisitorId = "0123456789abcdef"
+                trackerFixture.tracker.track(view: ["spec_view"])
+                expect(queuedEvent?.visitor.forcedId).toEventually(equal("0123456789abcdef"))
+            }
+            it("it doesn't change the existing value if set to an invalid one") {
+                let tracker = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorId = "0123456789abcdef"
+                tracker.forcedVisitorId = "invalid"
+                expect(tracker.forcedVisitorId) == "0123456789abcdef"
+            }
+            it("should persist and restore the value") {
+                let tracker = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorId = "0123456789abcdef"
+                let tracker2 = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                expect(tracker2.forcedVisitorId) == "0123456789abcdef"
+            }
+        }
     }
 }
