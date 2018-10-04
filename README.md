@@ -152,7 +152,12 @@ matomoTracker.track(goalWithId: 1, revenue: 99.99)
 The Matomo iOS SDK supports [order tracking](https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required).
 
 ```Swift
-matomoTracker.trackOrder(id: String, items: [OrderItem], revenue: Float, subTotal: Float, tax: Float, shippingCost: Float, discount: Float, lastOrder: Int)
+let items = [
+  OrderItem(sku: "product_sku_1", name: "iPhone Xs", category: "phone", price: 999.99, quantity: 1),
+  OrderItem(sku: "product_sku_2", name: "iPhone Xs Max", category: "phone", price: 1199.99, quantity: 1)
+]
+
+matomoTracker.trackOrder(id: "order_id_1234", items: items, revenue: 2199.98, subTotal: 2000, tax: 190.98, shippingCost: 9)
 ```
 
 ## Advanced Usage

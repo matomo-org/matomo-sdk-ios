@@ -7,18 +7,18 @@ public struct OrderItem {
     let sku: String
     
     /// The name of the order item
-    let name: String
+    let name: String?
     
     /// The category of the order item
-    let category: String
+    let category: String?
     
     /// The price of the order item
-    let price: Float
+    let price: Float?
     
     /// The quantity of the order item
-    let quantity: Int
+    let quantity: Int?
     
-    public init(sku: String, name: String, category: String, price: Float, quantity: Int) {
+    public init(sku: String, name: String? = nil, category: String? = nil, price: Float? = nil, quantity: Int? = nil) {
         self.sku = sku
         self.name = name
         self.category = category

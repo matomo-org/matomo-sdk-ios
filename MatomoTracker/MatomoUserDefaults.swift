@@ -80,6 +80,15 @@ internal struct MatomoUserDefaults {
             userDefaults.synchronize()
         }
     }
+    
+    var lastOrder: Date? {
+        get {
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder) as? Date
+        }
+        set {
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.lastOrder)
+        }
+    }
 }
 
 extension MatomoUserDefaults {
@@ -91,6 +100,7 @@ extension MatomoUserDefaults {
         optOut = UserDefaults.standard.bool(forKey: MatomoUserDefaults.Key.optOut)
         clientId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.clientID)
         visitorUserId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.visitorUserID)
+        lastOrder = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.lastOrder) as? Date
     }
 }
 
@@ -106,5 +116,6 @@ extension MatomoUserDefaults {
         static let clientID = "PiwikVisitorIDKey"
         static let visitorUserID = "PiwikVisitorUserIDKey"
         static let optOut = "PiwikOptOutKey"
+        static let lastOrder = "PiwikLastOrderDateKey"
     }
 }

@@ -299,13 +299,12 @@ extension MatomoTracker {
     ///   - shippingCost: The shipping cost of the order
     ///   - discount: The discount offered
     public func trackOrder(id: String, items: [OrderItem], revenue: Float, subTotal: Float? = nil, tax: Float? = nil, shippingCost: Float? = nil, discount: Float? = nil) {
-        let defaults = UserDefaults.standard
-        let lastOrderDate = defaults.object(forKey: "lastOrderDate") as? NSDate ?? nil
-        
+        let lastOrderDate = matomoUserDefaults.lastOrder
+
         let event = Event(tracker: self, action: [], orderId: id, orderItems: items, orderRevenue: revenue, orderSubTotal: subTotal, orderTax: tax, orderShippingCost: shippingCost, orderDiscount: discount, orderLastDate: lastOrderDate)
         queue(event: event)
         
-        defaults.set(NSDate(), forKey: "lastOrderDate")
+        matomoUserDefaults.lastOrder = Date()
     }
 }
 
