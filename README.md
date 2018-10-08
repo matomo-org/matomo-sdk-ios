@@ -12,7 +12,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 5.2'
+pod 'MatomoTracker', '~> 5'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
@@ -249,7 +249,7 @@ You can define the url property on every `Event`. If none is defined, the SDK wi
 Whenever you track an event or a page view it is stored in memory first. In every dispatch run a batch of those events are sent to the server. If the device is offline or the server doesn't respond these events will be kept and resent at a later time. Events currently aren't stored on disk and will be lost if the application is terminated. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 
 ## Contributing
-Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/swift3/CONTRIBUTING.md) for details.
+Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/develop/CONTRIBUTING.md) for details.
 
 ## ToDo
 ### These features aren't implemented yet
@@ -258,12 +258,10 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/
   - [Persisting non dispatched events](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 - Tracking of more things
   - Social Interactions
-  - Goals and Conversions
+  - Conversions
   - Outlinks
   - Downloads
-  - [Ecommerce Transactions](https://github.com/matomo-org/matomo-sdk-ios/issues/110)
 - Customizing the tracker
-  - set the dispatch interval
   - use different dispatchers (Alamofire)
 
 ## License
