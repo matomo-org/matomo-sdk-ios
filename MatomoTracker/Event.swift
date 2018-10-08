@@ -87,10 +87,26 @@ public struct Event {
     let contentPiece: String?
     let contentTarget: String?
     let contentInteraction: String?
+    
+    /// Goal tracking
+    /// https://matomo.org/docs/tracking-goals-web-analytics/
+    let goalId: Int?
+    let revenue: Float?
+
+    /// Ecommerce Order tracking
+    /// https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
+    let orderId: String?
+    let orderItems: [OrderItem]
+    let orderRevenue: Float?
+    let orderSubTotal: Float?
+    let orderTax: Float?
+    let orderShippingCost: Float?
+    let orderDiscount: Float?
+    let orderLastDate: Date?
 }
 
 extension Event {
-    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil) {
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil) {
         self.siteId = tracker.siteId
         self.uuid = NSUUID()
         self.visitor = tracker.visitor
@@ -117,5 +133,15 @@ extension Event {
         self.contentPiece = contentPiece
         self.contentTarget = contentTarget
         self.contentInteraction = contentInteraction
+        self.goalId = goalId
+        self.revenue = revenue
+        self.orderId = orderId
+        self.orderItems = orderItems
+        self.orderRevenue = orderRevenue
+        self.orderSubTotal = orderSubTotal
+        self.orderTax = orderTax
+        self.orderShippingCost = orderShippingCost
+        self.orderDiscount = orderDiscount
+        self.orderLastDate = orderLastDate
     }
 }

@@ -147,6 +147,27 @@ matomoTracker.trackContentImpression(name: "preview-liveaboard", piece: "Malaysi
 matomoTracker.trackContentInteraction(name: "preview-liveaboard", interaction: "tap", piece: "Malaysia", target: "https://dummy.matomo.org/liveaboard/malaysia")
 ```
 
+### Goal Tracking
+
+The Matomo iOS SDK supports [goal tracking](https://matomo.org/docs/tracking-goals-web-analytics/).
+
+```Swift
+matomoTracker.track(goalWithId: 1, revenue: 99.99)
+```
+
+### Order Tracking
+
+The Matomo iOS SDK supports [order tracking](https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required).
+
+```Swift
+let items = [
+  OrderItem(sku: "product_sku_1", name: "iPhone Xs", category: "phone", price: 999.99, quantity: 1),
+  OrderItem(sku: "product_sku_2", name: "iPhone Xs Max", category: "phone", price: 1199.99, quantity: 1)
+]
+
+matomoTracker.trackOrder(id: "order_id_1234", items: items, revenue: 2199.98, subTotal: 2000, tax: 190.98, shippingCost: 9)
+```
+
 ## Advanced Usage
 ### Manual dispatching
 
@@ -241,7 +262,6 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/
   - Outlinks
   - Downloads
   - [Ecommerce Transactions](https://github.com/matomo-org/matomo-sdk-ios/issues/110)
-  - Content Impressions / Content Interactions
 - Customizing the tracker
   - set the dispatch interval
   - use different dispatchers (Alamofire)
