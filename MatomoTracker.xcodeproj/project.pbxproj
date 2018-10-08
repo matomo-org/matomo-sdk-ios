@@ -133,6 +133,16 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		1F63E1D5216B503D000C4C00 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				1F6F0CD81E61E377008170FC /* DispatcherStub.swift */,
+				1F6F0CD91E61E377008170FC /* QueueStub.swift */,
+				1F5D08711F5D79AD0064314F /* AutoTracker.swift */,
+			);
+			name = Stubs;
+			sourceTree = "<group>";
+		};
 		1F80856D1E6B4B8000A61AAF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,12 +201,10 @@
 		1FCA6D481DBE0B2F0033F01C /* MatomoTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F63E1D5216B503D000C4C00 /* Stubs */,
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
-				1F6F0CD81E61E377008170FC /* DispatcherStub.swift */,
-				1F6F0CD91E61E377008170FC /* QueueStub.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
-				1F5D08711F5D79AD0064314F /* AutoTracker.swift */,
 				1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */,
 				1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,

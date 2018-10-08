@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added a `forcedVisitorId` property. [#259](https://github.com/matomo-org/matomo-sdk-ios/issues/259)
 * **improvement** Added public init to `CustomVariable` [#269](https://github.com/matomo-org/matomo-sdk-ios/issues/269)
 * **improvement** Renamed the `visitorId` property to `userId` to be more inline with the Documentation. [#258](https://github.com/matomo-org/matomo-sdk-ios/issues/258)
 * **improvement** Added a method for goal tracking [#272](https://github.com/matomo-org/matomo-sdk-ios/issues/272)
