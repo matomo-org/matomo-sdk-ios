@@ -152,7 +152,7 @@ matomoTracker.trackContentInteraction(name: "preview-liveaboard", interaction: "
 The Matomo iOS SDK supports [goal tracking](https://matomo.org/docs/tracking-goals-web-analytics/).
 
 ```Swift
-matomoTracker.track(goalWithId: 1, revenue: 99.99)
+matomoTracker.trackGoal(id: 1, revenue: 99.99)
 ```
 
 ### Order Tracking

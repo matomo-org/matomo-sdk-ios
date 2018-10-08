@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="64"/>
+            <point key="canvasLocation" x="-1.6000000000000001" y="57.571214392803604"/>
         </scene>
         <!--Root-->
         <scene sceneID="18">
@@ -205,7 +204,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Conversion" id="Ykb-Nf-a3l" userLabel="Table View Section - Conversion">
                                 <cells>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooA-xC-jHs" style="IBUITableViewCellStyleDefault" id="QY8-q1-L0P" userLabel="Table View Cell - Goals">
                                         <rect key="frame" x="0.0" y="503.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QY8-q1-L0P" id="gNI-EU-T3B">
@@ -253,11 +252,11 @@
                                         <rect key="frame" x="0.0" y="639.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Bz-NF-AGQ" id="XPR-nN-VPk">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="User ID / Visitor ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YlU-MW-xot">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -273,11 +272,11 @@
                                         <rect key="frame" x="0.0" y="683.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w4a-q3-D6h" id="lLS-sN-T9i">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="custom tracking parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBe-sk-E0E">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -359,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="459" y="64"/>
+            <point key="canvasLocation" x="734.39999999999998" y="57.571214392803604"/>
         </scene>
         <!--Configuration-->
         <scene sceneID="FLW-Ji-YLm">
@@ -462,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nh-Ps-MWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545.5" y="1862.5"/>
+            <point key="canvasLocation" x="2472.8000000000002" y="1675.4122938530736"/>
         </scene>
         <!--Optout-->
         <scene sceneID="aBm-gG-tsm">
@@ -528,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tyf-Nd-tt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109.5" y="1703.5"/>
+            <point key="canvasLocation" x="3375.1999999999998" y="1532.3838080959522"/>
         </scene>
         <!--Ecommerce-->
         <scene sceneID="deo-cP-bhp">
@@ -628,7 +627,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Vr-eb-14W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="773"/>
+            <point key="canvasLocation" x="3376" y="695.35232383808102"/>
         </scene>
         <!--Download-->
         <scene sceneID="VWi-2I-pHn">
@@ -669,7 +668,7 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sir-hE-PUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="283"/>
+            <point key="canvasLocation" x="4166.3999999999996" y="254.57271364317842"/>
         </scene>
         <!--Social-->
         <scene sceneID="EPK-0i-p81">
@@ -707,7 +706,7 @@ Tracked downloads are presetned in a seperate section in the Piwik server.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4O-6M-aMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="-537"/>
+            <point key="canvasLocation" x="2601.5999999999999" y="-483.05847076461771"/>
         </scene>
         <!--Search-->
         <scene sceneID="VIK-2u-TLt">
@@ -754,7 +753,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQx-GN-4e9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="241"/>
+            <point key="canvasLocation" x="2601.5999999999999" y="216.79160419790108"/>
         </scene>
         <!--Content Tracking-->
         <scene sceneID="59A-61-H45">
@@ -776,7 +775,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n32-WP-jY1">
-                                <rect key="frame" x="164" y="252" width="46" height="30"/>
+                                <rect key="frame" x="164.5" y="252" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="adInteraction:" destination="Mn5-Jo-OEE" eventType="touchUpInside" id="ifa-qn-wmL"/>
@@ -796,7 +795,7 @@ Log keywords used and the number of results found.   Searches are shown in a
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rf9-x4-oaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123" y="-184"/>
+            <point key="canvasLocation" x="3396.8000000000002" y="-165.51724137931035"/>
         </scene>
         <!--User ID / Visitor ID-->
         <scene sceneID="YPh-mF-L4v">
@@ -896,7 +895,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qk3-gt-VLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317.5" y="1862.5"/>
+            <point key="canvasLocation" x="508" y="1675.4122938530736"/>
         </scene>
         <!--Campaign-->
         <scene sceneID="SEW-sB-SAF">
@@ -979,7 +978,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJa-KD-lnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137" y="1863"/>
+            <point key="canvasLocation" x="1819.2" y="1675.8620689655174"/>
         </scene>
         <!--custom tracking parameters-->
         <scene sceneID="vD7-Gv-waV">
@@ -1021,12 +1020,12 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAs-Cv-raU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726.5" y="1862.5"/>
+            <point key="canvasLocation" x="1162.4000000000001" y="1675.4122938530736"/>
         </scene>
         <!--Goals-->
         <scene sceneID="kdY-CR-wlV">
             <objects>
-                <viewController title="Goals" id="mjb-xj-Rpd" customClass="GoalsViewController" sceneMemberID="viewController">
+                <viewController title="Goals" id="mjb-xj-Rpd" customClass="GoalsViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2jJ-06-pJd"/>
                         <viewControllerLayoutGuide type="bottom" id="5ZZ-Ow-tRK"/>
@@ -1035,31 +1034,36 @@ Store the id locally in the app and set it directly after the tracker is created
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-sn-kkU">
-                                <rect key="frame" x="20" y="120" width="280" height="178"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XdS-sn-kkU">
+                                <rect key="frame" x="10" y="114" width="355" height="150.5"/>
                                 <string key="text">Measure conversion, conversion rates and revenue for business goals. Measure a goal when user register, sign up for a news letter, fill out a contact form or make a purchase.  A goal has an unique goal id and a monetary value. Goals must be configured in the Piwik web interface.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtq-Rj-63p">
-                                <rect key="frame" x="125" y="306" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtq-Rj-63p">
+                                <rect key="frame" x="151.5" y="314.5" width="72" height="30"/>
                                 <state key="normal" title="Donate $5">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendGoalAction:" destination="mjb-xj-Rpd" eventType="touchUpInside" id="RqY-db-ulq"/>
+                                    <action selector="donateButtonTapped:" destination="mjb-xj-Rpd" eventType="touchUpInside" id="P0T-8J-Jaj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XdS-sn-kkU" firstAttribute="top" secondItem="2jJ-06-pJd" secondAttribute="bottom" constant="50" id="JcU-Wk-i4h"/>
+                            <constraint firstAttribute="trailing" secondItem="XdS-sn-kkU" secondAttribute="trailing" constant="10" id="P9l-cO-jIW"/>
+                            <constraint firstItem="rtq-Rj-63p" firstAttribute="centerX" secondItem="mTS-Ee-qHa" secondAttribute="centerX" id="PGY-6m-zEu"/>
+                            <constraint firstItem="XdS-sn-kkU" firstAttribute="leading" secondItem="mTS-Ee-qHa" secondAttribute="leading" constant="10" id="lVl-u9-9YT"/>
+                            <constraint firstItem="rtq-Rj-63p" firstAttribute="top" secondItem="XdS-sn-kkU" secondAttribute="bottom" constant="50" id="s2h-wi-7Io"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Goals" id="P0h-O9-2qd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alD-RZ-1zC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="1045"/>
+            <point key="canvasLocation" x="2600.8000000000002" y="939.58020989505258"/>
         </scene>
         <!--Exceptions-->
         <scene sceneID="MWf-Xp-ias">
@@ -1097,7 +1101,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfZ-K1-HBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-1243"/>
+            <point key="canvasLocation" x="2614.4000000000001" y="-1118.1409295352325"/>
         </scene>
         <!--Events-->
         <scene sceneID="MgX-5m-tVq">
@@ -1141,7 +1145,7 @@ Store the id locally in the app and set it directly after the tracker is created
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aL-fE-DAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-2054"/>
+            <point key="canvasLocation" x="2587.1999999999998" y="-1847.6761619190406"/>
         </scene>
         <!--Custom Diemensions-->
         <scene sceneID="ynN-jo-rwj">
@@ -1197,7 +1201,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-I5-hgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069.5" y="-1524.5"/>
+            <point key="canvasLocation" x="3311.1999999999998" y="-1371.3643178410796"/>
         </scene>
         <!--Screen Views-->
         <scene sceneID="24">
@@ -1244,7 +1248,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-2789"/>
+            <point key="canvasLocation" x="2587.1999999999998" y="-2508.8455772113944"/>
         </scene>
         <!--Screen view 2-->
         <scene sceneID="StQ-nc-ptj">
@@ -1278,7 +1282,7 @@ The Piwik server will visualize how many visits, conversions, etc. occured for e
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guE-vD-t8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="-2790"/>
+            <point key="canvasLocation" x="3376" y="-2509.745127436282"/>
         </scene>
     </scenes>
 </document>
