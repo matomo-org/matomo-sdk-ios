@@ -1,9 +1,7 @@
-
 import Foundation
 
-
 /// See Custom Variable documentation here: https://piwik.org/docs/custom-variables/
-public struct CustomVariable {
+public struct CustomVariable: Codable {
     /// The index of the variable.
     let index: UInt
 

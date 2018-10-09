@@ -1,33 +1,20 @@
-//
-//  Event.swift
-//  PiwikTracker
-//
-//  Created by Cornelius Horstmann on 21.12.16.
-//  Copyright © 2016 PIWIK. All rights reserved.
-//
-
 import Foundation
 import CoreGraphics
 
 /// Represents an event of any kind.
 ///
-/// - Note: Should we store the resolution in the Event (cleaner) or add it before transmission (smaller)?
-/// - Todo: 
-///     - Add Campaign Parameters: _rcn, _rck
+/// - Todo:
 ///     - Add Action info
-///     - Event Tracking info
 ///     - Add Content Tracking info
-///     - Add Ecommerce info
 ///
 /// # Key Mapping:
 /// Most properties represent a key defined at: [Tracking HTTP API](https://developer.piwik.org/api-reference/tracking-api). Keys that are not supported for now are:
 ///
 /// - idsite, rec, rand, apiv, res, cookie,
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
-/// - cid: We will use the uid instead of the cid.
-public struct Event {
+public struct Event: Codable {
+    public let uuid: UUID
     let siteId: String
-    let uuid: NSUUID
     let visitor: Visitor
     let session: Session
     
@@ -54,7 +41,7 @@ public struct Event {
     /// Currently only used for Campaigns
     /// api-key: urlref
     let referer: URL?
-    let screenResolution : CGSize = Device.makeCurrentDevice().screenSize
+    let screenResolution: CGSize = Device.makeCurrentDevice().screenSize
     
     /// api-key: _cvar
     let customVariables: [CustomVariable]
@@ -108,7 +95,7 @@ public struct Event {
 extension Event {
     public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil) {
         self.siteId = tracker.siteId
-        self.uuid = NSUUID()
+        self.uuid = UUID()
         self.visitor = tracker.visitor
         self.session = tracker.session
         self.date = Date()

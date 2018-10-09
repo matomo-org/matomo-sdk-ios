@@ -1,14 +1,6 @@
-//
-//  EventSerializer.swift
-//  PiwikTracker
-//
-//  Created by Cornelius Horstmann on 11.01.18.
-//  Copyright © 2018 PIWIK. All rights reserved.
-//
-
 import Foundation
 
-final class EventSerializer {
+final class EventAPISerializer {
     internal func jsonData(for events: [Event]) throws -> Data {
         let eventsAsQueryItems = events.map({ $0.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in

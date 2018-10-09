@@ -1,7 +1,7 @@
 import Foundation
 
 /// Order item as described in: https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
-public struct OrderItem {
+public struct OrderItem: Codable {
     
     /// The SKU of the order item
     let sku: String
