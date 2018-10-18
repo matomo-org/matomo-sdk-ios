@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **bugfix** Added default values for items when tracking orders. [#276](https://github.com/matomo-org/matomo-sdk-ios/issues/276)
 
 ## 5.3.0
 * **feature** Added a `forcedVisitorId` property. [#259](https://github.com/matomo-org/matomo-sdk-ios/issues/259)

@@ -16,6 +16,7 @@
 		1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */; };
 		1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBF71EE568D10021FBF8 /* Logger.swift */; };
 		1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CA58B1E09A30600121FDC /* Queue.swift */; };
+		1F5927552178716E001478DC /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 1F5927542178716E001478DC /* CHANGELOG.md */; };
 		1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D08711F5D79AD0064314F /* AutoTracker.swift */; };
 		1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */; };
 		1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD81E61E377008170FC /* DispatcherStub.swift */; };
@@ -62,6 +63,7 @@
 		1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryQueueFixtures.swift; path = Fixtures/MemoryQueueFixtures.swift; sourceTree = "<group>"; };
 		1F38EBF71EE568D10021FBF8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F3CA58B1E09A30600121FDC /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1F5927542178716E001478DC /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		1F5D08711F5D79AD0064314F /* AutoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTracker.swift; sourceTree = "<group>"; };
 		1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatomoTracker.swift; sourceTree = "<group>"; };
 		1F6F0CD81E61E377008170FC /* DispatcherStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatcherStub.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				FDE4330D209367A000A9CC36 /* .travis.yml */,
 				FDCA32592093BFFB007D6B42 /* README.md */,
+				1F5927542178716E001478DC /* CHANGELOG.md */,
 				1FCA6D3D1DBE0B2F0033F01C /* MatomoTracker */,
 				1FCA6D481DBE0B2F0033F01C /* MatomoTrackerTests */,
 				1FCA6D3C1DBE0B2F0033F01C /* Products */,
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDCA325A2093BFFB007D6B42 /* README.md in Resources */,
+				1F5927552178716E001478DC /* CHANGELOG.md in Resources */,
 				FDE4330E209367A000A9CC36 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
