@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added the possibility to implement custom queues. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 * **improvement** Updated to Swift 4.2
 * **bugfix** Added default values for items when tracking orders. [#276](https://github.com/matomo-org/matomo-sdk-ios/issues/276)
 
