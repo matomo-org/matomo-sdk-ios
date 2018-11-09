@@ -11,7 +11,7 @@
 		1F8801981EBFBBCC00707352 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8801971EBFBBCC00707352 /* ViewController.swift */; };
 		1F88019A1EBFBBCC00707352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8801991EBFBBCC00707352 /* Assets.xcassets */; };
 		1F88019D1EBFBBCC00707352 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F88019B1EBFBBCC00707352 /* Main.storyboard */; };
-		1F963077201B3AB0007B2AE7 /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963076201B3AB0007B2AE7 /* MatomoTracker+SharedInstance.swift */; };
+		1FC2A0E92195C6340039EE0C /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2A0E82195C6340039EE0C /* MatomoTracker+SharedInstance.swift */; };
 		E9C171B28E33B897204F7A14 /* Pods_example_macos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A25A82DCA8469434D57EE94 /* Pods_example_macos.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +22,7 @@
 		1F8801991EBFBBCC00707352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F88019C1EBFBBCC00707352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F88019E1EBFBBCC00707352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F963076201B3AB0007B2AE7 /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MatomoTracker+SharedInstance.swift"; path = "../../ios/iOS Example/MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
+		1FC2A0E82195C6340039EE0C /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
 		6E5F466A5CEB9E4EE4BB5F02 /* Pods-example-macos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-macos.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-macos/Pods-example-macos.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABE41F256CAD8BC6F7A7450 /* Pods-example-macos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-macos.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-macos/Pods-example-macos.release.xcconfig"; sourceTree = "<group>"; };
 		9A25A82DCA8469434D57EE94 /* Pods_example_macos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_macos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +71,7 @@
 			children = (
 				1F8801951EBFBBCC00707352 /* AppDelegate.swift */,
 				1F8801971EBFBBCC00707352 /* ViewController.swift */,
-				1F963076201B3AB0007B2AE7 /* MatomoTracker+SharedInstance.swift */,
+				1FC2A0E82195C6340039EE0C /* MatomoTracker+SharedInstance.swift */,
 				1F8801991EBFBBCC00707352 /* Assets.xcassets */,
 				1F88019B1EBFBBCC00707352 /* Main.storyboard */,
 				1F88019E1EBFBBCC00707352 /* Info.plist */,
@@ -201,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F963077201B3AB0007B2AE7 /* MatomoTracker+SharedInstance.swift in Sources */,
+				1FC2A0E92195C6340039EE0C /* MatomoTracker+SharedInstance.swift in Sources */,
 				1F8801981EBFBBCC00707352 /* ViewController.swift in Sources */,
 				1F8801961EBFBBCC00707352 /* AppDelegate.swift in Sources */,
 			);
