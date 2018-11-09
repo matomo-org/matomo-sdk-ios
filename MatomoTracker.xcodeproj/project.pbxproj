@@ -27,7 +27,6 @@
 		1F7001CB216C9D8C007A9355 /* EventAPISerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */; };
 		1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C667E1F8C096F0066CC64 /* MainThread.swift */; };
 		1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */; };
-		1F963072201B236E007B2AE7 /* EventSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */; };
 		1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */; };
 		1F963075201B37DC007B2AE7 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
 		1FC2B429201F8C010061F5AD /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2B428201F8C010061F5AD /* CustomVariable.swift */; };
@@ -74,7 +73,6 @@
 		1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAPISerializer.swift; sourceTree = "<group>"; };
 		1F7C667E1F8C096F0066CC64 /* MainThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
 		1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+HttpAcceptLanguage.swift"; sourceTree = "<group>"; };
-		1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSerializerSpec.swift; sourceTree = "<group>"; };
 		1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaultsSpec.swift; sourceTree = "<group>"; };
 		1FC2B428201F8C010061F5AD /* CustomVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVariable.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatomoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,7 +206,6 @@
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
-				1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */,
 				1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
 			);
@@ -422,7 +419,6 @@
 				1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */,
 				1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */,
 				1F963075201B37DC007B2AE7 /* MemoryQueueFixtures.swift in Sources */,
-				1F963072201B236E007B2AE7 /* EventSerializerSpec.swift in Sources */,
 				1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */,
 				1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,

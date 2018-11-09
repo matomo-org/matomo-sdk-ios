@@ -20,7 +20,7 @@ public final class URLSessionDispatcher: Dispatcher {
     /// - Parameters:
     ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
-    init(baseURL: URL, userAgent: String? = nil) {                
+    public init(baseURL: URL, userAgent: String? = nil) {                
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
