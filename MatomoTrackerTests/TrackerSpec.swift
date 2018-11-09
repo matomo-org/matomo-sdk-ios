@@ -77,7 +77,7 @@ class TrackerSpec: QuickSpec {
                     failure(NSError(domain: "spec", code: 0))
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
-                trackerFixture.tracker.dispatchInterval = 0.1
+                trackerFixture.tracker.dispatchInterval = 0.5
                 expect(numberOfDispatches).toEventually(equal(5))
             }
             it("should start a new DispatchTimer if dispatching succeeded") {
@@ -90,7 +90,7 @@ class TrackerSpec: QuickSpec {
                 let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.1)
                 autoTracker.start()
                 trackerFixture.tracker.dispatchInterval = 0.1
-                expect(numberOfDispatches).toEventually(equal(5))
+                expect(numberOfDispatches).toEventually(beGreaterThan(5))
                 autoTracker.stop()
             }
             context("with an already dispatching tracker") {
