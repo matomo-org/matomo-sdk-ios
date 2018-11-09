@@ -48,14 +48,14 @@ final public class MatomoTracker: NSObject {
             return matomoUserDefaults.forcedVisitorId
         }
         set {
-            logger.debug("Setting the forcedVisitorId to \(forcedVisitorId)")
+            logger.debug("Setting the forcedVisitorId to \(forcedVisitorId ?? "nil")")
             if let newValue = newValue {
                 let isValidString = Int(newValue, radix: 16) != nil && newValue.count == 16
                 if isValidString {
                     matomoUserDefaults.forcedVisitorId = newValue
                 } else {
                     logger.error("forcedVisitorId is invalid. It must be a 16 character long hex string.")
-                    logger.error("forcedVisitorId is still \(forcedVisitorId)")
+                    logger.error("forcedVisitorId is still \(forcedVisitorId ?? "nil")")
                 }
             } else {
                 matomoUserDefaults.forcedVisitorId = nil

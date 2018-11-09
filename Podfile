@@ -13,7 +13,7 @@ abstract_target :example do
   end
 
   target :macos do
-    platform :osx, '10.12'
+    platform :osx, '10.13'
     project 'Example/macos/macos'
     pod 'MatomoTracker', path: './'
   end
