@@ -1,8 +1,8 @@
 # MatomoTracker (former PiwikTracker) iOS SDK
 
-The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Matomo server. MatomoTracker can be used from Swift and [Objective-C](#objective-c-compatibility).
+The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a Matomo server. MatomoTracker can be used from Swift and [Objective-C](https://github.com/matomo-org/matomo-sdk-ios/wiki/FAQ#how-to-use-the-matomotracker-from-objective-c).
 
-**Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen%20is%3Aissue%20label%3Adiscussion%20label%3Aswift3) to see what is left and can be improved.**
+**Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen+is%3Aissue) to see what is left and can be improved.**
 
 [![Build Status](https://travis-ci.org/matomo-org/matomo-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/matomo-sdk-ios)
 
@@ -211,18 +211,6 @@ You can instantiate the `MatomoTracker` using your own user agent.
 let matomoTracker = MatomoTracker(siteId: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!, userAgent: "Your custom user agent")
 ```
 
-### Objective-C compatibility
-
-Version 4 (and higher) of this SDK is written in Swift, but you can use it in your Objective-C project as well. If you don't want to update you can still use the unsupported older [version 3](https://github.com/matomo-org/matomo-sdk-ios/tree/version-3). Using the Swift SDK from Objective-C should be pretty straight forward.
-
-```objc
-MatomoTracker *matomoTracker = [[MatomoTracker alloc] initWithSiteId:@"5" baseURL:[NSURL URLWithString:@"http://your.server.org/path-to-matomo/piwik.php"] userAgent:nil];
-[matomoTracker trackWithView:@[@"example"] url:nil];
-[matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
-[matomoTracker dispatch];
-matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
-```
-
 ### Sending custom events
 
 Instead of using the convenience functions for events and screen views for example you can create your event manually and even send custom tracking parameters. This feature isn't available from Objective-C.
@@ -254,11 +242,9 @@ Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/
 ## ToDo
 ### These features aren't implemented yet
 
-- Basic functionality
-  - [Persisting non dispatched events](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 - Tracking of more things
   - Social Interactions
-  - Conversions
+  - Goals and Conversions
   - Outlinks
   - Downloads
 - Customizing the tracker
