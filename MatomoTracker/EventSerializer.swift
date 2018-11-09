@@ -12,7 +12,7 @@ final class EventSerializer {
     internal func jsonData(for events: [Event]) throws -> Data {
         let eventsAsQueryItems = events.map({ $0.queryItems })
         let serializedEvents = eventsAsQueryItems.map({ items in
-            items.flatMap({ item in
+            items.compactMap({ item in
                 guard let value = item.value,
                     let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed) else { return nil }
                 return "\(item.name)=\(encodedValue)"
@@ -30,9 +30,16 @@ fileprivate extension Event {
         return "{\(customVariableParameterValue.joined(separator: ","))}"
     }
     
-    private func orderItemParameterValue() -> String {
-        let orderItemParameterValue: [String] = orderItems.map { "[\"\($0.sku)\",\"\($0.name)\",\"\($0.category)\",\"\($0.price)\",\"\($0.quantity)\"]" }
-        return "[\(orderItemParameterValue.joined(separator: ","))]"
+    private func orderItemParameterValue() -> String? {
+        let serializable: [[Codable?]] = orderItems.map {
+            let parameters: [Codable?] = [$0.sku, $0.name, $0.category, $0.price, $0.quantity]
+            return parameters
+        }
+        if let data = try? JSONSerialization.data(withJSONObject: serializable, options: []) {
+            return String(bytes: data, encoding: .utf8)
+        } else {
+            return nil
+        }
     }
 
     var queryItems: [URLQueryItem] {

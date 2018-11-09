@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9.2
+osx_image: xcode10.1
 cache: cocoapods
 
 before_install:
@@ -13,6 +13,10 @@ install:
   - pod install || pod install --repo-update
 
 script:
+  # These exports are a workaround for a cocoapod issue: https://github.com/CocoaPods/CocoaPods/issues/7708
+  - export EXPANDED_CODE_SIGN_IDENTITY=""
+  - export EXPANDED_CODE_SIGN_IDENTITY_NAME=""
+  - export EXPANDED_PROVISIONING_PROFILE=""
   - rake test
   - rake build_with_package_manager
 

@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **improvement** Updated to Swift 4.2
 
 ## 5.3.0
 * **feature** Added a `forcedVisitorId` property. [#259](https://github.com/matomo-org/matomo-sdk-ios/issues/259)

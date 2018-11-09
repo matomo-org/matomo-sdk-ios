@@ -12,7 +12,7 @@
     [matomoTracker dispatch];
     matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
     [matomoTracker trackCampaignWithName:@"campaign_name" keyword:@"campaign_keyword"];
-    matomoTracker.visitorId = @"Just a custom id";
+    matomoTracker.userId = @"Just a custom id";
 }
 
 - (void)checkDeprecated {
