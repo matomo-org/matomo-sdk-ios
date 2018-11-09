@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -372,51 +372,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piwik base URL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk2-cN-zsm">
-                                <rect key="frame" x="26" y="83" width="323" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://piwik.org/piwik.php" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-8W-4Id">
-                                <rect key="frame" x="26" y="112" width="323" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piwik site ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v5-vg-4Cc">
-                                <rect key="frame" x="26" y="178" width="323" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltT-74-Efe">
-                                <rect key="frame" x="26" y="207" width="323" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new session for current user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-z5-2ZP">
-                                <rect key="frame" x="26" y="320" width="323" height="17"/>
+                                <rect key="frame" x="20" y="114" width="335" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-8g-GWa">
-                                <rect key="frame" x="26" y="345" width="323" height="30"/>
+                                <rect key="frame" x="20" y="139" width="335" height="30"/>
                                 <state key="normal" title="New session"/>
                                 <connections>
                                     <action selector="newSessionButtonTapped:" destination="ELK-4A-Qjl" eventType="touchUpInside" id="I4L-1r-0XH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dispatch queued events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPX-cX-hGF">
-                                <rect key="frame" x="26" y="431" width="323" height="17"/>
+                                <rect key="frame" x="20" y="225" width="335" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLz-Lp-6Cf">
-                                <rect key="frame" x="26" y="456" width="323" height="30"/>
+                                <rect key="frame" x="20" y="250" width="335" height="30"/>
                                 <state key="normal" title="Dispatch">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -427,37 +403,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Hk2-cN-zsm" firstAttribute="leading" secondItem="4ll-cH-kGS" secondAttribute="leadingMargin" constant="10" id="5Kd-nV-P5g"/>
+                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="leading" secondItem="4ll-cH-kGS" secondAttribute="leading" constant="20" id="1DY-d9-JY9"/>
                             <constraint firstItem="NLz-Lp-6Cf" firstAttribute="top" secondItem="vPX-cX-hGF" secondAttribute="bottom" constant="8" id="5gy-6N-vrl"/>
-                            <constraint firstItem="ltT-74-Efe" firstAttribute="leading" secondItem="9v5-vg-4Cc" secondAttribute="leading" id="7Ac-WU-8aQ"/>
                             <constraint firstItem="ZiI-8g-GWa" firstAttribute="top" secondItem="qg7-z5-2ZP" secondAttribute="bottom" constant="8" id="9Fr-3H-7SV"/>
                             <constraint firstItem="ZiI-8g-GWa" firstAttribute="trailing" secondItem="qg7-z5-2ZP" secondAttribute="trailing" id="9Fv-oj-JYR"/>
-                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="top" secondItem="NbW-8W-4Id" secondAttribute="bottom" constant="36" id="F1q-0Q-Dpv"/>
+                            <constraint firstAttribute="trailing" secondItem="qg7-z5-2ZP" secondAttribute="trailing" constant="20" id="D7H-3w-PQQ"/>
                             <constraint firstItem="vPX-cX-hGF" firstAttribute="top" secondItem="ZiI-8g-GWa" secondAttribute="bottom" constant="56" id="HN5-ui-I1f"/>
-                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="top" secondItem="ltT-74-Efe" secondAttribute="bottom" constant="83" id="M7b-OB-rUK"/>
-                            <constraint firstItem="NbW-8W-4Id" firstAttribute="top" secondItem="Hk2-cN-zsm" secondAttribute="bottom" constant="8" id="N6S-c2-y2a"/>
-                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="leading" secondItem="ltT-74-Efe" secondAttribute="leading" id="NTw-JM-p94"/>
-                            <constraint firstItem="NbW-8W-4Id" firstAttribute="leading" secondItem="Hk2-cN-zsm" secondAttribute="leading" id="Q7y-Z6-vfA"/>
-                            <constraint firstItem="NbW-8W-4Id" firstAttribute="trailing" secondItem="Hk2-cN-zsm" secondAttribute="trailing" id="XWG-Bg-vv2"/>
+                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="top" secondItem="9dV-fz-7Hl" secondAttribute="bottom" constant="50" id="K7m-3g-E6w"/>
                             <constraint firstItem="vPX-cX-hGF" firstAttribute="leading" secondItem="ZiI-8g-GWa" secondAttribute="leading" id="XY9-I6-brN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Hk2-cN-zsm" secondAttribute="trailing" constant="10" id="Zjg-9w-MZJ"/>
-                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="leading" secondItem="NbW-8W-4Id" secondAttribute="leading" id="cpX-js-4ap"/>
                             <constraint firstItem="vPX-cX-hGF" firstAttribute="trailing" secondItem="ZiI-8g-GWa" secondAttribute="trailing" id="dZU-gS-7v9"/>
-                            <constraint firstItem="ltT-74-Efe" firstAttribute="top" secondItem="9v5-vg-4Cc" secondAttribute="bottom" constant="8" id="eJc-r8-NrO"/>
-                            <constraint firstItem="Hk2-cN-zsm" firstAttribute="top" secondItem="9dV-fz-7Hl" secondAttribute="bottom" constant="19" id="f05-u8-vuz"/>
                             <constraint firstItem="NLz-Lp-6Cf" firstAttribute="leading" secondItem="vPX-cX-hGF" secondAttribute="leading" id="gHV-ug-XlX"/>
                             <constraint firstItem="ZiI-8g-GWa" firstAttribute="leading" secondItem="qg7-z5-2ZP" secondAttribute="leading" id="gLt-7g-UeW"/>
-                            <constraint firstItem="ltT-74-Efe" firstAttribute="trailing" secondItem="9v5-vg-4Cc" secondAttribute="trailing" id="nPt-YV-DDg"/>
                             <constraint firstItem="NLz-Lp-6Cf" firstAttribute="trailing" secondItem="vPX-cX-hGF" secondAttribute="trailing" id="seh-9M-oTA"/>
-                            <constraint firstItem="9v5-vg-4Cc" firstAttribute="trailing" secondItem="NbW-8W-4Id" secondAttribute="trailing" id="uGO-hb-3JH"/>
-                            <constraint firstItem="qg7-z5-2ZP" firstAttribute="trailing" secondItem="ltT-74-Efe" secondAttribute="trailing" id="v5I-zn-H9b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Configuration" id="ueI-zU-Ipw"/>
-                    <connections>
-                        <outlet property="baseURLTextField" destination="NbW-8W-4Id" id="DlZ-VQ-Fzw"/>
-                        <outlet property="siteIDTextField" destination="ltT-74-Efe" id="e2p-iO-7gI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nh-Ps-MWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
