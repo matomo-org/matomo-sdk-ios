@@ -4,6 +4,7 @@ import Nimble
 
 class TrackerSpec: QuickSpec {
     override func spec() {
+        Nimble.AsyncDefaults.Timeout = 10
         describe("init") {
         }
         describe("queue") {
@@ -77,7 +78,7 @@ class TrackerSpec: QuickSpec {
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
                 trackerFixture.tracker.dispatchInterval = 0.1
-                expect(numberOfDispatches).toEventually(equal(5), timeout: 5)
+                expect(numberOfDispatches).toEventually(equal(5))
             }
             it("should start a new DispatchTimer if dispatching succeeded") {
                 var numberOfDispatches = 0
@@ -89,7 +90,7 @@ class TrackerSpec: QuickSpec {
                 let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.1)
                 autoTracker.start()
                 trackerFixture.tracker.dispatchInterval = 0.1
-                expect(numberOfDispatches).toEventually(equal(5), timeout: 5)
+                expect(numberOfDispatches).toEventually(equal(5))
                 autoTracker.stop()
             }
             context("with an already dispatching tracker") {
