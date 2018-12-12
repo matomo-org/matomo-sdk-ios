@@ -6,21 +6,21 @@ import Foundation
     import UIKit
 #endif
 
-final class URLSessionDispatcher: Dispatcher {
+public final class URLSessionDispatcher: Dispatcher {
     
-    let serializer = EventSerializer()
-    let timeout: TimeInterval
-    let session: URLSession
-    let baseURL: URL
+    private let serializer = EventAPISerializer()
+    private let timeout: TimeInterval
+    private let session: URLSession
+    public let baseURL: URL
 
-    private(set) var userAgent: String?
+    public private(set) var userAgent: String?
     
     /// Generate a URLSessionDispatcher instance
     ///
     /// - Parameters:
     ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
-    init(baseURL: URL, userAgent: String? = nil) {                
+    public init(baseURL: URL, userAgent: String? = nil) {                
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
@@ -52,7 +52,7 @@ final class URLSessionDispatcher: Dispatcher {
         return currentUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
     }
     
-    func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
+    public func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let jsonBody: Data
         do {
             jsonBody = try serializer.jsonData(for: events)

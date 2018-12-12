@@ -1,14 +1,6 @@
-//
-//  Session.swift
-//  PiwikTracker
-//
-//  Created by Cornelius Horstmann on 26.02.17.
-//  Copyright © 2017 PIWIK. All rights reserved.
-//
-
 import Foundation
 
-struct Session {
+struct Session: Codable {
     /// The number of sessions of the current user.
     /// api-key: _idvc
     let sessionsCount: Int

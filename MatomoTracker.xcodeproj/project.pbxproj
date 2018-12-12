@@ -24,16 +24,15 @@
 		1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CDA1E61E377008170FC /* TrackerFixtures.swift */; };
 		1F6F0CDF1E61E377008170FC /* TrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */; };
 		1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */; };
+		1F7001CB216C9D8C007A9355 /* EventAPISerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */; };
 		1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C667E1F8C096F0066CC64 /* MainThread.swift */; };
 		1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */; };
-		1F963072201B236E007B2AE7 /* EventSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */; };
 		1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */; };
 		1F963075201B37DC007B2AE7 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
 		1FC2B429201F8C010061F5AD /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2B428201F8C010061F5AD /* CustomVariable.swift */; };
 		1FCA6D451DBE0B2F0033F01C /* MatomoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */; };
 		1FCA6D4C1DBE0B2F0033F01C /* MatomoTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */; };
-		1FD9E01C201B22A8006C3AD3 /* EventSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */; };
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
 		5804E9A4755E642D58301330 /* Pods_MatomoTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */; };
@@ -71,9 +70,9 @@
 		1F6F0CDA1E61E377008170FC /* TrackerFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerFixtures.swift; sourceTree = "<group>"; };
 		1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerSpec.swift; sourceTree = "<group>"; };
 		1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
+		1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAPISerializer.swift; sourceTree = "<group>"; };
 		1F7C667E1F8C096F0066CC64 /* MainThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
 		1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+HttpAcceptLanguage.swift"; sourceTree = "<group>"; };
-		1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSerializerSpec.swift; sourceTree = "<group>"; };
 		1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaultsSpec.swift; sourceTree = "<group>"; };
 		1FC2B428201F8C010061F5AD /* CustomVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVariable.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatomoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +80,6 @@
 		1FCA6D3F1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FCA6D441DBE0B2F0033F01C /* MatomoTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatomoTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D4B1DBE0B2F0033F01C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSerializer.swift; sourceTree = "<group>"; };
 		1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimension.swift; sourceTree = "<group>"; };
 		1FDC917D1F1A65150046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -122,6 +120,9 @@
 				1F092C151E225E0200394B30 /* Event.swift */,
 				1F0A15CD1E6335D800FEAE72 /* Visitor.swift */,
 				1F0A15CF1E6335E900FEAE72 /* Session.swift */,
+				1FC2B428201F8C010061F5AD /* CustomVariable.swift */,
+				1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */,
+				5ACB1FAC21426FFB007C766B /* OrderItem.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -187,16 +188,13 @@
 				1F3CA58B1E09A30600121FDC /* Queue.swift */,
 				1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */,
 				1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */,
-				1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */,
-				1FC2B428201F8C010061F5AD /* CustomVariable.swift */,
 				1F38EBF71EE568D10021FBF8 /* Logger.swift */,
 				1FDC917D1F1A65150046F506 /* Application.swift */,
 				1FDC917E1F1A65150046F506 /* Device.swift */,
 				1F7C667E1F8C096F0066CC64 /* MainThread.swift */,
-				1FD9E01B201B22A8006C3AD3 /* EventSerializer.swift */,
+				1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */,
-				5ACB1FAC21426FFB007C766B /* OrderItem.swift */,
 			);
 			path = MatomoTracker;
 			sourceTree = "<group>";
@@ -208,7 +206,6 @@
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
-				1F963071201B236E007B2AE7 /* EventSerializerSpec.swift */,
 				1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
 			);
@@ -398,6 +395,7 @@
 				1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */,
 				1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */,
 				1FDC91801F1A65150046F506 /* Device.swift in Sources */,
+				1F7001CB216C9D8C007A9355 /* EventAPISerializer.swift in Sources */,
 				1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */,
 				1F0A15D01E6335E900FEAE72 /* Session.swift in Sources */,
 				1F092C1A1E26B44500394B30 /* Dispatcher.swift in Sources */,
@@ -407,7 +405,6 @@
 				5ACB1FAD21426FFB007C766B /* OrderItem.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
-				1FD9E01C201B22A8006C3AD3 /* EventSerializer.swift in Sources */,
 				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1FDC917F1F1A65150046F506 /* Application.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,
@@ -422,7 +419,6 @@
 				1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */,
 				1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */,
 				1F963075201B37DC007B2AE7 /* MemoryQueueFixtures.swift in Sources */,
-				1F963072201B236E007B2AE7 /* EventSerializerSpec.swift in Sources */,
 				1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */,
 				1F6F0CDE1E61E377008170FC /* TrackerFixtures.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,

@@ -1,14 +1,6 @@
-//
-//  Visitor.swift
-//  PiwikTracker
-//
-//  Created by Cornelius Horstmann on 26.02.17.
-//  Copyright © 2017 PIWIK. All rights reserved.
-//
-
 import Foundation
 
-struct Visitor {
+struct Visitor: Codable {
     /// Unique ID per visitor (device in this case). Should be
     /// generated upon first start and never changed after.
     /// api-key: _id

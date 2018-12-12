@@ -3,9 +3,7 @@ import MatomoTracker
 
 extension MatomoTracker {
     static let shared: MatomoTracker = {
-        let queue = UserDefaultsQueue(UserDefaults.standard, autoSave: true)
-        let dispatcher = URLSessionDispatcher(baseURL: URL(string: "https://demo2.matomo.org/piwik.php")!)
-        let matomoTracker = MatomoTracker(siteId: "23", queue: queue, dispatcher: dispatcher)
+        let matomoTracker = MatomoTracker(siteId: "23", baseURL: URL(string: "https://demo2.matomo.org/piwik.php")!)
         matomoTracker.logger = DefaultLogger(minLevel: .info)
         matomoTracker.migrateFromFourPointFourSharedInstance()
         return matomoTracker
