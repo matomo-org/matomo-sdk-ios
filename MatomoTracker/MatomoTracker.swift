@@ -449,7 +449,7 @@ extension MatomoTracker {
 }
 
 extension MatomoTracker {
-    public func copyFromOldSharedInstance() {
+    @objc public func copyFromOldSharedInstance() {
         matomoUserDefaults.copy(from: UserDefaults.standard)
     }
 }
