@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **improvement** Made copyFromOldSharedInstance available from Objective-C. [#282] (https://github.com/matomo-org/matomo-sdk-ios/issues/282)
+
 ## 6.0.0
 * **feature** Added the possibility to implement custom queues. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
 * **improvement** Updated to Swift 4.2
