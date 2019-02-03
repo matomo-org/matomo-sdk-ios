@@ -35,7 +35,7 @@ let matomoTracker = MatomoTracker(siteId: "23", baseURL: URL(string: "https://de
 ```
 
 
-The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` it the URL to your Matomo web instance and has to include the "piwik.php" string.
+The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` it the URL to your Matomo web instance and has to include the "piwik.php" or "matomo.php" string.
 
 You can either pass around this instance, or add an extension to the `MatomoTracker` class and add a shared instance property.
 
@@ -45,7 +45,7 @@ extension MatomoTracker {
 }
 ```
 
-The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` is the URL to your Matomo web instance and has to include the "piwik.php" string.
+The `siteId` is the ID that you can get if you [add a website](https://matomo.org/docs/manage-websites/#add-a-website) within the Matomo web interface. The `baseURL` is the URL to your Matomo web instance and has to include the "piwik.php" or "matomo.php" string.
 
 You can use multiple instances within one application.
 
