@@ -6,6 +6,10 @@ class TrackerSpec: QuickSpec {
     override func spec() {
         Nimble.AsyncDefaults.Timeout = 10
         describe("init") {
+            it("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`") {
+                let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
+                expect(tracker).toNot(beNil())
+            }
         }
         describe("queue") {
             it("should enqueue the item in the queue") {
