@@ -404,13 +404,16 @@ extension MatomoTracker {
     @objc public func removeAll(ignoreIndexs indexs: [NSNumber]? = nil) {
         if let array = indexs, array.count > 0 {
             
-            var tempArray = dimensions
+            let tempArray = dimensions
+            dimensions.removeAll()
             for i in array {
-                tempArray = tempArray.filter({ (dimension) -> Bool in
+                let resultArray  = tempArray.filter({ (dimension) -> Bool in
                     dimension.index == i.intValue
                 })
+                if resultArray.count > 0, let customDimension = resultArray.first {
+                    dimensions.append(customDimension)
+                }
             }
-            dimensions = tempArray
         } else {
             dimensions.removeAll()
         }
