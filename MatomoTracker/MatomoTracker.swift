@@ -399,6 +399,22 @@ extension MatomoTracker {
             dimension.index != index
         })
     }
+    
+    /// remove all without ignore
+    @objc public func removeAll(ignoreIndexs indexs: [NSNumber]? = nil) {
+        if let array = indexs, array.count > 0 {
+            
+            var tempArray = dimensions
+            for i in array {
+                tempArray = tempArray.filter({ (dimension) -> Bool in
+                    dimension.index == i.intValue
+                })
+            }
+            dimensions = tempArray
+        } else {
+            dimensions.removeAll()
+        }
+    }
 }
 
 
