@@ -109,6 +109,11 @@ or remove an already set dimension.
 ```Swift
 matomoTracker.remove(dimensionAtIndex: 1)
 ```
+or remove all already set dimension except ignoreIndexs
+
+```Swift
+matomoTracker.removeAll(ignoreIndexs: [NSNumber(integer: 1),NSNumber(integer: 2)])
+```
 
 Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
 
