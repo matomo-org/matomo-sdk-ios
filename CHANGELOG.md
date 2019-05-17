@@ -3,6 +3,7 @@
 ## Unreleased
 * **improvement** Made copyFromOldSharedInstance available from Objective-C. [#282] (https://github.com/matomo-org/matomo-sdk-ios/issues/282)
 * **improvement** Accepting urls ending in `matomo.php` in addition to `piwik.php` when initializing a new instance. [#286] (https://github.com/matomo-org/matomo-sdk-ios/pull/286)
+* **bugfix**  Specified Swift 4.2 in both `.podspec` files. [#297] (https://github.com/matomo-org/matomo-sdk-ios/pull/297)
 
 ## 6.0.0
 * **feature** Added the possibility to implement custom queues. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137)
