@@ -3,11 +3,11 @@ osx_image: xcode10.2
 cache: cocoapods
 
 before_install:
-  - 'echo ''gem: --no-ri --no-document'' > ~/.gemrc'
+  - 'echo ''gem: --no-document'' > ~/.gemrc'
 
 install:
-  - gem install cocoapods --no-document --no-ri --no-document --quiet
-  - gem install xcpretty --no-document --no-ri --no-document --quiet
+  - gem install cocoapods --no-document --quiet
+  - gem install xcpretty --no-document --quiet
   - gem install danger
   - cd $TRAVIS_BUILD_DIR
   - pod install || pod install --repo-update
