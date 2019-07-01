@@ -35,19 +35,19 @@ import Foundation
 
 extension Logger {
     func verbose(_ message: @autoclosure () -> String, file: String = #file, function: String = #function, line: Int = #line) {
-        log(message, with: .verbose, file: file, function: function, line: line)
+        log(message(), with: .verbose, file: file, function: function, line: line)
     }
     func debug(_ message: @autoclosure () -> String, file: String = #file, function: String = #function, line: Int = #line) {
-        log(message, with: .debug, file: file, function: function, line: line)
+        log(message(), with: .debug, file: file, function: function, line: line)
     }
     func info(_ message: @autoclosure () -> String, file: String = #file, function: String = #function, line: Int = #line) {
-        log(message, with: .info, file: file, function: function, line: line)
+        log(message(), with: .info, file: file, function: function, line: line)
     }
     func warning(_ message: @autoclosure () -> String, file: String = #file, function: String = #function, line: Int = #line) {
-        log(message, with: .warning, file: file, function: function, line: line)
+        log(message(), with: .warning, file: file, function: function, line: line)
     }
     func error(_ message: @autoclosure () -> String, file: String = #file, function: String = #function, line: Int = #line) {
-        log(message, with: .error, file: file, function: function, line: line)
+        log(message(), with: .error, file: file, function: function, line: line)
     }
 }
 
