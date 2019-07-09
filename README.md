@@ -12,7 +12,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 6'
+pod 'MatomoTracker', '~> 7'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
@@ -227,6 +227,24 @@ func sendCustomEvent() {
 All custom events will be URL-encoded and dispatched along with the default Event parameters. Please read the [Tracking API Documentation](https://developer.matomo.org/api-reference/tracking-api) for more information on which parameters can be used.
 
 Also: You cannot override Custom Parameter keys that are already defined by the Event itself. If you set those keys in the `customTrackingParameters` they will be discarded.
+
+### Sending custom variables on scope "page"
+
+You may collect some data as a dictionary and you will send these data to the matomo server on different scope, you could use the property named `customVariables` of `Event` class. 
+
+```Swift
+func sendCustomVariables() {
+    guard let matomoTracker = MatomoTracker.shared else { return }
+    let customeVaribles = [CustomVarible]()
+    let variable1 = CustomVariable(index:1, name: "name1", value: "value1")
+    let variable2 = CustomVariable(index:2, name: "name2", value: "value2")
+    customVariables.append(variable1)
+    customVariables.append(variable2)    
+    let event = Event(tracker: matomoTracker, action: ["menu", "tracking custome variables"], variables: customVariables.append)
+    matomoTracker.track(event)
+}
+```
+
 
 ### Automatic url generation
 

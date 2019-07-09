@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "MatomoTracker"
-  spec.version      = "6.0.1"
+  spec.version      = "7.0.0"
   spec.summary      = "A Matomo Tracker written in Swift for iOS, tvOS and macOS apps."
   spec.homepage     = "https://github.com/matomo-org/matomo-sdk-ios/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.12'
   spec.requires_arc = true
   spec.default_subspecs = 'Core'
-  spec.swift_version = '4.2'
+  spec.swift_version = '5'
   
   spec.subspec 'Core' do |core|
   	core.source_files = 'MatomoTracker/*.swift'

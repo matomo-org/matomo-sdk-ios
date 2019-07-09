@@ -1,5 +1,8 @@
 # Changelog
-
+## 7.0.0
+* **improvement** Added the page scope for variable.[#298]
+    (https://github.com/matomo-org/matomo-sdk-ios/issues/298)
+* **improvement** Updated to Swift 4.3.    
 ## 6.0.1
 * **improvement** Made copyFromOldSharedInstance available from Objective-C. [#282] (https://github.com/matomo-org/matomo-sdk-ios/issues/282)
 * **improvement** Accepting urls ending in `matomo.php` in addition to `piwik.php` when initializing a new instance. [#286] (https://github.com/matomo-org/matomo-sdk-ios/pull/286)
