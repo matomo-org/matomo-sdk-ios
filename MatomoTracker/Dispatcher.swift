@@ -6,5 +6,7 @@ public protocol Dispatcher {
     
     var userAgent: String? { get }
     
+    var cookie: String? { get set }
+    
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->())
 }

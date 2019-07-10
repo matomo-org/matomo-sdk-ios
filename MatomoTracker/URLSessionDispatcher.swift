@@ -12,6 +12,7 @@ public final class URLSessionDispatcher: Dispatcher {
     private let timeout: TimeInterval
     private let session: URLSession
     public let baseURL: URL
+    public var cookie: String?
 
     public private(set) var userAgent: String?
     
@@ -66,6 +67,9 @@ public final class URLSessionDispatcher: Dispatcher {
     
     private func buildRequest(baseURL: URL, method: String, contentType: String? = nil, body: Data? = nil) -> URLRequest {
         var request = URLRequest(url: baseURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
+        if (self.cookie != nil) {
+            request.setValue(self.cookie, forHTTPHeaderField: "Cookie")
+        }
         request.httpMethod = method
         body.map { request.httpBody = $0 }
         contentType.map { request.setValue($0, forHTTPHeaderField: "Content-Type") }

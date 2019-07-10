@@ -250,6 +250,11 @@ final public class MatomoTracker: NSObject {
     @objc public func trackContentInteraction(name: String, interaction: String, piece: String?, target: String?) {
         track(Event(tracker: self, action: [], contentName: name, contentInteraction: interaction, contentPiece: piece, contentTarget: target))
     }
+
+    public func setCookie(cookie: String?) {
+        var dispatcher = self.dispatcher
+        dispatcher.cookie = cookie
+    }
 }
 
 extension MatomoTracker {
