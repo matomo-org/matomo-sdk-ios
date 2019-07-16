@@ -60,6 +60,8 @@ fileprivate extension Event {
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
+
+                URLQueryItem(name: "cdt", value: DateFormatter.utcDateTimeFormatter.string(from: date)),
                 
                 //screen resolution
                 URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
@@ -117,6 +119,17 @@ fileprivate extension DateFormatter {
     static let secondsDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "ss"
+        return dateFormatter
+    }()
+
+    // Note: this is ISO 8601-ish, but not quite.
+    // Example from docs (i.e. for `cdt`) looks like: "2011-04-05 00:11:42"
+    static let utcDateTimeFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter
     }()
 }
