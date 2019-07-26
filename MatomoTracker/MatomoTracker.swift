@@ -167,7 +167,8 @@ final public class MatomoTracker: NSObject {
             }
             return
         }
-        queue.first(limit: numberOfEventsDispatchedAtOnce) { events in
+        queue.first(limit: numberOfEventsDispatchedAtOnce) { [weak self] events in
+            guard let self = self else { return }
             guard events.count > 0 else {
                 // there are no more events queued, finish dispatching
                 self.isDispatching = false
@@ -175,7 +176,8 @@ final public class MatomoTracker: NSObject {
                 self.logger.info("Finished dispatching events")
                 return
             }
-            self.dispatcher.send(events: events, success: {
+            self.dispatcher.send(events: events, success: { [weak self] in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     self.queue.remove(events: events, completion: {
                         self.logger.info("Dispatched batch of \(events.count) events.")
@@ -184,7 +186,8 @@ final public class MatomoTracker: NSObject {
                         }
                     })
                 }
-            }, failure: { error in
+            }, failure: { [weak self] error in
+                guard let self = self else { return }
                 self.isDispatching = false
                 self.startDispatchTimer()
                 self.logger.warning("Failed dispatching events with error \(error)")
