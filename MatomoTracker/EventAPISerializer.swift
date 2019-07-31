@@ -61,7 +61,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
 
-                URLQueryItem(name: "cdt", value: DateFormatter.utcDateTimeFormatter.string(from: date)),
+                URLQueryItem(name: "cdt", value: DateFormatter.iso8601DateFormatter.string(from: date)),
                 
                 //screen resolution
                 URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
@@ -121,18 +121,28 @@ fileprivate extension DateFormatter {
         dateFormatter.dateFormat = "ss"
         return dateFormatter
     }()
-
-    // Note: this is ISO 8601-ish, but not quite.
-    // Example from docs (i.e. for `cdt`) looks like: "2011-04-05 00:11:42"
-    static let utcDateTimeFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Calendar(identifier: .iso8601)
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter
+    static let iso8601DateFormatter: DateFormatterProtocol = {
+        if #available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *) {
+            return ISO8601DateFormatter()
+        } else {
+            let formatter = DateFormatter()
+            formatter.calendar = Calendar(identifier: .iso8601)
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            return formatter
+        }
     }()
 }
+
+fileprivate protocol DateFormatterProtocol {
+    func string(from date: Date) -> String
+    func date(from string: String) -> Date?
+}
+
+@available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *)
+extension ISO8601DateFormatter: DateFormatterProtocol {}
+extension DateFormatter: DateFormatterProtocol {}
 
 fileprivate extension CharacterSet {
     
