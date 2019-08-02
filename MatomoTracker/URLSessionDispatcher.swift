@@ -18,7 +18,7 @@ final class URLSessionDispatcher: Dispatcher {
     /// Generate a URLSessionDispatcher instance
     ///
     /// - Parameters:
-    ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
+    ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php` or `matomo.php`.
     ///   - userAgent: An optional parameter for custom user agent.
     init(baseURL: URL, userAgent: String? = nil) {                
         self.baseURL = baseURL
