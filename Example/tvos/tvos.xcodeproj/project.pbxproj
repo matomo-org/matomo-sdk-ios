@@ -163,7 +163,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MatomoTracker-tvOS/MatomoTracker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -172,7 +172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-tvos/Pods-example-tvos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */ = {

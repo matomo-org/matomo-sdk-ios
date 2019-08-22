@@ -324,7 +324,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MatomoTracker-iOS/MatomoTracker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -333,7 +333,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */ = {
