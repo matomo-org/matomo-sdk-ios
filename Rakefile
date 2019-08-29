@@ -11,10 +11,6 @@ namespace :test do
     build_failed('tests') unless $?.success?
     run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
     build_failed('tests') unless $?.success?
-    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=9.3')
-    build_failed('tests') unless $?.success?
-    run_tests('MatomoTracker', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=8.4')
-    build_failed('tests') unless $?.success?
   end
 
   desc 'Build the MatomoTracker iOS demo'
