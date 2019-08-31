@@ -1,9 +1,11 @@
 # Changelog
 
-## 6.0.2
+## Unreleased
+* **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
+* **change** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 
-* **improvement** Allow to use the Queue's completions in asynchronous scope.
-* **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version.
+## 6.0.2
+* **improvement** Allow to use the Queue's completions in asynchronous scope. [#304](https://github.com/matomo-org/matomo-sdk-ios/pull/304)
 
 ## 6.0.1
 * **improvement** Made copyFromOldSharedInstance available from Objective-C. [#282] (https://github.com/matomo-org/matomo-sdk-ios/issues/282)
