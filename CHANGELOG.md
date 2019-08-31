@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
+* **improvement** Replaced UIWebView with WkWebView. [#308](https://github.com/matomo-org/matomo-sdk-ios/issues/308)
 * **change** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 
 ## 6.0.2
