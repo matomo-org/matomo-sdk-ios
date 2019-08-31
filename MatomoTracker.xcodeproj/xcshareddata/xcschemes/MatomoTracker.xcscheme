@@ -55,6 +55,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1FCA6D3A1DBE0B2F0033F01C"
+            BuildableName = "MatomoTracker.framework"
+            BlueprintName = "MatomoTracker"
+            ReferencedContainer = "container:MatomoTracker.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
