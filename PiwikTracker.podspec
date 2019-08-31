@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.12'
   spec.requires_arc = true
   spec.default_subspecs = 'Core'
-  spec.swift_version = '4.2'
+  spec.swift_version = '5.0'
   
   spec.deprecated_in_favor_of = 'MatomoTracker'
   

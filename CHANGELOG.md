@@ -3,6 +3,7 @@
 ## 6.0.2
 
 * **improvement** Allow to use the Queue's completions in asynchronous scope.
+* **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version.
 
 ## 6.0.1
 * **improvement** Made copyFromOldSharedInstance available from Objective-C. [#282] (https://github.com/matomo-org/matomo-sdk-ios/issues/282)
