@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **improvement** Added `cdt` query item in addition to `h`/`m`/`s` values [#301] (https://github.com/matomo-org/matomo-sdk-ios/pull/301)
 * **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 * **change** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 

@@ -60,6 +60,8 @@ fileprivate extension Event {
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
                 URLQueryItem(name: "m", value: DateFormatter.minuteDateFormatter.string(from: date)),
                 URLQueryItem(name: "s", value: DateFormatter.secondsDateFormatter.string(from: date)),
+
+                URLQueryItem(name: "cdt", value: DateFormatter.iso8601DateFormatter.string(from: date)),
                 
                 //screen resolution
                 URLQueryItem(name: "res", value:String(format: "%1.0fx%1.0f", screenResolution.width, screenResolution.height)),
@@ -119,7 +121,28 @@ fileprivate extension DateFormatter {
         dateFormatter.dateFormat = "ss"
         return dateFormatter
     }()
+    static let iso8601DateFormatter: DateFormatterProtocol = {
+        if #available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *) {
+            return ISO8601DateFormatter()
+        } else {
+            let formatter = DateFormatter()
+            formatter.calendar = Calendar(identifier: .iso8601)
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            return formatter
+        }
+    }()
 }
+
+fileprivate protocol DateFormatterProtocol {
+    func string(from date: Date) -> String
+    func date(from string: String) -> Date?
+}
+
+@available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *)
+extension ISO8601DateFormatter: DateFormatterProtocol {}
+extension DateFormatter: DateFormatterProtocol {}
 
 fileprivate extension CharacterSet {
     
