@@ -1,10 +1,10 @@
 # Changelog
 
-## Unreleased
-* **improvement** Added `cdt` query item in addition to `h`/`m`/`s` values [#301] (https://github.com/matomo-org/matomo-sdk-ios/pull/301)
+## 7.0.0
+* **important** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 * **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
+* **improvement** Added `cdt` query item in addition to `h`/`m`/`s` values [#301] (https://github.com/matomo-org/matomo-sdk-ios/pull/301)
 * **improvement** Replaced UIWebView with WkWebView. [#308](https://github.com/matomo-org/matomo-sdk-ios/issues/308)
-* **change** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 
 ## 6.0.2
 * **improvement** Allow to use the Queue's completions in asynchronous scope. [#304](https://github.com/matomo-org/matomo-sdk-ios/pull/304)
