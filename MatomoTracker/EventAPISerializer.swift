@@ -148,6 +148,6 @@ fileprivate extension CharacterSet {
     
     /// Returns the character set for characters allowed in a query parameter URL component.
     static var urlQueryParameterAllowed: CharacterSet {
-        return CharacterSet.urlQueryAllowed.subtracting(CharacterSet(charactersIn: "&/?"))
+        return CharacterSet.urlQueryAllowed.subtracting(CharacterSet(charactersIn: ###"&/?;',+"!^()=@*$"###))
     }
 }
