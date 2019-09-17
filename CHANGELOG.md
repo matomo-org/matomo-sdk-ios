@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.0.1
+
+* **bugfix** Fixed an issue with a new `forcedVisitorId` value validation.
+
 ## 7.0.0
 * **important** Dropped support for iOS 8 and 9. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
 * **improvement** Updated to Swift 5.0 and Xcode 10.3 tools version. [#306](https://github.com/matomo-org/matomo-sdk-ios/pull/306)
