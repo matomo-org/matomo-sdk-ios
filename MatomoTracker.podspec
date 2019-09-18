@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "MatomoTracker"
-  spec.version      = "7.0.0"
+  spec.version      = "7.0.1"
   spec.summary      = "A Matomo Tracker written in Swift for iOS, tvOS and macOS apps."
   spec.homepage     = "https://github.com/matomo-org/matomo-sdk-ios/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
