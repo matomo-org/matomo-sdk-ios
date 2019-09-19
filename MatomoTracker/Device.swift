@@ -176,6 +176,7 @@ extension Device {
         case "AppleTV3,1":      return "Apple TV 3G"
         case "AppleTV3,2":      return "Apple TV 3G (2013)"
         case "AppleTV5,3":      return "Apple TV 4G"
+        case "AppleTV6,2":      return "Apple TV 4K"
             
         case "i386":         return "Simulator"
         case "x86_64":       return "Simulator"
