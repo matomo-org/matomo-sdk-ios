@@ -100,6 +100,7 @@ extension Device {
         case "iPod4,1":      return "iPod Touch 4G"
         case "iPod5,1":      return "iPod Touch 5G"
         case "iPod7,1":      return "iPod Touch 6G"
+        case "iPod9,1":      return "iPod Touch 7G"
             
         // iPad
         case "iPad1,1":      return "iPad 1"
