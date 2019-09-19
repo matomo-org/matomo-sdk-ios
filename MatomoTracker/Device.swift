@@ -162,6 +162,14 @@ extension Device {
         case "Watch2,4":      return "Apple Watch 42mm (Series 2)"
         case "Watch2,6":      return "Apple Watch 38mm (Series 1)"
         case "Watch2,7":      return "Apple Watch 42mm (Series 1)"
+        case "Watch3,1":      return "Apple Watch Series 38mm (Series 3, Cellular)"
+        case "Watch3,2":      return "Apple Watch 42mm (Series 3, Cellular)"
+        case "Watch3,3":      return "Apple Watch 38mm (Series 3, GPS)"
+        case "Watch3,4":      return "Apple Watch 42mm (Series 3, GPS)"
+        case "Watch4,1":      return "Apple Watch 40mm (Series 4, GPS)"
+        case "Watch4,2":      return "Apple Watch 44mm (Series 4, GPS)"
+        case "Watch4,3":      return "Apple Watch 40mm (Series 4, Cellular)"
+        case "Watch4,4":      return "Apple Watch 44mm (Series 4, Cellular)"
             
         // Apple TV
         case "AppleTV2,1":      return "Apple TV 2G"
