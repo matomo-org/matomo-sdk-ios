@@ -88,6 +88,10 @@ extension Device {
         case "iPhone10,4":   return "iPhone 8 (Global)"
         case "iPhone10,5":   return "iPhone 8 Plus (Global)"
         case "iPhone10,6":   return "iPhone X (Global)"
+        case "iPhone11,2":   return "iPhone XS"
+        case "iPhone11,4":   return "iPhone XS Max"
+        case "iPhone11,6":   return "iPhone XS Max (Global)"
+        case "iPhone11,8":   return "iPhone XR"
             
         // iPod
         case "iPod1,1":      return "iPod Touch 1G"
