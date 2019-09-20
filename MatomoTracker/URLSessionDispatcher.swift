@@ -20,9 +20,10 @@ public final class URLSessionDispatcher: Dispatcher {
     /// - Parameters:
     ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
-    public init(baseURL: URL, userAgent: String? = nil) {                
+    ///   - timeout: The timeout interval for the request. The default is 5.0.
+    public init(baseURL: URL, userAgent: String? = nil, timeout: TimeInterval = 5.0) {
         self.baseURL = baseURL
-        self.timeout = 5
+        self.timeout = timeout
         self.session = URLSession.shared
         if let userAgent = userAgent {
             self.userAgent = userAgent
