@@ -216,7 +216,11 @@ final public class MatomoTracker: NSObject {
             dispatchTimer.invalidate()
             self.dispatchTimer = nil
         }
-        self.dispatchTimer = Timer.scheduledTimer(timeInterval: dispatchInterval, target: self, selector: #selector(dispatch), userInfo: nil, repeats: false)
+        // Dispatchin asynchronous here to break the retain cycle
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.dispatchTimer = Timer.scheduledTimer(timeInterval: self.dispatchInterval, target: self, selector: #selector(self.dispatch), userInfo: nil, repeats: false)
+        }
     }
     
     internal var visitor: Visitor
