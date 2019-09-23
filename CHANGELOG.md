@@ -1,7 +1,11 @@
 # Changelog
 
-## 7.0.2
+
+## 7.0.3
 * **improvement** Added new devices info [#321](https://github.com/matomo-org/matomo-sdk-ios/pull/321)
+
+## 7.0.2 
+* **improvement** Added `timeout` property to URLSessionDispatcher initialization method
 
 ## 7.0.1
 * **bugfix** Fixed an issue with a new `forcedVisitorId` value validation. [#315](https://github.com/matomo-org/matomo-sdk-ios/pull/315)
