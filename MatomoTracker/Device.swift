@@ -92,6 +92,9 @@ extension Device {
         case "iPhone11,4":   return "iPhone XS Max"
         case "iPhone11,6":   return "iPhone XS Max (Global)"
         case "iPhone11,8":   return "iPhone XR"
+        case "iPhone12,1":   return "iPhone 11"
+        case "iPhone12,3":   return "iPhone 11 Pro"
+        case "iPhone12,5":   return "iPhone 11 Pro Max"
             
         // iPod
         case "iPod1,1":      return "iPod Touch 1G"
