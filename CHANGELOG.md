@@ -1,6 +1,9 @@
 # Changelog
 
 
+## Unreleased
+* **bugfix** Fixed an issue with `WKWebView` on iOS not returning a user agent string [#322](https://github.com/matomo-org/matomo-sdk-ios/issues/322)
+
 ## 7.0.3
 * **improvement** Added new devices info [#321](https://github.com/matomo-org/matomo-sdk-ios/pull/321)
 
