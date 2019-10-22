@@ -14,6 +14,10 @@ public final class URLSessionDispatcher: Dispatcher {
     public let baseURL: URL
 
     public private(set) var userAgent: String?
+
+    #if os(iOS)
+    private static var webView: WKWebView?
+    #endif
     
     /// Generate a URLSessionDispatcher instance
     ///
@@ -42,13 +46,15 @@ public final class URLSessionDispatcher: Dispatcher {
             let userAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
             completion(userAgent.appending(useragentSuffix))
             #elseif os(iOS)
-            let webView = WKWebView(frame: .zero)
-            webView.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
+            webView = WKWebView(frame: .zero)
+            webView?.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
                 if let userAgent = result as? String {
                     completion(userAgent.appending(useragentSuffix))
                 } else {
                     completion(useragentSuffix)
                 }
+
+                webView = nil
             }
             #elseif os(tvOS)
             completion(useragentSuffix)
