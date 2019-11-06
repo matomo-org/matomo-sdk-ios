@@ -25,3 +25,4 @@ Doc/
 Pods
 /Podfile.lock
 Carthage/
+/.build
