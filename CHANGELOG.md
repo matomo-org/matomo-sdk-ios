@@ -1,7 +1,8 @@
 # Changelog
 
-
 ## Unreleased
+
+## 7.2.0
 * **feature** Added support for the Swift Package Manager. [#312](https://github.com/matomo-org/matomo-sdk-ios/pull/312)
 * **improvement** Added new devices info [#321](https://github.com/matomo-org/matomo-sdk-ios/pull/321)
 * **improvement** Added `timeout` property to URLSessionDispatcher initialization method
