@@ -113,3 +113,4 @@
 * **feature** Tracking Events
 * **feature** URLSessionDispatcher
 * **feature** Non persistent Event Queue
+* **bugfix** Fixed bug, where new session not started manually [#325](https://github.com/matomo-org/matomo-sdk-ios/issues/325)

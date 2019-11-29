@@ -268,6 +268,7 @@ extension MatomoTracker {
         matomoUserDefaults.previousVisit = matomoUserDefaults.currentVisit
         matomoUserDefaults.currentVisit = Date()
         matomoUserDefaults.totalNumberOfVisits += 1
+        nextEventStartsANewSession = true
         self.session = Session.current(in: matomoUserDefaults)
     }
 }
