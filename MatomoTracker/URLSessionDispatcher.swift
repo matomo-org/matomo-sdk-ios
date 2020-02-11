@@ -39,25 +39,32 @@ public final class URLSessionDispatcher: Dispatcher {
     }
     
     private static func generateDefaultUserAgent(_ completion: @escaping (String) -> Void) {
-        let useragentSuffix = " MatomoTracker SDK URLSessionDispatcher"
+        let userAgentSuffix = " MatomoTracker SDK URLSessionDispatcher"
         DispatchQueue.main.async {
             #if os(OSX)
             let webView = WebView(frame: .zero)
             let userAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-            completion(userAgent.appending(useragentSuffix))
+            completion(userAgent.appending(userAgentSuffix))
             #elseif os(iOS)
             webView = WKWebView(frame: .zero)
             webView?.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
-                if let userAgent = result as? String {
-                    completion(userAgent.appending(useragentSuffix))
+                if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive),
+                    let resultString = result as? String {
+                    let userAgent = regex.stringByReplacingMatches(
+                        in: resultString,
+                        options: .withTransparentBounds,
+                        range: NSRange(location: 0, length: resultString.count),
+                        withTemplate: "(\(Device.makeCurrentDevice().platform);"
+                    )
+                    completion(userAgent.appending(userAgentSuffix))
                 } else {
-                    completion(useragentSuffix)
+                    completion(userAgentSuffix)
                 }
 
                 webView = nil
             }
             #elseif os(tvOS)
-            completion(useragentSuffix)
+            completion(userAgentSuffix)
             #endif
         }
     }
