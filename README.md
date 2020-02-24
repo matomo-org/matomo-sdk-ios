@@ -135,7 +135,7 @@ matomoTracker.forcedVisitorId = "0123456789abcdef"
 The Matomo iOS SDK supports [campaign tracking](https://matomo.org/docs/tracking-campaigns/).
 
 ```Swift
-matomoTracker.trackCampaign(name: @"campaign_name", keyword: @"campaign_keyword")
+matomoTracker.trackCampaign(name: "campaign_name", keyword: "campaign_keyword")
 ```
 
 ### Content Tracking
