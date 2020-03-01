@@ -95,9 +95,9 @@ class TrackerSpec: QuickSpec {
                     success()
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
-                let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.1)
+                let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.01)
                 autoTracker.start()
-                trackerFixture.tracker.dispatchInterval = 0.1
+                trackerFixture.tracker.dispatchInterval = 0.01
                 expect(numberOfDispatches).toEventually(beGreaterThan(5))
                 autoTracker.stop()
             }

@@ -1,4 +1,4 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
 abstract_target :example do
   use_frameworks!

@@ -1,15 +1,13 @@
 language: objective-c
-osx_image: xcode10.3
-cache: cocoapods
+os: osx
+osx_image: xcode11.3
+cache:
+  bundler: true
+  cocoapods: true
 
 before_install:
   - 'echo ''gem: --no-document'' > ~/.gemrc'
-
-install:
-  - gem install cocoapods --no-document --quiet
-  - gem install xcpretty --no-document --quiet
-  - gem install danger
-  - cd $TRAVIS_BUILD_DIR
+  - bundle install
   - pod install || pod install --repo-update
 
 script:
