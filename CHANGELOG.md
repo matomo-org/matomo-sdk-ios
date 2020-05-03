@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **improvement** Added back detailed phone model feature #253. [#330](https://github.com/matomo-org/matomo-sdk-ios/pull/330)
+* **improvement** Set application extension API only to true #334. [#335](https://github.com/matomo-org/matomo-sdk-ios/pull/335)
 
 ## 7.2.0
 * **feature** Added support for the Swift Package Manager. [#312](https://github.com/matomo-org/matomo-sdk-ios/pull/312)
