@@ -1,9 +1,9 @@
 import Foundation
 
 #if os(OSX)
-    import WebKit
+import WebKit
 #elseif os(iOS)
-    import WebKit
+import WebKit
 #endif
 
 public final class URLSessionDispatcher: Dispatcher {
@@ -16,7 +16,7 @@ public final class URLSessionDispatcher: Dispatcher {
     public private(set) var userAgent: String?
 
     #if os(iOS)
-    private static var webView: WKWebView?
+    private var webView: WKWebView?
     #endif
     
     /// Generate a URLSessionDispatcher instance
@@ -32,22 +32,22 @@ public final class URLSessionDispatcher: Dispatcher {
         if let userAgent = userAgent {
             self.userAgent = userAgent
         } else {
-            URLSessionDispatcher.generateDefaultUserAgent() { [weak self] userAgent in
+            generateDefaultUserAgent() { [weak self] userAgent in
                 self?.userAgent = userAgent
             }
         }
     }
     
-    private static func generateDefaultUserAgent(_ completion: @escaping (String) -> Void) {
+    private func generateDefaultUserAgent(_ completion: @escaping (String) -> Void) {
         let userAgentSuffix = " MatomoTracker SDK URLSessionDispatcher"
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             #if os(OSX)
             let webView = WebView(frame: .zero)
             let userAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
             completion(userAgent.appending(userAgentSuffix))
             #elseif os(iOS)
-            webView = WKWebView(frame: .zero)
-            webView?.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
+            self?.webView = WKWebView(frame: .zero)
+            self?.webView?.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
                 if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive),
                     let resultString = result as? String {
                     let userAgent = regex.stringByReplacingMatches(
@@ -60,8 +60,7 @@ public final class URLSessionDispatcher: Dispatcher {
                 } else {
                     completion(userAgentSuffix)
                 }
-
-                webView = nil
+                self?.webView = nil
             }
             #elseif os(tvOS)
             completion(userAgentSuffix)
