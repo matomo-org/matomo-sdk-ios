@@ -462,3 +462,15 @@ extension MatomoTracker {
         matomoUserDefaults.copy(from: UserDefaults.standard)
     }
 }
+
+extension MatomoTracker {
+    /// Track an outlink
+    ///
+    /// - Parameters:
+    ///   - url: The url of the outlink
+    @objc public func trackOutlink(url: URL) {
+        var customTrackingParameters = [String:String]()
+        customTrackingParameters["link"] = url.absoluteString
+        track(Event(tracker: self, action: [], url: url, customTrackingParameters: customTrackingParameters))
+    }    
+}
