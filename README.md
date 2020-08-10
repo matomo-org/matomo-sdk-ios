@@ -94,6 +94,14 @@ The `MatomoTracker` can track how users use your app internal search. You can tr
 matomoTracker.trackSearch(query: "Best mobile tracking", category: "Technology", resultCount: 15)
 ```
 
+### Tracking Outlinks
+
+The `MatomoTracker` can track outlinks.
+
+```Swift
+matomoTracker.trackOutlink(url: URL(string: "https://www.github.com")!)
+```
+
 ### Custom Dimension
 
 The Matomo SDK currently supports Custom Dimensions for the Visit Scope. Using Custom Dimensions you can add properties to the whole visit, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?" and such. Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://matomo.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.
@@ -111,6 +119,13 @@ matomoTracker.remove(dimensionAtIndex: 1)
 ```
 
 Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
+
+You can also track Custom Dimensions with an event:
+```Swift
+var dimensions = [CustomDimension]()
+dimensions.append(CustomDimension(index: 1, value: "Hello World"))
+matomoTracker.track(eventWithCategory: "player", action: "slide", name: "volume", value: nil, dimensions: dimensions)
+```
 
 ### Custom User ID
 
