@@ -197,7 +197,7 @@ final public class MatomoTracker: NSObject {
     
     // MARK: dispatch timer
     
-    @objc public var dispatchInterval: TimeInterval = 30.0 {
+    @objc public var dispatchInterval: TimeInterval = 15.0 {
         didSet {
             startDispatchTimer()
         }
