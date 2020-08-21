@@ -171,7 +171,7 @@ matomoTracker.trackOrder(id: "order_id_1234", items: items, revenue: 2199.98, su
 ## Advanced Usage
 ### Manual dispatching
 
-The MatomoTracker will dispatch events every 30 seconds automatically. If you want to dispatch events manually, you can use the `dispatch()` function. You can, for example, dispatch whenever the application enter the background.
+The MatomoTracker will dispatch events every 15 seconds automatically. If you want to dispatch events manually, you can use the `dispatch()` function. You can, for example, dispatch whenever the application enter the background.
 
 ```Swift
 func applicationDidEnterBackground(_ application: UIApplication) {

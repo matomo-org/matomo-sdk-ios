@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **improvement** Changed `MatomoTracker` dispatch timer interval from 30 to 15 seconds [#344](https://github.com/matomo-org/matomo-sdk-ios/issues/344)
 
 ## 7.2.0
 * **feature** Added support for the Swift Package Manager. [#312](https://github.com/matomo-org/matomo-sdk-ios/pull/312)
