@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **bugfix** Fixed bug, where new session not started manually [#325](https://github.com/matomo-org/matomo-sdk-ios/issues/325)
 
 ## 7.2.1
 * **improvement** Added back detailed phone model feature #253. [#330](https://github.com/matomo-org/matomo-sdk-ios/pull/330)
