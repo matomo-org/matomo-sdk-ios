@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 7.2.2
 * **bugfix** Fixed bug, where new session not started manually [#325](https://github.com/matomo-org/matomo-sdk-ios/issues/325)
 
 ## 7.2.1
