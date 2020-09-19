@@ -12,7 +12,8 @@ public final class URLSessionDispatcher: Dispatcher {
     private let timeout: TimeInterval
     private let session: URLSession
     public let baseURL: URL
-
+    
+    public var logger: Logger?
     public private(set) var userAgent: String?
 
     #if os(iOS)
@@ -34,6 +35,7 @@ public final class URLSessionDispatcher: Dispatcher {
         } else {
             generateDefaultUserAgent() { [weak self] userAgent in
                 self?.userAgent = userAgent
+                self?.logger?.verbose("Generated User Agent: \(userAgent)")
             }
         }
     }
@@ -91,8 +93,6 @@ public final class URLSessionDispatcher: Dispatcher {
     
     private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
         let task = session.dataTask(with: request) { data, response, error in
-            // should we check the response?
-            // let dataString = String(data: data!, encoding: String.Encoding.utf8)
             if let error = error {
                 failure(error)
             } else {

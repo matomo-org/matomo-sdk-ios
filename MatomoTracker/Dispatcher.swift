@@ -1,6 +1,8 @@
 import Foundation
 
-public protocol Dispatcher {
+public protocol Dispatcher: AnyObject {
+    
+    var logger: Logger? { get set }
     
     var baseURL: URL { get }
     
