@@ -48,6 +48,7 @@
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
 		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
 		1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */; };
+		22E0E5EC287843B9B1A83B90 /* Pods_example_iOSExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */; };
 		24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -60,7 +61,6 @@
 		CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93217B0DA3E00F63E14 /* CoreData.framework */; };
 		CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */; };
 		EB82ABD820DA125100083494 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82ABD720DA125100083494 /* ContentViewController.swift */; };
-		F8A9F7D97906DD313D029A2D /* Pods_example_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF14E5FDE67AFE4EE7C8B67B /* Pods_example_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +92,10 @@
 		1FDC91751F1A648C0046F506 /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
 		1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIDViewController.swift; sourceTree = "<group>"; };
+		2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-iOSExampleApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_iOSExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-iOSExampleApp.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		9BB58213275F072D13140292 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.release.xcconfig"; sourceTree = "<group>"; };
 		AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +129,6 @@
 		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
 		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
 		EB82ABD720DA125100083494 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
-		EF14E5FDE67AFE4EE7C8B67B /* Pods_example_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +141,7 @@
 				CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */,
 				CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */,
 				CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */,
-				F8A9F7D97906DD313D029A2D /* Pods_example_ios.framework in Frameworks */,
+				22E0E5EC287843B9B1A83B90 /* Pods_example_iOSExampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +153,8 @@
 			children = (
 				AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */,
 				A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */,
+				2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */,
+				8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -186,7 +190,7 @@
 				9BB58213275F072D13140292 /* libPods-ios.a */,
 				3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */,
 				AFEF98FA72F773DD178FA44C /* libPods-osx.a */,
-				EF14E5FDE67AFE4EE7C8B67B /* Pods_example_ios.framework */,
+				41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -248,9 +252,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD93EC8A17E76E290062BE20 /* MatomoTrackerExampleApp */ = {
+		CD93EC8A17E76E290062BE20 /* iOSExampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "MatomoTrackerExampleApp" */;
+			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "iOSExampleApp" */;
 			buildPhases = (
 				434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */,
 				CD93EC8717E76E290062BE20 /* Sources */,
@@ -262,7 +266,7 @@
 			);
 			dependencies = (
 			);
-			name = MatomoTrackerExampleApp;
+			name = iOSExampleApp;
 			productName = PiwikTrackeriOSDemo;
 			productReference = CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -296,7 +300,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD93EC8A17E76E290062BE20 /* MatomoTrackerExampleApp */,
+				CD93EC8A17E76E290062BE20 /* iOSExampleApp */,
 				CDC335FE17B97B110098386C /* Documentation */,
 				CDE4CAE61813DDFE007E0EF7 /* Upload API */,
 			);
@@ -325,7 +329,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MatomoTracker-iOS/MatomoTracker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -334,7 +338,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-ios/Pods-example-ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */ = {
@@ -348,7 +352,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-example-ios-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-example-iOSExampleApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,7 +539,7 @@
 		};
 		CD93ECAA17E76E290062BE20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */;
+			baseConfigurationReference = 2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -557,7 +561,7 @@
 		};
 		CD93ECAB17E76E290062BE20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */;
+			baseConfigurationReference = 8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -617,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "MatomoTrackerExampleApp" */ = {
+		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "iOSExampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD93ECAA17E76E290062BE20 /* Debug */,
