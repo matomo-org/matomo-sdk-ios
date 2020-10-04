@@ -13,6 +13,6 @@ struct UserAgent {
     let device: Device
     
     var stringValue: String {
-        "\(application.bundleDisplayName ?? "Unknown-App")/\(application.bundleShortVersion ?? "Unknown-Version") \(device.platform) \(device.operatingSystem)/\(device.osVersion) MatomoTrackerIOSSDK/\(application.matomoSDKVersion ?? "Unknown-Version") Darwin/\(device.darwinVersion ?? "Unknown-Version")"
+        "\(application.bundleName ?? "Unknown-App")/\(application.bundleShortVersion ?? "Unknown-Version") \(device.platform) \(device.operatingSystem)/\(device.osVersion) MatomoTrackerIOSSDK/\(application.matomoSDKVersion ?? "Unknown-Version") Darwin/\(device.darwinVersion ?? "Unknown-Version")"
     }
 }
