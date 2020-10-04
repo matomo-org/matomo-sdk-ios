@@ -122,13 +122,17 @@ matomoTracker.userId = "coolUsername123"
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
 
-### Custom Visitor ID
+###  Custom Visitor ID persisted on app starts
 
-MatomoTracker will generate an `_id` upon first usage and will use this value to recognize the current visitor. If you want to set your own visitor id you can set your own visitor id. Make sure you use a 16 character long hexadecimal string. The `forcedVisitorId` is persisted over app starts.
+MatomoTracker will generate an `_id` upon first usage and will use this value to recognize the current visitor. This `_id` is persisted over app starts.
+
+If you want to set your own visitor id, you can set your own visitor id with the `forcedVisitorId` field. Make sure you use a 16 character long hexadecimal string. The `forcedVisitorId` is persisted over app starts.
 
 ```Swift
 matomoTracker.forcedVisitorId = "0123456789abcdef"
 ```
+
+Because the SDK persists this visitor id on app start, then we recommend to ask users for consent before tracking your app users.
 
 ### Campaign Tracking
 
