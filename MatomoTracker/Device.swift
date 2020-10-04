@@ -8,11 +8,13 @@ final public class Device: NSObject {
         let os = osVersionForCurrentDevice()
         let screenSize = screenSizeForCurrentDevice()
         let nativeScreenSize = nativeScreenSizeForCurrentDevice()
+        let darwinVersion = darwinVersionForCurrentDevice()
         return Device(platform: platform,
                       humanReadablePlatformName: humanReadablePlatformName,
                       osVersion: os,
                       screenSize: screenSize,
-                      nativeScreenSize: nativeScreenSize)
+                      nativeScreenSize: nativeScreenSize,
+                      darwinVersion: darwinVersion)
     }
     
     /// The platform name of the device i.e. "iPhone1,1" or "iPad3,6"
@@ -31,13 +33,17 @@ final public class Device: NSObject {
     /// The native screen size
     /// Will be CGSize.zero if the value is not defined on the running platorm.
     @objc public let nativeScreenSize: CGSize
+    
+    /// The darwin version as fetched from utsname()
+    @objc public let darwinVersion: String?
 
-    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize? = nil) {
+    required public init(platform: String, humanReadablePlatformName: String? = nil, osVersion: String, screenSize: CGSize, nativeScreenSize: CGSize? = nil, darwinVersion: String? = nil) {
         self.platform = platform
         self.humanReadablePlatformName = humanReadablePlatformName
         self.osVersion = osVersion
         self.screenSize = screenSize
         self.nativeScreenSize = nativeScreenSize != nil ? nativeScreenSize! : CGSize.zero
+        self.darwinVersion = darwinVersion
 
         super.init()
     }
@@ -46,6 +52,9 @@ final public class Device: NSObject {
 extension Device {
     /// The platform name of the current device i.e. "iPhone1,1" or "iPad3,6"
     private static func currentPlatform() -> String  {
+        #if targetEnvironment(simulator)
+        return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "x86_64"
+        #endif
         var size = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)
         var machine = [CChar](repeating: 0,  count: Int(size))
@@ -186,6 +195,12 @@ extension Device {
             
         default: return nil
         }
+    }
+    
+    private static func darwinVersionForCurrentDevice() -> String? {
+        var sysinfo = utsname()
+        uname(&sysinfo)
+        return String(bytes: Data(bytes: &sysinfo.release, count: Int(_SYS_NAMELEN)), encoding: .ascii)?.trimmingCharacters(in: .controlCharacters)
     }
 }
 

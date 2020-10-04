@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD93EC8A17E76E290062BE20"
-               BuildableName = "ios.app"
-               BlueprintName = "ios"
+               BuildableName = "MatomoTrackerExampleApp.app"
+               BlueprintName = "MatomoTrackerExampleApp"
                ReferencedContainer = "container:ios.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD93EC8A17E76E290062BE20"
-            BuildableName = "ios.app"
-            BlueprintName = "ios"
+            BuildableName = "MatomoTrackerExampleApp.app"
+            BlueprintName = "MatomoTrackerExampleApp"
             ReferencedContainer = "container:ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -54,8 +54,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD93EC8A17E76E290062BE20"
-            BuildableName = "ios.app"
-            BlueprintName = "ios"
+            BuildableName = "MatomoTrackerExampleApp.app"
+            BlueprintName = "MatomoTrackerExampleApp"
             ReferencedContainer = "container:ios.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD93EC8A17E76E290062BE20"
-            BuildableName = "ios.app"
-            BlueprintName = "ios"
+            BuildableName = "MatomoTrackerExampleApp.app"
+            BlueprintName = "MatomoTrackerExampleApp"
             ReferencedContainer = "container:ios.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -1,11 +1,5 @@
 import Foundation
 
-#if os(OSX)
-import WebKit
-#elseif os(iOS)
-import WebKit
-#endif
-
 public final class URLSessionDispatcher: Dispatcher {
     
     private let serializer = EventAPISerializer()
@@ -14,10 +8,6 @@ public final class URLSessionDispatcher: Dispatcher {
     public let baseURL: URL
 
     public private(set) var userAgent: String?
-
-    #if os(iOS)
-    private var webView: WKWebView?
-    #endif
     
     /// Generate a URLSessionDispatcher instance
     ///
@@ -29,43 +19,7 @@ public final class URLSessionDispatcher: Dispatcher {
         self.baseURL = baseURL
         self.timeout = timeout
         self.session = URLSession.shared
-        if let userAgent = userAgent {
-            self.userAgent = userAgent
-        } else {
-            generateDefaultUserAgent() { [weak self] userAgent in
-                self?.userAgent = userAgent
-            }
-        }
-    }
-    
-    private func generateDefaultUserAgent(_ completion: @escaping (String) -> Void) {
-        let userAgentSuffix = " MatomoTracker SDK URLSessionDispatcher"
-        DispatchQueue.main.async { [weak self] in
-            #if os(OSX)
-            let webView = WebView(frame: .zero)
-            let userAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-            completion(userAgent.appending(userAgentSuffix))
-            #elseif os(iOS)
-            self?.webView = WKWebView(frame: .zero)
-            self?.webView?.evaluateJavaScript("navigator.userAgent") { (result, error) -> Void in
-                if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive),
-                    let resultString = result as? String {
-                    let userAgent = regex.stringByReplacingMatches(
-                        in: resultString,
-                        options: .withTransparentBounds,
-                        range: NSRange(location: 0, length: resultString.count),
-                        withTemplate: "(\(Device.makeCurrentDevice().platform);"
-                    )
-                    completion(userAgent.appending(userAgentSuffix))
-                } else {
-                    completion(userAgentSuffix)
-                }
-                self?.webView = nil
-            }
-            #elseif os(tvOS)
-            completion(userAgentSuffix)
-            #endif
-        }
+        self.userAgent = userAgent ?? UserAgent(application: Application.makeCurrentApplication(), device: Device.makeCurrentDevice()).stringValue
     }
     
     public func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {

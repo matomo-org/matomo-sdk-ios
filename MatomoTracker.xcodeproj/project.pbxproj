@@ -18,6 +18,7 @@
 		1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CA58B1E09A30600121FDC /* Queue.swift */; };
 		1F5927552178716E001478DC /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 1F5927542178716E001478DC /* CHANGELOG.md */; };
 		1F5D08721F5D79AD0064314F /* AutoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D08711F5D79AD0064314F /* AutoTracker.swift */; };
+		1F6B2F032529CE8A00D2A591 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B2F012529CC3400D2A591 /* UserAgent.swift */; };
 		1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */; };
 		1F6F0CDC1E61E377008170FC /* DispatcherStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD81E61E377008170FC /* DispatcherStub.swift */; };
 		1F6F0CDD1E61E377008170FC /* QueueStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD91E61E377008170FC /* QueueStub.swift */; };
@@ -64,6 +65,7 @@
 		1F3CA58B1E09A30600121FDC /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1F5927542178716E001478DC /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		1F5D08711F5D79AD0064314F /* AutoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTracker.swift; sourceTree = "<group>"; };
+		1F6B2F012529CC3400D2A591 /* UserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatomoTracker.swift; sourceTree = "<group>"; };
 		1F6F0CD81E61E377008170FC /* DispatcherStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatcherStub.swift; sourceTree = "<group>"; };
 		1F6F0CD91E61E377008170FC /* QueueStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueStub.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				1FDC917E1F1A65150046F506 /* Device.swift */,
 				1F7C667E1F8C096F0066CC64 /* MainThread.swift */,
 				1F7001CA216C9D8C007A9355 /* EventAPISerializer.swift */,
+				1F6B2F012529CC3400D2A591 /* UserAgent.swift */,
 				1FCA6D3F1DBE0B2F0033F01C /* Info.plist */,
 				1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */,
 			);
@@ -394,6 +397,7 @@
 				1F092C161E225E0200394B30 /* Event.swift in Sources */,
 				1F092C141E224C3E00394B30 /* MatomoUserDefaults.swift in Sources */,
 				1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */,
+				1F6B2F032529CE8A00D2A591 /* UserAgent.swift in Sources */,
 				1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */,
 				1FDC91801F1A65150046F506 /* Device.swift in Sources */,
 				1F7001CB216C9D8C007A9355 /* EventAPISerializer.swift in Sources */,

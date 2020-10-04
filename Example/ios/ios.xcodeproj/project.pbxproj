@@ -107,7 +107,7 @@
 		CD5F3BED18678C9000D04E03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CD7ABB131B0FD0D2002312DA /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		CD7ABB141B0FD0D2002312DA /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
-		CD93EC8B17E76E290062BE20 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatomoTrackerExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD93EC9117E76E290062BE20 /* PiwikTrackeriOSDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiwikTrackeriOSDemo-Info.plist"; sourceTree = "<group>"; };
 		CD93EC9317E76E290062BE20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD93EC9517E76E290062BE20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		CD10FABD17B0378D0012BE50 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD93EC8B17E76E290062BE20 /* ios.app */,
+				CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD93EC8A17E76E290062BE20 /* ios */ = {
+		CD93EC8A17E76E290062BE20 /* MatomoTrackerExampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "ios" */;
+			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "MatomoTrackerExampleApp" */;
 			buildPhases = (
 				434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */,
 				CD93EC8717E76E290062BE20 /* Sources */,
@@ -262,9 +262,9 @@
 			);
 			dependencies = (
 			);
-			name = ios;
+			name = MatomoTrackerExampleApp;
 			productName = PiwikTrackeriOSDemo;
-			productReference = CD93EC8B17E76E290062BE20 /* ios.app */;
+			productReference = CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -296,7 +296,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD93EC8A17E76E290062BE20 /* ios */,
+				CD93EC8A17E76E290062BE20 /* MatomoTrackerExampleApp */,
 				CDC335FE17B97B110098386C /* Documentation */,
 				CDE4CAE61813DDFE007E0EF7 /* Upload API */,
 			);
@@ -617,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "ios" */ = {
+		CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "MatomoTrackerExampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD93ECAA17E76E290062BE20 /* Debug */,
