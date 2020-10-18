@@ -463,3 +463,8 @@ extension MatomoTracker {
         matomoUserDefaults.copy(from: UserDefaults.standard)
     }
 }
+
+extension MatomoTracker {
+    /// The version of the Matomo SDKs
+    @objc public static let sdkVersion = "7.2.2"
+}

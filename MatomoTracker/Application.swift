@@ -10,8 +10,7 @@ public struct Application {
         let identifier = bundleIdentifierForCurrentApplication()
         let version = bundleVersionForCurrentApplication()
         let shortVersion = bundleShortVersionForCurrentApplication()
-        let matomoSDKVersion = matomoSDKVersionForCurrentApplication()
-        return Application(bundleDisplayName: displayName, bundleName: name, bundleIdentifier: identifier, bundleVersion: version, bundleShortVersion: shortVersion, matomoSDKVersion: matomoSDKVersion)
+        return Application(bundleDisplayName: displayName, bundleName: name, bundleIdentifier: identifier, bundleVersion: version, bundleShortVersion: shortVersion)
     }
     
     /// The name of your app as displayed on the homescreen i.e. "My App"
@@ -28,9 +27,6 @@ public struct Application {
     
     /// The app version as String i.e. "1.0.1"
     public let bundleShortVersion: String?
-    
-    /// The version of the matomo sdk i.e. "7.2"
-    public let matomoSDKVersion: String?
 }
 
 extension Application {
@@ -57,9 +53,5 @@ extension Application {
     /// Returns the app version
     private static func bundleShortVersionForCurrentApplication() -> String? {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    }
-    
-    private static func matomoSDKVersionForCurrentApplication() -> String? {
-        return Bundle(for: MatomoTracker.self).infoDictionary?["CFBundleShortVersionString"] as? String
     }
 }
