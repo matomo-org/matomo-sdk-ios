@@ -295,7 +295,7 @@ extension MatomoTracker {
     /// - Parameter url: The optional url of the page that was viewed.
     /// - Parameter dimensions: An optional array of dimensions, that will be set only in the scope of this view.
     public func track(view: [String], url: URL? = nil, dimensions: [CustomDimension] = []) {
-        let event = Event(tracker: self, action: view, url: url, dimensions: dimensions)
+        let event = Event(tracker: self, action: view, url: url, dimensions: dimensions, isCustomAction: false)
         queue(event: event)
     }
     

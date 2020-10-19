@@ -41,6 +41,7 @@ fileprivate extension Event {
             let items = [
                 URLQueryItem(name: "idsite", value: siteId),
                 URLQueryItem(name: "rec", value: "1"),
+                URLQueryItem(name: "ca", value: isCustomAction ? "1" : nil),
                 // Visitor
                 URLQueryItem(name: "_id", value: visitor.id),
                 URLQueryItem(name: "cid", value: visitor.forcedId),
