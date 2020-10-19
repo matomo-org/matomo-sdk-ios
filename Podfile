@@ -6,19 +6,19 @@ abstract_target :example do
   project 'MatomoTracker'
   workspace 'MatomoTracker'
 
-  target :ios do
+  target :iOSExampleApp do
     platform :ios, '10.0'
     project 'Example/ios/ios'
     pod 'MatomoTracker', path: './'
   end
 
-  target :macos do
+  target :macOSExampleApp do
     platform :osx, '10.13'
     project 'Example/macos/macos'
     pod 'MatomoTracker', path: './'
   end
 
-  target :tvos do
+  target :tvOSExampleApp do
     platform :tvos, '10.2'
     project 'Example/tvos/tvos'
     pod 'MatomoTracker', path: './'

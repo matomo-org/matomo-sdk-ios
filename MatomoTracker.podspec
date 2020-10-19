@@ -13,9 +13,8 @@ Pod::Spec.new do |spec|
   spec.default_subspecs = 'Core'
   spec.swift_version = '5.0'
   
-  spec.ios.frameworks = 'UIKit', 'WebKit'
+  spec.ios.frameworks = 'UIKit'
   spec.tvos.frameworks = 'UIKit'
-  spec.macos.frameworks = 'WebKit'
   
   spec.subspec 'Core' do |core|
   	core.source_files = 'MatomoTracker/*.swift'

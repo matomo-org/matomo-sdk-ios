@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F38EBE41EE55AE50021FBF8"
-               BuildableName = "tvos.app"
-               BlueprintName = "tvos"
+               BuildableName = "tvOSExampleApp.app"
+               BlueprintName = "tvOSExampleApp"
                ReferencedContainer = "container:tvos.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F38EBE41EE55AE50021FBF8"
-            BuildableName = "tvos.app"
-            BlueprintName = "tvos"
+            BuildableName = "tvOSExampleApp.app"
+            BlueprintName = "tvOSExampleApp"
             ReferencedContainer = "container:tvos.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -56,13 +54,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F38EBE41EE55AE50021FBF8"
-            BuildableName = "tvos.app"
-            BlueprintName = "tvos"
+            BuildableName = "tvOSExampleApp.app"
+            BlueprintName = "tvOSExampleApp"
             ReferencedContainer = "container:tvos.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F38EBE41EE55AE50021FBF8"
-            BuildableName = "tvos.app"
-            BlueprintName = "tvos"
+            BuildableName = "tvOSExampleApp.app"
+            BlueprintName = "tvOSExampleApp"
             ReferencedContainer = "container:tvos.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
