@@ -4,7 +4,7 @@ import Nimble
 
 class TrackerSpec: QuickSpec {
     override func spec() {
-        Nimble.AsyncDefaults.Timeout = 1
+        Nimble.AsyncDefaults.timeout = .seconds(1)
         describe("init") {
             it("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`") {
                 let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
@@ -86,7 +86,7 @@ class TrackerSpec: QuickSpec {
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
                 trackerFixture.tracker.dispatchInterval = 0.5
-                expect(numberOfDispatches).toEventually(equal(5), timeout: 10)
+                expect(numberOfDispatches).toEventually(equal(5), timeout: .seconds(10))
             }
             it("should start a new DispatchTimer if dispatching succeeded") {
                 var numberOfDispatches = 0

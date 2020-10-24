@@ -4,8 +4,8 @@ import Nimble
 
 class MemoryQueueSpec: QuickSpec {
     override func setUp() {
-        Nimble.AsyncDefaults.Timeout = 5
-        Nimble.AsyncDefaults.PollInterval = 0.1
+        Nimble.AsyncDefaults.timeout = .seconds(10)
+        Nimble.AsyncDefaults.pollInterval = .milliseconds(100)
     }
     
     override func spec() {
