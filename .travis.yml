@@ -12,7 +12,7 @@ before_install:
 
 script:
   - rake test
-  - rake build_with_package_manager
+  - # rake build_with_package_manager # currently disabled due to an issue with carthage: https://github.com/Carthage/Carthage/issues/3019
 
 before_script:
   - export LANG=en_US.UTF-8
