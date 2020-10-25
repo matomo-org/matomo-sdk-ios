@@ -28,12 +28,12 @@ end
 
 target 'MatomoTrackerTests' do
   use_frameworks!
-  platform :ios, '8.0'
+  platform :ios, '9.0'
   inhibit_all_warnings!
   project 'MatomoTracker'
   workspace 'MatomoTracker'
   inherit! :search_paths
   
   pod 'Quick', '~> 3.0'
-  pod 'Nimble', '~> 8.0'
+  pod 'Nimble', '~> 9.0'
 end
