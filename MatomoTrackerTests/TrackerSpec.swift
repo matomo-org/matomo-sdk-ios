@@ -48,7 +48,7 @@ class TrackerSpec: QuickSpec {
                 }
                 it("should give dequeued events to the dispatcher") {
                     var eventsDispatched: [Event] = []
-                    let trackerFixture = TrackerFixture.nonEmptyQueueWithSendEventsCallback() { events, _,_ in
+                    let trackerFixture = TrackerFixture.nonEmptyQueueWithSendEventsCallback() { events, _ in
                         eventsDispatched = events
                     }
                     trackerFixture.tracker.dispatch()
@@ -80,9 +80,9 @@ class TrackerSpec: QuickSpec {
             }
             it("should start a new DispatchTimer if dispatching failed") {
                 var numberOfDispatches = 0
-                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
+                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, completion in
                     numberOfDispatches += 1
-                    failure(NSError(domain: "spec", code: 0))
+                    completion(.failure(NSError(domain: "spec", code: 0)))
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
                 trackerFixture.tracker.dispatchInterval = 0.5
@@ -90,9 +90,9 @@ class TrackerSpec: QuickSpec {
             }
             it("should start a new DispatchTimer if dispatching succeeded") {
                 var numberOfDispatches = 0
-                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
+                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, completion in
                     numberOfDispatches += 1
-                    success()
+                    completion(.success(()))
                 }
                 trackerFixture.tracker.queue(event: EventFixture.event())
                 let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.01)
