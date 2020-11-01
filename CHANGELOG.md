@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added support for outlink tracking. [#342](https://github.com/matomo-org/matomo-sdk-ios/issues/342)
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
 * **improvement** Removed unused `humanReadablePlatformName` `Device` property. [#358](https://github.com/matomo-org/matomo-sdk-ios/pull/358)
 

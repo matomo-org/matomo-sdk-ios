@@ -96,10 +96,13 @@ public struct Event: Codable {
     let orderShippingCost: Float?
     let orderDiscount: Float?
     let orderLastDate: Date?
+    
+    /// api-key: link
+    let outlink: URL?
 }
 
 extension Event {
-    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool = true) {
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool = true, outlink: URL? = nil) {
         self.siteId = tracker.siteId
         self.uuid = UUID()
         self.visitor = tracker.visitor
@@ -137,5 +140,6 @@ extension Event {
         self.orderDiscount = orderDiscount
         self.orderLastDate = orderLastDate
         self.isCustomAction = isCustomAction
+        self.outlink = outlink
     }
 }

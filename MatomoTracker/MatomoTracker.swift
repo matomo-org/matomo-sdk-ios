@@ -341,6 +341,13 @@ extension MatomoTracker {
         
         matomoUserDefaults.lastOrder = Date()
     }
+    
+    /// Tracks an outlink as described here: https://matomo.org/faq/new-to-piwik/faq_71/
+    /// - Parameter outlink: The link to which the user is leaving the app.
+    public func track(outlink: URL) {
+        let event = Event(tracker: self, action: [], url: outlink, outlink: outlink)
+        queue(event: event)
+    }
 }
 
 extension MatomoTracker {

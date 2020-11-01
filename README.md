@@ -172,6 +172,14 @@ let items = [
 matomoTracker.trackOrder(id: "order_id_1234", items: items, revenue: 2199.98, subTotal: 2000, tax: 190.98, shippingCost: 9)
 ```
 
+### Outlink Tracking
+
+You can use the `track(outlink:)` function to track if a user exits the App to open an external url.
+
+```swift
+matomoTracker.track(outlink: URL(string: "https://matomo.org")!)
+```
+
 ## Advanced Usage
 ### Manual dispatching
 
@@ -236,17 +244,6 @@ Whenever you track an event or a page view it is stored in memory first. In ever
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/develop/CONTRIBUTING.md) for details.
-
-## ToDo
-### These features aren't implemented yet
-
-- Tracking of more things
-  - Social Interactions
-  - Goals and Conversions
-  - Outlinks
-  - Downloads
-- Customizing the tracker
-  - use different dispatchers (Alamofire)
 
 ## License
 
