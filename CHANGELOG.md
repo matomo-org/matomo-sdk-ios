@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+* **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
+
+## 7.3.0
 * **improvement** Support new `ca` tracking parameter for tracking requests that aren't page views. [354](https://github.com/matomo-org/matomo-sdk-ios/issues/354)
 * **improvement** Completely overhauled the UserAgent generation for automatic device and OS discovery. [#353](https://github.com/matomo-org/matomo-sdk-ios/pull/353)
 
