@@ -105,34 +105,7 @@ class EventSpec: QuickSpec {
                 it("has value in queryString escaped") {
                     expect(try? eventDataString.get().contains(testStringEscaped)).to(beTrue())
                 }
-
             }
-        }
-    }
-}
-
-
-/// A Nimble matcher that succeeds when a Result value is a "failure" case.
-public func beSuccessful<T, E: Error>() -> Predicate<Result<T, E>> {
-    return Predicate.simple("be failure") { actualExpression in
-        guard let actualResult = try actualExpression.evaluate() else { return .fail }
-
-        switch actualResult {
-        case .success: return PredicateStatus(bool: true)
-        case .failure: return PredicateStatus(bool: false)
-        }
-    }
-}
-
-
-/// A Nimble matcher that succeeds when a Result value is a "failure" case.
-public func beAFailure<T, E: Error>() -> Predicate<Result<T, E>> {
-    return Predicate.simple("be failure") { actualExpression in
-        guard let actualResult = try actualExpression.evaluate() else { return .fail }
-
-        switch actualResult {
-        case .success: return PredicateStatus(bool: false)
-        case .failure: return PredicateStatus(bool: true)
         }
     }
 }
