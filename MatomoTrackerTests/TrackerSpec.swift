@@ -67,7 +67,7 @@ class TrackerSpec: QuickSpec {
                         expect{ trackerFixture.tracker.dispatch() }.toNot(throwAssertion())
                         dispatched = true
                     }
-                    expect(dispatched).toEventually(beTrue())
+                    expect(dispatched).toEventually(beTrue(), timeout: .seconds(20))
                 }
                 it("should cancel dispatching if the dispatcher failes") {
                     
