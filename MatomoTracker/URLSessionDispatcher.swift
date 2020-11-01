@@ -7,7 +7,7 @@ public final class URLSessionDispatcher: Dispatcher {
     private let session: URLSession
     public let baseURL: URL
 
-    public private(set) var userAgent: String?
+    private var userAgent: String?
     
     /// Generate a URLSessionDispatcher instance
     ///

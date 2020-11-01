@@ -143,7 +143,7 @@ final public class MatomoTracker: NSObject {
     private(set) var isDispatching = false
     
     
-    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationDidEnterBackground` to transmit all data
+    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationWillResignActive` to transmit all data
     /// whenever the user leaves the application.
     @objc public func dispatch() {
         guard !isDispatching else {
