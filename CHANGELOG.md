@@ -3,6 +3,7 @@
 ## Unreleased
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
 * **improvement** Removed unused `humanReadablePlatformName` `Device` property. [#358](https://github.com/matomo-org/matomo-sdk-ios/pull/358)
+* **improvement** Changed the cdt parameter to be accurate to milliseconds. [#360](https://github.com/matomo-org/matomo-sdk-ios/issues/360)
 * **bugfix** Fixed macOS version recognition. [#361](https://github.com/matomo-org/matomo-sdk-ios/issues/361)
 
 ## 7.3.0
