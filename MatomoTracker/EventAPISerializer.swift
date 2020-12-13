@@ -123,16 +123,12 @@ fileprivate extension DateFormatter {
         return dateFormatter
     }()
     static let iso8601DateFormatter: DateFormatterProtocol = {
-        if #available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *) {
-            return ISO8601DateFormatter()
-        } else {
             let formatter = DateFormatter()
             formatter.calendar = Calendar(identifier: .iso8601)
             formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.timeZone = TimeZone(identifier: "UTC")
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
             return formatter
-        }
     }()
 }
 
