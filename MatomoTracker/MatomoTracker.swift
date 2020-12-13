@@ -448,7 +448,7 @@ extension MatomoTracker {
         track(eventWithCategory: category, action: action, name: name, value: value, url: url)
     }
     
-    @available(*, deprecated, message: "use trackEventWithCategory:action:name:number:url instead")
+    @available(*, deprecated, message: "use track(eventWithCategory:action:name:number:url instead")
     @objc public func track(eventWithCategory category: String, action: String, name: String? = nil, number: NSNumber? = nil) {
         track(eventWithCategory: category, action: action, name: name, number: number, url: nil)
     }
