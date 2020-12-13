@@ -12,7 +12,13 @@ struct UserAgent {
     let application: Application
     let device: Device
     
+    /// Returns the UserAgent string that can be used in an HTTP header
+    /// Format: Darwin/<darwin version> (<platform>; <OS> <OS version>) MatomoTrackerSDK/<matomo version> <app name>/<app version>
     var stringValue: String {
-        "\(application.bundleName ?? "Unknown-App")/\(application.bundleShortVersion ?? "Unknown-Version") \(device.platform) \(device.operatingSystem)/\(device.osVersion) MatomoTrackerSDK/\(MatomoTracker.sdkVersion) Darwin/\(device.darwinVersion ?? "Unknown-Version")"
+        [
+            "Darwin/\(device.darwinVersion ?? "Unknown-Version") (\(device.platform); \(device.operatingSystem) \(device.osVersion))",
+            "MatomoTrackerSDK/\(MatomoTracker.sdkVersion)",
+            "\(application.bundleName ?? "Unknown-App")/\(application.bundleShortVersion ?? "Unknown-Version")"
+        ].joined(separator: " ")
     }
 }

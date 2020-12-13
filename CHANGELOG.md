@@ -3,6 +3,7 @@
 ## Unreleased
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
 * **improvement** Removed unused `humanReadablePlatformName` `Device` property. [#358](https://github.com/matomo-org/matomo-sdk-ios/pull/358)
+* **bugfix** Fixed macOS version recognition. [#361](https://github.com/matomo-org/matomo-sdk-ios/issues/361)
 
 ## 7.3.0
 * **improvement** Support new `ca` tracking parameter for tracking requests that aren't page views. [354](https://github.com/matomo-org/matomo-sdk-ios/issues/354)

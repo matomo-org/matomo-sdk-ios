@@ -71,7 +71,10 @@ extension Device {
     import AppKit
     extension Device {
         internal static func operatingSystemForCurrentDevice() -> String {
-            return "macOS"
+            // Instead of the "correct" macOS, we need to return "Mac OS X" here
+            // to be compatible with the detection.
+            // See: https://devicedetector.lw1.at
+            return "Mac OS X"
         }
         
         /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
