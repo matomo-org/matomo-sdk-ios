@@ -30,6 +30,7 @@
 		1F8DCCD625A1BA2C00C98793 /* Visitor+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCCD525A1BA2C00C98793 /* Visitor+Fixture.swift */; };
 		1F8DCCD825A1BA4900C98793 /* Session+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCCD725A1BA4900C98793 /* Session+Fixture.swift */; };
 		1F8DCCDA25A1BAF700C98793 /* MatomoTracker+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCCD925A1BAF700C98793 /* MatomoTracker+Fixture.swift */; };
+		1F8DCCDC25A1C7C700C98793 /* EventAPISerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCCDB25A1C7C700C98793 /* EventAPISerializerSpec.swift */; };
 		1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */; };
 		1FC2B429201F8C010061F5AD /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2B428201F8C010061F5AD /* CustomVariable.swift */; };
 		1FCA6D451DBE0B2F0033F01C /* MatomoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */; };
@@ -37,7 +38,6 @@
 		1FCFF0241F82C7A50038BC17 /* CustomDimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */; };
 		1FDC917F1F1A65150046F506 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917D1F1A65150046F506 /* Application.swift */; };
 		1FDC91801F1A65150046F506 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC917E1F1A65150046F506 /* Device.swift */; };
-		240CC0A223269FFD003393F5 /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CC0A123269FFD003393F5 /* EventSpec.swift */; };
 		5804E9A4755E642D58301330 /* Pods_MatomoTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */; };
 		5ACB1FAD21426FFB007C766B /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB1FAC21426FFB007C766B /* OrderItem.swift */; };
 		FDCA325A2093BFFB007D6B42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDCA32592093BFFB007D6B42 /* README.md */; };
@@ -78,6 +78,7 @@
 		1F8DCCD525A1BA2C00C98793 /* Visitor+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visitor+Fixture.swift"; sourceTree = "<group>"; };
 		1F8DCCD725A1BA4900C98793 /* Session+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+Fixture.swift"; sourceTree = "<group>"; };
 		1F8DCCD925A1BAF700C98793 /* MatomoTracker+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatomoTracker+Fixture.swift"; sourceTree = "<group>"; };
+		1F8DCCDB25A1C7C700C98793 /* EventAPISerializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPISerializerSpec.swift; sourceTree = "<group>"; };
 		1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaultsSpec.swift; sourceTree = "<group>"; };
 		1FC2B428201F8C010061F5AD /* CustomVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVariable.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatomoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +89,6 @@
 		1FDC917B1F1A64BB0046F506 /* CustomDimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimension.swift; sourceTree = "<group>"; };
 		1FDC917D1F1A65150046F506 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		1FDC917E1F1A65150046F506 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		240CC0A123269FFD003393F5 /* EventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
 		2FD38CC515C49A9A8922407D /* Pods-MatomoTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatomoTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatomoTrackerTests/Pods-MatomoTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5ACB1FAC21426FFB007C766B /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		63DC1BA4812B98CA8037194A /* Pods_MatomoTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatomoTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,8 +214,8 @@
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
-				240CC0A123269FFD003393F5 /* EventSpec.swift */,
 				1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */,
+				1F8DCCDB25A1C7C700C98793 /* EventAPISerializerSpec.swift */,
 				1FCA6D4B1DBE0B2F0033F01C /* Info.plist */,
 			);
 			path = MatomoTrackerTests;
@@ -426,9 +426,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8DCCDC25A1C7C700C98793 /* EventAPISerializerSpec.swift in Sources */,
 				1F6F0CDD1E61E377008170FC /* QueueMock.swift in Sources */,
 				1F8DCCDA25A1BAF700C98793 /* MatomoTracker+Fixture.swift in Sources */,
-				240CC0A223269FFD003393F5 /* EventSpec.swift in Sources */,
 				1F6F0CDC1E61E377008170FC /* DispatcherMock.swift in Sources */,
 				1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */,
 				1F8DCCD825A1BA4900C98793 /* Session+Fixture.swift in Sources */,
