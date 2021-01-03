@@ -18,19 +18,20 @@ class TrackerSpec: QuickSpec {
         describe("queue") {
             it("should enqueue the item in the queue") {
                 var queuedEvent: Event? = nil
-                let trackerFixture = TrackerFixture.withQueueEventsCallback() { events, completion in
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
                     queuedEvent = events.first
-                    completion()
                 }
-                let event = EventFixture.event()
-                trackerFixture.tracker.queue(event: event)
+                let event = Event.fixture()
+                tracker.queue(event: event)
                 expect(queuedEvent).toNot(beNil())
             }
             it("should not throw an assertion if called from a background thread") {
-                let trackerFixture = TrackerFixture(queue: MemoryQueue(), dispatcher: DispatcherStub())
+                let tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: DispatcherMock())
                 var queued = false
                 DispatchQueue.global(qos: .background).async {
-                    expect{ trackerFixture.tracker.queue(event: EventFixture.event()) }.toNot(throwAssertion())
+                    expect{ tracker.queue(event: .fixture()) }.toNot(throwAssertion())
                     queued = true
                 }
                 expect(queued).toEventually(beTrue())
@@ -39,32 +40,36 @@ class TrackerSpec: QuickSpec {
         describe("dispatch") {
             context("with an idle tracker and queued events") {
                 it("should ask the queue for event") {
-                    var didAskForItems = false
-                    let trackerFixture = TrackerFixture.nonEmptyQueueWithFirstItemsCallback() { limit, completion in
-                        didAskForItems = true
-                    }
-                    trackerFixture.tracker.dispatch()
-                    expect(didAskForItems).to(beTrue())
+                    let queue = QueueMock()
+                    queue.eventCount = 1
+                    let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                    tracker.dispatch()
+                    expect(queue.firstCallCount == 1).to(beTrue())
                 }
                 it("should give dequeued events to the dispatcher") {
                     var eventsDispatched: [Event] = []
-                    let trackerFixture = TrackerFixture.nonEmptyQueueWithSendEventsCallback() { events, _,_ in
+                    let dispatcher = DispatcherMock()
+                    let tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: dispatcher)
+                    dispatcher.sendEventsHandler = { events, _,_ in
                         eventsDispatched = events
                     }
-                    trackerFixture.tracker.dispatch()
+                    tracker.track(.fixture())
+                    tracker.dispatch()
                     expect(eventsDispatched.count).toEventually(equal(1))
                 }
                 it("should set isDispatching to true") {
-                    let trackerFixture = TrackerFixture.nonEmptyQueueWithFirstItemsCallback() { limit, completion in }
-                    trackerFixture.tracker.dispatch()
-                    expect(trackerFixture.tracker.isDispatching).to(beTrue())
+                    let queue = QueueMock()
+                    queue.eventCount = 1
+                    let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                    tracker.dispatch()
+                    expect(tracker.isDispatching).to(beTrue())
                 }
                 it("should not throw an assertion if called from a background thread") {
-                    var trackerFixture = TrackerFixture(queue: MemoryQueue(), dispatcher: DispatcherStub())
-                    trackerFixture.queue.enqueue(event: EventFixture.event())
+                    let tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: DispatcherMock())
+                    tracker.queue(event: .fixture())
                     var dispatched = false
                     DispatchQueue.global(qos: .background).async {
-                        expect{ trackerFixture.tracker.dispatch() }.toNot(throwAssertion())
+                        expect{ tracker.dispatch() }.toNot(throwAssertion())
                         dispatched = true
                     }
                     expect(dispatched).toEventually(beTrue(), timeout: .seconds(20))
@@ -79,27 +84,25 @@ class TrackerSpec: QuickSpec {
                 }
             }
             it("should start a new DispatchTimer if dispatching failed") {
-                var numberOfDispatches = 0
-                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
-                    numberOfDispatches += 1
+                let dispatcher = DispatcherMock()
+                let tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: dispatcher)
+                dispatcher.sendEventsHandler = { _, _, failure in
                     failure(NSError(domain: "spec", code: 0))
                 }
-                trackerFixture.tracker.queue(event: EventFixture.event())
-                trackerFixture.tracker.dispatchInterval = 0.5
-                expect(numberOfDispatches).toEventually(equal(5), timeout: .seconds(10))
+                tracker.queue(event: .fixture())
+                tracker.dispatchInterval = 0.5
+                expect(dispatcher.sendEventsCallCount).toEventually(equal(5), timeout: .seconds(10))
             }
             it("should start a new DispatchTimer if dispatching succeeded") {
-                var numberOfDispatches = 0
-                let trackerFixture = TrackerFixture.withSendEventsCallback() { events, success, failure in
-                    numberOfDispatches += 1
+                let dispatcher = DispatcherMock()
+                let tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: dispatcher)
+                dispatcher.sendEventsHandler = { _, success, _ in
+                    tracker.queue(event: .fixture())
                     success()
                 }
-                trackerFixture.tracker.queue(event: EventFixture.event())
-                let autoTracker = AutoTracker(tracker: trackerFixture.tracker, trackingInterval: 0.01)
-                autoTracker.start()
-                trackerFixture.tracker.dispatchInterval = 0.01
-                expect(numberOfDispatches).toEventually(beGreaterThan(5))
-                autoTracker.stop()
+                tracker.queue(event: .fixture())
+                tracker.dispatchInterval = 0.01
+                expect(dispatcher.sendEventsCallCount).toEventually(beGreaterThan(5))
             }
             context("with an already dispatching tracker") {
                 it("should not ask the queue for events") {
@@ -110,12 +113,13 @@ class TrackerSpec: QuickSpec {
         describe("forcedVisitorID") {
             it("populates the cid value if set") {
                 var queuedEvent: Event? = nil
-                let trackerFixture = TrackerFixture.withQueueEventsCallback() { events, completion in
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
                     queuedEvent = events.first
-                    completion()
                 }
-                trackerFixture.tracker.forcedVisitorId = "0123456789abcdef"
-                trackerFixture.tracker.track(view: ["spec_view"])
+                tracker.forcedVisitorId = "0123456789abcdef"
+                tracker.track(view: ["spec_view"])
                 expect(queuedEvent?.visitor.forcedId).toEventually(equal("0123456789abcdef"))
             }
             it("it doesn't change the existing value if set to an invalid one") {
