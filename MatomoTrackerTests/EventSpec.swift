@@ -20,7 +20,7 @@ class EventSpec: QuickSpec {
 
         describe("event with custom dimentions") {
             func makeEvent(with customDimentsions: CustomDimension...) -> Event {
-                return Event(tracker: tracker, action: ["action"], dimensions: customDimentsions)
+                return Event(tracker: tracker, action: ["action"], dimensions: customDimentsions, isCustomAction: true)
             }
 
 

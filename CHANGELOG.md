@@ -4,10 +4,11 @@
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
 * **improvement** Removed unused `humanReadablePlatformName` `Device` property. [#358](https://github.com/matomo-org/matomo-sdk-ios/pull/358)
 * **improvement** Changed the cdt parameter to be accurate to milliseconds. [#360](https://github.com/matomo-org/matomo-sdk-ios/issues/360)
+* **improvement** Changed sending the `ca` parameter only for events that are no further specified. [#363](https://github.com/matomo-org/matomo-sdk-ios/issues/363)
 * **bugfix** Fixed macOS version recognition. [#361](https://github.com/matomo-org/matomo-sdk-ios/issues/361)
 
 ## 7.3.0
-* **improvement** Support new `ca` tracking parameter for tracking requests that aren't page views. [354](https://github.com/matomo-org/matomo-sdk-ios/issues/354)
+* **improvement** Support new `ca` tracking parameter for tracking requests that aren't page views. [#354](https://github.com/matomo-org/matomo-sdk-ios/issues/354)
 * **improvement** Completely overhauled the UserAgent generation for automatic device and OS discovery. [#353](https://github.com/matomo-org/matomo-sdk-ios/pull/353)
 
 ## 7.2.2
