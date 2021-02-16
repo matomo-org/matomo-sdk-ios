@@ -52,12 +52,13 @@ extension Device {
     private static func currentPlatform() -> String  {
         #if targetEnvironment(simulator)
         return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "x86_64"
-        #endif
+        #else
         var size = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)
         var machine = [CChar](repeating: 0,  count: Int(size))
         sysctlbyname("hw.machine", &machine, &size, nil, 0)
         return String(cString: machine)
+        #endif
     }
     
     private static func darwinVersionForCurrentDevice() -> String? {
