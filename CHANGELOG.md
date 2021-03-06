@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added the possibility to cache events
 * **improvement** Fixed build warnings
 
 ## 7.4.0
