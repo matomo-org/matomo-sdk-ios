@@ -100,6 +100,11 @@ final public class MatomoTracker: NSObject {
         self.matomoUserDefaults = MatomoUserDefaults(suiteName: "\(siteId)\(dispatcher.baseURL.absoluteString)")
         self.visitor = Visitor.current(in: matomoUserDefaults)
         self.session = Session.current(in: matomoUserDefaults)
+        
+        let offlineEvents = self.matomoUserDefaults.offlineEvents
+        self.matomoUserDefaults.offlineEvents = []
+        self.queue.enqueue(events: offlineEvents, completion: nil)
+        
         super.init()
         startNewSession()
         startDispatchTimer()
@@ -468,3 +473,15 @@ extension MatomoTracker {
     /// The version of the Matomo SDKs
     @objc public static let sdkVersion = "7.3"
 }
+
+extension MatomoTracker {
+    /// Call this function at the AppDelegate function - `applicationWillTerminate`,
+    /// to cache the events that have not yet been sent / dispatched to the server.
+    /// It also serves for app goes offline
+    public func cacheEvents() {
+        if self.queue.eventCount > 0 {
+            self.matomoUserDefaults.offlineEvents = self.queue.events
+        }
+    }
+}
+

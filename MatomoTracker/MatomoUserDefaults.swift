@@ -99,6 +99,19 @@ internal struct MatomoUserDefaults {
             userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.lastOrder)
         }
     }
+    
+    var offlineEvents: [Event] {
+        get {
+            guard let data = userDefaults.object(forKey: MatomoUserDefaults.Key.offlineEvents) as? [Data]
+                else { return [] }
+            return data.map { try? PropertyListDecoder().decode(Event.self, from: $0) }.compactMap { $0 }
+        }
+        set {
+            let data = newValue.map { try? PropertyListEncoder().encode($0) }.compactMap { $0 }
+            userDefaults.set(data, forKey: MatomoUserDefaults.Key.offlineEvents)
+            userDefaults.synchronize()
+        }
+    }
 }
 
 extension MatomoUserDefaults {
@@ -112,6 +125,13 @@ extension MatomoUserDefaults {
         forcedVisitorId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.forcedVisitorID)
         visitorUserId = UserDefaults.standard.string(forKey: MatomoUserDefaults.Key.visitorUserID)
         lastOrder = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.lastOrder) as? Date
+        offlineEvents = getOfflineEvents
+    }
+    
+    private var getOfflineEvents: [Event] {
+        guard let data = UserDefaults.standard.object(forKey: MatomoUserDefaults.Key.offlineEvents) as? [Data]
+            else { return [] }
+        return data.map { try? PropertyListDecoder().decode(Event.self, from: $0) }.compactMap { $0 }
     }
 }
 
@@ -129,5 +149,7 @@ extension MatomoUserDefaults {
         static let visitorUserID = "PiwikVisitorUserIDKey"
         static let optOut = "PiwikOptOutKey"
         static let lastOrder = "PiwikLastOrderDateKey"
+        
+        static let offlineEvents = "PiwikOfflineEvents"
     }
 }

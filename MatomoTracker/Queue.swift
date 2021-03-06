@@ -2,6 +2,8 @@ import Foundation
 
 public protocol Queue {
     
+    var events: [Event] { get }
+    
     var eventCount: Int { get }
     
     mutating func enqueue(events: [Event], completion: (()-> Void)?)
