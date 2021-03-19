@@ -10,14 +10,14 @@ import CoreGraphics
 /// # Key Mapping:
 /// Most properties represent a key defined at: [Tracking HTTP API](https://developer.piwik.org/api-reference/tracking-api). Keys that are not supported for now are:
 ///
-/// - idsite, rec, rand, apiv, res, cookie,
+/// - idsite, rec, apiv, res, cookie,
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 public struct Event: Codable {
     public let uuid: UUID
     let siteId: String
     let visitor: Visitor
     let session: Session
-    
+    let rand: UInt32
     /// This flag defines if this event is a so called cutom action.
     /// api-key: ca
     /// More info: https://github.com/matomo-org/matomo-sdk-ios/issues/354
@@ -102,6 +102,7 @@ extension Event {
     public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
         self.siteId = tracker.siteId
         self.uuid = UUID()
+        self.rand = arc4random_uniform(50000)
         self.visitor = tracker.visitor
         self.session = tracker.session
         self.date = Date()
