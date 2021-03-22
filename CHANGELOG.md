@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **improvement** Fixed build warnings
+* **improvement** Add rand to Event and send it with Tracker
 
 ## 7.4.0
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
