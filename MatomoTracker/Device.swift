@@ -103,6 +103,8 @@ extension Device {
             return "iOS"
             #elseif os(tvOS)
             return "tvOS"
+            #elseif os(watchOS)
+            return "watchOS"
             #endif
         }
         
@@ -123,4 +125,30 @@ extension Device {
             return bounds.size
         }
     }
+#elseif os(watchOS)
+
+import WatchKit
+
+extension Device {
+    internal static func operatingSystemForCurrentDevice() -> String {
+        return "watchOS"
+    }
+    
+    /// Returns the version number of the current OS as String i.e. "1.2" or "9.4"
+    internal static func osVersionForCurrentDevice() -> String  {
+        return WKInterfaceDevice.current().systemVersion
+    }
+    
+    // Returns the screen size in points
+    internal static func screenSizeForCurrentDevice() ->  CGSize {
+        WKInterfaceDevice.current().screenBounds.size
+    }
+    
+    // Returns the screen size in pixels
+    internal static func nativeScreenSizeForCurrentDevice() ->  CGSize {
+        let scaleFactor = WKInterfaceDevice.current().screenScale
+        return CGSize(width: Device.screenSizeForCurrentDevice().width * scaleFactor, height: Device.screenSizeForCurrentDevice().height * scaleFactor)
+    }
+}
+
 #endif
