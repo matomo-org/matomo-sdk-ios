@@ -3,6 +3,7 @@
 ## Unreleased
 * **improvement** Fixed build warnings
 * **improvement** Add rand to Event and send it with Tracker
+* **bugfix** Fixed issue where only `UserDefaults.standard` is used despite specified another instance. [#384](https://github.com/matomo-org/matomo-sdk-ios/pull/384)
 
 ## 7.4.0
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)
