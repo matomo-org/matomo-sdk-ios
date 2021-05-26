@@ -4,10 +4,6 @@ import Foundation
 public final class MemoryQueue: NSObject, Queue {
     private var items = [Event]()
     
-    public var events: [Event] {
-        return items
-    }
-    
     public var eventCount: Int {
         return items.count
     }
