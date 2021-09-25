@@ -2,6 +2,7 @@
 
 ## Unreleased
 * **improvement** Fixed build warnings
+* **improvement** Use the new XCode build system
 * **bugfix** Fixed issue where only `UserDefaults.standard` is used despite specified another instance. [#384](https://github.com/matomo-org/matomo-sdk-ios/pull/384)
 
 ## 7.4.0
