@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      
+jobs:
+  test:
+    runs-on: macOS-latest
+    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - name: bundle install
+      run: bundle install
+    - name: pod install
+      run: pod install || pod install --repo-update
+    - name: Install iOS 12.4 simulator
+      run: |
+        sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
+        sudo ln -s /Applications/Xcode_10.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 12.4.simruntime
+        xcrun simctl list runtimes
+        xcrun simctl create custom-test-device "iPhone 6" "com.apple.CoreSimulator.SimRuntime.iOS-12-4"
+        xcrun simctl list devices 12.4
+    - name: Install iOS 11.4 simulator
+      run: |
+        sudo xcversion simulators --install='iOS 11.4'
+        xcrun simctl list runtimes
+        xcrun simctl create custom-test-device "iPhone 6" "com.apple.CoreSimulator.SimRuntime.iOS-11-4"
+        xcrun simctl list devices 11.4
+    - name: test
+      run: rake test
