@@ -30,6 +30,7 @@
 		1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */; };
 		1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */; };
 		1F963075201B37DC007B2AE7 /* MemoryQueueFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F71E17B2C800458199 /* MemoryQueueFixtures.swift */; };
+		1FA77F1B254EDA9A0046EA7C /* BackgroundDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA77F1A254EDA9A0046EA7C /* BackgroundDispatcher.swift */; };
 		1FC2B429201F8C010061F5AD /* CustomVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2B428201F8C010061F5AD /* CustomVariable.swift */; };
 		1FCA6D451DBE0B2F0033F01C /* MatomoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */; };
 		1FCA6D4C1DBE0B2F0033F01C /* MatomoTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +77,7 @@
 		1F7C667E1F8C096F0066CC64 /* MainThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
 		1F80856E1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+HttpAcceptLanguage.swift"; sourceTree = "<group>"; };
 		1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiwikUserDefaultsSpec.swift; sourceTree = "<group>"; };
+		1FA77F1A254EDA9A0046EA7C /* BackgroundDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDispatcher.swift; sourceTree = "<group>"; };
 		1FC2B428201F8C010061F5AD /* CustomVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVariable.swift; sourceTree = "<group>"; };
 		1FCA6D3B1DBE0B2F0033F01C /* MatomoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatomoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCA6D3E1DBE0B2F0033F01C /* MatomoTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatomoTracker.h; sourceTree = "<group>"; };
@@ -156,6 +158,25 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		1FA77F13254ED2C70046EA7C /* Dispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				1F092C191E26B44500394B30 /* Dispatcher.swift */,
+				1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */,
+				1FA77F1A254EDA9A0046EA7C /* BackgroundDispatcher.swift */,
+			);
+			name = Dispatcher;
+			sourceTree = "<group>";
+		};
+		1FA77F14254ED2D80046EA7C /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				1F1949F11E17A91100458199 /* MemoryQueue.swift */,
+				1F3CA58B1E09A30600121FDC /* Queue.swift */,
+			);
+			name = Queue;
+			sourceTree = "<group>";
+		};
 		1FCA6D311DBE0B2F0033F01C = {
 			isa = PBXGroup;
 			children = (
@@ -181,14 +202,12 @@
 		1FCA6D3D1DBE0B2F0033F01C /* MatomoTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1FA77F14254ED2D80046EA7C /* Queue */,
+				1FA77F13254ED2C70046EA7C /* Dispatcher */,
 				1F80856D1E6B4B8000A61AAF /* Extensions */,
 				1F0A15CC1E6335CA00FEAE72 /* Event */,
-				1F092C191E26B44500394B30 /* Dispatcher.swift */,
-				1F1949F11E17A91100458199 /* MemoryQueue.swift */,
 				1F092C131E224C3E00394B30 /* MatomoUserDefaults.swift */,
-				1F3CA58B1E09A30600121FDC /* Queue.swift */,
 				1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */,
-				1F6F0CE01E61E4F3008170FC /* URLSessionDispatcher.swift */,
 				1F38EBF71EE568D10021FBF8 /* Logger.swift */,
 				1FDC917D1F1A65150046F506 /* Application.swift */,
 				1FDC917E1F1A65150046F506 /* Device.swift */,
@@ -409,6 +428,7 @@
 				5ACB1FAD21426FFB007C766B /* OrderItem.swift in Sources */,
 				1F7C667F1F8C096F0066CC64 /* MainThread.swift in Sources */,
 				1F80856F1E6B4B9800A61AAF /* Locale+HttpAcceptLanguage.swift in Sources */,
+				1FA77F1B254EDA9A0046EA7C /* BackgroundDispatcher.swift in Sources */,
 				1F0A15CE1E6335D800FEAE72 /* Visitor.swift in Sources */,
 				1FDC917F1F1A65150046F506 /* Application.swift in Sources */,
 				1F6F0CE11E61E4F3008170FC /* URLSessionDispatcher.swift in Sources */,

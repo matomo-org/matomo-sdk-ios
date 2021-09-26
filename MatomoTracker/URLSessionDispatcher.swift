@@ -7,7 +7,7 @@ public final class URLSessionDispatcher: Dispatcher {
     private let session: URLSession
     public let baseURL: URL
 
-    public private(set) var userAgent: String?
+    private var userAgent: String?
     
     /// Generate a URLSessionDispatcher instance
     ///
@@ -22,16 +22,16 @@ public final class URLSessionDispatcher: Dispatcher {
         self.userAgent = userAgent ?? UserAgent(application: Application.makeCurrentApplication(), device: Device.makeCurrentDevice()).stringValue
     }
     
-    public func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
+    public func send(events: [Event], completion: @escaping (Result<Void, Error>) -> Void) {
         let jsonBody: Data
         do {
             jsonBody = try serializer.jsonData(for: events)
         } catch  {
-            failure(error)
+            completion(.failure(error))
             return
         }
         let request = buildRequest(baseURL: baseURL, method: "POST", contentType: "application/json; charset=utf-8", body: jsonBody)
-        send(request: request, success: success, failure: failure)
+        send(request: request, completion: completion)
     }
     
     private func buildRequest(baseURL: URL, method: String, contentType: String? = nil, body: Data? = nil) -> URLRequest {
@@ -43,14 +43,14 @@ public final class URLSessionDispatcher: Dispatcher {
         return request
     }
     
-    private func send(request: URLRequest, success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
+    private func send(request: URLRequest, completion: @escaping (Result<Void, Error>) -> Void) {
         let task = session.dataTask(with: request) { data, response, error in
             // should we check the response?
             // let dataString = String(data: data!, encoding: String.Encoding.utf8)
             if let error = error {
-                failure(error)
+                completion(.failure(error))
             } else {
-                success()
+                completion(.success(()))
             }
         }
         task.resume()

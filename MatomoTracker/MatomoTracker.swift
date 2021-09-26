@@ -143,7 +143,7 @@ final public class MatomoTracker: NSObject {
     private(set) var isDispatching = false
     
     
-    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationDidEnterBackground` to transmit all data
+    /// Manually start the dispatching process. You might want to call this method in AppDelegates `applicationWillResignActive` to transmit all data
     /// whenever the user leaves the application.
     @objc public func dispatch() {
         guard !isDispatching else {
@@ -176,22 +176,23 @@ final public class MatomoTracker: NSObject {
                 self.logger.info("Finished dispatching events")
                 return
             }
-            self.dispatcher.send(events: events, success: { [weak self] in
+            self.dispatcher.send(events: events) { [weak self] result in
                 guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.queue.remove(events: events, completion: {
+                switch result {
+                case .success:DispatchQueue.main.async {
+                    self.queue.remove(events: events) {
                         self.logger.info("Dispatched batch of \(events.count) events.")
                         DispatchQueue.main.async {
                             self.dispatchBatch()
                         }
-                    })
+                    }
+                    }
+                case .failure(let error):
+                    self.isDispatching = false
+                    self.startDispatchTimer()
+                    self.logger.warning("Failed dispatching events with error \(error)")
                 }
-            }, failure: { [weak self] error in
-                guard let self = self else { return }
-                self.isDispatching = false
-                self.startDispatchTimer()
-                self.logger.warning("Failed dispatching events with error \(error)")
-            })
+            }
         }
     }
     
