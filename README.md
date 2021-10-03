@@ -4,15 +4,13 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 
 **Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen+is%3Aissue) to see what is left and can be improved.**
 
-[![Build Status](https://travis-ci.org/matomo-org/matomo-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/matomo-sdk-ios)
-
 ## Installation
 ### [CocoaPods](https://cocoapods.org)
 
 Use the following in your Podfile.
 
 ```
-pod 'MatomoTracker', '~> 7.4'
+pod 'MatomoTracker', '~> 7.5'
 ```
 
 Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
@@ -236,17 +234,6 @@ Whenever you track an event or a page view it is stored in memory first. In ever
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/develop/CONTRIBUTING.md) for details.
-
-## ToDo
-### These features aren't implemented yet
-
-- Tracking of more things
-  - Social Interactions
-  - Goals and Conversions
-  - Outlinks
-  - Downloads
-- Customizing the tracker
-  - use different dispatchers (Alamofire)
 
 ## License
 
