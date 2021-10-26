@@ -1,8 +1,13 @@
 # Changelog
 
 ## Unreleased
-* **feature** Added the possibility to cache events
+
+
+## 7.5.0
+* **improvement** Allow overriding any of the tracking parameters. [#360](https://github.com/matomo-org/matomo-sdk-ios/issues/360)
 * **improvement** Fixed build warnings
+* **improvement** Use the new XCode build system [#391](https://github.com/matomo-org/matomo-sdk-ios/pull/391)
+* **bugfix** Fixed issue where only `UserDefaults.standard` is used despite specified another instance. [#384](https://github.com/matomo-org/matomo-sdk-ios/pull/384)
 
 ## 7.4.0
 * **improvement** Escaped more symbols when sending events to the API. [#313](https://github.com/matomo-org/matomo-sdk-ios/issues/313)

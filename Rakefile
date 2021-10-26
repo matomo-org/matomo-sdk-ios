@@ -18,7 +18,7 @@ namespace :test do
 
   desc 'Build the MatomoTracker iOS demo'
   task ios_demo: :prepare do
-    run_build('ios', 'iphonesimulator')
+    run_build('ios', 'iphonesimulator', 'platform=iOS Simulator,name=iPhone 6,OS=12.4')
     build_failed('iOS') unless $?.success?
   end
 
@@ -30,7 +30,7 @@ namespace :test do
 
   desc 'Build the MatomoTracker tvOS demo'
   task tvos_demo: :prepare do
-    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV,OS=11.2')
+    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV,OS=14.3')
     build_failed('tvOS') unless $?.success?
   end
 end
@@ -73,11 +73,11 @@ task default: 'test'
 
 private
 
-def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
+def run_build(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=12.4')
   sh("xcodebuild -workspace MatomoTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Release clean build | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 
-def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1')
+def run_tests(scheme, sdk, destination = 'platform=iOS Simulator,name=iPhone 6,OS=12.4')
   sh("xcodebuild -workspace MatomoTracker.xcworkspace -scheme '#{scheme}' -sdk '#{sdk}' -destination '#{destination}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}") rescue nil
 end
 

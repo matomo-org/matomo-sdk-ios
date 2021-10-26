@@ -1,15 +1,21 @@
 import Foundation
 
 final class EventAPISerializer {
+    internal func queryItems(for event: Event) -> [String: String] {
+        event.queryItems.reduce(into: [String:String]()) {
+            $0[$1.name] = $1.value
+        }.compactMapValues {
+            $0.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed)
+        }
+    }
+    
     internal func jsonData(for events: [Event]) throws -> Data {
-        let eventsAsQueryItems = events.map({ $0.queryItems })
-        let serializedEvents = eventsAsQueryItems.map({ items in
-            items.compactMap({ item in
-                guard let value = item.value,
-                    let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed) else { return nil }
-                return "\(item.name)=\(encodedValue)"
-            }).joined(separator: "&")
-        })
+        let eventsAsQueryItems: [[String: String]] = events.map { self.queryItems(for: $0) }
+        let serializedEvents = eventsAsQueryItems.map { items in
+            items.map {
+                "\($0.key)=\($0.value)"
+            }.joined(separator: "&")
+        }
         let body = ["requests": serializedEvents.map({ "?\($0)" })]
         return try JSONSerialization.data(withJSONObject: body, options: [])
     }
@@ -94,14 +100,14 @@ fileprivate extension Event {
                 URLQueryItem(name: "ec_sh", value: orderShippingCost != nil ? "\(orderShippingCost!)" : nil),
                 URLQueryItem(name: "ec_dt", value: orderDiscount != nil ? "\(orderDiscount!)" : nil),
                 URLQueryItem(name: "_ects", value: lastOrderTimestamp),
-                ].filter { $0.value != nil }
+            ]
 
             let dimensionItems = dimensions.map { URLQueryItem(name: "dimension\($0.index)", value: $0.value) }
             let customItems = customTrackingParameters.map { return URLQueryItem(name: $0.key, value: $0.value) }
             let customVariableItems = customVariables.count > 0 ? [URLQueryItem(name: "_cvar", value: customVariableParameterValue())] : []
             let ecommerceOrderItemsAndFlag = orderItems.count > 0 ? [URLQueryItem(name: "ec_items", value: orderItemParameterValue()), URLQueryItem(name: "idgoal", value: "0")] : []
-
-            return items + dimensionItems + customItems + customVariableItems + ecommerceOrderItemsAndFlag
+            
+            return items + dimensionItems + ecommerceOrderItemsAndFlag + customVariableItems + customItems
         }
     }
 }
@@ -122,24 +128,15 @@ fileprivate extension DateFormatter {
         dateFormatter.dateFormat = "ss"
         return dateFormatter
     }()
-    static let iso8601DateFormatter: DateFormatterProtocol = {
-            let formatter = DateFormatter()
-            formatter.calendar = Calendar(identifier: .iso8601)
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.timeZone = TimeZone(identifier: "UTC")
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-            return formatter
+    static let iso8601DateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter
     }()
 }
-
-fileprivate protocol DateFormatterProtocol {
-    func string(from date: Date) -> String
-    func date(from string: String) -> Date?
-}
-
-@available(iOS 10, OSX 10.12, watchOS 3.0, tvOS 10.0, *)
-extension ISO8601DateFormatter: DateFormatterProtocol {}
-extension DateFormatter: DateFormatterProtocol {}
 
 fileprivate extension CharacterSet {
     

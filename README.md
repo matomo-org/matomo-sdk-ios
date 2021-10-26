@@ -4,26 +4,37 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 
 **Fancy help improve this SDK? Check [this list](https://github.com/matomo-org/matomo-sdk-ios/issues?utf8=✓&q=is%3Aopen+is%3Aissue) to see what is left and can be improved.**
 
-[![Build Status](https://travis-ci.org/matomo-org/matomo-sdk-ios.svg?branch=develop)](https://travis-ci.org/matomo-org/matomo-sdk-ios)
-
 ## Installation
-### [CocoaPods](https://cocoapods.org)
+
+The MatomoTracker can be installed via CocoaPods, Carthage and the Swift Package Manager. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
+
+<details><summary>CocoaPods</summary>
 
 Use the following in your Podfile.
-
 ```
-pod 'MatomoTracker', '~> 7.4'
+pod 'MatomoTracker', '~> 7.5'
 ```
+Then run `pod install`.
 
-Then run `pod install`. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
+</details>
 
-### Carthage
+<details><summary>Carthage</summary>
 
 [Carthage](https://github.com/Carthage/Carthage) is a non intrusive way to install MatomoTracker to your project. It makes no changes to your Xcode project and workspace. Add the following to your Cartfile:
 
 ```
 github "matomo-org/matomo-sdk-ios"
 ```
+
+</details>
+
+<details><summary>Swift Package Manager</summary>
+
+You can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:
+
+`.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.5"),`
+
+</details>
 
 ## Usage
 ### Matomo Instance
@@ -236,17 +247,6 @@ Whenever you track an event or a page view it is stored in memory first. In ever
 
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/matomo-org/matomo-sdk-ios/blob/develop/CONTRIBUTING.md) for details.
-
-## ToDo
-### These features aren't implemented yet
-
-- Tracking of more things
-  - Social Interactions
-  - Goals and Conversions
-  - Outlinks
-  - Downloads
-- Customizing the tracker
-  - use different dispatchers (Alamofire)
 
 ## License
 

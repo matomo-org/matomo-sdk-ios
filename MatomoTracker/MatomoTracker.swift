@@ -265,7 +265,7 @@ extension MatomoTracker {
     ///
     /// Use this function to manually start a new Session. A new Session will be automatically created only on app start.
     /// You can use the AppDelegates `applicationWillEnterForeground` to start a new visit whenever the app enters foreground.
-    public func startNewSession() {
+    @objc public func startNewSession() {
         matomoUserDefaults.previousVisit = matomoUserDefaults.currentVisit
         matomoUserDefaults.currentVisit = Date()
         matomoUserDefaults.totalNumberOfVisits += 1
