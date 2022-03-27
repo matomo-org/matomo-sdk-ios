@@ -42,7 +42,6 @@
 		1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */; };
 		1F9C69F31F89254200728626 /* CustomTrackingParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */; };
 		1FA444982047A16800F7E37E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA444972047A16800F7E37E /* SearchViewController.swift */; };
-		1FC2A0E52195A10A0039EE0C /* UserDefaultsQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2A0E42195A10A0039EE0C /* UserDefaultsQueue.swift */; };
 		1FC89ADD1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */; };
 		1FDC91771F1A648C0046F506 /* CustomDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */; };
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
@@ -84,7 +83,6 @@
 		1F72DA721E62E78E00EFF764 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		1F9C69F21F89254200728626 /* CustomTrackingParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTrackingParametersViewController.swift; sourceTree = "<group>"; };
 		1FA444972047A16800F7E37E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		1FC2A0E42195A10A0039EE0C /* UserDefaultsQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsQueue.swift; sourceTree = "<group>"; };
 		1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
 		1FDC91711F1A648C0046F506 /* CustomDimensionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDimensionsViewController.swift; sourceTree = "<group>"; };
 		1FDC91731F1A648C0046F506 /* ObjectiveCCompatibilityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCCompatibilityChecker.h; sourceTree = "<group>"; };
@@ -110,7 +108,7 @@
 		CD5F3BED18678C9000D04E03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CD7ABB131B0FD0D2002312DA /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		CD7ABB141B0FD0D2002312DA /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
-		CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatomoTrackerExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD93EC8B17E76E290062BE20 /* MatomoTrackerExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MatomoTrackerExampleApp.app; path = iOSExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD93EC9117E76E290062BE20 /* PiwikTrackeriOSDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiwikTrackeriOSDemo-Info.plist"; sourceTree = "<group>"; };
 		CD93EC9317E76E290062BE20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD93EC9517E76E290062BE20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */,
 				1F72DA6D1E61ECAF00EFF764 /* ios-Bridging-Header.h */,
 				1FC89ADC1FE2A2A5002EEB27 /* MatomoTracker+SharedInstance.swift */,
-				1FC2A0E42195A10A0039EE0C /* UserDefaultsQueue.swift */,
 			);
 			path = "iOS Example";
 			sourceTree = "<group>";
@@ -406,7 +403,6 @@
 				1F7001BF216B6F47007A9355 /* GoalsViewController.swift in Sources */,
 				24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */,
 				EB82ABD820DA125100083494 /* ContentViewController.swift in Sources */,
-				1FC2A0E52195A10A0039EE0C /* UserDefaultsQueue.swift in Sources */,
 				1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */,
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,
 				1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */,
