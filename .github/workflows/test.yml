@@ -7,7 +7,7 @@ on:
       
 jobs:
   test:
-    runs-on: macOS-latest
+    runs-on: macos-10.15
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
     - uses: actions/checkout@v2
