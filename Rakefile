@@ -30,7 +30,7 @@ namespace :test do
 
   desc 'Build the MatomoTracker tvOS demo'
   task tvos_demo: :prepare do
-    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV,OS=14.3')
+    run_build('tvos', 'appletvsimulator', 'platform=tvOS Simulator,name=Apple TV,OS=15.2')
     build_failed('tvOS') unless $?.success?
   end
 end

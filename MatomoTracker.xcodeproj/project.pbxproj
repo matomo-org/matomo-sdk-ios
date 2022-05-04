@@ -16,6 +16,8 @@
 		1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */; };
 		1F38EBF81EE568D10021FBF8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBF71EE568D10021FBF8 /* Logger.swift */; };
 		1F3CA58C1E09A30600121FDC /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3CA58B1E09A30600121FDC /* Queue.swift */; };
+		1F500A602725A4F7004B128B /* UserDefaultsQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F500A5F2725A4F7004B128B /* UserDefaultsQueue.swift */; };
+		1F500A6227272301004B128B /* UserDefaultsQueueSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F500A6127272301004B128B /* UserDefaultsQueueSpec.swift */; };
 		1F5927552178716E001478DC /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 1F5927542178716E001478DC /* CHANGELOG.md */; };
 		1F6B2F032529CE8A00D2A591 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B2F012529CC3400D2A591 /* UserAgent.swift */; };
 		1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */; };
@@ -63,6 +65,8 @@
 		1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryQueueSpec.swift; sourceTree = "<group>"; };
 		1F38EBF71EE568D10021FBF8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F3CA58B1E09A30600121FDC /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1F500A5F2725A4F7004B128B /* UserDefaultsQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsQueue.swift; sourceTree = "<group>"; };
+		1F500A6127272301004B128B /* UserDefaultsQueueSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsQueueSpec.swift; sourceTree = "<group>"; };
 		1F5927542178716E001478DC /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		1F6B2F012529CC3400D2A591 /* UserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatomoTracker.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				1F0A15CC1E6335CA00FEAE72 /* Event */,
 				1F092C191E26B44500394B30 /* Dispatcher.swift */,
 				1F1949F11E17A91100458199 /* MemoryQueue.swift */,
+				1F500A5F2725A4F7004B128B /* UserDefaultsQueue.swift */,
 				1F092C131E224C3E00394B30 /* MatomoUserDefaults.swift */,
 				1F3CA58B1E09A30600121FDC /* Queue.swift */,
 				1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */,
@@ -210,6 +215,7 @@
 				1F63E1D5216B503D000C4C00 /* Stubs */,
 				1F1949F51E17B2A400458199 /* Fixtures */,
 				1F1949F31E17B06600458199 /* MemoryQueueSpec.swift */,
+				1F500A6127272301004B128B /* UserDefaultsQueueSpec.swift */,
 				1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */,
 				1F963073201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift */,
 				1F8DCCDB25A1C7C700C98793 /* EventAPISerializerSpec.swift */,
@@ -398,6 +404,7 @@
 			files = (
 				1F092C161E225E0200394B30 /* Event.swift in Sources */,
 				1F092C141E224C3E00394B30 /* MatomoUserDefaults.swift in Sources */,
+				1F500A602725A4F7004B128B /* UserDefaultsQueue.swift in Sources */,
 				1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */,
 				1F6B2F032529CE8A00D2A591 /* UserAgent.swift in Sources */,
 				1F1949F21E17A91100458199 /* MemoryQueue.swift in Sources */,
@@ -430,6 +437,7 @@
 				1F8DCCD825A1BA4900C98793 /* Session+Fixture.swift in Sources */,
 				1F8DCCD625A1BA2C00C98793 /* Visitor+Fixture.swift in Sources */,
 				1F8DCCD425A1B9E100C98793 /* Event+Fixture.swift in Sources */,
+				1F500A6227272301004B128B /* UserDefaultsQueueSpec.swift in Sources */,
 				1F1949F41E17B06600458199 /* MemoryQueueSpec.swift in Sources */,
 				1F6F0CDF1E61E377008170FC /* TrackerSpec.swift in Sources */,
 			);

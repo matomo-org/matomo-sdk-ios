@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added a persistent event queue storing events in the UserDefaults. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137) (by @bobunmeng and @brototyp)
 
 ## 7.5.1
 * **bugfix** Fixed an issue where the latest version couldn't be installed via SPM. [#402](https://github.com/matomo-org/matomo-sdk-ios/issues/402)

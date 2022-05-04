@@ -35,5 +35,5 @@ target 'MatomoTrackerTests' do
   inherit! :search_paths
   
   pod 'Quick', '~> 3.0'
-  pod 'Nimble', '~> 9.0'
+  pod 'Nimble', '~> 9.2'
 end
