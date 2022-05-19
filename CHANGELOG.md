@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 7.5.1
+* **bugfix** Fixed an issue where the latest version couldn't be installed via SPM. [#402](https://github.com/matomo-org/matomo-sdk-ios/issues/402)
 
 ## 7.5.0
 * **improvement** Allow overriding any of the tracking parameters. [#360](https://github.com/matomo-org/matomo-sdk-ios/issues/360)
