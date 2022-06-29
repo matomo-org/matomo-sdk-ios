@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **bugfix** Fixed an issue where the revenue of a goal wasn't sent to the server anymore. [#414](https://github.com/matomo-org/matomo-sdk-ios/issues/414)
 
 ## 7.5.1
 * **bugfix** Fixed an issue where the latest version couldn't be installed via SPM. [#402](https://github.com/matomo-org/matomo-sdk-ios/issues/402)
