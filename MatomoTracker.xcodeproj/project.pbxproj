@@ -256,9 +256,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FCA6D4F1DBE0B2F0033F01C /* Build configuration list for PBXNativeTarget "MatomoTracker" */;
 			buildPhases = (
+				1FCA6D381DBE0B2F0033F01C /* Headers */,
 				1FCA6D361DBE0B2F0033F01C /* Sources */,
 				1FCA6D371DBE0B2F0033F01C /* Frameworks */,
-				1FCA6D381DBE0B2F0033F01C /* Headers */,
 				1FCA6D391DBE0B2F0033F01C /* Resources */,
 			);
 			buildRules = (
