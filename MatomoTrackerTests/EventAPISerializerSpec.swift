@@ -25,6 +25,11 @@ class EventAPISerializerSpec: QuickSpec {
                 let encodedEvent = EventAPISerializer().queryItems(for: event)
                 expect(encodedEvent["revenue"]) == "5.0"
             }
+            it("keeps the order revenue parameter") {
+                let event = Event.fixture(orderRevenue: 10.0)
+                let encodedEvent = EventAPISerializer().queryItems(for: event)
+                expect(encodedEvent["revenue"]) == "10.0"
+            }
         }
     }
 }
