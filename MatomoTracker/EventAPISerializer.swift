@@ -91,10 +91,10 @@ fileprivate extension Event {
                 URLQueryItem(name: "c_i", value: contentInteraction),
                 
                 URLQueryItem(name: "idgoal", value: goalId != nil ? "\(goalId!)" : nil),
-                URLQueryItem(name: "revenue", value: revenue != nil ? "\(revenue!)" : nil),
+                // The revenue parameter can be set via the revenue of a goal or the revenue of an order
+                URLQueryItem(name: "revenue", value: (revenue ?? orderRevenue) != nil ? "\((revenue ?? orderRevenue)!)" : nil),
 
                 URLQueryItem(name: "ec_id", value: orderId),
-                URLQueryItem(name: "revenue", value: orderRevenue != nil ? "\(orderRevenue!)" : nil),
                 URLQueryItem(name: "ec_st", value: orderSubTotal != nil ? "\(orderSubTotal!)" : nil),
                 URLQueryItem(name: "ec_tx", value: orderTax != nil ? "\(orderTax!)" : nil),
                 URLQueryItem(name: "ec_sh", value: orderShippingCost != nil ? "\(orderShippingCost!)" : nil),
