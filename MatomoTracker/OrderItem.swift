@@ -1,6 +1,6 @@
 import Foundation
 
-/// Order item as described in: https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
+/// Order item as described in: https://matomo.org/faq/reports/advanced-manually-tracking-ecommerce-actions-in-matomo/#tracking-orders-to-matomo-required
 public struct OrderItem: Codable {
     
     /// The SKU of the order item

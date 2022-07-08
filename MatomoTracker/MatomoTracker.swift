@@ -323,7 +323,7 @@ extension MatomoTracker {
         queue(event: event)
     }
 
-    /// Tracks an order as described here: https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
+    /// Tracks an order as described here: https://matomo.org/faq/reports/advanced-manually-tracking-ecommerce-actions-in-matomo/#tracking-orders-to-matomo-required
     ///
     /// - Parameters:
     ///   - id: The unique ID of the order
