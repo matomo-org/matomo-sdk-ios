@@ -99,6 +99,18 @@ internal struct MatomoUserDefaults {
             userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.lastOrder)
         }
     }
+    
+    func reset() {
+        userDefaults.removeObject(forKey: Key.totalNumberOfVisits)
+        userDefaults.removeObject(forKey: Key.currentVisitTimestamp)
+        userDefaults.removeObject(forKey: Key.previousVistsTimestamp)
+        userDefaults.removeObject(forKey: Key.firstVistsTimestamp)
+        userDefaults.removeObject(forKey: Key.clientID)
+        userDefaults.removeObject(forKey: Key.forcedVisitorID)
+        userDefaults.removeObject(forKey: Key.visitorUserID)
+        userDefaults.removeObject(forKey: Key.optOut)
+        userDefaults.removeObject(forKey: Key.lastOrder)
+    }
 }
 
 extension MatomoUserDefaults {
