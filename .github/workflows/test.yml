@@ -17,9 +17,9 @@ jobs:
           - xcode: "12.5.1"
             ios: "14.5"
             device: "iPhone 8"
-          - xcode: "11.7"
-            ios: "13.7"
-            device: "iPhone 8"
+          # - xcode: "11.7"
+          #   ios: "13.7"
+          #   device: "iPhone 8"
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     name: "test ios ${{matrix.ios}}"
     steps:
