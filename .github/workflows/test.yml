@@ -6,31 +6,31 @@ on:
       - develop
       
 jobs:
-  # tests-ios:
-  #   runs-on: macos-11
-  #   strategy:
-  #     matrix:
-  #       include: # selection of https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#installed-sdks
-  #         - xcode: "13.2.1"
-  #           ios: "15.2"
-  #           device: "iPhone 8"
-  #         - xcode: "12.5.1"
-  #           ios: "14.5"
-  #           device: "iPhone 8"
-  #   if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
-  #   name: "test ios ${{matrix.ios}}"
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: ruby/setup-ruby@v1
-  #     with:
-  #       ruby-version: '3.0'
-  #       bundler-cache: true
-  #   - name: pod install
-  #     run: pod install || pod install --repo-update
-  #   - name: "Select Xcode ${{matrix.xcode}}"
-  #     run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
-  #   - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
-  #    run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
+  tests-ios:
+    runs-on: macos-11
+    strategy:
+      matrix:
+        include: # selection of https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#installed-sdks
+          - xcode: "13.2.1"
+            ios: "15.2"
+            device: "iPhone 8"
+          - xcode: "12.5.1"
+            ios: "14.5"
+            device: "iPhone 8"
+    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    name: "test ios ${{matrix.ios}}"
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - name: pod install
+      run: pod install || pod install --repo-update
+    - name: "Select Xcode ${{matrix.xcode}}"
+      run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
+    - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
+      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
   tests-demo-builds:
     runs-on: macos-11
     strategy:
@@ -48,6 +48,13 @@ jobs:
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     name: "test demo build ${{matrix.scheme}}"
     steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - name: pod install
+      run: pod install || pod install --repo-update
     - name: "Select Xcode 13.2.1"
       run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
     - name: Build Demo for ${{matrix.scheme}}
