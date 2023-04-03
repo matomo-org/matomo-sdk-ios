@@ -38,7 +38,7 @@ jobs:
         include:
           - scheme: "ios"
             sdk: "iphonesimulator"
-            destination: "platform=iOS Simulator,name=iPhone 6,OS=12.4"
+            destination: "platform=iOS Simulator,name=iPhone 8,OS=15.2"
           - scheme: "macos"
             sdk: "macosx"
             destination: "platform=macOS,arch=x86_64"
