@@ -44,7 +44,7 @@ jobs:
             destination: "platform=macOS,arch=x86_64"
           - scheme: "tvos"
             sdk: "appletvsimulator"
-            destination: "platform=tvOS Simulator,name=Apple TV,OS=14.3"
+            destination: "platform=tvOS Simulator,name=Apple TV,OS=15.2"
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     name: "test demo build ${{matrix.scheme}}"
     steps:
