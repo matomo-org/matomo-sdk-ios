@@ -8,13 +8,20 @@ on:
 jobs:
   test:
     runs-on: macos-11
+    strategy:
+      matrix:
+        include:
+          - xcode: "11.7"
+            ios: "13.7"
+            device: "iPhone 8"
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    name: "test ios ${{matrix.ios}}"
     steps:
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
-    - uses: actions/cache@v1
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
@@ -24,11 +31,7 @@ jobs:
       run: bundle install
     - name: pod install
       run: pod install || pod install --repo-update
-    - name: Install iOS 13.7 simulator
-      run: |
-        sudo xcversion simulators --install='iOS 13.7'
-        xcrun simctl list runtimes
-        xcrun simctl create custom-test-device "iPhone 6" "com.apple.CoreSimulator.SimRuntime.iOS-13-7"
-        xcrun simctl list devices 13.7
-    - name: test
-      run: rake test
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
+    - name: Run unit tests
+      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}
