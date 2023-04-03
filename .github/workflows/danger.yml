@@ -15,12 +15,6 @@ jobs:
       with:
         ruby-version: '3.0'
         bundler-cache: true
-    - uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
-        restore-keys: |
-          ${{ runner.os }}-gems-
     - uses: MeilCli/danger-action@v5
       with:
         plugins_file: 'Gemfile'
