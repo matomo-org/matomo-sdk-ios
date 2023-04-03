@@ -30,7 +30,7 @@ jobs:
   #   - name: "Select Xcode ${{matrix.xcode}}"
   #     run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
   #   - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
-      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
+  #    run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
   tests-demo-builds:
     runs-on: macos-11
     strategy:
