@@ -11,9 +11,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - xcode: "11.7"
-            ios: "13.7"
-            device: "iPhone 8"
           - xcode: "14.2"
             ios: "16.2"
             device: "iPhone 8"
@@ -34,7 +31,7 @@ jobs:
       run: bundle install
     - name: pod install
       run: pod install || pod install --repo-update
-    - name: Select Xcode
+    - name: "Select Xcode ${{matrix.xcode}}"
       run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
-    - name: Run unit tests
+    - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
       run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test | xcpretty -c ; exit ${PIPESTATUS[0]}
