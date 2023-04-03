@@ -58,5 +58,5 @@ jobs:
     - name: "Select Xcode 13.2.1"
       run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
     - name: Build Demo for ${{matrix.scheme}}
-      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{scheme}}' -sdk '${{sdk}}' -destination '${{destination}}' -configuration Release clean build
+      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{matrix.scheme}}' -sdk '${{matrix.sdk}}' -destination '${{matrix.destination}}' -configuration Release clean build
 
