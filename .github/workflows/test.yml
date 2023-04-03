@@ -7,13 +7,13 @@ on:
       
 jobs:
   test:
-    runs-on: macos-10.15
+    runs-on: macos-11
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.6'
+        ruby-version: '3.0'
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
