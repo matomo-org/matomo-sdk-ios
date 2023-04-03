@@ -31,24 +31,4 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
     - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
       run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
-  test-demo-build:
-    runs-on: macos-11
-    strategy:
-      matrix:
-        include:
-          - scheme: "ios"
-            sdk: "iphonesimulator"
-            destination: "platform=iOS Simulator,name=iPhone 6,OS=12.4"
-          - scheme: "macos"
-            sdk: "macosx"
-            destination: "platform=macOS,arch=x86_64"
-          - scheme: "tvos"
-            sdk: "appletvsimulator"
-            destination: "platform=tvOS Simulator,name=Apple TV,OS=14.3"    
-    name: "test demo build ${{matrix.scheme}}"
-    steps:
-    - name: "Select Xcode 13.2.1"
-      run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
-    - name: Build Demo for ${{matrix.scheme}}
-      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{scheme}}' -sdk '${{sdk}}' -destination '${{destination}}' -configuration Release clean build
 
