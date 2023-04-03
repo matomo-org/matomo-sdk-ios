@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - xcode: "14.2"
-            ios: "16.2"
+          - xcode: "14.1"
+            ios: "16.1"
             device: "iPhone 8"
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     name: "test ios ${{matrix.ios}}"
