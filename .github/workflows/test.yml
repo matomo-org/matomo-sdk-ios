@@ -6,36 +6,68 @@ on:
       - develop
       
 jobs:
-  test:
-    runs-on: macos-10.15
+  tests-ios:
+    runs-on: macos-11
+    strategy:
+      matrix:
+        include: # selection of https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#installed-sdks
+          - xcode: "13.2.1"
+            ios: "15.2"
+            device: "iPhone 8"
+          - xcode: "12.5.1"
+            ios: "14.5"
+            device: "iPhone 8"
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    name: "test ios ${{matrix.ios}}"
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.6'
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: bundle install
-      run: bundle install
+        ruby-version: '3.0'
+        bundler-cache: true
     - name: pod install
       run: pod install || pod install --repo-update
-    - name: Install iOS 12.4 simulator
-      run: |
-        sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
-        sudo ln -s /Applications/Xcode_10.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 12.4.simruntime
-        xcrun simctl list runtimes
-        xcrun simctl create custom-test-device "iPhone 6" "com.apple.CoreSimulator.SimRuntime.iOS-12-4"
-        xcrun simctl list devices 12.4
-    - name: Install iOS 11.4 simulator
-      run: |
-        sudo xcversion simulators --install='iOS 11.4'
-        xcrun simctl list runtimes
-        xcrun simctl create custom-test-device "iPhone 6" "com.apple.CoreSimulator.SimRuntime.iOS-11-4"
-        xcrun simctl list devices 11.4
-    - name: test
-      run: rake test
+    - name: "Select Xcode ${{matrix.xcode}}"
+      run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
+    - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
+      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
+  tests-demo-builds:
+    runs-on: macos-11
+    strategy:
+      matrix:
+        include:
+          - scheme: "ios"
+            sdk: "iphonesimulator"
+            destination: "platform=iOS Simulator,name=iPhone 8,OS=15.2"
+          - scheme: "macos"
+            sdk: "macosx"
+            destination: "platform=macOS,arch=x86_64"
+          - scheme: "tvos"
+            sdk: "appletvsimulator"
+            destination: "platform=tvOS Simulator,name=Apple TV,OS=15.2"
+    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
+    name: "test demo build ${{matrix.scheme}}"
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - name: pod install
+      run: pod install || pod install --repo-update
+    - name: "Select Xcode 13.2.1"
+      run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
+    - name: Build Demo for ${{matrix.scheme}}
+      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{matrix.scheme}}' -sdk '${{matrix.sdk}}' -destination '${{matrix.destination}}' -configuration Release clean build
+  tests-package-managers:
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v3
+    - name: "Select Xcode 11.7"
+      run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
+    # Carthage doesn't work well with Matomo anymore
+    # https://github.com/Carthage/Carthage/issues/3146
+    # - name: "Build Carthage"
+    #   run: carthage build --no-skip-current
+    - name: "Test SPM"
+      run: swift build
