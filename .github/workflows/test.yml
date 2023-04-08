@@ -60,11 +60,11 @@ jobs:
     - name: Build Demo for ${{matrix.scheme}}
       run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{matrix.scheme}}' -sdk '${{matrix.sdk}}' -destination '${{matrix.destination}}' -configuration Release clean build
   tests-package-managers:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
     - uses: actions/checkout@v3
-    - name: "Select Xcode 13.2.1"
-      run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
+    # - name: "Select Xcode 13.2.1"
+    #   run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
     - name: "Build Carthage"
       run: carthage build --no-skip-current
     - name: "Test SPM"
