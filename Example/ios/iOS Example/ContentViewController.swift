@@ -18,7 +18,7 @@ class ContentTrackerViewController: UIViewController {
     
     @IBAction func adInteraction(_ sender: Any) {
         MatomoTracker.shared.trackContentInteraction(name: "Content name", interaction: "click", piece: "button", target: "http://dn.se")
-        UIApplication.shared.openURL(URL(string: "http://dn.se")!)
+        UIApplication.shared.open(URL(string: "http://dn.se")!)
     }
 }
 

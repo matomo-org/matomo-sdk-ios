@@ -2,21 +2,17 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Example/ios/ios.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Example/macos/macos.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Example/tvos/tvos.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MatomoTracker.xcodeproj">
    </FileRef>
-   <Group
-      location = "container:"
-      name = "Examples">
-      <FileRef
-         location = "group:Example/ios/ios.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Example/macos/macos.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Example/tvos/tvos.xcodeproj">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
