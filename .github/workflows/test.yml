@@ -65,7 +65,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: "Select Xcode 11.7"
       run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app && /usr/bin/xcodebuild -version
-    - name: "Build Carthage"
-      run: carthage build --no-skip-current
+    # Carthage doesn't work well with Matomo anymore
+    # https://github.com/Carthage/Carthage/issues/3146
+    # - name: "Build Carthage"
+    #   run: carthage build --no-skip-current
     - name: "Test SPM"
       run: swift build
