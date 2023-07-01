@@ -472,11 +472,15 @@ extension MatomoTracker {
 extension MatomoTracker {
     /// Resets all session, visitor and campaign information.
     ///
-    /// Dispatches events before restting itself.
+    /// This function should only be called from the main thread
     /// After calling this method this instance behaves like the app has been freshly installed.
     public func reset() {
-        dispatch()
-        
+        guard Thread.isMainThread else {
+            DispatchQueue.main.sync {
+                self.reset()
+            }
+            return
+        }
         matomoUserDefaults.reset()
         
         visitor = Visitor.current(in: matomoUserDefaults)
