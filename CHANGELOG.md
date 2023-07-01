@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added functionality to reset a Matomo instance. [#434](https://github.com/matomo-org/matomo-sdk-ios/pull/434)
 * **improvement** Increased deployment targets to iOS 11 and macOS 10.13. [#431](https://github.com/matomo-org/matomo-sdk-ios/pull/431) 
 
 ## 7.5.2
