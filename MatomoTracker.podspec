@@ -6,9 +6,9 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   spec.author       = { "Mattias Levin" => "mattias.levin@gmail.com", "Cornelius Horstmann" => "site-github@brototyp.de" }
   spec.source       = { :git => "https://github.com/matomo-org/matomo-sdk-ios.git", :tag => "v#{spec.version}" }
-  spec.ios.deployment_target = '10.0'
+  spec.ios.deployment_target = '11.0'
   spec.tvos.deployment_target = '10.0'
-  spec.osx.deployment_target = '10.12'
+  spec.osx.deployment_target = '10.13'
   spec.requires_arc = true
   spec.default_subspecs = 'Core'
   spec.swift_version = '5.0'

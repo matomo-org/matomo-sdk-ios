@@ -7,7 +7,7 @@ abstract_target :example do
   workspace 'MatomoTracker'
 
   target :iOSExampleApp do
-    platform :ios, '10.0'
+    platform :ios, '11.0'
     project 'Example/ios/ios'
     pod 'MatomoTracker', path: './'
   end
@@ -28,7 +28,7 @@ end
 
 target 'MatomoTrackerTests' do
   use_frameworks!
-  platform :ios, '9.0'
+  platform :ios, '11.0'
   inhibit_all_warnings!
   project 'MatomoTracker'
   workspace 'MatomoTracker'
