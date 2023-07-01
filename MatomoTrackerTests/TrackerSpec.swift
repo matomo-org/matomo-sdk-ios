@@ -3,8 +3,8 @@ import Quick
 import Nimble
 
 class TrackerSpec: QuickSpec {
-    override func spec() {
-        Nimble.AsyncDefaults.timeout = .seconds(5)
+    override class func spec() {
+        Nimble.PollingDefaults.timeout = .seconds(5)
         describe("init") {
             it("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`") {
                 let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
