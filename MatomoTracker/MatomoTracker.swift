@@ -468,3 +468,28 @@ extension MatomoTracker {
     /// The version of the Matomo SDKs
     @objc public static let sdkVersion = "7.3"
 }
+
+extension MatomoTracker {
+    /// Resets all session, visitor and campaign information.
+    ///
+    /// This function should only be called from the main thread
+    /// After calling this method this instance behaves like the app has been freshly installed.
+    public func reset() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.sync {
+                self.reset()
+            }
+            return
+        }
+        matomoUserDefaults.reset()
+        
+        visitor = Visitor.current(in: matomoUserDefaults)
+        session = Session.current(in: matomoUserDefaults)
+        dimensions = []
+        customVariables = []
+        campaignName = nil
+        campaignKeyword = nil
+        
+        startNewSession()
+    }
+}

@@ -3,8 +3,8 @@ import Quick
 import Nimble
 
 class TrackerSpec: QuickSpec {
-    override func spec() {
-        Nimble.AsyncDefaults.timeout = .seconds(5)
+    override class func spec() {
+        Nimble.PollingDefaults.timeout = .seconds(5)
         describe("init") {
             it("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`") {
                 let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
@@ -133,6 +133,81 @@ class TrackerSpec: QuickSpec {
                 tracker.forcedVisitorId = "0123456789abcdef"
                 let tracker2 = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
                 expect(tracker2.forcedVisitorId) == "0123456789abcdef"
+            }
+        }
+        describe("reset") {
+            it("generates new visitor") {
+                var queuedEvents = [Event]()
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
+                    queuedEvents += events
+                }
+                
+                tracker.track(view: ["spec_view"])
+                tracker.reset()
+                tracker.track(view: ["spec_view"])
+                
+                expect(queuedEvents.count) == 2
+                expect(queuedEvents.first?.visitor.id).toNot(equal(queuedEvents.last?.visitor.id))
+            }
+            it("clears session information") {
+                var queuedEvent: Event? = nil
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
+                    queuedEvent = events.first
+                }
+                
+                tracker.startNewSession()
+                tracker.reset()
+                tracker.track(view: ["spec_view"])
+                
+                expect(queuedEvent?.session.sessionsCount) == 1
+            }
+            it("clears dimensions") {
+                var queuedEvent: Event? = nil
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
+                    queuedEvent = events.first
+                }
+                
+                tracker.set(dimension: CustomDimension(index: 0, value: "fake-dimension"))
+                tracker.reset()
+                tracker.track(view: ["spec_view"])
+                
+                expect(queuedEvent?.dimensions).to(beEmpty())
+            }
+            it("removes all custom variables") {
+                var queuedEvent: Event? = nil
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
+                    queuedEvent = events.first
+                }
+                
+                tracker.set(customVariable: CustomVariable(index: 0, name: "fake-variable", value: "fake-value"))
+                tracker.reset()
+                tracker.track(view: ["spec_view"])
+                
+                expect(queuedEvent?.customVariables).to(beEmpty())
+            }
+            it("clear campaigns") {
+                var queuedEvent: Event? = nil
+                let queue = QueueMock()
+                let tracker = MatomoTracker.fixture(queue: queue, dispatcher: DispatcherMock())
+                queue.enqueueEventsHandler = { events, _ in
+                    queuedEvent = events.first
+                }
+                
+                tracker.trackCampaign(name: "fake-campaign", keyword: "fake-keyword")
+                tracker.reset()
+                tracker.track(view: ["spec_view"])
+                
+                expect(queuedEvent).toNot(beNil())
+                expect(queuedEvent?.campaignName).to(beNil())
+                expect(queuedEvent?.campaignKeyword).to(beNil())
             }
         }
     }
