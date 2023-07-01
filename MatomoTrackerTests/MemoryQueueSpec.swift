@@ -3,12 +3,12 @@ import Quick
 import Nimble
 
 class MemoryQueueSpec: QuickSpec {
-    override func setUp() {
-        Nimble.AsyncDefaults.timeout = .seconds(10)
-        Nimble.AsyncDefaults.pollInterval = .milliseconds(100)
+    override class func setUp() {
+        Nimble.PollingDefaults.timeout = .seconds(10)
+        Nimble.PollingDefaults.pollInterval = .milliseconds(100)
     }
     
-    override func spec() {
+    override class func spec() {
         describe("init") {
             it("should return not null") {
                 let queue = MemoryQueue()

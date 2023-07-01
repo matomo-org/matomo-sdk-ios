@@ -3,7 +3,7 @@ import Quick
 import Nimble
 
 class EventAPISerializerSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("queryItems") {
             it("encodes special characters") {
                 let dimension = CustomDimension(index: 42, value: ###";'"|\,.<>?/+_=-)(*&^%$#@!"###)
