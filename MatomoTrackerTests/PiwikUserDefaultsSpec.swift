@@ -30,11 +30,11 @@ class MatomoUserDefaultsSpec: QuickSpec {
     }
     
     private class func setMigrateableData(totalNumberOfVisists: Int, firstVisit: Date?, previousVisit: Date?, currentVisit: Date?, optOut: Bool, clientId: String?) {
-        UserDefaults.standard.set(totalNumberOfVisists, forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
-        UserDefaults.standard.set(firstVisit, forKey: MatomoUserDefaults.Key.firstVistsTimestamp)
-        UserDefaults.standard.set(previousVisit, forKey: MatomoUserDefaults.Key.previousVistsTimestamp)
-        UserDefaults.standard.set(currentVisit, forKey: MatomoUserDefaults.Key.currentVisitTimestamp)
-        UserDefaults.standard.set(optOut, forKey: MatomoUserDefaults.Key.optOut)
-        UserDefaults.standard.set(clientId, forKey: MatomoUserDefaults.Key.clientID)
+        UserDefaults.standard.set(totalNumberOfVisists, forKey: MatomoUserDefaults.Key.totalNumberOfVisits.rawValue)
+        UserDefaults.standard.set(firstVisit, forKey: MatomoUserDefaults.Key.firstVistsTimestamp.rawValue)
+        UserDefaults.standard.set(previousVisit, forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue)
+        UserDefaults.standard.set(currentVisit, forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue)
+        UserDefaults.standard.set(optOut, forKey: MatomoUserDefaults.Key.optOut.rawValue)
+        UserDefaults.standard.set(clientId, forKey: MatomoUserDefaults.Key.clientID.rawValue)
     }
 }

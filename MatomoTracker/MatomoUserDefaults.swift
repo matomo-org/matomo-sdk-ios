@@ -13,133 +13,127 @@ internal struct MatomoUserDefaults {
     
     var totalNumberOfVisits: Int {
         get {
-            return userDefaults.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
+            return userDefaults.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.totalNumberOfVisits.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var firstVisit: Date? {
         get {
-            return userDefaults.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp.rawValue) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.firstVistsTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.firstVistsTimestamp.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var previousVisit: Date? {
         get {
-            return userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.previousVistsTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var currentVisit: Date? {
         get {
-            return userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.currentVisitTimestamp)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var optOut: Bool {
         get {
-            return userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut)
+            return userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.optOut)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.optOut.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var clientId: String? {
         get {
-            return userDefaults.string(forKey: MatomoUserDefaults.Key.clientID)
+            return userDefaults.string(forKey: MatomoUserDefaults.Key.clientID.rawValue)
         }
         set {
-            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.clientID)
+            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.clientID.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var forcedVisitorId: String? {
         get {
-            return userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID)
+            return userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
         }
         set {
-            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.forcedVisitorID)
+            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
             userDefaults.synchronize()
         }
     }
     
     var visitorUserId: String? {
         get {
-            return userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID);
+            return userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID.rawValue);
         }
         set {
-            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.visitorUserID);
+            userDefaults.setValue(newValue, forKey: MatomoUserDefaults.Key.visitorUserID.rawValue);
             userDefaults.synchronize()
         }
     }
     
     var lastOrder: Date? {
         get {
-            return userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder) as? Date
+            return userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder.rawValue) as? Date
         }
         set {
-            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.lastOrder)
+            userDefaults.set(newValue, forKey: MatomoUserDefaults.Key.lastOrder.rawValue)
         }
     }
     
     func reset() {
-        userDefaults.removeObject(forKey: Key.totalNumberOfVisits)
-        userDefaults.removeObject(forKey: Key.currentVisitTimestamp)
-        userDefaults.removeObject(forKey: Key.previousVistsTimestamp)
-        userDefaults.removeObject(forKey: Key.firstVistsTimestamp)
-        userDefaults.removeObject(forKey: Key.clientID)
-        userDefaults.removeObject(forKey: Key.forcedVisitorID)
-        userDefaults.removeObject(forKey: Key.visitorUserID)
-        userDefaults.removeObject(forKey: Key.optOut)
-        userDefaults.removeObject(forKey: Key.lastOrder)
+        for key in Key.allCases {
+            userDefaults.removeObject(forKey: key.rawValue)
+        }
     }
 }
 
 extension MatomoUserDefaults {
     public mutating func copy(from userDefaults: UserDefaults) {
-        totalNumberOfVisits = userDefaults.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits)
-        firstVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp) as? Date
-        previousVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp) as? Date
-        currentVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp) as? Date
-        optOut = userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut)
-        clientId = userDefaults.string(forKey: MatomoUserDefaults.Key.clientID)
-        forcedVisitorId = userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID)
-        visitorUserId = userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID)
-        lastOrder = userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder) as? Date
+        totalNumberOfVisits = userDefaults.integer(forKey: MatomoUserDefaults.Key.totalNumberOfVisits.rawValue)
+        firstVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.firstVistsTimestamp.rawValue) as? Date
+        previousVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue) as? Date
+        currentVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue) as? Date
+        optOut = userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut.rawValue)
+        clientId = userDefaults.string(forKey: MatomoUserDefaults.Key.clientID.rawValue)
+        forcedVisitorId = userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
+        visitorUserId = userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID.rawValue)
+        lastOrder = userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder.rawValue) as? Date
     }
 }
 
 extension MatomoUserDefaults {
-    internal struct Key {
-        static let totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
-        static let currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
-        static let previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
-        static let firstVistsTimestamp = "PiwikFirstVistsTimestampKey"
+    internal enum Key: String, CaseIterable {
+        case totalNumberOfVisits = "PiwikTotalNumberOfVistsKey"
+        case currentVisitTimestamp = "PiwikCurrentVisitTimestampKey"
+        case previousVistsTimestamp = "PiwikPreviousVistsTimestampKey"
+        case firstVistsTimestamp = "PiwikFirstVistsTimestampKey"
         
         // Note:    To be compatible with previous versions, the clientID key retains its old value,
         //          even though it is now a misnomer since adding visitorUserID makes it a bit confusing.
-        static let clientID = "PiwikVisitorIDKey"
-        static let forcedVisitorID = "PiwikForcedVisitorIDKey"
-        static let visitorUserID = "PiwikVisitorUserIDKey"
-        static let optOut = "PiwikOptOutKey"
-        static let lastOrder = "PiwikLastOrderDateKey"
+        case clientID = "PiwikVisitorIDKey"
+        case forcedVisitorID = "PiwikForcedVisitorIDKey"
+        case visitorUserID = "PiwikVisitorUserIDKey"
+        case optOut = "PiwikOptOutKey"
+        case lastOrder = "PiwikLastOrderDateKey"
     }
 }
