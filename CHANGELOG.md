@@ -2,6 +2,10 @@
 
 ## Unreleased
 * **feature** Added support for watchOS. [#352](https://github.com/matomo-org/matomo-sdk-ios/issues/352)
+* **improvement** Increased deployment targets to iOS 11 and macOS 10.13. [#431](https://github.com/matomo-org/matomo-sdk-ios/pull/431) 
+
+## 7.5.2
+* **bugfix** Fixed an issue where the revenue of a goal wasn't sent to the server anymore. [#414](https://github.com/matomo-org/matomo-sdk-ios/issues/414)
 
 ## 7.5.1
 * **bugfix** Fixed an issue where the latest version couldn't be installed via SPM. [#402](https://github.com/matomo-org/matomo-sdk-ios/issues/402)
