@@ -15,6 +15,10 @@ Pod::Spec.new do |spec|
   
   spec.ios.frameworks = 'UIKit'
   spec.tvos.frameworks = 'UIKit'
+
+  spec.resource_bundles = {
+    'MatomoTracker_Privacy' => ['MatomoTracker/PrivacyInfo.xcprivacy'],
+  }
   
   spec.subspec 'Core' do |core|
   	core.source_files = 'MatomoTracker/*.swift'
