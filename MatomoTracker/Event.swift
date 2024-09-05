@@ -87,7 +87,7 @@ public struct Event: Codable {
     let revenue: Float?
 
     /// Ecommerce Order tracking
-    /// https://matomo.org/docs/ecommerce-analytics/#tracking-ecommerce-orders-items-purchased-required
+    /// https://matomo.org/faq/reports/advanced-manually-tracking-ecommerce-actions-in-matomo/#tracking-orders-to-matomo-required
     let orderId: String?
     let orderItems: [OrderItem]
     let orderRevenue: Float?
