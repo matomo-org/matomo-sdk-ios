@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1F01F8FE2C89A8E400327D62 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F01F8FD2C89A8E400327D62 /* EcommerceViewController.swift */; };
 		1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */; };
 		1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */; };
 		1F03BC9D1E86CFC30002F0AD /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F01F8FD2C89A8E400327D62 /* EcommerceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceViewController.swift; sourceTree = "<group>"; };
 		1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
 		1F03BC9C1E86CFC30002F0AD /* SecondScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
@@ -126,8 +128,6 @@
 		CD93ECB517E77BEB0062BE20 /* SocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialViewController.h; sourceTree = "<group>"; };
 		CD93ECB617E77BEB0062BE20 /* SocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialViewController.m; sourceTree = "<group>"; };
 		CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
-		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
 		EB82ABD720DA125100083494 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,10 +213,9 @@
 				1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */,
 				EB82ABD720DA125100083494 /* ContentViewController.swift */,
 				1F7001BE216B6F47007A9355 /* GoalsViewController.swift */,
+				1F01F8FD2C89A8E400327D62 /* EcommerceViewController.swift */,
 				CD7ABB131B0FD0D2002312DA /* DownloadViewController.h */,
 				CD7ABB141B0FD0D2002312DA /* DownloadViewController.m */,
-				CDEDC027189518B00054CF73 /* EcommerceViewController.h */,
-				CDEDC028189518B00054CF73 /* EcommerceViewController.m */,
 				CD93ECAF17E77B700062BE20 /* EventsViewController.h */,
 				CD93ECB017E77B700062BE20 /* EventsViewController.m */,
 				CD93ECB217E77BA70062BE20 /* ExceptionViewController.h */,
@@ -410,6 +409,7 @@
 				1FC2A0E52195A10A0039EE0C /* UserDefaultsQueue.swift in Sources */,
 				1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */,
 				1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */,
+				1F01F8FE2C89A8E400327D62 /* EcommerceViewController.swift in Sources */,
 				1F72DA711E62E55200EFF764 /* MenuViewController.swift in Sources */,
 				1F72DA731E62E78E00EFF764 /* ConfigurationViewController.swift in Sources */,
 			);
