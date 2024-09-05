@@ -32,7 +32,11 @@ github "matomo-org/matomo-sdk-ios"
 
 You can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:
 
-`.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.5"),`
+`.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.5.0"),`
+
+and in your dependencies:
+
+`.product(name: "MatomoTracker", package: "matomo-sdk-ios")`
 
 </details>
 
@@ -133,7 +137,7 @@ matomoTracker.userId = "coolUsername123"
 
 All future events being tracked by the SDK will be associated with this userID, as opposed to the default UUID created for each Visitor.
 
-###  Custom Visitor ID persisted on app starts
+### Custom Visitor ID persisted on app starts
 
 MatomoTracker will generate an `_id` upon first usage and will use this value to recognize the current visitor. This `_id` is persisted over app starts.
 
