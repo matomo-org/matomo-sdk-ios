@@ -128,8 +128,6 @@
 		CD93ECB517E77BEB0062BE20 /* SocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialViewController.h; sourceTree = "<group>"; };
 		CD93ECB617E77BEB0062BE20 /* SocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialViewController.m; sourceTree = "<group>"; };
 		CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		CDEDC027189518B00054CF73 /* EcommerceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommerceViewController.h; sourceTree = "<group>"; };
-		CDEDC028189518B00054CF73 /* EcommerceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EcommerceViewController.m; sourceTree = "<group>"; };
 		EB82ABD720DA125100083494 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,8 +216,6 @@
 				1F01F8FD2C89A8E400327D62 /* EcommerceViewController.swift */,
 				CD7ABB131B0FD0D2002312DA /* DownloadViewController.h */,
 				CD7ABB141B0FD0D2002312DA /* DownloadViewController.m */,
-				CDEDC027189518B00054CF73 /* EcommerceViewController.h */,
-				CDEDC028189518B00054CF73 /* EcommerceViewController.m */,
 				CD93ECAF17E77B700062BE20 /* EventsViewController.h */,
 				CD93ECB017E77B700062BE20 /* EventsViewController.m */,
 				CD93ECB217E77BA70062BE20 /* ExceptionViewController.h */,
