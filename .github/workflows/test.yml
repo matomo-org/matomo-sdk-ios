@@ -4,7 +4,10 @@ on:
   pull_request:
     branches:
       - develop
-      
+  push:
+    branches:
+      - develop
+
 jobs:
   tests-ios:
     runs-on: macos-13
