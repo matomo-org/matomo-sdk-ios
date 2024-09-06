@@ -28,12 +28,25 @@ end
 
 target 'MatomoTrackerTests' do
   use_frameworks!
-  platform :ios, '11.0'
+  platform :ios, '13.0'
   inhibit_all_warnings!
   project 'MatomoTracker'
   workspace 'MatomoTracker'
   inherit! :search_paths
   
-  pod 'Quick', '~> 5.0'
-  pod 'Nimble', '~> 10.0'
+  pod 'Quick', '~> 7.0'
+  pod 'Nimble', '~> 12.0'
+end
+
+# https://github.com/CocoaPods/CocoaPods/issues/11402
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+
+            # disable code signing for pods
+            config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+            config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+            config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+        end
+    end
 end
