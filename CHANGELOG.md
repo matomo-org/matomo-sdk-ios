@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 7.7.0
 * **feature** Added functionality to reset a Matomo instance. [#434](https://github.com/matomo-org/matomo-sdk-ios/pull/434)
 * **feature** Added a persistent event queue storing events in the UserDefaults. [#137](https://github.com/matomo-org/matomo-sdk-ios/issues/137) (by @bobunmeng and @brototyp)
 
