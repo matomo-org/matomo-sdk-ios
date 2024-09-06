@@ -16,7 +16,7 @@ jobs:
         include: # selection of https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md#installed-sdks
           - xcode: "14.3.1"
             ios: "16.4"
-            device: "iPhone 8"
+            device: "iPhone 14"
           # - xcode: "12.5.1"
           #   ios: "14.5"
           #   device: "iPhone 8"
@@ -41,7 +41,7 @@ jobs:
         include:
           - scheme: "ios"
             sdk: "iphonesimulator"
-            destination: "platform=iOS Simulator,name=iPhone 8,OS=16.4"
+            destination: "platform=iOS Simulator,name=iPhone 14,OS=16.4"
             xcode: "14.3.1"
           - scheme: "macos"
             sdk: "macosx"
