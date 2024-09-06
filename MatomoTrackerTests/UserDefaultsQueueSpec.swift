@@ -3,12 +3,12 @@ import Quick
 import Nimble
 
 class UserDefaultsQueueSpec: QuickSpec {
-    override func setUp() {
-        Nimble.AsyncDefaults.timeout = .seconds(10)
-        Nimble.AsyncDefaults.pollInterval = .milliseconds(100)
+    override class func setUp() {
+        Nimble.PollingDefaults.timeout = .seconds(10)
+        Nimble.PollingDefaults.pollInterval = .milliseconds(100)
     }
     
-    override func spec() {
+    override class func spec() {
         let userDefaults = UserDefaults(suiteName: "UserDefaultsQueueSpec")!
         afterEach {
             self.removeAllInSuite(suite: "UserDefaultsQueueSpec")
@@ -157,7 +157,7 @@ class UserDefaultsQueueSpec: QuickSpec {
             }
         }
     }
-    private func removeAllInSuite(suite: String) {
+    private class func removeAllInSuite(suite: String) {
         guard let newuserDefaults = UserDefaults(suiteName: suite) else { return }
         let allKeys: [String]? = Array(newuserDefaults.dictionaryRepresentation().keys)
         for key in allKeys ?? [] {
