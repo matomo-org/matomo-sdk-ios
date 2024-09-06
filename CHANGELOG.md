@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added functionality to reset a Matomo instance. [#434](https://github.com/matomo-org/matomo-sdk-ios/pull/434)
 
 ## 7.6.0
 * **feature** Added support for watchOS. [#352](https://github.com/matomo-org/matomo-sdk-ios/issues/352)
