@@ -1,6 +1,8 @@
 import Foundation
 
-public class UserDefaultsQueue: NSObject, Queue {
+/// The UserDefaultsQueue is a **not thread safe** queue that persists all events in the `UserDefaults`.
+/// Per default only the last 100 Events will be queued. If there are more Events than that, the oldest ones will be dropped.
+public final class UserDefaultsQueue: NSObject, Queue {
     
     private let userDefaults: UserDefaults
     private let maximumQueueSize: Int?
@@ -30,9 +32,13 @@ public class UserDefaultsQueue: NSObject, Queue {
         assertMainThread()
         return enqueuedEvents.count
     }
-
-    public init(suiteName: String?, maximumQueueSize: Int? = 100) {
-        self.userDefaults = UserDefaults(suiteName: suiteName)!
+    
+    /// Initializes a new UserDefaultsQueue
+    /// - Parameters:
+    ///   - suiteName: The UserDefaults in which the events should be persisted.
+    ///   - maximumQueueSize: The maximum number of events to be queued, 100 per default. If nil, the number of events is not limited.
+    public init(userDefaults: UserDefaults, maximumQueueSize: Int? = 100) {
+        self.userDefaults = userDefaults
         self.maximumQueueSize = maximumQueueSize
     }
     

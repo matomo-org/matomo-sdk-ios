@@ -9,30 +9,31 @@ class UserDefaultsQueueSpec: QuickSpec {
     }
     
     override func spec() {
+        let userDefaults = UserDefaults(suiteName: "UserDefaultsQueueSpec")!
         afterEach {
             self.removeAllInSuite(suite: "UserDefaultsQueueSpec")
         }
         describe("init") {
             it("should return not null") {
-                let queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                let queue = UserDefaultsQueue(userDefaults: userDefaults)
                 expect(queue).toNot(beNil())
             }
             it("should limit to 100 events per default") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 for _ in 0..<111 {
                     queue.enqueue(event: .fixture())
                 }
                 expect(queue.eventCount) == 100
             }
             it("should limit to the given maximumQueueSize") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec", maximumQueueSize: 10)
+                var queue = UserDefaultsQueue(userDefaults: userDefaults, maximumQueueSize: 10)
                 for _ in 0..<13 {
                     queue.enqueue(event: .fixture())
                 }
                 expect(queue.eventCount) == 10
             }
             it("should not limit if maximumQueueSize is set to nil") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec", maximumQueueSize: nil)
+                var queue = UserDefaultsQueue(userDefaults: userDefaults, maximumQueueSize: nil)
                 for _ in 0..<111 {
                     queue.enqueue(event: .fixture())
                 }
@@ -41,11 +42,11 @@ class UserDefaultsQueueSpec: QuickSpec {
         }
         describe("eventCount") {
             it("should return 0 with an empty queue") {
-                let queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                let queue = UserDefaultsQueue(userDefaults: userDefaults)
                 expect(queue.eventCount) == 0
             }
             it("should return 2 with a queue with two items") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
                 expect(queue.eventCount) == 2
@@ -53,12 +54,12 @@ class UserDefaultsQueueSpec: QuickSpec {
         }
         describe("enqueue") {
             it("should increase item count") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 queue.enqueue(event: .fixture())
                 expect(queue.eventCount).toEventually(equal(1))
             }
             it("should call the completion closure") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 var calledClosure = false
                 queue.enqueue(event: .fixture()) {
                     calledClosure = true
@@ -66,7 +67,7 @@ class UserDefaultsQueueSpec: QuickSpec {
                 expect(calledClosure).toEventually(beTrue())
             }
             it("should enqueue the object") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 let event = Event.fixture()
                 var dequeued: Event? = nil
                 queue.enqueue(event: event)
@@ -79,7 +80,7 @@ class UserDefaultsQueueSpec: QuickSpec {
         }
         describe("first") {
             context("with an empty queue") {
-                let queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                let queue = UserDefaultsQueue(userDefaults: userDefaults)
                 it("should call the completionblock without items") {
                     var dequeuedItems: [Any]? = nil
                     queue.first(limit: 10) { events in
@@ -91,7 +92,7 @@ class UserDefaultsQueueSpec: QuickSpec {
             }
             context("with a queue with two items") {
                 it("should return one item if just asked for one") {
-                    var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                    var queue = UserDefaultsQueue(userDefaults: userDefaults)
                     queue.enqueue(event: .fixture())
                     queue.enqueue(event: .fixture())
                     var dequeuedItems: [Any]? = nil
@@ -101,7 +102,7 @@ class UserDefaultsQueueSpec: QuickSpec {
                     expect(dequeuedItems?.count).toEventually(equal(1))
                 }
                 it("should return two items if asked for two or more") {
-                    var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                    var queue = UserDefaultsQueue(userDefaults: userDefaults)
                     queue.enqueue(event: .fixture())
                     queue.enqueue(event: .fixture())
                     var dequeuedItems: [Any]? = nil
@@ -111,7 +112,7 @@ class UserDefaultsQueueSpec: QuickSpec {
                     expect(dequeuedItems?.count).toEventually(equal(2))
                 }
                 it("should not remove objects from the queue") {
-                    var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                    var queue = UserDefaultsQueue(userDefaults: userDefaults)
                     queue.enqueue(event: .fixture())
                     queue.enqueue(event: .fixture())
                     queue.first(limit: 1, completion: { items in })
@@ -121,7 +122,7 @@ class UserDefaultsQueueSpec: QuickSpec {
         }
         describe("remove") {
             it("should remove events that are enqueued") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
                 var dequeuedItem: Event? = nil
@@ -132,7 +133,7 @@ class UserDefaultsQueueSpec: QuickSpec {
                 expect(queue.eventCount) == 1
             }
             it("should ignore if one event is tried to remove twice") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
                 var dequeuedItem: Event? = nil
@@ -144,7 +145,7 @@ class UserDefaultsQueueSpec: QuickSpec {
                 expect(queue.eventCount) == 1
             }
             it("should skip not queued events") {
-                var queue = UserDefaultsQueue(suiteName: "UserDefaultsQueueSpec")
+                var queue = UserDefaultsQueue(userDefaults: userDefaults)
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
                 var dequeuedItem: Event? = nil
