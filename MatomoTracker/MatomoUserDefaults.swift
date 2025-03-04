@@ -61,7 +61,7 @@ internal struct MatomoUserDefaults {
         }
     }
     
-    var clientId: String? {
+    var clientID: String? {
         get {
             return userDefaults.string(forKey: MatomoUserDefaults.Key.clientID.rawValue)
         }
@@ -71,7 +71,7 @@ internal struct MatomoUserDefaults {
         }
     }
     
-    var forcedVisitorId: String? {
+    var forcedVisitorID: String? {
         get {
             return userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
         }
@@ -81,7 +81,7 @@ internal struct MatomoUserDefaults {
         }
     }
     
-    var visitorUserId: String? {
+    var visitorUserID: String? {
         get {
             return userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID.rawValue);
         }
@@ -114,9 +114,9 @@ extension MatomoUserDefaults {
         previousVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue) as? Date
         currentVisit = userDefaults.object(forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue) as? Date
         optOut = userDefaults.bool(forKey: MatomoUserDefaults.Key.optOut.rawValue)
-        clientId = userDefaults.string(forKey: MatomoUserDefaults.Key.clientID.rawValue)
-        forcedVisitorId = userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
-        visitorUserId = userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID.rawValue)
+        clientID = userDefaults.string(forKey: MatomoUserDefaults.Key.clientID.rawValue)
+        forcedVisitorID = userDefaults.string(forKey: MatomoUserDefaults.Key.forcedVisitorID.rawValue)
+        visitorUserID = userDefaults.string(forKey: MatomoUserDefaults.Key.visitorUserID.rawValue)
         lastOrder = userDefaults.object(forKey: MatomoUserDefaults.Key.lastOrder.rawValue) as? Date
     }
 }

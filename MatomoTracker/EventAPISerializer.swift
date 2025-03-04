@@ -45,13 +45,13 @@ fileprivate extension Event {
             let lastOrderTimestamp = orderLastDate != nil ? "\(Int(orderLastDate!.timeIntervalSince1970))" : nil
             
             let items = [
-                URLQueryItem(name: "idsite", value: siteId),
+                URLQueryItem(name: "idsite", value: siteID),
                 URLQueryItem(name: "rec", value: "1"),
                 URLQueryItem(name: "ca", value: isCustomAction ? "1" : nil),
                 // Visitor
                 URLQueryItem(name: "_id", value: visitor.id),
-                URLQueryItem(name: "cid", value: visitor.forcedId),
-                URLQueryItem(name: "uid", value: visitor.userId),
+                URLQueryItem(name: "cid", value: visitor.forcedID),
+                URLQueryItem(name: "uid", value: visitor.userID),
                 
                 // Session
                 URLQueryItem(name: "_idvc", value: "\(session.sessionsCount)"),
@@ -90,11 +90,11 @@ fileprivate extension Event {
                 URLQueryItem(name: "c_t", value: contentTarget),
                 URLQueryItem(name: "c_i", value: contentInteraction),
                 
-                URLQueryItem(name: "idgoal", value: goalId != nil ? "\(goalId!)" : nil),
+                URLQueryItem(name: "idgoal", value: goalID != nil ? "\(goalID!)" : nil),
                 // The revenue parameter can be set via the revenue of a goal or the revenue of an order
                 URLQueryItem(name: "revenue", value: (revenue ?? orderRevenue) != nil ? "\((revenue ?? orderRevenue)!)" : nil),
 
-                URLQueryItem(name: "ec_id", value: orderId),
+                URLQueryItem(name: "ec_id", value: orderID),
                 URLQueryItem(name: "ec_st", value: orderSubTotal != nil ? "\(orderSubTotal!)" : nil),
                 URLQueryItem(name: "ec_tx", value: orderTax != nil ? "\(orderTax!)" : nil),
                 URLQueryItem(name: "ec_sh", value: orderShippingCost != nil ? "\(orderShippingCost!)" : nil),
