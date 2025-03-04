@@ -3,7 +3,7 @@
 extension Event {
     static func fixture(
         uuid: UUID = UUID(),
-        siteId: String = "fixture_siteId",
+        siteID: String = "fixture_siteId",
         visitor: Visitor = .fixture(),
         session: Session = .fixture(),
         isCustomAction: Bool = true,
@@ -29,9 +29,9 @@ extension Event {
         contentPiece: String? = nil,
         contentTarget: String? = nil,
         contentInteraction: String? = nil,
-        goalId: Int? = nil,
+        goalID: Int? = nil,
         revenue: Float? = nil,
-        orderId: String? = nil,
+        orderID: String? = nil,
         orderItems: [OrderItem] = [],
         orderRevenue: Float? = nil,
         orderSubTotal: Float? = nil,
@@ -41,7 +41,7 @@ extension Event {
         orderLastDate: Date? = nil) -> Event {
         Event(
             uuid: uuid,
-            siteId: siteId,
+            siteID: siteID,
             visitor: visitor,
             session: session,
             isCustomAction: isCustomAction,
@@ -67,9 +67,9 @@ extension Event {
             contentPiece: contentPiece,
             contentTarget: contentTarget,
             contentInteraction: contentInteraction,
-            goalId: goalId,
+            goalID: goalID,
             revenue: revenue,
-            orderId: orderId,
+            orderID: orderID,
             orderItems: orderItems,
             orderRevenue: orderRevenue,
             orderSubTotal: orderSubTotal,

@@ -7,11 +7,11 @@ class TrackerSpec: QuickSpec {
         Nimble.PollingDefaults.timeout = .seconds(40)
         describe("init") {
             it("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`") {
-                let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
+                let tracker = MatomoTracker(siteID: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
                 expect(tracker).toNot(beNil())
             }
             it("should be released if no external strong reference exists (no retain cycles") {
-                weak var tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
+                weak var tracker = MatomoTracker(siteID: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
                 expect(tracker).to(beNil())
             }
         }
@@ -118,21 +118,21 @@ class TrackerSpec: QuickSpec {
                 queue.enqueueEventsHandler = { events, _ in
                     queuedEvent = events.first
                 }
-                tracker.forcedVisitorId = "0123456789abcdef"
+                tracker.forcedVisitorID = "0123456789abcdef"
                 tracker.track(view: ["spec_view"])
-                expect(queuedEvent?.visitor.forcedId).toEventually(equal("0123456789abcdef"))
+                expect(queuedEvent?.visitor.forcedID).toEventually(equal("0123456789abcdef"))
             }
             it("it doesn't change the existing value if set to an invalid one") {
-                let tracker = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                tracker.forcedVisitorId = "0123456789abcdef"
-                tracker.forcedVisitorId = "invalid"
-                expect(tracker.forcedVisitorId) == "0123456789abcdef"
+                let tracker = MatomoTracker.init(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorID = "0123456789abcdef"
+                tracker.forcedVisitorID = "invalid"
+                expect(tracker.forcedVisitorID) == "0123456789abcdef"
             }
             it("should persist and restore the value") {
-                let tracker = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                tracker.forcedVisitorId = "0123456789abcdef"
-                let tracker2 = MatomoTracker.init(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                expect(tracker2.forcedVisitorId) == "0123456789abcdef"
+                let tracker = MatomoTracker.init(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorID = "0123456789abcdef"
+                let tracker2 = MatomoTracker.init(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                expect(tracker2.forcedVisitorID) == "0123456789abcdef"
             }
         }
         describe("reset") {
