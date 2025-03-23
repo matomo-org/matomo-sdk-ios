@@ -15,7 +15,7 @@ jobs:
       with:
         ruby-version: '3.4.2'
         bundler-cache: true
-    - uses: MeilCli/danger-action@v5
+    - uses: MeilCli/danger-action@v6
       with:
         plugins_file: 'Gemfile'
         install_path: 'vendor/bundle'
