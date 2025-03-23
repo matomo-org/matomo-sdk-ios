@@ -35,7 +35,7 @@ target 'MatomoTrackerTests' do
   inherit! :search_paths
   
   pod 'Quick', '~> 7.0'
-  pod 'Nimble', '~> 12.0'
+  pod 'Nimble', '~> 13.0'
 end
 
 # https://github.com/CocoaPods/CocoaPods/issues/11402
