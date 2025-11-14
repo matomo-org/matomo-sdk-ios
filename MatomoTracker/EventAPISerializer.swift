@@ -2,11 +2,14 @@ import Foundation
 
 final class EventAPISerializer {
     internal func queryItems(for event: Event) -> [String: String] {
-        event.queryItems.reduce(into: [String:String]()) {
+        var queryItemsEncoded = event.queryItems.reduce(into: [String:String]()) {
             $0[$1.name] = $1.value
         }.compactMapValues {
             $0.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed)
         }
+        queryItemsEncoded["url"] = event.url?.absoluteString // already percent encoded
+        return queryItemsEncoded
+
     }
     
     internal func jsonData(for events: [Event]) throws -> Data {
