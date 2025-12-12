@@ -12,7 +12,7 @@ The MatomoTracker can be installed via CocoaPods, Carthage and the Swift Package
 
 Use the following in your Podfile.
 ```
-pod 'MatomoTracker', '~> 7.7'
+pod 'MatomoTracker', '~> 7.8'
 ```
 Then run `pod install`.
 
@@ -32,7 +32,7 @@ github "matomo-org/matomo-sdk-ios"
 
 You can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:
 
-`.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.7.0"),`
+`.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.8.0"),`
 
 and in your dependencies:
 
