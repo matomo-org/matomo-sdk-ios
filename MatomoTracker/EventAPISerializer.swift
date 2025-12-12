@@ -3,7 +3,7 @@ import Foundation
 final class EventAPISerializer {
     internal func queryItems(for event: Event) -> [String: String] {
         event.queryItems.reduce(into: [String:String]()) {
-            $0[$1.name] = $1.value
+            $0[$1.name] = $1.value?.removingPercentEncoding
         }.compactMapValues {
             $0.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed)
         }
