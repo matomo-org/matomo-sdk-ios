@@ -28,14 +28,11 @@ final public class MatomoTracker: NSObject {
             visitor = Visitor.current(in: matomoUserDefaults)
         }
     }
-    
-    @available(*, deprecated, message: "use userId instead")
+
+    /// Readonly property of the visitor ID.
     @objc public var visitorId: String? {
         get {
-            return userId
-        }
-        set {
-            userId = newValue
+            return visitor.id
         }
     }
     
