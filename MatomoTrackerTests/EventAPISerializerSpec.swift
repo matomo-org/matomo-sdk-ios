@@ -11,6 +11,13 @@ class EventAPISerializerSpec: QuickSpec {
                 let encoded = EventAPISerializer().queryItems(for: event)
                 expect(encoded["dimension42"]) == ###"%3B%27%22%7C%5C%2C.%3C%3E%3F%2F%2B_%3D-%29%28%2A%26%5E%25%24%23%40%21"###
             }
+            it("doesn't encode url twice") {
+                let urlString = "é o/oo" 
+                let url = URL(string: urlString)
+                let event = Event.fixture(url: url!)
+                let encoded = EventAPISerializer().queryItems(for: event)
+                expect(encoded["url"]) == "%C3%A9%20o/oo"
+            }
             it("overrides parameters with customParameters") {
                 let event = Event.fixture()
                 let eventWithOverriddenCdt = Event.fixture(customTrackingParameters: ["cdt": "1"])
