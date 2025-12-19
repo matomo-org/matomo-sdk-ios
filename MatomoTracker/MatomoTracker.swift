@@ -99,7 +99,9 @@ final public class MatomoTracker: NSObject {
         self.session = Session.current(in: matomoUserDefaults)
         super.init()
         startNewSession()
-        startDispatchTimer()
+        DispatchQueue.main.async {
+            self.startDispatchTimer()
+        }
     }
     
     /// Create and Configure a new Tracker
