@@ -21,7 +21,7 @@ class EventAPISerializerSpec: QuickSpec {
                 expect(encodedEventWithOverriddenCdt["cdt"]) == "1"
             }
             it("keeps the goal revenue parameter") {
-                let event = Event.fixture(goalId: 1, revenue: 5.0)
+                let event = Event.fixture(goalID: 1, revenue: 5.0)
                 let encodedEvent = EventAPISerializer().queryItems(for: event)
                 expect(encodedEvent["revenue"]) == "5.0"
             }

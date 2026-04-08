@@ -6,7 +6,7 @@ class MatomoUserDefaultsSpec: QuickSpec {
     override class func spec() {
         describe("suiteMigration") {
             it("should migrate data for the default suite") {
-                self.setMigrateableData(totalNumberOfVisists: 10, firstVisit: Date(timeIntervalSince1970: 100), previousVisit: Date(timeIntervalSince1970: 101), currentVisit: Date(timeIntervalSince1970: 102), optOut: true, clientId: "_specVisitorID")
+                self.setMigrateableData(totalNumberOfVisists: 10, firstVisit: Date(timeIntervalSince1970: 100), previousVisit: Date(timeIntervalSince1970: 101), currentVisit: Date(timeIntervalSince1970: 102), optOut: true, clientID: "_specVisitorID")
                 self.removeAllInSuite(suite: "_specSuite")
                 var userDefaults = MatomoUserDefaults(suiteName: "_specSuite")
                 userDefaults.copy(from: UserDefaults.standard)
@@ -15,7 +15,7 @@ class MatomoUserDefaultsSpec: QuickSpec {
                 expect(userDefaults.previousVisit) == Date(timeIntervalSince1970: 101)
                 expect(userDefaults.currentVisit) == Date(timeIntervalSince1970: 102)
                 expect(userDefaults.optOut) == true
-                expect(userDefaults.clientId) == "_specVisitorID"
+                expect(userDefaults.clientID) == "_specVisitorID"
             }
         }
     }
@@ -29,12 +29,12 @@ class MatomoUserDefaultsSpec: QuickSpec {
         }
     }
     
-    private class func setMigrateableData(totalNumberOfVisists: Int, firstVisit: Date?, previousVisit: Date?, currentVisit: Date?, optOut: Bool, clientId: String?) {
+    private class func setMigrateableData(totalNumberOfVisists: Int, firstVisit: Date?, previousVisit: Date?, currentVisit: Date?, optOut: Bool, clientID: String?) {
         UserDefaults.standard.set(totalNumberOfVisists, forKey: MatomoUserDefaults.Key.totalNumberOfVisits.rawValue)
         UserDefaults.standard.set(firstVisit, forKey: MatomoUserDefaults.Key.firstVistsTimestamp.rawValue)
         UserDefaults.standard.set(previousVisit, forKey: MatomoUserDefaults.Key.previousVistsTimestamp.rawValue)
         UserDefaults.standard.set(currentVisit, forKey: MatomoUserDefaults.Key.currentVisitTimestamp.rawValue)
         UserDefaults.standard.set(optOut, forKey: MatomoUserDefaults.Key.optOut.rawValue)
-        UserDefaults.standard.set(clientId, forKey: MatomoUserDefaults.Key.clientID.rawValue)
+        UserDefaults.standard.set(clientID, forKey: MatomoUserDefaults.Key.clientID.rawValue)
     }
 }

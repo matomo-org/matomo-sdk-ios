@@ -46,7 +46,7 @@ and in your dependencies:
 The Matomo iOS SDK doesn't provide a instance of the PiwikTracker. In order to be able to track data you have to create an instance first.
 
 ```Swift
-let matomoTracker = MatomoTracker(siteId: "23", baseURL: URL(string: "https://demo2.matomo.org/piwik.php")!)
+let matomoTracker = MatomoTracker(siteID: "23", baseURL: URL(string: "https://demo2.matomo.org/piwik.php")!)
 ```
 
 
@@ -56,11 +56,11 @@ You can either pass around this instance, or add an extension to the `MatomoTrac
 
 ```Swift
 extension MatomoTracker {
-    static let shared: MatomoTracker = MatomoTracker(siteId: "1", baseURL: URL(string: "https://example.com/piwik.php")!)
+    static let shared: MatomoTracker = MatomoTracker(siteID: "1", baseURL: URL(string: "https://example.com/piwik.php")!)
 }
 ```
 
-The `siteId` is the ID that you can get if you [add a website](https://matomo.org/faq/how-to/create-and-manage-websites/) within the Matomo web interface. The `baseURL` is the URL to your Matomo web instance and has to include the "piwik.php" or "matomo.php" string.
+The `siteID` is the ID that you can get if you [add a website](https://matomo.org/faq/how-to/create-and-manage-websites/) within the Matomo web interface. The `baseURL` is the URL to your Matomo web instance and has to include the "piwik.php" or "matomo.php" string.
 
 You can use multiple instances within one application.
 
@@ -221,7 +221,7 @@ The `MatomoTracker` will create a default user agent derived from the WKWebView 
 You can instantiate the `MatomoTracker` using your own user agent.
 
 ```Swift
-let matomoTracker = MatomoTracker(siteId: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!, userAgent: "Your custom user agent")
+let matomoTracker = MatomoTracker(siteID: "5", baseURL: URL(string: "http://your.server.org/path-to-matomo/piwik.php")!, userAgent: "Your custom user agent")
 ```
 
 ### Sending custom events
@@ -252,7 +252,7 @@ Whenever you track an event or a page view it is stored in memory first. In ever
 ```swift
 let queue = UserDefaultsQueue(userDefaults: UserDefaults.standard)
 let dispatcher = URLSessionDispatcher(baseURL: URL(string: "https://example.com/matomo.php")!)
-let matomoTracker = MatomoTracker(siteId: "1", queue: queue, dispatcher: dispatcher)
+let matomoTracker = MatomoTracker(siteID: "1", queue: queue, dispatcher: dispatcher)
 ```
 
 ## Contributing
