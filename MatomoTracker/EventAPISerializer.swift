@@ -62,6 +62,7 @@ fileprivate extension Event {
                 URLQueryItem(name: "action_name", value: actionName.joined(separator: "/")),
                 URLQueryItem(name: "lang", value: language),
                 URLQueryItem(name: "urlref", value: referer?.percentDecodedString),
+                URLQueryItem(name: "link", value: link?.percentDecodedString),
                 URLQueryItem(name: "new_visit", value: isNewSession ? "1" : nil),
                 
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),

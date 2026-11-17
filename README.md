@@ -109,6 +109,14 @@ The `MatomoTracker` can track how users use your app internal search. You can tr
 matomoTracker.trackSearch(query: "Best mobile tracking", category: "Technology", resultCount: 15)
 ```
 
+### Tracking Outlinks
+
+An outlink is an external URL the user has opened, for example in an in-app browser. The URL can have any scheme, like `https`, `mailto` or a custom app scheme.
+
+```Swift
+matomoTracker.trackOutlink(URL(string: "https://matomo.org")!)
+```
+
 ### Custom Dimension
 
 The Matomo SDK currently supports Custom Dimensions for the Visit Scope. Using Custom Dimensions you can add properties to the whole visit, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?" and such. Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://matomo.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.

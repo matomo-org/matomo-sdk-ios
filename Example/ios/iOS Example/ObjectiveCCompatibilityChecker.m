@@ -9,6 +9,7 @@
     [matomoTracker trackWithView:@[@"example"] url:nil];
     [matomoTracker trackWithEventWithCategory:@"category" action:@"action" name:nil number:nil url:nil];
     [matomoTracker trackSearchWithQuery:@"custom search string" category:@"custom search category" resultCount:15 url:nil];
+    [matomoTracker trackOutlink:[NSURL URLWithString:@"https://matomo.org"]];
     [matomoTracker dispatch];
     matomoTracker.logger = [[DefaultLogger alloc] initWithMinLevel:LogLevelVerbose];
     [matomoTracker trackCampaignWithName:@"campaign_name" keyword:@"campaign_keyword"];

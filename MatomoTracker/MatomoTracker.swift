@@ -493,6 +493,27 @@ extension MatomoTracker {
     }
 }
 
+extension MatomoTracker {
+    /// Tracks an outlink: an external URL the user has opened, for example in an in-app browser.
+    ///
+    /// The URL can have any scheme, like `https`, `mailto` or a custom app scheme. A URL without
+    /// a scheme can't be an outlink and isn't tracked.
+    ///
+    /// More info: https://matomo.org/faq/new-to-matomo/faq_71/
+    ///
+    /// - Parameters:
+    ///   - url: The external URL the user has opened.
+    ///   - dimensions: An optional array of dimensions, that will be set only in the scope of this event.
+    public func trackOutlink(_ url: URL, dimensions: [CustomDimension] = []) {
+        guard url.absoluteURL.scheme != nil else {
+            logger.warning("Not tracking the outlink \(url.absoluteString), because it has no scheme.")
+            return
+        }
+        let event = Event(tracker: self, action: [], link: url, dimensions: dimensions, isCustomAction: false)
+        queue(event: event)
+    }
+}
+
 // Objective-c compatibility extension
 extension MatomoTracker {
     @objc public func track(view: [String], url: URL? = nil) {
@@ -511,6 +532,10 @@ extension MatomoTracker {
     
     @objc public func trackSearch(query: String, category: String?, resultCount: Int, url: URL? = nil) {
         trackSearch(query: query, category: category, resultCount: resultCount, dimensions: [], url: url)
+    }
+
+    @objc public func trackOutlink(_ url: URL) {
+        trackOutlink(url, dimensions: [])
     }
 }
 
