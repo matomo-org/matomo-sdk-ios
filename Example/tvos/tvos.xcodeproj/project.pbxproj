@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A604E43A6494C41DF8BD29A4 /* MatomoTracker in Frameworks */ = {isa = PBXBuildFile; productRef = 301F4D6A6C07774FF5C2E5B8 /* MatomoTracker */; };
 		1F38EBE91EE55AE50021FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBE81EE55AE50021FBF8 /* AppDelegate.swift */; };
 		1F38EBEB1EE55AE50021FBF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38EBEA1EE55AE50021FBF8 /* ViewController.swift */; };
 		1F38EBEE1EE55AE50021FBF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEC1EE55AE50021FBF8 /* Main.storyboard */; };
 		1F38EBF01EE55AE50021FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */; };
 		1FC2A0EB2195C98B0039EE0C /* MatomoTracker+SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2A0EA2195C98B0039EE0C /* MatomoTracker+SharedInstance.swift */; };
-		4335EDAD05012B4AB2074069 /* Pods_example_tvOSExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B6234104CCCE5C6F7FEAF6 /* Pods_example_tvOSExampleApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +23,6 @@
 		1F38EBEF1EE55AE50021FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F38EBF11EE55AE50021FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FC2A0EA2195C98B0039EE0C /* MatomoTracker+SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MatomoTracker+SharedInstance.swift"; sourceTree = "<group>"; };
-		2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.release.xcconfig"; sourceTree = "<group>"; };
-		3FCC224653B51A1346A4CA0F /* Pods-example-tvOSExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvOSExampleApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvOSExampleApp/Pods-example-tvOSExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		47BE969E3E739CD830ACE064 /* Pods-example-tvOSExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvOSExampleApp.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvOSExampleApp/Pods-example-tvOSExampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvos.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-tvos/Pods-example-tvos.debug.xcconfig"; sourceTree = "<group>"; };
-		F9B6234104CCCE5C6F7FEAF6 /* Pods_example_tvOSExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_tvOSExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,30 +30,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4335EDAD05012B4AB2074069 /* Pods_example_tvOSExampleApp.framework in Frameworks */,
+				A604E43A6494C41DF8BD29A4 /* MatomoTracker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		150A8A694C0964F809ACA0E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				918636219B28741F62F0C1D0 /* Pods-example-tvos.debug.xcconfig */,
-				2CE39FB3D2EC21407896280A /* Pods-example-tvos.release.xcconfig */,
-				3FCC224653B51A1346A4CA0F /* Pods-example-tvOSExampleApp.debug.xcconfig */,
-				47BE969E3E739CD830ACE064 /* Pods-example-tvOSExampleApp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		1F38EBDC1EE55AE50021FBF8 = {
 			isa = PBXGroup;
 			children = (
 				1F38EBE71EE55AE50021FBF8 /* tvos */,
 				1F38EBE61EE55AE50021FBF8 /* Products */,
-				150A8A694C0964F809ACA0E5 /* Pods */,
 				D3EFD56183CA883BC9A8C5F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +70,6 @@
 		D3EFD56183CA883BC9A8C5F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F9B6234104CCCE5C6F7FEAF6 /* Pods_example_tvOSExampleApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,17 +81,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F38EBF41EE55AE50021FBF8 /* Build configuration list for PBXNativeTarget "tvOSExampleApp" */;
 			buildPhases = (
-				A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */,
 				1F38EBE11EE55AE50021FBF8 /* Sources */,
 				1F38EBE21EE55AE50021FBF8 /* Frameworks */,
 				1F38EBE31EE55AE50021FBF8 /* Resources */,
-				1BAD3F74505E36F2DCCEFA9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = tvOSExampleApp;
+			packageProductDependencies = (
+				301F4D6A6C07774FF5C2E5B8 /* MatomoTracker */,
+			);
 			productName = tvos;
 			productReference = 1F38EBE51EE55AE50021FBF8 /* tvOSExampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +123,9 @@
 				Base,
 			);
 			mainGroup = 1F38EBDC1EE55AE50021FBF8;
+			packageReferences = (
+				E1214C6CBA0D86D06219A4EF /* XCLocalSwiftPackageReference "../.." */,
+			);
 			productRefGroup = 1F38EBE61EE55AE50021FBF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,42 +148,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BAD3F74505E36F2DCCEFA9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-example-tvOSExampleApp/Pods-example-tvOSExampleApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/MatomoTracker-tvOS/MatomoTracker.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MatomoTracker.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-tvOSExampleApp/Pods-example-tvOSExampleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A7D0D37AD3004C01CA94CC9D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-example-tvOSExampleApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -280,7 +230,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.2;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -331,14 +281,13 @@
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.2;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		1F38EBF51EE55AE50021FBF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FCC224653B51A1346A4CA0F /* Pods-example-tvOSExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -352,7 +301,6 @@
 		};
 		1F38EBF61EE55AE50021FBF8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47BE969E3E739CD830ACE064 /* Pods-example-tvOSExampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -386,6 +334,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		E1214C6CBA0D86D06219A4EF /* XCLocalSwiftPackageReference "../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		301F4D6A6C07774FF5C2E5B8 /* MatomoTracker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatomoTracker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1F38EBDD1EE55AE50021FBF8 /* Project object */;
 }

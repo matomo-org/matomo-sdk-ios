@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+* **improvement** Increased deployment targets to iOS 15, tvOS 15, macOS 12, visionOS 1 and watchOS 9, the minimum supported by current Xcode versions.
+* **improvement** The Swift Package Manager integration now ships the Privacy Manifest and declares visionOS support. The package requires Swift 6 tooling (Xcode 16 or newer).
+* **improvement** Removed Ruby, CocoaPods, Danger, Quick and Nimble from the development setup. Tests are written with Swift Testing and the examples use the local Swift package. The MatomoTracker pod is still published.
+
 ## 7.8.0
 * **feature** Exposed visitorID as a readonly property. [#437](https://github.com/matomo-org/matomo-sdk-ios/pull/437)
 * **bugfix** Fixed double percent encoding. [#475](https://github.com/matomo-org/matomo-sdk-ios/pull/475)

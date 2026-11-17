@@ -8,72 +8,79 @@ on:
     branches:
       - develop
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  tests-ios:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        include: # selection of https://github.com/actions/runner-images/blob/main/images/macos/macos-latest-Readme.md#installed-sdks
-          - xcode: "26.1.1"
-            ios: "26.1"
-            device: "iPhone 17"
-          # - xcode: "12.5.1"
-          #   ios: "14.5"
-          #   device: "iPhone 8"
-    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
-    name: "test ios ${{matrix.ios}}"
+  swift-package:
+    name: "swift test (macOS)"
+    runs-on: macos-26
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.3'
-        bundler-cache: true
-    - name: pod install
-      run: pod install || pod install --repo-update
-    - name: "Select Xcode ${{matrix.xcode}}"
-      run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
-    - name: Run Unit Tests on ${{matrix.ios}} ${{matrix.device}}
-      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme 'MatomoTracker' -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=${{matrix.device}},OS=${{matrix.ios}}' -configuration Debug clean test
-  tests-demo-builds:
-    runs-on: macos-latest
+      - uses: actions/checkout@v5
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Build and test the Swift package
+        run: swift test
+
+  tests-ios:
+    name: "test iOS"
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Pick an iPhone simulator
+        id: simulator
+        run: |
+          udid=$(xcrun simctl list devices available | grep -m1 -E '^\s+iPhone' | grep -oE '[0-9A-F-]{36}')
+          if [ -z "$udid" ]; then
+            echo "::error::No available iPhone simulator found"
+            exit 1
+          fi
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+      - name: Run unit tests
+        run: >
+          xcodebuild test
+          -workspace MatomoTracker.xcworkspace
+          -scheme MatomoTracker
+          -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}'
+          -configuration Debug
+
+  builds:
+    name: "build ${{ matrix.scheme }} (${{ matrix.platform }})"
+    runs-on: macos-26
     strategy:
+      fail-fast: false
       matrix:
         include:
-          - scheme: "ios"
-            sdk: "iphonesimulator"
-            destination: "platform=iOS Simulator,name=iPhone 17,OS=26.1"
-            xcode: "26.1.1"
-          - scheme: "macos"
-            sdk: "macosx"
-            destination: "platform=macOS,arch=arm64"
-            xcode: "26.1.1"
-          - scheme: "tvos"
-            sdk: "appletvsimulator"
-            destination: "platform=tvOS Simulator,name=Apple TV,OS=26.1"
-            xcode: "26.1.1"
-    if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
-    name: "test demo build ${{matrix.scheme}}"
+          - scheme: MatomoTracker
+            platform: tvOS
+            destination: "generic/platform=tvOS Simulator"
+          - scheme: MatomoTracker
+            platform: visionOS
+            destination: "generic/platform=visionOS Simulator"
+          - scheme: ios
+            platform: iOS
+            destination: "generic/platform=iOS Simulator"
+          - scheme: macos
+            platform: macOS
+            destination: "platform=macOS"
+          - scheme: tvos
+            platform: tvOS
+            destination: "generic/platform=tvOS Simulator"
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.3'
-        bundler-cache: true
-    - name: pod install
-      run: pod install || pod install --repo-update
-    - name: "Select Xcode ${{matrix.xcode}}"
-      run: sudo xcode-select -switch /Applications/Xcode_${{matrix.xcode}}.app && /usr/bin/xcodebuild -version
-    - name: Build Demo for ${{matrix.scheme}}
-      run: xcodebuild -workspace MatomoTracker.xcworkspace -scheme '${{matrix.scheme}}' -sdk '${{matrix.sdk}}' -destination '${{matrix.destination}}' -configuration Release clean build
-  tests-package-managers:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: "Select Xcode 26.1.1"
-      run: sudo xcode-select -switch /Applications/Xcode_26.1.1.app && /usr/bin/xcodebuild -version
-    # Carthage doesn't work well with Matomo anymore
-    # https://github.com/Carthage/Carthage/issues/3146
-    # - name: "Build Carthage"
-    #   run: carthage build --no-skip-current
-    - name: "Test SPM"
-      run: swift build
+      - uses: actions/checkout@v5
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Build
+        run: >
+          xcodebuild build
+          -workspace MatomoTracker.xcworkspace
+          -scheme '${{ matrix.scheme }}'
+          -destination '${{ matrix.destination }}'
+          -configuration Release
+          CODE_SIGNING_ALLOWED=NO
