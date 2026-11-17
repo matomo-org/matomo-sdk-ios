@@ -119,21 +119,40 @@ matomoTracker.trackOutlink(URL(string: "https://matomo.org")!)
 
 ### Custom Dimension
 
-The Matomo SDK currently supports Custom Dimensions for the Visit Scope. Using Custom Dimensions you can add properties to the whole visit, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?" and such. Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://matomo.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.
+Using Custom Dimensions you can add properties to your tracking data, such as "Did the user finish the tutorial?", "Is the user a paying user?" or "Which version of the Application is being used?". Before sending custom dimensions please make sure Custom Dimensions are [properly installed and configured](https://matomo.org/docs/custom-dimensions/). You will need the `ID` of your configured Dimension.
 
-After that you can set a new Dimension,
+The scope of a Custom Dimension, either "Visit" or "Action", is configured in Matomo when creating the dimension. Events, searches and outlinks count as actions, so there is no separate scope for them.
+
+#### Dimensions for every request (Visit Scope)
+
+A dimension set on the `MatomoTracker` is sent along with every following request. This is best for Custom Dimensions in the Visit Scope.
 
 ```Swift
-matomoTracker.set(value: "1.0.0-beta2", forIndex: 1)
+matomoTracker.set(dimension: CustomDimension(index: 1, value: "1.0.0-beta2"))
 ```
 
-or remove an already set dimension.
+To remove an already set dimension:
 
 ```Swift
 matomoTracker.remove(dimensionAtIndex: 1)
 ```
 
-Dimensions in the Visit Scope will be sent along every Page View or Event. Custom Dimensions are not persisted by the SDK and have to be re-configured upon application startup.
+From Objective-C, use `[matomoTracker setDimension:@"1.0.0-beta2" forIndex:1]`. Custom Dimensions set on the `MatomoTracker` are not persisted by the SDK and have to be re-configured upon application startup. `reset()` removes them as well.
+
+#### Dimensions for a single request (Action Scope)
+
+To send a dimension only with a single page view, event, search or outlink, pass it to the tracking method. This is best for Custom Dimensions in the Action Scope.
+
+```Swift
+matomoTracker.track(eventWithCategory: "shop", action: "tap", name: "upgrade_button", dimensions: [
+    CustomDimension(index: 3, value: "black_friday"),
+    CustomDimension(index: 4, value: "cta_primary"),
+])
+```
+
+The `dimensions` parameter is available on `track(view:url:dimensions:)`, `track(eventWithCategory:action:name:value:dimensions:url:)`, `trackSearch(query:category:resultCount:dimensions:url:)`, `trackOutlink(_:dimensions:)` and the `Event` initializer.
+
+If a dimension with the same index is set on the `MatomoTracker` and passed to a tracking method, the value passed to the tracking method is used for that request.
 
 ### Custom User ID
 
