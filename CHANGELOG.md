@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **bugfix** Fixed a deadlock when initializing the `MatomoTracker` from a background thread while the main thread waits for it. [#476](https://github.com/matomo-org/matomo-sdk-ios/pull/476) (by @adrien-coye)
 * **bugfix** Fixed an issue where values containing a `%` were dropped or altered since 7.8.0. Only the `url` and `urlref` parameters are decoded before encoding now. [#470](https://github.com/matomo-org/matomo-sdk-ios/pull/470)
 * **improvement** Increased deployment targets to iOS 15, tvOS 15, macOS 12, visionOS 1 and watchOS 9, the minimum supported by current Xcode versions.
 * **improvement** The Swift Package Manager integration now ships the Privacy Manifest and declares visionOS support. The package requires Swift 6 tooling (Xcode 16 or newer).

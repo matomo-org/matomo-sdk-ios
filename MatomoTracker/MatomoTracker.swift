@@ -99,7 +99,11 @@ final public class MatomoTracker: NSObject {
         self.session = Session.current(in: matomoUserDefaults)
         super.init()
         startNewSession()
-        startDispatchTimer()
+        // Starting the timer asynchronously, so the initializer doesn't block until the main thread
+        // is available. Otherwise initializing the tracker from a background thread can deadlock.
+        DispatchQueue.main.async { [weak self] in
+            self?.startDispatchTimer()
+        }
     }
     
     /// Create and Configure a new Tracker
