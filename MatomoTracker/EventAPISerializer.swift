@@ -3,7 +3,7 @@ import Foundation
 final class EventAPISerializer {
     internal func queryItems(for event: Event) -> [String: String] {
         event.queryItems.reduce(into: [String:String]()) {
-            $0[$1.name] = $1.value?.removingPercentEncoding
+            $0[$1.name] = $1.value
         }.compactMapValues {
             $0.addingPercentEncoding(withAllowedCharacters: .urlQueryParameterAllowed)
         }
@@ -58,10 +58,10 @@ fileprivate extension Event {
                 URLQueryItem(name: "_viewts", value: "\(Int(session.lastVisit.timeIntervalSince1970))"),
                 URLQueryItem(name: "_idts", value: "\(Int(session.firstVisit.timeIntervalSince1970))"),
                 
-                URLQueryItem(name: "url", value:url?.absoluteString),
+                URLQueryItem(name: "url", value: url?.percentDecodedString),
                 URLQueryItem(name: "action_name", value: actionName.joined(separator: "/")),
                 URLQueryItem(name: "lang", value: language),
-                URLQueryItem(name: "urlref", value: referer?.absoluteString),
+                URLQueryItem(name: "urlref", value: referer?.percentDecodedString),
                 URLQueryItem(name: "new_visit", value: isNewSession ? "1" : nil),
                 
                 URLQueryItem(name: "h", value: DateFormatter.hourDateFormatter.string(from: date)),
@@ -109,6 +109,14 @@ fileprivate extension Event {
             
             return items + dimensionItems + ecommerceOrderItemsAndFlag + customVariableItems + customItems
         }
+    }
+}
+
+fileprivate extension URL {
+    /// The `absoluteString` of a URL is already percent encoded. As all query parameter values are
+    /// percent encoded by the serializer, the URL is decoded first to avoid encoding it twice.
+    var percentDecodedString: String {
+        absoluteString.removingPercentEncoding ?? absoluteString
     }
 }
 
