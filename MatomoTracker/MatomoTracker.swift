@@ -42,10 +42,14 @@ final public class MatomoTracker: NSObject {
     }
 
     /// Readonly property of the visitor ID.
+    @available(*, deprecated, renamed: "visitorID")
     @objc public var visitorId: String? {
-        get {
-            return visitor.id
-        }
+        visitorID
+    }
+
+    /// Readonly property of the visitor ID.
+    @objc public var visitorID: String? {
+        visitor.id
     }
     
     /// Will be used to associate all future events with a given visitorId / cid. This property
