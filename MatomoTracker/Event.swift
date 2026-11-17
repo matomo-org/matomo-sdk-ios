@@ -105,7 +105,7 @@ extension Event {
         self.visitor = tracker.visitor
         self.session = tracker.session
         self.date = Date()
-        self.url = url ?? tracker.contentBase?.appendingPathComponent(action.joined(separator: "/"))
+        self.url = url.map { Event.prefixingContentBase(tracker.contentBase, to: $0) } ?? tracker.contentBase?.appendingPathComponent(action.joined(separator: "/"))
         self.actionName = action
         self.language = Locale.httpAcceptLanguage
         self.isNewSession = tracker.nextEventStartsANewSession
@@ -143,5 +143,24 @@ extension Event {
     @_disfavoredOverload
     public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
         self.init(tracker: tracker, action: action, url: url, referer: referer, eventCategory: eventCategory, eventAction: eventAction, eventName: eventName, eventValue: eventValue, customTrackingParameters: customTrackingParameters, searchQuery: searchQuery, searchCategory: searchCategory, searchResultsCount: searchResultsCount, dimensions: dimensions, variables: variables, contentName: contentName, contentInteraction: contentInteraction, contentPiece: contentPiece, contentTarget: contentTarget, goalID: goalId, revenue: revenue, orderID: orderId, orderItems: orderItems, orderRevenue: orderRevenue, orderSubTotal: orderSubTotal, orderTax: orderTax, orderShippingCost: orderShippingCost, orderDiscount: orderDiscount, orderLastDate: orderLastDate, isCustomAction: isCustomAction)
+    }
+}
+
+extension Event {
+    /// Prefixes a relative URL, like `/mainPage/id.123`, with the `contentBase`, so the backend
+    /// can use it as page URL. Like in the Matomo Android SDK, only URLs in the form `scheme://…`
+    /// count as absolute and are returned unchanged, as is the URL if there is no `contentBase`.
+    static func prefixingContentBase(_ contentBase: URL?, to url: URL) -> URL {
+        let isAbsolute = url.absoluteString.range(of: "^\\w+://.+$", options: .regularExpression) != nil
+        guard !isAbsolute, let contentBase = contentBase else { return url }
+        let base = contentBase.absoluteString
+        let path = url.relativeString
+        let joined: String
+        switch (base.hasSuffix("/"), path.hasPrefix("/")) {
+        case (false, false): joined = base + "/" + path
+        case (true, true): joined = base + path.dropFirst()
+        default: joined = base + path
+        }
+        return URL(string: joined) ?? url
     }
 }

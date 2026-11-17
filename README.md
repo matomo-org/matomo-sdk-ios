@@ -243,7 +243,7 @@ Also: You cannot override Custom Parameter keys that are already defined by the 
 
 ### Automatic url generation
 
-You can define the url property on every `Event`. If none is defined, the SDK will try to generate a url based on the `contentBase` of the `MatomoTracker`. If the `contentBase` is nil, no url will be generated. If the `contentBase` is set, it will append the actions of the event to it and use it as the url. Per default the `contentBase` is generated using the application bundle identifier. For example `http://org.matomo.skd`. This will not result in resolvable urls, but enables the backend to analyse and structure them.
+You can define the url property on every `Event`. If none is defined, the SDK will try to generate a url based on the `contentBase` of the `MatomoTracker`. If the `contentBase` is nil, no url will be generated. If the `contentBase` is set, it will append the actions of the event to it and use it as the url. A relative url without a scheme, like `/mainPage/id.123`, is appended to the `contentBase` as well. Per default the `contentBase` is generated using the application bundle identifier. For example `http://org.matomo.skd`. This will not result in resolvable urls, but enables the backend to analyse and structure them.
 
 ### Event dispatching
 
