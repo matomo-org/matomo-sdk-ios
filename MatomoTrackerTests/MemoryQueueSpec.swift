@@ -1,106 +1,114 @@
+import Foundation
 @testable import MatomoTracker
-import Quick
-import Nimble
+import Testing
 
-class MemoryQueueSpec: QuickSpec {
-    override class func setUp() {
-        Nimble.PollingDefaults.timeout = .seconds(10)
-        Nimble.PollingDefaults.pollInterval = .milliseconds(100)
-    }
-    
-    override class func spec() {
-        describe("init") {
-            it("should return not null") {
+extension MatomoTrackerSpecs {
+    @Suite("MemoryQueue")
+    @MainActor
+    struct MemoryQueueSpec {
+        @Suite("eventCount")
+        @MainActor
+        struct EventCount {
+            @Test("with an empty queue should return 0")
+            func emptyQueue() {
                 let queue = MemoryQueue()
-                expect(queue).toNot(beNil())
+                #expect(queue.eventCount == 0)
             }
-        }
-        describe("eventCount") {
-            context("with an empty queue") {
-                let queue = MemoryQueue()
-                it("should return 0") {
-                    expect(queue.eventCount) == 0
-                }
-            }
-            context("with a queue with two items") {
+
+            @Test("with a queue with two items should return 2")
+            func twoItems() {
                 var queue = MemoryQueue()
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
-                it("should return 2") {
-                    expect(queue.eventCount) == 2
-                }
+                #expect(queue.eventCount == 2)
             }
         }
-        describe("enqueue") {
-            it("should increase item count") {
+
+        @Suite("enqueue")
+        @MainActor
+        struct Enqueue {
+            @Test("should increase item count")
+            func increasesItemCount() async {
                 var queue = MemoryQueue()
                 queue.enqueue(event: .fixture())
-                expect(queue.eventCount).toEventually(equal(1))
+                #expect(await eventually { queue.eventCount == 1 })
             }
-            it("should call the completion closure") {
+
+            @Test("should call the completion closure")
+            func callsCompletionClosure() async {
                 var queue = MemoryQueue()
                 var calledClosure = false
                 queue.enqueue(event: .fixture()) {
                     calledClosure = true
                 }
-                expect(calledClosure).toEventually(beTrue())
+                #expect(await eventually { calledClosure })
             }
-            it("should enqueue the object") {
+
+            @Test("should enqueue the object")
+            func enqueuesTheObject() async {
                 var queue = MemoryQueue()
                 let event = Event.fixture()
                 var dequeued: Event? = nil
                 queue.enqueue(event: event)
-                queue.first(limit: 1) { event in
-                    dequeued = event.first
+                queue.first(limit: 1) { events in
+                    dequeued = events.first
                 }
-                expect(dequeued).toEventuallyNot(beNil())
-                expect(dequeued?.uuid).toEventually(equal(event.uuid))
+                #expect(await eventually { dequeued?.uuid == event.uuid })
             }
         }
-        describe("first") {
-            context("with an empty queue") {
+
+        @Suite("first")
+        @MainActor
+        struct First {
+            @Test("with an empty queue should call the completionblock without items")
+            func emptyQueue() async {
                 let queue = MemoryQueue()
-                it("should call the completionblock without items") {
-                    var dequeuedItems: [Any]? = nil
-                    queue.first(limit: 10) { events in
-                        dequeuedItems = events
-                    }
-                    expect(dequeuedItems).toEventuallyNot(beNil())
-                    expect(dequeuedItems?.count).toEventually(equal(0))
+                var dequeuedItems: [Event]? = nil
+                queue.first(limit: 10) { events in
+                    dequeuedItems = events
                 }
+                #expect(await eventually { dequeuedItems?.count == 0 })
             }
-            context("with a queue with two items") {
-                it("should return one item if just asked for one") {
-                    var queue = MemoryQueue()
-                    queue.enqueue(event: .fixture())
-                    queue.enqueue(event: .fixture())
-                    var dequeuedItems: [Any]? = nil
-                    queue.first(limit: 1) { events in
-                        dequeuedItems = events
-                    }
-                    expect(dequeuedItems?.count).toEventually(equal(1))
+
+            @Test("with a queue with two items should return one item if just asked for one")
+            func returnsOneItem() async {
+                var queue = MemoryQueue()
+                queue.enqueue(event: .fixture())
+                queue.enqueue(event: .fixture())
+                var dequeuedItems: [Event]? = nil
+                queue.first(limit: 1) { events in
+                    dequeuedItems = events
                 }
-                it("should return two items if asked for two or more") {
-                    var queue = MemoryQueue()
-                    queue.enqueue(event: .fixture())
-                    queue.enqueue(event: .fixture())
-                    var dequeuedItems: [Any]? = nil
-                    queue.first(limit: 10) { events in
-                        dequeuedItems = events
-                    }
-                    expect(dequeuedItems?.count).toEventually(equal(2))
+                #expect(await eventually { dequeuedItems?.count == 1 })
+            }
+
+            @Test("with a queue with two items should return two items if asked for two or more")
+            func returnsTwoItems() async {
+                var queue = MemoryQueue()
+                queue.enqueue(event: .fixture())
+                queue.enqueue(event: .fixture())
+                var dequeuedItems: [Event]? = nil
+                queue.first(limit: 10) { events in
+                    dequeuedItems = events
                 }
-                it("should not remove objects from the queue") {
-                    var queue = MemoryQueue()
-                    queue.enqueue(event: .fixture())
-                    queue.enqueue(event: .fixture())
-                    queue.first(limit: 1, completion: { items in })
-                    expect(queue.eventCount) == 2
-                }
+                #expect(await eventually { dequeuedItems?.count == 2 })
+            }
+
+            @Test("with a queue with two items should not remove objects from the queue")
+            func doesNotRemoveObjects() {
+                var queue = MemoryQueue()
+                queue.enqueue(event: .fixture())
+                queue.enqueue(event: .fixture())
+                queue.first(limit: 1, completion: { _ in })
+                #expect(queue.eventCount == 2)
             }
         }
-        describe("remove") {
-            it("should remove events that are enqueued") {
+
+        @Suite("remove")
+        @MainActor
+        struct Remove {
+            @Test("should remove events that are enqueued")
+            func removesEnqueuedEvents() throws {
                 var queue = MemoryQueue()
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
@@ -108,10 +116,13 @@ class MemoryQueueSpec: QuickSpec {
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
                 }
-                queue.remove(events: [dequeuedItem!], completion: {})
-                expect(queue.eventCount) == 1
+                let event = try #require(dequeuedItem)
+                queue.remove(events: [event], completion: {})
+                #expect(queue.eventCount == 1)
             }
-            it("should ignore if one event is tried to remove twice") {
+
+            @Test("should ignore if one event is tried to remove twice")
+            func ignoresRemovingTwice() throws {
                 var queue = MemoryQueue()
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
@@ -119,11 +130,14 @@ class MemoryQueueSpec: QuickSpec {
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
                 }
-                queue.remove(events: [dequeuedItem!], completion: {})
-                queue.remove(events: [dequeuedItem!], completion: {})
-                expect(queue.eventCount) == 1
+                let event = try #require(dequeuedItem)
+                queue.remove(events: [event], completion: {})
+                queue.remove(events: [event], completion: {})
+                #expect(queue.eventCount == 1)
             }
-            it("should skip not queued events") {
+
+            @Test("should skip not queued events")
+            func skipsNotQueuedEvents() throws {
                 var queue = MemoryQueue()
                 queue.enqueue(event: .fixture())
                 queue.enqueue(event: .fixture())
@@ -131,8 +145,9 @@ class MemoryQueueSpec: QuickSpec {
                 queue.first(limit: 1) { events in
                     dequeuedItem = events.first
                 }
-                queue.remove(events: [dequeuedItem!, .fixture()], completion: {})
-                expect(queue.eventCount) == 1
+                let event = try #require(dequeuedItem)
+                queue.remove(events: [event, .fixture()], completion: {})
+                #expect(queue.eventCount == 1)
             }
         }
     }

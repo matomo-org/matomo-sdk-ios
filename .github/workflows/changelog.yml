@@ -1,0 +1,52 @@
+name: Check Changelog
+
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  changelog:
+    name: "changelog"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check CHANGELOG.md and README.md
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          changed_files=$(git diff --name-only "$BASE_SHA...$HEAD_SHA")
+
+          if [[ "$PR_TITLE" == *"[WIP]"* ]]; then
+            echo "::warning::PR is classed as Work in Progress"
+          fi
+
+          # Sometimes it's a README fix, or something like that - which isn't relevant
+          # for the CHANGELOG. Add "#trivial" to the PR title to skip the checks.
+          if [[ "$PR_TITLE" == *"#trivial"* ]]; then
+            echo "PR is marked as #trivial, skipping checks."
+            exit 0
+          fi
+
+          if ! grep -q '^MatomoTracker/' <<< "$changed_files"; then
+            echo "No SDK changes, nothing to check."
+            exit 0
+          fi
+
+          if ! grep -qx 'README.md' <<< "$changed_files"; then
+            echo "::warning::Are there any changes that should be explained in the README.md?"
+          fi
+
+          if ! grep -qx 'CHANGELOG.md' <<< "$changed_files"; then
+            echo "::error::Please add a line to the CHANGELOG.md since you changed the SDK."
+            exit 1
+          fi

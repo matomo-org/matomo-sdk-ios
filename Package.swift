@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:6.0
 //
 // MatomoTracker
 //
@@ -7,11 +7,29 @@ import PackageDescription
 
 let package = Package(
   name: "MatomoTracker",
+  platforms: [
+      .iOS(.v15),
+      .tvOS(.v15),
+      .macOS(.v12),
+      .visionOS(.v1),
+      .watchOS(.v9),
+  ],
   products: [
       .library(name: "MatomoTracker", targets: ["MatomoTracker"])
   ],
   targets: [
-      .target(name: "MatomoTracker", dependencies: [], path: "MatomoTracker"),
+      .target(
+          name: "MatomoTracker",
+          path: "MatomoTracker",
+          exclude: ["Info.plist", "MatomoTracker.h"],
+          resources: [.copy("PrivacyInfo.xcprivacy")]
+      ),
+      .testTarget(
+          name: "MatomoTrackerTests",
+          dependencies: ["MatomoTracker"],
+          path: "MatomoTrackerTests",
+          exclude: ["Info.plist"]
+      ),
   ],
-  swiftLanguageVersions: [.v5]
+  swiftLanguageModes: [.v5]
 )

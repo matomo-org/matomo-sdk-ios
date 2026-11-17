@@ -29,8 +29,9 @@ If you implemented a change please send a [Pull Request](https://github.com/mato
 You want to contribute code? Awesome. Here are some tips that should get you started.
 
 1. Check out the repository
-2. Install the CocoaPods by running `pod install` from the checked out folder
-3. Open the Workspace in Xcode
+2. Open `MatomoTracker.xcworkspace` in Xcode
+
+No additional tools are needed: the example applications use the SDK as a local Swift package and the tests use [Swift Testing](https://developer.apple.com/xcode/swift-testing/), which ships with Xcode.
 
 ### Adding code to the SDK
 
@@ -38,8 +39,8 @@ In the Workspace you will find the *MatomoTracker* Project. Inside of it there i
 
 ### Adding example code
 
-All the example code can be found in the Workspace, in the *Examples* folder. There is a scheme for every example application. When changing the SDK itself, it might be necessary to run a `pod update` to install all those changes in the Example applications.
+All the example code can be found in the Workspace, in the *Examples* folder. There is a scheme for every example application. The example applications reference the SDK as a local Swift package, so changes to the SDK are picked up automatically.
 
 ### Testing
 
-We have a small set of [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) specs and we are always open for more.
+We have a small set of [Swift Testing](https://developer.apple.com/xcode/swift-testing/) tests and we are always open for more. Run them from the *MatomoTracker* scheme in Xcode, or from the command line with `swift test`.

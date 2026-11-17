@@ -1,3 +1,4 @@
+import Foundation
 @testable import MatomoTracker
 
 class QueueMock: Queue {

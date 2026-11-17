@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A3CF5C1816D072E02E484E8E /* MatomoTracker in Frameworks */ = {isa = PBXBuildFile; productRef = 72769324001C7E721DC78EB7 /* MatomoTracker */; };
 		1F01F8FE2C89A8E400327D62 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F01F8FD2C89A8E400327D62 /* EcommerceViewController.swift */; };
 		1F03BC991E86CC7E0002F0AD /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC981E86CC7E0002F0AD /* EventsViewController.swift */; };
 		1F03BC9B1E86CF770002F0AD /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03BC9A1E86CF770002F0AD /* ScreenViewController.swift */; };
@@ -48,7 +49,6 @@
 		1FDC91791F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91741F1A648C0046F506 /* ObjectiveCCompatibilityChecker.m */; };
 		1FDC917A1F1A648C0046F506 /* OptOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC91751F1A648C0046F506 /* OptOutViewController.swift */; };
 		1FFE0C272095C0E500DE23B1 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */; };
-		22E0E5EC287843B9B1A83B90 /* Pods_example_iOSExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */; };
 		24F6AE8F1F61FDE200C6C22C /* UserIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */; };
 		CD93EC8C17E76E290062BE20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1EA93417B0DA4400F63E14 /* UIKit.framework */; };
 		CD93EC8D17E76E290062BE20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10FABF17B0378D0012BE50 /* Foundation.framework */; };
@@ -92,14 +92,6 @@
 		1FDC91751F1A648C0046F506 /* OptOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptOutViewController.swift; sourceTree = "<group>"; };
 		1FFE0C262095C0E400DE23B1 /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		24F6AE8E1F61FDE200C6C22C /* UserIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIDViewController.swift; sourceTree = "<group>"; };
-		2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-iOSExampleApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosafnetworking2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_iOSExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-iOSExampleApp.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		9BB58213275F072D13140292 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.release.xcconfig"; sourceTree = "<group>"; };
-		AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-ios.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-example-ios/Pods-example-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		AFEF98FA72F773DD178FA44C /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD03D99517E8FDFC00D7723F /* OptOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptOutViewController.h; sourceTree = "<group>"; };
 		CD03D99617E8FDFC00D7723F /* OptOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptOutViewController.m; sourceTree = "<group>"; };
 		CD10FABF17B0378D0012BE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,31 +131,19 @@
 				CDC55E2918017D530019A03E /* CoreData.framework in Frameworks */,
 				CDC55E2A18017D630019A03E /* CoreLocation.framework in Frameworks */,
 				CD93EC8E17E76E290062BE20 /* CoreGraphics.framework in Frameworks */,
-				22E0E5EC287843B9B1A83B90 /* Pods_example_iOSExampleApp.framework in Frameworks */,
+				A3CF5C1816D072E02E484E8E /* MatomoTracker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56D3B2A29360E0C4A14A8360 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AC92312231977BC13ABD15F1 /* Pods-example-ios.debug.xcconfig */,
-				A512D280229592361DDA7E8D /* Pods-example-ios.release.xcconfig */,
-				2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */,
-				8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		CD10FAB317B0378D0012BE50 = {
 			isa = PBXGroup;
 			children = (
 				CD10FABE17B0378D0012BE50 /* Frameworks */,
 				CD10FABD17B0378D0012BE50 /* Products */,
 				CD93EC8F17E76E290062BE20 /* iOS Example */,
-				56D3B2A29360E0C4A14A8360 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,10 +165,6 @@
 				CD1EA93D17B0DB7500F63E14 /* CoreGraphics.framework */,
 				CD2F7DAF17B9561C00E240FC /* CoreLocation.framework */,
 				CDEAEAB6180B36F800EB91C2 /* Cocoa.framework */,
-				9BB58213275F072D13140292 /* libPods-ios.a */,
-				3AEBBD63B45D1F968424585B /* libPods-iosafnetworking2.a */,
-				AFEF98FA72F773DD178FA44C /* libPods-osx.a */,
-				41327B74DAF6958954BA8D0A /* Pods_example_iOSExampleApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -252,17 +228,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD93ECAC17E76E290062BE20 /* Build configuration list for PBXNativeTarget "iOSExampleApp" */;
 			buildPhases = (
-				434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */,
 				CD93EC8717E76E290062BE20 /* Sources */,
 				CD93EC8817E76E290062BE20 /* Frameworks */,
 				CD93EC8917E76E290062BE20 /* Resources */,
-				01A5049A4137D2B0AC2675EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = iOSExampleApp;
+			packageProductDependencies = (
+				72769324001C7E721DC78EB7 /* MatomoTracker */,
+			);
 			productName = PiwikTrackeriOSDemo;
 			productReference = CD93EC8B17E76E290062BE20 /* iOSExampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +270,9 @@
 				Base,
 			);
 			mainGroup = CD10FAB317B0378D0012BE50;
+			packageReferences = (
+				8121CE7A8BB593AABDA2DB53 /* XCLocalSwiftPackageReference "../.." */,
+			);
 			productRefGroup = CD10FABD17B0378D0012BE50 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -320,42 +300,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01A5049A4137D2B0AC2675EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/MatomoTracker-iOS/MatomoTracker.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MatomoTracker.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example-iOSExampleApp/Pods-example-iOSExampleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		434B17FA41C3CDFE84FF8205 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-example-iOSExampleApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CDC3360217B97B190098386C /* Build appledoc */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,8 +430,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -527,8 +471,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -536,7 +480,6 @@
 		};
 		CD93ECAA17E76E290062BE20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2670D5A26AB928EDC61E1EB1 /* Pods-example-iOSExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -546,7 +489,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Prefix.pch";
 				INFOPLIST_FILE = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.matomo.iostracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,7 +504,6 @@
 		};
 		CD93ECAB17E76E290062BE20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AEA4A132C5BFFF42F394052 /* Pods-example-iOSExampleApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -571,7 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Prefix.pch";
 				INFOPLIST_FILE = "iOS Example/Supporting Files/PiwikTrackeriOSDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.matomo.iostracker;
@@ -652,6 +594,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8121CE7A8BB593AABDA2DB53 /* XCLocalSwiftPackageReference "../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		72769324001C7E721DC78EB7 /* MatomoTracker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatomoTracker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD10FAB417B0378D0012BE50 /* Project object */;
 }
