@@ -22,6 +22,7 @@
 		1F6B2F032529CE8A00D2A591 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B2F012529CC3400D2A591 /* UserAgent.swift */; };
 		1F6F0CD71E61E35A008170FC /* MatomoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */; };
 		1F6F0CDC1E61E377008170FC /* DispatcherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD81E61E377008170FC /* DispatcherMock.swift */; };
+		1FAB00032EC0000000000001 /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB00042EC0000000000001 /* EventSpec.swift */; };
 		1FAB00012EC0000000000001 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB00022EC0000000000001 /* TestSupport.swift */; };
 		1F6F0CDD1E61E377008170FC /* QueueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CD91E61E377008170FC /* QueueMock.swift */; };
 		1F6F0CDF1E61E377008170FC /* TrackerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */; };
@@ -71,6 +72,7 @@
 		1F6B2F012529CC3400D2A591 /* UserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		1F6F0CD61E61E35A008170FC /* MatomoTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatomoTracker.swift; sourceTree = "<group>"; };
 		1F6F0CD81E61E377008170FC /* DispatcherMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatcherMock.swift; sourceTree = "<group>"; };
+		1FAB00042EC0000000000001 /* EventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
 		1FAB00022EC0000000000001 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		1F6F0CD91E61E377008170FC /* QueueMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueMock.swift; sourceTree = "<group>"; };
 		1F6F0CDB1E61E377008170FC /* TrackerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerSpec.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				1F6F0CD81E61E377008170FC /* DispatcherMock.swift */,
 				1F6F0CD91E61E377008170FC /* QueueMock.swift */,
 				1FAB00022EC0000000000001 /* TestSupport.swift */,
+				1FAB00042EC0000000000001 /* EventSpec.swift */,
 			);
 			name = Stubs;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				1F8DCCDC25A1C7C700C98793 /* EventAPISerializerSpec.swift in Sources */,
 				1F6F0CDD1E61E377008170FC /* QueueMock.swift in Sources */,
 				1FAB00012EC0000000000001 /* TestSupport.swift in Sources */,
+				1FAB00032EC0000000000001 /* EventSpec.swift in Sources */,
 				1F8DCCDA25A1BAF700C98793 /* MatomoTracker+Fixture.swift in Sources */,
 				1F6F0CDC1E61E377008170FC /* DispatcherMock.swift in Sources */,
 				1F963074201B37A3007B2AE7 /* PiwikUserDefaultsSpec.swift in Sources */,
