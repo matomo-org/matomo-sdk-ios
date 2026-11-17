@@ -455,7 +455,7 @@ extension MatomoTracker {
     
     /// Removes a previously set custom dimension.
     ///
-    /// Use this method to remove a dimension that was set using the `set(value: String, forDimension index: Int)` method.
+    /// Use this method to remove a dimension that was set using `set(dimension:)` or `setDimension(_:forIndex:)`.
     ///
     /// - Parameter index: The index of the dimension.
     @objc public func remove(dimensionAtIndex index: Int) {
