@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* **feature** Added outlink tracking with `trackOutlink(_:dimensions:)`. [#484](https://github.com/matomo-org/matomo-sdk-ios/issues/484)
 * **bugfix** Relative urls without a scheme, like `/mainPage/id.123`, are now prefixed with the `contentBase`, like on Android. Before, Matomo showed "Page URL not defined" for them. [#483](https://github.com/matomo-org/matomo-sdk-ios/issues/483)
 * **improvement** Spelled `ID` consistently in the public API, following the Swift API design guidelines (e.g. `userID`, `forcedVisitorID`, `visitorID`, `init(siteID:baseURL:userAgent:)`). The previous names are deprecated. [#464](https://github.com/matomo-org/matomo-sdk-ios/pull/464) (by @idrougge)
 * **bugfix** Fixed a deadlock when initializing the `MatomoTracker` from a background thread while the main thread waits for it. [#476](https://github.com/matomo-org/matomo-sdk-ios/pull/476) (by @adrien-coye)
