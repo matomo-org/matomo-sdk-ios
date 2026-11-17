@@ -23,6 +23,20 @@ extension MatomoTrackerSpecs {
                 }
                 #expect(weakTracker == nil)
             }
+
+            @Test("should not deadlock if initialized on a background thread while the main thread waits for it")
+            func doesNotDeadlockWhenInitializedInBackground() {
+                let initialized = DispatchSemaphore(value: 0)
+                var tracker: MatomoTracker?
+                DispatchQueue.global(qos: .userInitiated).async {
+                    tracker = MatomoTracker.fixture(queue: MemoryQueue(), dispatcher: DispatcherMock())
+                    initialized.signal()
+                }
+                // Blocks the main thread, like a dependency injection container resolving the tracker would.
+                let result = initialized.wait(timeout: .now() + 5)
+                #expect(result == .success)
+                #expect(tracker != nil)
+            }
         }
 
         @Suite("queue")
