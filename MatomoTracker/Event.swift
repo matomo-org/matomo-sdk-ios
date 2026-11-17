@@ -147,11 +147,12 @@ extension Event {
 }
 
 extension Event {
-    /// Prefixes a URL without a scheme, like `/mainPage/id.123`, with the `contentBase`, so the
-    /// backend can use it as page URL. This matches the behavior of the Matomo Android SDK.
-    /// URLs with a scheme are returned unchanged, as is the URL if there is no `contentBase`.
+    /// Prefixes a relative URL, like `/mainPage/id.123`, with the `contentBase`, so the backend
+    /// can use it as page URL. Like in the Matomo Android SDK, only URLs in the form `scheme://…`
+    /// count as absolute and are returned unchanged, as is the URL if there is no `contentBase`.
     static func prefixingContentBase(_ contentBase: URL?, to url: URL) -> URL {
-        guard url.absoluteURL.scheme == nil, let contentBase = contentBase else { return url }
+        let isAbsolute = url.absoluteString.range(of: "^\\w+://.+$", options: .regularExpression) != nil
+        guard !isAbsolute, let contentBase = contentBase else { return url }
         let base = contentBase.absoluteString
         let path = url.relativeString
         let joined: String

@@ -28,9 +28,33 @@ extension MatomoTrackerSpecs {
                 #expect(url(for: URL(string: relativeURL), contentBase: contentBase) == expected)
             }
 
-            @Test("keeps an absolute url unchanged")
-            func keepsAbsoluteURL() {
-                #expect(url(for: URL(string: "https://example.org/mainPage"), contentBase: "http://org.example.app") == "https://example.org/mainPage")
+            /// The same cases as in the Matomo Android SDK's `TrackerTest`
+            /// (`testLastScreenUrl`, `testSetURL`, `testApplicationDomain`, `testUrlPathCorrection`).
+            @Test("behaves like the Android SDK", arguments: [
+                ("http://this.is.our.package/", "thang", "http://this.is.our.package/thang"),
+                ("http://test.com/", "me", "http://test.com/me"),
+                ("http://test.com/", "https://my.com/secure", "https://my.com/secure"),
+                ("http://my-domain.com", "test/test", "http://my-domain.com/test/test"),
+                ("https://package/", "/", "https://package/"),
+            ])
+            func behavesLikeAndroid(contentBase: String, relativeURL: String, expected: String) {
+                #expect(url(for: URL(string: relativeURL), contentBase: contentBase) == expected)
+            }
+
+            @Test("treats urls without `://` as relative, like the Android SDK", arguments: [
+                ("id:123/details", "http://org.example.app/id:123/details"),
+                ("myapp:settings", "http://org.example.app/myapp:settings"),
+            ])
+            func treatsURLsWithoutSlashesAsRelative(relativeURL: String, expected: String) {
+                #expect(url(for: URL(string: relativeURL), contentBase: "http://org.example.app") == expected)
+            }
+
+            @Test("keeps an absolute url unchanged", arguments: [
+                "https://example.org/mainPage",
+                "myapp://settings",
+            ])
+            func keepsAbsoluteURL(absoluteURL: String) {
+                #expect(url(for: URL(string: absoluteURL), contentBase: "http://org.example.app") == absoluteURL)
             }
 
             @Test("keeps a relative url unchanged without a contentBase")
