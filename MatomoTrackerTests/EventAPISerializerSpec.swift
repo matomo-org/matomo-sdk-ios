@@ -59,7 +59,7 @@ extension MatomoTrackerSpecs {
 
             @Test("keeps the goal revenue parameter")
             func keepsGoalRevenue() {
-                let event = Event.fixture(goalId: 1, revenue: 5.0)
+                let event = Event.fixture(goalID: 1, revenue: 5.0)
                 let encodedEvent = EventAPISerializer().queryItems(for: event)
                 #expect(encodedEvent["revenue"] == "5.0")
             }

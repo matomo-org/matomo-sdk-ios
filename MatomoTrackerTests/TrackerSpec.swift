@@ -11,14 +11,14 @@ extension MatomoTrackerSpecs {
         struct Init {
             @Test("should be able to initialized the MatomoTracker with a URL ending on `matomo.php`")
             func initializesWithMatomoPHP() {
-                _ = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
+                _ = MatomoTracker(siteID: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
             }
 
             @Test("should be released if no external strong reference exists (no retain cycles)")
             func hasNoRetainCycles() {
                 weak var weakTracker: MatomoTracker?
                 do {
-                    let tracker = MatomoTracker(siteId: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
+                    let tracker = MatomoTracker(siteID: "5", baseURL: URL(string: "https://example.com/matomo.php")!)
                     weakTracker = tracker
                 }
                 #expect(weakTracker == nil)
@@ -161,25 +161,25 @@ extension MatomoTrackerSpecs {
                 queue.enqueueEventsHandler = { events, _ in
                     queuedEvent = events.first
                 }
-                tracker.forcedVisitorId = "0123456789abcdef"
+                tracker.forcedVisitorID = "0123456789abcdef"
                 tracker.track(view: ["spec_view"])
-                #expect(await eventually { queuedEvent?.visitor.forcedId == "0123456789abcdef" })
+                #expect(await eventually { queuedEvent?.visitor.forcedID == "0123456789abcdef" })
             }
 
             @Test("it doesn't change the existing value if set to an invalid one")
             func ignoresInvalidValues() {
-                let tracker = MatomoTracker(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                tracker.forcedVisitorId = "0123456789abcdef"
-                tracker.forcedVisitorId = "invalid"
-                #expect(tracker.forcedVisitorId == "0123456789abcdef")
+                let tracker = MatomoTracker(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorID = "0123456789abcdef"
+                tracker.forcedVisitorID = "invalid"
+                #expect(tracker.forcedVisitorID == "0123456789abcdef")
             }
 
             @Test("should persist and restore the value")
             func persistsAndRestores() {
-                let tracker = MatomoTracker(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                tracker.forcedVisitorId = "0123456789abcdef"
-                let tracker2 = MatomoTracker(siteId: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
-                #expect(tracker2.forcedVisitorId == "0123456789abcdef")
+                let tracker = MatomoTracker(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                tracker.forcedVisitorID = "0123456789abcdef"
+                let tracker2 = MatomoTracker(siteID: "spec", baseURL: URL(string: "http://matomo.org/spec/piwik.php")!)
+                #expect(tracker2.forcedVisitorID == "0123456789abcdef")
             }
         }
 

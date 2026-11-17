@@ -14,7 +14,7 @@ import CoreGraphics
 /// - All Plugins: fla, java, dir, qt, realp, pdf, wma, gears, ag
 public struct Event: Codable {
     public let uuid: UUID
-    let siteId: String
+    let siteID: String
     let visitor: Visitor
     let session: Session
     
@@ -83,12 +83,12 @@ public struct Event: Codable {
     
     /// Goal tracking
     /// https://matomo.org/docs/tracking-goals-web-analytics/
-    let goalId: Int?
+    let goalID: Int?
     let revenue: Float?
 
     /// Ecommerce Order tracking
     /// https://matomo.org/faq/reports/advanced-manually-tracking-ecommerce-actions-in-matomo/#tracking-orders-to-matomo-required
-    let orderId: String?
+    let orderID: String?
     let orderItems: [OrderItem]
     let orderRevenue: Float?
     let orderSubTotal: Float?
@@ -99,8 +99,8 @@ public struct Event: Codable {
 }
 
 extension Event {
-    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
-        self.siteId = tracker.siteId
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalID: Int? = nil, revenue: Float? = nil, orderID: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
+        self.siteID = tracker.siteID
         self.uuid = UUID()
         self.visitor = tracker.visitor
         self.session = tracker.session
@@ -126,9 +126,9 @@ extension Event {
         self.contentPiece = contentPiece
         self.contentTarget = contentTarget
         self.contentInteraction = contentInteraction
-        self.goalId = goalId
+        self.goalID = goalID
         self.revenue = revenue
-        self.orderId = orderId
+        self.orderID = orderID
         self.orderItems = orderItems
         self.orderRevenue = orderRevenue
         self.orderSubTotal = orderSubTotal
@@ -137,5 +137,11 @@ extension Event {
         self.orderDiscount = orderDiscount
         self.orderLastDate = orderLastDate
         self.isCustomAction = isCustomAction
+    }
+
+    @available(*, deprecated, renamed: "init(tracker:action:url:referer:eventCategory:eventAction:eventName:eventValue:customTrackingParameters:searchQuery:searchCategory:searchResultsCount:dimensions:variables:contentName:contentInteraction:contentPiece:contentTarget:goalID:revenue:orderID:orderItems:orderRevenue:orderSubTotal:orderTax:orderShippingCost:orderDiscount:orderLastDate:isCustomAction:)")
+    @_disfavoredOverload
+    public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalId: Int? = nil, revenue: Float? = nil, orderId: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
+        self.init(tracker: tracker, action: action, url: url, referer: referer, eventCategory: eventCategory, eventAction: eventAction, eventName: eventName, eventValue: eventValue, customTrackingParameters: customTrackingParameters, searchQuery: searchQuery, searchCategory: searchCategory, searchResultsCount: searchResultsCount, dimensions: dimensions, variables: variables, contentName: contentName, contentInteraction: contentInteraction, contentPiece: contentPiece, contentTarget: contentTarget, goalID: goalId, revenue: revenue, orderID: orderId, orderItems: orderItems, orderRevenue: orderRevenue, orderSubTotal: orderSubTotal, orderTax: orderTax, orderShippingCost: orderShippingCost, orderDiscount: orderDiscount, orderLastDate: orderLastDate, isCustomAction: isCustomAction)
     }
 }

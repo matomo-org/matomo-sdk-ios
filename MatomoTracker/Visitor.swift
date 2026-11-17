@@ -8,27 +8,27 @@ struct Visitor: Codable {
     
     /// A unique visitor ID, possuble to override by the SDK user.
     /// api-key: cid
-    let forcedId: String?
+    let forcedID: String?
     
     /// An optional user identifier such as email or username.
     /// api-key: uid
-    let userId: String?
+    let userID: String?
 }
 
 extension Visitor {
     static func current(in matomoUserDefaults: MatomoUserDefaults) -> Visitor {
         var matomoUserDefaults = matomoUserDefaults
         let id: String
-        if let existingId = matomoUserDefaults.clientId {
-            id = existingId
+        if let existingID = matomoUserDefaults.clientID {
+            id = existingID
         } else {
-            let newId = newVisitorID()
-            matomoUserDefaults.clientId = newId
-            id = newId
+            let newID = newVisitorID()
+            matomoUserDefaults.clientID = newID
+            id = newID
         }
-        let forcedVisitorId = matomoUserDefaults.forcedVisitorId
-        let userId = matomoUserDefaults.visitorUserId
-        return Visitor(id: id, forcedId: forcedVisitorId, userId: userId)
+        let forcedVisitorID = matomoUserDefaults.forcedVisitorID
+        let userID = matomoUserDefaults.visitorUserID
+        return Visitor(id: id, forcedID: forcedVisitorID, userID: userID)
     }
     
     static func newVisitorID() -> String {
