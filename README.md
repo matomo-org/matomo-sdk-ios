@@ -6,31 +6,7 @@ The MatomoTracker is an iOS, tvOS and macOS SDK for sending app analytics to a M
 
 ## Installation
 
-The MatomoTracker can be installed via CocoaPods, Carthage and the Swift Package Manager. In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
-
-<details><summary>CocoaPods</summary>
-
-Use the following in your Podfile.
-```
-pod 'MatomoTracker', '~> 7.9'
-```
-Then run `pod install`.
-
-</details>
-
-<details><summary>Carthage</summary>
-
-[Carthage](https://github.com/Carthage/Carthage) is a non intrusive way to install MatomoTracker to your project. It makes no changes to your Xcode project and workspace. Add the following to your Cartfile:
-
-```
-github "matomo-org/matomo-sdk-ios"
-```
-
-</details>
-
-<details><summary>Swift Package Manager</summary>
-
-You can use the Swift Package Manager as integration method. If you want to use the Swift Package Manager as integration method, either use Xcode to add the package dependency or add the following dependency to your Package.swift:
+The MatomoTracker is installed with the Swift Package Manager. Either use Xcode to add the package dependency or add the following dependency to your Package.swift:
 
 `.package(url: "https://github.com/matomo-org/matomo-sdk-ios.git", from: "v7.9.0"),`
 
@@ -38,7 +14,9 @@ and in your dependencies:
 
 `.product(name: "MatomoTracker", package: "matomo-sdk-ios")`
 
-</details>
+In every file you want to use the MatomoTracker, don't forget to import the framework with `import MatomoTracker`.
+
+Releases up to 7.9 are also available via [CocoaPods](https://cocoapods.org/pods/MatomoTracker) and Carthage.
 
 ## Usage
 ### Matomo Instance

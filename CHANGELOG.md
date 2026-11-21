@@ -5,6 +5,7 @@
 * **improvement** All methods and properties of the `MatomoTracker` can be used from any thread without blocking on the main thread or risking a deadlock. Events capture the tracker's state when they are tracked and are queued in call order. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
 * **feature** Added `dispatch(completion:)` to get notified when dispatching has finished, for example to end a background task. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
 * **bugfix** Only the first event tracked after a new session started is sent as a new visit, even if several events are tracked at once. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
+* **breaking** Removed CocoaPods and Carthage support. The MatomoTracker is distributed with the Swift Package Manager only. 7.9.0 is the last version published to CocoaPods.
 
 ## 7.9.0
 * **improvement** Documented how to send Custom Dimensions for a single request (Action Scope) and replaced the deprecated `set(value:forIndex:)` in the README. [#477](https://github.com/matomo-org/matomo-sdk-ios/issues/477)
