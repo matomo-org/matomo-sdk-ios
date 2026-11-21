@@ -17,6 +17,7 @@ extension MatomoTrackerSpecs {
             tracker.isOptedOut = optedOut
             defer { tracker.isOptedOut = false }
             tracker.trackOutlink(url, dimensions: dimensions)
+            tracker.waitUntilIdle()
             return queuedEvent.map { EventAPISerializer().queryItems(for: $0) }
         }
 

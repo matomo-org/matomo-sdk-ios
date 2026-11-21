@@ -28,6 +28,18 @@ jobs:
       - name: Build and test the Swift package
         run: swift test
 
+  thread-sanitizer:
+    name: "swift test with Thread Sanitizer (macOS)"
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Test the Swift package with Thread Sanitizer
+        run: swift test --sanitize=thread
+
   tests-ios:
     name: "test iOS"
     runs-on: macos-26

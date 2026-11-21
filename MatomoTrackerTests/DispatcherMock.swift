@@ -1,27 +1,29 @@
 import Foundation
 @testable import MatomoTracker
 
-final class DispatcherMock: Dispatcher {
+/// The tracker calls its dispatcher on an internal queue, so the call counts can be read from any thread.
+final class DispatcherMock: Dispatcher, @unchecked Sendable {
 
-    private(set) var baseURLOnSetCallCount = 0
+    private let counts = Locked((baseURLOnSet: 0, userAgentOnSet: 0, sendEvents: 0))
+
+    var baseURLOnSetCallCount: Int { counts.value.baseURLOnSet }
     var baseURL: URL = URL(string: "http://matomo.org/spec_url")!{
         didSet {
-            baseURLOnSetCallCount += 1
+            counts.mutate { $0.baseURLOnSet += 1 }
         }
     }
     
-    private(set) var userAgentOnSetCallCount = 0
+    var userAgentOnSetCallCount: Int { counts.value.userAgentOnSet }
     var userAgent: String? {
         didSet {
-            userAgentOnSetCallCount += 1
+            counts.mutate { $0.userAgentOnSet += 1 }
         }
     }
 
-    private(set) var sendEventsCallCount = 0
+    var sendEventsCallCount: Int { counts.value.sendEvents }
     var sendEventsHandler: (([Event], @escaping () -> Void,@escaping (Error) -> Void) -> Void)? = nil
     func send(events: [Event], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        sendEventsCallCount += 1
+        counts.mutate { $0.sendEvents += 1 }
         sendEventsHandler?(events, success, failure)
     }
 }
-

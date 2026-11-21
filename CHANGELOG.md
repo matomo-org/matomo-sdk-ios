@@ -1,6 +1,10 @@
 # Changelog
 
 ## Unreleased
+* **breaking** The `MatomoTracker` no longer uses the main thread. It calls the `Queue` and the `Dispatcher` on an internal serial queue instead. Custom `Queue` implementations that need the main thread, for example for a Core Data context bound to the main queue, have to switch to it themselves. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
+* **improvement** All methods and properties of the `MatomoTracker` can be used from any thread without blocking on the main thread or risking a deadlock. Events capture the tracker's state when they are tracked and are queued in call order. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
+* **feature** Added `dispatch(completion:)` to get notified when dispatching has finished, for example to end a background task. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
+* **bugfix** Only the first event tracked after a new session started is sent as a new visit, even if several events are tracked at once. [#427](https://github.com/matomo-org/matomo-sdk-ios/issues/427)
 * **breaking** Removed CocoaPods and Carthage support. The MatomoTracker is distributed with the Swift Package Manager only. 7.9.0 is the last version published to CocoaPods.
 
 ## 7.9.0

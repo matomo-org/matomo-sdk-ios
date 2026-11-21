@@ -1,5 +1,11 @@
 import Foundation
 
+/// A queue that stores events until they are dispatched.
+///
+/// The `MatomoTracker` calls all methods on one internal serial queue: never concurrently,
+/// and not on the main thread. If your implementation needs a specific thread, for example
+/// a Core Data context bound to the main queue, switch to it yourself.
+/// The completion handlers can be called on any thread, synchronously or later.
 public protocol Queue {
     
     var eventCount: Int { get }
