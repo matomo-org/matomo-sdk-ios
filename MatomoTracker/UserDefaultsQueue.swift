@@ -1,6 +1,8 @@
 import Foundation
 
-/// The UserDefaultsQueue is a **not thread safe** queue that persists all events in the `UserDefaults`.
+/// The UserDefaultsQueue is a queue that persists all events in the `UserDefaults`.
+///
+/// It is **not thread safe**. The `MatomoTracker` only calls it on its internal serial queue, not on the main thread.
 /// Per default only the last 100 Events will be queued. If there are more Events than that, the oldest ones will be dropped.
 public final class UserDefaultsQueue: NSObject, Queue {
     
@@ -29,7 +31,6 @@ public final class UserDefaultsQueue: NSObject, Queue {
     }
     
     public var eventCount: Int {
-        assertMainThread()
         return enqueuedEvents.count
     }
     
@@ -43,13 +44,11 @@ public final class UserDefaultsQueue: NSObject, Queue {
     }
     
     public func enqueue(events: [Event], completion: (() -> Void)?) {
-        assertMainThread()
         enqueuedEvents.append(contentsOf: events)
         completion?()
     }
     
     public func first(limit: Int, completion: @escaping ([Event]) -> Void) {
-        assertMainThread()
         
         let amount = [limit,eventCount].min()!
         let dequeuedItems = Array(enqueuedEvents[0..<amount])
@@ -57,7 +56,6 @@ public final class UserDefaultsQueue: NSObject, Queue {
     }
     
     public func remove(events: [Event], completion: @escaping () -> Void) {
-        assertMainThread()
         enqueuedEvents = enqueuedEvents.filter({ event in !events.contains(where: { eventToRemove in eventToRemove.uuid == event.uuid })})
         completion()
     }

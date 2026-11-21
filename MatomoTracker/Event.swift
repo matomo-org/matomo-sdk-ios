@@ -42,7 +42,7 @@ public struct Event: Codable {
     
     /// Should be set to true for the first event of a session.
     /// api-key: new_visit
-    let isNewSession: Bool
+    internal(set) var isNewSession: Bool
     
     /// Currently only used for Campaigns
     /// api-key: urlref
@@ -104,16 +104,17 @@ public struct Event: Codable {
 
 extension Event {
     public init(tracker: MatomoTracker, action: [String], url: URL? = nil, referer: URL? = nil, link: URL? = nil, eventCategory: String? = nil, eventAction: String? = nil, eventName: String? = nil, eventValue: Float? = nil, customTrackingParameters: [String:String] = [:], searchQuery: String? = nil, searchCategory: String? = nil, searchResultsCount: Int? = nil, dimensions: [CustomDimension] = [], variables: [CustomVariable] = [], contentName: String? = nil, contentInteraction: String? = nil, contentPiece: String? = nil, contentTarget: String? = nil, goalID: Int? = nil, revenue: Float? = nil, orderID: String? = nil, orderItems: [OrderItem] = [], orderRevenue: Float? = nil, orderSubTotal: Float? = nil, orderTax: Float? = nil, orderShippingCost: Float? = nil, orderDiscount: Float? = nil, orderLastDate: Date? = nil, isCustomAction: Bool) {
-        self.siteID = tracker.siteID
+        let context = tracker.eventContext()
+        self.siteID = context.siteID
         self.uuid = UUID()
-        self.visitor = tracker.visitor
-        self.session = tracker.session
+        self.visitor = context.visitor
+        self.session = context.session
         self.date = Date()
         // Without an explicit url, an outlink uses the link as url, as recommended by the tracking API.
-        self.url = url.map { Event.prefixingContentBase(tracker.contentBase, to: $0) } ?? link ?? tracker.contentBase?.appendingPathComponent(action.joined(separator: "/"))
+        self.url = url.map { Event.prefixingContentBase(context.contentBase, to: $0) } ?? link ?? context.contentBase?.appendingPathComponent(action.joined(separator: "/"))
         self.actionName = action
         self.language = Locale.httpAcceptLanguage
-        self.isNewSession = tracker.nextEventStartsANewSession
+        self.isNewSession = context.isNewSession
         self.referer = referer
         self.link = link
         self.eventCategory = eventCategory
@@ -123,11 +124,11 @@ extension Event {
         self.searchQuery = searchQuery
         self.searchCategory = searchCategory
         self.searchResultsCount = searchResultsCount
-        self.dimensions = tracker.dimensions + dimensions
-        self.campaignName = tracker.campaignName
-        self.campaignKeyword = tracker.campaignKeyword
+        self.dimensions = context.dimensions + dimensions
+        self.campaignName = context.campaignName
+        self.campaignKeyword = context.campaignKeyword
         self.customTrackingParameters = customTrackingParameters
-        self.customVariables = tracker.customVariables + variables
+        self.customVariables = context.customVariables + variables
         self.contentName = contentName
         self.contentPiece = contentPiece
         self.contentTarget = contentTarget

@@ -3,14 +3,14 @@ import Testing
 
 /// Root suite for all MatomoTracker tests.
 ///
-/// The SDK persists state in `UserDefaults` and expects to be used from the main thread,
-/// so all nested suites run serialized instead of in parallel.
+/// The SDK persists state in `UserDefaults`, which is shared between trackers with the same
+/// site and url, so all nested suites run serialized instead of in parallel.
 @Suite(.serialized)
 enum MatomoTrackerSpecs {}
 
 /// Polls `condition` on the main actor until it returns `true` or the timeout expires.
 ///
-/// While waiting, the main actor is suspended, so work the SDK schedules on the main queue can run.
+/// While waiting, the main actor is suspended, so other work can run.
 /// - Returns: `true` if the condition was met before the timeout.
 @MainActor
 func eventually(
@@ -41,5 +41,27 @@ func removeAllInSuite(suite: String) {
     guard let userDefaults = UserDefaults(suiteName: suite) else { return }
     for key in userDefaults.dictionaryRepresentation().keys {
         userDefaults.removeObject(forKey: key)
+    }
+}
+
+/// A value that can be read and changed from several threads.
+final class Locked<Value>: @unchecked Sendable {
+    private let lock = NSLock()
+    private var _value: Value
+
+    init(_ value: Value) {
+        _value = value
+    }
+
+    var value: Value {
+        lock.lock()
+        defer { lock.unlock() }
+        return _value
+    }
+
+    func mutate(_ body: (inout Value) -> Void) {
+        lock.lock()
+        defer { lock.unlock() }
+        body(&_value)
     }
 }

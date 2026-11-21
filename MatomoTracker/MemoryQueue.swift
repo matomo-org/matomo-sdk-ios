@@ -1,6 +1,8 @@
 import Foundation
 
-/// The MemoryQueue is a **not thread safe** in memory Queue.
+/// The MemoryQueue is an in memory Queue.
+///
+/// It is **not thread safe**. The `MatomoTracker` only calls it on its internal serial queue.
 public final class MemoryQueue: NSObject, Queue {
     private var items = [Event]()
     
@@ -9,20 +11,17 @@ public final class MemoryQueue: NSObject, Queue {
     }
     
     public func enqueue(events: [Event], completion: (()->())?) {
-        assertMainThread()
         items.append(contentsOf: events)
         completion?()
     }
     
     public func first(limit: Int, completion: (_ items: [Event])->()) {
-        assertMainThread()
         let amount = [limit,eventCount].min()!
         let dequeuedItems = Array(items[0..<amount])
         completion(dequeuedItems)
     }
     
     public func remove(events: [Event], completion: ()->()) {
-        assertMainThread()
         items = items.filter({ event in !events.contains(where: { eventToRemove in eventToRemove.uuid == event.uuid })})
         completion()
     }
