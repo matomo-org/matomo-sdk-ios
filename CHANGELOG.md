@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 7.9.0
 * **improvement** Documented how to send Custom Dimensions for a single request (Action Scope) and replaced the deprecated `set(value:forIndex:)` in the README. [#477](https://github.com/matomo-org/matomo-sdk-ios/issues/477)
 * **feature** Added outlink tracking with `trackOutlink(_:dimensions:)`. [#484](https://github.com/matomo-org/matomo-sdk-ios/issues/484)
 * **bugfix** Relative urls without a scheme, like `/mainPage/id.123`, are now prefixed with the `contentBase`, like on Android. Before, Matomo showed "Page URL not defined" for them. [#483](https://github.com/matomo-org/matomo-sdk-ios/issues/483)

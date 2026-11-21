@@ -547,7 +547,7 @@ extension MatomoTracker {
 
 extension MatomoTracker {
     /// The version of the Matomo SDKs
-    @objc public static let sdkVersion = "7.8.0"
+    @objc public static let sdkVersion = "7.9.0"
 }
 
 extension MatomoTracker {
