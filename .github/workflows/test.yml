@@ -67,6 +67,9 @@ jobs:
           - scheme: MatomoTracker
             platform: visionOS
             destination: "generic/platform=visionOS Simulator"
+          - scheme: MatomoTracker
+            platform: watchOS
+            destination: "generic/platform=watchOS Simulator"
           - scheme: ios
             platform: iOS
             destination: "generic/platform=iOS Simulator"

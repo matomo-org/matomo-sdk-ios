@@ -21,8 +21,5 @@ xcuserdata
 # Exclude generate documentation
 Doc/
 
-# Exclude build products from dependency managers
-Pods
-/Podfile.lock
-Carthage/
+# Exclude Swift Package Manager build products
 /.build
