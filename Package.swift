@@ -21,14 +21,12 @@ let package = Package(
       .target(
           name: "MatomoTracker",
           path: "MatomoTracker",
-          exclude: ["Info.plist", "MatomoTracker.h"],
           resources: [.copy("PrivacyInfo.xcprivacy")]
       ),
       .testTarget(
           name: "MatomoTrackerTests",
           dependencies: ["MatomoTracker"],
-          path: "MatomoTrackerTests",
-          exclude: ["Info.plist"]
+          path: "MatomoTrackerTests"
       ),
   ],
   swiftLanguageModes: [.v5]

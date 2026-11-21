@@ -11,6 +11,6 @@
       location = "group:Example/tvos/tvos.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MatomoTracker.xcodeproj">
+      location = "group:">
    </FileRef>
 </Workspace>

@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* **breaking** Removed CocoaPods and Carthage support. The MatomoTracker is distributed with the Swift Package Manager only. 7.9.0 is the last version published to CocoaPods.
+
 ## 7.9.0
 * **improvement** Documented how to send Custom Dimensions for a single request (Action Scope) and replaced the deprecated `set(value:forIndex:)` in the README. [#477](https://github.com/matomo-org/matomo-sdk-ios/issues/477)
 * **feature** Added outlink tracking with `trackOutlink(_:dimensions:)`. [#484](https://github.com/matomo-org/matomo-sdk-ios/issues/484)

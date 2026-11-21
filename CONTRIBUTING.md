@@ -35,7 +35,7 @@ No additional tools are needed: the example applications use the SDK as a local 
 
 ### Adding code to the SDK
 
-In the Workspace you will find the *MatomoTracker* Project. Inside of it there is a folder for the SDK code and one for the Tests. Tests can be run from the *MatomoTracker* scheme.
+The SDK is a Swift package. In the Workspace you will find it next to the example projects, with the `MatomoTracker` folder for the SDK code and the `MatomoTrackerTests` folder for the tests. Tests can be run from the *MatomoTracker* scheme. You can also open `Package.swift` on its own.
 
 ### Adding example code
 
